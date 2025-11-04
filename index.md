@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # BIMTools Documentation
 
 Welcome to the official documentation for the Sener BIMTools Revit plugin.
