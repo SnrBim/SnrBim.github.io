@@ -1,0 +1,56 @@
+<script>
+
+  function initDocumentFilter() {
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    const docList = document.getElementById('doc-list');
+    if (!(docList && checkboxes.length > 0)) return;
+
+    const listItems = docList.getElementsByTagName('li');
+
+    function filterDocs() {
+      const checkedGroups = Array.from(checkboxes)
+        .filter(i => i.checked)
+        .map(i => i.value);
+      for (const item of listItems) {
+        const itemGroup = item.getAttribute('data-group');
+        item.style.display = checkedGroups.length === 0 ||
+                             checkedGroups.includes(itemGroup)
+        ? ''
+        : 'none';
+      }
+    }
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', filterDocs);
+    });
+
+  }
+
+  function initThemeToggle() {
+    const toggleElem = document.querySelector('a[href*="toggleTheme"]');
+    if (!toggleElem) return;
+
+    function applyTheme(theme) {
+      jtd.setTheme(theme);
+      localStorage.setItem('jtd-theme', theme);
+      toggleElem.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    toggleElem.addEventListener('click', function(e) {
+      e.preventDefault();
+      const newTheme = jtd.getTheme() === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    });
+
+    const savedTheme = localStorage.getItem('jtd-theme');
+    if (savedTheme) {
+      jtd.setTheme(savedTheme);
+    }
+    toggleElem.textContent = jtd.getTheme() === 'dark' ? '☀️' : '🌙';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    initDocumentFilter();
+    initThemeToggle();
+  });
+</script>

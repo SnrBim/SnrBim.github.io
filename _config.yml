@@ -1,3 +1,15 @@
-title: BIMTools Documentation
-description: Official documentation for the Sener BIMTools Revit plugin.
-theme: jekyll-theme-minimal
+title: BimTools Docs
+description: Official documentation for the Sener BimTools Revit plugin.
+theme: just-the-docs
+
+# Path to the favicon
+favicon_ico: "/assets/images/favicon.svg"
+
+aux_links:
+  "Downloads":
+    - "https://github.com/SnrBim/BimTools/releases"
+  "🌙":
+    - "toggleTheme"
+
+exclude:
+  - .history
