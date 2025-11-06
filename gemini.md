@@ -61,3 +61,20 @@ This project uses the `kurtsson/jekyll-multiple-languages-plugin` to manage cont
 2.  Create a new template page in the main directory structure (e.g., `Docs/NewPage.md`).
 3.  Add the front matter (layout, title, permalink, namespace) to the template page.
 4.  Use the `{% translate_file docs/NewPage.md %}` tag in the template page to include the content.
+
+---
+
+### Important Note on `default_locale_in_subfolder`
+
+The configuration `default_locale_in_subfolder: true` **must not be used** in the current setup.
+
+**Reason:**
+This setting triggers a specific code path in the `jekyll-multiple-languages-plugin` (version 1.8.0) that handles the creation of a subfolder for the default language. This part of the plugin's code contains a call to `Dir.exists?`, a method that has been removed in modern versions of Ruby (the project uses Ruby 3.4.7).
+
+Using this setting will cause the Jekyll build to fail with a `NoMethodError: undefined method 'exists?' for class Dir`.
+
+To resolve this, one would need to either:
+1.  Patch the plugin's code and set up a GitHub Actions workflow to build the site outside of GitHub Pages' `safe` mode.
+2.  Migrate to a modern, maintained multilingual plugin like `jekyll-polyglot`.
+
+Until then, the default language (`en`) will be served from the root of the website, and other languages will be in subfolders.

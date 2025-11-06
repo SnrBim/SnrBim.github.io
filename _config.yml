@@ -21,4 +21,3 @@ plugins:
 languages: ["en", "ru", "es"]
 
 exclude_from_localizations: ["assets"]
-
