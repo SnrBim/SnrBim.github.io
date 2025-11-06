@@ -3,16 +3,16 @@ layout: default
 has_toc: false
 ---
 
-# BIMTools Documentation
+# {% t index.title %}
 
-Welcome to the official documentation for the Sener BIMTools Revit plugin.
+{% t index.welcome %}
 
-Here you can find guides for the various commands available in the toolset.
+{% t index.guides %}
 
-## All Commands
+## {% t index.all_commands %}
 
 <div id="filter-container" style="margin-bottom: 20px;">
-  <strong>Filter by discipline:</strong>
+  <strong>{% t index.filter_by_discipline %}:</strong>
   {% assign groups = site.pages | where_exp:"item", "item.has_children == true" | sort: "title" %}
   {% for group in groups %}
     <label style="margin-left: 10px; user-select: none;">

@@ -14,3 +14,11 @@ aux_links:
 
 exclude:
   - .history
+
+plugins:
+  - jekyll-multiple-languages-plugin
+
+languages: ["en", "ru", "es"]
+
+exclude_from_localizations: ["assets"]
+

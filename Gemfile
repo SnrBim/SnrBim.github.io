@@ -8,6 +8,7 @@ gem "logger"
 gem "base64"
 gem "bigdecimal"
 gem "webrick"
+gem "jekyll-multiple-languages-plugin"
 
 # Windows-specific gem for faster auto-regeneration
 gem "wdm", ">= 0.1.0" if Gem.win_platform?

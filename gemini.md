@@ -43,3 +43,21 @@ To run the documentation site locally for previewing changes, follow these steps
 
 1.  Any changes pushed to the `main` branch of this repository (`SnrBim.github.io`) will be automatically deployed to the live site by GitHub Pages.
 2.  The content for the documentation is aggregated from the main `BIMTools` repository using the `Publish-Docs.ps1` script located there.
+
+## Multilingual Setup (jekyll-multiple-languages-plugin)
+
+This project uses the `kurtsson/jekyll-multiple-languages-plugin` to manage content in multiple languages (en, ru, es).
+
+### Key Concepts:
+
+*   **Language Files:** All translations for UI strings are stored in `.yml` files inside the `_i18n/` directory (e.g., `_i18n/en.yml`, `_i18n/ru.yml`).
+*   **Page Content:** The content for pages is stored in language-specific subdirectories within `_i18n/`. For example, the content for the `docs/MyCommand.md` page is stored in `_i18n/en/docs/MyCommand.md`, `_i18n/ru/docs/MyCommand.md`, etc. These files should **not** contain any YAML front matter.
+*   **Template Pages:** The main page files (e.g., `Docs/MyCommand.md`) act as templates. They contain the front matter (layout, title, permalink, etc.) and use the `{% translate_file path/to/content.md %}` tag to include the language-specific content from the `_i18n` directory.
+*   **Linking Pages:** The `namespace` and `permalink` attributes in the front matter of the template page are used to link different language versions of the same page.
+
+### Workflow for Adding a New Page:
+
+1.  Create the language-specific content files (without front matter) in the `_i18n/` subdirectories (e.g., `_i18n/en/docs/NewPage.md`, `_i18n/ru/docs/NewPage.md`).
+2.  Create a new template page in the main directory structure (e.g., `Docs/NewPage.md`).
+3.  Add the front matter (layout, title, permalink, namespace) to the template page.
+4.  Use the `{% translate_file docs/NewPage.md %}` tag in the template page to include the content.

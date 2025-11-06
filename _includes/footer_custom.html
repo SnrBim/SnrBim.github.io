@@ -54,3 +54,23 @@
     initThemeToggle();
   });
 </script>
+
+<div class="language-switcher" style="text-align: center; margin-top: 20px;">
+  <p style="margin-bottom: 5px;">Language</p>
+  <ul style="list-style: none; padding: 0; margin: 0;">
+    {% for lang in site.languages %}
+      <li style="display: inline-block; margin: 0 5px;">
+        {% if lang == site.default_lang %}
+          <a href="{{ site.baseurl_root }}{{ page.url }}" {% if lang == site.lang %}style="font-weight: bold;"{% endif %}>
+            {{ lang | upcase }}
+          </a>
+        {% else %}
+          <a href="{{ site.baseurl_root }}/{{ lang }}{{ page.url }}" {% if lang == site.lang %}style="font-weight: bold;"{% endif %}>
+            {{ lang | upcase }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
