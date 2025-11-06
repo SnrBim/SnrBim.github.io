@@ -1,9 +1,10 @@
-title: BimTools Docs
+title: Sener BimTools Docs
 description: Official documentation for the Sener BimTools Revit plugin.
 theme: just-the-docs
 
 # Path to the favicon
-favicon_ico: "/assets/images/favicon.svg"
+favicon_ico: "/assets/images/favicon.png"
+logo: "/assets/images/logo.png"
 
 aux_links:
   "Downloads":
