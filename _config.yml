@@ -17,6 +17,7 @@ aux_links:
 
 exclude:
   - .history
+  - vendor
 
 plugins:
   - jekyll-multiple-languages-plugin
