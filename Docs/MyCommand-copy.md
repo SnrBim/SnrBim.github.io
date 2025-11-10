@@ -1,7 +1,7 @@
 ---
 layout: default
 title: MyCommand Copy
-parent: Electrical
+parent: MEP
 namespace: my_command_copy
 permalink: /docs/my-command-copy/
 ---

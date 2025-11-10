@@ -49,28 +49,67 @@
     toggleElem.textContent = jtd.getTheme() === 'dark' ? '☀️' : '🌙';
   }
 
+  function initLangSwither() {
+    const langEnLink = document.querySelector('a[href*="langEn"]');
+    const langEsLink = document.querySelector('a[href*="langEs"]');
+
+    const languageLinks = [];
+    if (langEnLink) languageLinks.push(langEnLink);
+    if (langEsLink) languageLinks.push(langEsLink);
+
+    if (languageLinks.length === 0) return;
+
+    const defaultLang = 'en'; // Assuming 'en' is the default language
+
+    languageLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        let targetLang;
+        if (this.href.includes('langEn')) {
+          targetLang = 'en';
+        } else if (this.href.includes('langEs')) {
+          targetLang = 'es';
+        }
+
+        if (!targetLang) return; // Do nothing if language is not determined
+
+        let currentPathname = window.location.pathname;
+
+        // Remove existing language prefix if present
+        const langRegex = /^\/(en|es)(\/|$)/; // Only 'en' and 'es'
+        let pathWithoutLang = currentPathname.replace(langRegex, '/');
+
+        // Ensure pathWithoutLang starts with a single slash
+        if (!pathWithoutLang.startsWith('/')) {
+          pathWithoutLang = '/' + pathWithoutLang;
+        }
+
+        let newPathname;
+        if (targetLang === defaultLang) {
+          newPathname = pathWithoutLang;
+        } else {
+          // Add new language prefix
+          newPathname = `/${targetLang}${pathWithoutLang}`;
+        }
+
+        // Handle root path specifically
+        if (pathWithoutLang === '/' && targetLang !== defaultLang) {
+          newPathname = `/${targetLang}/`;
+        } else if (pathWithoutLang === '/' && targetLang === defaultLang) {
+          newPathname = '/';
+        }
+
+        // Construct full URL
+        const newUrl = window.location.origin + newPathname + window.location.search;
+        window.location.href = newUrl;
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     initDocumentFilter();
     initThemeToggle();
+    initLangSwither();
   });
 </script>
-
-<div class="language-switcher" style="text-align: center; margin-top: 20px;">
-  <p style="margin-bottom: 5px;">Language</p>
-  <ul style="list-style: none; padding: 0; margin: 0;">
-    {% for lang in site.languages %}
-      <li style="display: inline-block; margin: 0 5px;">
-        {% if lang == site.default_lang %}
-          <a href="{{ site.baseurl_root }}{{ page.url }}" {% if lang == site.lang %}style="font-weight: bold;"{% endif %}>
-            {{ lang | upcase }}
-          </a>
-        {% else %}
-          <a href="{{ site.baseurl_root }}/{{ lang }}{{ page.url }}" {% if lang == site.lang %}style="font-weight: bold;"{% endif %}>
-            {{ lang | upcase }}
-          </a>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-</div>
-

@@ -39,7 +39,7 @@ has_toc: false
   {% if doc.title %}
     <li data-group="{{ doc.parent }}" class="doc-item">
       <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
-      {% if doc.parent %}<span>- {{ doc.parent }}</span>{% endif %}
+      {% if doc.parent %}<span>{{ doc.parent }}</span>{% endif %}
     </li>
   {% endif %}
 {% endfor %}

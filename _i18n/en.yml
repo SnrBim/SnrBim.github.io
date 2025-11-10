@@ -1,6 +1,10 @@
 index:
-  title: "BIMTools Documentation"
-  welcome: "Welcome to the official documentation for the Sener BIMTools Revit plugin."
+  title: "BimTools Documentation"
+  welcome: "Welcome to the official documentation for the Sener BimTools Revit plugin."
   guides: "Here you can find guides for the various commands available in the toolset."
   all_commands: "All Commands"
   filter_by_discipline: "Filter by discipline"
+discipline:
+  common: "Tools applicable across multiple disciplines"
+  mec: "Commands for mechanical, ventilation, and plumbing workflows"
+  ele: "Commands for electrical design"

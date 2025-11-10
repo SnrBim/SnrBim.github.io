@@ -1,7 +1,7 @@
 ---
 layout: default
 title: MyCommand
-parent: Electrical
+parent: ELE
 namespace: my_command
 permalink: /docs/my-command/
 ---

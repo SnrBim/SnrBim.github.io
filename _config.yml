@@ -14,6 +14,10 @@ aux_links:
     - "https://github.com/SnrBim/BimTools/releases"
   "🌙":
     - "toggleTheme"
+  "EN":
+    - "langEn"
+  "ES":
+    - "langEs"
 
 exclude:
   - .history
@@ -22,6 +26,6 @@ exclude:
 plugins:
   - jekyll-multiple-languages-plugin
 
-languages: ["en", "ru", "es"]
+languages: ["en", "es"]
 
 exclude_from_localizations: ["assets"]
