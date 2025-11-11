@@ -29,3 +29,6 @@ plugins:
 languages: ["en", "es"]
 
 exclude_from_localizations: ["assets"]
+
+back_to_top: true
+aux_links_new_tab: false

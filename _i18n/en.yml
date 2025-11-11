@@ -4,7 +4,13 @@ index:
   guides: "Here you can find guides for the various commands available in the toolset."
   all_commands: "All Commands"
   filter_by_discipline: "Filter by discipline"
+  wipstatus: "Work in progress"
+  other: "Other"
 discipline:
   common: "Tools applicable across multiple disciplines"
   mec: "Commands for mechanical, ventilation, and plumbing workflows"
   ele: "Commands for electrical design"
+discipline_short:
+  common: "Common"
+  mec: "MEC"
+  ele: "ELE"

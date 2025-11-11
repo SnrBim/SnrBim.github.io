@@ -13,7 +13,7 @@ This file provides context and instructions for the Gemini AI agent.
 ## Key Technologies
 
 *   **Static Site Generator:** Jekyll
-*   **Theme:** jekyll-theme-minimal
+*   **Theme:** just-the-docs
 *   **Language:** Ruby (Portable version)
 
 ## Local Development Workflow
@@ -83,7 +83,7 @@ When you run `.\Publish-Docs.ps1`, it performs the following for each command fo
     *   A hardcoded `layout: default`.
     *   A generated `namespace` and `permalink`.
     *   A `{% translate_file docs/<slug>.md %}` tag after the front-matter, which tells Jekyll to load the content from the language-specific files.
-5.  **Copies Content:** It copies `En.md` and `Es.md` to the `_i18n/<lang>/docs/` folder, renaming them to `<slug>.md`.
+5.  **Injects TOC and Copies Content:** It reads the content of `En.md` and `Es.md`, injects a language-specific Table of Contents after the main title, and copies the modified content to the `_i18n/<lang>/docs/` folder, renaming it to `<slug>.md`.
 6.  **Copies Assets:** It copies all other files (like `pic1.png`) into the `docs/<slug>/` directory, alongside `index.md`.
 7.  **Warns on Missing Translations:** It will show a warning if either `En.md` or `Es.md` is missing.
 
@@ -123,3 +123,6 @@ To resolve this, one would need to either:
 2.  Migrate to a modern, maintained multilingual plugin like `jekyll-polyglot`.
 
 Until then, the default language (`en`) will be served from the root of the website, and other languages will be in subfolders.
+
+---
+**Work Log:** PLAN.md

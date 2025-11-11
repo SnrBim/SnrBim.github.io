@@ -4,7 +4,13 @@ index:
   guides: "Aquí puede encontrar guías para los distintos comandos disponibles en el conjunto de herramientas."
   all_commands: "Todos los comandos"
   filter_by_discipline: "Filtrar por disciplina"
+  wipstatus: "En progreso"
+  other: "Otros"
 discipline:
   common: "Herramientas aplicables en varias disciplinas"
   mec: "Comandos para flujos de trabajo de ventilación, mecánica y fontanería"
   ele: "Comandos para el diseño eléctrico"
+discipline_short:
+  common: "Común"
+  mec: "MEC"
+  ele: "ELE"

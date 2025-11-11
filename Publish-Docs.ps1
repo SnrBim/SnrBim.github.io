@@ -86,7 +86,36 @@ Write-Host "No duplicate titles found. Proceeding with publishing." -ForegroundC
 
 Write-Host "`nFound commands to process: $($commandFolders.Count)."
 
+$tocSnippetEn = @"
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+"@
+
+$tocSnippetEs = @"
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Tabla de contenidos
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+"@
+
 foreach ($commandFolder in $commandFolders) {
+    $isWip = $false
     $commandNamePascalCase = $commandFolder.Name
     $sourceDocsPath = Join-Path $commandFolder.FullName "Docs"
     $frontMatterPath = Join-Path $sourceDocsPath "front-matter.yaml"
@@ -135,15 +164,39 @@ foreach ($commandFolder in $commandFolders) {
             "En.md" {
                 $foundEn = $true
                 $destPath = Join-Path $destI18nEnPath "$slug.md"
-                Copy-Item -Path $file.FullName -Destination $destPath -Force
-                Write-Host "  Copied content to -> $destPath"
+                
+                $content = Get-Content -Path $file.FullName -Raw
+                $insertPosition = $content.IndexOf("`n") + 1
+                if ($insertPosition -eq 0) {
+                    $newContent = $content + "`n" + $tocSnippetEn
+                } else {
+                    $newContent = $content.Insert($insertPosition, $tocSnippetEn)
+                }
+                Set-Content -Path $destPath -Value $newContent -Force
+
+                Write-Host "  Copied content with TOC to -> $destPath"
+
+                $firstLine = Get-Content -Path $file.FullName -TotalCount 1
+                if ($firstLine -eq "# English Command Title") {
+                    $isWip = $true
+                    Write-Host "  Marked as WIP (Work In Progress)." -ForegroundColor Magenta
+                }
             }
             "Es.md" {
                 $foundEs = $true
                 $esFileFullPath = $file.FullName
                 $destPath = Join-Path $destI18nEsPath "$slug.md"
-                Copy-Item -Path $file.FullName -Destination $destPath -Force
-                Write-Host "  Copied content to -> $destPath"
+
+                $content = Get-Content -Path $file.FullName -Raw
+                $insertPosition = $content.IndexOf("`n") + 1
+                if ($insertPosition -eq 0) {
+                    $newContent = $content + "`n" + $tocSnippetEs
+                } else {
+                    $newContent = $content.Insert($insertPosition, $tocSnippetEs)
+                }
+                Set-Content -Path $destPath -Value $newContent -Force
+
+                Write-Host "  Copied content with TOC to -> $destPath"
             }
             "Ru.md" {
                 Write-Host "  Ignoring file: $($file.Name)" -ForegroundColor Gray
@@ -160,13 +213,16 @@ foreach ($commandFolder in $commandFolders) {
 
                 # Add existing lines, filtering out script-managed fields
                 for ($i = 1; $i -lt $endFrontMatterIndex; $i++) {
-                    if ($originalLines[$i] -notmatch "^(namespace|permalink|layout):") {
+                    if ($originalLines[$i] -notmatch "^(namespace|permalink|layout|wip):") {
                         $newFrontMatterLines.Add($originalLines[$i])
                     }
                 }
 
                 # Add generated and managed fields
                 $newFrontMatterLines.Add("layout: default")
+                if ($isWip) {
+                    $newFrontMatterLines.Add("wip: true")
+                }
                 $newFrontMatterLines.Add("namespace: $slug")
                 $newFrontMatterLines.Add("permalink: /docs/$slug/")
                 $newFrontMatterLines.Add('---')
