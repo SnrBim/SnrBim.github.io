@@ -124,5 +124,11 @@ To resolve this, one would need to either:
 
 Until then, the default language (`en`) will be served from the root of the website, and other languages will be in subfolders.
 
+## Key Files
+
+*   **`index.md`**: The main page of the site. It contains the Liquid logic to iterate through all commands and display them in a filterable list. It now also includes the HTML structure, custom CSS, and JavaScript for the collapsible descriptions, their styling, and animation.
+*   **`Publish-Docs.ps1`**: A crucial PowerShell script that aggregates all documentation from the source `BIMTools` repository. It reads the `front-matter.yaml` for each command, which is the source for the `title` and the new `description` field used on the main page.
+*   **`_includes/footer_custom.html`**: A file intended for custom scripts and styles that apply globally across the site. It contains the JavaScript for the language switcher and theme toggling.
+
 ---
 **Work Log:** PLAN.md

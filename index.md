@@ -49,7 +49,40 @@ has_toc: false
   .doc-item:hover {
     background-color: rgba(128, 128, 128, 0.15);
   }
+
+  .doc-title {
+    display: inline-flex;
+    align-items: center;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary.doc-item {
+    cursor: pointer;
+  }
+  summary .doc-title::after {
+    content: '▼';
+    font-size: 0.8em;
+    color: #88888881;
+    margin-left: 0.5em;
+    transform: rotate(-90deg);
+    transition: transform 0.5s;
+  }
+  details[open] > summary .doc-title::after {
+    transform: rotate(0deg);
+  }
+  .doc-description {
+    padding: 0;
+    overflow: hidden;
+  }
+  .doc-description p {
+    margin: 0px;
+  }
 </style>
+
 <ol id="doc-list">
 {% for doc in all_docs %}
   {% if doc.title %}
@@ -57,19 +90,48 @@ has_toc: false
     {%- if group_titles contains doc.parent -%}
       {%- assign doc_group = doc.parent -%}
     {%- endif -%}
-    <li data-group="{{ doc_group }}" class="doc-item">
-      {% if doc.wip %}
-        <span>{{ doc.title }} ({% t index.wipstatus %})</span>
+    <li data-group="{{ doc_group }}">
+      {% if doc.description and doc.description != "" %}
+        <details>
+          <summary class="doc-item">
+            <div class="doc-title">
+              {% if doc.wip %}
+                <span>{{ doc.title }} ({% t index.wipstatus %})</span>
+              {% else %}
+                <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+              {% endif %}
+            </div>
+            {% if doc.parent %}
+              {% if group_titles contains doc.parent %}
+                {% assign parent_key = doc.parent | downcase %}
+                <span>{% t discipline_short.{{ parent_key }} %}</span>
+              {% else %}
+                <span>{{ doc.parent }}</span>
+              {% endif %}
+            {% endif %}
+          </summary>
+          <div class="doc-description">
+            {{ doc.description | markdownify }}
+          </div>
+        </details>
       {% else %}
-        <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
-      {% endif %}
-      {% if doc.parent %}
-        {% if group_titles contains doc.parent %}
-          {% assign parent_key = doc.parent | downcase %}
-          <span>{% t discipline_short.{{ parent_key }} %}</span>
-        {% else %}
-          <span>{{ doc.parent }}</span>
-        {% endif %}
+        <div class="doc-item">
+          <div class="doc-title">
+            {% if doc.wip %}
+              <span>{{ doc.title }} ({% t index.wipstatus %})</span>
+            {% else %}
+              <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+            {% endif %}
+          </div>
+          {% if doc.parent %}
+            {% if group_titles contains doc.parent %}
+              {% assign parent_key = doc.parent | downcase %}
+              <span>{% t discipline_short.{{ parent_key }} %}</span>
+            {% else %}
+              <span>{{ doc.parent }}</span>
+            {% endif %}
+          {% endif %}
+        </div>
       {% endif %}
     </li>
   {% endif %}
@@ -88,17 +150,50 @@ has_toc: false
         .map(cb => cb.value);
 
       if (checkedGroups.length === 0) {
-        allItems.forEach(item => item.style.display = 'flex');
+        allItems.forEach(item => item.style.display = '');
         return;
       }
 
       allItems.forEach(item => {
         const itemGroup = item.getAttribute('data-group');
         if (checkedGroups.includes(itemGroup)) {
-          item.style.display = 'flex';
+          item.style.display = '';
         } else {
           item.style.display = 'none';
         }
+      });
+    }
+
+    function initCollapsibleDescriptions() {
+      const detailsElements = document.querySelectorAll('#doc-list details');
+
+      detailsElements.forEach(details => {
+        const summary = details.querySelector('summary');
+        const description = details.querySelector('.doc-description');
+
+        summary.addEventListener('click', (event) => {
+          event.preventDefault();
+
+          if (details.open) {
+            const closingAnimation = description.animate({
+              height: [description.offsetHeight + 'px', '0px']
+            }, {
+              duration: 200,
+              easing: 'ease-out'
+            });
+            closingAnimation.onfinish = () => {
+              details.removeAttribute('open');
+            };
+          } else {
+            details.setAttribute('open', '');
+            const openingAnimation = description.animate({
+              height: ['0px', description.scrollHeight + 'px']
+            }, {
+              duration: 200,
+              easing: 'ease-in'
+            });
+          }
+        });
       });
     }
 
@@ -106,7 +201,7 @@ has_toc: false
       checkbox.addEventListener('change', filterDocs);
     });
 
-    // Initial state: show all
     filterDocs();
+    initCollapsibleDescriptions();
   });
 </script>
