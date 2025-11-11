@@ -6,7 +6,3 @@ _site/
 .bundle/
 vendor/
 /.history
-_i18n/en/
-_i18n/es/
-Docs/*
-!Docs/*.md
