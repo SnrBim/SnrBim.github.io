@@ -91,41 +91,10 @@ has_toc: false
       {%- assign doc_group = doc.parent -%}
     {%- endif -%}
     <li data-group="{{ doc_group }}">
-      {% if doc.description and doc.description != "" or doc.description_es and doc.description_es != "" %}
-        <details>
-          <summary class="doc-item">
-            <div class="doc-title">
-              {% if doc.wip %}
-                <span>{{ doc.title }} ({% t index.wipstatus %})</span>
-              {% else %}
-                <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
-              {% endif %}
-            </div>
-            {% if doc.parent %}
-              {% if group_titles contains doc.parent %}
-                {% assign parent_key = doc.parent | downcase %}
-                <span>{% t discipline_short.{{ parent_key }} %}</span>
-              {% else %}
-                <span>{{ doc.parent }}</span>
-              {% endif %}
-            {% endif %}
-          </summary>
-          <div class="doc-description">
-            {% assign current_description = doc.description %}
-            {% if site.lang == 'es' and doc.description_es and doc.description_es != "" %}
-              {% assign current_description = doc.description_es %}
-            {% endif %}
-            {{ current_description | markdownify }}
-          </div>
-        </details>
-      {% else %}
+      {% if doc.wip %}
         <div class="doc-item">
           <div class="doc-title">
-            {% if doc.wip %}
-              <span>{{ doc.title }} ({% t index.wipstatus %})</span>
-            {% else %}
-              <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
-            {% endif %}
+            <span>{{ doc.title }} ({% t index.wipstatus %})</span>
           </div>
           {% if doc.parent %}
             {% if group_titles contains doc.parent %}
@@ -136,6 +105,45 @@ has_toc: false
             {% endif %}
           {% endif %}
         </div>
+      {% else %}
+        {% if doc.description and doc.description != "" or doc.description_es and doc.description_es != "" %}
+          <details>
+            <summary class="doc-item">
+              <div class="doc-title">
+                <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+              </div>
+              {% if doc.parent %}
+                {% if group_titles contains doc.parent %}
+                  {% assign parent_key = doc.parent | downcase %}
+                  <span>{% t discipline_short.{{ parent_key }} %}</span>
+                {% else %}
+                  <span>{{ doc.parent }}</span>
+                {% endif %}
+              {% endif %}
+            </summary>
+            <div class="doc-description">
+              {% assign current_description = doc.description %}
+              {% if site.lang == 'es' and doc.description_es and doc.description_es != "" %}
+                {% assign current_description = doc.description_es %}
+              {% endif %}
+              {{ current_description | markdownify }}
+            </div>
+          </details>
+        {% else %}
+          <div class="doc-item">
+            <div class="doc-title">
+              <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+            </div>
+            {% if doc.parent %}
+              {% if group_titles contains doc.parent %}
+                {% assign parent_key = doc.parent | downcase %}
+                <span>{% t discipline_short.{{ parent_key }} %}</span>
+              {% else %}
+                <span>{{ doc.parent }}</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endif %}
       {% endif %}
     </li>
   {% endif %}

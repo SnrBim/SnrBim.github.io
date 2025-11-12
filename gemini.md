@@ -126,7 +126,7 @@ Until then, the default language (`en`) will be served from the root of the webs
 
 ## Key Files
 
-*   **`index.md`**: The main page of the site. It contains the Liquid logic to iterate through all commands and display them in a filterable list. It also includes the HTML structure, custom CSS, and JavaScript for the collapsible descriptions, their styling, animation, filtering, and the click handling logic that distinguishes between navigation and expansion.
+*   **`index.md`**: The main page of the site. It contains the Liquid logic to iterate through all commands and display them in a filterable list. The logic correctly handles documents marked as "Work In Progress" (`wip: true`), displaying them without a link or description. It also includes the HTML structure, custom CSS, and JavaScript for the collapsible descriptions, their styling, animation, filtering by discipline, and the click handling logic that distinguishes between navigation and expansion.
 *   **`Publish-Docs.ps1`**: A crucial PowerShell script that aggregates all documentation from the source `BIMTools` repository. It reads the `front-matter.yaml` for each command to get the title. It now also automatically extracts the first paragraph from `En.md` and `Es.md` and injects it as a `description` and `description_es` field into the front matter of the generated `index.md` for each command page.
 *   **`_includes/footer_custom.html`**: A file intended for custom scripts and styles that apply globally across the site. It contains the JavaScript for the language switcher and theme toggling.
 
