@@ -1,30 +1,653 @@
 {"0": {
-    "doc": "MyCommand Copy",
-    "title": "AssignCircuitToConduits es",
-    "content": "Esta herramienta está diseñada para agregar información del circuito a las propiedades de los conductos eléctricos (Conduit). El usuario selecciona un circuito y los conductos correspondientes, y el algoritmo actualiza automáticamente sus parámetros, agregando la información del circuito en el parámetro SRS_MEP_Circuit_Names. Antes de esto, si el nombre del circuito está vacío, el algoritmo lo genera automáticamente a partir de los valores del parámetro SRS_Schedule_Name de la carga y el cuadro eléctrico. Esta herramienta se utiliza para la posterior ejecución de SyncConduitCircuit. Datos requeridos: . Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y las cajas de distribución intermedias tengan nombres en el parámetro SRS_Schedule_Name. De lo contrario, se utilizarán sus identificadores. Instrucciones de uso: . | Seleccionar los elementos: . | Seleccione una familia de carga asociada a un circuito. | Si la carga pertenece a varios circuitos, seleccione el circuito deseado usando la tecla Tab. | Seleccione uno o varios conductos eléctricos (Conduit). | . | Ejecutar la herramienta: . | Al iniciar, el algoritmo verificará automáticamente si la selección es válida. | Si se seleccionan varios circuitos, aparecerá un mensaje de error. Si no se seleccionan conductos, se activará el modo auxiliar: el complemento identificará los conductos pertenecientes al circuito y la ejecución se detendrá en ese punto. | . | Asignación automática del nombre del circuito: . | Si el circuito ya tiene un nombre en el parámetro SRS_MEP_Circuit_Names, se utilizará dicho nombre. | Si el nombre está vacío, se generará automáticamente con base en los parámetros SRS_Schedule_Name de la carga y el cuadro eléctrico, siguiendo el formato: Ubicación-Cuadro/Carga-C-TagtypeNúmero . donde: . | Cuadro y Carga son los nombres de los elementos extraídos del parámetro SRS_Schedule_Name, sin la Ubicación (18D-) ni guiones. | Tagtype es el valor del parámetro SRS_MEP_Tag_Type_Id. | Número se genera automáticamente para garantizar la unicidad del nombre del segmento. | . Si la carga consiste en más de un elemento, el nombre del segmento se genera siguiendo estas reglas: . | Datos de entrada | Nombre resultante del Carga | Comentario | . | 18D-DS-SF01 | 18D-DS-SF01 | Un único nombre se mantiene igual. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Los nombres con la misma base se agrupan con xx al final. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Los nombres heterogéneos se listan separados por comas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | Si no hay nombre, se usa el ID del elemento. | . | . | Agregar la información a los conductos: . | En todos los conductos seleccionados, se actualizará el parámetro SRS_MEP_Circuit_Names, agregando el nombre del circuito. | Si en este parámetro ya existen otros nombres de circuitos, la nueva información se añadirá en orden alfabético sin eliminar los datos anteriores. | . | Notificación: . | Al finalizar, aparecerá una notificación con la confirmación de la operación. También se indicará cuántos circuitos diferentes están ahora asociados a cada conducto. | . | . ",
-    "url": "/es/docs/my-command-copy/#assigncircuittoconduits-es",
+    "doc": "Common",
+    "title": "Common",
+    "content": "Herramientas aplicables en varias disciplinas . ",
+    "url": "/es/Docs/1Common.html",
     
-    "relUrl": "/docs/my-command-copy/#assigncircuittoconduits-es"
+    "relUrl": "/Docs/1Common.html"
   },"1": {
-    "doc": "MyCommand Copy",
-    "title": "MyCommand Copy",
-    "content": " ",
-    "url": "/es/docs/my-command-copy/",
+    "doc": "MEC",
+    "title": "MEC",
+    "content": "Comandos para flujos de trabajo de ventilación, mecánica y fontanería . ",
+    "url": "/es/Docs/2MEC.html",
     
-    "relUrl": "/docs/my-command-copy/"
+    "relUrl": "/Docs/2MEC.html"
   },"2": {
-    "doc": "MyCommand",
-    "title": "AssignCircuitToConduits es",
-    "content": "Esta herramienta está diseñada para agregar información del circuito a las propiedades de los conductos eléctricos (Conduit). El usuario selecciona un circuito y los conductos correspondientes, y el algoritmo actualiza automáticamente sus parámetros, agregando la información del circuito en el parámetro SRS_MEP_Circuit_Names. Antes de esto, si el nombre del circuito está vacío, el algoritmo lo genera automáticamente a partir de los valores del parámetro SRS_Schedule_Name de la carga y el cuadro eléctrico. Esta herramienta se utiliza para la posterior ejecución de SyncConduitCircuit. Datos requeridos: . Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y las cajas de distribución intermedias tengan nombres en el parámetro SRS_Schedule_Name. De lo contrario, se utilizarán sus identificadores. Instrucciones de uso: . | Seleccionar los elementos: . | Seleccione una familia de carga asociada a un circuito. | Si la carga pertenece a varios circuitos, seleccione el circuito deseado usando la tecla Tab. | Seleccione uno o varios conductos eléctricos (Conduit). | . | Ejecutar la herramienta: . | Al iniciar, el algoritmo verificará automáticamente si la selección es válida. | Si se seleccionan varios circuitos, aparecerá un mensaje de error. Si no se seleccionan conductos, se activará el modo auxiliar: el complemento identificará los conductos pertenecientes al circuito y la ejecución se detendrá en ese punto. | . | Asignación automática del nombre del circuito: . | Si el circuito ya tiene un nombre en el parámetro SRS_MEP_Circuit_Names, se utilizará dicho nombre. | Si el nombre está vacío, se generará automáticamente con base en los parámetros SRS_Schedule_Name de la carga y el cuadro eléctrico, siguiendo el formato: Ubicación-Cuadro/Carga-C-TagtypeNúmero . donde: . | Cuadro y Carga son los nombres de los elementos extraídos del parámetro SRS_Schedule_Name, sin la Ubicación (18D-) ni guiones. | Tagtype es el valor del parámetro SRS_MEP_Tag_Type_Id. | Número se genera automáticamente para garantizar la unicidad del nombre del segmento. | . Si la carga consiste en más de un elemento, el nombre del segmento se genera siguiendo estas reglas: . | Datos de entrada | Nombre resultante del Carga | Comentario | . | 18D-DS-SF01 | 18D-DS-SF01 | Un único nombre se mantiene igual. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Los nombres con la misma base se agrupan con xx al final. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Los nombres heterogéneos se listan separados por comas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | Si no hay nombre, se usa el ID del elemento. | . | . | Agregar la información a los conductos: . | En todos los conductos seleccionados, se actualizará el parámetro SRS_MEP_Circuit_Names, agregando el nombre del circuito. | Si en este parámetro ya existen otros nombres de circuitos, la nueva información se añadirá en orden alfabético sin eliminar los datos anteriores. | . | Notificación: . | Al finalizar, aparecerá una notificación con la confirmación de la operación. También se indicará cuántos circuitos diferentes están ahora asociados a cada conducto. | . | . ",
-    "url": "/es/docs/my-command/#assigncircuittoconduits-es",
+    "doc": "ELE",
+    "title": "ELE",
+    "content": "Comandos para el diseño eléctrico . ",
+    "url": "/es/Docs/3ELE.html",
     
-    "relUrl": "/docs/my-command/#assigncircuittoconduits-es"
+    "relUrl": "/Docs/3ELE.html"
   },"3": {
-    "doc": "MyCommand",
-    "title": "MyCommand",
-    "content": " ",
-    "url": "/es/docs/my-command/",
+    "doc": "Assign equip to schematic",
+    "title": "Asignar Equipo a Esquema",
+    "content": "Tabla de contenidos . | Descripción General | Funcionalidad Principal | Modo de Visualización de Estado | Pasos para Utilizar . | Asignación Estándar | Asignación desde Archivos Vinculados | . | Requisitos y Validaciones | . ",
+    "url": "/es/docs/assign-equip-to-schematic/#asignar-equipo-a-esquema",
     
-    "relUrl": "/docs/my-command/"
+    "relUrl": "/docs/assign-equip-to-schematic/#asignar-equipo-a-esquema"
+  },"4": {
+    "doc": "Assign equip to schematic",
+    "title": "Descripción General",
+    "content": "Este comando permite asociar automáticamente un equipo MEP (familia) con uno o varios esquemas (anotaciones genéricas) dentro del modelo de Revit. Está diseñado para facilitar la documentación y el trazado de sistemas, enlazando elementos reales del modelo con sus representaciones esquemáticas. ",
+    "url": "/es/docs/assign-equip-to-schematic/#descripci%C3%B3n-general",
+    
+    "relUrl": "/docs/assign-equip-to-schematic/#descripción-general"
+  },"5": {
+    "doc": "Assign equip to schematic",
+    "title": "Funcionalidad Principal",
+    "content": "Al ejecutar el comando con un equipo y un esquema seleccionados, se actualizan los siguientes parámetros en la anotación del esquema: . | SRS_MEP_Equipment_Id: Contiene el ID, tipo y nombre del equipo. | Ejemplo: 123456 TipoDeFamilia: NombreDelEquipo | . | SRS_MEP_Link_Id: Indica el origen del equipo. | Si proviene de un modelo vinculado, se muestra su nombre. | Si pertenece al modelo actual, se indica como “modelo actual”. | . | . ",
+    "url": "/es/docs/assign-equip-to-schematic/#funcionalidad-principal",
+    
+    "relUrl": "/docs/assign-equip-to-schematic/#funcionalidad-principal"
+  },"6": {
+    "doc": "Assign equip to schematic",
+    "title": "Modo de Visualización de Estado",
+    "content": "Si se ejecuta el comando sin seleccionar ningún elemento, se activa un modo de visualización gráfica en la vista activa. Este modo crea círculos de estado sobre los equipos visibles para indicar si están vinculados a un esquema 2D: . | Círculo Rojo: El equipo no tiene un esquema 2D vinculado. | Círculo Verde: El equipo ya está vinculado a un esquema 2D. | . Si se vuelve a ejecutar el comando sin selección, los círculos de estado se eliminarán (funciona como un interruptor). ",
+    "url": "/es/docs/assign-equip-to-schematic/#modo-de-visualizaci%C3%B3n-de-estado",
+    
+    "relUrl": "/docs/assign-equip-to-schematic/#modo-de-visualización-de-estado"
+  },"7": {
+    "doc": "Assign equip to schematic",
+    "title": "Pasos para Utilizar",
+    "content": "Asignación Estándar . | Selecciona un único equipo (familia) del modelo activo. | Selecciona una o varias anotaciones que pertenezcan a la categoría Generic Annotation. | Ejecuta el comando Asignar Equipo a Esquema. | Una notificación confirmará la asignación. | . Asignación desde Archivos Vinculados . No es necesario seleccionar el equipo directamente dentro del archivo vinculado. | Activa el Modo de Visualización de Estado para ver los círculos de colores. | Selecciona el círculo de estado (rojo o verde) sobre el equipo que deseas vincular. | Selecciona el símbolo en el esquema 2D correspondiente. | Ejecuta el comando. El algoritmo detectará automáticamente el vínculo correcto entre ambos elementos. | . ",
+    "url": "/es/docs/assign-equip-to-schematic/#pasos-para-utilizar",
+    
+    "relUrl": "/docs/assign-equip-to-schematic/#pasos-para-utilizar"
+  },"8": {
+    "doc": "Assign equip to schematic",
+    "title": "Requisitos y Validaciones",
+    "content": ". | Para la asignación, solo se debe seleccionar un equipo (o su círculo de estado). Si se selecciona más de uno, el comando mostrará un error y se detendrá. | Las anotaciones deben ser de la categoría Generic Annotations. | . ",
+    "url": "/es/docs/assign-equip-to-schematic/#requisitos-y-validaciones",
+    
+    "relUrl": "/docs/assign-equip-to-schematic/#requisitos-y-validaciones"
+  },"9": {
+    "doc": "Assign equip to schematic",
+    "title": "Assign equip to schematic",
+    "content": " ",
+    "url": "/es/docs/assign-equip-to-schematic/",
+    
+    "relUrl": "/docs/assign-equip-to-schematic/"
+  },"10": {
+    "doc": "Create hangers",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/create-hangers/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/create-hangers/#título-del-comando-en-español"
+  },"11": {
+    "doc": "Create hangers",
+    "title": "Create hangers",
+    "content": " ",
+    "url": "/es/docs/create-hangers/",
+    
+    "relUrl": "/docs/create-hangers/"
+  },"12": {
+    "doc": "Count sockets",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/count-sockets/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/count-sockets/#título-del-comando-en-español"
+  },"13": {
+    "doc": "Count sockets",
+    "title": "Count sockets",
+    "content": " ",
+    "url": "/es/docs/count-sockets/",
+    
+    "relUrl": "/docs/count-sockets/"
+  },"14": {
+    "doc": "Create along path",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/create-along-path/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/create-along-path/#título-del-comando-en-español"
+  },"15": {
+    "doc": "Create along path",
+    "title": "Create along path",
+    "content": " ",
+    "url": "/es/docs/create-along-path/",
+    
+    "relUrl": "/docs/create-along-path/"
+  },"16": {
+    "doc": "Read parameters from Excel",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/read-parameters-from-excel/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/read-parameters-from-excel/#título-del-comando-en-español"
+  },"17": {
+    "doc": "Read parameters from Excel",
+    "title": "Read parameters from Excel",
+    "content": " ",
+    "url": "/es/docs/read-parameters-from-excel/",
+    
+    "relUrl": "/docs/read-parameters-from-excel/"
+  },"18": {
+    "doc": "Convert curves to rebar",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/convert-curves-to-rebar/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/convert-curves-to-rebar/#título-del-comando-en-español"
+  },"19": {
+    "doc": "Convert curves to rebar",
+    "title": "Convert curves to rebar",
+    "content": " ",
+    "url": "/es/docs/convert-curves-to-rebar/",
+    
+    "relUrl": "/docs/convert-curves-to-rebar/"
+  },"20": {
+    "doc": "Assign circuit to conduits",
+    "title": "Asignar Circuito a Conductos",
+    "content": "Tabla de contenidos . | Datos Requeridos | Instrucciones de Uso | . Esta herramienta está diseñada para agregar información del circuito a las propiedades de los conductos eléctricos (Conduit). El usuario selecciona un circuito y los conductos correspondientes, y el algoritmo actualiza automáticamente sus parámetros, agregando la información del circuito en el parámetro SRS_MEP_Circuit_Names. Antes de esto, si el nombre del circuito está vacío, el algoritmo lo genera automáticamente a partir de los valores del parámetro SRS_Schedule_Name de la carga y el cuadro eléctrico. Esta herramienta se utiliza para la posterior ejecución de SyncConduitCircuit. ",
+    "url": "/es/docs/assign-circuit-to-conduits/#asignar-circuito-a-conductos",
+    
+    "relUrl": "/docs/assign-circuit-to-conduits/#asignar-circuito-a-conductos"
+  },"21": {
+    "doc": "Assign circuit to conduits",
+    "title": "Datos Requeridos",
+    "content": "Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y las cajas de distribución intermedias tengan nombres en el parámetro SRS_Schedule_Name. De lo contrario, se utilizarán sus identificadores. ",
+    "url": "/es/docs/assign-circuit-to-conduits/#datos-requeridos",
+    
+    "relUrl": "/docs/assign-circuit-to-conduits/#datos-requeridos"
+  },"22": {
+    "doc": "Assign circuit to conduits",
+    "title": "Instrucciones de Uso",
+    "content": ". | Seleccionar los elementos: . | Seleccione una familia de carga asociada a un circuito. | Si la carga pertenece a varios circuitos, seleccione el circuito deseado usando la tecla Tab. | Seleccione uno o varios conductos eléctricos (Conduit). | . | Ejecutar la herramienta: . | Al iniciar, el algoritmo verificará automáticamente si la selección es válida. | Si se seleccionan varios circuitos, aparecerá un mensaje de error. Si no se seleccionan conductos, se activará el modo auxiliar: el complemento identificará los conductos pertenecientes al circuito y la ejecución se detendrá. | . | Asignación automática del nombre del circuito: . | Si el circuito ya tiene un nombre, se utilizará dicho nombre. | Si el nombre está vacío, se generará automáticamente con base en los parámetros SRS_Schedule_Name de la carga y el cuadro eléctrico, siguiendo el formato: 18D-[Cuadro]/[Carga]-C-SistemaNúmero. | La siguiente tabla detalla cómo se agrupan los nombres de las cargas para generar el nombre del segmento: | Datos de entrada | Nombre resultante del Carga | Comentario | ——————————————- | —————————— | ———————————————————– | 18D-DS-SF01 | 18D-DS-SF01 | Un único nombre se mantiene igual. | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Los nombres con la misma base se agrupan con xx al final. | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Los nombres heterogéneos se listan separados por comas. | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | Si no hay nombre, se usa el ID del elemento. | . | Agregar la información a los conductos: . | En todos los conductos seleccionados, se actualizará el parámetro SRS_MEP_Circuit_Names, agregando el nombre del circuito en orden alfabético sin eliminar datos previos. | . | Notificación: . | Al finalizar, aparecerá una notificación confirmando la operación e indicando cuántos circuitos diferentes están ahora asociados a cada conducto. | . | . ",
+    "url": "/es/docs/assign-circuit-to-conduits/#instrucciones-de-uso",
+    
+    "relUrl": "/docs/assign-circuit-to-conduits/#instrucciones-de-uso"
+  },"23": {
+    "doc": "Assign circuit to conduits",
+    "title": "Assign circuit to conduits",
+    "content": " ",
+    "url": "/es/docs/assign-circuit-to-conduits/",
+    
+    "relUrl": "/docs/assign-circuit-to-conduits/"
+  },"24": {
+    "doc": "Assign spaces to equipment",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/assign-spaces-to-equipment/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/assign-spaces-to-equipment/#título-del-comando-en-español"
+  },"25": {
+    "doc": "Assign spaces to equipment",
+    "title": "Assign spaces to equipment",
+    "content": " ",
+    "url": "/es/docs/assign-spaces-to-equipment/",
+    
+    "relUrl": "/docs/assign-spaces-to-equipment/"
+  },"26": {
+    "doc": "Purge",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/purge/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/purge/#título-del-comando-en-español"
+  },"27": {
+    "doc": "Purge",
+    "title": "Purge",
+    "content": " ",
+    "url": "/es/docs/purge/",
+    
+    "relUrl": "/docs/purge/"
+  },"28": {
+    "doc": "Create worksets from Excel",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/create-worksets-from-excel/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/create-worksets-from-excel/#título-del-comando-en-español"
+  },"29": {
+    "doc": "Create worksets from Excel",
+    "title": "Create worksets from Excel",
+    "content": " ",
+    "url": "/es/docs/create-worksets-from-excel/",
+    
+    "relUrl": "/docs/create-worksets-from-excel/"
+  },"30": {
+    "doc": "Create print set",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/create-print-set/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/create-print-set/#título-del-comando-en-español"
+  },"31": {
+    "doc": "Create print set",
+    "title": "Create print set",
+    "content": " ",
+    "url": "/es/docs/create-print-set/",
+    
+    "relUrl": "/docs/create-print-set/"
+  },"32": {
+    "doc": "TextoMorph",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/textomorph/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/textomorph/#título-del-comando-en-español"
+  },"33": {
+    "doc": "TextoMorph",
+    "title": "TextoMorph",
+    "content": " ",
+    "url": "/es/docs/textomorph/",
+    
+    "relUrl": "/docs/textomorph/"
+  },"34": {
+    "doc": "Sync air flow to schematic",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/sync-air-flow-to-schematic/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/sync-air-flow-to-schematic/#título-del-comando-en-español"
+  },"35": {
+    "doc": "Sync air flow to schematic",
+    "title": "Sync air flow to schematic",
+    "content": " ",
+    "url": "/es/docs/sync-air-flow-to-schematic/",
+    
+    "relUrl": "/docs/sync-air-flow-to-schematic/"
+  },"36": {
+    "doc": "Conduit circuit sync",
+    "title": "Sincronizar Circuito de Conducto",
+    "content": "Tabla de contenidos . | Datos Requeridos | Descripción del Algoritmo | . Esta herramienta está diseñada para distribuir los conductos eléctricos (Conduit) en segmentos y registrar sus rutas en los parámetros de los circuitos eléctricos para completar el registro de cables. ",
+    "url": "/es/docs/conduit-circuit-sync/#sincronizar-circuito-de-conducto",
+    
+    "relUrl": "/docs/conduit-circuit-sync/#sincronizar-circuito-de-conducto"
+  },"37": {
+    "doc": "Conduit circuit sync",
+    "title": "Datos Requeridos",
+    "content": "Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada segmento tenga un nombre de circuito en SRS_MEP_Circuit_Names y que exista un circuito con el mismo nombre. Se recomienda usar AssignConduitToCircuit para esto. ",
+    "url": "/es/docs/conduit-circuit-sync/#datos-requeridos",
+    
+    "relUrl": "/docs/conduit-circuit-sync/#datos-requeridos"
+  },"38": {
+    "doc": "Conduit circuit sync",
+    "title": "Descripción del Algoritmo",
+    "content": ". | Unificación de parámetros: Prepara los nombres de los equipos en el parámetro SRS_Schedule_Name concatenando SRS_Location, SRS_Equipment_Type y SRS_Equipment_Number. | Búsqueda: Encuentra todos los conductos y circuitos con el parámetro SRS_MEP_Circuit_Names definido. | Identificación de secciones: Detecta grupos de conductos conectados entre sí (cadenas) por conexión física y por el valor compartido en SRS_MEP_Circuit_Names. | Agrupación por circuito: Asocia las cadenas de conductos con sus respectivos circuitos eléctricos. | Determinación de la dirección: Ordena los conductos en la ruta desde la carga hasta el cuadro eléctrico. | División en segmentos: La ruta se divide en segmentos entre cajas de distribución (se permite un espacio de hasta 10 cm). El proceso se detiene con un error si hay más de 5 segmentos. | Asignación de nombres a segmentos: A cada segmento se le asigna un nombre único con el formato 18D-[Cuadro]/[Carga]-CC-SistemaNúmero. Las reglas para formar el nombre de la carga son las siguientes: | Datos de entrada | Nombre resultante del Carga | Comentario | ——————————————- | —————————— | ———————————————————– | 18D-DS-SF01 | 18D-DS-SF01 | Un único nombre se mantiene igual. | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Los nombres con la misma base se agrupan con xx al final. | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Los nombres heterogéneos se listan separados por comas. | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | Si no hay nombre, se usa el ID del elemento. | | Registro de datos: . | Actualiza SRS_MEP_Circuit_Names en todos los conductos del segmento. | Rellena SRS_MEP_Conduit_From, SRS_MEP_Conduit_To, y SRS_MEP_Conduit_Tag en los conductos. | Almacena los nombres de los segmentos en los parámetros SRS_MEP_Conduit_Segment_1 a SRS_MEP_Conduit_Segment_5 del circuito eléctrico. | . | Notificación: Confirma la operación e informa sobre distancias sospechosas (&gt;1m) entre segmentos para detectar posibles errores de asignación. | . ",
+    "url": "/es/docs/conduit-circuit-sync/#descripci%C3%B3n-del-algoritmo",
+    
+    "relUrl": "/docs/conduit-circuit-sync/#descripción-del-algoritmo"
+  },"39": {
+    "doc": "Conduit circuit sync",
+    "title": "Conduit circuit sync",
+    "content": " ",
+    "url": "/es/docs/conduit-circuit-sync/",
+    
+    "relUrl": "/docs/conduit-circuit-sync/"
+  },"40": {
+    "doc": "Create dampers",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/create-dampers/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/create-dampers/#título-del-comando-en-español"
+  },"41": {
+    "doc": "Create dampers",
+    "title": "Create dampers",
+    "content": " ",
+    "url": "/es/docs/create-dampers/",
+    
+    "relUrl": "/docs/create-dampers/"
+  },"42": {
+    "doc": "Info",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/info/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/info/#título-del-comando-en-español"
+  },"43": {
+    "doc": "Info",
+    "title": "Info",
+    "content": " ",
+    "url": "/es/docs/info/",
+    
+    "relUrl": "/docs/info/"
+  },"44": {
+    "doc": "Sync power params",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/sync-power-params/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/sync-power-params/#título-del-comando-en-español"
+  },"45": {
+    "doc": "Sync power params",
+    "title": "Sync power params",
+    "content": " ",
+    "url": "/es/docs/sync-power-params/",
+    
+    "relUrl": "/docs/sync-power-params/"
+  },"46": {
+    "doc": "Convert lines to wires",
+    "title": "De Línea a Cable",
+    "content": "Tabla de contenidos . | Cómo Usar | Características y Configuración . | Modos de Operación | Configuración | Mapeos . | Mapeo de Estilo de Línea a Tipo de Cable | Mapeo de Conectores | . | . | . El comando De Línea a Cable permite convertir rápidamente líneas de detalle ordinarias en cables eléctricos en un proyecto de Autodesk Revit. Analiza las líneas seleccionadas, encuentra dispositivos eléctricos cercanos (como luminarias, equipos y tomas de corriente), determina sus conectores y crea automáticamente los cables que los conectan. ",
+    "url": "/es/docs/convert-lines-to-wires/#de-l%C3%ADnea-a-cable",
+    
+    "relUrl": "/docs/convert-lines-to-wires/#de-línea-a-cable"
+  },"47": {
+    "doc": "Convert lines to wires",
+    "title": "Cómo Usar",
+    "content": ". | Dibuja líneas de detalle en tu vista de Revit para representar la ruta de los cables eléctricos. | Ejecuta el comando De Línea a Cable desde el panel de BIM Tools. | El comando detectará automáticamente las líneas y los dispositivos eléctricos cercanos. | Ajusta la configuración en la ventana de diálogo si es necesario. | Haz clic en “Aceptar” para crear los cables. Las líneas originales se eliminarán por defecto. | . ",
+    "url": "/es/docs/convert-lines-to-wires/#c%C3%B3mo-usar",
+    
+    "relUrl": "/docs/convert-lines-to-wires/#cómo-usar"
+  },"48": {
+    "doc": "Convert lines to wires",
+    "title": "Características y Configuración",
+    "content": "Modos de Operación . | Eliminar líneas de entrada: (Por defecto: Activado) Elimina las líneas de detalle originales después de crear los cables. | División automática por dispositivos: (Por defecto: Activado) Divide automáticamente una sola línea en múltiples segmentos de cable donde se cruza con dispositivos eléctricos. Esto te permite dibujar una línea continua a través de varios dispositivos. | Modo de desplazamiento (Shift): (Por defecto: Desactivado) Si el punto final de una línea coincide exactamente con un conector de dispositivo, se desplazará 1 mm para evitar posibles errores. | Modo silencioso: (Por defecto: Desactivado) Si preseleccionas las líneas en el modelo antes de ejecutar el comando, se ejecutará inmediatamente utilizando la última configuración guardada, sin mostrar la ventana de diálogo. | . Configuración . | Umbral de búsqueda: (Por defecto: 30 mm) El radio alrededor de las líneas y sus puntos finales dentro del cual el comando buscará dispositivos eléctricos para conectarse. | Distancia máxima de división automática: (Por defecto: 1000 mm) Una comprobación adicional para la distancia máxima desde una línea hasta el conector de un dispositivo, lo cual es particularmente útil para líneas diagonales. | . Mapeos . Mapeo de Estilo de Línea a Tipo de Cable . Puedes mapear estilos de línea específicos a los tipos de cable correspondientes. Si no se proporciona un mapeo, el comando intentará hacer coincidir el tipo de cable con el nombre del estilo de línea o usará el tipo de cable por defecto del proyecto. Formato: NombreEstiloDeLinea: NombreTipoDeCable . Usa un punto y coma ; al principio de una línea para comentarla. Ejemplo: . LINEA_DISCONTINUA: Cable-PVC-1.5 LINEA_SOLIDA: Cable-PVC-2.5 . Mapeo de Conectores . Para familias de dispositivos con múltiples conectores, puedes especificar a qué índice de conector debe conectarse el cable. Formato: NombreFamilia: NombreTipo: IndiceConector . El IndiceConector es un número entero basado en cero. Ejemplo: . EnchufeGenerico: Duplex: 0 LuminariaEspecifica: Modelo-A: 1 . ",
+    "url": "/es/docs/convert-lines-to-wires/#caracter%C3%ADsticas-y-configuraci%C3%B3n",
+    
+    "relUrl": "/docs/convert-lines-to-wires/#características-y-configuración"
+  },"49": {
+    "doc": "Convert lines to wires",
+    "title": "Convert lines to wires",
+    "content": " ",
+    "url": "/es/docs/convert-lines-to-wires/",
+    
+    "relUrl": "/docs/convert-lines-to-wires/"
+  },"50": {
+    "doc": "Change level",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/change-level/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/change-level/#título-del-comando-en-español"
+  },"51": {
+    "doc": "Change level",
+    "title": "Change level",
+    "content": " ",
+    "url": "/es/docs/change-level/",
+    
+    "relUrl": "/docs/change-level/"
+  },"52": {
+    "doc": "Set ASHRAE code",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/set-ashrae-code/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/set-ashrae-code/#título-del-comando-en-español"
+  },"53": {
+    "doc": "Set ASHRAE code",
+    "title": "Set ASHRAE code",
+    "content": " ",
+    "url": "/es/docs/set-ashrae-code/",
+    
+    "relUrl": "/docs/set-ashrae-code/"
+  },"54": {
+    "doc": "Tag elements on views",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/tag-elements-on-views/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/tag-elements-on-views/#título-del-comando-en-español"
+  },"55": {
+    "doc": "Tag elements on views",
+    "title": "Tag elements on views",
+    "content": " ",
+    "url": "/es/docs/tag-elements-on-views/",
+    
+    "relUrl": "/docs/tag-elements-on-views/"
+  },"56": {
+    "doc": "Circuit description",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/circuit-description/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/circuit-description/#título-del-comando-en-español"
+  },"57": {
+    "doc": "Circuit description",
+    "title": "Circuit description",
+    "content": " ",
+    "url": "/es/docs/circuit-description/",
+    
+    "relUrl": "/docs/circuit-description/"
+  },"58": {
+    "doc": "Sync fire alarm diagram",
+    "title": "Guía de usuario para el comando “Sincronizar esquema de alarma de incendios”",
+    "content": "Tabla de contenidos . | 1. Propósito del comando | 2. Preparación | 3. Paso 1: Selección de datos de origen | 4. Paso 2: Proceso de sincronización | 5. Resultado e indicación por colores | 6. Seguimiento de cambios (Parámetro “Sync info”) | 7. Limitaciones conocidas | . ",
+    "url": "/es/docs/sync-fire-alarm-diagram/#gu%C3%ADa-de-usuario-para-el-comando-sincronizar-esquema-de-alarma-de-incendios",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/#guía-de-usuario-para-el-comando-sincronizar-esquema-de-alarma-de-incendios"
+  },"59": {
+    "doc": "Sync fire alarm diagram",
+    "title": "1. Propósito del comando",
+    "content": "El comando está diseñado para la creación automática y posterior sincronización de un esquema 2D de la disposición de los dispositivos de alarma de incendios a partir de un modelo 3D. Genera elementos 2D en una vista de diseño que corresponden a las habitaciones y dispositivos, y rastrea los cambios en el modelo para actualizar el esquema. ",
+    "url": "/es/docs/sync-fire-alarm-diagram/#1-prop%C3%B3sito-del-comando",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/#1-propósito-del-comando"
+  },"60": {
+    "doc": "Sync fire alarm diagram",
+    "title": "2. Preparación",
+    "content": ". | Modelo arquitectónico: Se debe cargar en el proyecto un modelo vinculado (Revit Link) con las habitaciones (Rooms) arquitectónicas. | Vista activa: Antes de ejecutar el comando, es necesario abrir una vista de diseño (Drafting View) en la que se colocará el esquema. | . ",
+    "url": "/es/docs/sync-fire-alarm-diagram/#2-preparaci%C3%B3n",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/#2-preparación"
+  },"61": {
+    "doc": "Sync fire alarm diagram",
+    "title": "3. Paso 1: Selección de datos de origen",
+    "content": "Al ejecutar el comando, se abre un cuadro de diálogo en el que se deben especificar los datos de origen para la sincronización. | Vínculo arquitectónico: . | La lista desplegable muestra todos los archivos de Revit vinculados en los que se han encontrado habitaciones. | La lista se ordena automáticamente: se da prioridad a los vínculos que contienen “AR” en su nombre y, a continuación, por el número descendente de habitaciones. Por lo general, el vínculo requerido ya está seleccionado por defecto. | . | Niveles para la sincronización: . | Después de seleccionar un vínculo, la lista inferior muestra todos los niveles de ese vínculo en los que se han encontrado dispositivos de alarma de incendios. | Para cada nivel, se indica el número total de habitaciones y los dispositivos que se encuentran en ellas. | Puede seleccionar uno o varios niveles para procesar marcando las casillas correspondientes. | . | . ",
+    "url": "/es/docs/sync-fire-alarm-diagram/#3-paso-1-selecci%C3%B3n-de-datos-de-origen",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/#3-paso-1-selección-de-datos-de-origen"
+  },"62": {
+    "doc": "Sync fire alarm diagram",
+    "title": "4. Paso 2: Proceso de sincronización",
+    "content": "Después de pulsar el botón “OK”, comienza el proceso de creación y actualización del esquema 2D en la vista de diseño activa. | Creación de habitaciones 2D: . | Para cada habitación de los niveles seleccionados que contenga al menos un dispositivo, se crea una habitación 2D (familia “Room”) en el esquema. | Si ya existe una habitación 2D para dicha habitación en el esquema, no se crea una nueva, sino que se actualiza la existente. | El ancho de la habitación se calcula automáticamente en función del número máximo de dispositivos en una de las dos filas (ver más abajo), para que quepan todos. El ancho mínimo de la habitación es de 40 mm. | En los parámetros de la habitación 2D se escriben el Número, el Nombre y el Nivel de la habitación 3D de origen. | . | Creación de dispositivos 2D: . | Dentro de cada habitación 2D, se colocan símbolos de dispositivos 2D (familia “Fire alarm 2d”) de acuerdo con sus prototipos 3D. | Ubicación: Los dispositivos se colocan en dos filas: . | Fila superior (sensores): Pull Station, Heat detector, Smoke detector. | Fila inferior (dispositivos de notificación y pulsadores manuales): Strobe, Horn strobe, Horn. | . | En los parámetros del dispositivo 2D se escribe lo siguiente: . | Code: Se copia del parámetro Mark del dispositivo 3D. | Room: Número y nombre de la habitación. | RoomLevel: Nombre del nivel de la habitación. | . | . | . ",
+    "url": "/es/docs/sync-fire-alarm-diagram/#4-paso-2-proceso-de-sincronizaci%C3%B3n",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/#4-paso-2-proceso-de-sincronización"
+  },"63": {
+    "doc": "Sync fire alarm diagram",
+    "title": "5. Resultado e indicación por colores",
+    "content": "Después de la sincronización, los elementos del esquema se colorean de forma diferente según su estado. Esto permite evaluar rápidamente qué cambios se han producido en el modelo. | Negro (color estándar): . | Una nueva habitación 2D y todos los dispositivos en ella, creados por primera vez. | . | Verde: . | Un nuevo dispositivo 2D que se ha añadido a una habitación 2D ya existente en el esquema. | . | Naranja: . | Datos actualizados. Un elemento se colorea de este modo si: . | El número o el nombre de la habitación ha cambiado. | Se ha cambiado el tipo del dispositivo 3D (por ejemplo, Smoke detector sustituido por Heat detector). | . | . | Púrpura: . | Elemento movido. Si un dispositivo 3D se ha movido de una habitación a otra, su símbolo 2D en el esquema también se mueve a la habitación correspondiente y se colorea de púrpura. | . | Rojo: . | Elemento “huérfano”. Si el elemento 3D original (habitación o dispositivo) se ha eliminado del modelo, su representación 2D en el esquema permanece, pero se colorea de rojo. Esto indica que el elemento del esquema ya no está vinculado al modelo. | . | . ",
+    "url": "/es/docs/sync-fire-alarm-diagram/#5-resultado-e-indicaci%C3%B3n-por-colores",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/#5-resultado-e-indicación-por-colores"
+  },"64": {
+    "doc": "Sync fire alarm diagram",
+    "title": "6. Seguimiento de cambios (Parámetro “Sync info”)",
+    "content": "Cada elemento 2D del esquema (tanto la habitación como el dispositivo) tiene un parámetro de texto “Sync info”. En él se registra automáticamente el historial de todos los cambios que se han producido durante la sincronización, con la fecha y la hora. Ejemplo de registro: “Movido de ‘101 - Office’ a ‘102 - Corridor’ [2025-10-28 14:30:15]” . ",
+    "url": "/es/docs/sync-fire-alarm-diagram/#6-seguimiento-de-cambios-par%C3%A1metro-sync-info",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/#6-seguimiento-de-cambios-parámetro-sync-info"
+  },"65": {
+    "doc": "Sync fire alarm diagram",
+    "title": "7. Limitaciones conocidas",
+    "content": ". | Detección de habitaciones: La detección de habitaciones se realiza con una comprobación adicional de 200 mm por encima y 1000 mm por debajo. En casos excepcionales, si los dispositivos del modelo 3D están situados muy cerca del suelo y fuera de una habitación, el algoritmo puede asignar incorrectamente el dispositivo a una habitación del piso inferior. | Ajuste automático del ancho de las habitaciones: Cuando cambia el número de dispositivos en una habitación, su ancho en el esquema se ajustará automáticamente en la siguiente sincronización. | Sin desplazamiento automático: El script no desplaza las habitaciones adyacentes si una de ellas se ha expandido. Esto se hace para preservar la disposición manual de los elementos en el esquema. Si una habitación empieza a solaparse con otra, será necesario seleccionar y mover manually los elementos adyacentes. | . ",
+    "url": "/es/docs/sync-fire-alarm-diagram/#7-limitaciones-conocidas",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/#7-limitaciones-conocidas"
+  },"66": {
+    "doc": "Sync fire alarm diagram",
+    "title": "Sync fire alarm diagram",
+    "content": " ",
+    "url": "/es/docs/sync-fire-alarm-diagram/",
+    
+    "relUrl": "/docs/sync-fire-alarm-diagram/"
+  },"67": {
+    "doc": "Show CADs",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/show-cads/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/show-cads/#título-del-comando-en-español"
+  },"68": {
+    "doc": "Show CADs",
+    "title": "Show CADs",
+    "content": " ",
+    "url": "/es/docs/show-cads/",
+    
+    "relUrl": "/docs/show-cads/"
+  },"69": {
+    "doc": "Create sockets",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/create-sockets/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/create-sockets/#título-del-comando-en-español"
+  },"70": {
+    "doc": "Create sockets",
+    "title": "Create sockets",
+    "content": " ",
+    "url": "/es/docs/create-sockets/",
+    
+    "relUrl": "/docs/create-sockets/"
+  },"71": {
+    "doc": "Sync equip to schematic",
+    "title": "Sincronizar Equipo con Esquema",
+    "content": "Tabla de contenidos . | Descripción | Funcionalidad | Pasos para Usar | Notas Importantes | . ",
+    "url": "/es/docs/sync-equip-to-schematic/#sincronizar-equipo-con-esquema",
+    
+    "relUrl": "/docs/sync-equip-to-schematic/#sincronizar-equipo-con-esquema"
+  },"72": {
+    "doc": "Sync equip to schematic",
+    "title": "Descripción",
+    "content": "Este comando actualiza automáticamente los datos de las anotaciones esquemáticas (Generic Annotation) en Revit, basándose en el ID de equipo previamente asignado. ",
+    "url": "/es/docs/sync-equip-to-schematic/#descripci%C3%B3n",
+    
+    "relUrl": "/docs/sync-equip-to-schematic/#descripción"
+  },"73": {
+    "doc": "Sync equip to schematic",
+    "title": "Funcionalidad",
+    "content": "Para cada anotación de esquema procesada, el comando realiza las siguientes acciones: . | Busca el equipo correspondiente utilizando los valores de los parámetros SRS_MEP_Equipment_Id y SRS_MEP_Link_Id. | Una vez encontrado el equipo, determina el espacio (MEP Space) y el nivel en el que este se encuentra. | Actualiza los siguientes parámetros en la anotación: . | SRS_MEP_Location: Se actualiza con el nombre del espacio. | SRS_MEP_RoomID: Se actualiza con el ID del espacio. | SRS_MEP_Level: Se actualiza con el nombre del nivel. | . | . ",
+    "url": "/es/docs/sync-equip-to-schematic/#funcionalidad",
+    
+    "relUrl": "/docs/sync-equip-to-schematic/#funcionalidad"
+  },"74": {
+    "doc": "Sync equip to schematic",
+    "title": "Pasos para Usar",
+    "content": ". | Asegúrate de que las anotaciones de esquema que deseas actualizar ya tienen asignados los valores en los parámetros SRS_MEP_Equipment_Id y SRS_MEP_Link_Id. | Ejecuta el comando Sync equip to schematic. | El sistema recorrerá las anotaciones y actualizará automáticamente los datos de ubicación en cada una. | . ",
+    "url": "/es/docs/sync-equip-to-schematic/#pasos-para-usar",
+    
+    "relUrl": "/docs/sync-equip-to-schematic/#pasos-para-usar"
+  },"75": {
+    "doc": "Sync equip to schematic",
+    "title": "Notas Importantes",
+    "content": ". | Se mostrará una advertencia en caso de que no se encuentre un equipo correspondiente al ID especificado en una anotación. | El valor del ID de equipo debe ser numérico para que el proceso funcione correctamente. | La búsqueda de espacios está optimizada; el comando prioriza la reutilización de espacios ya encontrados para mejorar el rendimiento. | . ",
+    "url": "/es/docs/sync-equip-to-schematic/#notas-importantes",
+    
+    "relUrl": "/docs/sync-equip-to-schematic/#notas-importantes"
+  },"76": {
+    "doc": "Sync equip to schematic",
+    "title": "Sync equip to schematic",
+    "content": " ",
+    "url": "/es/docs/sync-equip-to-schematic/",
+    
+    "relUrl": "/docs/sync-equip-to-schematic/"
+  },"77": {
+    "doc": "Edit elements in Excel",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/edit-elements-in-excel/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/edit-elements-in-excel/#título-del-comando-en-español"
+  },"78": {
+    "doc": "Edit elements in Excel",
+    "title": "Edit elements in Excel",
+    "content": " ",
+    "url": "/es/docs/edit-elements-in-excel/",
+    
+    "relUrl": "/docs/edit-elements-in-excel/"
+  },"79": {
+    "doc": "P&ID Linker",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/pid-linker/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/pid-linker/#título-del-comando-en-español"
+  },"80": {
+    "doc": "P&ID Linker",
+    "title": "P&ID Linker",
+    "content": " ",
+    "url": "/es/docs/pid-linker/",
+    
+    "relUrl": "/docs/pid-linker/"
+  },"81": {
+    "doc": "Sync space params",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/sync-space-params/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/sync-space-params/#título-del-comando-en-español"
+  },"82": {
+    "doc": "Sync space params",
+    "title": "Sync space params",
+    "content": " ",
+    "url": "/es/docs/sync-space-params/",
+    
+    "relUrl": "/docs/sync-space-params/"
+  },"83": {
+    "doc": "Set project params",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/set-project-params/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/set-project-params/#título-del-comando-en-español"
+  },"84": {
+    "doc": "Set project params",
+    "title": "Set project params",
+    "content": " ",
+    "url": "/es/docs/set-project-params/",
+    
+    "relUrl": "/docs/set-project-params/"
+  },"85": {
+    "doc": "Clone&Shift",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/cloneshift/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/cloneshift/#título-del-comando-en-español"
+  },"86": {
+    "doc": "Clone&Shift",
+    "title": "Clone&Shift",
+    "content": " ",
+    "url": "/es/docs/cloneshift/",
+    
+    "relUrl": "/docs/cloneshift/"
+  },"87": {
+    "doc": "History",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/history/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/history/#título-del-comando-en-español"
+  },"88": {
+    "doc": "History",
+    "title": "History",
+    "content": " ",
+    "url": "/es/docs/history/",
+    
+    "relUrl": "/docs/history/"
+  },"89": {
+    "doc": "Track scheme",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/track-scheme/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/track-scheme/#título-del-comando-en-español"
+  },"90": {
+    "doc": "Track scheme",
+    "title": "Track scheme",
+    "content": " ",
+    "url": "/es/docs/track-scheme/",
+    
+    "relUrl": "/docs/track-scheme/"
+  },"91": {
+    "doc": "Cad to Revit",
+    "title": "Título del Comando en Español",
+    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
+    "url": "/es/docs/cad-to-revit/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    
+    "relUrl": "/docs/cad-to-revit/#título-del-comando-en-español"
+  },"92": {
+    "doc": "Cad to Revit",
+    "title": "Cad to Revit",
+    "content": " ",
+    "url": "/es/docs/cad-to-revit/",
+    
+    "relUrl": "/docs/cad-to-revit/"
   }
 }
