@@ -2,23 +2,23 @@
     "doc": "Common",
     "title": "Common",
     "content": "Tools applicable across multiple disciplines . ",
-    "url": "/Docs/1Common.html",
+    "url": "/docs/1Common.html",
     
-    "relUrl": "/Docs/1Common.html"
+    "relUrl": "/docs/1Common.html"
   },"1": {
     "doc": "MEC",
     "title": "MEC",
     "content": "Commands for mechanical, ventilation, and plumbing workflows . ",
-    "url": "/Docs/2MEC.html",
+    "url": "/docs/2MEC.html",
     
-    "relUrl": "/Docs/2MEC.html"
+    "relUrl": "/docs/2MEC.html"
   },"2": {
     "doc": "ELE",
     "title": "ELE",
     "content": "Commands for electrical design . ",
-    "url": "/Docs/3ELE.html",
+    "url": "/docs/3ELE.html",
     
-    "relUrl": "/Docs/3ELE.html"
+    "relUrl": "/docs/3ELE.html"
   },"3": {
     "doc": "Assign equip to schematic",
     "title": "Assign Equipment to Schematic",

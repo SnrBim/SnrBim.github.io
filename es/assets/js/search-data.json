@@ -2,23 +2,23 @@
     "doc": "Common",
     "title": "Common",
     "content": "Herramientas aplicables en varias disciplinas . ",
-    "url": "/es/Docs/1Common.html",
+    "url": "/es/docs/1Common.html",
     
-    "relUrl": "/Docs/1Common.html"
+    "relUrl": "/docs/1Common.html"
   },"1": {
     "doc": "MEC",
     "title": "MEC",
     "content": "Comandos para flujos de trabajo de ventilación, mecánica y fontanería . ",
-    "url": "/es/Docs/2MEC.html",
+    "url": "/es/docs/2MEC.html",
     
-    "relUrl": "/Docs/2MEC.html"
+    "relUrl": "/docs/2MEC.html"
   },"2": {
     "doc": "ELE",
     "title": "ELE",
     "content": "Comandos para el diseño eléctrico . ",
-    "url": "/es/Docs/3ELE.html",
+    "url": "/es/docs/3ELE.html",
     
-    "relUrl": "/Docs/3ELE.html"
+    "relUrl": "/docs/3ELE.html"
   },"3": {
     "doc": "Assign equip to schematic",
     "title": "Asignar Equipo a Esquema",
