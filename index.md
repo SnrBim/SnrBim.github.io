@@ -91,7 +91,7 @@ has_toc: false
       {%- assign doc_group = doc.parent -%}
     {%- endif -%}
     <li data-group="{{ doc_group }}">
-      {% if doc.description and doc.description != "" %}
+      {% if doc.description and doc.description != "" or doc.description_es and doc.description_es != "" %}
         <details>
           <summary class="doc-item">
             <div class="doc-title">
@@ -111,7 +111,11 @@ has_toc: false
             {% endif %}
           </summary>
           <div class="doc-description">
-            {{ doc.description | markdownify }}
+            {% assign current_description = doc.description %}
+            {% if site.lang == 'es' and doc.description_es and doc.description_es != "" %}
+              {% assign current_description = doc.description_es %}
+            {% endif %}
+            {{ current_description | markdownify }}
           </div>
         </details>
       {% else %}
@@ -172,6 +176,10 @@ has_toc: false
         const description = details.querySelector('.doc-description');
 
         summary.addEventListener('click', (event) => {
+          if (event.target.closest('a')) {
+            return;
+          }
+
           event.preventDefault();
 
           if (details.open) {

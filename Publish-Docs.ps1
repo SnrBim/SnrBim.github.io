@@ -13,10 +13,11 @@
     1. Pre-scans all 'front-matter.yaml' files to detect duplicate titles and stops if any are found.
     2. Reads the 'title' from 'front-matter.yaml'.
     3. Generates a kebab-case slug (e.g., 'assign-circuit-to-conduits').
-    4. Uses this slug to name the language-specific content files in '_i18n/' (ignoring Ru.md).
-    5. Uses the slug to create a destination directory for assets (e.g., 'docs/assign-circuit-to-conduits/').
-    6. Generates 'namespace', 'permalink', and a static 'layout: default' field, correctly inserts them
-       into the front-matter, and appends the '{% translate_file %}' tag. This is then saved as 'index.md'.
+    4. Extracts the first paragraph from En.md and Es.md.
+    5. Generates 'index.md' in the destination 'docs/<slug>/' directory. This file's front-matter
+       includes the original front-matter, generated fields ('layout', 'namespace', 'permalink'),
+       and the extracted 'description' and 'description_es' fields.
+    6. Copies language-specific content to '_i18n/' (ignoring Ru.md).
     7. Copies all assets (images, etc.) to the asset directory.
     8. Warns if any expected language content files (En.md, Es.md) are missing for a command.
 
@@ -30,6 +31,22 @@ param(
     [string]$SourceRoot = "C:\Users\1M06174\source\repos\BIMTools\BIMTools",
     [string]$DestRoot = "C:\Users\1M06174\source\repos\BIMTools\publish\SnrBim.github.io"
 )
+
+# --- Helper Functions ---
+function Get-FirstParagraph($FilePath) {
+    if (-not (Test-Path $FilePath)) { return $null }
+
+    $lines = Get-Content -Path $FilePath
+    foreach ($line in $lines) {
+        $trimmedLine = $line.Trim()
+        # Find the first non-empty line that is not a markdown header
+        if ($trimmedLine -ne "" -and -not $trimmedLine.StartsWith("#")) {
+            return $trimmedLine
+        }
+    }
+    return $null
+}
+
 
 # --- Main Script ---
 
@@ -204,6 +221,13 @@ foreach ($commandFolder in $commandFolders) {
             "front-matter.yaml" {
                 $destPath = Join-Path $destCommandRootPath "index.md"
                 
+                # --- Get descriptions for injection ---
+                $enMdPath = Join-Path $sourceDocsPath "En.md"
+                $esMdPath = Join-Path $sourceDocsPath "Es.md"
+                $enDescription = Get-FirstParagraph -FilePath $enMdPath
+                $esDescription = Get-FirstParagraph -FilePath $esMdPath
+                # ---
+
                 $originalLines = Get-Content -Path $file.FullName
                 $endFrontMatterIndex = [array]::IndexOf($originalLines, '---', 1)
                 if ($endFrontMatterIndex -lt 0) { $endFrontMatterIndex = $originalLines.Count }
@@ -213,7 +237,7 @@ foreach ($commandFolder in $commandFolders) {
 
                 # Add existing lines, filtering out script-managed fields
                 for ($i = 1; $i -lt $endFrontMatterIndex; $i++) {
-                    if ($originalLines[$i] -notmatch "^(namespace|permalink|layout|wip):") {
+                    if ($originalLines[$i] -notmatch "^(namespace|permalink|layout|wip|description|description_es):") {
                         $newFrontMatterLines.Add($originalLines[$i])
                     }
                 }
@@ -223,6 +247,16 @@ foreach ($commandFolder in $commandFolders) {
                 if ($isWip) {
                     $newFrontMatterLines.Add("wip: true")
                 }
+                if ($enDescription) {
+                    $escapedDesc = $enDescription -replace "'", "''"
+                    $lineToAdd = "description: '$escapedDesc'"
+                    $newFrontMatterLines.Add($lineToAdd)
+                }
+                if ($esDescription) {
+                    $escapedDesc = $esDescription -replace "'", "''"
+                    $lineToAdd = "description_es: '$escapedDesc'"
+                    $newFrontMatterLines.Add($lineToAdd)
+                }
                 $newFrontMatterLines.Add("namespace: $slug")
                 $newFrontMatterLines.Add("permalink: /docs/$slug/")
                 $newFrontMatterLines.Add('---')
@@ -231,7 +265,7 @@ foreach ($commandFolder in $commandFolders) {
                 $newFrontMatterLines.Add("{% translate_file docs/$slug.md %}")
 
                 Set-Content -Path $destPath -Value $newFrontMatterLines
-                Write-Host "  Generated front-matter and saved to -> $destPath"
+                Write-Host "  Generated front-matter with descriptions and saved to -> $destPath"
             }
             default {
                 $destPath = Join-Path $destCommandRootPath $file.Name
