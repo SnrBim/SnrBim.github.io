@@ -272,7 +272,12 @@
 <ol id="markdown-toc">
   <li><a href="#1-purpose-of-the-command" id="markdown-toc-1-purpose-of-the-command">1. Purpose of the Command</a></li>
   <li><a href="#2-preparation" id="markdown-toc-2-preparation">2. Preparation</a></li>
-  <li><a href="#3-step-1-selecting-source-data" id="markdown-toc-3-step-1-selecting-source-data">3. Step 1: Selecting Source Data</a></li>
+  <li><a href="#3-step-1-selecting-source-data" id="markdown-toc-3-step-1-selecting-source-data">3. Step 1: Selecting Source Data</a>    <ol>
+      <li><a href="#31-layout-and-mapping-configuration" id="markdown-toc-31-layout-and-mapping-configuration">3.1. Layout and Mapping Configuration</a></li>
+      <li><a href="#32-additional-options" id="markdown-toc-32-additional-options">3.2. Additional Options</a></li>
+      <li><a href="#33-manual-placement-and-room-locking" id="markdown-toc-33-manual-placement-and-room-locking">3.3. Manual Placement and Room Locking</a></li>
+    </ol>
+  </li>
   <li><a href="#4-step-2-synchronization-process" id="markdown-toc-4-step-2-synchronization-process">4. Step 2: Synchronization Process</a></li>
   <li><a href="#5-result-and-color-indication" id="markdown-toc-5-result-and-color-indication">5. Result and Color Indication</a></li>
   <li><a href="#6-change-tracking-sync-info-parameter" id="markdown-toc-6-change-tracking-sync-info-parameter">6. Change Tracking (“Sync info” Parameter)</a></li>
@@ -325,9 +330,90 @@
   </li>
   <li><strong>Levels for Synchronization:</strong>
     <ul>
-      <li>After selecting a link, the list below displays all levels from that link where fire alarm devices have been found.</li>
-      <li>For each level, the total number of rooms and the devices within them is indicated.</li>
+      <li>After selecting a link, the list below displays only those levels from that link where rooms containing fire alarm devices have been found.</li>
+      <li>For each level, the UI now displays a separate count for <strong>rooms with devices</strong> and <strong>empty rooms</strong> in the format <code class="language-plaintext highlighter-rouge">Rooms: 7 + 10</code>. It also indicates the total number of <strong>devices in rooms</strong> and <strong>homeless devices</strong> (not assigned to any room).</li>
       <li>You can select one or more levels for processing by checking the boxes next to them.</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="31-layout-and-mapping-configuration">
+  
+  
+    <a href="#31-layout-and-mapping-configuration" class="anchor-heading" aria-labelledby="31-layout-and-mapping-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3.1. Layout and Mapping Configuration
+  
+  
+</h3>
+    
+
+<p>At the bottom of the window, there are two fields for fine-tuning the command’s behavior:</p>
+
+<ul>
+  <li><strong>Sensor Definitions (Sensors):</strong>
+    <ul>
+      <li>This field determines which devices will be placed in the <strong>top row</strong> of the diagram (considered “sensors”). All other devices will be placed in the bottom row.</li>
+      <li>Each line corresponds to one rule.</li>
+      <li><strong>Format:</strong> <code class="language-plaintext highlighter-rouge">FamilyName: TypeName</code>. The type name can be omitted, in which case all types of the specified family will be considered sensors. Matching is <strong>case-insensitive</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>Family Mapping:</strong>
+    <ul>
+      <li>This field defines the rules by which 3D device families and types are transformed into 2D symbols on the diagram.</li>
+      <li><strong>Format:</strong> <code class="language-plaintext highlighter-rouge">3D_Family: 3D_Type: 2D_Family: 2D_Type</code>.</li>
+      <li>Each line represents a single rule. For example, the line <code class="language-plaintext highlighter-rouge">SRS_Smoke_Detector: Standard: Fire alarm 2d: Smoke detector</code> means that all 3D devices with family <code class="language-plaintext highlighter-rouge">SRS_Smoke_Detector</code> and type <code class="language-plaintext highlighter-rouge">Standard</code> will be represented on the diagram by the 2D symbol <code class="language-plaintext highlighter-rouge">Smoke detector</code> from the family <code class="language-plaintext highlighter-rouge">Fire alarm 2d</code>. Matching of 3D family and type names is <strong>case-insensitive</strong>.</li>
+      <li><strong>Automatic Pre-population:</strong> When the dialog opens, the command automatically scans the Revit model and identifies all unique <code class="language-plaintext highlighter-rouge">(3D_Family, 3D_Type)</code> combinations of fire alarm devices.
+        <ul>
+          <li>Any newly discovered <code class="language-plaintext highlighter-rouge">(3D_Family, 3D_Type)</code> combinations that are not yet in the user’s saved mapping settings are automatically appended to the list. For these new entries, the default values <code class="language-plaintext highlighter-rouge">Fire alarm 2d</code> and <code class="language-plaintext highlighter-rouge">Generic</code> are used for the 2D family and 2D type, respectively.</li>
+          <li>Existing user settings, including comments and order, are always preserved.</li>
+        </ul>
+      </li>
+      <li><strong>Editing Features:</strong> The field includes a built-in header demonstrating the string format and uses a monospaced font for convenience.</li>
+      <li><strong>Comments:</strong> Lines starting with a <code class="language-plaintext highlighter-rouge">;</code> character are ignored during parsing but are preserved and can be used for comments.</li>
+      <li><strong>Alignment:</strong> Text in this field is automatically aligned for better readability.</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="32-additional-options">
+  
+  
+    <a href="#32-additional-options" class="anchor-heading" aria-labelledby="32-additional-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3.2. Additional Options
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Create empty rooms:</strong>
+    <ul>
+      <li>If this option is enabled (checked), the command will create 2D representations for <em>all</em> rooms on the selected levels, even if they do not contain any fire alarm devices.</li>
+      <li>By default, this option is disabled, and 2D rooms are only created for 3D rooms that contain at least one device.</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="33-manual-placement-and-room-locking">
+  
+  
+    <a href="#33-manual-placement-and-room-locking" class="anchor-heading" aria-labelledby="33-manual-placement-and-room-locking"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3.3. Manual Placement and Room Locking
+  
+  
+</h3>
+    
+
+<p>After the initial diagram creation, you may want to manually adjust the layout of devices within certain rooms and lock their positions to prevent them from being reset during subsequent synchronizations.</p>
+
+<p>This is achieved using the <strong>“Manual placement”</strong> instance parameter (a Yes/No type) on the 2D room family.</p>
+
+<ul>
+  <li><strong>How it works:</strong>
+    <ol>
+      <li>Select one or more 2D rooms on the diagram.</li>
+      <li>In the Properties palette, find the <strong>“Manual placement”</strong> parameter and check the box (set its value to “Yes”).</li>
+    </ol>
+  </li>
+  <li><strong>What happens on the next sync:</strong>
+    <ul>
+      <li><strong>Device Positions are Preserved:</strong> The command will no longer automatically arrange the existing 2D devices within this room. Their current positions will be locked.</li>
+      <li><strong>Room Width is Preserved:</strong> The width of this 2D room will also be locked and will not automatically change based on the number of devices.</li>
+      <li><strong>New Devices:</strong> If new devices are added to this room in the 3D model, their 2D symbols will appear <strong>in the center</strong> of the locked room. This allows you to easily find and manually place them where needed.</li>
     </ul>
   </li>
 </ul>
@@ -347,19 +433,15 @@
     <ul>
       <li>For each room from the selected levels that contains at least one device, a 2D room (family “Room”) is created on the diagram.</li>
       <li>If a 2D room for such a room already exists on the diagram, a new one is not created, but the existing one is updated.</li>
-      <li>The <strong>width of the room</strong> is calculated automatically based on the maximum number of devices in one of the two rows (see below) to ensure they all fit. The minimum room width is 40 mm.</li>
+      <li>The <strong>width of the room</strong> is calculated automatically based on the maximum number of devices in one of the two rows to ensure they all fit. The minimum room width is 40 mm.</li>
       <li>The <strong>Number</strong>, <strong>Name</strong>, and <strong>Level</strong> from the source 3D room are written into the parameters of the 2D room.</li>
     </ul>
   </li>
   <li><strong>Creating 2D Devices:</strong>
     <ul>
-      <li>Inside each 2D room, 2D device symbols (family “Fire alarm 2d”) are placed according to their 3D prototypes.</li>
-      <li><strong>Placement:</strong> Devices are placed in <strong>two rows</strong>:
-        <ol>
-          <li><strong>Top row (sensors):</strong> <code class="language-plaintext highlighter-rouge">Pull Station</code>, <code class="language-plaintext highlighter-rouge">Heat detector</code>, <code class="language-plaintext highlighter-rouge">Smoke detector</code>.</li>
-          <li><strong>Bottom row (notification appliances and manual call points):</strong> <code class="language-plaintext highlighter-rouge">Strobe</code>, <code class="language-plaintext highlighter-rouge">Horn strobe</code>, <code class="language-plaintext highlighter-rouge">Horn</code>.</li>
-        </ol>
-      </li>
+      <li>Inside each 2D room, 2D device symbols are placed according to their 3D prototypes.</li>
+      <li><strong>2D Symbol Selection:</strong> The type of 2D symbol is determined based on the rules defined in the <strong>“Family Mapping”</strong> field. If no suitable rule is found for a 3D device, a default symbol (“Generic”) is used, and the element is colored red.</li>
+      <li><strong>Placement:</strong> Devices are placed in <strong>two rows</strong> based on the rules from the <strong>“Sensor Definitions”</strong> field.</li>
       <li>The following are written into the parameters of the 2D device:
         <ul>
           <li><code class="language-plaintext highlighter-rouge">Code</code>: Copied from the <code class="language-plaintext highlighter-rouge">Mark</code> parameter of the 3D device.</li>
@@ -397,7 +479,7 @@
       <li><strong>Data updated.</strong> An element is colored this way if:
         <ul>
           <li>The room’s number or name has changed.</li>
-          <li>The type of the 3D device has been changed (e.g., <code class="language-plaintext highlighter-rouge">Smoke detector</code> replaced with <code class="language-plaintext highlighter-rouge">Heat detector</code>).</li>
+          <li>The type of the 3D device has been changed, resulting in a different 2D symbol according to the mapping rules.</li>
         </ul>
       </li>
     </ul>
@@ -407,9 +489,19 @@
       <li><strong>Element moved.</strong> If a 3D device was moved from one room to another, its 2D symbol on the diagram is also moved to the corresponding room and colored purple.</li>
     </ul>
   </li>
+  <li><strong>Blue:</strong>
+    <ul>
+      <li><strong>Manually moved element.</strong> If a 2D device was manually dragged from one 2D room to another on the diagram by the user, its 2D symbol will be colored blue. This indicates a user-initiated change in the diagram layout that is preserved across synchronizations.</li>
+    </ul>
+  </li>
   <li><strong>Red:</strong>
     <ul>
-      <li><strong>“Orphaned” element.</strong> If the original 3D element (room or device) was deleted from the model, its 2D representation on the diagram remains but is colored red. This signals that the element on the diagram is no longer linked to the model.</li>
+      <li><strong>“Orphaned” element or error.</strong> An element is colored red if:
+        <ul>
+          <li>The original 3D element (room or device) was deleted from the model.</li>
+          <li>No mapping rule was found for the 3D device, and the default 2D symbol was used.</li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -426,7 +518,8 @@
 
 <p><em>Example record: “Moved from ‘101 - Office’ to ‘102 - Corridor’ [2025-10-28 14:30:15]”</em></p>
 
-<p><img src=".\pic2.png" alt="image" /></p>
+<p><img src=".\pic2.png" alt="image" />
+<img src=".\pic3.png" alt="image" /></p>
 <h2 id="7-known-limitations">
   
   
@@ -437,8 +530,9 @@
     
 
 <ul>
+  <li><strong>Level assignment for “homeless” devices:</strong> Devices not belonging to any room (“homeless”) are assigned to the nearest level below from a list of <strong>“valid levels”</strong> (i.e., those that contain rooms with devices). This is done to ensure that only relevant levels are displayed in the level selection list.</li>
   <li><strong>Room Detection:</strong> Room detection is performed with an additional check 200 mm above and 1000 mm below. In rare cases, if devices in the 3D model are located very close to the floor and outside a room, the algorithm may incorrectly assign the device to a room on the floor below.</li>
-  <li><strong>Automatic Room Width Adjustment:</strong> When the number of devices in a room changes, its width on the diagram will be automatically adjusted during the next synchronization.</li>
+  <li><strong>Automatic Room Width Adjustment:</strong> When the number of devices in a room changes, its width on the diagram will be automatically adjusted. This behavior can be disabled for a specific room by using the “Manual placement” parameter (see section 3.3).</li>
   <li><strong>No Automatic Shifting:</strong> The script <strong>does not shift</strong> adjacent rooms if one of them has expanded. This is done to preserve the manual layout of elements on the diagram. If one room starts to overlap another, you will need to manually select and move the adjacent elements.</li>
 </ul>
 

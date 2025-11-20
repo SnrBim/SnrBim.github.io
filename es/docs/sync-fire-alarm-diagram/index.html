@@ -272,7 +272,12 @@
 <ol id="markdown-toc">
   <li><a href="#1-propósito-del-comando" id="markdown-toc-1-propósito-del-comando">1. Propósito del comando</a></li>
   <li><a href="#2-preparación" id="markdown-toc-2-preparación">2. Preparación</a></li>
-  <li><a href="#3-paso-1-selección-de-datos-de-origen" id="markdown-toc-3-paso-1-selección-de-datos-de-origen">3. Paso 1: Selección de datos de origen</a></li>
+  <li><a href="#3-paso-1-selección-de-datos-de-origen" id="markdown-toc-3-paso-1-selección-de-datos-de-origen">3. Paso 1: Selección de datos de origen</a>    <ol>
+      <li><a href="#31-configuración-de-diseño-y-mapeo" id="markdown-toc-31-configuración-de-diseño-y-mapeo">3.1. Configuración de diseño y mapeo</a></li>
+      <li><a href="#32-opciones-adicionales" id="markdown-toc-32-opciones-adicionales">3.2. Opciones Adicionales</a></li>
+      <li><a href="#33-colocación-manual-y-bloqueo-de-habitaciones" id="markdown-toc-33-colocación-manual-y-bloqueo-de-habitaciones">3.3. Colocación manual y bloqueo de habitaciones</a></li>
+    </ol>
+  </li>
   <li><a href="#4-paso-2-proceso-de-sincronización" id="markdown-toc-4-paso-2-proceso-de-sincronización">4. Paso 2: Proceso de sincronización</a></li>
   <li><a href="#5-resultado-e-indicación-por-colores" id="markdown-toc-5-resultado-e-indicación-por-colores">5. Resultado e indicación por colores</a></li>
   <li><a href="#6-seguimiento-de-cambios-parámetro-sync-info" id="markdown-toc-6-seguimiento-de-cambios-parámetro-sync-info">6. Seguimiento de cambios (Parámetro “Sync info”)</a></li>
@@ -325,9 +330,90 @@
   </li>
   <li><strong>Niveles para la sincronización:</strong>
     <ul>
-      <li>Después de seleccionar un vínculo, la lista inferior muestra todos los niveles de ese vínculo en los que se han encontrado dispositivos de alarma de incendios.</li>
-      <li>Para cada nivel, se indica el número total de habitaciones y los dispositivos que se encuentran en ellas.</li>
+      <li>Después de seleccionar un vínculo, la lista inferior muestra solo aquellos niveles de ese vínculo donde se han encontrado habitaciones que contienen dispositivos de alarma contra incendios.</li>
+      <li>Para cada nivel, la interfaz de usuario ahora muestra un recuento separado para <strong>habitaciones con dispositivos</strong> y <strong>habitaciones vacías</strong> en el formato <code class="language-plaintext highlighter-rouge">Rooms: 7 + 10</code>. También indica el número total de <strong>dispositivos en habitaciones</strong> y <strong>dispositivos huérfanos</strong> (no asignados a ninguna habitación).</li>
       <li>Puede seleccionar uno o varios niveles para procesar marcando las casillas correspondientes.</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="31-configuración-de-diseño-y-mapeo">
+  
+  
+    <a href="#31-configuración-de-diseño-y-mapeo" class="anchor-heading" aria-labelledby="31-configuración-de-diseño-y-mapeo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3.1. Configuración de diseño y mapeo
+  
+  
+</h3>
+    
+
+<p>En la parte inferior de la ventana, hay dos campos para ajustar el comportamiento del comando:</p>
+
+<ul>
+  <li><strong>Definiciones de sensores (Sensors):</strong>
+    <ul>
+      <li>Este campo determina qué dispositivos se colocarán en la <strong>fila superior</strong> del esquema (considerados “sensores”). Todos los demás dispositivos se colocarán en la fila inferior.</li>
+      <li>Cada línea corresponde a una regla.</li>
+      <li><strong>Formato:</strong> <code class="language-plaintext highlighter-rouge">NombreFamilia: NombreTipo</code>. El nombre del tipo se puede omitir, en cuyo caso todos los tipos de la familia especificada se considerarán sensores. La coincidencia es <strong>insensible a mayúsculas y minúsculas</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>Mapeo de familias (Family Mapping):</strong>
+    <ul>
+      <li>Este campo define las reglas mediante las cuales las familias y tipos de dispositivos 3D se transforman en símbolos 2D en el diagrama.</li>
+      <li><strong>Formato:</strong> <code class="language-plaintext highlighter-rouge">Familia_3D: Tipo_3D: Familia_2D: Tipo_2D</code>.</li>
+      <li>Cada línea representa una sola regla. Por ejemplo, la línea <code class="language-plaintext highlighter-rouge">SRS_Smoke_Detector: Standard: Fire alarm 2d: Smoke detector</code> significa que todos los dispositivos 3D con la familia <code class="language-plaintext highlighter-rouge">SRS_Smoke_Detector</code> y el tipo <code class="language-plaintext highlighter-rouge">Standard</code> se representarán en el diagrama mediante el símbolo 2D <code class="language-plaintext highlighter-rouge">Smoke detector</code> de la familia <code class="language-plaintext highlighter-rouge">Fire alarm 2d</code>. La coincidencia de los nombres de familia y tipo 3D es <strong>insensible a mayúsculas y minúsculas</strong>.</li>
+      <li><strong>Autocompletado automático:</strong> Al abrir el diálogo, el comando escanea automáticamente el modelo de Revit e identifica todas las combinaciones únicas de <code class="language-plaintext highlighter-rouge">(Familia_3D, Tipo_3D)</code> de dispositivos de alarma contra incendios.
+        <ul>
+          <li>Cualquier combinación <code class="language-plaintext highlighter-rouge">(Familia_3D, Tipo_3D)</code> recién descubierta que aún no esté en la configuración de mapeo guardada por el usuario se añade automáticamente a la lista. Para estas nuevas entradas, se utilizan los valores predeterminados <code class="language-plaintext highlighter-rouge">Fire alarm 2d</code> y <code class="language-plaintext highlighter-rouge">Generic</code> para la familia 2D y el tipo 2D, respectivamente.</li>
+          <li>La configuración existente del usuario, incluidos los comentarios y el orden, siempre se conserva.</li>
+        </ul>
+      </li>
+      <li><strong>Características de edición:</strong> El campo incluye un encabezado incorporado que demuestra el formato de la cadena y utiliza una fuente monoespaciada para mayor comodidad.</li>
+      <li><strong>Comentarios:</strong> Las líneas que comienzan con un carácter <code class="language-plaintext highlighter-rouge">;</code> se ignoran durante el análisis, pero se conservan y se pueden usar para comentarios.</li>
+      <li><strong>Alineación:</strong> El texto en este campo se alinea automáticamente para una mejor legibilidad.</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="32-opciones-adicionales">
+  
+  
+    <a href="#32-opciones-adicionales" class="anchor-heading" aria-labelledby="32-opciones-adicionales"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3.2. Opciones Adicionales
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Crear habitaciones vacías:</strong>
+    <ul>
+      <li>Si esta opción está habilitada (marcada), el comando creará representaciones 2D para <em>todas</em> las habitaciones en los niveles seleccionados, incluso si no contienen ningún dispositivo de alarma de incendios.</li>
+      <li>Por defecto, esta opción está deshabilitada, y las habitaciones 2D solo se crean para las habitaciones 3D que contienen al menos un dispositivo.</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="33-colocación-manual-y-bloqueo-de-habitaciones">
+  
+  
+    <a href="#33-colocación-manual-y-bloqueo-de-habitaciones" class="anchor-heading" aria-labelledby="33-colocación-manual-y-bloqueo-de-habitaciones"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3.3. Colocación manual y bloqueo de habitaciones
+  
+  
+</h3>
+    
+
+<p>Después de la creación inicial del esquema, es posible que desee ajustar manualmente la disposición de los dispositivos dentro de ciertas habitaciones y bloquear sus posiciones para evitar que se restablezcan en sincronizaciones posteriores.</p>
+
+<p>Esto se logra utilizando el parámetro de instancia <strong>“Manual placement”</strong> (del tipo Sí/No) en la familia de la habitación 2D.</p>
+
+<ul>
+  <li><strong>Cómo funciona:</strong>
+    <ol>
+      <li>Seleccione una o más habitaciones 2D en el esquema.</li>
+      <li>En la paleta de Propiedades, busque el parámetro <strong>“Manual placement”</strong> y marque la casilla (establezca su valor en “Sí”).</li>
+    </ol>
+  </li>
+  <li><strong>Qué sucede en la próxima sincronización:</strong>
+    <ul>
+      <li><strong>Las posiciones de los dispositivos se conservan:</strong> El comando ya no organizará automáticamente los dispositivos 2D existentes dentro de esta habitación. Sus posiciones actuales quedarán bloqueadas.</li>
+      <li><strong>El ancho de la habitación se conserva:</strong> El ancho de esta habitación 2D también quedará bloqueado y no cambiará automáticamente según el número de dispositivos.</li>
+      <li><strong>Nuevos dispositivos:</strong> Si se agregan nuevos dispositivos a esta habitación en el modelo 3D, sus símbolos 2D aparecerán <strong>en el centro</strong> de la habitación bloqueada. Esto le permite encontrarlos fácilmente y colocarlos manualmente donde sea necesario.</li>
     </ul>
   </li>
 </ul>
@@ -347,19 +433,15 @@
     <ul>
       <li>Para cada habitación de los niveles seleccionados que contenga al menos un dispositivo, se crea una habitación 2D (familia “Room”) en el esquema.</li>
       <li>Si ya existe una habitación 2D para dicha habitación en el esquema, no se crea una nueva, sino que se actualiza la existente.</li>
-      <li>El <strong>ancho de la habitación</strong> se calcula automáticamente en función del número máximo de dispositivos en una de las dos filas (ver más abajo), para que quepan todos. El ancho mínimo de la habitación es de 40 mm.</li>
+      <li>El <strong>ancho de la habitación</strong> se calcula automáticamente en función del número máximo de dispositivos en una de las dos filas, para que quepan todos. El ancho mínimo de la habitación es de 40 mm.</li>
       <li>En los parámetros de la habitación 2D se escriben el <strong>Número</strong>, el <strong>Nombre</strong> y el <strong>Nivel</strong> de la habitación 3D de origen.</li>
     </ul>
   </li>
   <li><strong>Creación de dispositivos 2D:</strong>
     <ul>
-      <li>Dentro de cada habitación 2D, se colocan símbolos de dispositivos 2D (familia “Fire alarm 2d”) de acuerdo con sus prototipos 3D.</li>
-      <li><strong>Ubicación:</strong> Los dispositivos se colocan en <strong>dos filas</strong>:
-        <ol>
-          <li><strong>Fila superior (sensores):</strong> <code class="language-plaintext highlighter-rouge">Pull Station</code>, <code class="language-plaintext highlighter-rouge">Heat detector</code>, <code class="language-plaintext highlighter-rouge">Smoke detector</code>.</li>
-          <li><strong>Fila inferior (dispositivos de notificación y pulsadores manuales):</strong> <code class="language-plaintext highlighter-rouge">Strobe</code>, <code class="language-plaintext highlighter-rouge">Horn strobe</code>, <code class="language-plaintext highlighter-rouge">Horn</code>.</li>
-        </ol>
-      </li>
+      <li>Dentro de cada habitación 2D, se colocan símbolos de dispositivos 2D de acuerdo con sus prototipos 3D.</li>
+      <li><strong>Selección de símbolo 2D:</strong> El tipo de símbolo 2D se determina en función de las reglas definidas en el campo <strong>“Mapeo de familias”</strong>. Si no se encuentra una regla adecuada para un dispositivo 3D, se utiliza un símbolo predeterminado (“Generic”) y el elemento se colorea de rojo.</li>
+      <li><strong>Ubicación:</strong> Los dispositivos se colocan en <strong>dos filas</strong> según las reglas del campo <strong>“Definiciones de sensores”</strong>.</li>
       <li>En los parámetros del dispositivo 2D se escribe lo siguiente:
         <ul>
           <li><code class="language-plaintext highlighter-rouge">Code</code>: Se copia del parámetro <code class="language-plaintext highlighter-rouge">Mark</code> del dispositivo 3D.</li>
@@ -397,7 +479,7 @@
       <li><strong>Datos actualizados.</strong> Un elemento se colorea de este modo si:
         <ul>
           <li>El número o el nombre de la habitación ha cambiado.</li>
-          <li>Se ha cambiado el tipo del dispositivo 3D (por ejemplo, <code class="language-plaintext highlighter-rouge">Smoke detector</code> sustituido por <code class="language-plaintext highlighter-rouge">Heat detector</code>).</li>
+          <li>Se ha cambiado el tipo del dispositivo 3D, lo que ha dado lugar a un símbolo 2D diferente según las reglas de mapeo.</li>
         </ul>
       </li>
     </ul>
@@ -407,9 +489,19 @@
       <li><strong>Elemento movido.</strong> Si un dispositivo 3D se ha movido de una habitación a otra, su símbolo 2D en el esquema también se mueve a la habitación correspondiente y se colorea de púrpura.</li>
     </ul>
   </li>
+  <li><strong>Azul:</strong>
+    <ul>
+      <li><strong>Elemento movido manualmente.</strong> Si un dispositivo 2D fue arrastrado manualmente de una habitación 2D a otra en el esquema por el usuario, su símbolo 2D se coloreará de azul. Esto indica un cambio iniciado por el usuario en el diseño del esquema que se conserva entre sincronizaciones.</li>
+    </ul>
+  </li>
   <li><strong>Rojo:</strong>
     <ul>
-      <li><strong>Elemento “huérfano”.</strong> Si el elemento 3D original (habitación o dispositivo) se ha eliminado del modelo, su representación 2D en el esquema permanece, pero se colorea de rojo. Esto indica que el elemento del esquema ya no está vinculado al modelo.</li>
+      <li><strong>Elemento “huérfano” o error.</strong> Un elemento se colorea de rojo si:
+        <ul>
+          <li>El elemento 3D original (habitación o dispositivo) se ha eliminado del modelo.</li>
+          <li>No se encontró ninguna regla de mapeo para el dispositivo 3D y se utilizó el símbolo 2D predeterminado.</li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -422,11 +514,12 @@
 </h2>
     
 
-<p>Cada elemento 2D del esquema (tanto la habitación como el dispositivo) tiene un parámetro de texto <strong>“Sync info”</strong>. En él se registra automáticamente el historial de todos los cambios que se han producido durante la sincronización, con la fecha y la hora.</p>
+<p>Cada elemento 2D del esquema (tanto la habitación como el dispositivo) tiene un parámetro de texto <strong>“Sync info”</strong>. En él se registra automáticamente el historial de todos los cambios que se han producido durante la sincronización, сon la fecha y la hora.</p>
 
 <p><em>Ejemplo de registro: “Movido de ‘101 - Office’ a ‘102 - Corridor’ [2025-10-28 14:30:15]”</em></p>
 
-<p><img src=".\pic2.png" alt="image" /></p>
+<p><img src=".\pic2.png" alt="image" />
+<img src=".\pic3.png" alt="image" /></p>
 <h2 id="7-limitaciones-conocidas">
   
   
@@ -437,9 +530,10 @@
     
 
 <ul>
+  <li><strong>Asignación de nivel para dispositivos “huérfanos”:</strong> Los dispositivos que no pertenecen a ninguna habitación (“huérfanos”) se asignan al nivel más cercano por debajo de una lista de <strong>“niveles válidos”</strong> (es decir, aquellos que contienen habitaciones con dispositivos). Esto se hace para garantizar que solo se muestren los niveles relevantes en la lista de selección de niveles.</li>
   <li><strong>Detección de habitaciones:</strong> La detección de habitaciones se realiza con una comprobación adicional de 200 mm por encima y 1000 mm por debajo. En casos excepcionales, si los dispositivos del modelo 3D están situados muy cerca del suelo y fuera de una habitación, el algoritmo puede asignar incorrectamente el dispositivo a una habitación del piso inferior.</li>
-  <li><strong>Ajuste automático del ancho de las habitaciones:</strong> Cuando cambia el número de dispositivos en una habitación, su ancho en el esquema se ajustará automáticamente en la siguiente sincronización.</li>
-  <li><strong>Sin desplazamiento automático:</strong> El script <strong>no desplaza</strong> las habitaciones adyacentes si una de ellas se ha expandido. Esto se hace para preservar la disposición manual de los elementos en el esquema. Si una habitación empieza a solaparse con otra, será necesario seleccionar y mover manually los elementos adyacentes.</li>
+  <li><strong>Ajuste automático del ancho de las habitaciones:</strong> Cuando cambia el número de dispositivos en una habitación, su ancho en el esquema se ajustará automáticamente. Este comportamiento se puede desactivar para una habitación específica utilizando el parámetro “Manual placement” (ver sección 3.3).</li>
+  <li><strong>Sin desplazamiento automático:</strong> El script <strong>no desplaza</strong> las habitaciones adyacentes si una de ellas se ha expandido. Esto se hace para preservar la disposición manual de los elementos en el esquema. Si una habitación empieza a solaparse con otra, será necesario seleccionar y mover manualmente los elementos adyacentes.</li>
 </ul>
 
           

@@ -59,8 +59,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Set ASHRAE code" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="This command solves the problem of bulk assigning ASHRAE codes to engineering system fittings in Revit." />
+<meta property="og:description" content="This command solves the problem of bulk assigning ASHRAE codes to engineering system fittings in Revit." />
 <link rel="canonical" href="https://snrbim.github.io/docs/set-ashrae-code/" />
 <meta property="og:url" content="https://snrbim.github.io/docs/set-ashrae-code/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -68,7 +68,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Set ASHRAE code" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Set ASHRAE code","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/set-ashrae-code/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This command solves the problem of bulk assigning ASHRAE codes to engineering system fittings in Revit.","headline":"Set ASHRAE code","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/set-ashrae-code/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -256,10 +256,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="english-command-title">
+            <h1 class="no_toc" id="change-loss-method">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#change-loss-method" class="anchor-heading" aria-labelledby="change-loss-method"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Change Loss Method
   
   
 </h1>
@@ -269,10 +269,63 @@
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#the-problem" id="markdown-toc-the-problem">The Problem</a></li>
+  <li><a href="#the-solution" id="markdown-toc-the-solution">The Solution</a>    <ol>
+      <li><a href="#how-it-works" id="markdown-toc-how-it-works">How It Works</a></li>
+    </ol>
+  </li>
+</ol>
 
 </details>
 
-<p>This is the English content for the command documentation.</p>
+<p>This command solves the problem of bulk assigning ASHRAE codes to engineering system fittings in Revit.</p>
+<h2 id="the-problem">
+  
+  
+    <a href="#the-problem" class="anchor-heading" aria-labelledby="the-problem"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> The Problem
+  
+  
+</h2>
+    
+
+<p>Revit’s standard interface has two significant limitations when working with ASHRAE codes:</p>
+
+<ol>
+  <li><strong>No Batch Processing:</strong> It’s impossible to assign codes to multiple elements at once. You have to select each fitting individually and assign the code manually.</li>
+  <li><strong>Complex Selection:</strong> For each element, you must manually find the correct code in a long list based on its parameters (name, diameter, angle, etc.), which is time-consuming and error-prone.</li>
+</ol>
+
+<p><img src="pic1.gif" alt="Window in two variants" /></p>
+<h2 id="the-solution">
+  
+  
+    <a href="#the-solution" class="anchor-heading" aria-labelledby="the-solution"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> The Solution
+  
+  
+</h2>
+    
+
+<p>This tool automates the process, allowing you to assign ASHRAE codes to hundreds of elements at once based on a pre-prepared table in Excel.</p>
+<h3 id="how-it-works">
+  
+  
+    <a href="#how-it-works" class="anchor-heading" aria-labelledby="how-it-works"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How It Works
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>Lookup Table:</strong> You create a table in Excel where the corresponding ASHRAE code is specified for each type of fitting (considering its name, diameter, angle, and system).</li>
+  <li><strong>Element Selection:</strong> You select all the necessary fittings in Revit.</li>
+  <li><strong>Automatic Assignment:</strong> The plugin reads the parameters of each element, finds the corresponding code for it in your Excel table, and assigns it.</li>
+  <li><strong>Report:</strong> Upon completion, you receive a report on which elements the codes were successfully applied to.</li>
+</ol>
+
+<p><img src="pic3.png" alt="Table example" /></p>
+
+<p><img src="pic4.png" alt="Report example" /></p>
 
           
 

@@ -364,285 +364,299 @@
     "relUrl": "/docs/change-level/"
   },"52": {
     "doc": "Set ASHRAE code",
-    "title": "English Command Title",
-    "content": "This is the English content for the command documentation. ",
-    "url": "/docs/set-ashrae-code/#english-command-title",
+    "title": "Change Loss Method",
+    "content": ". | The Problem | The Solution . | How It Works | . | . This command solves the problem of bulk assigning ASHRAE codes to engineering system fittings in Revit. ",
+    "url": "/docs/set-ashrae-code/#change-loss-method",
     
-    "relUrl": "/docs/set-ashrae-code/#english-command-title"
+    "relUrl": "/docs/set-ashrae-code/#change-loss-method"
   },"53": {
+    "doc": "Set ASHRAE code",
+    "title": "The Problem",
+    "content": "Revit’s standard interface has two significant limitations when working with ASHRAE codes: . | No Batch Processing: It’s impossible to assign codes to multiple elements at once. You have to select each fitting individually and assign the code manually. | Complex Selection: For each element, you must manually find the correct code in a long list based on its parameters (name, diameter, angle, etc.), which is time-consuming and error-prone. | . ",
+    "url": "/docs/set-ashrae-code/#the-problem",
+    
+    "relUrl": "/docs/set-ashrae-code/#the-problem"
+  },"54": {
+    "doc": "Set ASHRAE code",
+    "title": "The Solution",
+    "content": "This tool automates the process, allowing you to assign ASHRAE codes to hundreds of elements at once based on a pre-prepared table in Excel. How It Works . | Lookup Table: You create a table in Excel where the corresponding ASHRAE code is specified for each type of fitting (considering its name, diameter, angle, and system). | Element Selection: You select all the necessary fittings in Revit. | Automatic Assignment: The plugin reads the parameters of each element, finds the corresponding code for it in your Excel table, and assigns it. | Report: Upon completion, you receive a report on which elements the codes were successfully applied to. | . ",
+    "url": "/docs/set-ashrae-code/#the-solution",
+    
+    "relUrl": "/docs/set-ashrae-code/#the-solution"
+  },"55": {
     "doc": "Set ASHRAE code",
     "title": "Set ASHRAE code",
     "content": " ",
     "url": "/docs/set-ashrae-code/",
     
     "relUrl": "/docs/set-ashrae-code/"
-  },"54": {
+  },"56": {
     "doc": "Tag elements on views",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/tag-elements-on-views/#english-command-title",
     
     "relUrl": "/docs/tag-elements-on-views/#english-command-title"
-  },"55": {
+  },"57": {
     "doc": "Tag elements on views",
     "title": "Tag elements on views",
     "content": " ",
     "url": "/docs/tag-elements-on-views/",
     
     "relUrl": "/docs/tag-elements-on-views/"
-  },"56": {
+  },"58": {
     "doc": "Circuit description",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/circuit-description/#english-command-title",
     
     "relUrl": "/docs/circuit-description/#english-command-title"
-  },"57": {
+  },"59": {
     "doc": "Circuit description",
     "title": "Circuit description",
     "content": " ",
     "url": "/docs/circuit-description/",
     
     "relUrl": "/docs/circuit-description/"
-  },"58": {
+  },"60": {
     "doc": "Sync fire alarm diagram",
     "title": "User Guide for the “Sync Fire Alarm Diagram” Command",
-    "content": ". | 1. Purpose of the Command | 2. Preparation | 3. Step 1: Selecting Source Data | 4. Step 2: Synchronization Process | 5. Result and Color Indication | 6. Change Tracking (“Sync info” Parameter) | 7. Known Limitations | . ",
+    "content": ". | 1. Purpose of the Command | 2. Preparation | 3. Step 1: Selecting Source Data . | 3.1. Layout and Mapping Configuration | 3.2. Additional Options | 3.3. Manual Placement and Room Locking | . | 4. Step 2: Synchronization Process | 5. Result and Color Indication | 6. Change Tracking (“Sync info” Parameter) | 7. Known Limitations | . ",
     "url": "/docs/sync-fire-alarm-diagram/#user-guide-for-the-sync-fire-alarm-diagram-command",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#user-guide-for-the-sync-fire-alarm-diagram-command"
-  },"59": {
+  },"61": {
     "doc": "Sync fire alarm diagram",
     "title": "1. Purpose of the Command",
     "content": "The command is designed for the automatic creation and subsequent synchronization of a 2D layout diagram of fire alarm devices based on a 3D model. It generates 2D elements on a drafting view corresponding to rooms and devices and tracks changes in the model to update the diagram. ",
     "url": "/docs/sync-fire-alarm-diagram/#1-purpose-of-the-command",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#1-purpose-of-the-command"
-  },"60": {
+  },"62": {
     "doc": "Sync fire alarm diagram",
     "title": "2. Preparation",
     "content": ". | Architectural Model: A linked model (Revit Link) with architectural rooms (Rooms) must be loaded into the project. | Active View: Before running the command, you must open a drafting view where the diagram will be placed. | . ",
     "url": "/docs/sync-fire-alarm-diagram/#2-preparation",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#2-preparation"
-  },"61": {
+  },"63": {
     "doc": "Sync fire alarm diagram",
     "title": "3. Step 1: Selecting Source Data",
-    "content": "When the command is launched, a dialog box opens where you need to specify the source data for synchronization. | Architectural Link: . | The dropdown list shows all linked Revit files where rooms have been found. | The list is automatically sorted: priority is given to links with “AR” in their name, and then by the descending number of rooms. As a rule, the required link is already selected by default. | . | Levels for Synchronization: . | After selecting a link, the list below displays all levels from that link where fire alarm devices have been found. | For each level, the total number of rooms and the devices within them is indicated. | You can select one or more levels for processing by checking the boxes next to them. | . | . ",
+    "content": "When the command is launched, a dialog box opens where you need to specify the source data for synchronization. | Architectural Link: . | The dropdown list shows all linked Revit files where rooms have been found. | The list is automatically sorted: priority is given to links with “AR” in their name, and then by the descending number of rooms. As a rule, the required link is already selected by default. | . | Levels for Synchronization: . | After selecting a link, the list below displays only those levels from that link where rooms containing fire alarm devices have been found. | For each level, the UI now displays a separate count for rooms with devices and empty rooms in the format Rooms: 7 + 10. It also indicates the total number of devices in rooms and homeless devices (not assigned to any room). | You can select one or more levels for processing by checking the boxes next to them. | . | . 3.1. Layout and Mapping Configuration . At the bottom of the window, there are two fields for fine-tuning the command’s behavior: . | Sensor Definitions (Sensors): . | This field determines which devices will be placed in the top row of the diagram (considered “sensors”). All other devices will be placed in the bottom row. | Each line corresponds to one rule. | Format: FamilyName: TypeName. The type name can be omitted, in which case all types of the specified family will be considered sensors. Matching is case-insensitive. | . | Family Mapping: . | This field defines the rules by which 3D device families and types are transformed into 2D symbols on the diagram. | Format: 3D_Family: 3D_Type: 2D_Family: 2D_Type. | Each line represents a single rule. For example, the line SRS_Smoke_Detector: Standard: Fire alarm 2d: Smoke detector means that all 3D devices with family SRS_Smoke_Detector and type Standard will be represented on the diagram by the 2D symbol Smoke detector from the family Fire alarm 2d. Matching of 3D family and type names is case-insensitive. | Automatic Pre-population: When the dialog opens, the command automatically scans the Revit model and identifies all unique (3D_Family, 3D_Type) combinations of fire alarm devices. | Any newly discovered (3D_Family, 3D_Type) combinations that are not yet in the user’s saved mapping settings are automatically appended to the list. For these new entries, the default values Fire alarm 2d and Generic are used for the 2D family and 2D type, respectively. | Existing user settings, including comments and order, are always preserved. | . | Editing Features: The field includes a built-in header demonstrating the string format and uses a monospaced font for convenience. | Comments: Lines starting with a ; character are ignored during parsing but are preserved and can be used for comments. | Alignment: Text in this field is automatically aligned for better readability. | . | . 3.2. Additional Options . | Create empty rooms: . | If this option is enabled (checked), the command will create 2D representations for all rooms on the selected levels, even if they do not contain any fire alarm devices. | By default, this option is disabled, and 2D rooms are only created for 3D rooms that contain at least one device. | . | . 3.3. Manual Placement and Room Locking . After the initial diagram creation, you may want to manually adjust the layout of devices within certain rooms and lock their positions to prevent them from being reset during subsequent synchronizations. This is achieved using the “Manual placement” instance parameter (a Yes/No type) on the 2D room family. | How it works: . | Select one or more 2D rooms on the diagram. | In the Properties palette, find the “Manual placement” parameter and check the box (set its value to “Yes”). | . | What happens on the next sync: . | Device Positions are Preserved: The command will no longer automatically arrange the existing 2D devices within this room. Their current positions will be locked. | Room Width is Preserved: The width of this 2D room will also be locked and will not automatically change based on the number of devices. | New Devices: If new devices are added to this room in the 3D model, their 2D symbols will appear in the center of the locked room. This allows you to easily find and manually place them where needed. | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#3-step-1-selecting-source-data",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#3-step-1-selecting-source-data"
-  },"62": {
+  },"64": {
     "doc": "Sync fire alarm diagram",
     "title": "4. Step 2: Synchronization Process",
-    "content": "After clicking the “OK” button, the process of creating and updating the 2D diagram on the active drafting view begins. | Creating 2D Rooms: . | For each room from the selected levels that contains at least one device, a 2D room (family “Room”) is created on the diagram. | If a 2D room for such a room already exists on the diagram, a new one is not created, but the existing one is updated. | The width of the room is calculated automatically based on the maximum number of devices in one of the two rows (see below) to ensure they all fit. The minimum room width is 40 mm. | The Number, Name, and Level from the source 3D room are written into the parameters of the 2D room. | . | Creating 2D Devices: . | Inside each 2D room, 2D device symbols (family “Fire alarm 2d”) are placed according to their 3D prototypes. | Placement: Devices are placed in two rows: . | Top row (sensors): Pull Station, Heat detector, Smoke detector. | Bottom row (notification appliances and manual call points): Strobe, Horn strobe, Horn. | . | The following are written into the parameters of the 2D device: . | Code: Copied from the Mark parameter of the 3D device. | Room: Room number and name. | RoomLevel: Name of the room’s level. | . | . | . ",
+    "content": "After clicking the “OK” button, the process of creating and updating the 2D diagram on the active drafting view begins. | Creating 2D Rooms: . | For each room from the selected levels that contains at least one device, a 2D room (family “Room”) is created on the diagram. | If a 2D room for such a room already exists on the diagram, a new one is not created, but the existing one is updated. | The width of the room is calculated automatically based on the maximum number of devices in one of the two rows to ensure they all fit. The minimum room width is 40 mm. | The Number, Name, and Level from the source 3D room are written into the parameters of the 2D room. | . | Creating 2D Devices: . | Inside each 2D room, 2D device symbols are placed according to their 3D prototypes. | 2D Symbol Selection: The type of 2D symbol is determined based on the rules defined in the “Family Mapping” field. If no suitable rule is found for a 3D device, a default symbol (“Generic”) is used, and the element is colored red. | Placement: Devices are placed in two rows based on the rules from the “Sensor Definitions” field. | The following are written into the parameters of the 2D device: . | Code: Copied from the Mark parameter of the 3D device. | Room: Room number and name. | RoomLevel: Name of the room’s level. | . | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#4-step-2-synchronization-process",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#4-step-2-synchronization-process"
-  },"63": {
+  },"65": {
     "doc": "Sync fire alarm diagram",
     "title": "5. Result and Color Indication",
-    "content": "After synchronization, the elements on the diagram are colored differently depending on their status. This allows for a quick assessment of what changes have occurred in the model. | Black (standard color): . | A new 2D room and all devices in it, created for the first time. | . | Green: . | A new 2D device that was added to an existing 2D room on the diagram. | . | Orange: . | Data updated. An element is colored this way if: . | The room’s number or name has changed. | The type of the 3D device has been changed (e.g., Smoke detector replaced with Heat detector). | . | . | Purple: . | Element moved. If a 3D device was moved from one room to another, its 2D symbol on the diagram is also moved to the corresponding room and colored purple. | . | Red: . | “Orphaned” element. If the original 3D element (room or device) was deleted from the model, its 2D representation on the diagram remains but is colored red. This signals that the element on the diagram is no longer linked to the model. | . | . ",
+    "content": "After synchronization, the elements on the diagram are colored differently depending on their status. This allows for a quick assessment of what changes have occurred in the model. | Black (standard color): . | A new 2D room and all devices in it, created for the first time. | . | Green: . | A new 2D device that was added to an existing 2D room on the diagram. | . | Orange: . | Data updated. An element is colored this way if: . | The room’s number or name has changed. | The type of the 3D device has been changed, resulting in a different 2D symbol according to the mapping rules. | . | . | Purple: . | Element moved. If a 3D device was moved from one room to another, its 2D symbol on the diagram is also moved to the corresponding room and colored purple. | . | Blue: . | Manually moved element. If a 2D device was manually dragged from one 2D room to another on the diagram by the user, its 2D symbol will be colored blue. This indicates a user-initiated change in the diagram layout that is preserved across synchronizations. | . | Red: . | “Orphaned” element or error. An element is colored red if: . | The original 3D element (room or device) was deleted from the model. | No mapping rule was found for the 3D device, and the default 2D symbol was used. | . | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#5-result-and-color-indication",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#5-result-and-color-indication"
-  },"64": {
+  },"66": {
     "doc": "Sync fire alarm diagram",
     "title": "6. Change Tracking (“Sync info” Parameter)",
     "content": "Each 2D element on the diagram (both room and device) has a text parameter “Sync info”. It automatically records the history of all changes that have occurred during synchronization, with the date and time. Example record: “Moved from ‘101 - Office’ to ‘102 - Corridor’ [2025-10-28 14:30:15]” . ",
     "url": "/docs/sync-fire-alarm-diagram/#6-change-tracking-sync-info-parameter",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#6-change-tracking-sync-info-parameter"
-  },"65": {
+  },"67": {
     "doc": "Sync fire alarm diagram",
     "title": "7. Known Limitations",
-    "content": ". | Room Detection: Room detection is performed with an additional check 200 mm above and 1000 mm below. In rare cases, if devices in the 3D model are located very close to the floor and outside a room, the algorithm may incorrectly assign the device to a room on the floor below. | Automatic Room Width Adjustment: When the number of devices in a room changes, its width on the diagram will be automatically adjusted during the next synchronization. | No Automatic Shifting: The script does not shift adjacent rooms if one of them has expanded. This is done to preserve the manual layout of elements on the diagram. If one room starts to overlap another, you will need to manually select and move the adjacent elements. | . ",
+    "content": ". | Level assignment for “homeless” devices: Devices not belonging to any room (“homeless”) are assigned to the nearest level below from a list of “valid levels” (i.e., those that contain rooms with devices). This is done to ensure that only relevant levels are displayed in the level selection list. | Room Detection: Room detection is performed with an additional check 200 mm above and 1000 mm below. In rare cases, if devices in the 3D model are located very close to the floor and outside a room, the algorithm may incorrectly assign the device to a room on the floor below. | Automatic Room Width Adjustment: When the number of devices in a room changes, its width on the diagram will be automatically adjusted. This behavior can be disabled for a specific room by using the “Manual placement” parameter (see section 3.3). | No Automatic Shifting: The script does not shift adjacent rooms if one of them has expanded. This is done to preserve the manual layout of elements on the diagram. If one room starts to overlap another, you will need to manually select and move the adjacent elements. | . ",
     "url": "/docs/sync-fire-alarm-diagram/#7-known-limitations",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#7-known-limitations"
-  },"66": {
+  },"68": {
     "doc": "Sync fire alarm diagram",
     "title": "Sync fire alarm diagram",
     "content": " ",
     "url": "/docs/sync-fire-alarm-diagram/",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/"
-  },"67": {
+  },"69": {
     "doc": "Show CADs",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/show-cads/#english-command-title",
     
     "relUrl": "/docs/show-cads/#english-command-title"
-  },"68": {
+  },"70": {
     "doc": "Show CADs",
     "title": "Show CADs",
     "content": " ",
     "url": "/docs/show-cads/",
     
     "relUrl": "/docs/show-cads/"
-  },"69": {
+  },"71": {
     "doc": "Create sockets",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-sockets/#english-command-title",
     
     "relUrl": "/docs/create-sockets/#english-command-title"
-  },"70": {
+  },"72": {
     "doc": "Create sockets",
     "title": "Create sockets",
     "content": " ",
     "url": "/docs/create-sockets/",
     
     "relUrl": "/docs/create-sockets/"
-  },"71": {
+  },"73": {
     "doc": "Sync equip to schematic",
     "title": "Sync Equipment to Schematic",
     "content": ". | Description | Functionality | How to Use | Important Notes | . ",
     "url": "/docs/sync-equip-to-schematic/#sync-equipment-to-schematic",
     
     "relUrl": "/docs/sync-equip-to-schematic/#sync-equipment-to-schematic"
-  },"72": {
+  },"74": {
     "doc": "Sync equip to schematic",
     "title": "Description",
     "content": "This command automatically updates the data of schematic annotations (Generic Annotation) in Revit, based on the previously assigned equipment ID. ",
     "url": "/docs/sync-equip-to-schematic/#description",
     
     "relUrl": "/docs/sync-equip-to-schematic/#description"
-  },"73": {
+  },"75": {
     "doc": "Sync equip to schematic",
     "title": "Functionality",
     "content": "For each processed schematic annotation, the command performs the following actions: . | It searches for the corresponding equipment using the values in the SRS_MEP_Equipment_Id and SRS_MEP_Link_Id parameters. | Once the equipment is found, it determines the MEP Space and the Level where the equipment is located. | It updates the following parameters in the annotation: . | SRS_MEP_Location: Updated with the space’s name. | SRS_MEP_RoomID: Updated with the space’s ID. | SRS_MEP_Level: Updated with the level’s name. | . | . ",
     "url": "/docs/sync-equip-to-schematic/#functionality",
     
     "relUrl": "/docs/sync-equip-to-schematic/#functionality"
-  },"74": {
+  },"76": {
     "doc": "Sync equip to schematic",
     "title": "How to Use",
     "content": ". | Ensure that the schematic annotations you want to update already have values assigned to the SRS_MEP_Equipment_Id and SRS_MEP_Link_Id parameters. | Run the Sync equip to schematic command. | The system will process the annotations and automatically update the location data in each one. | . ",
     "url": "/docs/sync-equip-to-schematic/#how-to-use",
     
     "relUrl": "/docs/sync-equip-to-schematic/#how-to-use"
-  },"75": {
+  },"77": {
     "doc": "Sync equip to schematic",
     "title": "Important Notes",
     "content": ". | A warning will be displayed if the equipment corresponding to the ID specified in an annotation is not found. | The equipment ID value must be numeric for the process to work correctly. | The space search is optimized; the command prioritizes reusing already found spaces to improve performance. | . ",
     "url": "/docs/sync-equip-to-schematic/#important-notes",
     
     "relUrl": "/docs/sync-equip-to-schematic/#important-notes"
-  },"76": {
+  },"78": {
     "doc": "Sync equip to schematic",
     "title": "Sync equip to schematic",
     "content": " ",
     "url": "/docs/sync-equip-to-schematic/",
     
     "relUrl": "/docs/sync-equip-to-schematic/"
-  },"77": {
+  },"79": {
     "doc": "Edit elements in Excel",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/edit-elements-in-excel/#english-command-title",
     
     "relUrl": "/docs/edit-elements-in-excel/#english-command-title"
-  },"78": {
+  },"80": {
     "doc": "Edit elements in Excel",
     "title": "Edit elements in Excel",
     "content": " ",
     "url": "/docs/edit-elements-in-excel/",
     
     "relUrl": "/docs/edit-elements-in-excel/"
-  },"79": {
+  },"81": {
     "doc": "P&ID Linker",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/pid-linker/#english-command-title",
     
     "relUrl": "/docs/pid-linker/#english-command-title"
-  },"80": {
+  },"82": {
     "doc": "P&ID Linker",
     "title": "P&ID Linker",
     "content": " ",
     "url": "/docs/pid-linker/",
     
     "relUrl": "/docs/pid-linker/"
-  },"81": {
+  },"83": {
     "doc": "Sync space params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/sync-space-params/#english-command-title",
     
     "relUrl": "/docs/sync-space-params/#english-command-title"
-  },"82": {
+  },"84": {
     "doc": "Sync space params",
     "title": "Sync space params",
     "content": " ",
     "url": "/docs/sync-space-params/",
     
     "relUrl": "/docs/sync-space-params/"
-  },"83": {
+  },"85": {
     "doc": "Set project params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/set-project-params/#english-command-title",
     
     "relUrl": "/docs/set-project-params/#english-command-title"
-  },"84": {
+  },"86": {
     "doc": "Set project params",
     "title": "Set project params",
     "content": " ",
     "url": "/docs/set-project-params/",
     
     "relUrl": "/docs/set-project-params/"
-  },"85": {
+  },"87": {
     "doc": "Clone&Shift",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/cloneshift/#english-command-title",
     
     "relUrl": "/docs/cloneshift/#english-command-title"
-  },"86": {
+  },"88": {
     "doc": "Clone&Shift",
     "title": "Clone&Shift",
     "content": " ",
     "url": "/docs/cloneshift/",
     
     "relUrl": "/docs/cloneshift/"
-  },"87": {
+  },"89": {
     "doc": "History",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/history/#english-command-title",
     
     "relUrl": "/docs/history/#english-command-title"
-  },"88": {
+  },"90": {
     "doc": "History",
     "title": "History",
     "content": " ",
     "url": "/docs/history/",
     
     "relUrl": "/docs/history/"
-  },"89": {
+  },"91": {
     "doc": "Track scheme",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/track-scheme/#english-command-title",
     
     "relUrl": "/docs/track-scheme/#english-command-title"
-  },"90": {
+  },"92": {
     "doc": "Track scheme",
     "title": "Track scheme",
     "content": " ",
     "url": "/docs/track-scheme/",
     
     "relUrl": "/docs/track-scheme/"
-  },"91": {
+  },"93": {
     "doc": "Cad to Revit",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/cad-to-revit/#english-command-title",
     
     "relUrl": "/docs/cad-to-revit/#english-command-title"
-  },"92": {
+  },"94": {
     "doc": "Cad to Revit",
     "title": "Cad to Revit",
     "content": " ",
