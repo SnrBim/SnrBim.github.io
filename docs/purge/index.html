@@ -59,8 +59,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Purge" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The Purge tool is designed to clean up a project from unused elements in addition to the built-in Purge Unused command." />
+<meta property="og:description" content="The Purge tool is designed to clean up a project from unused elements in addition to the built-in Purge Unused command." />
 <link rel="canonical" href="https://snrbim.github.io/docs/purge/" />
 <meta property="og:url" content="https://snrbim.github.io/docs/purge/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -68,7 +68,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Purge" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Purge","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/purge/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The Purge tool is designed to clean up a project from unused elements in addition to the built-in Purge Unused command.","headline":"Purge","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/purge/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -256,10 +256,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="english-command-title">
+            <h1 class="no_toc" id="purge---project-cleanup">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#purge---project-cleanup" class="anchor-heading" aria-labelledby="purge---project-cleanup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Purge - Project Cleanup
   
   
 </h1>
@@ -269,10 +269,75 @@
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#what-can-be-removed" id="markdown-toc-what-can-be-removed">What can be removed?</a></li>
+  <li><a href="#additional-features" id="markdown-toc-additional-features">Additional Features</a></li>
+  <li><a href="#usage" id="markdown-toc-usage">Usage</a></li>
+</ol>
 
 </details>
 
-<p>This is the English content for the command documentation.</p>
+<p>The Purge tool is designed to clean up a project from unused elements in addition to the built-in Purge Unused command.</p>
+<h2 id="what-can-be-removed">
+  
+  
+    <a href="#what-can-be-removed" class="anchor-heading" aria-labelledby="what-can-be-removed"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> What can be removed?
+  
+  
+</h2>
+    
+
+<p>The tool allows you to selectively remove the following types of elements:</p>
+
+<ul>
+  <li><strong>Sheet-free Views and Schedules</strong>: Removes views and schedules that are not placed on any project sheet.</li>
+  <li><strong>Unused View Templates</strong>: Removes view templates that are not applied to any view.</li>
+  <li><strong>Unused View Filters</strong>: Removes filters that are not used in view graphic overrides.</li>
+  <li><strong>Unused Line Styles</strong>: Removes line styles that are not used in the project.</li>
+  <li><strong>Unused Text Styles</strong>: Removes text styles that are not used in any text notes or schedules.</li>
+  <li><strong>Material Duplicates</strong>: Finds and removes duplicate materials and appearance assets among unused elements.</li>
+</ul>
+<h2 id="additional-features">
+  
+  
+    <a href="#additional-features" class="anchor-heading" aria-labelledby="additional-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Additional Features
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Customizable Ignore List</strong>: You can specify which views or schedules should be ignored during cleanup to prevent them from being deleted. The ignore list can be automatically generated based on the project browser organization.</li>
+  <li><strong>Auto-repeat</strong>: The tool can perform multiple cleanup passes to ensure maximum results, as deleting some elements may make others unused.</li>
+  <li><strong>Run Native Revit Purge</strong>: The tool can also run the built-in Revit command to purge unused elements.</li>
+  <li><strong>Work Report</strong>: After cleanup is complete, a text report is generated with a list of all deleted elements.</li>
+</ul>
+
+<p><img src="image.png" alt="Window appearance" /></p>
+<h2 id="usage">
+  
+  
+    <a href="#usage" class="anchor-heading" aria-labelledby="usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Usage
+  
+  
+</h2>
+    
+
+<ol>
+  <li>Run the “Purge” command in Revit.</li>
+  <li>In the opened window, select the element categories you want to remove by checking the corresponding checkboxes.
+    <ul>
+      <li><strong>Tip</strong>: Right-click on a checkbox to quickly select only that category (all others will be deselected).</li>
+    </ul>
+  </li>
+  <li>If necessary, specify an ignore list in the text box. You can generate a default list.</li>
+  <li>Click the “Run” button to start the cleanup process.
+    <ul>
+      <li>For operations with a large number of elements (more than 1000), a progress bar with cancellation option will be displayed.</li>
+    </ul>
+  </li>
+  <li>Review the work report after completion.</li>
+</ol>
 
           
 

@@ -59,8 +59,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Purge" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The Purge tool is designed to clean up a project from unused elements in addition to the built-in Purge Unused command." />
+<meta property="og:description" content="The Purge tool is designed to clean up a project from unused elements in addition to the built-in Purge Unused command." />
 <link rel="canonical" href="https://snrbim.github.io/es/docs/purge/" />
 <meta property="og:url" content="https://snrbim.github.io/es/docs/purge/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -68,7 +68,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Purge" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Purge","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/purge/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The Purge tool is designed to clean up a project from unused elements in addition to the built-in Purge Unused command.","headline":"Purge","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/purge/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -256,10 +256,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="título-del-comando-en-español">
+            <h1 class="no_toc" id="purge---limpieza-de-proyecto">
   
   
-    <a href="#título-del-comando-en-español" class="anchor-heading" aria-labelledby="título-del-comando-en-español"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Título del Comando en Español
+    <a href="#purge---limpieza-de-proyecto" class="anchor-heading" aria-labelledby="purge---limpieza-de-proyecto"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Purge - Limpieza de Proyecto
   
   
 </h1>
@@ -269,10 +269,75 @@
   <summary class="text-delta">
     Tabla de contenidos
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#qué-se-puede-eliminar" id="markdown-toc-qué-se-puede-eliminar">¿Qué se puede eliminar?</a></li>
+  <li><a href="#características-adicionales" id="markdown-toc-características-adicionales">Características Adicionales</a></li>
+  <li><a href="#uso" id="markdown-toc-uso">Uso</a></li>
+</ol>
 
 </details>
 
-<p>Este es el contenido en español para la documentación del comando.</p>
+<p>La herramienta Purge está diseñada para limpiar un proyecto de elementos no utilizados, además del comando integrado Purgar No Utilizados.</p>
+<h2 id="qué-se-puede-eliminar">
+  
+  
+    <a href="#qué-se-puede-eliminar" class="anchor-heading" aria-labelledby="qué-se-puede-eliminar"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ¿Qué se puede eliminar?
+  
+  
+</h2>
+    
+
+<p>La herramienta permite eliminar selectivamente los siguientes tipos de elementos:</p>
+
+<ul>
+  <li><strong>Vistas y Tablas sin Colocar en Planos</strong>: Elimina vistas y tablas que no están colocadas en ningún plano del proyecto.</li>
+  <li><strong>Plantillas de Vista no Utilizadas</strong>: Elimina plantillas de vista que no están aplicadas a ninguna vista.</li>
+  <li><strong>Filtros de Vista no Utilizados</strong>: Elimina filtros que no se utilizan en las anulaciones gráficas de vistas.</li>
+  <li><strong>Estilos de Línea no Utilizados</strong>: Elimina estilos de línea que no se utilizan en el proyecto.</li>
+  <li><strong>Estilos de Texto no Utilizados</strong>: Elimina estilos de texto que no se utilizan en ninguna nota de texto o tabla.</li>
+  <li><strong>Duplicados de Materiales</strong>: Encuentra y elimina materiales duplicados y activos de apariencia entre los elementos no utilizados.</li>
+</ul>
+<h2 id="características-adicionales">
+  
+  
+    <a href="#características-adicionales" class="anchor-heading" aria-labelledby="características-adicionales"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Características Adicionales
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Lista de Ignorar Personalizable</strong>: Puede especificar qué vistas o tablas deben ignorarse durante la limpieza para evitar que se eliminen. La lista de ignorar puede generarse automáticamente según la organización del navegador del proyecto.</li>
+  <li><strong>Repetición Automática</strong>: La herramienta puede realizar múltiples pasadas de limpieza para garantizar resultados máximos, ya que eliminar algunos elementos puede hacer que otros queden sin usar.</li>
+  <li><strong>Ejecutar Purga Nativa de Revit</strong>: La herramienta también puede ejecutar el comando integrado de Revit para purgar elementos no utilizados.</li>
+  <li><strong>Informe de Trabajo</strong>: Después de completar la limpieza, se genera un informe de texto con la lista de todos los elementos eliminados.</li>
+</ul>
+
+<p><img src="image.png" alt="Window appearance" /></p>
+<h2 id="uso">
+  
+  
+    <a href="#uso" class="anchor-heading" aria-labelledby="uso"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Uso
+  
+  
+</h2>
+    
+
+<ol>
+  <li>Ejecute el comando “Purge” en Revit.</li>
+  <li>En la ventana abierta, seleccione las categorías de elementos que desea eliminar marcando las casillas correspondientes.
+    <ul>
+      <li><strong>Consejo</strong>: Haga clic derecho en una casilla para seleccionar rápidamente solo esa categoría (todas las demás se deseleccionarán).</li>
+    </ul>
+  </li>
+  <li>Si es necesario, especifique una lista de ignorar en el cuadro de texto. Puede generar una lista predeterminada.</li>
+  <li>Haga clic en el botón “Run” para iniciar el proceso de limpieza.
+    <ul>
+      <li>Para operaciones con una gran cantidad de elementos (más de 1000), se mostrará una barra de progreso con opción de cancelación.</li>
+    </ul>
+  </li>
+  <li>Revise el informe de trabajo después de completar.</li>
+</ol>
 
           
 
