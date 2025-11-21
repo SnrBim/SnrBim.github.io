@@ -21,7 +21,7 @@ The tool allows you to selectively remove the following types of elements:
 *   **Unused View Filters**: Removes filters that are not used in view graphic overrides.
 *   **Unused Line Styles**: Removes line styles that are not used in the project.
 *   **Unused Text Styles**: Removes text styles that are not used in any text notes or schedules.
-*   **Material Duplicates**: Finds and removes duplicate materials and appearance assets among unused elements.
+*   **Material Duplicates**: Finds and removes duplicate materials and appearance assets among unused elements. *(Available only in Revit 2024 and newer)*
 
 ## Additional Features
 

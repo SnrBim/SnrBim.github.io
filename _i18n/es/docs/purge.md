@@ -21,7 +21,7 @@ La herramienta permite eliminar selectivamente los siguientes tipos de elementos
 *   **Filtros de Vista no Utilizados**: Elimina filtros que no se utilizan en las anulaciones gráficas de vistas.
 *   **Estilos de Línea no Utilizados**: Elimina estilos de línea que no se utilizan en el proyecto.
 *   **Estilos de Texto no Utilizados**: Elimina estilos de texto que no se utilizan en ninguna nota de texto o tabla.
-*   **Duplicados de Materiales**: Encuentra y elimina materiales duplicados y activos de apariencia entre los elementos no utilizados.
+*   **Duplicados de Materiales**: Encuentra y elimina materiales duplicados y activos de apariencia entre los elementos no utilizados. *(Disponible solo en Revit 2024 y posteriores)*
 
 ## Características Adicionales
 
