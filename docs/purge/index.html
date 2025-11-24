@@ -296,6 +296,7 @@
   <li><strong>Unused Line Styles</strong>: Removes line styles that are not used in the project.</li>
   <li><strong>Unused Text Styles</strong>: Removes text styles that are not used in any text notes or schedules.</li>
   <li><strong>Material Duplicates</strong>: Finds and removes duplicate materials and appearance assets among unused elements. <em>(Available only in Revit 2024 and newer)</em></li>
+  <li><strong>Unused Families and Other Elements</strong>: Removes all unused elements detected by Revit API, including families of all categories, groups, imported symbols, and more. Supports name pattern filtering with wildcards (<code class="language-plaintext highlighter-rouge">*</code> and <code class="language-plaintext highlighter-rouge">?</code>). <em>(Available only in Revit 2024 and newer)</em></li>
 </ul>
 <h2 id="additional-features">
   
@@ -307,7 +308,12 @@
     
 
 <ul>
-  <li><strong>Customizable Ignore List</strong>: You can specify which views or schedules should be ignored during cleanup to prevent them from being deleted. The ignore list can be automatically generated based on the project browser organization.</li>
+  <li><strong>Customizable Ignore List</strong>:
+    <ul>
+      <li>For views and schedules: specify parameters and values (format: <code class="language-plaintext highlighter-rouge">ParameterName: Value</code>). The list can be automatically generated based on the project browser organization.</li>
+      <li>For families: use name patterns with wildcards (<code class="language-plaintext highlighter-rouge">*</code> = any characters, <code class="language-plaintext highlighter-rouge">?</code> = one character). Example: <code class="language-plaintext highlighter-rouge">SNR_*</code>, <code class="language-plaintext highlighter-rouge">*_KEEP</code>, <code class="language-plaintext highlighter-rouge">Template?Family</code>.</li>
+    </ul>
+  </li>
   <li><strong>Auto-repeat</strong>: The tool can perform multiple cleanup passes to ensure maximum results, as deleting some elements may make others unused.</li>
   <li><strong>Run Native Revit Purge</strong>: The tool can also run the built-in Revit command to purge unused elements.</li>
   <li><strong>Work Report</strong>: After cleanup is complete, a text report is generated with a list of all deleted elements.</li>
@@ -328,6 +334,7 @@
   <li>In the opened window, select the element categories you want to remove by checking the corresponding checkboxes.
     <ul>
       <li><strong>Tip</strong>: Right-click on a checkbox to quickly select only that category (all others will be deselected).</li>
+      <li><strong>Preview</strong>: The “?” button next to “Unused families and other elements” opens a deletion plan without executing the operation.</li>
     </ul>
   </li>
   <li>If necessary, specify an ignore list in the text box. You can generate a default list.</li>
