@@ -22,10 +22,13 @@ The tool allows you to selectively remove the following types of elements:
 *   **Unused Line Styles**: Removes line styles that are not used in the project.
 *   **Unused Text Styles**: Removes text styles that are not used in any text notes or schedules.
 *   **Material Duplicates**: Finds and removes duplicate materials and appearance assets among unused elements. *(Available only in Revit 2024 and newer)*
+*   **Unused Families and Other Elements**: Removes all unused elements detected by Revit API, including families of all categories, groups, imported symbols, and more. Supports name pattern filtering with wildcards (`*` and `?`). *(Available only in Revit 2024 and newer)*
 
 ## Additional Features
 
-*   **Customizable Ignore List**: You can specify which views or schedules should be ignored during cleanup to prevent them from being deleted. The ignore list can be automatically generated based on the project browser organization.
+*   **Customizable Ignore List**:
+    *   For views and schedules: specify parameters and values (format: `ParameterName: Value`). The list can be automatically generated based on the project browser organization.
+    *   For families: use name patterns with wildcards (`*` = any characters, `?` = one character). Example: `SNR_*`, `*_KEEP`, `Template?Family`.
 *   **Auto-repeat**: The tool can perform multiple cleanup passes to ensure maximum results, as deleting some elements may make others unused.
 *   **Run Native Revit Purge**: The tool can also run the built-in Revit command to purge unused elements.
 *   **Work Report**: After cleanup is complete, a text report is generated with a list of all deleted elements.
@@ -37,6 +40,7 @@ The tool allows you to selectively remove the following types of elements:
 1.  Run the "Purge" command in Revit.
 2.  In the opened window, select the element categories you want to remove by checking the corresponding checkboxes.
     *   **Tip**: Right-click on a checkbox to quickly select only that category (all others will be deselected).
+    *   **Preview**: The "?" button next to "Unused families and other elements" opens a deletion plan without executing the operation.
 3.  If necessary, specify an ignore list in the text box. You can generate a default list.
 4.  Click the "Run" button to start the cleanup process.
     *   For operations with a large number of elements (more than 1000), a progress bar with cancellation option will be displayed.

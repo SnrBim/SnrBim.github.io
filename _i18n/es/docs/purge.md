@@ -22,10 +22,13 @@ La herramienta permite eliminar selectivamente los siguientes tipos de elementos
 *   **Estilos de Línea no Utilizados**: Elimina estilos de línea que no se utilizan en el proyecto.
 *   **Estilos de Texto no Utilizados**: Elimina estilos de texto que no se utilizan en ninguna nota de texto o tabla.
 *   **Duplicados de Materiales**: Encuentra y elimina materiales duplicados y activos de apariencia entre los elementos no utilizados. *(Disponible solo en Revit 2024 y posteriores)*
+*   **Familias no Utilizadas y Otros Elementos**: Elimina todos los elementos no utilizados detectados por la API de Revit, incluyendo familias de todas las categorías, grupos, símbolos importados y más. Admite filtrado de patrones de nombre con comodines (`*` y `?`). *(Disponible solo en Revit 2024 y posteriores)*
 
 ## Características Adicionales
 
-*   **Lista de Ignorar Personalizable**: Puede especificar qué vistas o tablas deben ignorarse durante la limpieza para evitar que se eliminen. La lista de ignorar puede generarse automáticamente según la organización del navegador del proyecto.
+*   **Lista de Ignorar Personalizable**:
+    *   Para vistas y tablas: especifique parámetros y valores (formato: `ParameterName: Value`). La lista puede generarse automáticamente según la organización del navegador del proyecto.
+    *   Para familias: use patrones de nombre con comodines (`*` = cualquier carácter, `?` = un carácter). Ejemplo: `SNR_*`, `*_KEEP`, `Template?Family`.
 *   **Repetición Automática**: La herramienta puede realizar múltiples pasadas de limpieza para garantizar resultados máximos, ya que eliminar algunos elementos puede hacer que otros queden sin usar.
 *   **Ejecutar Purga Nativa de Revit**: La herramienta también puede ejecutar el comando integrado de Revit para purgar elementos no utilizados.
 *   **Informe de Trabajo**: Después de completar la limpieza, se genera un informe de texto con la lista de todos los elementos eliminados.
@@ -37,6 +40,7 @@ La herramienta permite eliminar selectivamente los siguientes tipos de elementos
 1.  Ejecute el comando "Purge" en Revit.
 2.  En la ventana abierta, seleccione las categorías de elementos que desea eliminar marcando las casillas correspondientes.
     *   **Consejo**: Haga clic derecho en una casilla para seleccionar rápidamente solo esa categoría (todas las demás se deseleccionarán).
+    *   **Vista previa**: El botón "?" junto a "Unused families and other elements" abre un plan de eliminación sin ejecutar la operación.
 3.  Si es necesario, especifique una lista de ignorar en el cuadro de texto. Puede generar una lista predeterminada.
 4.  Haga clic en el botón "Run" para iniciar el proceso de limpieza.
     *   Para operaciones con una gran cantidad de elementos (más de 1000), se mostrará una barra de progreso con opción de cancelación.
