@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Assign spaces to equipment" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The Assign spaces to equipment tool automatically assigns MEP space information to mechanical equipment, duct accessories, and duct terminals based on the MEP space they are located in. It finds the containing space for each element and writes the name and number of that space to an equipment parameter." />
+<meta property="og:description" content="The Assign spaces to equipment tool automatically assigns MEP space information to mechanical equipment, duct accessories, and duct terminals based on the MEP space they are located in. It finds the containing space for each element and writes the name and number of that space to an equipment parameter." />
 <link rel="canonical" href="https://snrbim.github.io/docs/assign-spaces-to-equipment/" />
 <meta property="og:url" content="https://snrbim.github.io/docs/assign-spaces-to-equipment/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Assign spaces to equipment" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Assign spaces to equipment","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/assign-spaces-to-equipment/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The Assign spaces to equipment tool automatically assigns MEP space information to mechanical equipment, duct accessories, and duct terminals based on the MEP space they are located in. It finds the containing space for each element and writes the name and number of that space to an equipment parameter.","headline":"Assign spaces to equipment","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/assign-spaces-to-equipment/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="english-command-title">
+            <h1 class="no_toc" id="assign-spaces-to-equipment">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#assign-spaces-to-equipment" class="anchor-heading" aria-labelledby="assign-spaces-to-equipment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Assign spaces to equipment
   
   
 </h1>
@@ -272,10 +272,125 @@
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#brief-description" id="markdown-toc-brief-description">Brief Description</a></li>
+  <li><a href="#how-it-works" id="markdown-toc-how-it-works">How it works</a></li>
+  <li><a href="#parameter-name-configuration" id="markdown-toc-parameter-name-configuration">Parameter Name Configuration</a></li>
+  <li><a href="#requirements" id="markdown-toc-requirements">Requirements</a></li>
+  <li><a href="#usage" id="markdown-toc-usage">Usage</a></li>
+</ol>
 
 </details>
+<h2 id="brief-description">
+  
+  
+    <a href="#brief-description" class="anchor-heading" aria-labelledby="brief-description"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Brief Description
+  
+  
+</h2>
+    
 
-<p>This is the English content for the command documentation.</p>
+<p>The <code class="language-plaintext highlighter-rouge">Assign spaces to equipment</code> tool automatically assigns MEP space information to mechanical equipment, duct accessories, and duct terminals based on the MEP space they are located in. It finds the containing space for each element and writes the name and number of that space to an equipment parameter.</p>
+<h2 id="how-it-works">
+  
+  
+    <a href="#how-it-works" class="anchor-heading" aria-labelledby="how-it-works"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How it works
+  
+  
+</h2>
+    
+
+<ol>
+  <li><strong>Element Collection</strong>: The tool finds all families in the model from the following categories:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Mechanical Equipment</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Duct Accessories</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Duct Terminals</code></li>
+      <li><code class="language-plaintext highlighter-rouge">MEP Spaces</code></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Search and Linking</strong>: For each element from the tracked categories, the tool determines its insertion point and searches for the MEP space that contains this point.</p>
+  </li>
+  <li>
+    <p><strong>Data Writing</strong>: If a space is found, the tool forms a text string in the format <strong>”<code class="language-plaintext highlighter-rouge">&lt;Space Name&gt;-&lt;Space Number&gt;</code>“</strong> and writes this value to the equipment’s parameter (the name of which can be configured, see “Parameter Name Configuration” section). By default, this is <strong><code class="language-plaintext highlighter-rouge">SRS_MEP_Room_Space_Mark</code></strong>.</p>
+
+    <p><em>For example, if the space has the Name “Office” and Number “101”, the value “Office-101” will be written to the parameter.</em></p>
+  </li>
+  <li><strong>Report</strong>: Upon completion, the tool displays a report indicating:
+    <ul>
+      <li>The total number of elements found.</li>
+      <li>The number of elements whose parameters were updated.</li>
+      <li>The number of elements whose data was already up-to-date.</li>
+      <li>The number of successfully linked elements.</li>
+      <li>A list of errors and warnings if any elements could not be processed (e.g., if an element is not located in any space or if it lacks the necessary parameter).</li>
+    </ul>
+  </li>
+</ol>
+<h2 id="parameter-name-configuration">
+  
+  
+    <a href="#parameter-name-configuration" class="anchor-heading" aria-labelledby="parameter-name-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Parameter Name Configuration
+  
+  
+</h2>
+    
+
+<p>The parameter name where room information is written is <code class="language-plaintext highlighter-rouge">SRS_MEP_Room_Space_Mark</code> by default. You can change this name by editing the command’s settings file.</p>
+
+<ol>
+  <li>
+    <p><strong>Locate the settings file</strong>: The <code class="language-plaintext highlighter-rouge">Settings.json</code> file is located at the following path:
+<code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\Settings.json</code></p>
+  </li>
+  <li>
+    <p><strong>Open the file</strong>: Open <code class="language-plaintext highlighter-rouge">Settings.json</code> with any text editor (e.g., Notepad).</p>
+  </li>
+  <li>
+    <p><strong>Change the value</strong>: Inside the file, find the section related to the <code class="language-plaintext highlighter-rouge">AssignSpacesToEquipment</code> command and change the value of the <code class="language-plaintext highlighter-rouge">EquipmentSpaceParameter</code> to your desired name.</p>
+
+    <p>Example:</p>
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"SNR.BimTools.AssignSpacesToEquipment.Settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"EquipmentSpaceParameter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My_Room_Parameter"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+    <p>Ensure that the new parameter name exactly matches the parameter name in your Revit project.</p>
+  </li>
+  <li>
+    <p><strong>Save the file</strong>: Save the changes to <code class="language-plaintext highlighter-rouge">Settings.json</code>. The command will use the new parameter name the next time it runs, <strong>no Revit restart is required</strong>.</p>
+  </li>
+</ol>
+<h2 id="requirements">
+  
+  
+    <a href="#requirements" class="anchor-heading" aria-labelledby="requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Requirements
+  
+  
+</h2>
+    
+
+<ul>
+  <li>For correct operation, the tracked elements must have a text parameter with the name specified in the command’s settings (by default, this is <strong><code class="language-plaintext highlighter-rouge">SRS_MEP_Room_Space_Mark</code></strong>).</li>
+  <li>The model must contain correctly modeled <code class="language-plaintext highlighter-rouge">MEP Spaces</code>.</li>
+</ul>
+<h2 id="usage">
+  
+  
+    <a href="#usage" class="anchor-heading" aria-labelledby="usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Usage
+  
+  
+</h2>
+    
+
+<ol>
+  <li>Navigate to the <strong>SENER</strong> tab.</li>
+  <li>In the <strong>BIM Tools</strong> panel, click the <strong>“Assign spaces to equipment”</strong> button.</li>
+  <li>Wait for the window with the operation report to appear.</li>
+</ol>
+
+<p>The tool does not require prior selection of elements and processes all eligible elements in the project.</p>
 
           
 
