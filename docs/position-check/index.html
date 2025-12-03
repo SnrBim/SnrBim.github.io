@@ -16,7 +16,7 @@
 
     .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(7)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(10)) > a,
     .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
@@ -26,14 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(7) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(10) > a {
       font-weight: 600;
       text-decoration: none;
     }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(7) > button svg {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(10) > button svg {
       transform: rotate(-90deg);
     }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(7) > ul.nav-list {
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(10) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Edit elements in Excel | Sener BimTools Docs</title>
+<title>Position check | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Edit elements in Excel" />
+<meta property="og:title" content="Position check" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
-<link rel="canonical" href="https://snrbim.github.io/docs/edit-elements-in-excel/" />
-<meta property="og:url" content="https://snrbim.github.io/docs/edit-elements-in-excel/" />
+<meta name="description" content="Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed." />
+<meta property="og:description" content="Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed." />
+<link rel="canonical" href="https://snrbim.github.io/docs/position-check/" />
+<meta property="og:url" content="https://snrbim.github.io/docs/position-check/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Edit elements in Excel" />
+<meta property="twitter:title" content="Position check" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Edit elements in Excel","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/edit-elements-in-excel/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed.","headline":"Position check","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/position-check/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -251,7 +251,7 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/docs/1Common.html">Common</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Edit elements in Excel</span></li>
+    <li class="breadcrumb-nav-list-item"><span>Position check</span></li>
   </ol>
 </nav>
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="english-command-title">
+            <h1 class="no_toc" id="position-check">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#position-check" class="anchor-heading" aria-labelledby="position-check"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Position Check
   
   
 </h1>
@@ -272,10 +272,273 @@
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#what-the-command-does" id="markdown-toc-what-the-command-does">What the Command Does</a></li>
+  <li><a href="#preparation" id="markdown-toc-preparation">Preparation</a></li>
+  <li><a href="#usage" id="markdown-toc-usage">Usage</a></li>
+  <li><a href="#results" id="markdown-toc-results">Results</a>    <ol>
+      <li><a href="#summary-sheet" id="markdown-toc-summary-sheet">“Summary” Sheet</a></li>
+      <li><a href="#detail-sheet" id="markdown-toc-detail-sheet">“Detail” Sheet</a></li>
+    </ol>
+  </li>
+  <li><a href="#features" id="markdown-toc-features">Features</a></li>
+  <li><a href="#known-limitations" id="markdown-toc-known-limitations">Known Limitations</a></li>
+</ol>
 
 </details>
 
-<p>This is the English content for the command documentation.</p>
+<p>Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed.</p>
+<h2 id="what-the-command-does">
+  
+  
+    <a href="#what-the-command-does" class="anchor-heading" aria-labelledby="what-the-command-does"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> What the Command Does
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Collects all equipment families (size &gt; 100 mm) from current project and linked files</li>
+  <li>Groups equipment by spaces (MEP Spaces)</li>
+  <li>Compares current state with previous report (if specified)</li>
+  <li>Determines change types: new elements, deleted, moved, size changed</li>
+  <li>Tracks changes in space parameters (area, perimeter)</li>
+  <li>Generates Excel report with two sheets: summary by spaces and detail by elements</li>
+  <li>Shows who last edited each element</li>
+</ul>
+<h2 id="preparation">
+  
+  
+    <a href="#preparation" class="anchor-heading" aria-labelledby="preparation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Preparation
+  
+  
+</h2>
+    
+
+<p><strong>Requirements:</strong></p>
+<ul>
+  <li>Project must contain MEP Spaces</li>
+  <li>Equipment families must have maximum dimension greater than 100 mm</li>
+  <li>For change tracking: previous report generated by this command</li>
+</ul>
+
+<p><strong>Recommendations:</strong></p>
+<ul>
+  <li>Ensure all spaces are correctly placed and have area</li>
+  <li>For first run, previous report is not required — a baseline snapshot will be created</li>
+</ul>
+<h2 id="usage">
+  
+  
+    <a href="#usage" class="anchor-heading" aria-labelledby="usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Usage
+  
+  
+</h2>
+    
+
+<ol>
+  <li>Launch <strong>Position Check</strong> command from BIMTools panel</li>
+  <li>In the opened window, specify file paths:
+    <ul>
+      <li><strong>Previous Report</strong>: path to previous Excel report <em>(optional, leave empty for first run)</em></li>
+      <li><strong>New Report Path</strong>: path and filename for new Excel report <em>(required)</em></li>
+    </ul>
+  </li>
+  <li>Use <strong>Browse…</strong> buttons to select files through dialog</li>
+  <li>Click <strong>Run</strong> button (or press Enter)</li>
+  <li>Wait for analysis completion — progress bar will show space processing</li>
+  <li>After completion, open the generated Excel file</li>
+</ol>
+<h2 id="results">
+  
+  
+    <a href="#results" class="anchor-heading" aria-labelledby="results"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Results
+  
+  
+</h2>
+    
+
+<p>Command creates Excel file with two sheets:</p>
+<h3 id="summary-sheet">
+  
+  
+    <a href="#summary-sheet" class="anchor-heading" aria-labelledby="summary-sheet"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> “Summary” Sheet
+  
+  
+</h3>
+    
+
+<p>Contains information for each space:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Description</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Space</strong></td>
+      <td>Space name (clickable link to details)</td>
+      <td>“Office 101”</td>
+    </tr>
+    <tr>
+      <td><strong>Area (m²)</strong></td>
+      <td>Space area in square meters</td>
+      <td>42.5</td>
+    </tr>
+    <tr>
+      <td><strong>Perimeter (m)</strong></td>
+      <td>Space perimeter in meters</td>
+      <td>26.3</td>
+    </tr>
+    <tr>
+      <td><strong>Status</strong></td>
+      <td>Change status</td>
+      <td>“Equipment changed”</td>
+    </tr>
+    <tr>
+      <td><strong>Changed Count</strong></td>
+      <td>Number of changed elements</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td><strong>Sample Items</strong></td>
+      <td>First 5 changed elements</td>
+      <td>“Lamp_01, Lamp_02, Socket_03”</td>
+    </tr>
+    <tr>
+      <td><strong>Deltas</strong></td>
+      <td>Movement distances in meters</td>
+      <td>“0.5, 0.3, 1.2”</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><strong>Space statuses:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Unchanged</code> — no changes</li>
+  <li><code class="language-plaintext highlighter-rouge">Equipment changed</code> — equipment changed</li>
+  <li><code class="language-plaintext highlighter-rouge">Space changed</code> — space parameters changed</li>
+  <li><code class="language-plaintext highlighter-rouge">Space and equipment changed</code> — both changed</li>
+</ul>
+<h3 id="detail-sheet">
+  
+  
+    <a href="#detail-sheet" class="anchor-heading" aria-labelledby="detail-sheet"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> “Detail” Sheet
+  
+  
+</h3>
+    
+
+<p>Contains detailed information for each element:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Space</strong></td>
+      <td>Space name (clickable link to summary)</td>
+    </tr>
+    <tr>
+      <td><strong>Model</strong></td>
+      <td>Model name (current document or linked file)</td>
+    </tr>
+    <tr>
+      <td><strong>Element Id</strong></td>
+      <td>Element identifier in Revit</td>
+    </tr>
+    <tr>
+      <td><strong>Element Name</strong></td>
+      <td>Element name</td>
+    </tr>
+    <tr>
+      <td><strong>Category</strong></td>
+      <td>Element category</td>
+    </tr>
+    <tr>
+      <td><strong>Old X/Y/Z (m)</strong></td>
+      <td>Previous position in meters</td>
+    </tr>
+    <tr>
+      <td><strong>New X/Y/Z (m)</strong></td>
+      <td>Current position in meters</td>
+    </tr>
+    <tr>
+      <td><strong>Delta (m)</strong></td>
+      <td>Movement distance</td>
+    </tr>
+    <tr>
+      <td><strong>Old Size (m)</strong></td>
+      <td>Previous size (W × H × D)</td>
+    </tr>
+    <tr>
+      <td><strong>New Size (m)</strong></td>
+      <td>Current size (W × H × D)</td>
+    </tr>
+    <tr>
+      <td><strong>Status</strong></td>
+      <td>Change type: New, Deleted, Moved, SizeChanged, Unchanged</td>
+    </tr>
+    <tr>
+      <td><strong>Last Changed By</strong></td>
+      <td>Last editor name <em>(workshared projects only)</em></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><strong>Sorting:</strong> Elements within each space are sorted by movement distance (descending).</p>
+
+<p><strong>Navigation:</strong> All space names are hyperlinks for quick navigation between Summary and Detail sheets.</p>
+<h2 id="features">
+  
+  
+    <a href="#features" class="anchor-heading" aria-labelledby="features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features
+  
+  
+</h2>
+    
+
+<p><strong>Change detection threshold:</strong></p>
+<ul>
+  <li>Movement is detected when displacement exceeds 50 mm (0.05 m)</li>
+  <li>Size change is detected when difference exceeds 50 mm</li>
+</ul>
+
+<p><strong>Element size:</strong></p>
+<ul>
+  <li>Only elements with maximum dimension greater than 100 mm are tracked</li>
+  <li>Small elements (fasteners, hardware) are not included</li>
+</ul>
+
+<p><strong>Unique identification:</strong></p>
+<ul>
+  <li>Each element is identified by combination of model name and Element ID</li>
+  <li>This allows correct tracking of elements from different linked files</li>
+</ul>
+<h2 id="known-limitations">
+  
+  
+    <a href="#known-limitations" class="anchor-heading" aria-labelledby="known-limitations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Known Limitations
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Command tracks only elements with insertion point (<code class="language-plaintext highlighter-rouge">LocationPoint</code>), linear elements (<code class="language-plaintext highlighter-rouge">LocationCurve</code>) are not included</li>
+  <li>Elements outside spaces are not included in report</li>
+  <li>To get last editor information, project must be workshared</li>
+  <li>On first run (without previous report), all elements will be marked as <code class="language-plaintext highlighter-rouge">New</code></li>
+  <li>Space collection from linked models is disabled (can be enabled if needed)</li>
+</ul>
 
           
 

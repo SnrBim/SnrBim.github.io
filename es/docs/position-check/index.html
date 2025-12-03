@@ -16,7 +16,7 @@
 
     .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(10)) > a,
     .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
@@ -26,14 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(10) > a {
       font-weight: 600;
       text-decoration: none;
     }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(10) > button svg {
       transform: rotate(-90deg);
     }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(10) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Cad to Revit | Sener BimTools Docs</title>
+<title>Position check | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Cad to Revit" />
+<meta property="og:title" content="Position check" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
-<link rel="canonical" href="https://snrbim.github.io/es/docs/cad-to-revit/" />
-<meta property="og:url" content="https://snrbim.github.io/es/docs/cad-to-revit/" />
+<meta name="description" content="Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed." />
+<meta property="og:description" content="Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed." />
+<link rel="canonical" href="https://snrbim.github.io/es/docs/position-check/" />
+<meta property="og:url" content="https://snrbim.github.io/es/docs/position-check/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Cad to Revit" />
+<meta property="twitter:title" content="Position check" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Cad to Revit","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/cad-to-revit/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed.","headline":"Position check","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/position-check/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -251,7 +251,7 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/es/docs/1Common.html">Common</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Cad to Revit</span></li>
+    <li class="breadcrumb-nav-list-item"><span>Position check</span></li>
   </ol>
 </nav>
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="título-del-comando-en-español">
+            <h1 class="no_toc" id="position-check">
   
   
-    <a href="#título-del-comando-en-español" class="anchor-heading" aria-labelledby="título-del-comando-en-español"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Título del Comando en Español
+    <a href="#position-check" class="anchor-heading" aria-labelledby="position-check"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Position Check
   
   
 </h1>
@@ -272,10 +272,273 @@
   <summary class="text-delta">
     Tabla de contenidos
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#qué-hace-el-comando" id="markdown-toc-qué-hace-el-comando">Qué hace el comando</a></li>
+  <li><a href="#preparación" id="markdown-toc-preparación">Preparación</a></li>
+  <li><a href="#uso" id="markdown-toc-uso">Uso</a></li>
+  <li><a href="#resultados" id="markdown-toc-resultados">Resultados</a>    <ol>
+      <li><a href="#hoja-summary-resumen" id="markdown-toc-hoja-summary-resumen">Hoja “Summary” (Resumen)</a></li>
+      <li><a href="#hoja-detail-detalle" id="markdown-toc-hoja-detail-detalle">Hoja “Detail” (Detalle)</a></li>
+    </ol>
+  </li>
+  <li><a href="#características" id="markdown-toc-características">Características</a></li>
+  <li><a href="#limitaciones-conocidas" id="markdown-toc-limitaciones-conocidas">Limitaciones conocidas</a></li>
+</ol>
 
 </details>
 
-<p>Este es el contenido en español para la documentación del comando.</p>
+<p>El comando rastrea cambios en posiciones y tamaños de equipos en espacios entre dos instantáneas del modelo, generando un informe detallado en Excel para determinar si es necesario recalcular la iluminación.</p>
+<h2 id="qué-hace-el-comando">
+  
+  
+    <a href="#qué-hace-el-comando" class="anchor-heading" aria-labelledby="qué-hace-el-comando"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Qué hace el comando
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Recopila todas las familias de equipos (tamaño &gt; 100 mm) del proyecto actual y archivos vinculados</li>
+  <li>Agrupa equipos por espacios (MEP Spaces)</li>
+  <li>Compara el estado actual con el informe anterior (si se especifica)</li>
+  <li>Determina tipos de cambios: elementos nuevos, eliminados, movidos, con tamaño cambiado</li>
+  <li>Rastrea cambios en parámetros de espacios (área, perímetro)</li>
+  <li>Genera informe Excel con dos hojas: resumen por espacios y detalle por elementos</li>
+  <li>Muestra quién editó por última vez cada elemento</li>
+</ul>
+<h2 id="preparación">
+  
+  
+    <a href="#preparación" class="anchor-heading" aria-labelledby="preparación"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Preparación
+  
+  
+</h2>
+    
+
+<p><strong>Requisitos:</strong></p>
+<ul>
+  <li>El proyecto debe contener MEP Spaces (espacios)</li>
+  <li>Las familias de equipos deben tener dimensión máxima mayor de 100 mm</li>
+  <li>Para rastrear cambios: informe anterior generado por este comando</li>
+</ul>
+
+<p><strong>Recomendaciones:</strong></p>
+<ul>
+  <li>Asegúrese de que todos los espacios estén colocados correctamente y tengan área</li>
+  <li>Para la primera ejecución, no se requiere informe anterior: se creará una instantánea base</li>
+</ul>
+<h2 id="uso">
+  
+  
+    <a href="#uso" class="anchor-heading" aria-labelledby="uso"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Uso
+  
+  
+</h2>
+    
+
+<ol>
+  <li>Inicie el comando <strong>Position Check</strong> desde el panel BIMTools</li>
+  <li>En la ventana abierta, especifique las rutas de archivos:
+    <ul>
+      <li><strong>Previous Report</strong>: ruta al informe Excel anterior <em>(opcional, déjelo vacío para la primera ejecución)</em></li>
+      <li><strong>New Report Path</strong>: ruta y nombre de archivo para el nuevo informe Excel <em>(obligatorio)</em></li>
+    </ul>
+  </li>
+  <li>Use los botones <strong>Browse…</strong> para seleccionar archivos mediante diálogo</li>
+  <li>Haga clic en el botón <strong>Run</strong> (o presione Enter)</li>
+  <li>Espere a que se complete el análisis: la barra de progreso mostrará el procesamiento de espacios</li>
+  <li>Después de completar, abra el archivo Excel generado</li>
+</ol>
+<h2 id="resultados">
+  
+  
+    <a href="#resultados" class="anchor-heading" aria-labelledby="resultados"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Resultados
+  
+  
+</h2>
+    
+
+<p>El comando crea un archivo Excel con dos hojas:</p>
+<h3 id="hoja-summary-resumen">
+  
+  
+    <a href="#hoja-summary-resumen" class="anchor-heading" aria-labelledby="hoja-summary-resumen"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hoja “Summary” (Resumen)
+  
+  
+</h3>
+    
+
+<p>Contiene información para cada espacio:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Columna</th>
+      <th>Descripción</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Space</strong></td>
+      <td>Nombre del espacio (enlace clicable a detalles)</td>
+      <td>“Office 101”</td>
+    </tr>
+    <tr>
+      <td><strong>Area (m²)</strong></td>
+      <td>Área del espacio en metros cuadrados</td>
+      <td>42.5</td>
+    </tr>
+    <tr>
+      <td><strong>Perimeter (m)</strong></td>
+      <td>Perímetro del espacio en metros</td>
+      <td>26.3</td>
+    </tr>
+    <tr>
+      <td><strong>Status</strong></td>
+      <td>Estado de cambios</td>
+      <td>“Equipment changed”</td>
+    </tr>
+    <tr>
+      <td><strong>Changed Count</strong></td>
+      <td>Número de elementos cambiados</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td><strong>Sample Items</strong></td>
+      <td>Primeros 5 elementos cambiados</td>
+      <td>“Lamp_01, Lamp_02, Socket_03”</td>
+    </tr>
+    <tr>
+      <td><strong>Deltas</strong></td>
+      <td>Distancias de movimiento en metros</td>
+      <td>“0.5, 0.3, 1.2”</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><strong>Estados de espacios:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Unchanged</code> — sin cambios</li>
+  <li><code class="language-plaintext highlighter-rouge">Equipment changed</code> — equipos cambiados</li>
+  <li><code class="language-plaintext highlighter-rouge">Space changed</code> — parámetros del espacio cambiados</li>
+  <li><code class="language-plaintext highlighter-rouge">Space and equipment changed</code> — ambos cambiados</li>
+</ul>
+<h3 id="hoja-detail-detalle">
+  
+  
+    <a href="#hoja-detail-detalle" class="anchor-heading" aria-labelledby="hoja-detail-detalle"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hoja “Detail” (Detalle)
+  
+  
+</h3>
+    
+
+<p>Contiene información detallada para cada elemento:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Columna</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Space</strong></td>
+      <td>Nombre del espacio (enlace clicable al resumen)</td>
+    </tr>
+    <tr>
+      <td><strong>Model</strong></td>
+      <td>Nombre del modelo (documento actual o archivo vinculado)</td>
+    </tr>
+    <tr>
+      <td><strong>Element Id</strong></td>
+      <td>Identificador del elemento en Revit</td>
+    </tr>
+    <tr>
+      <td><strong>Element Name</strong></td>
+      <td>Nombre del elemento</td>
+    </tr>
+    <tr>
+      <td><strong>Category</strong></td>
+      <td>Categoría del elemento</td>
+    </tr>
+    <tr>
+      <td><strong>Old X/Y/Z (m)</strong></td>
+      <td>Posición anterior en metros</td>
+    </tr>
+    <tr>
+      <td><strong>New X/Y/Z (m)</strong></td>
+      <td>Posición actual en metros</td>
+    </tr>
+    <tr>
+      <td><strong>Delta (m)</strong></td>
+      <td>Distancia de movimiento</td>
+    </tr>
+    <tr>
+      <td><strong>Old Size (m)</strong></td>
+      <td>Tamaño anterior (An × Al × Pr)</td>
+    </tr>
+    <tr>
+      <td><strong>New Size (m)</strong></td>
+      <td>Tamaño actual (An × Al × Pr)</td>
+    </tr>
+    <tr>
+      <td><strong>Status</strong></td>
+      <td>Tipo de cambio: New, Deleted, Moved, SizeChanged, Unchanged</td>
+    </tr>
+    <tr>
+      <td><strong>Last Changed By</strong></td>
+      <td>Nombre del último editor <em>(solo proyectos workshared)</em></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><strong>Ordenamiento:</strong> Los elementos dentro de cada espacio están ordenados por distancia de movimiento (descendente).</p>
+
+<p><strong>Navegación:</strong> Todos los nombres de espacios son hipervínculos para navegación rápida entre hojas Summary y Detail.</p>
+<h2 id="características">
+  
+  
+    <a href="#características" class="anchor-heading" aria-labelledby="características"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Características
+  
+  
+</h2>
+    
+
+<p><strong>Umbral de detección de cambios:</strong></p>
+<ul>
+  <li>El movimiento se detecta cuando el desplazamiento supera 50 mm (0.05 m)</li>
+  <li>El cambio de tamaño se detecta cuando la diferencia supera 50 mm</li>
+</ul>
+
+<p><strong>Tamaño de elementos:</strong></p>
+<ul>
+  <li>Solo se rastrean elementos con dimensión máxima mayor de 100 mm</li>
+  <li>No se incluyen elementos pequeños (sujetadores, herrajes)</li>
+</ul>
+
+<p><strong>Identificación única:</strong></p>
+<ul>
+  <li>Cada elemento se identifica por combinación de nombre de modelo y Element ID</li>
+  <li>Esto permite rastrear correctamente elementos de diferentes archivos vinculados</li>
+</ul>
+<h2 id="limitaciones-conocidas">
+  
+  
+    <a href="#limitaciones-conocidas" class="anchor-heading" aria-labelledby="limitaciones-conocidas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Limitaciones conocidas
+  
+  
+</h2>
+    
+
+<ul>
+  <li>El comando rastrea solo elementos con punto de inserción (<code class="language-plaintext highlighter-rouge">LocationPoint</code>), no se incluyen elementos lineales (<code class="language-plaintext highlighter-rouge">LocationCurve</code>)</li>
+  <li>Los elementos fuera de espacios no se incluyen en el informe</li>
+  <li>Para obtener información del último editor, el proyecto debe ser workshared</li>
+  <li>En la primera ejecución (sin informe anterior), todos los elementos se marcarán como <code class="language-plaintext highlighter-rouge">New</code></li>
+  <li>La recopilación de espacios de modelos vinculados está deshabilitada (se puede habilitar si es necesario)</li>
+</ul>
 
           
 
