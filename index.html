@@ -147,7 +147,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
       </button><a href="/docs/2MEC.html" class="nav-list-link">MEC</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/assign-equip-to-schematic/" class="nav-list-link">Assign equip to schematic</a></li><li class="nav-list-item"><a href="/docs/assign-spaces-to-equipment/" class="nav-list-link">Assign spaces to equipment</a></li><li class="nav-list-item"><a href="/docs/create-dampers/" class="nav-list-link">Create dampers</a></li><li class="nav-list-item"><a href="/docs/pid-linker/" class="nav-list-link">P&ID Linker</a></li><li class="nav-list-item"><a href="/docs/set-ashrae-code/" class="nav-list-link">Set ASHRAE code</a></li><li class="nav-list-item"><a href="/docs/sync-air-flow-to-schematic/" class="nav-list-link">Sync air flow to schematic</a></li><li class="nav-list-item"><a href="/docs/sync-equip-to-schematic/" class="nav-list-link">Sync equip to schematic</a></li><li class="nav-list-item"><a href="/docs/sync-fire-alarm-diagram/" class="nav-list-link">Sync fire alarm diagram</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in ELE category" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
-      </button><a href="/docs/3ELE.html" class="nav-list-link">ELE</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/assign-circuit-to-conduits/" class="nav-list-link">Assign circuit to conduits</a></li><li class="nav-list-item"><a href="/docs/circuit-description/" class="nav-list-link">Circuit description</a></li><li class="nav-list-item"><a href="/docs/cloneshift/" class="nav-list-link">Clone&Shift</a></li><li class="nav-list-item"><a href="/docs/conduit-circuit-sync/" class="nav-list-link">Conduit circuit sync</a></li><li class="nav-list-item"><a href="/docs/convert-lines-to-wires/" class="nav-list-link">Convert lines to wires</a></li><li class="nav-list-item"><a href="/docs/count-sockets/" class="nav-list-link">Count sockets</a></li><li class="nav-list-item"><a href="/docs/create-sockets/" class="nav-list-link">Create sockets</a></li><li class="nav-list-item"><a href="/docs/sync-power-params/" class="nav-list-link">Sync power params</a></li></ul></li></ul>
+      </button><a href="/docs/3ELE.html" class="nav-list-link">ELE</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/assign-circuit-to-conduits/" class="nav-list-link">Assign circuit to conduits</a></li><li class="nav-list-item"><a href="/docs/circuit-description/" class="nav-list-link">Circuit description</a></li><li class="nav-list-item"><a href="/docs/cloneshift/" class="nav-list-link">Clone&Shift</a></li><li class="nav-list-item"><a href="/docs/conduit-circuit-sync/" class="nav-list-link">Conduit circuit sync</a></li><li class="nav-list-item"><a href="/docs/convert-lines-to-wires/" class="nav-list-link">Convert lines to wires</a></li><li class="nav-list-item"><a href="/docs/count-sockets/" class="nav-list-link">Count sockets</a></li><li class="nav-list-item"><a href="/docs/create-sockets/" class="nav-list-link">Create sockets</a></li><li class="nav-list-item"><a href="/docs/sync-power-params/" class="nav-list-link">Sync power params</a></li><li class="nav-list-item"><a href="/docs/transfer-lighting-data-to-space/" class="nav-list-link">Transfer Lighting Data To Space</a></li></ul></li></ul>
   
 </nav>
 
@@ -270,7 +270,7 @@
     
     <label style="margin-left: 10px; user-select: none;">
       <input type="checkbox" class="filter-checkbox" value="ELE" />
-      ELE (8)
+      ELE (9)
     </label>
   
     
@@ -694,17 +694,27 @@
 
   <li data-group="Common">
       
-        <div class="doc-item">
-          <div class="doc-title">
-            <span>Edit elements in Excel (Work in progress)</span>
-          </div>
-          
-            
+        
+          <details>
+            <summary class="doc-item">
+              <div class="doc-title">
+                <a href="/docs/edit-elements-in-excel/">Edit elements in Excel</a>
+              </div>
               
-              <span>Common</span>
-            
-          
-        </div>
+                
+                  
+                  <span>Common</span>
+                
+              
+            </summary>
+            <div class="doc-description">
+              
+              
+              <p>This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas and can update or add data to previously created files.</p>
+
+            </div>
+          </details>
+        
       
     </li>
   
@@ -1043,6 +1053,33 @@
             
           
         </div>
+      
+    </li>
+  
+
+  <li data-group="ELE">
+      
+        
+          <details>
+            <summary class="doc-item">
+              <div class="doc-title">
+                <a href="/docs/transfer-lighting-data-to-space/">Transfer Lighting Data To Space</a>
+              </div>
+              
+                
+                  
+                  <span>ELE</span>
+                
+              
+            </summary>
+            <div class="doc-description">
+              
+              
+              <p>This tool transfers lighting analysis results from a <strong>Generic Model</strong> element to the <strong>Space</strong> element it is located in.</p>
+
+            </div>
+          </details>
+        
       
     </li>
   

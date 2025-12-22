@@ -16,7 +16,7 @@
 
     .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(17)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(9)) > a,
     .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
@@ -26,14 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(17) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(9) > a {
       font-weight: 600;
       text-decoration: none;
-    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(17) > button svg {
+    }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(9) > button svg {
       transform: rotate(-90deg);
-    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(17) > ul.nav-list {
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(9) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>TextoMorph | Sener BimTools Docs</title>
+<title>Transfer Lighting Data To Space | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="TextoMorph" />
+<meta property="og:title" content="Transfer Lighting Data To Space" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
-<link rel="canonical" href="https://snrbim.github.io/docs/textomorph/" />
-<meta property="og:url" content="https://snrbim.github.io/docs/textomorph/" />
+<meta name="description" content="This tool transfers lighting analysis results from a Generic Model element to the Space element it is located in." />
+<meta property="og:description" content="This tool transfers lighting analysis results from a Generic Model element to the Space element it is located in." />
+<link rel="canonical" href="https://snrbim.github.io/docs/transfer-lighting-data-to-space/" />
+<meta property="og:url" content="https://snrbim.github.io/docs/transfer-lighting-data-to-space/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="TextoMorph" />
+<meta property="twitter:title" content="Transfer Lighting Data To Space" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"TextoMorph","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/textomorph/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This tool transfers lighting analysis results from a Generic Model element to the Space element it is located in.","headline":"Transfer Lighting Data To Space","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/transfer-lighting-data-to-space/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -250,8 +250,8 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/1Common.html">Common</a></li>
-    <li class="breadcrumb-nav-list-item"><span>TextoMorph</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/3ELE.html">ELE</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Transfer Lighting Data To Space</span></li>
   </ol>
 </nav>
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="english-command-title">
+            <h1 class="no_toc" id="transfer-lighting-data-to-spaces">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#transfer-lighting-data-to-spaces" class="anchor-heading" aria-labelledby="transfer-lighting-data-to-spaces"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Transfer Lighting Data to Spaces
   
   
 </h1>
@@ -272,10 +272,88 @@
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#what-the-command-does" id="markdown-toc-what-the-command-does">What the Command Does</a></li>
+  <li><a href="#how-to-use" id="markdown-toc-how-to-use">How to Use</a></li>
+  <li><a href="#notifications-and-reports" id="markdown-toc-notifications-and-reports">Notifications and Reports</a></li>
+  <li><a href="#parameter-mapping" id="markdown-toc-parameter-mapping">Parameter Mapping</a></li>
+</ol>
 
 </details>
 
-<p>This is the English content for the command documentation.</p>
+<p>This tool transfers lighting analysis results from a <strong>Generic Model</strong> element to the <strong>Space</strong> element it is located in.</p>
+<h2 id="what-the-command-does">
+  
+  
+    <a href="#what-the-command-does" class="anchor-heading" aria-labelledby="what-the-command-does"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> What the Command Does
+  
+  
+</h2>
+    
+<ul>
+  <li>Identifies the <strong>Space</strong> that contains the selected <strong>Generic Model</strong>.</li>
+  <li>Copies parameter values from the source element to the target <strong>Space</strong>.</li>
+  <li>Uses a configurable mapping to match source and target parameters.</li>
+  <li>Processes multiple elements in a single operation.</li>
+</ul>
+<h2 id="how-to-use">
+  
+  
+    <a href="#how-to-use" class="anchor-heading" aria-labelledby="how-to-use"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How to Use
+  
+  
+</h2>
+    
+<ol>
+  <li><strong>Select Elements</strong>: In your Revit model, select one or more <strong>Generic Model</strong> elements that contain the lighting calculation results. These elements are typically volumetric shapes used for analysis in software like ElumTools.</li>
+  <li><strong>Run the Command</strong>: Navigate to the <strong>SNR</strong> tab and click the <strong>Transfer Light Data</strong> button.</li>
+  <li><strong>Check the Results</strong>: The tool will automatically find the parent <strong>Space</strong> for each selected element and transfer the parameter values according to the configured mapping.</li>
+</ol>
+<h2 id="notifications-and-reports">
+  
+  
+    <a href="#notifications-and-reports" class="anchor-heading" aria-labelledby="notifications-and-reports"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Notifications and Reports
+  
+  
+</h2>
+    
+<p>After the command finishes, a dialog box will appear with a summary of the results:</p>
+<ul>
+  <li>The number of successfully processed elements.</li>
+  <li>The number of elements that were skipped (e.g., if a containing space could not be found).</li>
+  <li>Warnings if any issues occurred during the process (e.g., a parameter was not found or is read-only).</li>
+</ul>
+<h2 id="parameter-mapping">
+  
+  
+    <a href="#parameter-mapping" class="anchor-heading" aria-labelledby="parameter-mapping"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Parameter Mapping
+  
+  
+</h2>
+    
+<p>The mapping between the source <strong>Generic Model</strong> parameters and the target <strong>Space</strong> parameters is configurable. This allows you to adapt the tool to different project templates or parameter naming standards.</p>
+
+<p>The settings file is located at:
+<code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code></p>
+
+<p>Inside this file, find the <code class="language-plaintext highlighter-rouge">SNR.BimTools.TransferLightingDataToSpace.Settings</code> section.</p>
+
+<p><strong>Default Mapping Example:</strong></p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"SNR.BimTools.TransferLightingDataToSpace.Settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ParameterMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Emergency Direct Illuminance Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum em average"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Emergency Direct Illuminance Minimum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum em minimum"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum average"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Minimum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Maximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum maximum"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Minimum To Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum to average"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Minimum To Maximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum to maximum"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>You can edit this file to add, remove, or change the “source parameter”: “target parameter” pairs.</p>
 
           
 

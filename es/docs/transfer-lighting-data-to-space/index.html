@@ -16,7 +16,7 @@
 
     .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(7)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(9)) > a,
     .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
@@ -26,14 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(2) > ul > li:nth-child(7) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(9) > a {
       font-weight: 600;
       text-decoration: none;
-    }.site-nav > ul.nav-list:first-child > li:nth-child(2) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(2) > ul > li:nth-child(7) > button svg {
+    }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(9) > button svg {
       transform: rotate(-90deg);
-    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(2) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(7) > ul.nav-list {
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(9) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Sync equip to schematic | Sener BimTools Docs</title>
+<title>Transfer Lighting Data To Space | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Sync equip to schematic" />
+<meta property="og:title" content="Transfer Lighting Data To Space" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This command automatically updates the data of schematic annotations (Generic Annotation) in Revit, based on the previously assigned equipment ID." />
-<meta property="og:description" content="This command automatically updates the data of schematic annotations (Generic Annotation) in Revit, based on the previously assigned equipment ID." />
-<link rel="canonical" href="https://snrbim.github.io/es/docs/sync-equip-to-schematic/" />
-<meta property="og:url" content="https://snrbim.github.io/es/docs/sync-equip-to-schematic/" />
+<meta name="description" content="This tool transfers lighting analysis results from a Generic Model element to the Space element it is located in." />
+<meta property="og:description" content="This tool transfers lighting analysis results from a Generic Model element to the Space element it is located in." />
+<link rel="canonical" href="https://snrbim.github.io/es/docs/transfer-lighting-data-to-space/" />
+<meta property="og:url" content="https://snrbim.github.io/es/docs/transfer-lighting-data-to-space/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Sync equip to schematic" />
+<meta property="twitter:title" content="Transfer Lighting Data To Space" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This command automatically updates the data of schematic annotations (Generic Annotation) in Revit, based on the previously assigned equipment ID.","headline":"Sync equip to schematic","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/sync-equip-to-schematic/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This tool transfers lighting analysis results from a Generic Model element to the Space element it is located in.","headline":"Transfer Lighting Data To Space","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/transfer-lighting-data-to-space/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -250,8 +250,8 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/es/docs/2MEC.html">MEC</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Sync equip to schematic</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/es/docs/3ELE.html">ELE</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Transfer Lighting Data To Space</span></li>
   </ol>
 </nav>
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="sincronizar-equipo-con-esquema">
+            <h1 class="no_toc" id="transferir-datos-de-iluminación-a-espacios">
   
   
-    <a href="#sincronizar-equipo-con-esquema" class="anchor-heading" aria-labelledby="sincronizar-equipo-con-esquema"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Sincronizar Equipo con Esquema
+    <a href="#transferir-datos-de-iluminación-a-espacios" class="anchor-heading" aria-labelledby="transferir-datos-de-iluminación-a-espacios"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Transferir Datos de Iluminación a Espacios
   
   
 </h1>
@@ -273,75 +273,87 @@
     Tabla de contenidos
   </summary>
 <ol id="markdown-toc">
-  <li><a href="#descripción" id="markdown-toc-descripción">Descripción</a></li>
-  <li><a href="#funcionalidad" id="markdown-toc-funcionalidad">Funcionalidad</a></li>
-  <li><a href="#pasos-para-usar" id="markdown-toc-pasos-para-usar">Pasos para Usar</a></li>
-  <li><a href="#notas-importantes" id="markdown-toc-notas-importantes">Notas Importantes</a></li>
+  <li><a href="#qué-hace-el-comando" id="markdown-toc-qué-hace-el-comando">¿Qué hace el comando?</a></li>
+  <li><a href="#cómo-usar" id="markdown-toc-cómo-usar">Cómo usar</a></li>
+  <li><a href="#notificaciones-e-informes" id="markdown-toc-notificaciones-e-informes">Notificaciones e Informes</a></li>
+  <li><a href="#mapeo-de-parámetros" id="markdown-toc-mapeo-de-parámetros">Mapeo de Parámetros</a></li>
 </ol>
 
 </details>
-<h2 id="descripción">
+
+<p>Esta herramienta transfiere los resultados del análisis de iluminación desde un elemento de <strong>Modelo Genérico</strong> al <strong>Espacio</strong> en el que se encuentra.</p>
+<h2 id="qué-hace-el-comando">
   
   
-    <a href="#descripción" class="anchor-heading" aria-labelledby="descripción"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Descripción
+    <a href="#qué-hace-el-comando" class="anchor-heading" aria-labelledby="qué-hace-el-comando"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ¿Qué hace el comando?
   
   
 </h2>
     
-
-<p>Este comando actualiza automáticamente los datos de las anotaciones esquemáticas (Generic Annotation) en Revit, basándose en el ID de equipo previamente asignado.</p>
-
-<p><img src=".\pic1.png" alt="image" /></p>
-<h2 id="funcionalidad">
-  
-  
-    <a href="#funcionalidad" class="anchor-heading" aria-labelledby="funcionalidad"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Funcionalidad
-  
-  
-</h2>
-    
-
-<p>Para cada anotación de esquema procesada, el comando realiza las siguientes acciones:</p>
-
-<ol>
-  <li>Busca el equipo correspondiente utilizando los valores de los parámetros <code class="language-plaintext highlighter-rouge">SRS_MEP_Equipment_Id</code> y <code class="language-plaintext highlighter-rouge">SRS_MEP_Link_Id</code>.</li>
-  <li>Una vez encontrado el equipo, determina el espacio (MEP Space) y el nivel en el que este se encuentra.</li>
-  <li>Actualiza los siguientes parámetros en la anotación:
-    <ul>
-      <li><strong><code class="language-plaintext highlighter-rouge">SRS_MEP_Location</code></strong>: Se actualiza con el nombre del espacio.</li>
-      <li><strong><code class="language-plaintext highlighter-rouge">SRS_MEP_RoomID</code></strong>: Se actualiza con el ID del espacio.</li>
-      <li><strong><code class="language-plaintext highlighter-rouge">SRS_MEP_Level</code></strong>: Se actualiza con el nombre del nivel.</li>
-    </ul>
-  </li>
-</ol>
-<h2 id="pasos-para-usar">
-  
-  
-    <a href="#pasos-para-usar" class="anchor-heading" aria-labelledby="pasos-para-usar"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pasos para Usar
-  
-  
-</h2>
-    
-
-<ol>
-  <li>Asegúrate de que las anotaciones de esquema que deseas actualizar ya tienen asignados los valores en los parámetros <code class="language-plaintext highlighter-rouge">SRS_MEP_Equipment_Id</code> y <code class="language-plaintext highlighter-rouge">SRS_MEP_Link_Id</code>.</li>
-  <li>Ejecuta el comando <strong>Sync equip to schematic</strong>.</li>
-  <li>El sistema recorrerá las anotaciones y actualizará automáticamente los datos de ubicación en cada una.</li>
-</ol>
-<h2 id="notas-importantes">
-  
-  
-    <a href="#notas-importantes" class="anchor-heading" aria-labelledby="notas-importantes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Notas Importantes
-  
-  
-</h2>
-    
-
 <ul>
-  <li>Se mostrará una advertencia en caso de que no se encuentre un equipo correspondiente al ID especificado en una anotación.</li>
-  <li>El valor del ID de equipo debe ser numérico para que el proceso funcione correctamente.</li>
-  <li>La búsqueda de espacios está optimizada; el comando prioriza la reutilización de espacios ya encontrados para mejorar el rendimiento.</li>
+  <li>Identifica el <strong>Espacio</strong> que contiene el <strong>Modelo Genérico</strong> seleccionado.</li>
+  <li>Copia los valores de los parámetros del elemento de origen al <strong>Espacio</strong> de destino.</li>
+  <li>Utiliza un mapeo configurable para hacer coincidir los parámetros de origen y destino.</li>
+  <li>Procesa múltiples elementos en una sola operación.</li>
 </ul>
+<h2 id="cómo-usar">
+  
+  
+    <a href="#cómo-usar" class="anchor-heading" aria-labelledby="cómo-usar"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Cómo usar
+  
+  
+</h2>
+    
+<ol>
+  <li><strong>Seleccionar Elementos</strong>: En su modelo de Revit, seleccione uno o más elementos de <strong>Modelo Genérico</strong> que contengan los resultados del cálculo de iluminación. Estos elementos suelen ser formas volumétricas utilizadas para el análisis en software como ElumTools.</li>
+  <li><strong>Ejecutar el Comando</strong>: Vaya a la pestaña <strong>SNR</strong> y haga clic en el botón <strong>Transfer Light Data</strong>.</li>
+  <li><strong>Verificar los Resultados</strong>: La herramienta encontrará automáticamente el <strong>Espacio</strong> principal para cada elemento seleccionado y transferirá los valores de los parámetros según el mapeo configurado.</li>
+</ol>
+<h2 id="notificaciones-e-informes">
+  
+  
+    <a href="#notificaciones-e-informes" class="anchor-heading" aria-labelledby="notificaciones-e-informes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Notificaciones e Informes
+  
+  
+</h2>
+    
+<p>Al finalizar el comando, aparecerá un cuadro de diálogo con un resumen de los resultados:</p>
+<ul>
+  <li>El número de elementos procesados con éxito.</li>
+  <li>El número de elementos que se omitieron (por ejemplo, si no se pudo encontrar un espacio contenedor).</li>
+  <li>Advertencias si surgieron problemas durante el proceso (por ejemplo, un parámetro no se encontró o es de solo lectura).</li>
+</ul>
+<h2 id="mapeo-de-parámetros">
+  
+  
+    <a href="#mapeo-de-parámetros" class="anchor-heading" aria-labelledby="mapeo-de-parámetros"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Mapeo de Parámetros
+  
+  
+</h2>
+    
+<p>El mapeo entre los parámetros del <strong>Modelo Genérico</strong> de origen y los parámetros del <strong>Espacio</strong> de destino es configurable. Esto le permite adaptar la herramienta a diferentes plantillas de proyecto o estándares de nomenclatura de parámetros.</p>
+
+<p>El archivo de configuración se encuentra en:
+<code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code></p>
+
+<p>Dentro de este archivo, busque la sección <code class="language-plaintext highlighter-rouge">SNR.BimTools.TransferLightingDataToSpace.Settings</code>.</p>
+
+<p><strong>Ejemplo de Mapeo por Defecto:</strong></p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"SNR.BimTools.TransferLightingDataToSpace.Settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ParameterMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Emergency Direct Illuminance Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum em average"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Emergency Direct Illuminance Minimum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum em minimum"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum average"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Minimum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Maximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum maximum"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Minimum To Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum to average"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"General Use Illuminance Minimum To Maximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum to maximum"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>Puede editar este archivo para agregar, eliminar o cambiar los pares “parámetro de origen”: “parámetro de destino”.</p>
 
           
 
