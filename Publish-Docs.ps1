@@ -28,8 +28,8 @@
     The absolute path to the destination Jekyll project root directory.
 #>
 param(
-    [string]$SourceRoot = "C:\Users\1M06174\source\repos\BIMTools\BIMTools",
-    [string]$DestRoot = "C:\Users\1M06174\source\repos\BIMTools\publish\SnrBim.github.io"
+    [string]$SourceRoot = "C:\Users\1M06174\OneDrive - SENER\repos\BIMTools\BIMTools",
+    [string]$DestRoot = "C:\Users\1M06174\OneDrive - SENER\repos\BIMTools\publish\SnrBim.github.io"
 )
 
 # --- Helper Functions ---
