@@ -20,7 +20,9 @@ Esta herramienta transfiere los resultados del análisis de iluminación desde u
 
 ## Cómo usar
 1.  **Seleccionar Elementos**: En su modelo de Revit, seleccione uno o más elementos de **Modelo Genérico** que contengan los resultados del cálculo de iluminación. Estos elementos suelen ser formas volumétricas utilizadas para el análisis en software como ElumTools.
-2.  **Ejecutar el Comando**: Vaya a la pestaña **SNR** y haga clic en el botón **Transfer Light Data**.
+2.  **Ejecutar el Comando**: Vaya a la pestaña **SNR** y haga clic en uno de los botones:
+    - **"Transfer Light Data N"** - para el modo de iluminación normal (copia 5 parámetros: iluminación promedio, mínima, máxima y relaciones)
+    - **"Transfer Light Data E"** - para el modo de iluminación de emergencia (copia 2 parámetros: iluminación promedio y mínima de emergencia)
 3.  **Verificar los Resultados**: La herramienta encontrará automáticamente el **Espacio** principal para cada elemento seleccionado y transferirá los valores de los parámetros según el mapeo configurado.
 
 ## Notificaciones e Informes
@@ -30,7 +32,7 @@ Al finalizar el comando, aparecerá un cuadro de diálogo con un resumen de los 
 -   Advertencias si surgieron problemas durante el proceso (por ejemplo, un parámetro no se encontró o es de solo lectura).
 
 ## Mapeo de Parámetros
-El mapeo entre los parámetros del **Modelo Genérico** de origen y los parámetros del **Espacio** de destino es configurable. Esto le permite adaptar la herramienta a diferentes plantillas de proyecto o estándares de nomenclatura de parámetros.
+El mapeo entre los parámetros del **Modelo Genérico** de origen y los parámetros del **Espacio** de destino es configurable por separado para cada modo. Esto le permite adaptar la herramienta a diferentes plantillas de proyecto o estándares de nomenclatura de parámetros.
 
 El archivo de configuración se encuentra en:
 `%AppData%\Sener\BimTools\Settings.json`
@@ -41,17 +43,26 @@ Dentro de este archivo, busque la sección `SNR.BimTools.TransferLightingDataToS
 ```json
 {
   "SNR.BimTools.TransferLightingDataToSpace.Settings": {
-    "ParameterMapping": {
-      "Emergency Direct Illuminance Average": "Illum em average",
-      "Emergency Direct Illuminance Minimum": "Illum em minimum",
+    "SpaceSearchVerticalOffset": 1.0,
+    "NormalParameterMapping": {
       "General Use Illuminance Average": "Illum average",
       "General Use Illuminance Minimum": "Illum minimum",
       "General Use Illuminance Maximum": "Illum maximum",
       "General Use Illuminance Minimum To Average": "Illum minimum to average",
       "General Use Illuminance Minimum To Maximum": "Illum minimum to maximum"
+    },
+    "EmergencyParameterMapping": {
+      "Emergency Direct Illuminance Average": "Illum em average",
+      "Emergency Direct Illuminance Minimum": "Illum em minimum"
     }
   }
 }
 ```
-Puede editar este archivo para agregar, eliminar o cambiar los pares "parámetro de origen": "parámetro de destino".
+
+**Descripción de parámetros:**
+- `SpaceSearchVerticalOffset` - desplazamiento vertical (en pies) al buscar el espacio contenedor
+- `NormalParameterMapping` - mapeo de parámetros para el modo de iluminación normal
+- `EmergencyParameterMapping` - mapeo de parámetros para el modo de iluminación de emergencia
+
+Puede editar este archivo para agregar, eliminar o cambiar los pares "parámetro de origen": "parámetro de destino" en las respectivas secciones de mapeo.
 
