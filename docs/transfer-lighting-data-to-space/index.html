@@ -306,7 +306,12 @@
     
 <ol>
   <li><strong>Select Elements</strong>: In your Revit model, select one or more <strong>Generic Model</strong> elements that contain the lighting calculation results. These elements are typically volumetric shapes used for analysis in software like ElumTools.</li>
-  <li><strong>Run the Command</strong>: Navigate to the <strong>SNR</strong> tab and click the <strong>Transfer Light Data</strong> button.</li>
+  <li><strong>Run the Command</strong>: Navigate to the <strong>SNR</strong> tab and click one of the buttons:
+    <ul>
+      <li><strong>“Transfer Light Data N”</strong> - for normal lighting mode (copies 5 parameters: average, minimum, maximum illuminance and ratios)</li>
+      <li><strong>“Transfer Light Data E”</strong> - for emergency lighting mode (copies 2 parameters: average and minimum emergency illuminance)</li>
+    </ul>
+  </li>
   <li><strong>Check the Results</strong>: The tool will automatically find the parent <strong>Space</strong> for each selected element and transfer the parameter values according to the configured mapping.</li>
 </ol>
 <h2 id="notifications-and-reports">
@@ -331,7 +336,7 @@
   
 </h2>
     
-<p>The mapping between the source <strong>Generic Model</strong> parameters and the target <strong>Space</strong> parameters is configurable. This allows you to adapt the tool to different project templates or parameter naming standards.</p>
+<p>The mapping between the source <strong>Generic Model</strong> parameters and the target <strong>Space</strong> parameters is configurable separately for each mode. This allows you to adapt the tool to different project templates or parameter naming standards.</p>
 
 <p>The settings file is located at:
 <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code></p>
@@ -341,19 +346,30 @@
 <p><strong>Default Mapping Example:</strong></p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"SNR.BimTools.TransferLightingDataToSpace.Settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"ParameterMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"Emergency Direct Illuminance Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum em average"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Emergency Direct Illuminance Minimum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum em minimum"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"SpaceSearchVerticalOffset"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"NormalParameterMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"General Use Illuminance Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum average"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"General Use Illuminance Minimum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"General Use Illuminance Maximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum maximum"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"General Use Illuminance Minimum To Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum to average"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"General Use Illuminance Minimum To Maximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum minimum to maximum"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"EmergencyParameterMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Emergency Direct Illuminance Average"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum em average"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Emergency Direct Illuminance Minimum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Illum em minimum"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
-<p>You can edit this file to add, remove, or change the “source parameter”: “target parameter” pairs.</p>
+
+<p><strong>Parameter descriptions:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">SpaceSearchVerticalOffset</code> - vertical offset (in feet) when searching for the containing space</li>
+  <li><code class="language-plaintext highlighter-rouge">NormalParameterMapping</code> - parameter mapping for normal lighting mode</li>
+  <li><code class="language-plaintext highlighter-rouge">EmergencyParameterMapping</code> - parameter mapping for emergency lighting mode</li>
+</ul>
+
+<p>You can edit this file to add, remove, or change the “source parameter”: “target parameter” pairs in the respective mapping sections.</p>
 
           
 
