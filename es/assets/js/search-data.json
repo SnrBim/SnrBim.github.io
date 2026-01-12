@@ -650,265 +650,279 @@
     
     "relUrl": "/docs/sync-fire-alarm-diagram/"
   },"93": {
+    "doc": "Create openings",
+    "title": "Crear vanos",
+    "content": "Tabla de contenidos . | Qué hace el comando | Preparación | Uso | Resultados | . El comando automatiza el proceso de creación y actualización de vanos en muros para el paso de elementos de instalaciones (MEP). Analiza intersecciones, considera los vanos existentes, une los nuevos vanos cercanos y genera un informe detallado de las acciones realizadas. Qué hace el comando . | Encuentra intersecciones entre muros y elementos MEP (conductos, tuberías, bandejas de cables, etc.) tanto en el proyecto actual como en los modelos vinculados. | Gestiona los vanos existentes: En lugar de crear duplicados, el comando puede ampliar o unir los vanos que ya existen en el muro. | Une automáticamente los vanos calculados cercanos en uno solo para evitar múltiples perforaciones pequeñas. | Escribe las dimensiones finales de todos los vanos en un parámetro de muro especificado como una lista numerada. | Se configura de forma flexible a través de un cuadro de diálogo, permitiendo al usuario controlar todos los parámetros clave. | Crea un informe detallado de todas las acciones realizadas (creación, modificación, eliminación) y lo muestra en una ventana interactiva. | . Preparación . Antes de ejecutar el comando, asegúrese de que su vista 3D esté configurada para mostrar todos los muros y elementos MEP que desea procesar. Uso . Al ejecutar el comando, se abre un cuadro de diálogo de configuración. | Selección de muros: . | Procesar solo muros seleccionados: Si esta casilla está marcada, el comando solo funcionará con los muros que haya seleccionado antes de ejecutarlo. De lo contrario, se procesarán todos los muros del proyecto. | El botón OK muestra dinámicamente el número de muros que se procesarán. | . | Selección de categorías MEP: . | Marque las casillas de las categorías de sistemas MEP para las que se deben crear vanos. | . | Parámetros de vanos: . | Holgura (mm): Un margen añadido a las dimensiones de cada elemento MEP. Aumenta el tamaño final del vano. Por defecto: 30 mm. | Umbral de unión (mm): El ancho máximo de un tabique entre vanos. Si el espacio entre los bordes de dos vanos adyacentes es menor que este valor, se unirán en uno solo. Por defecto: 100 mm. | Parámetro para información: El nombre del parámetro de texto en el muro donde se escribirá la lista final de todos los tamaños de vanos. Por defecto: Comments. | . | Filtrado y redondeo: . | Tamaño mínimo de elemento MEP (mm): Los elementos MEP cuya dimensión más grande sea menor que el valor especificado serán ignorados. Útil para filtrar elementos pequeños. Por defecto: 0. | Redondeo de dimensiones (mm): Redondea el ancho y el alto final del vano a un múltiplo del número especificado. Por defecto: 10. | Hacia arriba (casilla activada): Redondea al múltiplo mayor más cercano (p. ej., 405 -&gt; 410). | Al más cercano (casilla desactivada): Redondeo matemático (p. ej., 405 -&gt; 400). | . | Visualizar Bounding Box para depuración: Crea geometría en el modelo que muestra los cuadros delimitadores de los elementos MEP. Atención: Esta geometría no se elimina automáticamente. Use esta opción solo para depuración y elimine los elementos creados manualmente para no saturar el proyecto. | . | Ignorar por parámetro: . | Permite establecer reglas para filtrar elementos MEP. Los elementos que cumplan al menos una regla serán ignorados. Los nombres de los parámetros distinguen entre mayúsculas y minúsculas, pero los valores no. | Formato: Cada regla en una nueva línea: NombreParámetro: Valor. | Comodín: Puede usar el símbolo * para que coincida con cualquier secuencia de caracteres. | Pseudoparámetros: Se admiten Family (nombre de familia) и Type (nombre de tipo). | Comentarios: Las líneas que comienzan con ; se ignoran. | Ejemplo: ; Ignorar todos los elementos en subproyectos que contengan \"placeholder\" Workset: *placeholder* ; Ignorar elementos con un comentario específico Comment: *ignore* . | . | . Resultados . Después de realizar los cálculos, el comando muestra un informe interactivo con los resultados, crea/modifica/elimina vanos en el modelo de Revit y escribe la información final en los muros. Escritura en el parámetro de muro: En el parámetro de texto del muro, especificado en la configuración, se escribe una lista numerada de los tamaños finales (AnxAl) de todos los vanos ubicados en dicho muro. Ejemplo: . 1. 630x480 2. 280x330 3. 70x70 . Si no hay vanos en el muro después del procesamiento, el parámetro se borra. Al procesar solo los muros seleccionados, los parámetros de los muros no procesados no se modifican. Este parámetro es útil para crear filtros de vista para mostrar solo aquellos muros que tienen vanos (configurando el filtro con la regla “parámetro no está vacío”). Formato del informe: El informe contiene líneas para cada acción en el formato: Acción | ID de Muro | ID de Vano | Descripción . La columna Descripción tiene una estructura de 5 partes: ID Antiguo | Nuevo Tamaño (AnxAl) | Tamaño Antiguo (AnxAl) | Origen (ID de MEP) | Información de Unión . | CREATED: Se ha creado un nuevo vano. | Ejemplo: CREATED | w777 | op888 | 500x300 | MEP_IDs: main:1,2 | . | MODIFIED: Se ha modificado un vano existente. | Ejemplo: MODIFIED | w778 | op999 | 123 | 600x400 | 500x300 | MEP_IDs: link:3 | Merged with: 456 | . | DELETED: Se ha eliminado un vano existente porque se ha unido a otro. | Ejemplo: DELETED | w779 | op456 | | | Merged into: 999 | . | . ",
+    "url": "/es/docs/create-openings/#crear-vanos",
+    
+    "relUrl": "/docs/create-openings/#crear-vanos"
+  },"94": {
+    "doc": "Create openings",
+    "title": "Create openings",
+    "content": " ",
+    "url": "/es/docs/create-openings/",
+    
+    "relUrl": "/docs/create-openings/"
+  },"95": {
     "doc": "Show CADs",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/show-cads/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/show-cads/#título-del-comando-en-español"
-  },"94": {
+  },"96": {
     "doc": "Show CADs",
     "title": "Show CADs",
     "content": " ",
     "url": "/es/docs/show-cads/",
     
     "relUrl": "/docs/show-cads/"
-  },"95": {
+  },"97": {
     "doc": "Create sockets",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/create-sockets/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/create-sockets/#título-del-comando-en-español"
-  },"96": {
+  },"98": {
     "doc": "Create sockets",
     "title": "Create sockets",
     "content": " ",
     "url": "/es/docs/create-sockets/",
     
     "relUrl": "/docs/create-sockets/"
-  },"97": {
+  },"99": {
     "doc": "Sync equip to schematic",
     "title": "Sincronizar Equipo con Esquema",
     "content": "Tabla de contenidos . | Descripción | Funcionalidad | Pasos para Usar | Notas Importantes | . ",
     "url": "/es/docs/sync-equip-to-schematic/#sincronizar-equipo-con-esquema",
     
     "relUrl": "/docs/sync-equip-to-schematic/#sincronizar-equipo-con-esquema"
-  },"98": {
+  },"100": {
     "doc": "Sync equip to schematic",
     "title": "Descripción",
     "content": "Este comando actualiza automáticamente los datos de las anotaciones esquemáticas (Generic Annotation) en Revit, basándose en el ID de equipo previamente asignado. ",
     "url": "/es/docs/sync-equip-to-schematic/#descripci%C3%B3n",
     
     "relUrl": "/docs/sync-equip-to-schematic/#descripción"
-  },"99": {
+  },"101": {
     "doc": "Sync equip to schematic",
     "title": "Funcionalidad",
     "content": "Para cada anotación de esquema procesada, el comando realiza las siguientes acciones: . | Busca el equipo correspondiente utilizando los valores de los parámetros SRS_MEP_Equipment_Id y SRS_MEP_Link_Id. | Una vez encontrado el equipo, determina el espacio (MEP Space) y el nivel en el que este se encuentra. | Actualiza los siguientes parámetros en la anotación: . | SRS_MEP_Location: Se actualiza con el nombre del espacio. | SRS_MEP_RoomID: Se actualiza con el ID del espacio. | SRS_MEP_Level: Se actualiza con el nombre del nivel. | . | . ",
     "url": "/es/docs/sync-equip-to-schematic/#funcionalidad",
     
     "relUrl": "/docs/sync-equip-to-schematic/#funcionalidad"
-  },"100": {
+  },"102": {
     "doc": "Sync equip to schematic",
     "title": "Pasos para Usar",
     "content": ". | Asegúrate de que las anotaciones de esquema que deseas actualizar ya tienen asignados los valores en los parámetros SRS_MEP_Equipment_Id y SRS_MEP_Link_Id. | Ejecuta el comando Sync equip to schematic. | El sistema recorrerá las anotaciones y actualizará automáticamente los datos de ubicación en cada una. | . ",
     "url": "/es/docs/sync-equip-to-schematic/#pasos-para-usar",
     
     "relUrl": "/docs/sync-equip-to-schematic/#pasos-para-usar"
-  },"101": {
+  },"103": {
     "doc": "Sync equip to schematic",
     "title": "Notas Importantes",
     "content": ". | Se mostrará una advertencia en caso de que no se encuentre un equipo correspondiente al ID especificado en una anotación. | El valor del ID de equipo debe ser numérico para que el proceso funcione correctamente. | La búsqueda de espacios está optimizada; el comando prioriza la reutilización de espacios ya encontrados para mejorar el rendimiento. | . ",
     "url": "/es/docs/sync-equip-to-schematic/#notas-importantes",
     
     "relUrl": "/docs/sync-equip-to-schematic/#notas-importantes"
-  },"102": {
+  },"104": {
     "doc": "Sync equip to schematic",
     "title": "Sync equip to schematic",
     "content": " ",
     "url": "/es/docs/sync-equip-to-schematic/",
     
     "relUrl": "/docs/sync-equip-to-schematic/"
-  },"103": {
+  },"105": {
     "doc": "Edit elements in Excel",
     "title": "Edición de parámetros en Excel",
     "content": "Tabla de contenidos . | Descripción | Funciones adicionales | Uso | Ejemplos de uso . | 1. Renumeración de planos o habitaciones | 2. Copiar la longitud de los muros al parámetro “Comentarios” | 3. Actualización masiva de datos desde un archivo externo | . | . ",
     "url": "/es/docs/edit-elements-in-excel/#edici%C3%B3n-de-par%C3%A1metros-en-excel",
     
     "relUrl": "/docs/edit-elements-in-excel/#edición-de-parámetros-en-excel"
-  },"104": {
+  },"106": {
     "doc": "Edit elements in Excel",
     "title": "Descripción",
     "content": "Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel y puede actualizar o añadir datos a archivos creados anteriormente. ",
     "url": "/es/docs/edit-elements-in-excel/#descripci%C3%B3n",
     
     "relUrl": "/docs/edit-elements-in-excel/#descripción"
-  },"105": {
+  },"107": {
     "doc": "Edit elements in Excel",
     "title": "Funciones adicionales",
     "content": ". | Columnas personalizadas en Excel: Puede añadir nuevas columnas (parámetros) directamente en el archivo de Excel. Al utilizar la función “Update file…”, el comando reconoce automáticamente estas nuevas columnas y las rellena con datos, eliminando la necesidad de seleccionar los parámetros en la interfaz cada vez que se ejecuta. | Conservación de fórmulas y orden de columnas: Si utiliza fórmulas de Excel en las celdas, se conservarán al actualizar el archivo (dichas celdas se marcan en verde). El orden de las columnas también se mantiene, lo que le permite personalizar la vista de la tabla según sus necesidades. | Modo de edición en TXT: Para ediciones sencillas, puede utilizar la opción “Edit as txt file” del menú de opciones adicionales (⋮). Los datos se exportan a un archivo de texto donde cada valor se encuentra en una nueva línea. | Parámetros especiales (nonParams): El comando permite exportar no solo los parámetros estándar de Revit, sino también valores especiales calculados. Tienen un prefijo _ (por ejemplo, _Coordinates, _HostId, _SpaceName, _RoomNumber). Estos parámetros son de solo lectura. | . ",
     "url": "/es/docs/edit-elements-in-excel/#funciones-adicionales",
     
     "relUrl": "/docs/edit-elements-in-excel/#funciones-adicionales"
-  },"106": {
+  },"108": {
     "doc": "Edit elements in Excel",
     "title": "Uso",
     "content": ". | Ejecute el comando “Edit in Excel” desde la pestaña BIMTools en Revit. | En la ventana que aparece, seleccione los parámetros de los elementos que desea exportar/editar. | Utilice las opciones para incluir parámetros de tipo, parámetros de instancia, ordenación alfabética o incluir una hoja con información del proyecto. | Haga clic en “Edit in Excel” para exportar y comenzar a editar. | El comando creará un archivo de Excel con los elementos de Revit como filas y los parámetros seleccionados como columnas. | Después de terminar de editar en Excel, confirme en Revit para importar los cambios. | Nota: Cuando utilice la opción “Edit in Excel” para exportar datos y esperar su edición, el archivo Excel creado se guarda por defecto en la carpeta: %appdata%\\Roaming\\Sener\\BimTools\\Reports\\EditInExcel\\&lt;Nombre_del_Modelo_Revit&gt;\\, con un nombre que incluye la fecha y hora actuales. | . | Utilice “Write to file…” para guardar el archivo de Excel sin esperar a la importación. | Utilice “Update file…” para añadir nuevos elementos o actualizar los existentes en un archivo de Excel ya creado. | Utilice “Read from file…” para importar datos de un archivo de Excel guardado anteriormente. | . ",
     "url": "/es/docs/edit-elements-in-excel/#uso",
     
     "relUrl": "/docs/edit-elements-in-excel/#uso"
-  },"107": {
+  },"109": {
     "doc": "Edit elements in Excel",
     "title": "Ejemplos de uso",
     "content": "1. Renumeración de planos o habitaciones . | Tarea: Tiene un gran conjunto de planos (por ejemplo, más de 100) y necesita cambiar rápidamente su numeración añadiendo un prefijo (por ejemplo, A-101 -&gt; AR-101). Hacerlo manualmente en Revit es lento e incómodo. | Solución: . | Seleccione todos los planos en el Navegador de proyectos. | Ejecute el comando “Edit in Excel” y exporte el parámetro “Número de plano”. | En el archivo de Excel resultante, utilice fórmulas para cambiar los números en bloque. Por ejemplo, en una celda adyacente, escriba =\"AR-\" &amp; EXTRAE(A2;3;100), copie la fórmula en todas las filas y, a continuación, copie el resultado como valores de nuevo en la columna “Número de plano”. | Guarde el archivo e importe los cambios de nuevo en Revit. Todos los planos se renumerarán al instante. | . | . 2. Copiar la longitud de los muros al parámetro “Comentarios” . | Tarea: Para crear una tabla de planificación o un informe externo, necesita que la longitud de cada muro se escriba en su parámetro “Comentarios”. | Solución: . | Seleccione todos los muros deseados. | Ejecute el comando y exporte los parámetros “Longitud” и “Comentarios”. | En el archivo de Excel, obtendrá dos columnas. En la columna “Comentarios”, introduzca una fórmula sencilla que haga referencia a la celda con la longitud (por ejemplo, =C2) y arrástrela a todas las filas. | También puede añadir texto, por ejemplo, =\"Longitud del muro: \" &amp; C2 &amp; \" mm\". | Guarde el archivo e importe los cambios. El parámetro “Comentarios” de todos los muros se rellenará con el valor de su longitud. | . | . 3. Actualización masiva de datos desde un archivo externo . | Tarea: Un ingeniero o diseñador le ha enviado una hoja de cálculo de Excel сon datos actualizados para las habitaciones (por ejemplo, nuevos nombres, acabado del suelo, acabado del techo). Introducir estos cambios manualmente lleva mucho tiempo y es propenso a errores. | Solución: . | Seleccione todas las habitaciones del modelo de Revit. | Exporte a Excel los parámetros que deben actualizarse (por ejemplo, “Número”, “Nombre”, “Acabado de suelo”), así como el ElementId. | Utilice el ElementId o el “Número” de la habitación como clave única para vincularlo con el archivo externo. Con la función BUSCARV (VLOOKUP) en Excel, transfiera los datos actualizados del archivo del ingeniero a su hoja de trabajo. | Guarde el archivo e importe. Todos los datos de las habitaciones en el modelo de Revit se actualizarán de acuerdo con la hoja de cálculo. | . | . ",
     "url": "/es/docs/edit-elements-in-excel/#ejemplos-de-uso",
     
     "relUrl": "/docs/edit-elements-in-excel/#ejemplos-de-uso"
-  },"108": {
+  },"110": {
     "doc": "Edit elements in Excel",
     "title": "Edit elements in Excel",
     "content": " ",
     "url": "/es/docs/edit-elements-in-excel/",
     
     "relUrl": "/docs/edit-elements-in-excel/"
-  },"109": {
+  },"111": {
     "doc": "P&ID Linker",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/pid-linker/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/pid-linker/#título-del-comando-en-español"
-  },"110": {
+  },"112": {
     "doc": "P&ID Linker",
     "title": "P&ID Linker",
     "content": " ",
     "url": "/es/docs/pid-linker/",
     
     "relUrl": "/docs/pid-linker/"
-  },"111": {
+  },"113": {
     "doc": "Sync space params",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/sync-space-params/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/sync-space-params/#título-del-comando-en-español"
-  },"112": {
+  },"114": {
     "doc": "Sync space params",
     "title": "Sync space params",
     "content": " ",
     "url": "/es/docs/sync-space-params/",
     
     "relUrl": "/docs/sync-space-params/"
-  },"113": {
+  },"115": {
     "doc": "Set project params",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/set-project-params/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/set-project-params/#título-del-comando-en-español"
-  },"114": {
+  },"116": {
     "doc": "Set project params",
     "title": "Set project params",
     "content": " ",
     "url": "/es/docs/set-project-params/",
     
     "relUrl": "/docs/set-project-params/"
-  },"115": {
+  },"117": {
     "doc": "Clone&Shift",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/cloneshift/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/cloneshift/#título-del-comando-en-español"
-  },"116": {
+  },"118": {
     "doc": "Clone&Shift",
     "title": "Clone&Shift",
     "content": " ",
     "url": "/es/docs/cloneshift/",
     
     "relUrl": "/docs/cloneshift/"
-  },"117": {
+  },"119": {
     "doc": "History",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/history/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/history/#título-del-comando-en-español"
-  },"118": {
+  },"120": {
     "doc": "History",
     "title": "History",
     "content": " ",
     "url": "/es/docs/history/",
     
     "relUrl": "/docs/history/"
-  },"119": {
+  },"121": {
     "doc": "Track scheme",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/track-scheme/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/track-scheme/#título-del-comando-en-español"
-  },"120": {
+  },"122": {
     "doc": "Track scheme",
     "title": "Track scheme",
     "content": " ",
     "url": "/es/docs/track-scheme/",
     
     "relUrl": "/docs/track-scheme/"
-  },"121": {
+  },"123": {
     "doc": "Position check",
     "title": "Position Check",
     "content": "Tabla de contenidos . | Qué hace el comando | Preparación | Uso | Resultados . | Hoja “Summary” (Resumen) | Hoja “Detail” (Detalle) | . | Características | Limitaciones conocidas | . El comando rastrea cambios en posiciones y tamaños de equipos en espacios entre dos instantáneas del modelo, generando un informe detallado en Excel para determinar si es necesario recalcular la iluminación. ",
     "url": "/es/docs/position-check/#position-check",
     
     "relUrl": "/docs/position-check/#position-check"
-  },"122": {
+  },"124": {
     "doc": "Position check",
     "title": "Qué hace el comando",
     "content": ". | Recopila todas las familias de equipos (tamaño &gt; 100 mm) del proyecto actual y archivos vinculados | Agrupa equipos por espacios (MEP Spaces) | Compara el estado actual con el informe anterior (si se especifica) | Determina tipos de cambios: elementos nuevos, eliminados, movidos, con tamaño cambiado | Rastrea cambios en parámetros de espacios (área, perímetro) | Genera informe Excel con dos hojas: resumen por espacios y detalle por elementos | Muestra quién editó por última vez cada elemento | . ",
     "url": "/es/docs/position-check/#qu%C3%A9-hace-el-comando",
     
     "relUrl": "/docs/position-check/#qué-hace-el-comando"
-  },"123": {
+  },"125": {
     "doc": "Position check",
     "title": "Preparación",
     "content": "Requisitos: . | El proyecto debe contener MEP Spaces (espacios) | Las familias de equipos deben tener dimensión máxima mayor de 100 mm | Para rastrear cambios: informe anterior generado por este comando | . Recomendaciones: . | Asegúrese de que todos los espacios estén colocados correctamente y tengan área | Para la primera ejecución, no se requiere informe anterior: se creará una instantánea base | . ",
     "url": "/es/docs/position-check/#preparaci%C3%B3n",
     
     "relUrl": "/docs/position-check/#preparación"
-  },"124": {
+  },"126": {
     "doc": "Position check",
     "title": "Uso",
     "content": ". | Inicie el comando Position Check desde el panel BIMTools | En la ventana abierta, especifique las rutas de archivos: . | Previous Report: ruta al informe Excel anterior (opcional, déjelo vacío para la primera ejecución) | New Report Path: ruta y nombre de archivo para el nuevo informe Excel (obligatorio) | . | Use los botones Browse… para seleccionar archivos mediante diálogo | Haga clic en el botón Run (o presione Enter) | Espere a que se complete el análisis: la barra de progreso mostrará el procesamiento de espacios | Después de completar, abra el archivo Excel generado | . ",
     "url": "/es/docs/position-check/#uso",
     
     "relUrl": "/docs/position-check/#uso"
-  },"125": {
+  },"127": {
     "doc": "Position check",
     "title": "Resultados",
     "content": "El comando crea un archivo Excel con dos hojas: . Hoja “Summary” (Resumen) . Contiene información para cada espacio: . | Columna | Descripción | Ejemplo | . | Space | Nombre del espacio (enlace clicable a detalles) | “Office 101” | . | Area (m²) | Área del espacio en metros cuadrados | 42.5 | . | Perimeter (m) | Perímetro del espacio en metros | 26.3 | . | Status | Estado de cambios | “Equipment changed” | . | Changed Count | Número de elementos cambiados | 3 | . | Sample Items | Primeros 5 elementos cambiados | “Lamp_01, Lamp_02, Socket_03” | . | Deltas | Distancias de movimiento en metros | “0.5, 0.3, 1.2” | . Estados de espacios: . | Unchanged — sin cambios | Equipment changed — equipos cambiados | Space changed — parámetros del espacio cambiados | Space and equipment changed — ambos cambiados | . Hoja “Detail” (Detalle) . Contiene información detallada para cada elemento: . | Columna | Descripción | . | Space | Nombre del espacio (enlace clicable al resumen) | . | Model | Nombre del modelo (documento actual o archivo vinculado) | . | Element Id | Identificador del elemento en Revit | . | Element Name | Nombre del elemento | . | Category | Categoría del elemento | . | Old X/Y/Z (m) | Posición anterior en metros | . | New X/Y/Z (m) | Posición actual en metros | . | Delta (m) | Distancia de movimiento | . | Old Size (m) | Tamaño anterior (An × Al × Pr) | . | New Size (m) | Tamaño actual (An × Al × Pr) | . | Status | Tipo de cambio: New, Deleted, Moved, SizeChanged, Unchanged | . | Last Changed By | Nombre del último editor (solo proyectos workshared) | . Ordenamiento: Los elementos dentro de cada espacio están ordenados por distancia de movimiento (descendente). Navegación: Todos los nombres de espacios son hipervínculos para navegación rápida entre hojas Summary y Detail. ",
     "url": "/es/docs/position-check/#resultados",
     
     "relUrl": "/docs/position-check/#resultados"
-  },"126": {
+  },"128": {
     "doc": "Position check",
     "title": "Características",
     "content": "Umbral de detección de cambios: . | El movimiento se detecta cuando el desplazamiento supera 50 mm (0.05 m) | El cambio de tamaño se detecta cuando la diferencia supera 50 mm | . Tamaño de elementos: . | Solo se rastrean elementos con dimensión máxima mayor de 100 mm | No se incluyen elementos pequeños (sujetadores, herrajes) | . Identificación única: . | Cada elemento se identifica por combinación de nombre de modelo y Element ID | Esto permite rastrear correctamente elementos de diferentes archivos vinculados | . ",
     "url": "/es/docs/position-check/#caracter%C3%ADsticas",
     
     "relUrl": "/docs/position-check/#características"
-  },"127": {
+  },"129": {
     "doc": "Position check",
     "title": "Limitaciones conocidas",
     "content": ". | El comando rastrea solo elementos con punto de inserción (LocationPoint), no se incluyen elementos lineales (LocationCurve) | Los elementos fuera de espacios no se incluyen en el informe | Para obtener información del último editor, el proyecto debe ser workshared | En la primera ejecución (sin informe anterior), todos los elementos se marcarán como New | La recopilación de espacios de modelos vinculados está deshabilitada (se puede habilitar si es necesario) | . ",
     "url": "/es/docs/position-check/#limitaciones-conocidas",
     
     "relUrl": "/docs/position-check/#limitaciones-conocidas"
-  },"128": {
+  },"130": {
     "doc": "Position check",
     "title": "Position check",
     "content": " ",
     "url": "/es/docs/position-check/",
     
     "relUrl": "/docs/position-check/"
-  },"129": {
+  },"131": {
     "doc": "Cad to Revit",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/cad-to-revit/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/cad-to-revit/#título-del-comando-en-español"
-  },"130": {
+  },"132": {
     "doc": "Cad to Revit",
     "title": "Cad to Revit",
     "content": " ",

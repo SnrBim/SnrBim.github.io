@@ -650,265 +650,279 @@
     
     "relUrl": "/docs/sync-fire-alarm-diagram/"
   },"93": {
+    "doc": "Create openings",
+    "title": "Create Openings",
+    "content": ". | What the Command Does | Preparation | Usage | Results | . The command automates the process of creating and updating openings in walls for the passage of MEP elements. It analyzes intersections, considers existing openings, merges closely located new openings, and generates a detailed report on the actions performed. What the Command Does . | Finds intersections between walls and MEP elements (ducts, pipes, cable trays, etc.) in both the current project and linked models. | Manages existing openings: Instead of creating duplicates, the command can expand or merge openings that already exist in the wall. | Automatically merges closely located calculated openings into a single common one to avoid numerous small holes. | Writes the final dimensions of all openings into a specified wall parameter as a numbered list. | Is flexibly configured through a dialog box, allowing the user to control all key parameters. | Creates a detailed report of all actions performed (creation, modification, deletion) and displays it in an interactive window. | . Preparation . Before running the command, ensure that your 3D view is set up to show all the walls and MEP elements you want to process. Usage . When the command is launched, a settings dialog box opens. | Wall Selection: . | Process selected walls only: If this checkbox is marked, the command will only work with the walls you selected before launching. Otherwise, all walls in the project will be processed. | The OK button dynamically displays the number of walls that will be processed. | . | MEP Category Selection: . | Mark the checkboxes for the MEP system categories for which openings need to be created. | . | Opening Parameters: . | Air gap (mm): A buffer added to the dimensions of each MEP element. This increases the final size of the opening. Default: 30 mm. | Merge threshold (mm): The maximum width of a wall section between openings. If the gap between the edges of two adjacent openings is less than this value, they will be merged into one. Default: 100 mm. | Info Parameter: The name of the text parameter in the wall where the final list of all opening sizes will be written. Default: Comments. | . | Filtering and Rounding: . | Min MEP element size (mm): MEP elements whose largest dimension is smaller than the specified value will be ignored. Useful for filtering out small elements. Default: 0. | Rounding step (mm): Rounds the final width and height of the opening to a multiple of the specified number. Default: 10. | Up (checkbox enabled): Rounds up to the nearest greater multiple (e.g., 405 -&gt; 410). | Nearest (checkbox disabled): Mathematical rounding (e.g., 405 -&gt; 400). | . | Visualize Bounding Box for debugging: Creates geometry in the model showing the bounding boxes of MEP elements. Warning: This geometry is not automatically deleted. Use this option for debugging only and delete the created elements manually to avoid cluttering the project. | . | Ignore by Parameter: . | Allows setting rules to filter MEP elements. Elements that satisfy at least one rule will be ignored. Parameter names are case-sensitive, while values are not. | Format: Each rule on a new line: ParameterName: Value. | Wildcard: You can use the * symbol to match any sequence of characters. | Pseudo-parameters: Family (family name) and Type (type name) are supported. | Comments: Lines starting with ; are ignored. | Example: ; Ignore all elements on worksets containing \"placeholder\" Workset: *placeholder* ; Ignore elements with a specific comment Comment: *ignore* . | . | . Results . After performing the calculations, the command displays an interactive report with the results, creates/modifies/deletes openings in the Revit model, and writes the final information to the walls. Writing to Wall Parameter: A numbered list of the final sizes (WxH) of all openings in a given wall is written to the text parameter specified in the settings. Example: . 1. 630x480 2. 280x330 3. 70x70 . If there are no openings in the wall after processing, the parameter is cleared. When processing only selected walls, the parameters of unprocessed walls are not changed. This parameter is useful for creating view filters to display only those walls that have openings (by setting up a filter rule for “parameter is not empty”). Report Format: The report contains lines for each action in the format: Action | Wall ID | Opening ID | Description . The Description column has a 5-part structure: Old ID | New Size (WxH) | Old Size (WxH) | Source (MEP ID) | Merge Info . | CREATED: A new opening was created. | Example: CREATED | w777 | op888 | 500x300 | MEP_IDs: main:1,2 | . | MODIFIED: An existing opening was modified. | Example: MODIFIED | w778 | op999 | 123 | 600x400 | 500x300 | MEP_IDs: link:3 | Merged with: 456 | . | DELETED: An existing opening was deleted because it was merged with another. | Example: DELETED | w779 | op456 | | | Merged into: 999 | . | . ",
+    "url": "/docs/create-openings/#create-openings",
+    
+    "relUrl": "/docs/create-openings/#create-openings"
+  },"94": {
+    "doc": "Create openings",
+    "title": "Create openings",
+    "content": " ",
+    "url": "/docs/create-openings/",
+    
+    "relUrl": "/docs/create-openings/"
+  },"95": {
     "doc": "Show CADs",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/show-cads/#english-command-title",
     
     "relUrl": "/docs/show-cads/#english-command-title"
-  },"94": {
+  },"96": {
     "doc": "Show CADs",
     "title": "Show CADs",
     "content": " ",
     "url": "/docs/show-cads/",
     
     "relUrl": "/docs/show-cads/"
-  },"95": {
+  },"97": {
     "doc": "Create sockets",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-sockets/#english-command-title",
     
     "relUrl": "/docs/create-sockets/#english-command-title"
-  },"96": {
+  },"98": {
     "doc": "Create sockets",
     "title": "Create sockets",
     "content": " ",
     "url": "/docs/create-sockets/",
     
     "relUrl": "/docs/create-sockets/"
-  },"97": {
+  },"99": {
     "doc": "Sync equip to schematic",
     "title": "Sync Equipment to Schematic",
     "content": ". | Description | Functionality | How to Use | Important Notes | . ",
     "url": "/docs/sync-equip-to-schematic/#sync-equipment-to-schematic",
     
     "relUrl": "/docs/sync-equip-to-schematic/#sync-equipment-to-schematic"
-  },"98": {
+  },"100": {
     "doc": "Sync equip to schematic",
     "title": "Description",
     "content": "This command automatically updates the data of schematic annotations (Generic Annotation) in Revit, based on the previously assigned equipment ID. ",
     "url": "/docs/sync-equip-to-schematic/#description",
     
     "relUrl": "/docs/sync-equip-to-schematic/#description"
-  },"99": {
+  },"101": {
     "doc": "Sync equip to schematic",
     "title": "Functionality",
     "content": "For each processed schematic annotation, the command performs the following actions: . | It searches for the corresponding equipment using the values in the SRS_MEP_Equipment_Id and SRS_MEP_Link_Id parameters. | Once the equipment is found, it determines the MEP Space and the Level where the equipment is located. | It updates the following parameters in the annotation: . | SRS_MEP_Location: Updated with the space’s name. | SRS_MEP_RoomID: Updated with the space’s ID. | SRS_MEP_Level: Updated with the level’s name. | . | . ",
     "url": "/docs/sync-equip-to-schematic/#functionality",
     
     "relUrl": "/docs/sync-equip-to-schematic/#functionality"
-  },"100": {
+  },"102": {
     "doc": "Sync equip to schematic",
     "title": "How to Use",
     "content": ". | Ensure that the schematic annotations you want to update already have values assigned to the SRS_MEP_Equipment_Id and SRS_MEP_Link_Id parameters. | Run the Sync equip to schematic command. | The system will process the annotations and automatically update the location data in each one. | . ",
     "url": "/docs/sync-equip-to-schematic/#how-to-use",
     
     "relUrl": "/docs/sync-equip-to-schematic/#how-to-use"
-  },"101": {
+  },"103": {
     "doc": "Sync equip to schematic",
     "title": "Important Notes",
     "content": ". | A warning will be displayed if the equipment corresponding to the ID specified in an annotation is not found. | The equipment ID value must be numeric for the process to work correctly. | The space search is optimized; the command prioritizes reusing already found spaces to improve performance. | . ",
     "url": "/docs/sync-equip-to-schematic/#important-notes",
     
     "relUrl": "/docs/sync-equip-to-schematic/#important-notes"
-  },"102": {
+  },"104": {
     "doc": "Sync equip to schematic",
     "title": "Sync equip to schematic",
     "content": " ",
     "url": "/docs/sync-equip-to-schematic/",
     
     "relUrl": "/docs/sync-equip-to-schematic/"
-  },"103": {
+  },"105": {
     "doc": "Edit elements in Excel",
     "title": "Editing Parameters in Excel",
     "content": ". | Description | Additional Features | Usage | Use Cases . | 1. Renumbering Sheets or Rooms | 2. Copying Wall Lengths to the “Comments” Parameter | 3. Bulk Updating Data from an External File | . | . ",
     "url": "/docs/edit-elements-in-excel/#editing-parameters-in-excel",
     
     "relUrl": "/docs/edit-elements-in-excel/#editing-parameters-in-excel"
-  },"104": {
+  },"106": {
     "doc": "Edit elements in Excel",
     "title": "Description",
     "content": "This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas and can update or add data to previously created files. ",
     "url": "/docs/edit-elements-in-excel/#description",
     
     "relUrl": "/docs/edit-elements-in-excel/#description"
-  },"105": {
+  },"107": {
     "doc": "Edit elements in Excel",
     "title": "Additional Features",
     "content": ". | Custom Columns in Excel: You can add new columns (parameters) directly in the Excel file. When using the “Update file…” function, the command automatically recognizes these new columns and fills them with data, eliminating the need to select parameters in the interface every time you run it. | Preservation of Formulas and Column Order: If you use Excel formulas in cells, they will be preserved when the file is updated (such cells are marked in green). The column order is also preserved, allowing you to customize the table view to your needs. | Edit in TXT Mode: For simple edits, you can use the “Edit as txt file” option from the additional options menu (⋮). The data is exported to a text file where each value is on a new line. | Special Parameters (nonParams): The command allows you to export not only standard Revit parameters but also special, calculated values. They have a _ prefix (e.g., _Coordinates, _HostId, _SpaceName, _RoomNumber). These parameters are read-only. | . ",
     "url": "/docs/edit-elements-in-excel/#additional-features",
     
     "relUrl": "/docs/edit-elements-in-excel/#additional-features"
-  },"106": {
+  },"108": {
     "doc": "Edit elements in Excel",
     "title": "Usage",
     "content": ". | Run the “Edit in Excel” command from the BIMTools tab in Revit. | In the window that appears, select the element parameters you want to export/edit. | Use the options to include type parameters, instance parameters, alphabetical sorting, or include a sheet with project information. | Click “Edit in Excel” to export and start editing. | The command will create an Excel file with Revit elements as rows and the selected parameters as columns. | After finishing editing in Excel, confirm in Revit to import the changes. | Note: When you use the “Edit in Excel” option to export data and wait for editing, the created Excel file is saved by default to the folder: %appdata%\\Roaming\\Sener\\BimTools\\Reports\\EditInExcel\\&lt;Revit_Model_Name&gt;\\, with a name that includes the current date and time. | . | Use “Write to file…” to save the Excel file without waiting for import. | Use “Update file…” to add new elements or update existing ones in an already created Excel file. | Use “Read from file…” to import data from a previously saved Excel file. | . ",
     "url": "/docs/edit-elements-in-excel/#usage",
     
     "relUrl": "/docs/edit-elements-in-excel/#usage"
-  },"107": {
+  },"109": {
     "doc": "Edit elements in Excel",
     "title": "Use Cases",
     "content": "1. Renumbering Sheets or Rooms . | Task: You have a large set of sheets (e.g., 100+), and you need to quickly change their numbering by adding a prefix (e.g., A-101 -&gt; AR-101). Doing this manually in Revit is slow and inconvenient. | Solution: . | Select all sheets in the Project Browser. | Run the “Edit in Excel” command and export the “Sheet Number” parameter. | In the resulting Excel file, use formulas to bulk-change the numbers. For example, in an adjacent cell, write =\"AR-\" &amp; MID(A2,3,100), copy the formula for all rows, and then copy the result as values back into the “Sheet Number” column. | Save the file and import the changes back into Revit. All sheets will be instantly renumbered. | . | . 2. Copying Wall Lengths to the “Comments” Parameter . | Task: To create an external schedule or report, you need the length of each wall to be written to its “Comments” parameter. | Solution: . | Select all the desired walls. | Run the command and export the “Length” and “Comments” parameters. | In the Excel file, you will get two columns. In the “Comments” column, enter a simple formula that references the cell with the length (e.g., =C2), and extend it to all rows. | You can also add text, for example, =\"Wall length: \" &amp; C2 &amp; \" mm\". | Save the file and import the changes. The “Comments” parameter for all walls will be filled with their length values. | . | . 3. Bulk Updating Data from an External File . | Task: An engineer or designer has sent you an Excel spreadsheet with updated data for rooms (e.g., new names, floor finish, ceiling finish). Entering these changes manually is time-consuming and prone to errors. | Solution: . | Select all rooms in the Revit model. | Export the parameters to be updated (e.g., “Number”, “Name”, “Floor Finish”), as well as ElementId, to Excel. | Use the ElementId or room “Number” as a unique key to link with the external file. Use the VLOOKUP function in Excel to transfer the updated data from the engineer’s file to your working spreadsheet. | Save the file and import. All room data in the Revit model will be updated according to the spreadsheet. | . | . ",
     "url": "/docs/edit-elements-in-excel/#use-cases",
     
     "relUrl": "/docs/edit-elements-in-excel/#use-cases"
-  },"108": {
+  },"110": {
     "doc": "Edit elements in Excel",
     "title": "Edit elements in Excel",
     "content": " ",
     "url": "/docs/edit-elements-in-excel/",
     
     "relUrl": "/docs/edit-elements-in-excel/"
-  },"109": {
+  },"111": {
     "doc": "P&ID Linker",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/pid-linker/#english-command-title",
     
     "relUrl": "/docs/pid-linker/#english-command-title"
-  },"110": {
+  },"112": {
     "doc": "P&ID Linker",
     "title": "P&ID Linker",
     "content": " ",
     "url": "/docs/pid-linker/",
     
     "relUrl": "/docs/pid-linker/"
-  },"111": {
+  },"113": {
     "doc": "Sync space params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/sync-space-params/#english-command-title",
     
     "relUrl": "/docs/sync-space-params/#english-command-title"
-  },"112": {
+  },"114": {
     "doc": "Sync space params",
     "title": "Sync space params",
     "content": " ",
     "url": "/docs/sync-space-params/",
     
     "relUrl": "/docs/sync-space-params/"
-  },"113": {
+  },"115": {
     "doc": "Set project params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/set-project-params/#english-command-title",
     
     "relUrl": "/docs/set-project-params/#english-command-title"
-  },"114": {
+  },"116": {
     "doc": "Set project params",
     "title": "Set project params",
     "content": " ",
     "url": "/docs/set-project-params/",
     
     "relUrl": "/docs/set-project-params/"
-  },"115": {
+  },"117": {
     "doc": "Clone&Shift",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/cloneshift/#english-command-title",
     
     "relUrl": "/docs/cloneshift/#english-command-title"
-  },"116": {
+  },"118": {
     "doc": "Clone&Shift",
     "title": "Clone&Shift",
     "content": " ",
     "url": "/docs/cloneshift/",
     
     "relUrl": "/docs/cloneshift/"
-  },"117": {
+  },"119": {
     "doc": "History",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/history/#english-command-title",
     
     "relUrl": "/docs/history/#english-command-title"
-  },"118": {
+  },"120": {
     "doc": "History",
     "title": "History",
     "content": " ",
     "url": "/docs/history/",
     
     "relUrl": "/docs/history/"
-  },"119": {
+  },"121": {
     "doc": "Track scheme",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/track-scheme/#english-command-title",
     
     "relUrl": "/docs/track-scheme/#english-command-title"
-  },"120": {
+  },"122": {
     "doc": "Track scheme",
     "title": "Track scheme",
     "content": " ",
     "url": "/docs/track-scheme/",
     
     "relUrl": "/docs/track-scheme/"
-  },"121": {
+  },"123": {
     "doc": "Position check",
     "title": "Position Check",
     "content": ". | What the Command Does | Preparation | Usage | Results . | “Summary” Sheet | “Detail” Sheet | . | Features | Known Limitations | . Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed. ",
     "url": "/docs/position-check/#position-check",
     
     "relUrl": "/docs/position-check/#position-check"
-  },"122": {
+  },"124": {
     "doc": "Position check",
     "title": "What the Command Does",
     "content": ". | Collects all equipment families (size &gt; 100 mm) from current project and linked files | Groups equipment by spaces (MEP Spaces) | Compares current state with previous report (if specified) | Determines change types: new elements, deleted, moved, size changed | Tracks changes in space parameters (area, perimeter) | Generates Excel report with two sheets: summary by spaces and detail by elements | Shows who last edited each element | . ",
     "url": "/docs/position-check/#what-the-command-does",
     
     "relUrl": "/docs/position-check/#what-the-command-does"
-  },"123": {
+  },"125": {
     "doc": "Position check",
     "title": "Preparation",
     "content": "Requirements: . | Project must contain MEP Spaces | Equipment families must have maximum dimension greater than 100 mm | For change tracking: previous report generated by this command | . Recommendations: . | Ensure all spaces are correctly placed and have area | For first run, previous report is not required — a baseline snapshot will be created | . ",
     "url": "/docs/position-check/#preparation",
     
     "relUrl": "/docs/position-check/#preparation"
-  },"124": {
+  },"126": {
     "doc": "Position check",
     "title": "Usage",
     "content": ". | Launch Position Check command from BIMTools panel | In the opened window, specify file paths: . | Previous Report: path to previous Excel report (optional, leave empty for first run) | New Report Path: path and filename for new Excel report (required) | . | Use Browse… buttons to select files through dialog | Click Run button (or press Enter) | Wait for analysis completion — progress bar will show space processing | After completion, open the generated Excel file | . ",
     "url": "/docs/position-check/#usage",
     
     "relUrl": "/docs/position-check/#usage"
-  },"125": {
+  },"127": {
     "doc": "Position check",
     "title": "Results",
     "content": "Command creates Excel file with two sheets: . “Summary” Sheet . Contains information for each space: . | Column | Description | Example | . | Space | Space name (clickable link to details) | “Office 101” | . | Area (m²) | Space area in square meters | 42.5 | . | Perimeter (m) | Space perimeter in meters | 26.3 | . | Status | Change status | “Equipment changed” | . | Changed Count | Number of changed elements | 3 | . | Sample Items | First 5 changed elements | “Lamp_01, Lamp_02, Socket_03” | . | Deltas | Movement distances in meters | “0.5, 0.3, 1.2” | . Space statuses: . | Unchanged — no changes | Equipment changed — equipment changed | Space changed — space parameters changed | Space and equipment changed — both changed | . “Detail” Sheet . Contains detailed information for each element: . | Column | Description | . | Space | Space name (clickable link to summary) | . | Model | Model name (current document or linked file) | . | Element Id | Element identifier in Revit | . | Element Name | Element name | . | Category | Element category | . | Old X/Y/Z (m) | Previous position in meters | . | New X/Y/Z (m) | Current position in meters | . | Delta (m) | Movement distance | . | Old Size (m) | Previous size (W × H × D) | . | New Size (m) | Current size (W × H × D) | . | Status | Change type: New, Deleted, Moved, SizeChanged, Unchanged | . | Last Changed By | Last editor name (workshared projects only) | . Sorting: Elements within each space are sorted by movement distance (descending). Navigation: All space names are hyperlinks for quick navigation between Summary and Detail sheets. ",
     "url": "/docs/position-check/#results",
     
     "relUrl": "/docs/position-check/#results"
-  },"126": {
+  },"128": {
     "doc": "Position check",
     "title": "Features",
     "content": "Change detection threshold: . | Movement is detected when displacement exceeds 50 mm (0.05 m) | Size change is detected when difference exceeds 50 mm | . Element size: . | Only elements with maximum dimension greater than 100 mm are tracked | Small elements (fasteners, hardware) are not included | . Unique identification: . | Each element is identified by combination of model name and Element ID | This allows correct tracking of elements from different linked files | . ",
     "url": "/docs/position-check/#features",
     
     "relUrl": "/docs/position-check/#features"
-  },"127": {
+  },"129": {
     "doc": "Position check",
     "title": "Known Limitations",
     "content": ". | Command tracks only elements with insertion point (LocationPoint), linear elements (LocationCurve) are not included | Elements outside spaces are not included in report | To get last editor information, project must be workshared | On first run (without previous report), all elements will be marked as New | Space collection from linked models is disabled (can be enabled if needed) | . ",
     "url": "/docs/position-check/#known-limitations",
     
     "relUrl": "/docs/position-check/#known-limitations"
-  },"128": {
+  },"130": {
     "doc": "Position check",
     "title": "Position check",
     "content": " ",
     "url": "/docs/position-check/",
     
     "relUrl": "/docs/position-check/"
-  },"129": {
+  },"131": {
     "doc": "Cad to Revit",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/cad-to-revit/#english-command-title",
     
     "relUrl": "/docs/cad-to-revit/#english-command-title"
-  },"130": {
+  },"132": {
     "doc": "Cad to Revit",
     "title": "Cad to Revit",
     "content": " ",
