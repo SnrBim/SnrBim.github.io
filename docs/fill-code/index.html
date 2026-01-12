@@ -16,7 +16,7 @@
 
     .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(6)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(8)) > a,
     .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
@@ -26,14 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(6) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(8) > a {
       font-weight: 600;
       text-decoration: none;
     }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(6) > button svg {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(8) > button svg {
       transform: rotate(-90deg);
     }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list {
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(8) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Create worksets from Excel | Sener BimTools Docs</title>
+<title>Fill code | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Create worksets from Excel" />
+<meta property="og:title" content="Fill code" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
-<link rel="canonical" href="https://snrbim.github.io/docs/create-worksets-from-excel/" />
-<meta property="og:url" content="https://snrbim.github.io/docs/create-worksets-from-excel/" />
+<meta name="description" content="The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter." />
+<meta property="og:description" content="The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter." />
+<link rel="canonical" href="https://snrbim.github.io/docs/fill-code/" />
+<meta property="og:url" content="https://snrbim.github.io/docs/fill-code/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Create worksets from Excel" />
+<meta property="twitter:title" content="Fill code" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Create worksets from Excel","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/create-worksets-from-excel/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter.","headline":"Fill code","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/fill-code/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -251,7 +251,7 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/docs/1Common.html">Common</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Create worksets from Excel</span></li>
+    <li class="breadcrumb-nav-list-item"><span>Fill code</span></li>
   </ol>
 </nav>
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="english-command-title">
+            <h1 class="no_toc" id="fillcode-command">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#fillcode-command" class="anchor-heading" aria-labelledby="fillcode-command"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> FillCode Command
   
   
 </h1>
@@ -272,10 +272,163 @@
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#purpose" id="markdown-toc-purpose">Purpose</a></li>
+  <li><a href="#how-to-use" id="markdown-toc-how-to-use">How to Use</a>    <ol>
+      <li><a href="#1-mapping-configuration" id="markdown-toc-1-mapping-configuration">1. Mapping Configuration</a>        <ol>
+          <li><a href="#managing-the-mapping-file" id="markdown-toc-managing-the-mapping-file">Managing the Mapping File:</a></li>
+        </ol>
+      </li>
+      <li><a href="#2-filters-and-options" id="markdown-toc-2-filters-and-options">2. Filters and Options</a></li>
+      <li><a href="#3-summary-panel" id="markdown-toc-3-summary-panel">3. Summary Panel</a></li>
+      <li><a href="#4-execution-and-reporting" id="markdown-toc-4-execution-and-reporting">4. Execution and Reporting</a></li>
+    </ol>
+  </li>
+  <li><a href="#generated-code-structure" id="markdown-toc-generated-code-structure">Generated Code Structure</a></li>
+  <li><a href="#excel-file-structure" id="markdown-toc-excel-file-structure">Excel File Structure</a></li>
+</ol>
 
 </details>
+<h2 id="purpose">
+  
+  
+    <a href="#purpose" class="anchor-heading" aria-labelledby="purpose"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Purpose
+  
+  
+</h2>
+    
 
-<p>This is the English content for the command documentation.</p>
+<p><img src="Logo.png" alt="Logo" style="float:right; margin:0 15px 15px 0;" width="48" /> The <strong>FillCode</strong> command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s <code class="language-plaintext highlighter-rouge">IDD_PDS_CODE</code> parameter.</p>
+
+<p>This allows for the standardization of element identification according to project requirements.</p>
+<h2 id="how-to-use">
+  
+  
+    <a href="#how-to-use" class="anchor-heading" aria-labelledby="how-to-use"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How to Use
+  
+  
+</h2>
+    
+
+<p>When the command is launched, a settings window opens, allowing you to control the code generation process.</p>
+
+<p><img src="image.png" alt="FillCode UI" /></p>
+<h3 id="1-mapping-configuration">
+  
+  
+    <a href="#1-mapping-configuration" class="anchor-heading" aria-labelledby="1-mapping-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Mapping Configuration
+  
+  
+</h3>
+    
+
+<p>The command’s behavior is entirely determined by mapping rules. You have two options:</p>
+
+<ul>
+  <li><strong>Use Default Values:</strong> If the “Path to Excel file” field is empty, the command will use an internal, hard-coded set of rules.</li>
+  <li><strong>Use an External Excel File:</strong> You can specify the path to an Excel file with your own rules. This provides maximum flexibility.</li>
+</ul>
+<h4 id="managing-the-mapping-file">
+  
+  
+    <a href="#managing-the-mapping-file" class="anchor-heading" aria-labelledby="managing-the-mapping-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Managing the Mapping File:
+  
+  
+</h4>
+    
+
+<ul>
+  <li><strong>“Path to Excel file” field:</strong> Enter the path to your <code class="language-plaintext highlighter-rouge">.xlsx</code> file here. The path is saved between Revit sessions.</li>
+  <li><strong>“Browse…” button:</strong> Opens a dialog to select the file.</li>
+  <li><strong>“Export Default Settings” button:</strong> Creates a template Excel file with the standard rules. You can use this as a starting point for your own mappings.</li>
+  <li><strong>“Reload” button:</strong> Allows you to manually refresh the summary information after making changes to the Excel file.</li>
+</ul>
+<h3 id="2-filters-and-options">
+  
+  
+    <a href="#2-filters-and-options" class="anchor-heading" aria-labelledby="2-filters-and-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Filters and Options
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>“Ignore ‘Generic Models’ category”:</strong> Enabled by default. This excludes elements of this category from processing, as they are often auxiliary.</li>
+  <li><strong>“Debug mode”:</strong> If this checkbox is selected, the command will execute all logic, analyze the elements, and generate a detailed report, <strong>but will not make any changes to the model</strong>. This is a safe way to verify the correctness of the settings before actually applying the codes.</li>
+</ul>
+<h3 id="3-summary-panel">
+  
+  
+    <a href="#3-summary-panel" class="anchor-heading" aria-labelledby="3-summary-panel"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Summary Panel
+  
+  
+</h3>
+    
+
+<p>This read-only text field displays summary information about how the command will operate with the current settings.</p>
+
+<ul>
+  <li><strong>Data Source:</strong> Shows whether “Default Values” or the specified Excel file is being used.</li>
+  <li><strong>Launch Parameters:</strong> Displays key identifiers extracted from the current Revit file’s name (Work Package, Building Code), which are used to find the correct rules.</li>
+  <li><strong>Mapping Summary:</strong> Shows how many rules have been loaded (number of categories, disciplines, location codes, levels for the current work package).</li>
+  <li><strong>Element Count:</strong> Shows how many elements in the current view or selection will be processed.</li>
+</ul>
+<h3 id="4-execution-and-reporting">
+  
+  
+    <a href="#4-execution-and-reporting" class="anchor-heading" aria-labelledby="4-execution-and-reporting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Execution and Reporting
+  
+  
+</h3>
+    
+
+<p>After clicking the <strong>“OK”</strong> button, the command processes the elements and displays a final message with the number of successful operations, warnings, and errors.</p>
+
+<p>You will be prompted to open a <strong>detailed text report</strong>, which contains:</p>
+
+<ol>
+  <li><strong>Summary:</strong> Full information about the launch parameters and loaded rules.</li>
+  <li><strong>Problematic Elements:</strong> A list of elements that could not be processed, with the reason (e.g., “sublocation code not found,” “level not determined”).</li>
+  <li><strong>Successfully Processed Elements:</strong> A table of all elements for which the code was successfully generated. The data is presented in a format ready for copying into Excel and is sorted by category.</li>
+</ol>
+<h2 id="generated-code-structure">
+  
+  
+    <a href="#generated-code-structure" class="anchor-heading" aria-labelledby="generated-code-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Generated Code Structure
+  
+  
+</h2>
+    
+
+<p>The final code has the following format:</p>
+
+<p><code class="language-plaintext highlighter-rouge">DisciplineCode-CategoryCode-LocationCode-SubLocationCode-LevelCode</code></p>
+
+<ul>
+  <li><strong>DisciplineCode:</strong> The discipline code (e.g., “H” for HVAC, “E” for Electrical), determined by the element’s category.</li>
+  <li><strong>CategoryCode:</strong> The element’s category code (e.g., “DCT” for ducts).</li>
+  <li><strong>LocationCode:</strong> The location code, determined by the building code from the file name.</li>
+  <li><strong>SubLocationCode:</strong> The sub-location code, read from the instance parameter <code class="language-plaintext highlighter-rouge">IDD_SUBLOCATION</code>. If the parameter is empty, <code class="language-plaintext highlighter-rouge">?</code> is used.</li>
+  <li><strong>LevelCode:</strong> The level code, determined based on the element’s Z-coordinate and the “Work Package” from the file name.</li>
+</ul>
+<h2 id="excel-file-structure">
+  
+  
+    <a href="#excel-file-structure" class="anchor-heading" aria-labelledby="excel-file-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Excel File Structure
+  
+  
+</h2>
+    
+
+<p>The mapping file can contain several sheets to configure different rules:</p>
+
+<ul>
+  <li><strong>CategoryDiscipline:</strong> A matrix for mapping Revit categories to discipline codes (<code class="language-plaintext highlighter-rouge">DisciplineCode</code>) and category codes (<code class="language-plaintext highlighter-rouge">CategoryCode</code>).</li>
+  <li><strong>Location:</strong> A table for mapping “building codes” (from the file name) to <code class="language-plaintext highlighter-rouge">LocationCode</code>.</li>
+  <li><strong>Levels_WP…:</strong> Sets of sheets (e.g., <code class="language-plaintext highlighter-rouge">Levels_WP2</code>, <code class="language-plaintext highlighter-rouge">Levels_WP3</code>) for mapping Z-coordinates to level codes (<code class="language-plaintext highlighter-rouge">LevelCode</code>) for each “Work Package”.</li>
+</ul>
+
+<p><img src="image-1.png" alt="Matrix Table" /></p>
 
           
 

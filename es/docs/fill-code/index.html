@@ -14,9 +14,10 @@
   <style id="jtd-nav-activation">
   
 
+    .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li:not(:nth-child(3)) > a,
-    .site-nav > ul.nav-list:first-child > li > ul > li a {
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(8)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
 
@@ -25,12 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(3) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(8) > a {
       font-weight: 600;
       text-decoration: none;
-    }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg {
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(8) > button svg {
       transform: rotate(-90deg);
-    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list {
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(8) > ul.nav-list {
       display: block;
     }
   </style>
@@ -55,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>ELE | Sener BimTools Docs</title>
+<title>Fill code | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="ELE" />
+<meta property="og:title" content="Fill code" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="Official documentation for the Sener BimTools Revit plugin." />
-<meta property="og:description" content="Official documentation for the Sener BimTools Revit plugin." />
-<link rel="canonical" href="https://snrbim.github.io/es/docs/3ELE.html" />
-<meta property="og:url" content="https://snrbim.github.io/es/docs/3ELE.html" />
+<meta name="description" content="The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter." />
+<meta property="og:description" content="The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter." />
+<link rel="canonical" href="https://snrbim.github.io/es/docs/fill-code/" />
+<meta property="og:url" content="https://snrbim.github.io/es/docs/fill-code/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="ELE" />
+<meta property="twitter:title" content="Fill code" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Official documentation for the Sener BimTools Revit plugin.","headline":"ELE","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/3ELE.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter.","headline":"Fill code","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/fill-code/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -245,57 +248,192 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/es/docs/1Common.html">Common</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Fill code</span></li>
+  </ol>
+</nav>
+
+
       <div id="main-content" class="main-content">
         <main>
           
-            <p>Comandos para el diseño eléctrico</p>
+            <h1 class="no_toc" id="comando-fillcode">
+  
+  
+    <a href="#comando-fillcode" class="anchor-heading" aria-labelledby="comando-fillcode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Comando FillCode
+  
+  
+</h1>
+    
 
-          
+<details open="">
+  <summary class="text-delta">
+    Tabla de contenidos
+  </summary>
+<ol id="markdown-toc">
+  <li><a href="#propósito" id="markdown-toc-propósito">Propósito</a></li>
+  <li><a href="#cómo-usar" id="markdown-toc-cómo-usar">Cómo usar</a>    <ol>
+      <li><a href="#1-configuración-de-mapeos-mappings" id="markdown-toc-1-configuración-de-mapeos-mappings">1. Configuración de Mapeos (Mappings)</a>        <ol>
+          <li><a href="#gestión-del-archivo-de-mapeo" id="markdown-toc-gestión-del-archivo-de-mapeo">Gestión del archivo de mapeo:</a></li>
+        </ol>
+      </li>
+      <li><a href="#2-filtros-y-opciones" id="markdown-toc-2-filtros-y-opciones">2. Filtros y Opciones</a></li>
+      <li><a href="#3-panel-de-resumen-summary" id="markdown-toc-3-panel-de-resumen-summary">3. Panel de Resumen (Summary)</a></li>
+      <li><a href="#4-ejecución-y-reporte" id="markdown-toc-4-ejecución-y-reporte">4. Ejecución y Reporte</a></li>
+    </ol>
+  </li>
+  <li><a href="#estructura-del-código-generado" id="markdown-toc-estructura-del-código-generado">Estructura del Código Generado</a></li>
+  <li><a href="#estructura-del-archivo-de-excel" id="markdown-toc-estructura-del-archivo-de-excel">Estructura del Archivo de Excel</a></li>
+</ol>
 
-          
-            <hr>
-<h2 class="text-delta">Table of contents</h2>
+</details>
+<h2 id="propósito">
+  
+  
+    <a href="#propósito" class="anchor-heading" aria-labelledby="propósito"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Propósito
+  
+  
+</h2>
+    
+
+<p><img src="Logo.png" alt="Logo" style="float:right; margin:0 15px 15px 0;" width="48" /> El comando <strong>FillCode</strong> está diseñado para generar y asignar automáticamente un código de identificación único a los elementos en un modelo de Revit. El código se crea en base a un conjunto de reglas que se pueden configurar mediante un archivo de Excel externo y se escribe en el parámetro <code class="language-plaintext highlighter-rouge">IDD_PDS_CODE</code> del elemento.</p>
+
+<p>Esto permite estandarizar la identificación de elementos de acuerdo con los requisitos del proyecto.</p>
+<h2 id="cómo-usar">
+  
+  
+    <a href="#cómo-usar" class="anchor-heading" aria-labelledby="cómo-usar"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Cómo usar
+  
+  
+</h2>
+    
+
+<p>Al ejecutar el comando, se abre una ventana de configuración que le permite controlar el proceso de generación de códigos.</p>
+
+<p><img src="image.png" alt="FillCode UI" /></p>
+<h3 id="1-configuración-de-mapeos-mappings">
+  
+  
+    <a href="#1-configuración-de-mapeos-mappings" class="anchor-heading" aria-labelledby="1-configuración-de-mapeos-mappings"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Configuración de Mapeos (Mappings)
+  
+  
+</h3>
+    
+
+<p>El comportamiento del comando está completamente determinado por las reglas de mapeo. Tienes dos opciones:</p>
 
 <ul>
-  
-  <li>
-    <a href="/es/docs/assign-circuit-to-conduits/">Assign circuit to conduits</a>
-  </li>
-  
-  <li>
-    <a href="/es/docs/circuit-description/">Circuit description</a>
-  </li>
-  
-  <li>
-    <a href="/es/docs/cloneshift/">Clone&Shift</a>
-  </li>
-  
-  <li>
-    <a href="/es/docs/conduit-circuit-sync/">Conduit circuit sync</a>
-  </li>
-  
-  <li>
-    <a href="/es/docs/convert-lines-to-wires/">Convert lines to wires</a>
-  </li>
-  
-  <li>
-    <a href="/es/docs/count-sockets/">Count sockets</a>
-  </li>
-  
-  <li>
-    <a href="/es/docs/create-sockets/">Create sockets</a>
-  </li>
-  
-  <li>
-    <a href="/es/docs/sync-power-params/">Sync power params</a>
-  </li>
-  
-  <li>
-    <a href="/es/docs/transfer-lighting-data-to-space/">Transfer Lighting Data To Space</a>
-  </li>
-  
+  <li><strong>Usar valores por defecto:</strong> Si el campo “Ruta al archivo de Excel” está vacío, el comando utilizará un conjunto de reglas internas y predefinidas.</li>
+  <li><strong>Usar un archivo de Excel externo:</strong> Puede especificar la ruta a un archivo de Excel con sus propias reglas. Esto proporciona la máxima flexibilidad.</li>
 </ul>
+<h4 id="gestión-del-archivo-de-mapeo">
+  
+  
+    <a href="#gestión-del-archivo-de-mapeo" class="anchor-heading" aria-labelledby="gestión-del-archivo-de-mapeo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Gestión del archivo de mapeo:
+  
+  
+</h4>
+    
+
+<ul>
+  <li><strong>Campo “Ruta al archivo de Excel”:</strong> Introduzca la ruta a su archivo <code class="language-plaintext highlighter-rouge">.xlsx</code> aquí. La ruta se guarda entre sesiones de Revit.</li>
+  <li><strong>Botón “Examinar…”:</strong> Abre un cuadro de diálogo para seleccionar el archivo.</li>
+  <li><strong>Botón “Exportar configuración por defecto”:</strong> Crea un archivo de Excel de plantilla con las reglas estándar. Puede usarlo como punto de partida para sus propios mapeos.</li>
+  <li><strong>Botón “Recargar”:</strong> Le permite actualizar manualmente la información del resumen después de realizar cambios en el archivo de Excel.</li>
+</ul>
+<h3 id="2-filtros-y-opciones">
+  
+  
+    <a href="#2-filtros-y-opciones" class="anchor-heading" aria-labelledby="2-filtros-y-opciones"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Filtros y Opciones
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>“Ignorar la categoría ‘Modelos genéricos’”:</strong> Habilitado por defecto. Excluye los elementos de esta categoría del procesamiento, ya que a menudo son auxiliares.</li>
+  <li><strong>“Modo de depuración (Debug mode)”:</strong> Si esta casilla está marcada, el comando ejecutará toda la lógica, analizará los elementos y generará un informe detallado, <strong>pero no realizará ningún cambio en el modelo</strong>. Esta es una forma segura de verificar la corrección de la configuración antes de aplicar realmente los códigos.</li>
+</ul>
+<h3 id="3-panel-de-resumen-summary">
+  
+  
+    <a href="#3-panel-de-resumen-summary" class="anchor-heading" aria-labelledby="3-panel-de-resumen-summary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Panel de Resumen (Summary)
+  
+  
+</h3>
+    
+
+<p>Este campo de texto de solo lectura muestra información resumida sobre cómo funcionará el comando con la configuración actual.</p>
+
+<ul>
+  <li><strong>Fuente de datos:</strong> Muestra si se están utilizando los “Valores por defecto” o el archivo de Excel especificado.</li>
+  <li><strong>Parámetros de ejecución:</strong> Muestra los identificadores clave extraídos del nombre del archivo de Revit actual (Paquete de trabajo, Código de edificio), que se utilizan para encontrar las reglas correctas.</li>
+  <li><strong>Resumen de mapeos:</strong> Muestra cuántas reglas se han cargado (número de categorías, disciplinas, códigos de ubicación, niveles para el paquete de trabajo actual).</li>
+  <li><strong>Cantidad de elementos:</strong> Muestra cuántos elementos en la vista actual o selección serán procesados.</li>
+</ul>
+<h3 id="4-ejecución-y-reporte">
+  
+  
+    <a href="#4-ejecución-y-reporte" class="anchor-heading" aria-labelledby="4-ejecución-y-reporte"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Ejecución y Reporte
+  
+  
+</h3>
+    
+
+<p>Después de hacer clic en el botón <strong>“Aceptar”</strong>, el comando procesa los elementos y muestra un mensaje final con el número de operaciones exitosas, advertencias y errores.</p>
+
+<p>Se le pedirá que abra un <strong>informe de texto detallado</strong>, que contiene:</p>
+
+<ol>
+  <li><strong>Resumen (Summary):</strong> Información completa sobre los parámetros de ejecución y las reglas cargadas.</li>
+  <li><strong>Elementos con problemas:</strong> Una lista de elementos que no se pudieron procesar, con el motivo (p. ej., “código de sububicación no encontrado”, “nivel no determinado”).</li>
+  <li><strong>Elementos procesados con éxito:</strong> Una tabla de todos los elementos para los que el código se generó con éxito. Los datos se presentan en un formato listo para copiar en Excel y están ordenados por categoría.</li>
+</ol>
+<h2 id="estructura-del-código-generado">
+  
+  
+    <a href="#estructura-del-código-generado" class="anchor-heading" aria-labelledby="estructura-del-código-generado"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Estructura del Código Generado
+  
+  
+</h2>
+    
+
+<p>El código final tiene el siguiente formato:</p>
+
+<p><code class="language-plaintext highlighter-rouge">DisciplineCode-CategoryCode-LocationCode-SubLocationCode-LevelCode</code></p>
+
+<ul>
+  <li><strong>DisciplineCode:</strong> El código de la disciplina (p. ej., “H” para HVAC, “E” para Eléctrico), determinado por la categoría del elemento.</li>
+  <li><strong>CategoryCode:</strong> El código de la categoría del elemento (p. ej., “DCT” para conductos).</li>
+  <li><strong>LocationCode:</strong> El código de la ubicación, determinado por el código de edificio del nombre del archivo.</li>
+  <li><strong>SubLocationCode:</strong> El código de la sububicación, leído del parámetro de instancia <code class="language-plaintext highlighter-rouge">IDD_SUBLOCATION</code>. Si el parámetro está vacío, se usa <code class="language-plaintext highlighter-rouge">?</code>.</li>
+  <li><strong>LevelCode:</strong> El código del nivel, determinado en función de la coordenada Z del elemento y el “Paquete de trabajo” del nombre del archivo.</li>
+</ul>
+<h2 id="estructura-del-archivo-de-excel">
+  
+  
+    <a href="#estructura-del-archivo-de-excel" class="anchor-heading" aria-labelledby="estructura-del-archivo-de-excel"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Estructura del Archivo de Excel
+  
+  
+</h2>
+    
+
+<p>El archivo de mapeo puede contener varias hojas para configurar diferentes reglas:</p>
+
+<ul>
+  <li><strong>CategoryDiscipline:</strong> Una matriz para mapear categorías de Revit a códigos de disciplina (<code class="language-plaintext highlighter-rouge">DisciplineCode</code>) и códigos de categoría (<code class="language-plaintext highlighter-rouge">CategoryCode</code>).</li>
+  <li><strong>Location:</strong> Una tabla para mapear “códigos de edificio” (del nombre del archivo) a <code class="language-plaintext highlighter-rouge">LocationCode</code>.</li>
+  <li><strong>Levels_WP…:</strong> Conjuntos de hojas (p. ej., <code class="language-plaintext highlighter-rouge">Levels_WP2</code>, <code class="language-plaintext highlighter-rouge">Levels_WP3</code>) para mapear coordenadas Z a códigos de nivel (<code class="language-plaintext highlighter-rouge">LevelCode</code>) para cada “Paquete de trabajo”.</li>
+</ul>
+
+<p><img src="image-1.png" alt="Tabla de matriz" /></p>
+
+          
+
+          
+            
           
         </main>
         
