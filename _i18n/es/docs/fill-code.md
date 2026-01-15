@@ -76,8 +76,10 @@ El código final tiene el siguiente formato:
 
 El archivo de mapeo puede contener varias hojas para configurar diferentes reglas:
 
-*   **CategoryDiscipline:** Una matriz para mapear categorías de Revit a códigos de disciplina (`DisciplineCode`) и códigos de categoría (`CategoryCode`).
+*   **CategoryDiscipline:** Una matriz para mapear categorías de Revit a códigos de disciplina (`DisciplineCode`) y códigos de categoría (`CategoryCode`).
 *   **Location:** Una tabla para mapear "códigos de edificio" (del nombre del archivo) a `LocationCode`.
-*   **Levels_WP...:** Conjuntos de hojas (p. ej., `Levels_WP2`, `Levels_WP3`) para mapear coordenadas Z a códigos de nivel (`LevelCode`) para cada "Paquete de trabajo".
+*   **Levels:** Una hoja para mapear coordenadas Z a códigos de nivel (`LevelCode`). Los datos en esta hoja se organizan en bloques de dos columnas, donde cada bloque tiene un encabezado de dos filas:
+    1.  **Fila 1:** Contiene la **clave de mapeo**. Puede ser un "Paquete de Trabajo" (p. ej., `CNT3`) o una clave compuesta `"{Paquete de Trabajo} {Código de Edificio}"` (p. ej., `CNT7 E110`).
+    2.  **Fila 2:** Contiene los encabezados de los datos: `Min Z` para la elevación mínima del nivel (en metros) y `Code` для el código de nivel.
 
 ![Tabla de matriz](image-1.png)

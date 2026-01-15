@@ -78,6 +78,8 @@ The mapping file can contain several sheets to configure different rules:
 
 *   **CategoryDiscipline:** A matrix for mapping Revit categories to discipline codes (`DisciplineCode`) and category codes (`CategoryCode`).
 *   **Location:** A table for mapping "building codes" (from the file name) to `LocationCode`.
-*   **Levels_WP...:** Sets of sheets (e.g., `Levels_WP2`, `Levels_WP3`) for mapping Z-coordinates to level codes (`LevelCode`) for each "Work Package".
+*   **Levels:** A sheet for mapping Z-coordinates to level codes (`LevelCode`). The data on this sheet is organized into blocks of two columns, where each block has a two-row header:
+    1.  **Row 1:** Contains the **mapping key**. This can be a "Work Package" (e.g., `CNT3`) or a composite key `"{Work Package} {Building Code}"` (e.g., `CNT7 E110`).
+    2.  **Row 2:** Contains the data headers: `Min Z` for the minimum level elevation (in meters) and `Code` for the level code.
 
 ![Matrix Table](image-1.png)
