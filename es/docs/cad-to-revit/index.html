@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Cad to Revit" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="This tool is designed to automatically create and update Revit family instances based on blocks from DWG files. It allows you to significantly speed up the process of transferring data from 2D drawings to a 3D model and keep it up to date." />
+<meta property="og:description" content="This tool is designed to automatically create and update Revit family instances based on blocks from DWG files. It allows you to significantly speed up the process of transferring data from 2D drawings to a 3D model and keep it up to date." />
 <link rel="canonical" href="https://snrbim.github.io/es/docs/cad-to-revit/" />
 <meta property="og:url" content="https://snrbim.github.io/es/docs/cad-to-revit/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Cad to Revit" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Cad to Revit","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/cad-to-revit/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This tool is designed to automatically create and update Revit family instances based on blocks from DWG files. It allows you to significantly speed up the process of transferring data from 2D drawings to a 3D model and keep it up to date.","headline":"Cad to Revit","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/cad-to-revit/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="título-del-comando-en-español">
+            <h1 class="no_toc" id="cadtorevit-colocar-y-sincronizar-ejemplares-de-familia-desde-bloques-cad">
   
   
-    <a href="#título-del-comando-en-español" class="anchor-heading" aria-labelledby="título-del-comando-en-español"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Título del Comando en Español
+    <a href="#cadtorevit-colocar-y-sincronizar-ejemplares-de-familia-desde-bloques-cad" class="anchor-heading" aria-labelledby="cadtorevit-colocar-y-sincronizar-ejemplares-de-familia-desde-bloques-cad"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CadToRevit: Colocar y Sincronizar Ejemplares de Familia desde Bloques CAD
   
   
 </h1>
@@ -272,10 +272,200 @@
   <summary class="text-delta">
     Tabla de contenidos
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#características-principales" id="markdown-toc-características-principales">Características Principales</a></li>
+  <li><a href="#flujo-de-trabajo" id="markdown-toc-flujo-de-trabajo">Flujo de Trabajo</a>    <ol>
+      <li><a href="#paso-1-preparación-y-análisis-botón-prepararactualizar" id="markdown-toc-paso-1-preparación-y-análisis-botón-prepararactualizar">Paso 1: Preparación y Análisis (botón “Preparar/Actualizar…”)</a></li>
+      <li><a href="#paso-2-configurar-el-mapeo" id="markdown-toc-paso-2-configurar-el-mapeo">Paso 2: Configurar el Mapeo</a></li>
+      <li><a href="#paso-3-crear-elementos-botón-crear-familias" id="markdown-toc-paso-3-crear-elementos-botón-crear-familias">Paso 3: Crear Elementos (botón “Crear Familias”)</a></li>
+    </ol>
+  </li>
+  <li><a href="#resumen-de-la-interfaz" id="markdown-toc-resumen-de-la-interfaz">Resumen de la Interfaz</a></li>
+  <li><a href="#actualización-y-sincronización" id="markdown-toc-actualización-y-sincronización">Actualización y Sincronización</a></li>
+  <li><a href="#lógica-de-determinación-de-altura-offset-z" id="markdown-toc-lógica-de-determinación-de-altura-offset-z">Lógica de Determinación de Altura (Offset Z)</a></li>
+  <li><a href="#funcionalidades-adicionales-y-notas-importantes" id="markdown-toc-funcionalidades-adicionales-y-notas-importantes">Funcionalidades Adicionales y Notas Importantes</a></li>
+</ol>
 
 </details>
 
-<p>Este es el contenido en español para la documentación del comando.</p>
+<p>La herramienta <strong>CadToRevit</strong> está diseñada para crear y actualizar automáticamente ejemplares de familia de Revit basados en bloques de archivos DWG. Permite acelerar significativamente el proceso de transferencia de datos desde dibujos 2D a un modelo 3D y mantenerlo actualizado.</p>
+<h2 id="características-principales">
+  
+  
+    <a href="#características-principales" class="anchor-heading" aria-labelledby="características-principales"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Características Principales
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Creación y actualización por lotes:</strong> Procesamiento rápido de una gran cantidad de bloques.</li>
+  <li><strong>Mapeo flexible:</strong> Configure la correspondencia entre bloques de CAD y familias de Revit usando Excel.</li>
+  <li><strong>Control de altura:</strong> Control preciso sobre la altura de colocación usando múltiples niveles de configuración.</li>
+  <li><strong>Manejo de duplicados:</strong> Filtrado inteligente de bloques duplicados.</li>
+  <li><strong>Informes detallados:</strong> Generación de informes en Excel sobre elementos creados, actualizados y omitidos.</li>
+</ul>
+<h2 id="flujo-de-trabajo">
+  
+  
+    <a href="#flujo-de-trabajo" class="anchor-heading" aria-labelledby="flujo-de-trabajo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flujo de Trabajo
+  
+  
+</h2>
+    
+<h3 id="paso-1-preparación-y-análisis-botón-prepararactualizar">
+  
+  
+    <a href="#paso-1-preparación-y-análisis-botón-prepararactualizar" class="anchor-heading" aria-labelledby="paso-1-preparación-y-análisis-botón-prepararactualizar"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Paso 1: Preparación y Análisis (botón “Preparar/Actualizar…”)
+  
+  
+</h3>
+    
+
+<p>En esta etapa, la herramienta analiza los archivos DWG seleccionados y el proyecto de Revit actual, y luego crea o actualiza el archivo de mapeo de Excel. Este archivo contiene no solo la tabla de configuración, sino también varias hojas de ayuda.</p>
+
+<p><strong>Hoja principal de configuración:</strong></p>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Block-Family Mapping</code>:</strong> Esta es la hoja de trabajo principal donde usted define manualmente qué bloque de CAD corresponde a qué familia de Revit.</li>
+</ul>
+
+<p><strong>Hojas de ayuda (solo lectura):</strong></p>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Blocks</code>:</strong> Contiene una lista completa de todos los bloques únicos encontrados en los archivos DWG especificados, sus recuentos y todos sus atributos. Úsela como referencia para copiar los nombres exactos de los bloques para el mapeo.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Families</code></strong> y <strong><code class="language-plaintext highlighter-rouge">Families (Transposed)</code>:</strong> Dos hojas que representan los mismos datos en diferentes formatos. Listan todas las familias compatibles encontradas en el proyecto de Revit y sus parámetros escribibles. Ayudan a elegir la familia y los nombres de parámetros correctos para el mapeo.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Comparison</code>:</strong> Muestra los cambios en la composición de bloques (añadidos, eliminados, modificados) entre las dos últimas ejecuciones del análisis.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Duplicates</code>:</strong> Proporciona información detallada sobre todos los bloques duplicados encontrados, indicando cuál se utilizó y cuáles se ignoraron.</li>
+</ul>
+<h3 id="paso-2-configurar-el-mapeo">
+  
+  
+    <a href="#paso-2-configurar-el-mapeo" class="anchor-heading" aria-labelledby="paso-2-configurar-el-mapeo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Paso 2: Configurar el Mapeo
+  
+  
+</h3>
+    
+
+<p>Edite la hoja <strong><code class="language-plaintext highlighter-rouge">Block-Family Mapping</code></strong>, rellenando al menos las tres columnas obligatorias: <code class="language-plaintext highlighter-rouge">BlockName</code>, <code class="language-plaintext highlighter-rouge">FamilyName</code>, <code class="language-plaintext highlighter-rouge">FamilyType</code>.</p>
+<h3 id="paso-3-crear-elementos-botón-crear-familias">
+  
+  
+    <a href="#paso-3-crear-elementos-botón-crear-familias" class="anchor-heading" aria-labelledby="paso-3-crear-elementos-botón-crear-familias"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Paso 3: Crear Elementos (botón “Crear Familias”)
+  
+  
+</h3>
+    
+
+<p>Después de configurar el mapeo, inicie el proceso de creación. La herramienta colocará las familias en el modelo de acuerdo con sus reglas y generará un informe final en Excel.</p>
+<h2 id="resumen-de-la-interfaz">
+  
+  
+    <a href="#resumen-de-la-interfaz" class="anchor-heading" aria-labelledby="resumen-de-la-interfaz"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Resumen de la Interfaz
+  
+  
+</h2>
+    
+
+<p><img src="image.png" alt="UI" /></p>
+
+<ul>
+  <li><strong>Campos de Entrada:</strong> Un gran cuadro de texto para las rutas de los archivos DWG (puede pegar múltiples rutas, cada una en una nueva línea) y un campo para la ruta del archivo de mapeo de Excel.</li>
+  <li><strong>Botones de Menú “…“</strong>: A la derecha de cada campo de entrada, hay un botón <code class="language-plaintext highlighter-rouge">...</code> que abre un menú con un <strong>clic izquierdo</strong>:
+    <ul>
+      <li><strong>Para DWG:</strong>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">Add new path(s)...</code>: Abre un diálogo para seleccionar archivos DWG.</li>
+          <li><code class="language-plaintext highlighter-rouge">Recent Files</code>: Muestra una lista de archivos utilizados recientemente для un acceso rápido.</li>
+        </ul>
+      </li>
+      <li><strong>Para Excel:</strong>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">Select new path...</code>: Abre un diálogo para seleccionar un archivo de Excel.</li>
+          <li><code class="language-plaintext highlighter-rouge">Generate default path</code>:<strong>Crea automáticamente una ruta</strong> para el archivo de mapeo en la carpeta de informes del plugin (<code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Reports\CadToRevit\</code>). El archivo se llamará <code class="language-plaintext highlighter-rouge">mapping_&lt;nombre_del_proyecto&gt;.xlsx</code>.</li>
+          <li><code class="language-plaintext highlighter-rouge">Recent Files</code>: Una lista de archivos de mapeo recientes.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Teclas de Acceso Rápido:</strong>
+    <ul>
+      <li><strong>Enter</strong>: Inicia el proceso de creación de familias (<code class="language-plaintext highlighter-rouge">Create Families</code>).</li>
+      <li><strong>Esc</strong>: Cierra la ventana (<code class="language-plaintext highlighter-rouge">Cancel</code>).</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="actualización-y-sincronización">
+  
+  
+    <a href="#actualización-y-sincronización" class="anchor-heading" aria-labelledby="actualización-y-sincronización"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Actualización y Sincronización
+  
+  
+</h2>
+    
+
+<p>Al ejecutarse de nuevo, la herramienta no recrea los elementos, sino que actualiza los existentes rastreando los cambios.</p>
+
+<ul>
+  <li><strong>Vínculo:</strong> La herramienta rastrea los elementos creados usando el parámetro de servicio <strong>“DWG info”</strong>, que se escribe en cada familia. <strong>No elimine ni modifique este parámetro.</strong></li>
+  <li><strong>Detección de Cambios:</strong> La sincronización se activa si hay cambios en:
+    <ul>
+      <li><strong>Posición:</strong> El desplazamiento del elemento supera los 100 mm.</li>
+      <li><strong>Rotación:</strong> El ángulo de rotación ha cambiado más de 0.1°.</li>
+      <li><strong>Parámetros:</strong> El valor de al menos uno de los parámetros rastreados ha cambiado.</li>
+    </ul>
+  </li>
+  <li><strong>Elementos “Huérfanos”:</strong> Si un bloque ha sido eliminado del DWG, el elemento correspondiente en Revit no se elimina, sino que se marca en el informe como “Orphaned” (Huérfano). Esto permite tomar una decisión manual sobre su eliminación.</li>
+</ul>
+<h2 id="lógica-de-determinación-de-altura-offset-z">
+  
+  
+    <a href="#lógica-de-determinación-de-altura-offset-z" class="anchor-heading" aria-labelledby="lógica-de-determinación-de-altura-offset-z"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Lógica de Determinación de Altura (Offset Z)
+  
+  
+</h2>
+    
+
+<p>La altura del elemento se determina mediante un sistema de prioridad de tres niveles:</p>
+
+<ol>
+  <li><strong>Atributo <code class="language-plaintext highlighter-rouge">offset</code> en el bloque CAD (Prioridad más alta):</strong> Si el bloque tiene un atributo <code class="language-plaintext highlighter-rouge">offset</code>, su valor se utiliza para la altura. Valores &gt; 5 se consideran milímetros; ≤ 5 se consideran metros.</li>
+  <li><strong>Columna <code class="language-plaintext highlighter-rouge">DefaultZ (mm)</code> en Excel (Prioridad media):</strong> Si el atributo no está presente, se utiliza el valor de esta columna.</li>
+  <li><strong>Por defecto por categoría (Prioridad más baja):</strong> Si no se especifica nada, se aplica la altura predeterminada para la categoría de la familia:
+    <ul>
+      <li><strong>Luminarias</strong> (<code class="language-plaintext highlighter-rouge">OST_LightingFixtures</code>): <code class="language-plaintext highlighter-rouge">2999 mm</code></li>
+      <li><strong>Dispositivos de Iluminación</strong> (<code class="language-plaintext highlighter-rouge">OST_LightingDevices</code>): <code class="language-plaintext highlighter-rouge">999 mm</code></li>
+      <li><strong>Todas las demás categorías:</strong> <code class="language-plaintext highlighter-rouge">99 mm</code></li>
+    </ul>
+  </li>
+</ol>
+<h2 id="funcionalidades-adicionales-y-notas-importantes">
+  
+  
+    <a href="#funcionalidades-adicionales-y-notas-importantes" class="anchor-heading" aria-labelledby="funcionalidades-adicionales-y-notas-importantes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Funcionalidades Adicionales y Notas Importantes
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Trabajo con Vistas y Recortes:</strong> La herramienta procesa no solo los archivos DWG vinculados desde el gestor de vínculos, sino sus <strong>ejemplares específicos colocados en las vistas</strong> (principalmente planos de planta). Este es un mecanismo clave para correlacionar correctamente las coordenadas cuando un solo archivo DWG contiene múltiples planos de planta desplazados entre sí.
+    <ul>
+      <li><strong>Su Acción:</strong> Antes de ejecutar la herramienta, debe <strong>colocar y alinear manualmente</strong> cada ejemplar del DWG vinculado en la vista de plano correspondiente en Revit.</li>
+      <li><strong>Acción de la Herramienta:</strong> La herramienta lee la transformación (desplazamiento y rotación) de cada ejemplar y calcula correctamente la posición de los bloques en el sistema de coordenadas compartido de Revit.</li>
+      <li><strong>Filtrado:</strong> Adicionalmente, tendrá que usar la <strong>Caja de Recorte (Crop Box)</strong> en la vista para limitar el procesamiento solo a la parte deseada del DWG. Los bloques fuera de la caja de recorte serán ignorados para ese nivel.</li>
+      <li><strong>Verificación:</strong> Puede verificar si su configuración es correcta en la hoja <strong><code class="language-plaintext highlighter-rouge">Blocks</code></strong> del archivo de Excel. Para cada bloque, se muestra el número de sus ocurrencias en cada vista (en las columnas “View: <Nombre de="" la="" Vista="">"). Si el recuento no coincide con sus expectativas, verifique la alineación y los límites de recorte del vínculo DWG.</Nombre></li>
+    </ul>
+  </li>
+  <li><strong>Modo “Corner” (Esquina):</strong> Si especifica “Corner” en las columnas <code class="language-plaintext highlighter-rouge">OffsetX</code> u <code class="language-plaintext highlighter-rouge">OffsetY</code>, el desplazamiento se calculará automáticamente como la mitad del ancho/largo de la familia. Esto es útil para elementos que se insertan por su esquina, no por su centro.</li>
+  <li><strong>Reconocimiento de Unidades:</strong> Al transferir parámetros numéricos, la herramienta reconoce y convierte automáticamente valores con sufijos como <code class="language-plaintext highlighter-rouge">kW</code>, <code class="language-plaintext highlighter-rouge">MW</code>, <code class="language-plaintext highlighter-rouge">W</code>, <code class="language-plaintext highlighter-rouge">V</code>, <code class="language-plaintext highlighter-rouge">kV</code>, <code class="language-plaintext highlighter-rouge">kg</code>.</li>
+  <li><strong>Copias de Seguridad:</strong> Antes de modificar su archivo de mapeo de Excel, la herramienta crea automáticamente una copia completa del mismo con una marca de tiempo. Los archivos se guardan en la carpeta: <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Reports\CadToRevit\Backups\</code>.</li>
+  <li><strong>Comentarios en las Rutas DWG:</strong> En la ventana de la herramienta, puede pegar una lista de rutas a archivos DWG. Las líneas que comiencen con un símbolo <code class="language-plaintext highlighter-rouge">;</code> serán ignoradas, lo que le permite deshabilitar temporalmente archivos del procesamiento.</li>
+  <li><strong>Precaución con la Copia Manual:</strong> Cuando copia un ejemplar de familia creado por esta herramienta, también copia su parámetro de servicio “DWG info”. Esto crea un vínculo duplicado, y durante la siguiente sincronización, la herramienta <strong>actualizará silenciosamente solo el ejemplar original</strong>, ignorando todas las copias.
+    <ul>
+      <li><strong>Recomendación:</strong> No copie los ejemplares gestionados por esta herramienta. Si necesita una copia “tonta”, asegúrese de borrar el valor de su parámetro “DWG info” para romper el vínculo.</li>
+      <li><em>Nota: En el futuro, se planea mejorar este comportamiento para que la herramienta actualice el vínculo por sí misma (basado en la ubicación) e informe de tales colisiones.</em></li>
+    </ul>
+  </li>
+</ul>
 
           
 

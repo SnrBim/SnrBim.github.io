@@ -423,9 +423,14 @@
 <p>El archivo de mapeo puede contener varias hojas para configurar diferentes reglas:</p>
 
 <ul>
-  <li><strong>CategoryDiscipline:</strong> Una matriz para mapear categorías de Revit a códigos de disciplina (<code class="language-plaintext highlighter-rouge">DisciplineCode</code>) и códigos de categoría (<code class="language-plaintext highlighter-rouge">CategoryCode</code>).</li>
+  <li><strong>CategoryDiscipline:</strong> Una matriz para mapear categorías de Revit a códigos de disciplina (<code class="language-plaintext highlighter-rouge">DisciplineCode</code>) y códigos de categoría (<code class="language-plaintext highlighter-rouge">CategoryCode</code>).</li>
   <li><strong>Location:</strong> Una tabla para mapear “códigos de edificio” (del nombre del archivo) a <code class="language-plaintext highlighter-rouge">LocationCode</code>.</li>
-  <li><strong>Levels_WP…:</strong> Conjuntos de hojas (p. ej., <code class="language-plaintext highlighter-rouge">Levels_WP2</code>, <code class="language-plaintext highlighter-rouge">Levels_WP3</code>) para mapear coordenadas Z a códigos de nivel (<code class="language-plaintext highlighter-rouge">LevelCode</code>) para cada “Paquete de trabajo”.</li>
+  <li><strong>Levels:</strong> Una hoja para mapear coordenadas Z a códigos de nivel (<code class="language-plaintext highlighter-rouge">LevelCode</code>). Los datos en esta hoja se organizan en bloques de dos columnas, donde cada bloque tiene un encabezado de dos filas:
+    <ol>
+      <li><strong>Fila 1:</strong> Contiene la <strong>clave de mapeo</strong>. Puede ser un “Paquete de Trabajo” (p. ej., <code class="language-plaintext highlighter-rouge">CNT3</code>) o una clave compuesta <code class="language-plaintext highlighter-rouge">"{Paquete de Trabajo} {Código de Edificio}"</code> (p. ej., <code class="language-plaintext highlighter-rouge">CNT7 E110</code>).</li>
+      <li><strong>Fila 2:</strong> Contiene los encabezados de los datos: <code class="language-plaintext highlighter-rouge">Min Z</code> para la elevación mínima del nivel (en metros) y <code class="language-plaintext highlighter-rouge">Code</code> для el código de nivel.</li>
+    </ol>
+  </li>
 </ul>
 
 <p><img src="image-1.png" alt="Tabla de matriz" /></p>

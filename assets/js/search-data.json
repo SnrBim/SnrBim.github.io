@@ -204,7 +204,7 @@
   },"29": {
     "doc": "Fill code",
     "title": "Excel File Structure",
-    "content": "The mapping file can contain several sheets to configure different rules: . | CategoryDiscipline: A matrix for mapping Revit categories to discipline codes (DisciplineCode) and category codes (CategoryCode). | Location: A table for mapping “building codes” (from the file name) to LocationCode. | Levels_WP…: Sets of sheets (e.g., Levels_WP2, Levels_WP3) for mapping Z-coordinates to level codes (LevelCode) for each “Work Package”. | . ",
+    "content": "The mapping file can contain several sheets to configure different rules: . | CategoryDiscipline: A matrix for mapping Revit categories to discipline codes (DisciplineCode) and category codes (CategoryCode). | Location: A table for mapping “building codes” (from the file name) to LocationCode. | Levels: A sheet for mapping Z-coordinates to level codes (LevelCode). The data on this sheet is organized into blocks of two columns, where each block has a two-row header: . | Row 1: Contains the mapping key. This can be a “Work Package” (e.g., CNT3) or a composite key \"{Work Package} {Building Code}\" (e.g., CNT7 E110). | Row 2: Contains the data headers: Min Z for the minimum level elevation (in meters) and Code for the level code. | . | . ",
     "url": "/docs/fill-code/#excel-file-structure",
     
     "relUrl": "/docs/fill-code/#excel-file-structure"
@@ -959,12 +959,54 @@
     "relUrl": "/docs/position-check/"
   },"137": {
     "doc": "Cad to Revit",
-    "title": "English Command Title",
-    "content": "This is the English content for the command documentation. ",
-    "url": "/docs/cad-to-revit/#english-command-title",
+    "title": "CadToRevit: Place and Sync Family Instances from CAD Blocks",
+    "content": ". | Key Features | Workflow . | Step 1: Preparation and Analysis (button “Prepare/Update…”) | Step 2: Configure Mapping | Step 3: Create Elements (button “Create Families”) | . | UI Overview | Updating and Synchronization | Placement Height Logic (Offset Z) | Additional Features and Important Notes | . This tool is designed to automatically create and update Revit family instances based on blocks from DWG files. It allows you to significantly speed up the process of transferring data from 2D drawings to a 3D model and keep it up to date. ",
+    "url": "/docs/cad-to-revit/#cadtorevit-place-and-sync-family-instances-from-cad-blocks",
     
-    "relUrl": "/docs/cad-to-revit/#english-command-title"
+    "relUrl": "/docs/cad-to-revit/#cadtorevit-place-and-sync-family-instances-from-cad-blocks"
   },"138": {
+    "doc": "Cad to Revit",
+    "title": "Key Features",
+    "content": ". | Batch creation and updating: Fast processing of a large number of blocks. | Flexible mapping: Configure the correspondence between CAD blocks and Revit families using Excel. | Height control: Precise control over the placement height using multiple levels of settings. | Duplicate handling: Intelligent filtering of duplicate blocks. | Detailed reports: Generation of Excel reports on created, updated, and skipped elements. | . ",
+    "url": "/docs/cad-to-revit/#key-features",
+    
+    "relUrl": "/docs/cad-to-revit/#key-features"
+  },"139": {
+    "doc": "Cad to Revit",
+    "title": "Workflow",
+    "content": "Step 1: Preparation and Analysis (button “Prepare/Update…”) . At this stage, the tool analyzes the selected DWG files and the current Revit project, and then creates or updates the Excel mapping file. This file contains not only the configuration table but also several helper sheets. Main configuration sheet: . | Block-Family Mapping: This is the main worksheet where you manually define which CAD block corresponds to which Revit family. | . Helper sheets (read-only): . | Blocks: Contains a complete list of all unique blocks found in the specified DWG files, their counts, and all their attributes. Use it as a reference to copy the exact block names for mapping. | Families and Families (Transposed): Two sheets representing the same data in different formats. They list all compatible families found in the Revit project and their writable parameters. They help in choosing the correct family and parameter names for mapping. | Comparison: Shows the changes in the block composition (added, removed, modified) between the last two analysis runs. | Duplicates: Provides detailed information about all found duplicate blocks, indicating which one was used and which were ignored. | . Step 2: Configure Mapping . Edit the Block-Family Mapping sheet, filling in at least the three mandatory columns: BlockName, FamilyName, FamilyType. Step 3: Create Elements (button “Create Families”) . After configuring the mapping, start the creation process. The tool will place families in the model according to your rules and generate a final Excel report. ",
+    "url": "/docs/cad-to-revit/#workflow",
+    
+    "relUrl": "/docs/cad-to-revit/#workflow"
+  },"140": {
+    "doc": "Cad to Revit",
+    "title": "UI Overview",
+    "content": ". | Input Fields: A large text box for DWG file paths (you can paste multiple paths, each on a new line) and a field for the Excel mapping file path. | “…” Menu Buttons: To the right of each input field, there is a ... button that opens a menu on a left-click: . | For DWG: . | Add new path(s)...: Opens a dialog to select DWG files. | Recent Files: Shows a list of recently used files for quick access. | . | For Excel: . | Select new path...: Opens a dialog to select an Excel file. | Generate default path: Automatically creates a path for the mapping file in the plugin’s reports folder (%AppData%\\Sener\\BimTools\\Reports\\CadToRevit\\). The file will be named mapping_&lt;project_name&gt;.xlsx. | Recent Files: A list of recent mapping files. | . | . | Hotkeys: . | Enter: Starts the family creation process (Create Families). | Esc: Closes the window (Cancel). | . | . ",
+    "url": "/docs/cad-to-revit/#ui-overview",
+    
+    "relUrl": "/docs/cad-to-revit/#ui-overview"
+  },"141": {
+    "doc": "Cad to Revit",
+    "title": "Updating and Synchronization",
+    "content": "When run again, the tool does not recreate elements but updates existing ones by tracking changes. | Link: The tool tracks the created elements using the “DWG info” service parameter, which is written to each family. Do not delete or modify this parameter. | Change Detection: Synchronization is triggered if there are changes in: . | Position: The element’s offset exceeds 100 mm. | Rotation: The rotation angle has changed by more than 0.1°. | Parameters: The value of at least one of the tracked parameters has changed. | . | “Orphaned” Elements: If a block has been deleted from the DWG, the corresponding element in Revit is not deleted but is marked in the report as “Orphaned”. This allows for a manual decision on deletion. | . ",
+    "url": "/docs/cad-to-revit/#updating-and-synchronization",
+    
+    "relUrl": "/docs/cad-to-revit/#updating-and-synchronization"
+  },"142": {
+    "doc": "Cad to Revit",
+    "title": "Placement Height Logic (Offset Z)",
+    "content": "The element’s height is determined by a three-level priority system: . | offset attribute in CAD block (Highest priority): If the block has an offset attribute, its value is used for the height. Values &gt; 5 are considered millimeters; ≤ 5 are considered meters. | DefaultZ (mm) column in Excel (Medium priority): If the attribute is not present, the value from this column is used. | Default by category (Lowest priority): If nothing is specified, the default height for the family’s category is applied: . | Lighting Fixtures (OST_LightingFixtures): 2999 mm | Lighting Devices (OST_LightingDevices): 999 mm | All other categories: 99 mm | . | . ",
+    "url": "/docs/cad-to-revit/#placement-height-logic-offset-z",
+    
+    "relUrl": "/docs/cad-to-revit/#placement-height-logic-offset-z"
+  },"143": {
+    "doc": "Cad to Revit",
+    "title": "Additional Features and Important Notes",
+    "content": ". | Working with Views and Cropping: The tool processes not just linked DWG files from the link manager, but their specific instances placed on views (primarily floor plans). This is a key mechanism for correctly correlating coordinates when a single DWG file contains multiple floor plans offset from each other. | Your Action: Before running the tool, you must manually place and align each instance of the linked DWG on the corresponding plan view in Revit. | Tool’s Action: The tool reads the transformation (offset and rotation) of each instance and correctly calculates the block positions in the shared Revit coordinate system. | Filtering: Additionally, you will have to use the Crop Box on the view to limit processing to only the desired part of the DWG. Blocks outside the crop box will be ignored for that level. | Verification: You can check if your setup is correct on the Blocks sheet in the Excel file. For each block, it shows the number of its occurrences on each view (in “View: \" columns). If the count does not match your expectations, check the alignment and crop boundaries of the DWG link. | . | “Corner” Mode: If you specify “Corner” in the OffsetX or OffsetY columns, the offset will be automatically calculated as half the family’s width/length. This is useful for elements that are inserted by their corner, not their center. | Unit Recognition: When transferring numeric parameters, the tool automatically recognizes and converts values with suffixes such as kW, MW, W, V, kV, kg. | Backups: Before modifying your Excel mapping file, the tool automatically creates a full copy of it with a timestamp. The files are saved in the folder: %AppData%\\Sener\\BimTools\\Reports\\CadToRevit\\Backups\\. | Comments in DWG Paths: In the tool’s window, you can paste a list of paths to DWG files. Lines starting with a ; symbol will be ignored, allowing you to temporarily disable files from processing. | Caution with Manual Copying: When you copy a family instance created by this tool, you also copy its “DWG info” service parameter. This creates a duplicate link, and during the next sync, the tool will silently update only the original instance, ignoring all copies. | Recommendation: Do not copy elements managed by this tool. If you need a “dumb” copy, be sure to clear the value of its “DWG info” parameter to break the link. | Note: In the future, this behavior is planned to be improved so that the tool itself updates the link (based on location) and reports such collisions. | . | . ",
+    "url": "/docs/cad-to-revit/#additional-features-and-important-notes",
+    
+    "relUrl": "/docs/cad-to-revit/#additional-features-and-important-notes"
+  },"144": {
     "doc": "Cad to Revit",
     "title": "Cad to Revit",
     "content": " ",

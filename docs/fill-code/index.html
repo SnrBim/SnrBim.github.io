@@ -425,7 +425,12 @@
 <ul>
   <li><strong>CategoryDiscipline:</strong> A matrix for mapping Revit categories to discipline codes (<code class="language-plaintext highlighter-rouge">DisciplineCode</code>) and category codes (<code class="language-plaintext highlighter-rouge">CategoryCode</code>).</li>
   <li><strong>Location:</strong> A table for mapping “building codes” (from the file name) to <code class="language-plaintext highlighter-rouge">LocationCode</code>.</li>
-  <li><strong>Levels_WP…:</strong> Sets of sheets (e.g., <code class="language-plaintext highlighter-rouge">Levels_WP2</code>, <code class="language-plaintext highlighter-rouge">Levels_WP3</code>) for mapping Z-coordinates to level codes (<code class="language-plaintext highlighter-rouge">LevelCode</code>) for each “Work Package”.</li>
+  <li><strong>Levels:</strong> A sheet for mapping Z-coordinates to level codes (<code class="language-plaintext highlighter-rouge">LevelCode</code>). The data on this sheet is organized into blocks of two columns, where each block has a two-row header:
+    <ol>
+      <li><strong>Row 1:</strong> Contains the <strong>mapping key</strong>. This can be a “Work Package” (e.g., <code class="language-plaintext highlighter-rouge">CNT3</code>) or a composite key <code class="language-plaintext highlighter-rouge">"{Work Package} {Building Code}"</code> (e.g., <code class="language-plaintext highlighter-rouge">CNT7 E110</code>).</li>
+      <li><strong>Row 2:</strong> Contains the data headers: <code class="language-plaintext highlighter-rouge">Min Z</code> for the minimum level elevation (in meters) and <code class="language-plaintext highlighter-rouge">Code</code> for the level code.</li>
+    </ol>
+  </li>
 </ul>
 
 <p><img src="image-1.png" alt="Matrix Table" /></p>
