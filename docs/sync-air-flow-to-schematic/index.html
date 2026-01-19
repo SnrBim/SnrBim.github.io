@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Sync air flow to schematic" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="This command provides comprehensive data synchronization between the 3D model and 2D schematics, updating room names, air flow rates, and creating equipment annotations." />
+<meta property="og:description" content="This command provides comprehensive data synchronization between the 3D model and 2D schematics, updating room names, air flow rates, and creating equipment annotations." />
 <link rel="canonical" href="https://snrbim.github.io/docs/sync-air-flow-to-schematic/" />
 <meta property="og:url" content="https://snrbim.github.io/docs/sync-air-flow-to-schematic/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Sync air flow to schematic" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Sync air flow to schematic","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/sync-air-flow-to-schematic/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This command provides comprehensive data synchronization between the 3D model and 2D schematics, updating room names, air flow rates, and creating equipment annotations.","headline":"Sync air flow to schematic","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/sync-air-flow-to-schematic/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="english-command-title">
+            <h1 class="no_toc" id="hvac-schematic-data-synchronization-sync-air-flow">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#hvac-schematic-data-synchronization-sync-air-flow" class="anchor-heading" aria-labelledby="hvac-schematic-data-synchronization-sync-air-flow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> HVAC Schematic Data Synchronization (Sync Air Flow)
   
   
 </h1>
@@ -272,10 +272,170 @@
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#1-what-the-command-does" id="markdown-toc-1-what-the-command-does">1. What the Command Does</a></li>
+  <li><a href="#2-preparation" id="markdown-toc-2-preparation">2. Preparation</a></li>
+  <li><a href="#3-usage" id="markdown-toc-3-usage">3. Usage</a></li>
+  <li><a href="#4-results" id="markdown-toc-4-results">4. Results</a></li>
+  <li><a href="#5-interactive-report" id="markdown-toc-5-interactive-report">5. Interactive Report</a></li>
+  <li><a href="#6-limitations-and-logic" id="markdown-toc-6-limitations-and-logic">6. Limitations and Logic</a></li>
+  <li><a href="#7-configuration-via-json" id="markdown-toc-7-configuration-via-json">7. Configuration via JSON</a></li>
+</ol>
 
 </details>
 
-<p>This is the English content for the command documentation.</p>
+<p>This command provides comprehensive data synchronization between the 3D model and 2D schematics, updating room names, air flow rates, and creating equipment annotations.</p><hr />
+<h3 id="1-what-the-command-does">
+  
+  
+    <a href="#1-what-the-command-does" class="anchor-heading" aria-labelledby="1-what-the-command-does"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. What the Command Does
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Updates Room Names:</strong> Synchronizes the name in the 2D room annotation (<code class="language-plaintext highlighter-rouge">SRS_Generic_Annotations_Schematic_Room</code>) with the name of the corresponding <code class="language-plaintext highlighter-rouge">MEP Space</code> in 3D.</li>
+  <li><strong>Synchronizes Air Flow:</strong>
+    <ul>
+      <li>Determines which room on the schematic each 2D diffuser annotation is in and writes an identifier in the format <code class="language-plaintext highlighter-rouge">RoomName-RoomNumber</code> to its <strong>Reference</strong> parameter.</li>
+      <li>Using this <strong>Reference</strong>, it sums the air flow from the corresponding 3D terminals and updates the parameters in the 2D annotation.</li>
+    </ul>
+  </li>
+  <li><strong>Synchronizes Unit Heater Annotations (New Feature):</strong> Automatically creates missing 2D annotations for 3D unit heaters or reports excess ones, based on their quantity in each room.</li>
+</ul>
+<h3 id="2-preparation">
+  
+  
+    <a href="#2-preparation" class="anchor-heading" aria-labelledby="2-preparation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Preparation
+  
+  
+</h3>
+    
+
+<p>For correct operation, ensure that:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MEP Spaces</code> are created and configured in the 3D model.</li>
+  <li>2D room annotations <strong>SRS_Generic_Annotations_Schematic_Room</strong> are placed on the schematic sheets.</li>
+  <li>2D diffuser annotations <strong>SRS_Hvc_Generic_Annotations_Diffuser 2D</strong> are placed on the schematic sheets. For Return Air systems, the expected 2D annotation type is ‘Exhaust’, and for Supply Air systems, it’s ‘Supply’.</li>
+  <li>For unit heater annotation synchronization, the following must be loaded into the project:
+    <ul>
+      <li><strong>3D Equipment:</strong>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">SRS_Hvc_Mechanical_Equipment_Wall_Unit_Heater_AHX: MODEL_15TO20KW</code></li>
+          <li><code class="language-plaintext highlighter-rouge">SRS_Hvc_Mechanical_Equipment_Ceiling_Unit_Heater: OACP1500</code></li>
+          <li><code class="language-plaintext highlighter-rouge">SRS_Hvc_Mechanical_Equipment_Wall_Unit_Heater: OAS02038AM</code></li>
+        </ul>
+      </li>
+      <li><strong>2D Annotation:</strong> <code class="language-plaintext highlighter-rouge">SRS_Hvc_Generic_Annotations_Unit_Heater_Elec_Sch</code></li>
+    </ul>
+  </li>
+  <li><strong>Note:</strong> The command automatically runs <code class="language-plaintext highlighter-rouge">Assign Spaces To Equipment</code> as a preliminary step in a separate transaction. The result of this step is displayed in the report as <strong>Step 0</strong>.</li>
+</ul>
+<h3 id="3-usage">
+  
+  
+    <a href="#3-usage" class="anchor-heading" aria-labelledby="3-usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Usage
+  
+  
+</h3>
+    
+
+<ol>
+  <li>Go to the <strong>SNR</strong> tab on the Revit ribbon.</li>
+  <li>Click the <strong>Sync Air Flow</strong> icon.</li>
+  <li>The command will perform all checks and synchronization automatically.</li>
+  <li>At the end, a dialog box will appear with a report of the work done.</li>
+</ol>
+<h3 id="4-results">
+  
+  
+    <a href="#4-results" class="anchor-heading" aria-labelledby="4-results"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Results
+  
+  
+</h3>
+    
+
+<ul>
+  <li>The <strong>Room Name</strong> parameter in the room annotations will be updated.</li>
+  <li>The following parameters in the diffuser annotations (<code class="language-plaintext highlighter-rouge">SRS_Hvc_Generic_Annotations_Diffuser 2D</code>) will be updated:
+    <ul>
+      <li><strong>Total flow rate:</strong> The total air flow from all matched 3D terminals.</li>
+      <li><strong>Number of units:</strong> The total number of matched 3D terminals.</li>
+      <li><strong>Mass flow rate:</strong> The average air flow (total flow / number of units).</li>
+      <li><strong>Flow Details:</strong> A text string with calculation details (e.g., <code class="language-plaintext highlighter-rouge">2 × 150L/s + 1 × NoParam</code>).</li>
+    </ul>
+  </li>
+  <li>Missing 2D annotations for unit heaters will be created. New annotations are placed in a column, starting from the bottom-left corner of the room on the schematic.</li>
+</ul>
+
+<p><img src="image.png" alt="example schematic" /></p>
+<h3 id="5-interactive-report">
+  
+  
+    <a href="#5-interactive-report" class="anchor-heading" aria-labelledby="5-interactive-report"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 5. Interactive Report
+  
+  
+</h3>
+    
+
+<p>The command provides a detailed report of the actions performed.</p>
+
+<ul>
+  <li><strong>Short Report:</strong> The main window displays a summarized version. Long lists of errors (more than 10-20) are automatically truncated for readability.</li>
+  <li><strong>Full Report:</strong> To view the complete list of all messages and IDs, click the <strong>Abrir informe completo</strong> button. This will create a text file with the full report and open it in your default editor.</li>
+</ul>
+<h3 id="6-limitations-and-logic">
+  
+  
+    <a href="#6-limitations-and-logic" class="anchor-heading" aria-labelledby="6-limitations-and-logic"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6. Limitations and Logic
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Excess Annotations:</strong> The command <strong>does not delete</strong> “excess” unit heater annotations. Instead, it reports them.</li>
+  <li><strong>System Matching Logic (for Air Flow):</strong>
+    <ol>
+      <li>The <strong>System Class</strong> (<code class="language-plaintext highlighter-rouge">Supply Air</code> or <code class="language-plaintext highlighter-rouge">Return Air</code>) is determined by the <strong>type</strong> name of the 2D diffuser annotation (<code class="language-plaintext highlighter-rouge">Supply</code> or <code class="language-plaintext highlighter-rouge">Exhaust</code>).</li>
+      <li>The command first matches 2D annotations with 3D terminals by an <strong>exact match</strong> of the room and the calculated system class.</li>
+      <li><strong>If multiple systems of the same class are found in one room</strong>, a more complex logic is engaged:</li>
+      <li>The name of the view where the 2D annotation is placed is searched for as a <strong>substring</strong> of the duct system name in 3D.
+        <ul>
+          <li><em>Example: A 2D annotation on the view <code class="language-plaintext highlighter-rouge">HVAC Plan SA-1</code> will be matched with the system <code class="language-plaintext highlighter-rouge">SA-1-Office</code>.</em></li>
+        </ul>
+      </li>
+      <li>If matching by view name fails, the command will perform an <strong>arbitrary</strong> match and report it.</li>
+    </ol>
+  </li>
+</ul>
+<h3 id="7-configuration-via-json">
+  
+  
+    <a href="#7-configuration-via-json" class="anchor-heading" aria-labelledby="7-configuration-via-json"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 7. Configuration via JSON
+  
+  
+</h3>
+    
+
+<p>Some of the command’s operational parameters, such as <strong>family and parameter names</strong>, can be configured through the central BIM Tools configuration file. This allows you to adapt the command to your project’s standards without changing the code.</p>
+
+<p>The settings file is located at:
+<code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code></p>
+
+<blockquote>
+  <p><strong>How to open this path?</strong>
+<code class="language-plaintext highlighter-rouge">%AppData%</code> is a standard Windows shortcut for accessing a hidden folder with application settings.</p>
+
+  <ol>
+    <li>Copy the entire path (including <code class="language-plaintext highlighter-rouge">%AppData%</code>, but without the file name: <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools</code>).</li>
+    <li>Open Windows Explorer (any folder, e.g., “My Computer”).</li>
+    <li>Click on the address bar, paste the copied path, and press Enter. The folder containing the <code class="language-plaintext highlighter-rouge">Settings.json</code> file will open directly.</li>
+  </ol>
+</blockquote>
+
+<p>For this command, find the <code class="language-plaintext highlighter-rouge">SyncAirFlowSettings</code> section in the file, change the desired values, and save the file. A Revit restart is not necessary; just run the command again.</p>
 
           
 

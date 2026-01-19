@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Sync air flow to schematic" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="This command provides comprehensive data synchronization between the 3D model and 2D schematics, updating room names, air flow rates, and creating equipment annotations." />
+<meta property="og:description" content="This command provides comprehensive data synchronization between the 3D model and 2D schematics, updating room names, air flow rates, and creating equipment annotations." />
 <link rel="canonical" href="https://snrbim.github.io/es/docs/sync-air-flow-to-schematic/" />
 <meta property="og:url" content="https://snrbim.github.io/es/docs/sync-air-flow-to-schematic/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Sync air flow to schematic" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Sync air flow to schematic","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/sync-air-flow-to-schematic/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This command provides comprehensive data synchronization between the 3D model and 2D schematics, updating room names, air flow rates, and creating equipment annotations.","headline":"Sync air flow to schematic","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/sync-air-flow-to-schematic/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -259,10 +259,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="título-del-comando-en-español">
+            <h1 class="no_toc" id="sincronización-de-datos-para-esquemas-hvac-sync-air-flow">
   
   
-    <a href="#título-del-comando-en-español" class="anchor-heading" aria-labelledby="título-del-comando-en-español"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Título del Comando en Español
+    <a href="#sincronización-de-datos-para-esquemas-hvac-sync-air-flow" class="anchor-heading" aria-labelledby="sincronización-de-datos-para-esquemas-hvac-sync-air-flow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Sincronización de Datos para Esquemas HVAC (Sync Air Flow)
   
   
 </h1>
@@ -272,10 +272,170 @@
   <summary class="text-delta">
     Tabla de contenidos
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#1-qué-hace-el-comando" id="markdown-toc-1-qué-hace-el-comando">1. Qué Hace el Comando</a></li>
+  <li><a href="#2-preparación" id="markdown-toc-2-preparación">2. Preparación</a></li>
+  <li><a href="#3-uso" id="markdown-toc-3-uso">3. Uso</a></li>
+  <li><a href="#4-resultados" id="markdown-toc-4-resultados">4. Resultados</a></li>
+  <li><a href="#5-reporte-interactivo" id="markdown-toc-5-reporte-interactivo">5. Reporte Interactivo</a></li>
+  <li><a href="#6-limitaciones-y-lógica" id="markdown-toc-6-limitaciones-y-lógica">6. Limitaciones y Lógica</a></li>
+  <li><a href="#7-configuración-vía-json" id="markdown-toc-7-configuración-vía-json">7. Configuración vía JSON</a></li>
+</ol>
 
 </details>
 
-<p>Este es el contenido en español para la documentación del comando.</p>
+<p>Este comando proporciona una sincronización completa de datos entre el modelo 3D y los esquemas 2D, actualizando nombres de espacios, caudales de aire y creando anotaciones de equipos.</p><hr />
+<h3 id="1-qué-hace-el-comando">
+  
+  
+    <a href="#1-qué-hace-el-comando" class="anchor-heading" aria-labelledby="1-qué-hace-el-comando"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Qué Hace el Comando
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Actualiza Nombres de Espacios:</strong> Sincroniza el nombre en la anotación 2D del espacio (<code class="language-plaintext highlighter-rouge">SRS_Generic_Annotations_Schematic_Room</code>) con el nombre del <code class="language-plaintext highlighter-rouge">MEP Space</code> correspondiente en 3D.</li>
+  <li><strong>Sincroniza Caudal de Aire:</strong>
+    <ul>
+      <li>Determina en qué espacio del esquema se encuentra cada anotación 2D de difusor y escribe un identificador con el formato <code class="language-plaintext highlighter-rouge">NombreEspacio-NumeroEspacio</code> en su parámetro <strong>Reference</strong>.</li>
+      <li>Usando esta <strong>Reference</strong>, suma el caudal de aire de los terminales 3D correspondientes y actualiza los parámetros en la anotación 2D.</li>
+    </ul>
+  </li>
+  <li><strong>Sincroniza Anotaciones de Calentadores Unitarios (Nueva Función):</strong> Crea automáticamente las anotaciones 2D que faltan para los calentadores unitarios 3D o informa sobre las sobrantes, basándose en su cantidad en cada espacio.</li>
+</ul>
+<h3 id="2-preparación">
+  
+  
+    <a href="#2-preparación" class="anchor-heading" aria-labelledby="2-preparación"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Preparación
+  
+  
+</h3>
+    
+
+<p>Para un funcionamiento correcto, asegúrese de que:</p>
+<ul>
+  <li>Los <code class="language-plaintext highlighter-rouge">MEP Spaces</code> (espacios de instalaciones) están creados y configurados en el modelo 3D.</li>
+  <li>Las anotaciones 2D de espacio <strong>SRS_Generic_Annotations_Schematic_Room</strong> están colocadas en los planos de esquemas.</li>
+  <li>Las anotaciones 2D de difusor <strong>SRS_Hvc_Generic_Annotations_Diffuser 2D</strong> están colocadas en los planos de esquemas. Para sistemas de Retorno de Aire (Return Air), se espera el tipo de anotación 2D ‘Exhaust’, y para sistemas de Suministro de Aire (Supply Air), ‘Supply’.</li>
+  <li>Para la sincronización de anotaciones de calentadores unitarios, lo siguiente debe estar cargado en el proyecto:
+    <ul>
+      <li><strong>Equipamiento 3D:</strong>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">SRS_Hvc_Mechanical_Equipment_Wall_Unit_Heater_AHX: MODEL_15TO20KW</code></li>
+          <li><code class="language-plaintext highlighter-rouge">SRS_Hvc_Mechanical_Equipment_Ceiling_Unit_Heater: OACP1500</code></li>
+          <li><code class="language-plaintext highlighter-rouge">SRS_Hvc_Mechanical_Equipment_Wall_Unit_Heater: OAS02038AM</code></li>
+        </ul>
+      </li>
+      <li><strong>Anotación 2D:</strong> <code class="language-plaintext highlighter-rouge">SRS_Hvc_Generic_Annotations_Unit_Heater_Elec_Sch</code></li>
+    </ul>
+  </li>
+  <li><strong>Nota:</strong> El comando ejecuta automáticamente <code class="language-plaintext highlighter-rouge">Assign Spaces To Equipment</code> como un paso preliminar en una transacción separada. El resultado de este paso se muestra en el informe como <strong>Paso 0</strong>.</li>
+</ul>
+<h3 id="3-uso">
+  
+  
+    <a href="#3-uso" class="anchor-heading" aria-labelledby="3-uso"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Uso
+  
+  
+</h3>
+    
+
+<ol>
+  <li>Vaya a la pestaña <strong>SNR</strong> en la cinta de opciones de Revit.</li>
+  <li>Haga clic en el icono <strong>Sync Air Flow</strong>.</li>
+  <li>El comando realizará todas las comprobaciones y la sincronización automáticamente.</li>
+  <li>Al final, aparecerá un cuadro de diálogo con un informe del trabajo realizado.</li>
+</ol>
+<h3 id="4-resultados">
+  
+  
+    <a href="#4-resultados" class="anchor-heading" aria-labelledby="4-resultados"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Resultados
+  
+  
+</h3>
+    
+
+<ul>
+  <li>Se actualizará el parámetro <strong>Room Name</strong> en las anotaciones de espacio.</li>
+  <li>Se actualizarán los siguientes parámetros en las anotaciones de difusor (<code class="language-plaintext highlighter-rouge">SRS_Hvc_Generic_Annotations_Diffuser 2D</code>):
+    <ul>
+      <li><strong>Total flow rate:</strong> El caudal de aire total de todos los terminales 3D coincidentes.</li>
+      <li><strong>Number of units:</strong> El número total de terminales 3D coincidentes.</li>
+      <li><strong>Mass flow rate:</strong> El caudal de aire promedio (caudal total / número de unidades).</li>
+      <li><strong>Flow Details:</strong> Una cadena de texto con detalles del cálculo (p. ej., <code class="language-plaintext highlighter-rouge">2 × 150L/s + 1 × NoParam</code>).</li>
+    </ul>
+  </li>
+  <li>Se crearán las anotaciones 2D que falten para los calentadores unitarios. Las nuevas anotaciones se colocan en una columna, comenzando desde la esquina inferior izquierda del espacio en el esquema.</li>
+</ul>
+
+<p><img src="image.png" alt="ejemplo de esquema" /></p>
+<h3 id="5-reporte-interactivo">
+  
+  
+    <a href="#5-reporte-interactivo" class="anchor-heading" aria-labelledby="5-reporte-interactivo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 5. Reporte Interactivo
+  
+  
+</h3>
+    
+
+<p>El comando proporciona un informe detallado de las acciones realizadas.</p>
+
+<ul>
+  <li><strong>Reporte Corto:</strong> La ventana principal muestra una versión resumida. Las listas largas de errores (más de 10-20) se truncan automáticamente para facilitar la lectura.</li>
+  <li><strong>Reporte Completo:</strong> Para ver la lista completa de todos los mensajes e IDs, haga clic en el botón <strong>Abrir informe completo</strong>. Esto creará un archivo de texto con el informe completo y lo abrirá en su editor predeterminado.</li>
+</ul>
+<h3 id="6-limitaciones-y-lógica">
+  
+  
+    <a href="#6-limitaciones-y-lógica" class="anchor-heading" aria-labelledby="6-limitaciones-y-lógica"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6. Limitaciones y Lógica
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Anotaciones Sobrantes:</strong> El comando <strong>no elimina</strong> las anotaciones “sobrantes” de los calentadores unitarios. En su lugar, informa sobre ellas.</li>
+  <li><strong>Lógica de Coincidencia de Sistemas (para Caudal de Aire):</strong>
+    <ol>
+      <li>La <strong>Clase de Sistema</strong> (<code class="language-plaintext highlighter-rouge">Supply Air</code> o <code class="language-plaintext highlighter-rouge">Return Air</code>) se determina por el nombre del <strong>tipo</strong> de la anotación 2D del difusor (<code class="language-plaintext highlighter-rouge">Supply</code> o <code class="language-plaintext highlighter-rouge">Exhaust</code>).</li>
+      <li>El comando primero busca coincidencias entre las anotaciones 2D y los terminales 3D por una <strong>coincidencia exacta</strong> del espacio y la clase de sistema calculada.</li>
+      <li><strong>Si se encuentran múltiples sistemas de la misma clase en un espacio</strong>, se activa una lógica más compleja:</li>
+      <li>El nombre de la vista donde se encuentra la anotación 2D se busca como una <strong>subcadena</strong> del nombre del sistema de conductos en 3D.
+        <ul>
+          <li><em>Ejemplo: Una anotación 2D en la vista <code class="language-plaintext highlighter-rouge">Plano HVAC SA-1</code> coincidirá con el sistema <code class="language-plaintext highlighter-rouge">SA-1-Oficina</code>.</em></li>
+        </ul>
+      </li>
+      <li>Si la coincidencia por nombre de vista falla, el comando realizará una coincidencia <strong>arbitraria</strong> y lo informará.</li>
+    </ol>
+  </li>
+</ul>
+<h3 id="7-configuración-vía-json">
+  
+  
+    <a href="#7-configuración-vía-json" class="anchor-heading" aria-labelledby="7-configuración-vía-json"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 7. Configuración vía JSON
+  
+  
+</h3>
+    
+
+<p>Algunos de los parámetros de funcionamiento del comando, como los <strong>nombres de familias y parámetros</strong>, se pueden configurar a través del archivo de configuración central de BIM Tools. Esto le permite adaptar el comando a los estándares de su proyecto sin cambiar el código.</p>
+
+<p>El archivo de configuración se encuentra en:
+<code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code></p>
+
+<blockquote>
+  <p><strong>¿Cómo abrir esta ruta?</strong>
+<code class="language-plaintext highlighter-rouge">%AppData%</code> es un atajo estándar de Windows para acceder a una carpeta oculta con la configuración de las aplicaciones.</p>
+
+  <ol>
+    <li>Copie la ruta completa (incluyendo <code class="language-plaintext highlighter-rouge">%AppData%</code>, pero sin el nombre del archivo: <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools</code>).</li>
+    <li>Abra el Explorador de Windows (cualquier carpeta, p. ej., “Mi PC”).</li>
+    <li>Haga clic en la barra de direcciones, pegue la ruta copiada y presione Enter. La carpeta que contiene el archivo <code class="language-plaintext highlighter-rouge">Settings.json</code> se abrirá directamente.</li>
+  </ol>
+</blockquote>
+
+<p>Para este comando, busque la sección <code class="language-plaintext highlighter-rouge">SyncAirFlowSettings</code> en el archivo, cambie los valores deseados y guarde el archivo. No es necesario reiniciar Revit; simplemente ejecute el comando de nuevo.</p>
 
           
 
