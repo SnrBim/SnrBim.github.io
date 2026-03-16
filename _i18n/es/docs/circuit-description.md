@@ -83,6 +83,10 @@ Para todas las demás categorías (receptáculos, interruptores, etc.), se usa l
 
 *RECPT = receptáculo*
 
+## Marcado de equipos especiales
+
+Los circuitos que contienen equipos con prefijos específicos en el nombre de tipo (predeterminado: "R5") se marcan automáticamente con un asterisco (*) al comienzo de Load Name. Configure el patrón en `%APPDATA%\Sener\BimTools\Settings.json` bajo `GenCircuitDescription.SpecialEquipmentPrefixPattern`.
+
 ## Determinación de ubicación
 
 El comando determina el número de habitación para cada elemento en el siguiente orden:
@@ -95,7 +99,26 @@ El comando determina el número de habitación para cada elemento en el siguient
 
 - El comando usa un algoritmo optimizado con caché para el procesamiento rápido de grandes cantidades de elementos
 - Para elementos del mismo circuito, las habitaciones usadas frecuentemente se verifican primero
-- El comando puede usar descripciones creadas manualmente anteriormente para aclarar la ubicación de elementos con ubicaciones indefinidas
+
+#### Lógica para preservar la entrada del usuario para habitaciones desconocidas
+
+Si la detección automática de habitaciones falla para algunos elementos ("?"), el comando usa la descripción antigua del circuito para recuperar: analiza los números de habitaciones, excluye los ya encontrados automáticamente, combina los nuevos en un grupo separado por espacios y asigna la cantidad de "?".
+
+**Ejemplos:**
+
+```
+- Auto:      "RECPT × 5 | ? × 5"          # Todos los elementos sin habitación
+  Viejo:     "RECPT × 7 | 103 × 7"        # Usuario especificó 103 para 7 elementos
+  Resultado: "RECPT × 5 | 103 × 5"        # Número del viejo, cantidad del auto
+
+- Auto:      "LTG × 4 | 101 × 2, ? × 2"   # 2 elementos sin habitación
+  Viejo:     "LTG × 4 | 101 × 2, 102 × 2" # Usuario especificó 102 para 2 elementos
+  Resultado: "LTG × 4 | 101 × 2, 102 × 2" # Número del viejo, cantidad del auto
+
+- Auto:      "RECPT × 5 | 101 × 3, ? × 2"            # 2 elementos sin habitación
+  Viejo:     "RECPT × 5 | 101 × 3, 102 × 1, 103 × 1" # Usuario especificó 102 y 103
+  Resultado: "RECPT × 5 | 101 × 3, 102 103 × 2"      # Números combinados, cantidad del auto
+```
 
 ## Informe
 

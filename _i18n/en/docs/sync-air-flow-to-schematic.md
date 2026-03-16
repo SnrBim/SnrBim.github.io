@@ -88,3 +88,6 @@ The settings file is located at:
 > 3.  Click on the address bar, paste the copied path, and press Enter. The folder containing the `Settings.json` file will open directly.
 
 For this command, find the `SyncAirFlowSettings` section in the file, change the desired values, and save the file. A Revit restart is not necessary; just run the command again.
+
+> **Note for `UnitHeater3d`:**
+> In the current version, for the list of 3D unit heaters (`UnitHeater3d`), **only the family name is considered**. Anything after a colon (`:`) will be ignored. The tool will automatically process all types for each specified family.

@@ -83,6 +83,10 @@ For all other categories (receptacles, switches, etc.), the standard designation
 
 *RECPT = receptacle*
 
+## Special Equipment Marking
+
+Circuits containing equipment with specific type name prefixes (default: "R5") are automatically marked with an asterisk (*) at the beginning of Load Name. Configure the pattern in `%APPDATA%\Sener\BimTools\Settings.json` under `GenCircuitDescription.SpecialEquipmentPrefixPattern`.
+
 ## Location Determination
 
 The command determines the room number for each element in the following order:
@@ -95,7 +99,26 @@ The command determines the room number for each element in the following order:
 
 - The command uses an optimized algorithm with caching for fast processing of large numbers of elements
 - For elements from the same circuit, frequently used rooms are checked first
-- The command can use previously manually created descriptions to clarify the location of elements with undefined locations
+
+#### Logic for Preserving User Input for Unknown Rooms
+
+If automatic room detection fails for some elements ("?"), the command uses the old circuit description to recover: it parses room numbers, excludes those already found automatically, combines new ones into a group separated by spaces, and assigns the quantity from "?".
+
+**Examples:**
+
+```
+- Auto:      "RECPT × 5 | ? × 5"          # All elements without room
+  Old:       "RECPT × 7 | 103 × 7"        # User specified 103 for 7 elements
+  Result:    "RECPT × 5 | 103 × 5"        # Number from old, quantity from auto
+
+- Auto:      "LTG × 4 | 101 × 2, ? × 2"   # 2 elements without room
+  Old:       "LTG × 4 | 101 × 2, 102 × 2" # User specified 102 for 2 elements
+  Result:    "LTG × 4 | 101 × 2, 102 × 2" # Number from old, quantity from auto
+
+- Auto:      "RECPT × 5 | 101 × 3, ? × 2"            # 2 elements without room
+  Old:       "RECPT × 5 | 101 × 3, 102 × 1, 103 × 1" # User specified 102 and 103
+  Result:    "RECPT × 5 | 101 × 3, 102 103 × 2"      # Numbers combined, quantity from auto
+```
 
 ## Report
 
