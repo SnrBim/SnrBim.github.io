@@ -55,7 +55,7 @@ Write-Host "Source: $SourceRoot"
 Write-Host "Destination: $DestRoot"
 
 $commandFolders = Get-ChildItem -Path $SourceRoot -Directory | Where-Object {
-    ($_.Name -ne "Template") -and (Test-Path -Path (Join-Path $_.FullName "Docs"))
+    ($_.Name -ne "Template") -and ($_.Name -ne "Manifest") -and ($_.Name -ne "Res") -and ($_.Name -ne "Properties") -and ($_.Name -ne "bin") -and ($_.Name -ne "obj") -and (Test-Path -Path (Join-Path $_.FullName "Docs"))
 }
 
 if (-not $commandFolders) {
@@ -149,6 +149,13 @@ foreach ($commandFolder in $commandFolders) {
     }
 
     $title = ($titleLine.Line -split ':', 2)[1].Trim()
+    
+    # Skip template if it somehow got through filters
+    if ($title -eq "Command Title Placeholder") {
+        Write-Host "  Skipping placeholder template." -ForegroundColor Gray
+        continue
+    }
+
     $slug = $title.ToLower() -replace '[^a-z0-9\s-]', '' -replace '\s+', '-'
 
     if ([string]::IsNullOrWhiteSpace($slug)) {
