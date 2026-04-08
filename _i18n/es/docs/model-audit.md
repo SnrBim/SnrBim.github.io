@@ -174,6 +174,8 @@ Las hojas `Checks`, `Categories`, `Parameters` almacenan la configuración utili
 
 Se genera con el botón **Generate…**. Se recomienda editar el archivo antes de ejecutar la auditoría.
 
+![Hojas de configuración](config.png)
+
 ### Hoja Checks
 
 Controla la actividad de las verificaciones.
