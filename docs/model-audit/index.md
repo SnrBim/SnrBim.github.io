@@ -2,8 +2,8 @@
 parent: Common
 title: Model audit
 layout: default
-description: 'ModelAudit is an automated tool for auditing Revit BIM models against project standards. It analyses the current document and all loaded linked Revit models, producing an Excel report with detailed data across 31 check categories.'
-description_es: 'ModelAudit es una herramienta de auditoría automatizada de modelos BIM en Revit. Analiza el documento actual y todos los vínculos Revit cargados, generando un informe Excel con datos detallados en 31 categorías de verificación.'
+description: 'ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks.'
+description_es: 'ModelAudit es una herramienta de auditoría automatizada de modelos BIM en Autodesk Revit. Analiza el documento actual y todos los vínculos Revit cargados. El resultado es un informe Excel con datos detallados para cada una de las más de treinta verificaciones.'
 namespace: model-audit
 permalink: /docs/model-audit/
 ---
