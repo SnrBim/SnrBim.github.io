@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Model audit" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="ModelAudit is an automated tool for auditing Revit BIM models against project standards. It analyses the current document and all loaded linked Revit models, producing an Excel report with detailed data across 31 check categories." />
-<meta property="og:description" content="ModelAudit is an automated tool for auditing Revit BIM models against project standards. It analyses the current document and all loaded linked Revit models, producing an Excel report with detailed data across 31 check categories." />
+<meta name="description" content="ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks." />
+<meta property="og:description" content="ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks." />
 <link rel="canonical" href="https://snrbim.github.io/es/docs/model-audit/" />
 <meta property="og:url" content="https://snrbim.github.io/es/docs/model-audit/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Model audit" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"ModelAudit is an automated tool for auditing Revit BIM models against project standards. It analyses the current document and all loaded linked Revit models, producing an Excel report with detailed data across 31 check categories.","headline":"Model audit","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/model-audit/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks.","headline":"Model audit","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/model-audit/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -284,11 +284,12 @@
   <li><a href="#estructura-del-informe" id="markdown-toc-estructura-del-informe">Estructura del informe</a>    <ol>
       <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
       <li><a href="#hojas-de-detalle" id="markdown-toc-hojas-de-detalle">Hojas de detalle</a></li>
-      <li><a href="#_metadata" id="markdown-toc-_metadata">_Metadata</a></li>
-      <li><a href="#_config_-ocultas" id="markdown-toc-_config_-ocultas">_Config_* (ocultas)</a></li>
+      <li><a href="#hojas-de-matriz" id="markdown-toc-hojas-de-matriz">Hojas de matriz</a></li>
+      <li><a href="#aliases-oculta" id="markdown-toc-aliases-oculta">Aliases (oculta)</a></li>
+      <li><a href="#config-hojas-ocultas" id="markdown-toc-config-hojas-ocultas">Config (hojas ocultas)</a></li>
     </ol>
   </li>
-  <li><a href="#lista-de-verificaciones-31" id="markdown-toc-lista-de-verificaciones-31">Lista de verificaciones (31)</a></li>
+  <li><a href="#lista-de-verificaciones-33" id="markdown-toc-lista-de-verificaciones-33">Lista de verificaciones (33)</a></li>
   <li><a href="#excel-de-configuración" id="markdown-toc-excel-de-configuración">Excel de configuración</a>    <ol>
       <li><a href="#hoja-checks" id="markdown-toc-hoja-checks">Hoja Checks</a></li>
       <li><a href="#hoja-categories" id="markdown-toc-hoja-categories">Hoja Categories</a></li>
@@ -309,7 +310,7 @@
 
 </details>
 
-<p>ModelAudit es una herramienta de auditoría automatizada de modelos BIM en Revit. Analiza el documento actual y todos los vínculos Revit cargados, generando un informe Excel con datos detallados en 31 categorías de verificación.</p><hr />
+<p>ModelAudit es una herramienta de auditoría automatizada de modelos BIM en Autodesk Revit. Analiza el documento actual y todos los vínculos Revit cargados. El resultado es un informe Excel con datos detallados para cada una de las más de treinta verificaciones.</p><hr />
 <h2 id="interfaz">
   
   
@@ -320,6 +321,8 @@
     
 
 <p>Al iniciarse se abre un diálogo con tres secciones.</p>
+
+<p><img src="ui-dialog.png" alt="Ventana principal de ModelAudit" /></p>
 <h3 id="configuration-opcional">
   
   
@@ -329,9 +332,9 @@
 </h3>
     
 
-<p>Campo para la ruta al archivo Excel de configuración. Controla qué verificaciones se ejecutarán, qué categorías de Revit se exportarán y qué parámetros de elementos se incluirán en el informe.</p>
+<p>Ruta al archivo Excel de configuración. Controla qué verificaciones ejecutar, qué categorías de Revit exportar y qué parámetros de elementos incluir en el informe.</p>
 
-<p><strong>Si el campo está vacío</strong> — se utiliza la configuración predeterminada incorporada (verificaciones pesadas desactivadas, conjunto estándar de categorías y parámetros).</p>
+<p><strong>Si está vacío</strong> — se utiliza la configuración predeterminada incorporada (verificaciones pesadas desactivadas, conjunto estándar de categorías y parámetros).</p>
 
 <p>Botones:</p>
 <ul>
@@ -339,7 +342,7 @@
   <li><strong>Generate…</strong> — crear un nuevo archivo de configuración con valores predeterminados. El diálogo sugiere la ruta <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\ModelAudit\Config-{ModelName}.xlsx</code>. El archivo también incluye una hoja <strong>Aliases</strong> con nombres cortos autogenerados para los documentos vinculados — se pueden editar manualmente.</li>
 </ul>
 
-<p>Debajo del campo se muestra un <strong>resumen de configuración</strong> en tres columnas:</p>
+<p>Se muestra un <strong>resumen de configuración</strong> debajo del campo en tres columnas:</p>
 <ul>
   <li>izquierda — número de verificaciones y categorías activas (pase el cursor para la lista completa)</li>
   <li>centro — número de parámetros por categoría</li>
@@ -349,7 +352,7 @@
 <p>Si la configuración contiene errores, se muestra un mensaje de error en lugar del resumen.</p>
 
 <blockquote>
-  <p>La ruta de configuración se guarda al pulsar <strong>Run Audit</strong> y se restaura al abrir el diálogo la próxima vez.</p>
+  <p>La ruta de configuración se guarda entre sesiones.</p>
 </blockquote>
 <h3 id="previous-report-opcional">
   
@@ -372,19 +375,19 @@
 
 <p>Ruta para guardar el nuevo informe. Se genera por defecto como:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%APPDATA%\Sener\BimTools\Reports\ModelAudit\{yyyy-MM-dd HH-mm}\{ModelName}.xlsx
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%APPDATA%\Sener\BimTools\Reports\ModelAudit\{yyyy-MM-dd}\{ModelName}.xlsx
 </code></pre></div></div>
 
-<p>La fecha y la hora forman parte del nombre de la carpeta — ejecutar de nuevo en el mismo minuto sobrescribe el archivo en la misma carpeta.</p>
+<p>La fecha forma parte del nombre de la carpeta — ejecutar de nuevo el mismo día sobrescribe el archivo en la misma carpeta.</p>
 
 <p>Botones:</p>
 <ul>
   <li><strong>Browse…</strong> — seleccionar la ruta manualmente mediante un diálogo de guardado.</li>
-  <li><strong>Default</strong> — generar una nueva ruta con la fecha y hora actuales.</li>
+  <li><strong>Default</strong> — generar una nueva ruta con la fecha actual.</li>
 </ul>
 
 <blockquote>
-  <p>La ruta se guarda al pulsar <strong>Run Audit</strong>.</p>
+  <p>La ruta se guarda entre sesiones.</p>
 </blockquote>
 <h3 id="ejecución">
   
@@ -396,11 +399,9 @@
     
 
 <ul>
-  <li><strong>Run Audit</strong> (o <strong>Enter</strong>) — iniciar la auditoría.</li>
+  <li><strong>Create / Update</strong> (o <strong>Enter</strong>) — crear o actualizar el informe.</li>
   <li><strong>Cancel</strong> (o <strong>Esc</strong>) — cerrar el diálogo sin ejecutar.</li>
-</ul>
-
-<p>Antes de iniciar, la herramienta comprueba si el archivo de informe está accesible: si ya está abierto en Excel aparece un diálogo Retry / Cancel.</p><hr />
+</ul><hr />
 <h2 id="barra-de-progreso">
   
   
@@ -420,7 +421,7 @@
 </h2>
     
 
-<p>El informe es un archivo Excel (<code class="language-plaintext highlighter-rouge">.xlsx</code>) con las siguientes hojas:</p>
+<p>El informe es un archivo Excel (<code class="language-plaintext highlighter-rouge">.xlsx</code>). Los nombres de las hojas son intencionalmente cortos (<code class="language-plaintext highlighter-rouge">gr</code>, <code class="language-plaintext highlighter-rouge">lv</code>, <code class="language-plaintext highlighter-rouge">bo</code>, etc.) — la navegación se realiza mediante hipervínculos, no cambiando pestañas manualmente: Summary enlaza a cada hoja de detalle y matriz; la primera celda de cada hoja vuelve a la fila correspondiente en Summary.</p>
 <h3 id="summary">
   
   
@@ -432,12 +433,13 @@
 
 <p>Hoja resumen. Las filas son verificaciones, las columnas son documentos (actual + vinculados).</p>
 
+<p><img src="summary.png" alt="Summary — 14 proyectos, 33 verificaciones" /></p>
+
 <ul>
-  <li>El encabezado de cada fila contiene el nombre de la verificación con un hipervínculo a la hoja de detalle.</li>
+  <li>Nombre de verificación — hipervínculo a la hoja de detalle; columna <strong>⊞</strong> — enlace a la hoja de matriz (si existe).</li>
   <li>Dos columnas por documento: <strong>Old</strong> (valor del informe anterior) y <strong>New</strong> (actual).</li>
-  <li>Última columna — <strong>Duration</strong> (tiempo de ejecución de la verificación, formato mm:ss).</li>
-  <li>Los nombres cortos de los documentos en el encabezado enlazan a la hoja <code class="language-plaintext highlighter-rouge">_Metadata</code>.</li>
-  <li>La hoja está fijada en dos filas de encabezado y las primeras dos columnas.</li>
+  <li>Columnas derechas <strong>DateTime</strong> y <strong>Duration</strong> — fecha de la última ejecución y tiempo de ejecución.</li>
+  <li>Al pasar el cursor sobre el nombre corto del documento en el encabezado se muestra el nombre completo del archivo.</li>
 </ul>
 
 <p>Esquema de colores:</p>
@@ -454,31 +456,98 @@
 </h3>
     
 
-<p>Una hoja por verificación activa. Contiene una tabla con datos de todos los documentos juntos. Un borde horizontal separa los documentos. Los autofiltros están habilitados. La primera celda enlaza de vuelta a Summary.</p>
-<h3 id="_metadata">
+<p>Una hoja por verificación activa. La mayoría de las hojas incluyen columnas <strong>Workset</strong>, <strong>CreatedBy</strong>, <strong>LastChangedBy</strong>.</p>
+
+<p><img src="detail-grids.png" alt="Hoja de detalle Grids" /></p>
+<h3 id="hojas-de-matriz">
   
   
-    <a href="#_metadata" class="anchor-heading" aria-labelledby="_metadata"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> _Metadata
+    <a href="#hojas-de-matriz" class="anchor-heading" aria-labelledby="hojas-de-matriz"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hojas de matriz
   
   
 </h3>
     
 
-<p>Tabla de correspondencia entre nombres cortos y completos de los documentos. Los enlaces de Short Name vuelven a Summary.</p>
-<h3 id="_config_-ocultas">
+<p>Diez verificaciones generan adicionalmente una hoja de matriz (nombre: <code class="language-plaintext highlighter-rouge">M</code> + abreviatura de la hoja de detalle). Los enlaces están en la columna <strong>⊞</strong> de Summary.</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Hoja</th>
+      <th>Filas × Columnas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mgr</td>
+      <td>Ejes × Documentos. <code class="language-plaintext highlighter-rouge">Mon</code> — monitorizado, <code class="language-plaintext highlighter-rouge">No</code> — presente pero no monitorizado</td>
+    </tr>
+    <tr>
+      <td>Mlv</td>
+      <td>Niveles × Documentos. Celda: valor de cota, gris si no está monitorizado</td>
+    </tr>
+    <tr>
+      <td>Mlr</td>
+      <td>Archivos vinculados × Documentos. Celda: número de instancias del vínculo</td>
+    </tr>
+    <tr>
+      <td>Mbo</td>
+      <td>Documentos × Tipo de organización del navegador (Views / Schedules / Sheets / Modified)</td>
+    </tr>
+    <tr>
+      <td>Mpi</td>
+      <td>Documentos × Parámetros ProjectInfo</td>
+    </tr>
+    <tr>
+      <td>Mpm</td>
+      <td>Parámetros × Documentos. Celda: número de categorías en el binding</td>
+    </tr>
+    <tr>
+      <td>Mph</td>
+      <td>Documentos × Fases</td>
+    </tr>
+    <tr>
+      <td>Mwr</td>
+      <td>Advertencias × Documentos</td>
+    </tr>
+    <tr>
+      <td>Mw1</td>
+      <td>Worksets × Documentos</td>
+    </tr>
+    <tr>
+      <td>Mw2</td>
+      <td>Matriz en bloque: categorías × worksets (bloque separado por documento)</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><img src="matrix-grids.png" alt="Matriz Mgr — ejes con tooltip Created/Modified" /></p>
+
+<p><img src="matrix-worksets.png" alt="Matriz Mw1 — tooltip con usuarios y tipos" /></p>
+<h3 id="aliases-oculta">
   
   
-    <a href="#_config_-ocultas" class="anchor-heading" aria-labelledby="_config_-ocultas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> _Config_* (ocultas)
+    <a href="#aliases-oculta" class="anchor-heading" aria-labelledby="aliases-oculta"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Aliases (oculta)
   
   
 </h3>
     
 
-<p>Las hojas <code class="language-plaintext highlighter-rouge">_Config_Checks</code>, <code class="language-plaintext highlighter-rouge">_Config_Categories</code>, <code class="language-plaintext highlighter-rouge">_Config_Parameters</code> almacenan la configuración utilizada en la ejecución. Permiten reproducir las condiciones de análisis a partir de un informe archivado.</p><hr />
-<h2 id="lista-de-verificaciones-31">
+<p>Tabla de correspondencia entre nombres cortos y completos de los documentos.</p>
+<h3 id="config-hojas-ocultas">
   
   
-    <a href="#lista-de-verificaciones-31" class="anchor-heading" aria-labelledby="lista-de-verificaciones-31"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Lista de verificaciones (31)
+    <a href="#config-hojas-ocultas" class="anchor-heading" aria-labelledby="config-hojas-ocultas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Config (hojas ocultas)
+  
+  
+</h3>
+    
+
+<p>Las hojas <code class="language-plaintext highlighter-rouge">Checks</code>, <code class="language-plaintext highlighter-rouge">Categories</code>, <code class="language-plaintext highlighter-rouge">Parameters</code> almacenan la configuración utilizada en la ejecución. Permiten reproducir las condiciones de análisis a partir de un informe archivado.</p><hr />
+<h2 id="lista-de-verificaciones-33">
+  
+  
+    <a href="#lista-de-verificaciones-33" class="anchor-heading" aria-labelledby="lista-de-verificaciones-33"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Lista de verificaciones (33)
   
   
 </h2>
@@ -490,7 +559,6 @@
       <th>#</th>
       <th>Nombre</th>
       <th>Hoja</th>
-      <th>Defecto</th>
       <th>Descripción</th>
     </tr>
   </thead>
@@ -498,225 +566,206 @@
     <tr>
       <td>1</td>
       <td>Grids</td>
-      <td>DatumGrids</td>
-      <td>✓</td>
+      <td>gr</td>
       <td>Ejes: nombre, Id, monitoreo (elemento vinculado), workset</td>
     </tr>
     <tr>
       <td>2</td>
       <td>Levels</td>
-      <td>DatumLevels</td>
-      <td>✓</td>
+      <td>lv</td>
       <td>Niveles: cota (m), monitoreo, workset</td>
     </tr>
     <tr>
       <td>3</td>
       <td>Matchlines</td>
-      <td>DatumMatchLines</td>
-      <td>✓</td>
+      <td>ml</td>
       <td>Líneas de coincidencia: coordenadas de segmentos</td>
     </tr>
     <tr>
       <td>4</td>
       <td>ScopeBoxes</td>
-      <td>DatumScopeBoxes</td>
-      <td>✓</td>
+      <td>sb</td>
       <td>Marcos de vista: coordenadas, dimensiones, workset</td>
     </tr>
     <tr>
       <td>5</td>
       <td>Groups</td>
-      <td>ProjectGroups</td>
-      <td>✓</td>
+      <td>gp</td>
       <td>Grupos de modelo: nombre, Id, workset</td>
     </tr>
     <tr>
       <td>6</td>
       <td>FamInstances</td>
-      <td>ElementPropertyInstances</td>
-      <td>✗</td>
+      <td>ei</td>
       <td>Instancias de familias con parámetros (lento)</td>
     </tr>
     <tr>
       <td>7</td>
       <td>FamTypes</td>
-      <td>ElementPropertyTypes</td>
-      <td>✗</td>
+      <td>et</td>
       <td>Tipos de familias con parámetros (lento)</td>
     </tr>
     <tr>
       <td>8</td>
       <td>InPlaceFams</td>
-      <td>FamiliesIsInPlace</td>
-      <td>✓</td>
+      <td>ip</td>
       <td>Familias In-Place: categoría, Id, Ids de instancias</td>
     </tr>
     <tr>
       <td>9</td>
       <td>FamSizes</td>
-      <td>FamiliesRFA</td>
-      <td>✗</td>
+      <td>fs</td>
       <td>Tamaño del archivo RFA por familia (muy lento — guarda cada familia en un archivo temporal)</td>
     </tr>
     <tr>
       <td>10</td>
       <td>LinksDwg</td>
-      <td>LinkInstanceDwg</td>
-      <td>✓</td>
+      <td>ld</td>
       <td>Vínculos DWG/DXF: estado, ruta, nivel, coordenada Z</td>
     </tr>
     <tr>
       <td>11</td>
       <td>LinksRaster</td>
-      <td>LinkInstanceImages</td>
-      <td>✓</td>
+      <td>li</td>
       <td>Vínculos ráster: origen, estado, nivel</td>
     </tr>
     <tr>
       <td>12</td>
       <td>LinksRvt</td>
-      <td>LinkInstanceRvt</td>
-      <td>✓</td>
+      <td>lr</td>
       <td>Vínculos Revit: nombre, workset, tipo de adjunto (Overlay/Attachment), posición</td>
     </tr>
     <tr>
       <td>13</td>
       <td>BasePoints</td>
-      <td>LocationProjectBasePoints</td>
-      <td>✓</td>
+      <td>bp</td>
       <td>Puntos base del proyecto y de levantamiento: coordenadas (cm)</td>
     </tr>
     <tr>
       <td>14</td>
-      <td>ProjectName</td>
-      <td>LocationProjectName</td>
-      <td>✓</td>
+      <td>SiteLocations</td>
+      <td>sl</td>
       <td>Ubicación del proyecto: latitud, longitud, elevación, sistema de coordenadas</td>
     </tr>
     <tr>
       <td>15</td>
       <td>BrowserOrg</td>
-      <td>ProjectBrowserOrganization</td>
-      <td>✓</td>
+      <td>bo</td>
       <td>Esquemas de organización del navegador: tipo (vistas/hojas/planillas), activo</td>
     </tr>
     <tr>
       <td>16</td>
       <td>DesignOptions</td>
-      <td>ProjectDesignOptions</td>
-      <td>✓</td>
+      <td>do</td>
       <td>Opciones de diseño: Id, nombre, activa</td>
     </tr>
     <tr>
       <td>17</td>
       <td>GeneralData</td>
-      <td>ProjectGeneralData</td>
-      <td>✓</td>
+      <td>gd</td>
       <td>Metadatos del documento: Long/Short Name, tamaño de archivo, vista inicial, identificadores en la nube</td>
     </tr>
     <tr>
       <td>18</td>
       <td>ProjectInfo</td>
-      <td>ProjectInfo</td>
-      <td>✓</td>
-      <td>Parámetros de ProjectInformation: todos los parámetros de la hoja</td>
+      <td>pi</td>
+      <td>Parámetros de ProjectInformation: todos los parámetros del elemento</td>
     </tr>
     <tr>
       <td>19</td>
       <td>ParamMapping</td>
-      <td>ProjectParameters</td>
-      <td>✓</td>
-      <td>Enlaces de parámetros del proyecto: nombre, tipo (Instance/Type), categorías</td>
+      <td>pm</td>
+      <td>Bindings de parámetros del proyecto: nombre, tipo (Instance/Type), categorías</td>
     </tr>
     <tr>
       <td>20</td>
       <td>Phases</td>
-      <td>ProjectPhases</td>
-      <td>✓</td>
+      <td>ph</td>
       <td>Fases del proyecto: Id, nombre</td>
     </tr>
     <tr>
       <td>21</td>
       <td>Warnings</td>
-      <td>ProjectWarmings</td>
-      <td>✓</td>
+      <td>wr</td>
       <td>Advertencias de Revit: descripción, gravedad, Ids de elementos</td>
     </tr>
     <tr>
       <td>22</td>
       <td>Worksets</td>
-      <td>ProjectWorkSets</td>
-      <td>✓</td>
+      <td>ws</td>
       <td>Worksets: Id, nombre</td>
     </tr>
     <tr>
       <td>23</td>
       <td>Revisions</td>
-      <td>SheetRevisions</td>
-      <td>✓</td>
+      <td>re</td>
       <td>Revisiones de hojas: hoja, Id de revisión, fecha, número, descripción</td>
     </tr>
     <tr>
       <td>24</td>
       <td>Sheets</td>
-      <td>SheetsProperties</td>
-      <td>✓</td>
+      <td>sh</td>
       <td>Hojas: Id, nombre, número, IsPlaceholder, cajetín + parámetros personalizados</td>
     </tr>
     <tr>
       <td>25</td>
       <td>TitleBlocks</td>
-      <td>SheetTileBlocks</td>
-      <td>✓</td>
+      <td>tb</td>
       <td>Tipos de cajetín y hojas asignadas</td>
     </tr>
     <tr>
       <td>26</td>
       <td>Viewports</td>
-      <td>SheetViewPorts</td>
-      <td>✓</td>
+      <td>vp</td>
       <td>Viewports: tipo, vista, hoja</td>
     </tr>
     <tr>
       <td>27</td>
       <td>Views</td>
-      <td>ViewsProperties</td>
-      <td>✗</td>
+      <td>vw</td>
       <td>Todas las vistas con 32 propiedades (plantilla, escala, recorte lejano, ViewRange, etc.)</td>
     </tr>
     <tr>
       <td>28</td>
       <td>WorksetElements</td>
-      <td>WorkSetElements</td>
-      <td>✗</td>
+      <td>we</td>
       <td>Distribución de elementos por workset: categoría, familia, tipo, cantidad (muy lento)</td>
     </tr>
     <tr>
       <td>29</td>
       <td>Areas</td>
-      <td>ZonesAreas</td>
-      <td>✓</td>
+      <td>ar</td>
       <td>Áreas: área, perímetro, esquema de zonificación</td>
     </tr>
     <tr>
       <td>30</td>
       <td>Rooms</td>
-      <td>ZonesRooms</td>
-      <td>✓</td>
+      <td>rm</td>
       <td>Habitaciones: área, altura, acabados, departamento + parámetros personalizados</td>
     </tr>
     <tr>
       <td>31</td>
       <td>Spaces</td>
-      <td>ZonesSpaces</td>
-      <td>✓</td>
+      <td>sp</td>
       <td>Espacios MEP: área, altura, sistema de ventilación + parámetros personalizados</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Units</td>
+      <td>un</td>
+      <td>Unidades: desviaciones de los valores predeterminados</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Coordinates</td>
+      <td>co</td>
+      <td>Coordenadas del proyecto: puntos base, levantamiento, ángulo, nombre del sitio</td>
     </tr>
   </tbody>
 </table></div>
 
 <blockquote>
-  <p>✗ — desactivado por defecto. Se activa en el Excel de configuración (hoja Checks, columna Active = yes).</p>
+  <p>Algunas verificaciones están desactivadas en la configuración predeterminada — gestionadas en el Excel de configuración (hoja Checks, columna Active).</p>
 </blockquote><hr />
 <h2 id="excel-de-configuración">
   
@@ -754,10 +803,6 @@
     <tr>
       <td>Active</td>
       <td><code class="language-plaintext highlighter-rouge">yes</code> / <code class="language-plaintext highlighter-rouge">no</code> (o <code class="language-plaintext highlighter-rouge">true</code> / <code class="language-plaintext highlighter-rouge">false</code> / <code class="language-plaintext highlighter-rouge">1</code> / <code class="language-plaintext highlighter-rouge">0</code>)</td>
-    </tr>
-    <tr>
-      <td>Sheet Name</td>
-      <td>Nombre de la hoja de detalle en el informe</td>
     </tr>
     <tr>
       <td>Description</td>
@@ -847,7 +892,7 @@
   </tbody>
 </table></div>
 
-<p>Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y sufijo común de todos los nombres de documentos. Los documentos ausentes del archivo Aliases obtienen su nombre corto generado automáticamente en tiempo de ejecución.</p><hr />
+<p>Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y sufijo común. Los documentos ausentes del archivo Aliases obtienen su nombre corto generado automáticamente en tiempo de ejecución.</p><hr />
 <h2 id="consejos-y-notas">
   
   
@@ -868,9 +913,9 @@
 <ul>
   <li><strong>Campo ConfigPath vacío</strong> equivale a la configuración predeterminada incorporada — limpiar la ruta es seguro.</li>
   <li>El resumen debajo del campo se actualiza inmediatamente al cambiar la ruta — los errores de validación son visibles antes de ejecutar.</li>
-  <li>La validación se repite al pulsar Run. Si la configuración es inválida, la ejecución se bloquea.</li>
+  <li>La validación se repite al pulsar Create/Update. Si la configuración es inválida, la ejecución se bloquea.</li>
   <li><strong>Nombre de verificación desconocido</strong> en la hoja Checks → error con la lista de nombres válidos.</li>
-  <li><strong>Categoría desconocida</strong> en la hoja Categories o Parameters → error con la lista de categorías soportadas.</li>
+  <li><strong>BuiltInCategory inválida</strong> → error. Se acepta cualquier BIC válida de la API de Revit.</li>
   <li>El orden de las filas en las hojas Checks y Categories no importa.</li>
   <li>La configuración se lee de nuevo en cada ejecución (sin caché).</li>
   <li>La configuración utilizada en una ejecución se almacena en hojas ocultas del informe.</li>
@@ -885,7 +930,7 @@
     
 
 <ul>
-  <li>Los nombres cortos aparecen en los encabezados de Summary — esto mantiene la tabla compacta con muchos vínculos.</li>
+  <li>Los nombres cortos aparecen en los encabezados de Summary — mantiene la tabla compacta con muchos vínculos.</li>
   <li>Si un documento vinculado aparece después de generar la configuración, su nombre se genera automáticamente; añádalo manualmente a la hoja Aliases si es necesario.</li>
   <li>Edite la hoja Aliases en la configuración antes de ejecutar si las abreviaciones autogeneradas son inconvenientes.</li>
 </ul>
@@ -901,7 +946,7 @@
 <ul>
   <li>La ruta del nuevo informe se recuerda entre sesiones. Se genera automáticamente en el primer inicio.</li>
   <li>El botón <strong>Default</strong> genera una nueva ruta con la fecha actual — útil al volver a ejecutar en otro día.</li>
-  <li>Dos ejecuciones en el mismo minuto crean el archivo en la misma carpeta → la segunda ejecución lo sobreescribirá. Use <strong>Browse</strong> o <strong>Default</strong> para crear una nueva ruta si necesita conservar ambos resultados.</li>
+  <li>Dos ejecuciones el mismo día crean el archivo en la misma carpeta → la segunda ejecución lo sobrescribirá. Use <strong>Browse</strong> o <strong>Default</strong> para crear una nueva ruta si necesita conservar ambos resultados.</li>
   <li>Si el archivo de informe está abierto en Excel, aparece un diálogo de reintento. La auditoría no se iniciará mientras el archivo esté bloqueado.</li>
   <li>La ruta del informe anterior <strong>no se rellena automáticamente</strong> — debe indicarse manualmente a través de Browse.</li>
 </ul>
@@ -915,9 +960,9 @@
     
 
 <ul>
-  <li>Las verificaciones <strong>FamInstances</strong> y <strong>FamTypes</strong> están desactivadas por defecto — recorren todos los elementos de las categorías seleccionadas y extraen parámetros. El tiempo de ejecución depende del número de categorías activas y del tamaño del modelo.</li>
-  <li>La verificación <strong>FamSizes</strong> está desactivada por defecto — para cada familia se llama a <code class="language-plaintext highlighter-rouge">EditFamily</code> + <code class="language-plaintext highlighter-rouge">SaveAs</code> en una carpeta temporal. En modelos grandes puede tardar varias horas.</li>
-  <li>La verificación <strong>WorksetElements</strong> está desactivada por defecto — recorre todos los elementos de todos los worksets.</li>
+  <li><strong>FamInstances</strong> y <strong>FamTypes</strong> están desactivadas por defecto — recorren todos los elementos de las categorías seleccionadas y extraen parámetros. El tiempo de ejecución depende del número de categorías activas y del tamaño del modelo.</li>
+  <li><strong>FamSizes</strong> está desactivada por defecto — para cada familia se llama a <code class="language-plaintext highlighter-rouge">EditFamily</code> + <code class="language-plaintext highlighter-rouge">SaveAs</code> en una carpeta temporal. En modelos grandes puede tardar varias horas.</li>
+  <li><strong>WorksetElements</strong> está desactivada por defecto — recorre todos los elementos de todos los worksets.</li>
 </ul>
 <h3 id="modelos-vinculados">
   
@@ -930,7 +975,6 @@
 
 <ul>
   <li>Solo se analizan los vínculos Revit cargados.</li>
-  <li>Los vínculos no cargados no se incluyen en el análisis.</li>
   <li>Los documentos con el mismo <code class="language-plaintext highlighter-rouge">Title</code> se añaden una sola vez.</li>
 </ul>
 <h3 id="datos-del-informe">
@@ -943,7 +987,7 @@
     
 
 <ul>
-  <li>Los valores numéricos (coordenadas, áreas, distancias) se escriben como números de Excel — esto permite ordenar y filtrar correctamente.</li>
+  <li>Los valores numéricos (coordenadas, áreas, distancias) se escriben como números de Excel — permite ordenar y filtrar correctamente.</li>
   <li>Los valores compuestos (p. ej. una lista de Ids separada por espacios) permanecen como cadenas de texto.</li>
   <li>Los saltos de línea dentro de los valores de parámetros se conservan.</li>
 </ul>

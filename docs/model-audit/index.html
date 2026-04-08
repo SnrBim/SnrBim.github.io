@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Model audit" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="ModelAudit is an automated tool for auditing Revit BIM models against project standards. It analyses the current document and all loaded linked Revit models, producing an Excel report with detailed data across 31 check categories." />
-<meta property="og:description" content="ModelAudit is an automated tool for auditing Revit BIM models against project standards. It analyses the current document and all loaded linked Revit models, producing an Excel report with detailed data across 31 check categories." />
+<meta name="description" content="ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks." />
+<meta property="og:description" content="ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks." />
 <link rel="canonical" href="https://snrbim.github.io/docs/model-audit/" />
 <meta property="og:url" content="https://snrbim.github.io/docs/model-audit/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Model audit" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"ModelAudit is an automated tool for auditing Revit BIM models against project standards. It analyses the current document and all loaded linked Revit models, producing an Excel report with detailed data across 31 check categories.","headline":"Model audit","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/model-audit/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks.","headline":"Model audit","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/model-audit/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -277,18 +277,19 @@
       <li><a href="#configuration-optional" id="markdown-toc-configuration-optional">Configuration (Optional)</a></li>
       <li><a href="#previous-report-optional" id="markdown-toc-previous-report-optional">Previous Report (Optional)</a></li>
       <li><a href="#new-report-path" id="markdown-toc-new-report-path">New Report Path</a></li>
-      <li><a href="#running" id="markdown-toc-running">Running</a></li>
+      <li><a href="#run" id="markdown-toc-run">Run</a></li>
     </ol>
   </li>
   <li><a href="#progress-bar" id="markdown-toc-progress-bar">Progress Bar</a></li>
   <li><a href="#report-structure" id="markdown-toc-report-structure">Report Structure</a>    <ol>
       <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
       <li><a href="#detail-sheets" id="markdown-toc-detail-sheets">Detail Sheets</a></li>
-      <li><a href="#_metadata" id="markdown-toc-_metadata">_Metadata</a></li>
-      <li><a href="#_config_-hidden" id="markdown-toc-_config_-hidden">_Config_* (hidden)</a></li>
+      <li><a href="#matrix-sheets" id="markdown-toc-matrix-sheets">Matrix Sheets</a></li>
+      <li><a href="#aliases-hidden" id="markdown-toc-aliases-hidden">Aliases (hidden)</a></li>
+      <li><a href="#config-hidden-sheets" id="markdown-toc-config-hidden-sheets">Config (hidden sheets)</a></li>
     </ol>
   </li>
-  <li><a href="#check-list-31" id="markdown-toc-check-list-31">Check List (31)</a></li>
+  <li><a href="#check-list-33" id="markdown-toc-check-list-33">Check List (33)</a></li>
   <li><a href="#configuration-excel" id="markdown-toc-configuration-excel">Configuration Excel</a>    <ol>
       <li><a href="#checks-sheet" id="markdown-toc-checks-sheet">Checks Sheet</a></li>
       <li><a href="#categories-sheet" id="markdown-toc-categories-sheet">Categories Sheet</a></li>
@@ -309,7 +310,7 @@
 
 </details>
 
-<p>ModelAudit is an automated tool for auditing Revit BIM models against project standards. It analyses the current document and all loaded linked Revit models, producing an Excel report with detailed data across 31 check categories.</p><hr />
+<p>ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks.</p><hr />
 <h2 id="interface">
   
   
@@ -319,7 +320,9 @@
 </h2>
     
 
-<p>On launch a dialog opens with three sections.</p>
+<p>A dialog with three sections opens on launch.</p>
+
+<p><img src="ui-dialog.png" alt="ModelAudit main dialog" /></p>
 <h3 id="configuration-optional">
   
   
@@ -329,27 +332,27 @@
 </h3>
     
 
-<p>Path to an Excel configuration file. Controls which checks run, which Revit categories are exported, and which element parameters are included in the report.</p>
+<p>Path to an Excel configuration file. Controls which checks to run, which Revit categories to export, and which element parameters to include in the report.</p>
 
-<p><strong>If the field is empty</strong> — the built-in default configuration is used (heavy checks disabled, standard set of categories and parameters).</p>
+<p><strong>If empty</strong> — the built-in default configuration is used (heavy checks disabled, standard set of categories and parameters).</p>
 
 <p>Buttons:</p>
 <ul>
   <li><strong>Browse…</strong> — select an existing configuration file.</li>
-  <li><strong>Generate…</strong> — create a new configuration file with default values. A save dialog suggests the path <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\ModelAudit\Config-{ModelName}.xlsx</code>. The file also includes an <strong>Aliases</strong> sheet with auto-generated short names for linked documents — these can be edited manually.</li>
+  <li><strong>Generate…</strong> — create a new configuration file with default values. The dialog suggests the path <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\ModelAudit\Config-{ModelName}.xlsx</code>. An <strong>Aliases</strong> sheet with auto-generated short names for linked documents is also added — these can be edited manually.</li>
 </ul>
 
-<p>Below the field a <strong>configuration summary</strong> is displayed in three columns:</p>
+<p>A <strong>configuration summary</strong> is shown below the field in three columns:</p>
 <ul>
-  <li>left — number of active checks and categories (hover for the full list)</li>
-  <li>centre — number of parameters per category</li>
-  <li>right — configuration file name and time of last modification</li>
+  <li>left — number of active checks and categories (hover for full list)</li>
+  <li>center — number of parameters per category</li>
+  <li>right — configuration file name and last modified time</li>
 </ul>
 
-<p>If the configuration contains errors, an error message is shown instead of the summary.</p>
+<p>If the configuration contains errors, the summary is replaced with an error message.</p>
 
 <blockquote>
-  <p>The config path is saved when <strong>Run Audit</strong> is clicked and restored on the next dialog open.</p>
+  <p>The configuration path is saved between sessions.</p>
 </blockquote>
 <h3 id="previous-report-optional">
   
@@ -360,7 +363,7 @@
 </h3>
     
 
-<p>Path to a previous report. When provided, <strong>Old</strong> / <strong>New</strong> columns appear in the Summary sheet for value comparison between runs. Old cells contain hyperlinks to detail sheets of the previous report.</p>
+<p>Path to a previous report. If provided, the Summary sheet will include <strong>Old</strong> / <strong>New</strong> columns for comparing values between runs. Old cells contain hyperlinks to detail sheets of the previous report.</p>
 <h3 id="new-report-path">
   
   
@@ -370,37 +373,35 @@
 </h3>
     
 
-<p>Path for saving the new report. Generated by default as:</p>
+<p>Path to save the new report. Generated by default as:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%APPDATA%\Sener\BimTools\Reports\ModelAudit\{yyyy-MM-dd HH-mm}\{ModelName}.xlsx
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%APPDATA%\Sener\BimTools\Reports\ModelAudit\{yyyy-MM-dd}\{ModelName}.xlsx
 </code></pre></div></div>
 
-<p>Date and time are part of the folder name — re-running within the same minute overwrites the file in the same folder.</p>
+<p>The date is part of the folder name — re-running on the same day overwrites the file in the same folder.</p>
 
 <p>Buttons:</p>
 <ul>
-  <li><strong>Browse…</strong> — select the path manually via a save dialog.</li>
-  <li><strong>Default</strong> — generate a new path with the current date and time.</li>
+  <li><strong>Browse…</strong> — select a path manually via save dialog.</li>
+  <li><strong>Default</strong> — generate a new path with the current date.</li>
 </ul>
 
 <blockquote>
-  <p>The path is saved when <strong>Run Audit</strong> is clicked.</p>
+  <p>The path is saved between sessions.</p>
 </blockquote>
-<h3 id="running">
+<h3 id="run">
   
   
-    <a href="#running" class="anchor-heading" aria-labelledby="running"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running
+    <a href="#run" class="anchor-heading" aria-labelledby="run"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run
   
   
 </h3>
     
 
 <ul>
-  <li><strong>Run Audit</strong> (or <strong>Enter</strong>) — start the audit.</li>
+  <li><strong>Create / Update</strong> (or <strong>Enter</strong>) — create or update the report.</li>
   <li><strong>Cancel</strong> (or <strong>Esc</strong>) — close the dialog without running.</li>
-</ul>
-
-<p>Before starting, the tool checks whether the report file is accessible: if it is already open in Excel a Retry / Cancel dialog appears.</p><hr />
+</ul><hr />
 <h2 id="progress-bar">
   
   
@@ -410,7 +411,7 @@
 </h2>
     
 
-<p>During analysis a progress window is shown with a text log of execution. The log is read-only. The <strong>Stop</strong> button interrupts processing.</p><hr />
+<p>A progress window with a text log is shown during analysis. The log is read-only. The <strong>Stop</strong> button cancels processing.</p><hr />
 <h2 id="report-structure">
   
   
@@ -420,7 +421,7 @@
 </h2>
     
 
-<p>The report is an Excel file (<code class="language-plaintext highlighter-rouge">.xlsx</code>) with the following sheets:</p>
+<p>The report is an Excel file (<code class="language-plaintext highlighter-rouge">.xlsx</code>). Sheet names are intentionally short (<code class="language-plaintext highlighter-rouge">gr</code>, <code class="language-plaintext highlighter-rouge">lv</code>, <code class="language-plaintext highlighter-rouge">bo</code>, etc.) — navigation is done via hyperlinks, not manual tab switching: Summary links to every detail and matrix sheet; the first cell of each sheet links back to the corresponding Summary row.</p>
 <h3 id="summary">
   
   
@@ -430,20 +431,21 @@
 </h3>
     
 
-<p>Summary sheet. Rows are checks, columns are documents (current + linked).</p>
+<p>Overview sheet. Rows — checks, columns — documents (current + linked).</p>
+
+<p><img src="summary.png" alt="Summary — 14 projects, 33 checks" /></p>
 
 <ul>
-  <li>Each row header contains the check name with a hyperlink to the detail sheet.</li>
+  <li>Check name — hyperlink to the detail sheet; <strong>⊞</strong> column — link to the matrix sheet (if any).</li>
   <li>Two columns per document: <strong>Old</strong> (value from the previous report) and <strong>New</strong> (current).</li>
-  <li>Last column — <strong>Duration</strong> (check execution time, format mm:ss).</li>
-  <li>Short document names in the header link to the <code class="language-plaintext highlighter-rouge">_Metadata</code> sheet.</li>
-  <li>The sheet is frozen at two header rows and the first two columns.</li>
+  <li>Right columns <strong>DateTime</strong> and <strong>Duration</strong> — date of last run and execution time.</li>
+  <li>Hovering over a short document name in the header shows the full file name.</li>
 </ul>
 
-<p>Colour scheme:</p>
+<p>Color scheme:</p>
 <ul>
   <li><strong>Yellow background</strong> — High status (value requires attention).</li>
-  <li><strong>Grey / pale text</strong> — Low status (value is normal or unchanged).</li>
+  <li><strong>Gray / faded text</strong> — Low status (value is normal or unchanged).</li>
 </ul>
 <h3 id="detail-sheets">
   
@@ -454,31 +456,98 @@
 </h3>
     
 
-<p>One sheet per active check. Contains a table with data for all documents together. A horizontal border separates documents. Auto-filters are enabled. The first cell links back to Summary.</p>
-<h3 id="_metadata">
+<p>One sheet per active check. Most sheets include <strong>Workset</strong>, <strong>CreatedBy</strong>, <strong>LastChangedBy</strong> columns.</p>
+
+<p><img src="detail-grids.png" alt="Grids detail sheet" /></p>
+<h3 id="matrix-sheets">
   
   
-    <a href="#_metadata" class="anchor-heading" aria-labelledby="_metadata"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> _Metadata
+    <a href="#matrix-sheets" class="anchor-heading" aria-labelledby="matrix-sheets"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Matrix Sheets
   
   
 </h3>
     
 
-<p>Table mapping short document names to full names. Short Name links return to Summary.</p>
-<h3 id="_config_-hidden">
+<p>Ten checks additionally generate a matrix sheet (name: <code class="language-plaintext highlighter-rouge">M</code> + detail sheet abbreviation). Links are in the <strong>⊞</strong> column of Summary.</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Sheet</th>
+      <th>Rows × Columns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mgr</td>
+      <td>Grids × Documents. <code class="language-plaintext highlighter-rouge">Mon</code> — monitored, <code class="language-plaintext highlighter-rouge">No</code> — present but not monitored</td>
+    </tr>
+    <tr>
+      <td>Mlv</td>
+      <td>Levels × Documents. Cell: elevation value, grayed if not monitored</td>
+    </tr>
+    <tr>
+      <td>Mlr</td>
+      <td>Linked files × Documents. Cell: number of link instances</td>
+    </tr>
+    <tr>
+      <td>Mbo</td>
+      <td>Documents × Browser organization type (Views / Schedules / Sheets / Modified)</td>
+    </tr>
+    <tr>
+      <td>Mpi</td>
+      <td>Documents × ProjectInfo parameters</td>
+    </tr>
+    <tr>
+      <td>Mpm</td>
+      <td>Parameters × Documents. Cell: number of categories in binding</td>
+    </tr>
+    <tr>
+      <td>Mph</td>
+      <td>Documents × Phases</td>
+    </tr>
+    <tr>
+      <td>Mwr</td>
+      <td>Warnings × Documents</td>
+    </tr>
+    <tr>
+      <td>Mw1</td>
+      <td>Worksets × Documents</td>
+    </tr>
+    <tr>
+      <td>Mw2</td>
+      <td>Block matrix: categories × worksets (separate block per document)</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><img src="matrix-grids.png" alt="Mgr matrix — grids with Created/Modified tooltip" /></p>
+
+<p><img src="matrix-worksets.png" alt="Mw1 matrix — tooltip with users and types" /></p>
+<h3 id="aliases-hidden">
   
   
-    <a href="#_config_-hidden" class="anchor-heading" aria-labelledby="_config_-hidden"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> _Config_* (hidden)
+    <a href="#aliases-hidden" class="anchor-heading" aria-labelledby="aliases-hidden"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Aliases (hidden)
   
   
 </h3>
     
 
-<p>Sheets <code class="language-plaintext highlighter-rouge">_Config_Checks</code>, <code class="language-plaintext highlighter-rouge">_Config_Categories</code>, <code class="language-plaintext highlighter-rouge">_Config_Parameters</code> store the configuration used during the run. They allow reproducing the analysis conditions from an archived report.</p><hr />
-<h2 id="check-list-31">
+<p>Mapping table of short document names to full names.</p>
+<h3 id="config-hidden-sheets">
   
   
-    <a href="#check-list-31" class="anchor-heading" aria-labelledby="check-list-31"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Check List (31)
+    <a href="#config-hidden-sheets" class="anchor-heading" aria-labelledby="config-hidden-sheets"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Config (hidden sheets)
+  
+  
+</h3>
+    
+
+<p><code class="language-plaintext highlighter-rouge">Checks</code>, <code class="language-plaintext highlighter-rouge">Categories</code>, <code class="language-plaintext highlighter-rouge">Parameters</code> sheets save the configuration used at run time. Allows reproducing analysis conditions from an archived report.</p><hr />
+<h2 id="check-list-33">
+  
+  
+    <a href="#check-list-33" class="anchor-heading" aria-labelledby="check-list-33"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Check List (33)
   
   
 </h2>
@@ -490,7 +559,6 @@
       <th>#</th>
       <th>Name</th>
       <th>Sheet</th>
-      <th>Default</th>
       <th>Description</th>
     </tr>
   </thead>
@@ -498,225 +566,206 @@
     <tr>
       <td>1</td>
       <td>Grids</td>
-      <td>DatumGrids</td>
-      <td>✓</td>
-      <td>Grids: name, Id, monitoring (which element is linked), workset</td>
+      <td>gr</td>
+      <td>Grids: name, Id, monitoring (linked element), workset</td>
     </tr>
     <tr>
       <td>2</td>
       <td>Levels</td>
-      <td>DatumLevels</td>
-      <td>✓</td>
+      <td>lv</td>
       <td>Levels: elevation (m), monitoring, workset</td>
     </tr>
     <tr>
       <td>3</td>
       <td>Matchlines</td>
-      <td>DatumMatchLines</td>
-      <td>✓</td>
+      <td>ml</td>
       <td>Match lines: segment coordinates</td>
     </tr>
     <tr>
       <td>4</td>
       <td>ScopeBoxes</td>
-      <td>DatumScopeBoxes</td>
-      <td>✓</td>
-      <td>Scope boxes: coordinates, dimensions, workset</td>
+      <td>sb</td>
+      <td>Scope Boxes: coordinates, dimensions, workset</td>
     </tr>
     <tr>
       <td>5</td>
       <td>Groups</td>
-      <td>ProjectGroups</td>
-      <td>✓</td>
+      <td>gp</td>
       <td>Model groups: name, Id, workset</td>
     </tr>
     <tr>
       <td>6</td>
       <td>FamInstances</td>
-      <td>ElementPropertyInstances</td>
-      <td>✗</td>
+      <td>ei</td>
       <td>Family instances with parameters (slow)</td>
     </tr>
     <tr>
       <td>7</td>
       <td>FamTypes</td>
-      <td>ElementPropertyTypes</td>
-      <td>✗</td>
+      <td>et</td>
       <td>Family types with parameters (slow)</td>
     </tr>
     <tr>
       <td>8</td>
       <td>InPlaceFams</td>
-      <td>FamiliesIsInPlace</td>
-      <td>✓</td>
-      <td>In-place families: category, Id, instance Ids</td>
+      <td>ip</td>
+      <td>In-Place families: category, Id, instance Ids</td>
     </tr>
     <tr>
       <td>9</td>
       <td>FamSizes</td>
-      <td>FamiliesRFA</td>
-      <td>✗</td>
+      <td>fs</td>
       <td>RFA file size per family (very slow — saves each family to a temp file)</td>
     </tr>
     <tr>
       <td>10</td>
       <td>LinksDwg</td>
-      <td>LinkInstanceDwg</td>
-      <td>✓</td>
+      <td>ld</td>
       <td>DWG/DXF links: status, path, level, Z coordinate</td>
     </tr>
     <tr>
       <td>11</td>
       <td>LinksRaster</td>
-      <td>LinkInstanceImages</td>
-      <td>✓</td>
+      <td>li</td>
       <td>Raster links: source, status, level</td>
     </tr>
     <tr>
       <td>12</td>
       <td>LinksRvt</td>
-      <td>LinkInstanceRvt</td>
-      <td>✓</td>
+      <td>lr</td>
       <td>Revit links: name, workset, attachment type (Overlay/Attachment), position</td>
     </tr>
     <tr>
       <td>13</td>
       <td>BasePoints</td>
-      <td>LocationProjectBasePoints</td>
-      <td>✓</td>
+      <td>bp</td>
       <td>Project and survey base points: coordinates (cm)</td>
     </tr>
     <tr>
       <td>14</td>
-      <td>ProjectName</td>
-      <td>LocationProjectName</td>
-      <td>✓</td>
+      <td>SiteLocations</td>
+      <td>sl</td>
       <td>Project location: latitude, longitude, elevation, coordinate system</td>
     </tr>
     <tr>
       <td>15</td>
       <td>BrowserOrg</td>
-      <td>ProjectBrowserOrganization</td>
-      <td>✓</td>
-      <td>Browser organisation schemes: type (views/sheets/schedules), active</td>
+      <td>bo</td>
+      <td>Browser organization schemes: type (views/sheets/schedules), active</td>
     </tr>
     <tr>
       <td>16</td>
       <td>DesignOptions</td>
-      <td>ProjectDesignOptions</td>
-      <td>✓</td>
+      <td>do</td>
       <td>Design options: Id, name, active</td>
     </tr>
     <tr>
       <td>17</td>
       <td>GeneralData</td>
-      <td>ProjectGeneralData</td>
-      <td>✓</td>
+      <td>gd</td>
       <td>Document metadata: Long/Short Name, file size, starting view, cloud identifiers</td>
     </tr>
     <tr>
       <td>18</td>
       <td>ProjectInfo</td>
-      <td>ProjectInfo</td>
-      <td>✓</td>
-      <td>ProjectInformation parameters: all sheet parameters</td>
+      <td>pi</td>
+      <td>ProjectInformation parameters: all parameters on the element</td>
     </tr>
     <tr>
       <td>19</td>
       <td>ParamMapping</td>
-      <td>ProjectParameters</td>
-      <td>✓</td>
+      <td>pm</td>
       <td>Project parameter bindings: name, type (Instance/Type), categories</td>
     </tr>
     <tr>
       <td>20</td>
       <td>Phases</td>
-      <td>ProjectPhases</td>
-      <td>✓</td>
+      <td>ph</td>
       <td>Project phases: Id, name</td>
     </tr>
     <tr>
       <td>21</td>
       <td>Warnings</td>
-      <td>ProjectWarmings</td>
-      <td>✓</td>
+      <td>wr</td>
       <td>Revit warnings: description, severity, element Ids</td>
     </tr>
     <tr>
       <td>22</td>
       <td>Worksets</td>
-      <td>ProjectWorkSets</td>
-      <td>✓</td>
+      <td>ws</td>
       <td>Worksets: Id, name</td>
     </tr>
     <tr>
       <td>23</td>
       <td>Revisions</td>
-      <td>SheetRevisions</td>
-      <td>✓</td>
+      <td>re</td>
       <td>Sheet revisions: sheet, revision Id, date, number, description</td>
     </tr>
     <tr>
       <td>24</td>
       <td>Sheets</td>
-      <td>SheetsProperties</td>
-      <td>✓</td>
+      <td>sh</td>
       <td>Sheets: Id, name, number, IsPlaceholder, title block + custom parameters</td>
     </tr>
     <tr>
       <td>25</td>
       <td>TitleBlocks</td>
-      <td>SheetTileBlocks</td>
-      <td>✓</td>
+      <td>tb</td>
       <td>Title block types and assigned sheets</td>
     </tr>
     <tr>
       <td>26</td>
       <td>Viewports</td>
-      <td>SheetViewPorts</td>
-      <td>✓</td>
+      <td>vp</td>
       <td>Viewports: type, view, sheet</td>
     </tr>
     <tr>
       <td>27</td>
       <td>Views</td>
-      <td>ViewsProperties</td>
-      <td>✗</td>
-      <td>All views with 32 properties (template, scale, far clipping, ViewRange, etc.)</td>
+      <td>vw</td>
+      <td>All views with 32 properties (template, scale, far clip, ViewRange, etc.)</td>
     </tr>
     <tr>
       <td>28</td>
       <td>WorksetElements</td>
-      <td>WorkSetElements</td>
-      <td>✗</td>
+      <td>we</td>
       <td>Element distribution by workset: category, family, type, count (very slow)</td>
     </tr>
     <tr>
       <td>29</td>
       <td>Areas</td>
-      <td>ZonesAreas</td>
-      <td>✓</td>
+      <td>ar</td>
       <td>Areas: area, perimeter, area scheme</td>
     </tr>
     <tr>
       <td>30</td>
       <td>Rooms</td>
-      <td>ZonesRooms</td>
-      <td>✓</td>
-      <td>Rooms: area, height, finishes, department + custom parameters</td>
+      <td>rm</td>
+      <td>Rooms: area, height, finish, department + custom parameters</td>
     </tr>
     <tr>
       <td>31</td>
       <td>Spaces</td>
-      <td>ZonesSpaces</td>
-      <td>✓</td>
+      <td>sp</td>
       <td>MEP spaces: area, height, ventilation system + custom parameters</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Units</td>
+      <td>un</td>
+      <td>Units: deviations from default values</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Coordinates</td>
+      <td>co</td>
+      <td>Project coordinates: base points, survey, angle, site name</td>
     </tr>
   </tbody>
 </table></div>
 
 <blockquote>
-  <p>✗ — disabled by default. Enable in the configuration Excel (Checks sheet, Active column = yes).</p>
+  <p>Some checks are disabled in the default configuration — managed in the configuration Excel (Checks sheet, Active column).</p>
 </blockquote><hr />
 <h2 id="configuration-excel">
   
@@ -756,10 +805,6 @@
       <td><code class="language-plaintext highlighter-rouge">yes</code> / <code class="language-plaintext highlighter-rouge">no</code> (or <code class="language-plaintext highlighter-rouge">true</code> / <code class="language-plaintext highlighter-rouge">false</code> / <code class="language-plaintext highlighter-rouge">1</code> / <code class="language-plaintext highlighter-rouge">0</code>)</td>
     </tr>
     <tr>
-      <td>Sheet Name</td>
-      <td>Detail sheet name in the report</td>
-    </tr>
-    <tr>
       <td>Description</td>
       <td>Additional information</td>
     </tr>
@@ -794,7 +839,7 @@
     </tr>
     <tr>
       <td>Category Name</td>
-      <td>Localised name (auto-filled, do not change)</td>
+      <td>Localized name (auto-filled, do not change)</td>
     </tr>
   </tbody>
 </table></div>
@@ -812,10 +857,10 @@
 <ul>
   <li>First row — headers: <code class="language-plaintext highlighter-rouge">Common</code>, then names of active categories.</li>
   <li><strong>Common</strong> column — parameters exported for all active categories.</li>
-  <li>Other columns — parameters specific to a category.</li>
+  <li>Other columns — category-specific parameters.</li>
   <li>Empty cells are ignored.</li>
-  <li>A parameter is searched first in the instance, then in the type.</li>
-  <li>Missing parameters are logged.</li>
+  <li>Parameters are searched first on the instance, then on the type.</li>
+  <li>Non-existent parameters are logged.</li>
 </ul>
 <h3 id="aliases-sheet">
   
@@ -847,7 +892,7 @@
   </tbody>
 </table></div>
 
-<p>On generation, short names are created automatically by removing the common prefix and suffix from all document names. Documents absent from the Aliases file get their short names generated automatically at runtime.</p><hr />
+<p>Short names are generated automatically on creation: the common prefix and suffix are trimmed from all names. Documents not found in the Aliases file get auto-generated short names at run time.</p><hr />
 <h2 id="tips-and-notes">
   
   
@@ -866,14 +911,14 @@
     
 
 <ul>
-  <li><strong>Empty ConfigPath</strong> is equivalent to the built-in default — clearing the path is safe.</li>
+  <li><strong>Empty ConfigPath</strong> is equivalent to the built-in default configuration — safe to clear.</li>
   <li>The summary below the field updates immediately on path change — validation errors are visible before running.</li>
-  <li>Validation runs again on Run. If the config is invalid, the run is blocked.</li>
-  <li><strong>Unknown check name</strong> in the Checks sheet → error listing valid names.</li>
-  <li><strong>Unknown category</strong> in Categories or Parameters sheet → error listing supported categories.</li>
+  <li>Validation runs again on Create/Update. If the config is invalid, the run is blocked.</li>
+  <li><strong>Unknown check name</strong> in Checks sheet → error with list of valid names.</li>
+  <li><strong>Invalid BuiltInCategory</strong> → error. Any valid BIC from the Revit API is accepted.</li>
   <li>Row order in Checks and Categories sheets does not matter.</li>
-  <li>Configuration is re-read on every run (no caching).</li>
-  <li>The configuration used during a run is stored in hidden sheets of the report.</li>
+  <li>The configuration is re-read on every run (no caching).</li>
+  <li>The configuration used at run time is saved in hidden sheets of the report.</li>
 </ul>
 <h3 id="document-names">
   
@@ -885,8 +930,8 @@
     
 
 <ul>
-  <li>Short names appear in Summary headers — this keeps the table compact with many links.</li>
-  <li>If a linked document appears after the config was generated, its name is generated automatically; add it manually to the Aliases sheet if needed.</li>
+  <li>Short names appear in Summary headers — keeps the table compact with many links.</li>
+  <li>If a linked document appears after config generation — its name is auto-generated; add it manually to the Aliases sheet if needed.</li>
   <li>Edit the Aliases sheet in the config before running if auto-generated abbreviations are inconvenient.</li>
 </ul>
 <h3 id="report-paths">
@@ -899,11 +944,11 @@
     
 
 <ul>
-  <li>The new report path is remembered between sessions. It is auto-generated on first launch.</li>
-  <li>The <strong>Default</strong> button generates a new path with the current date — useful for re-running on a different day.</li>
-  <li>Two runs within the same minute create a file in the same folder → the second run will overwrite it. Use <strong>Browse</strong> or <strong>Default</strong> to create a new path if both results must be kept.</li>
-  <li>If the report file is open in Excel, a retry dialog appears. The audit will not start while the file is locked.</li>
-  <li>The previous report path <strong>is not filled automatically</strong> — it must be set manually via Browse.</li>
+  <li>The new report path is remembered between sessions. Generated automatically on first run.</li>
+  <li>The <strong>Default</strong> button generates a new path with the current date — useful when re-running on a different day.</li>
+  <li>Two runs on the same day create files in the same folder → the second run overwrites the file. Use <strong>Browse</strong> or <strong>Default</strong> to create a new path if both results need to be kept.</li>
+  <li>If the report file is open in Excel — a retry dialog appears. The audit will not start until the file is released.</li>
+  <li>The previous report path is <strong>not filled automatically</strong> — specify it manually via Browse.</li>
 </ul>
 <h3 id="performance">
   
@@ -915,9 +960,9 @@
     
 
 <ul>
-  <li><strong>FamInstances</strong> and <strong>FamTypes</strong> checks are disabled by default — they iterate over all elements in the selected categories and extract parameters. Execution time depends on the number of active categories and model size.</li>
-  <li><strong>FamSizes</strong> check is disabled by default — for each family <code class="language-plaintext highlighter-rouge">EditFamily</code> + <code class="language-plaintext highlighter-rouge">SaveAs</code> to a temp folder is called. On large models this can take several hours.</li>
-  <li><strong>WorksetElements</strong> check is disabled by default — iterates over all elements in all worksets.</li>
+  <li><strong>FamInstances</strong> and <strong>FamTypes</strong> are disabled by default — they iterate all elements of the specified categories and extract parameters. Execution time depends on the number of active categories and model size.</li>
+  <li><strong>FamSizes</strong> is disabled by default — <code class="language-plaintext highlighter-rouge">EditFamily</code> + <code class="language-plaintext highlighter-rouge">SaveAs</code> is called for each family to a temporary folder. May take several hours on large models.</li>
+  <li><strong>WorksetElements</strong> is disabled by default — iterates all elements in all worksets.</li>
 </ul>
 <h3 id="linked-models">
   
@@ -929,9 +974,8 @@
     
 
 <ul>
-  <li>Only loaded Revit links are analysed.</li>
-  <li>Unloaded links are not included in the analysis.</li>
-  <li>Documents with the same <code class="language-plaintext highlighter-rouge">Title</code> are added only once.</li>
+  <li>Only loaded Revit links are analyzed.</li>
+  <li>Documents with the same <code class="language-plaintext highlighter-rouge">Title</code> are added once.</li>
 </ul>
 <h3 id="report-data">
   
@@ -943,9 +987,9 @@
     
 
 <ul>
-  <li>Numeric values (coordinates, areas, distances) are written as Excel numbers — this allows correct sorting and filtering.</li>
-  <li>Composite values (e.g. a space-separated list of Ids) remain strings.</li>
-  <li>Line breaks within parameter values are preserved.</li>
+  <li>Numeric values (coordinates, areas, distances) are written as Excel numbers — allowing correct sorting and filtering.</li>
+  <li>Composite values (e.g. space-separated Id list) remain strings.</li>
+  <li>Line breaks inside parameter values are preserved.</li>
 </ul>
 
           
