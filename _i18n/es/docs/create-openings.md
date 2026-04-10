@@ -10,7 +10,7 @@
 {:toc}
 </details>
 
-<img src="Logo.png" alt="Logo" style="float:right; margin:0 15px 15px 0;" width="48"/> El comando automatiza el proceso de creación y actualización de vanos en muros para el paso de elementos de instalaciones (MEP). Analiza intersecciones, considera los vanos existentes, une los nuevos vanos cercanos y genera un informe detallado de las acciones realizadas.
+El comando automatiza el proceso de creación y actualización de vanos en muros para el paso de elementos de instalaciones (MEP). Analiza intersecciones, considera los vanos existentes, une los nuevos vanos cercanos y genera un informe detallado de las acciones realizadas.
 
 ---
 

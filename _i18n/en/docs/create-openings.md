@@ -10,7 +10,7 @@
 {:toc}
 </details>
 
-<img src="Logo.png" alt="Logo" style="float:right; margin:0 15px 15px 0;" width="48"/> The command automates the process of creating and updating openings in walls for the passage of MEP elements. It analyzes intersections, considers existing openings, merges closely located new openings, and generates a detailed report on the actions performed.
+The command automates the process of creating and updating openings in walls for the passage of MEP elements. It analyzes intersections, considers existing openings, merges closely located new openings, and generates a detailed report on the actions performed.
 
 ---
 

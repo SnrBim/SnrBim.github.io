@@ -12,7 +12,7 @@
 
 ## Propósito
 
-<img src="Logo.png" alt="Logo" style="float:right; margin:0 15px 15px 0;" width="48"/> El comando **FillCode** está diseñado para generar y asignar automáticamente un código de identificación único a los elementos en un modelo de Revit. El código se crea en base a un conjunto de reglas que se pueden configurar mediante un archivo de Excel externo y se escribe en el parámetro `IDD_PDS_CODE` del elemento.
+El comando **FillCode** está diseñado para generar y asignar automáticamente un código de identificación único a los elementos en un modelo de Revit. El código se crea en base a un conjunto de reglas que se pueden configurar mediante un archivo de Excel externo y se escribe en el parámetro `IDD_PDS_CODE` del elemento.
 
 Esto permite estandarizar la identificación de elementos de acuerdo con los requisitos del proyecto.
 
