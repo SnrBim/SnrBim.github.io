@@ -67,16 +67,20 @@ Setting it to `true` triggers a code path in the plugin that calls a Ruby method
 
 ## Key Files
 
-*   **`index.md`** — main page. Renders the filterable command list and the ribbon replica. Delegates all styling and behaviour to external CSS/JS files.
+*   **`index.md`** — main page. Renders the filterable command list (two-column layout) and the ribbon replica. WIP items show a tooltip instead of inline status text. Items with descriptions show the description as a hover tooltip on the `<summary>` element.
 *   **`_includes/ribbon.html`** — renders the full Revit ribbon replica on the main page. Determines panel display order from the global command sort order. WIP commands are shown as non-clickable, dimmed buttons.
 *   **`_includes/ribbon_context.html`** — renders a compact ribbon on command pages, showing only the commands near the current one in the global order. Commands from different panels may appear together if they are adjacent. WIP and dual-button commands are handled consistently with the main ribbon.
 *   **`_includes/head_custom.html`** — injects the global stylesheet into every page via the just-the-docs hook.
-*   **`assets/css/commands.css`** — all visual rules for the command list, ribbon replica, and context ribbon. Controls layout, highlight states, WIP appearance, and panel label orientation.
+*   **`assets/css/commands.css`** — all visual rules for the command list, ribbon replica, and context ribbon. Uses CSS custom properties (`--ribbon-bg`, `--ribbon-hover`, etc.) for all ribbon colors. Dark-mode overrides are defined under `body.jtd-dark`.
 *   **`assets/js/commands.js`** — controls three independent behaviours: discipline filter checkboxes, animated collapsible descriptions, and mutual hover highlight between ribbon buttons and list items.
 *   **`docs/1Common.md`, `docs/2MEC.md`, `docs/3ELE.md`, `docs/4Misc.md`** — discipline parent pages. Each command's `parent` field must resolve to one of these page titles for sidebar navigation to work.
 *   **`Publish-Docs.ps1`** — the only mechanism for syncing content from the BIMTools source repo. See «Script Functions» above.
-*   **`_includes/footer_custom.html`** — global scripts: language switcher and theme toggle.
+*   **`_includes/footer_custom.html`** — global scripts: language switcher and theme toggle. The theme toggle calls `jtd.setTheme()` (which swaps the stylesheet) and also toggles `body.jtd-dark` so that CSS custom property overrides in `commands.css` take effect.
 *   **`_i18n/en.yml`, `_i18n/es.yml`** — UI strings, including discipline names and short labels used by the filter and sidebar.
+
+## Dark Theme Mechanism
+
+just-the-docs implements dark mode by swapping `<link rel="stylesheet">` to `just-the-docs-dark.css` via `jtd.setTheme()`. It does **not** set a `data-theme` attribute or a body class. To allow `commands.css` to react to the theme, `footer_custom.html` additionally toggles the class `jtd-dark` on `<body>` whenever the theme changes or on page load (from `localStorage`). CSS overrides use the `body.jtd-dark` selector.
 
 ### Discipline page ↔ ribbon panel name mapping
 

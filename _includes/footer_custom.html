@@ -32,6 +32,7 @@
 
     function applyTheme(theme) {
       jtd.setTheme(theme);
+      document.body.classList.toggle('jtd-dark', theme === 'dark');
       localStorage.setItem('jtd-theme', theme);
       toggleElem.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
@@ -46,6 +47,7 @@
     if (savedTheme) {
       jtd.setTheme(savedTheme);
     }
+    document.body.classList.toggle('jtd-dark', jtd.getTheme() === 'dark');
     toggleElem.textContent = jtd.getTheme() === 'dark' ? '☀️' : '🌙';
   }
 
@@ -64,7 +66,7 @@
     languageLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        
+
         let targetLang;
         if (this.href.includes('langEn')) {
           targetLang = 'en';

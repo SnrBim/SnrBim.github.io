@@ -2,6 +2,32 @@
    Main page — command list and ribbon replica styles
    ========================================================= */
 
+/* --- Ribbon color tokens (light theme) --- */
+:root {
+  --ribbon-bg:          #F5F5F5;
+  --ribbon-hover:       #DDDDDD;
+  --ribbon-text:        #1a1a1a;
+  --ribbon-hover-wip:   #EBEBEB;
+  --ribbon-border:      rgba(128, 128, 128, 0.3);
+  --ribbon-border-soft: rgba(128, 128, 128, 0.2);
+  --ribbon-label:       rgba(128, 128, 128, 0.7);
+  --ribbon-ellipsis:    rgba(128, 128, 128, 0.6);
+  --ribbon-current-outline: rgba(128, 128, 128, 0.4);
+}
+
+/* Dark theme overrides */
+body.jtd-dark {
+  --ribbon-bg:          #3B4453;
+  --ribbon-hover:       #28303B;
+  --ribbon-text:        #D8DEE9;
+  --ribbon-hover-wip:   #303844;
+  --ribbon-border:      rgba(255, 255, 255, 0.12);
+  --ribbon-border-soft: rgba(255, 255, 255, 0.08);
+  --ribbon-label:       rgba(255, 255, 255, 0.4);
+  --ribbon-ellipsis:    rgba(255, 255, 255, 0.35);
+  --ribbon-current-outline: rgba(255, 255, 255, 0.25);
+}
+
 /* --- Command list items --- */
 .doc-item {
   display: flex;
@@ -64,7 +90,7 @@ li.ribbon-highlight > div.doc-item {
    ========================================================= */
 .ribbon-tab {
   display: block;
-  border: 1px solid rgba(128, 128, 128, 0.3);
+  border: 1px solid var(--ribbon-border);
   border-radius: 4px;
   margin-bottom: 16px;
 }
@@ -73,7 +99,7 @@ li.ribbon-highlight > div.doc-item {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  border-bottom: 1px solid var(--ribbon-border-soft);
   padding: 4px 6px 4px 0;
 }
 .ribbon-panel-block:last-child {
@@ -86,8 +112,8 @@ li.ribbon-highlight > div.doc-item {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   text-align: center;
-  color: rgba(128, 128, 128, 0.7);
-  border-right: 1px solid rgba(128, 128, 128, 0.2);
+  color: var(--ribbon-label);
+  border-right: 1px solid var(--ribbon-border-soft);
   padding: 4px 4px;
   min-width: 20px;
   margin-right: 6px;
@@ -101,7 +127,7 @@ li.ribbon-highlight > div.doc-item {
   overflow-x: auto;       /* scroll within the panel row if needed */
   align-items: flex-start;
   gap: 2px;
-  background-color: #F5F5F5;
+  background-color: var(--ribbon-bg);
   padding: 2px;
   border-radius: 3px;
 }
@@ -114,18 +140,18 @@ li.ribbon-highlight > div.doc-item {
   border-radius: 3px;
   cursor: pointer;
   flex-shrink: 0;          /* don't compress buttons */
-  background-color: #F5F5F5;
+  background-color: var(--ribbon-bg);
   transition: background-color 0.15s;
   text-decoration: none;
-  color: #1a1a1a;          /* black text, works in light mode */
+  color: var(--ribbon-text);
   border: none;
 }
 .ribbon-btn:visited {
-  color: #1a1a1a;
+  color: var(--ribbon-text);
 }
 .ribbon-btn:hover,
 .ribbon-btn.ribbon-active {
-  background-color: #DDDDDD;
+  background-color: var(--ribbon-hover);
   outline: none;
 }
 
@@ -157,23 +183,23 @@ li.ribbon-highlight > div.doc-item {
   cursor: default;
 }
 .ribbon-btn--wip:hover {
-  background-color: #F5F5F5;
+  background-color: var(--ribbon-bg);
   outline: none;
 }
 /* Subtle highlight when list-item hover triggers ribbon-active on a WIP button */
 .ribbon-btn--wip.ribbon-active {
-  background-color: #EBEBEB;
+  background-color: var(--ribbon-hover-wip);
   outline: none;
 }
 
 /* Current command on its own page */
 .ribbon-btn--current {
-  background-color: #DDDDDD;
+  background-color: var(--ribbon-hover);
   cursor: default;
-  outline: 1px solid rgba(128, 128, 128, 0.4);
+  outline: 1px solid var(--ribbon-current-outline);
 }
 .ribbon-btn--current:hover {
-  background-color: #DDDDDD;
+  background-color: var(--ribbon-hover);
 }
 
 /* =========================================================
@@ -184,10 +210,10 @@ li.ribbon-highlight > div.doc-item {
   float: right;
   clear: right;
   margin: 0 0 12px 20px;
-  border: 1px solid rgba(128, 128, 128, 0.3);
+  border: 1px solid var(--ribbon-border);
   border-radius: 4px;
   overflow: hidden;        /* clip rounded corners */
-  background-color: #F5F5F5;
+  background-color: var(--ribbon-bg);
   /* Sit above normal-flow blocks that would otherwise capture pointer events */
   position: relative;
   z-index: 10;
@@ -207,7 +233,7 @@ li.ribbon-highlight > div.doc-item {
   align-items: stretch;
   min-width: 0;     /* allow shrinking so ellipsis always has room */
   flex-shrink: 1;
-  border-right: 1px solid rgba(128, 128, 128, 0.3);
+  border-right: 1px solid var(--ribbon-border);
 }
 .ribbon-context-group:last-of-type {
   border-right: none;
@@ -235,7 +261,7 @@ li.ribbon-highlight > div.doc-item {
 
 .ribbon-btn-separator {
   width: 1px;
-  background: rgba(128, 128, 128, 0.4);
+  background: var(--ribbon-border);
   align-self: stretch;
   margin: 2px 2px;
   flex-shrink: 0;
@@ -248,12 +274,12 @@ li.ribbon-highlight > div.doc-item {
   justify-content: center;
   padding: 2px 3px;
   font-size: 1em;
-  color: rgba(128, 128, 128, 0.6);
+  color: var(--ribbon-ellipsis);
   cursor: default;
   flex-shrink: 0;
-  background-color: #F5F5F5;
+  background-color: var(--ribbon-bg);
   align-self: center;
 }
 .ribbon-btn--ellipsis:hover {
-  background-color: #F5F5F5;
+  background-color: var(--ribbon-bg);
 }

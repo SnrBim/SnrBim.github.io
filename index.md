@@ -54,7 +54,7 @@ has_toc: false
 
         <div class="doc-item">
           <div class="doc-title">
-            <span>{{ doc.title }} ({% t index.wipstatus %})</span>
+            <span title="{% t index.wip_tooltip %}">{{ doc.title }}</span>
           </div>
           {% if doc.parent %}
             {% if group_titles contains doc.parent %}
@@ -67,9 +67,14 @@ has_toc: false
         </div>
 
       {% elsif doc.description and doc.description != "" or doc.description_es and doc.description_es != "" %}
-
+        {%- if site.lang == 'es' and doc.description_es and doc.description_es != "" -%}
+          {%- assign item_tooltip = doc.description_es -%}
+        {%- else -%}
+          {%- assign item_tooltip = doc.description -%}
+        {%- endif -%}
+        {%- assign item_tooltip = item_tooltip | markdownify | strip_html | strip_newlines | strip -%}
         <details>
-          <summary class="doc-item">
+          <summary class="doc-item" title="{{ item_tooltip }}">
             <div class="doc-title">
               <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
             </div>
@@ -112,5 +117,15 @@ has_toc: false
   {% endif %}
 {% endfor %}
 </ol>
+
+<style>
+  #doc-list {
+    column-count: 2;
+    column-gap: 4em;
+  }
+  #doc-list li {
+    break-inside: avoid;
+  }
+</style>
 
 <script src="{{ '/assets/js/commands.js' | relative_url }}"></script>
