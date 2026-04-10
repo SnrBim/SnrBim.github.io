@@ -1,0 +1,90 @@
+{% comment %}
+  _includes/ribbon_context.html
+  Shows a ±2 window of commands around the current one, across all panels.
+  Grouped by panel: buttons on top, panel name centered below.
+  Commands with ribbon_order_2 count as 1 position but render both buttons.
+  "…" shown at edges when window is cut off.
+{% endcomment %}
+
+{%- assign all_cmds = site.pages | where_exp:"item","item.ribbon_order" | sort: "ribbon_order" -%}
+{%- assign last_idx = all_cmds.size | minus: 1 -%}
+
+{%- comment -%} Pass 1: find 0-based index of current command {%- endcomment -%}
+{%- assign cur_idx = 0 -%}
+{%- for cmd in all_cmds -%}
+  {%- if cmd.namespace == page.namespace -%}
+    {%- assign cur_idx = forloop.index0 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign win_start = cur_idx | minus: 2 -%}
+{%- assign win_end   = cur_idx | plus:  2 -%}
+{%- if win_start < 0 -%}{%- assign win_start = 0 -%}{%- endif -%}
+{%- if win_end > last_idx -%}{%- assign win_end = last_idx -%}{%- endif -%}
+
+{%- comment -%} Pass 2: collect unique panels in window order {%- endcomment -%}
+{%- assign win_panels = "" | split: "" -%}
+{%- for cmd in all_cmds -%}
+  {%- if forloop.index0 >= win_start and forloop.index0 <= win_end -%}
+    {%- unless win_panels contains cmd.ribbon_panel -%}
+      {%- assign win_panels = win_panels | push: cmd.ribbon_panel -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<div class="ribbon-context">
+  <div class="ribbon-context-row">
+    {%- if win_start > 0 -%}<span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>{%- endif -%}
+    {% for panel in win_panels %}
+    <div class="ribbon-context-group">
+      <div class="ribbon-panel-buttons">
+        {% for cmd in all_cmds %}
+          {%- if forloop.index0 >= win_start and forloop.index0 <= win_end -%}
+            {%- if cmd.ribbon_panel == panel -%}
+              {%- assign is_current = false -%}
+              {%- if cmd.namespace == page.namespace -%}{%- assign is_current = true -%}{%- endif -%}
+              {%- assign btn_label = cmd.ribbon_button_text | default: cmd.title -%}
+              {%- if is_current -%}
+                <span class="ribbon-btn ribbon-btn--current" title="{{ cmd.title }}">
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  <span class="ribbon-btn-label">{{ btn_label }}</span>
+                </span>
+                {%- if cmd.ribbon_order_2 -%}
+                <span class="ribbon-btn ribbon-btn--current" title="{{ cmd.title }}">
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  <span class="ribbon-btn-label">{{ cmd.ribbon_button_text_2 | default: cmd.title }}</span>
+                </span>
+                {%- endif -%}
+              {%- elsif cmd.wip -%}
+                <span class="ribbon-btn ribbon-btn--wip" title="{% t index.wip_tooltip %}">
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  <span class="ribbon-btn-label">{{ btn_label }}</span>
+                </span>
+                {%- if cmd.ribbon_order_2 -%}
+                <span class="ribbon-btn ribbon-btn--wip" title="{% t index.wip_tooltip %}">
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  <span class="ribbon-btn-label">{{ cmd.ribbon_button_text_2 | default: cmd.title }}</span>
+                </span>
+                {%- endif -%}
+              {%- else -%}
+                <a class="ribbon-btn" href="{{ cmd.url | relative_url }}" title="{{ cmd.title }}">
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  <span class="ribbon-btn-label">{{ btn_label }}</span>
+                </a>
+                {%- if cmd.ribbon_order_2 -%}
+                <a class="ribbon-btn" href="{{ cmd.url | relative_url }}" title="{{ cmd.title }}">
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  <span class="ribbon-btn-label">{{ cmd.ribbon_button_text_2 | default: cmd.title }}</span>
+                </a>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+        {% endfor %}
+      </div>
+      <div class="ribbon-panel-name">{{ panel }}</div>
+    </div>
+    {% endfor %}
+    {%- if win_end < last_idx -%}<span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>{%- endif -%}
+  </div>
+</div>

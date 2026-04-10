@@ -35,7 +35,7 @@ To run the documentation site locally for previewing changes, follow these steps
     ```
 4.  **Activate the Ruby environment.** This step is crucial because the Ruby installation is portable.
     ```powershell
-    $env:PATH = "C:\Users\1M06174\ruby\rubyinstaller-3.4.7-1-x64\bin;" + $env:PATH
+    $env:PATH = "C:\Users\1M06174\ruby\rubyinstaller-3.4.9-1-x64\bin;" + $env:PATH
     ```
 5.  Run the Jekyll server:
     ```powershell
@@ -70,22 +70,29 @@ BIMTools\
         └── pic1.png
 ```
 
+### Source Structure Convention (updated)
+
+Помимо ранее описанных файлов, скрипт теперь использует:
+*   `Logo.png` — иконка команды, расположенная в `<Command>/Docs/Logo.png`. Скрипт копирует её в `docs/<slug>/logo.png` и добавляет поле `icon` в front-matter.
+
 ### Script Automation Logic
 
 When you run `.\Publish-Docs.ps1`, it performs the following for each command found:
 
-1.  **Reads `title`:** It opens `front-matter.yaml` and reads the `title`.
-2.  **Generates a "slug":** It converts the title into a URL-friendly `kebab-case` string.
-    *   `title: Assign Circuit To Conduits` -> `assign-circuit-to-conduits`
-3.  **Checks for Duplicates:** The script will stop with an error if it finds multiple commands with the same `title`, as this would cause them to overwrite each other.
-4.  **Generates Template Page (`index.md`):** It creates a new `index.md` file in `docs/<slug>/`. This file contains:
-    *   The original front-matter from `front-matter.yaml` (excluding any `layout`, `namespace`, or `permalink` fields).
-    *   A hardcoded `layout: default`.
-    *   A generated `namespace` and `permalink`.
-    *   A `{% translate_file docs/<slug>.md %}` tag after the front-matter, which tells Jekyll to load the content from the language-specific files.
-5.  **Injects TOC and Copies Content:** It reads the content of `En.md` and `Es.md`, injects a language-specific Table of Contents after the main title, and copies the modified content to the `_i18n/<lang>/docs/` folder, renaming it to `<slug>.md`.
-6.  **Copies Assets:** It copies all other files (like `pic1.png`) into the `docs/<slug>/` directory, alongside `index.md`.
-7.  **Warns on Missing Translations:** It will show a warning if either `En.md` or `Es.md` is missing.
+1.  **Parses `App.cs`** (`Get-RibbonOrder`): reads the Revit ribbon structure and builds a map of `ClassName → { Panel, GlobalOrder, SeparatorBefore, CommandClass }`. The order counter is **global across all panels**, so Liquid's `sort: "ribbon_order"` reproduces the exact Revit panel sequence.
+2.  **Parses `Command*.cs`** (`Get-ButtonTexts`): reads `ButtonText` from each command class (preserving `\n`). Key format: `"FolderName.CommandClass"`.
+3.  **Reads `title`** from `front-matter.yaml`; generates a kebab-case slug.
+4.  **Checks for duplicate titles** — aborts if found.
+5.  **Generates `docs/<slug>/index.md`** with all front-matter fields:
+    *   Fields carried from `front-matter.yaml`: `title`, manual `parent` override (if present).
+    *   Auto-derived: `parent` (from ribbon panel name, if no manual override), `layout`, `wip`, `description`, `description_es`.
+    *   Ribbon fields: `ribbon_panel`, `ribbon_order`, `ribbon_separator_before` (only if true), `ribbon_button_text` (double-quoted YAML so `\n` becomes a real newline).
+    *   `icon: /docs/<slug>/logo.png` — only if `Docs/Logo.png` exists.
+    *   `namespace`, `permalink`.
+6.  **Copies `Docs/Logo.png`** → `docs/<slug>/logo.png` (handled inside the `front-matter.yaml` switch case; `Logo.png` case skips to avoid duplication).
+7.  **Injects TOC and copies content** of `En.md` / `Es.md` to `_i18n/<lang>/docs/<slug>.md`.
+8.  **Copies other assets** (images etc.) to `docs/<slug>/`.
+9.  **Warns** on missing `En.md`, `Es.md`, or `Logo.png`.
 
 ## Deployment Workflow
 
@@ -126,9 +133,49 @@ Until then, the default language (`en`) will be served from the root of the webs
 
 ## Key Files
 
-*   **`index.md`**: The main page of the site. It contains the Liquid logic to iterate through all commands and display them in a filterable list. The logic correctly handles documents marked as "Work In Progress" (`wip: true`), displaying them without a link or description. It also includes the HTML structure, custom CSS, and JavaScript for the collapsible descriptions, their styling, animation, filtering by discipline, and the click handling logic that distinguishes between navigation and expansion.
-*   **`Publish-Docs.ps1`**: A crucial PowerShell script that aggregates all documentation from the source `BIMTools` repository. It reads the `front-matter.yaml` for each command to get the title. It now also automatically extracts the first paragraph from `En.md` and `Es.md` and injects it as a `description` and `description_es` field into the front matter of the generated `index.md` for each command page.
-*   **`_includes/footer_custom.html`**: A file intended for custom scripts and styles that apply globally across the site. It contains the JavaScript for the language switcher and theme toggling.
+*   **`index.md`**: The main page. Contains Liquid logic for the filterable command list and includes the ribbon replica (`{% include ribbon.html %}`). Loads `assets/css/commands.css` and `assets/js/commands.js`. Logic handles `wip: true` (no link). Icons (`doc-icon`) are shown only in the ribbon, not in the alphabetical list.
+*   **`_includes/ribbon.html`**: Renders the Revit ribbon replica. Sorts all commands globally by `ribbon_order`, derives panel display order from first occurrence, renders panels as horizontal rows with a vertical label on the left. WIP buttons render as `<span>` (no link), dimmed, with a tooltip. Button label uses `ribbon_button_text` (with `\n` → real newline via `white-space: pre`).
+*   **`_includes/ribbon_context.html`**: Mini-ribbon floated right on command pages. Shows a **±2 global window** of commands around the current one, across all panels. Grouped by panel: buttons rendered above, panel name centered below (horizontal). "…" ellipsis shown at left/right edges when window is cut off. Commands with `ribbon_order_2` count as 1 position but render both buttons. Three passes: (1) find `cur_idx` by `namespace`, (2) compute `win_start/win_end`, (3) collect `win_panels` then render per-panel groups.
+*   **`assets/css/commands.css`**: All styles for the main page and command pages: command list items, collapsible descriptions, ribbon layout, button appearance (`#F5F5F5` default, `#DDDDDD` hover, black text, `white-space: pre` for labels), WIP dimming. Context ribbon classes: `.ribbon-context` (float right, `background-color: #F5F5F5`, `z-index: 10`, no `max-width`), `.ribbon-context-row` (flex row for groups + ellipsis), `.ribbon-context-group` (flex column, `border-right` separator, `min-width: 0`), `.ribbon-context .ribbon-panel-name` (override: `writing-mode: horizontal-tb`, centered, no border).
+*   **`assets/js/commands.js`**: Three isolated functions — `initFilter` (discipline checkboxes), `initCollapsibleDescriptions` (animated details/summary), `initRibbonHover` (mutual highlight between ribbon buttons and list items via `data-slug`).
+*   **`docs/1Common.md`, `docs/2MEC.md`, `docs/3ELE.md`, `docs/4Misc.md`**: Discipline parent pages (`has_children: true`). Panel name from `App.cs` must match the `title` of the corresponding discipline page for the `parent` field to work correctly.
+*   **`Publish-Docs.ps1`**: See «Script Automation Logic» above.
+*   **`_includes/footer_custom.html`**: Global scripts — language switcher and theme toggle.
+*   **`_i18n/en.yml`, `_i18n/es.yml`**: UI strings. Keys `discipline.*` and `discipline_short.*` must cover all ribbon panel names used as parents (currently: `General`/`common`, `MEP mechanical`/`mec`, `MEP electrical`/`ele`, `Misc`/`misc`).
+
+### Discipline page ↔ ribbon panel name mapping
+
+| `App.cs` panel name | `front-matter parent` value | Discipline page title | i18n key |
+|---|---|---|---|
+| `General` | `General` | `Common` | `common` |
+| `MEP mechanical` | `MEP mechanical` | `MEC` | `mec` |
+| `MEP electrical` | `MEP electrical` | `ELE` | `ele` |
+| `Misc` | `Misc` | `Misc` | `misc` |
+
+> **Note:** The `parent` value written into `front-matter` equals the raw panel name from `App.cs`. The discipline *page* `title` is separate (e.g. `Common`, not `General`). The filter checkboxes use `group.title`, so they match `Common`, `MEC`, `ELE`, `Misc`. This means that currently, commands in the `General` panel have `parent: General` which does **not** match the `Common` page title — this is a known mismatch to be resolved (either rename the Revit panel or add a panel→title mapping in the script).
 
 ---
+
 **Work Log:** PLAN.md
+
+---
+
+## Технический долг и архитектурные проблемы
+
+### Архитектурные проблемы
+
+1.  **Ручной процесс сборки контента**: Скрипт `Publish-Docs.ps1` должен запускаться вручную на Windows. CI/CD пайплайн в GitHub Actions работает на Ubuntu и не может выполнить этот PowerShell скрипт. Это делает процесс развертывания медленным, подверженным ошибкам и зависимым от конкретной машины.
+2.  **Хранение сгенерированных файлов в Git**: Репозиторий хранит файлы, которые генерируются скриптом (`docs/*/index.md`, `_i18n/*/docs/*`). Это плохая практика, так как "загрязняет" историю коммитов, увеличивает размер репозитория и усложняет разрешение конфликтов слияния. Исходный код должен быть отделен от сгенерированных артефактов.
+3.  **Устаревший плагин для многоязычности**: Как указано в `GEMINI.md`, используется плагин (`jekyll-multiple-languages-plugin`), который имеет проблемы совместимости с современными версиями Ruby. Это технический долг, который может привести к полной неработоспособности сайта при обновлении зависимостей.
+
+### Проблемы с читаемостью кода
+
+1.  **Перегруженный `index.md`**: Файл `index.md` содержит сложную смесь из HTML, встроенных стилей (CSS) и логики на JavaScript. Это нарушает принцип разделения ответственности (separation of concerns) и делает файл трудным для чтения и поддержки. Стили и скрипты следует вынести в отдельные файлы.
+2.  **"Хрупкий" скрипт `Publish-Docs.ps1`**: Скрипт использует регулярные выражения для парсинга `front-matter.yaml`. Этот подход ненадежен и может легко сломаться при малейшем изменении формата исходных файлов. Более надежным решением было бы использование полноценного YAML-парсера.
+
+### Рекомендации
+
+1.  **Автоматизировать пайплайн**: Переписать `Publish-Docs.ps1` на кросс-платформенном языке (например, Python или Node.js) и встроить его в CI/CD (`deploy.yml`). Пайплайн должен будет скачивать оба репозитория, запускать скрипт для генерации контента, а затем собирать и публиковать сайт.
+2.  **Очистить репозиторий**: После автоматизации пайплайна добавить все сгенерированные файлы в `.gitignore`.
+3.  **Рефакторинг `index.md`**: Вынести встроенные CSS и JavaScript в отдельные файлы в папку `assets`.
+4.  **Миграция на новый плагин**: Рассмотреть возможность перехода на более современный плагин для многоязычности, например `jekyll-polyglot`, чтобы устранить технический долг.

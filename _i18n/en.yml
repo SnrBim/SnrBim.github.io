@@ -5,12 +5,15 @@ index:
   all_commands: "All Commands"
   filter_by_discipline: "Filter by discipline"
   wipstatus: "Work in progress"
+  wip_tooltip: "Page under development. Contact the developer for documentation."
   other: "Other"
 discipline:
   common: "Tools applicable across multiple disciplines"
   mec: "Commands for mechanical, ventilation, and plumbing workflows"
   ele: "Commands for electrical design"
+  misc: "Miscellaneous commands"
 discipline_short:
   common: "Common"
   mec: "MEC"
   ele: "ELE"
+  misc: "Misc"

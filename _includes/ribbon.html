@@ -1,0 +1,97 @@
+{% comment %}
+  _includes/ribbon.html
+  Renders a compact replica of the Revit ribbon tab.
+  Panels appear in Revit order (lowest ribbon_order value within each panel determines
+  the panel's own order). Buttons within each panel are sorted by ribbon_order.
+  Each button highlights the matching list item on hover and vice-versa
+  (wired up by commands.js via data-slug).
+
+  Requires: all_docs variable (list of command pages with ribbon_* fields)
+  already assigned in the including page.
+{% endcomment %}
+
+{% comment %} Collect ordered commands (those with a ribbon position) {% endcomment %}
+{% assign ribbon_cmds = all_docs | where_exp:"item", "item.ribbon_order" | sort: "ribbon_order" %}
+
+{% comment %}
+  Derive panel order from the sorted ribbon_cmds list.
+  The first time a panel name appears (lowest ribbon_order) gives its position.
+{% endcomment %}
+{% assign ribbon_panels = "" | split: "" %}
+{% for cmd in ribbon_cmds %}
+  {% unless ribbon_panels contains cmd.ribbon_panel %}
+    {% assign ribbon_panels = ribbon_panels | push: cmd.ribbon_panel %}
+  {% endunless %}
+{% endfor %}
+
+{% if ribbon_panels.size > 0 %}
+<div class="ribbon-tab" role="toolbar" aria-label="Ribbon">
+  {% for panel in ribbon_panels %}
+    {% assign panel_cmds = ribbon_cmds | where: "ribbon_panel", panel %}
+    <div class="ribbon-panel-block">
+      <div class="ribbon-panel-name">{{ panel }}</div>
+      <div class="ribbon-panel-buttons">
+        {% for cmd in panel_cmds %}
+          {% if cmd.ribbon_separator_before %}
+          <div class="ribbon-btn-separator" aria-hidden="true"></div>
+          {% endif %}
+          {%- assign btn_label = cmd.ribbon_button_text | default: cmd.title -%}
+          {%- assign btn_tooltip = cmd.title -%}
+          {%- if cmd.description and cmd.description != "" -%}
+            {%- assign btn_tooltip = cmd.title | append: " — " | append: cmd.description -%}
+          {%- endif -%}
+          {% if cmd.wip %}
+          <span class="ribbon-btn ribbon-btn--wip"
+                data-slug="{{ cmd.namespace }}"
+                title="{% t index.wip_tooltip %}">
+            {% if cmd.icon %}
+              <img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">
+            {% else %}
+              <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
+            {% endif %}
+            <span class="ribbon-btn-label">{{ btn_label }}</span>
+          </span>
+          {% if cmd.ribbon_order_2 %}
+          <span class="ribbon-btn ribbon-btn--wip"
+                data-slug="{{ cmd.namespace }}"
+                title="{% t index.wip_tooltip %}">
+            {% if cmd.icon %}
+              <img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">
+            {% else %}
+              <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
+            {% endif %}
+            <span class="ribbon-btn-label">{{ cmd.ribbon_button_text_2 | default: cmd.title }}</span>
+          </span>
+          {% endif %}
+          {% else %}
+          <a class="ribbon-btn"
+             href="{{ cmd.url | relative_url }}"
+             data-slug="{{ cmd.namespace }}"
+             title="{{ btn_tooltip | escape }}">
+            {% if cmd.icon %}
+              <img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{{ btn_tooltip | escape }}">
+            {% else %}
+              <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
+            {% endif %}
+            <span class="ribbon-btn-label">{{ btn_label }}</span>
+          </a>
+          {% if cmd.ribbon_order_2 %}
+          <a class="ribbon-btn"
+             href="{{ cmd.url | relative_url }}"
+             data-slug="{{ cmd.namespace }}"
+             title="{{ btn_tooltip | escape }}">
+            {% if cmd.icon %}
+              <img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{{ btn_tooltip | escape }}">
+            {% else %}
+              <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
+            {% endif %}
+            <span class="ribbon-btn-label">{{ cmd.ribbon_button_text_2 | default: cmd.title }}</span>
+          </a>
+          {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
