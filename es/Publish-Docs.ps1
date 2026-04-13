@@ -11,15 +11,16 @@
 
     The script performs the following actions for each command:
     1. Pre-scans all 'front-matter.yaml' files to detect duplicate titles and stops if any are found.
-    2. Reads the 'title' from 'front-matter.yaml'.
-    3. Generates a kebab-case slug (e.g., 'assign-circuit-to-conduits').
-    4. Extracts the first paragraph from En.md and Es.md.
-    5. Generates 'index.md' in the destination 'docs/<slug>/' directory. This file's front-matter
-       includes the original front-matter, generated fields ('layout', 'namespace', 'permalink'),
-       and the extracted 'description' and 'description_es' fields.
-    6. Copies language-specific content to '_i18n/' (ignoring Ru.md).
-    7. Copies all assets (images, etc.) to the asset directory.
-    8. Warns if any expected language content files (En.md, Es.md) are missing for a command.
+    2. Parses App.cs (via Get-RibbonOrder) to derive ribbon panel, order, and separator info.
+    3. Reads the 'title' and optional 'parent' override from 'front-matter.yaml'.
+       If no 'parent' override: the ribbon panel name is used as the parent discipline.
+    4. Generates a kebab-case slug (e.g., 'assign-circuit-to-conduits').
+    5. Extracts the first paragraph from En.md and Es.md as descriptions.
+    6. Generates 'index.md' in 'docs/<slug>/' with all front-matter fields.
+    7. Copies Logo.png (from Docs/) to 'docs/<slug>/logo.png'; adds 'icon' field if present.
+    8. Copies language-specific content to '_i18n/' (ignoring Ru.md), inserting a TOC snippet.
+    9. Copies all other assets (images, etc.) to the command's dest folder.
+    10. Warns if any expected language content files (En.md, Es.md) are missing.
 
 .PARAMETER SourceRoot
     The absolute path to the source directory containing the command folders.
@@ -32,27 +33,140 @@ param(
     [string]$DestRoot = "C:\Users\1M06174\OneDrive - SENER\repos\BIMTools\publish\SnrBim.github.io"
 )
 
-# --- Helper Functions ---
+# ---------------------------------------------------------------------------
+# Helper: extract the first non-heading paragraph from a markdown file
+# ---------------------------------------------------------------------------
 function Get-FirstParagraph($FilePath) {
     if (-not (Test-Path $FilePath)) { return $null }
-
-    $lines = Get-Content -Path $FilePath
-    foreach ($line in $lines) {
-        $trimmedLine = $line.Trim()
-        # Find the first non-empty line that is not a markdown header
-        if ($trimmedLine -ne "" -and -not $trimmedLine.StartsWith("#")) {
-            return $trimmedLine
-        }
+    foreach ($line in (Get-Content -Path $FilePath)) {
+        $t = $line.Trim()
+        if ($t -ne "" -and -not $t.StartsWith("#")) { return $t }
     }
     return $null
 }
 
+# ---------------------------------------------------------------------------
+# Helper: parse App.cs and return a hashtable keyed by PascalCase class prefix
+# (the namespace prefix before ".Command", e.g. "Purge", "AssignConduitToCircuit")
+# Each value is a hashtable:
+#   Panel          - ribbon panel name as written in App.cs (e.g. "General", "MEP mechanical")
+#   Order          - 1-based position within the panel (split-button sub-items count as one slot)
+#   SeparatorBefore - $true if preceded by panel.AddSeparator()
+# ---------------------------------------------------------------------------
+function Get-RibbonOrder {
+    param([string]$AppCsPath)
 
-# --- Main Script ---
+    $result = [ordered]@{}
+
+    if (-not (Test-Path $AppCsPath)) {
+        Write-Warning "App.cs not found at '$AppCsPath'. Ribbon order will not be injected."
+        return $result
+    }
+
+    $lines        = Get-Content -Path $AppCsPath
+    $currentPanel = $null
+    $globalOrder  = 0          # increments across ALL panels — fixes Liquid sort order
+    $nextSep      = $false
+    # No seenPrefixes dedup — each unique prefix.commandClass gets its own entry
+    # (handles split-buttons and multi-command folders like TransferLightingDataToSpace)
+
+    foreach ($line in $lines) {
+        $trimmed = $line.Trim()
+
+        # Skip fully-commented lines
+        if ($trimmed.StartsWith("//")) { continue }
+        # Strip inline comments
+        $codePart = ($trimmed -split '//', 2)[0].Trim()
+
+        # Detect panel section: panelName = "..."  or  panelName = $"General{...}"
+        if ($codePart -match 'panelName\s*=\s*["\$]"?([^"${}]+)') {
+            $currentPanel = $Matches[1].Trim()
+            $nextSep      = $false
+            continue
+        }
+
+        if ($null -eq $currentPanel) { continue }
+
+        # Detect separator
+        if ($codePart -match 'AddSeparator\s*\(') {
+            $nextSep = $true
+            continue
+        }
+
+        # Detect CreateButton call (panel or splitButton host, any Command* suffix)
+        if ($codePart -match 'CreateButton\s*\(.*new\s+(\w+)\.(Command\w*)') {
+            $prefix       = $Matches[1]
+            $commandClass = $Matches[2]
+            $key          = "$prefix.$commandClass"
+
+            if (-not $result.Contains($key)) {
+                $globalOrder++
+                $result[$key] = @{
+                    Panel           = $currentPanel
+                    Order           = $globalOrder
+                    SeparatorBefore = $nextSep
+                    CommandClass    = $commandClass
+                    FolderPrefix    = $prefix
+                }
+            }
+            $nextSep = $false
+            continue
+        }
+    }
+
+    return $result
+}
+
+# ---------------------------------------------------------------------------
+# Helper: parse ButtonText from Command*.cs files
+# Parses actual class names from C# source (handles files with multiple classes).
+# Returns hashtable keyed by "FolderName.ClassName" -> ButtonText (preserving \n)
+# ---------------------------------------------------------------------------
+function Get-ButtonTexts {
+    param([string]$SourceRoot)
+
+    $result  = @{}
+    $csFiles = Get-ChildItem -Path $SourceRoot -Recurse -Filter 'Command*.cs' |
+               Where-Object { $_.Directory.Name -notmatch '^(bin|obj)$' }
+
+    foreach ($file in $csFiles) {
+        $folderName   = $file.Directory.Name
+        $currentClass = $null
+        foreach ($line in (Get-Content $file.FullName)) {
+            if ($line -match 'class\s+(Command\w*)') {
+                $currentClass = $Matches[1]
+            }
+            if ($currentClass -and $line -match 'ButtonText\s*=>\s*"([^"]+)"') {
+                $result["$folderName.$currentClass"] = $Matches[1]  # keep raw \n
+                $currentClass = $null  # each class has one ButtonText
+            }
+        }
+    }
+
+    return $result
+}
+
+
+# ---------------------------------------------------------------------------
+# Main Script
+# ---------------------------------------------------------------------------
 
 Write-Host "Starting documentation publishing process..." -ForegroundColor Green
 Write-Host "Source: $SourceRoot"
 Write-Host "Destination: $DestRoot"
+
+# --- Load ribbon order from App.cs ---
+$appCsPath   = Join-Path $SourceRoot "App.cs"
+$ribbonOrder = Get-RibbonOrder -AppCsPath $appCsPath
+if ($ribbonOrder.Count -gt 0) {
+    Write-Host "`nLoaded ribbon order for $($ribbonOrder.Count) commands from App.cs." -ForegroundColor Cyan
+} else {
+    Write-Warning "Ribbon order could not be loaded. 'ribbon_panel', 'ribbon_order', and 'icon' fields will be omitted."
+}
+
+# --- Load button texts from Command*.cs files ---
+$buttonTexts = Get-ButtonTexts -SourceRoot $SourceRoot
+Write-Host "Loaded button texts for $($buttonTexts.Count) command variants." -ForegroundColor Cyan
 
 $commandFolders = Get-ChildItem -Path $SourceRoot -Directory | Where-Object {
     ($_.Name -ne "Template") -and ($_.Name -ne "Manifest") -and ($_.Name -ne "Res") -and ($_.Name -ne "Properties") -and ($_.Name -ne "bin") -and ($_.Name -ne "obj") -and (Test-Path -Path (Join-Path $_.FullName "Docs"))
@@ -149,7 +263,7 @@ foreach ($commandFolder in $commandFolders) {
     }
 
     $title = ($titleLine.Line -split ':', 2)[1].Trim()
-    
+
     # Skip template if it somehow got through filters
     if ($title -eq "Command Title Placeholder") {
         Write-Host "  Skipping placeholder template." -ForegroundColor Gray
@@ -163,8 +277,21 @@ foreach ($commandFolder in $commandFolders) {
         continue
     }
 
+    # --- Resolve ribbon info for this command ---
+    # Find all ribbon entries for this folder, sorted by global order
+    $allRibbonKeys = @($ribbonOrder.Keys |
+        Where-Object { $ribbonOrder[$_].FolderPrefix -eq $commandNamePascalCase } |
+        Sort-Object { $ribbonOrder[$_].Order })
+    $ribbonInfo  = if ($allRibbonKeys.Count -ge 1) { $ribbonOrder[$allRibbonKeys[0]] } else { $null }
+    $ribbonInfo2 = if ($allRibbonKeys.Count -ge 2) { $ribbonOrder[$allRibbonKeys[1]] } else { $null }
+
     Write-Host "`nProcessing command: $commandNamePascalCase" -ForegroundColor Yellow
     Write-Host "  Generated slug from title: $slug"
+    if ($ribbonInfo) {
+        Write-Host "  Ribbon: panel='$($ribbonInfo.Panel)', order=$($ribbonInfo.Order), sep=$($ribbonInfo.SeparatorBefore)"
+    } else {
+        Write-Host "  Ribbon: not found in App.cs" -ForegroundColor DarkGray
+    }
 
     $destCommandRootPath = Join-Path $DestRoot "docs\$slug"
     $destI18nEnPath = Join-Path $DestRoot "_i18n\en\docs"
@@ -188,7 +315,7 @@ foreach ($commandFolder in $commandFolders) {
             "En.md" {
                 $foundEn = $true
                 $destPath = Join-Path $destI18nEnPath "$slug.md"
-                
+
                 $content = Get-Content -Path $file.FullName -Raw
                 $insertPosition = $content.IndexOf("`n") + 1
                 if ($insertPosition -eq 0) {
@@ -227,52 +354,94 @@ foreach ($commandFolder in $commandFolders) {
             }
             "front-matter.yaml" {
                 $destPath = Join-Path $destCommandRootPath "index.md"
-                
-                # --- Get descriptions for injection ---
-                $enMdPath = Join-Path $sourceDocsPath "En.md"
-                $esMdPath = Join-Path $sourceDocsPath "Es.md"
+
+                # Get descriptions
+                $enMdPath      = Join-Path $sourceDocsPath "En.md"
+                $esMdPath      = Join-Path $sourceDocsPath "Es.md"
                 $enDescription = Get-FirstParagraph -FilePath $enMdPath
                 $esDescription = Get-FirstParagraph -FilePath $esMdPath
-                # ---
 
-                $originalLines = Get-Content -Path $file.FullName
-                $endFrontMatterIndex = [array]::IndexOf($originalLines, '---', 1)
+                $originalLines        = Get-Content -Path $file.FullName
+                $endFrontMatterIndex  = [array]::IndexOf($originalLines, '---', 1)
                 if ($endFrontMatterIndex -lt 0) { $endFrontMatterIndex = $originalLines.Count }
 
                 $newFrontMatterLines = [System.Collections.Generic.List[string]]::new()
                 $newFrontMatterLines.Add('---')
 
-                # Add existing lines, filtering out script-managed fields
+                # Carry over source lines, filtering all script-managed fields.
+                # 'parent' in front-matter.yaml is treated as an explicit override;
+                # if absent, it will be set from the ribbon panel below.
+                $hasParentOverride = $false
                 for ($i = 1; $i -lt $endFrontMatterIndex; $i++) {
-                    if ($originalLines[$i] -notmatch "^(namespace|permalink|layout|wip|description|description_es):") {
-                        $newFrontMatterLines.Add($originalLines[$i])
+                    $l = $originalLines[$i]
+                    if ($l -match "^(namespace|permalink|layout|wip|description|description_es|ribbon_panel|ribbon_order|ribbon_order_2|ribbon_separator_before|ribbon_button_text|ribbon_button_text_2|icon):") {
+                        continue  # always regenerated
+                    }
+                    if ($l -match "^parent:") {
+                        $hasParentOverride = $true
+                    }
+                    $newFrontMatterLines.Add($l)
+                }
+
+                # If no manual parent, derive from ribbon panel
+                if (-not $hasParentOverride -and $ribbonInfo) {
+                    $newFrontMatterLines.Add("parent: $($ribbonInfo.Panel)")
+                }
+
+                # Managed / generated fields
+                $newFrontMatterLines.Add("layout: default")
+                if ($isWip) { $newFrontMatterLines.Add("wip: true") }
+                if ($enDescription) {
+                    $newFrontMatterLines.Add("description: '$($enDescription -replace "'", "''")'")
+                }
+                if ($esDescription) {
+                    $newFrontMatterLines.Add("description_es: '$($esDescription -replace "'", "''")'")
+                }
+
+                # Ribbon fields
+                if ($ribbonInfo) {
+                    $newFrontMatterLines.Add("ribbon_panel: $($ribbonInfo.Panel)")
+                    $newFrontMatterLines.Add("ribbon_order: $($ribbonInfo.Order)")
+                    if ($ribbonInfo.SeparatorBefore) {
+                        $newFrontMatterLines.Add("ribbon_separator_before: true")
+                    }
+                    $btnText = $buttonTexts["$commandNamePascalCase.$($ribbonInfo.CommandClass)"]
+                    if ($btnText) {
+                        $newFrontMatterLines.Add("ribbon_button_text: `"$($btnText -replace '"', '\"')`"")
+                    }
+                    # Secondary button (e.g. TransferLightingDataToSpace has CommandNormal + CommandEmergency)
+                    if ($ribbonInfo2) {
+                        $newFrontMatterLines.Add("ribbon_order_2: $($ribbonInfo2.Order)")
+                        $btnText2 = $buttonTexts["$commandNamePascalCase.$($ribbonInfo2.CommandClass)"]
+                        if ($btnText2) {
+                            $newFrontMatterLines.Add("ribbon_button_text_2: `"$($btnText2 -replace '"', '\"')`"")
+                        }
                     }
                 }
 
-                # Add generated and managed fields
-                $newFrontMatterLines.Add("layout: default")
-                if ($isWip) {
-                    $newFrontMatterLines.Add("wip: true")
+                # Icon: copy Logo.png from Docs/ if present
+                $sourceLogoPath = Join-Path $sourceDocsPath "Logo.png"
+                if (Test-Path $sourceLogoPath) {
+                    $destLogoPath = Join-Path $destCommandRootPath "logo.png"
+                    Copy-Item -Path $sourceLogoPath -Destination $destLogoPath -Force
+                    $newFrontMatterLines.Add("icon: /docs/$slug/logo.png")
+                    Write-Host "  Copied Logo.png -> $destLogoPath"
+                } else {
+                    Write-Warning "  Logo.png not found in '$sourceDocsPath'. No icon will be set."
                 }
-                if ($enDescription) {
-                    $escapedDesc = $enDescription -replace "'", "''"
-                    $lineToAdd = "description: '$escapedDesc'"
-                    $newFrontMatterLines.Add($lineToAdd)
-                }
-                if ($esDescription) {
-                    $escapedDesc = $esDescription -replace "'", "''"
-                    $lineToAdd = "description_es: '$escapedDesc'"
-                    $newFrontMatterLines.Add($lineToAdd)
-                }
+
                 $newFrontMatterLines.Add("namespace: $slug")
                 $newFrontMatterLines.Add("permalink: /docs/$slug/")
                 $newFrontMatterLines.Add('---')
-                
-                # Add the translate_file tag after the front matter
+                $newFrontMatterLines.Add("{% include ribbon_context.html %}")
                 $newFrontMatterLines.Add("{% translate_file docs/$slug.md %}")
 
                 Set-Content -Path $destPath -Value $newFrontMatterLines
-                Write-Host "  Generated front-matter with descriptions and saved to -> $destPath"
+                Write-Host "  Generated index.md -> $destPath"
+            }
+            "Logo.png" {
+                # Handled inside the front-matter.yaml case above; skip here to avoid double-copy
+                Write-Host "  Skipping Logo.png (handled via front-matter pass)." -ForegroundColor Gray
             }
             default {
                 $destPath = Join-Path $destCommandRootPath $file.Name

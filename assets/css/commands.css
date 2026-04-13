@@ -1,0 +1,296 @@
+/* =========================================================
+   Main page — command list and ribbon replica styles
+   ========================================================= */
+
+/* --- Ribbon color tokens (light theme) --- */
+:root {
+  --ribbon-bg:          #F5F5F5;
+  --ribbon-hover:       #DDDDDD;
+  --ribbon-text:        #1a1a1a;
+  --ribbon-hover-wip:   #EBEBEB;
+  --ribbon-border:      rgba(128, 128, 128, 0.3);
+  --ribbon-border-soft: rgba(128, 128, 128, 0.2);
+  --ribbon-label:       rgba(128, 128, 128, 0.7);
+  --ribbon-ellipsis:    rgba(128, 128, 128, 0.6);
+  --ribbon-current-outline: rgba(128, 128, 128, 0.4);
+}
+
+/* Dark theme overrides */
+body.jtd-dark {
+  --ribbon-bg:          #3B4453;
+  --ribbon-hover:       #28303B;
+  --ribbon-text:        #D8DEE9;
+  --ribbon-hover-wip:   #303844;
+  --ribbon-border:      rgba(255, 255, 255, 0.12);
+  --ribbon-border-soft: rgba(255, 255, 255, 0.08);
+  --ribbon-label:       rgba(255, 255, 255, 0.4);
+  --ribbon-ellipsis:    rgba(255, 255, 255, 0.35);
+  --ribbon-current-outline: rgba(255, 255, 255, 0.25);
+}
+
+/* --- Command list items --- */
+.doc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.doc-item:hover {
+  background-color: rgba(128, 128, 128, 0.15);
+}
+.doc-title {
+  display: inline-flex;
+  align-items: center;
+}
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary.doc-item {
+  cursor: pointer;
+}
+summary .doc-title::after {
+  content: '▼';
+  font-size: 0.8em;
+  color: #88888881;
+  margin-left: 0.5em;
+  transform: rotate(-90deg);
+  transition: transform 0.5s;
+}
+details[open] > summary .doc-title::after {
+  transform: rotate(0deg);
+}
+.doc-description {
+  padding: 0;
+  overflow: hidden;
+}
+.doc-description p {
+  margin: 0;
+}
+
+/* 16-px icon next to command title in the list */
+.doc-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Highlight a list row when the matching ribbon button is hovered */
+li.ribbon-highlight > details > summary,
+li.ribbon-highlight > div.doc-item {
+  background-color: rgba(128, 128, 128, 0.15);
+  border-radius: 3px;
+}
+
+/* =========================================================
+   Ribbon replica — panels stacked as rows, name on the left
+   ========================================================= */
+.ribbon-tab {
+  display: block;
+  border: 1px solid var(--ribbon-border);
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.ribbon-panel-block {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom: 1px solid var(--ribbon-border-soft);
+  padding: 4px 6px 4px 0;
+}
+.ribbon-panel-block:last-child {
+  border-bottom: none;
+}
+
+/* Vertical panel label on the left */
+.ribbon-panel-name {
+  font-size: 0.65em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  color: var(--ribbon-label);
+  border-right: 1px solid var(--ribbon-border-soft);
+  padding: 4px 4px;
+  min-width: 20px;
+  margin-right: 6px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.ribbon-panel-buttons {
+  display: flex;
+  flex-wrap: nowrap;      /* buttons never wrap to next row */
+  overflow-x: auto;       /* scroll within the panel row if needed */
+  align-items: flex-start;
+  gap: 2px;
+  background-color: var(--ribbon-bg);
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.ribbon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  flex-shrink: 0;          /* don't compress buttons */
+  background-color: var(--ribbon-bg);
+  transition: background-color 0.15s;
+  text-decoration: none;
+  color: var(--ribbon-text);
+  border: none;
+}
+.ribbon-btn:visited {
+  color: var(--ribbon-text);
+}
+.ribbon-btn:hover,
+.ribbon-btn.ribbon-active {
+  background-color: var(--ribbon-hover);
+  outline: none;
+}
+
+.ribbon-btn img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* Grey box shown when a command has no Logo.png yet */
+.ribbon-btn-placeholder {
+  width: 32px;
+  height: 32px;
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 2px;
+}
+
+.ribbon-btn-label {
+  font-size: 0.6em;
+  text-align: center;
+  line-height: 1.2;
+  white-space: pre;  /* break only at explicit \n, never auto-wrap */
+  margin-top: 2px;
+}
+
+/* WIP ribbon button — no hover, dimmed */
+.ribbon-btn--wip {
+  opacity: 0.4;
+  cursor: default;
+}
+.ribbon-btn--wip:hover {
+  background-color: var(--ribbon-bg);
+  outline: none;
+}
+/* Subtle highlight when list-item hover triggers ribbon-active on a WIP button */
+.ribbon-btn--wip.ribbon-active {
+  background-color: var(--ribbon-hover-wip);
+  outline: none;
+}
+
+/* Current command on its own page */
+.ribbon-btn--current {
+  background-color: var(--ribbon-hover);
+  cursor: default;
+  outline: 1px solid var(--ribbon-current-outline);
+}
+.ribbon-btn--current:hover {
+  background-color: var(--ribbon-hover);
+}
+
+/* =========================================================
+   Mini ribbon context block — floated right on command pages
+   Uses the same ribbon-panel-block structure as the main ribbon.
+   ========================================================= */
+.ribbon-context {
+  float: right;
+  clear: right;
+  margin: 0 0 12px 20px;
+  border: 1px solid var(--ribbon-border);
+  border-radius: 4px;
+  overflow: hidden;        /* clip rounded corners */
+  background-color: var(--ribbon-bg);
+  /* Sit above normal-flow blocks that would otherwise capture pointer events */
+  position: relative;
+  z-index: 10;
+}
+.ribbon-context--cut-left {
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+}
+.ribbon-context--cut-right {
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+}
+.ribbon-context--cut-left.ribbon-context--cut-right {
+  border-radius: 0;
+}
+
+/* Horizontal row holding panel groups + ellipsis */
+.ribbon-context-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* One panel group: buttons above, name label below */
+.ribbon-context-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;     /* allow shrinking so ellipsis always has room */
+  flex-shrink: 1;
+  border-right: 1px solid var(--ribbon-border);
+}
+.ribbon-context-group:last-of-type {
+  border-right: none;
+}
+
+/* Panel name below buttons: horizontal, centered */
+.ribbon-context .ribbon-panel-name {
+  writing-mode: horizontal-tb;
+  transform: none;
+  border-right: none;
+  border-top: none;
+  min-width: auto;
+  margin-right: 0;
+  padding: 2px 6px;
+  text-align: center;
+}
+
+/* Icon on command detail pages (legacy — kept for compatibility) */
+.command-page-icon {
+  float: right;
+  width: 48px;
+  height: 48px;
+  margin: 0 0 16px 16px;
+}
+
+.ribbon-btn-separator {
+  width: 1px;
+  background: var(--ribbon-border);
+  align-self: stretch;
+  margin: 2px 2px;
+  flex-shrink: 0;
+}
+
+/* Ellipsis placeholder when panel has > 5 buttons */
+.ribbon-btn--ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 3px;
+  font-size: 1em;
+  color: var(--ribbon-ellipsis);
+  cursor: default;
+  flex-shrink: 0;
+  background-color: var(--ribbon-bg);
+  align-self: center;
+}
+.ribbon-btn--ellipsis:hover {
+  background-color: var(--ribbon-bg);
+}
