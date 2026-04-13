@@ -29,7 +29,7 @@
   {% for panel in ribbon_panels %}
     {% assign panel_cmds = ribbon_cmds | where: "ribbon_panel", panel %}
     <div class="ribbon-panel-block">
-      <div class="ribbon-panel-name">{{ panel }}</div>
+      <div class="ribbon-panel-name">{{ panel | replace: 'MEP mechanical', 'MEC' | replace: 'MEP electrical', 'ELE' }}</div>
       <div class="ribbon-panel-buttons">
         {% for cmd in panel_cmds %}
           {% if cmd.ribbon_separator_before %}

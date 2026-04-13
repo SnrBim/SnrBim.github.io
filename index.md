@@ -128,4 +128,4 @@ has_toc: false
   }
 </style>
 
-<script src="{{ '/assets/js/commands.js' | relative_url }}"></script>
+<script src="/assets/js/commands.js"></script>

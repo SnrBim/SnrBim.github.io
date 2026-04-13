@@ -218,6 +218,17 @@ li.ribbon-highlight > div.doc-item {
   position: relative;
   z-index: 10;
 }
+.ribbon-context--cut-left {
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+}
+.ribbon-context--cut-right {
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+}
+.ribbon-context--cut-left.ribbon-context--cut-right {
+  border-radius: 0;
+}
 
 /* Horizontal row holding panel groups + ellipsis */
 .ribbon-context-row {

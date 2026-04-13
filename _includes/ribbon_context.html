@@ -32,7 +32,7 @@
   {%- endif -%}
 {%- endfor -%}
 
-<div class="ribbon-context">
+<div class="ribbon-context{%- if win_start > 0 %} ribbon-context--cut-left{%- endif -%}{%- if win_end < last_idx %} ribbon-context--cut-right{%- endif -%}">
   <div class="ribbon-context-row">
     {%- if win_start > 0 -%}<span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>{%- endif -%}
     {% for panel in win_panels %}
@@ -82,7 +82,7 @@
           {%- endif -%}
         {% endfor %}
       </div>
-      <div class="ribbon-panel-name">{{ panel }}</div>
+      <div class="ribbon-panel-name">{{ panel | replace: 'MEP mechanical', 'MEC' | replace: 'MEP electrical', 'ELE' }}</div>
     </div>
     {% endfor %}
     {%- if win_end < last_idx -%}<span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>{%- endif -%}
