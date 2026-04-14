@@ -45,7 +45,7 @@
                 data-slug="{{ cmd.namespace }}"
                 title="{% t index.wip_tooltip %}">
             {% if cmd.icon %}
-              <img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">
+              <img src="{{ cmd.icon }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">
             {% else %}
               <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
             {% endif %}
@@ -56,7 +56,7 @@
                 data-slug="{{ cmd.namespace }}"
                 title="{% t index.wip_tooltip %}">
             {% if cmd.icon %}
-              <img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">
+              <img src="{{ cmd.icon }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">
             {% else %}
               <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
             {% endif %}
@@ -69,7 +69,7 @@
              data-slug="{{ cmd.namespace }}"
              title="{{ btn_tooltip | escape }}">
             {% if cmd.icon %}
-              <img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{{ btn_tooltip | escape }}">
+              <img src="{{ cmd.icon }}" alt="{{ cmd.title }}" title="{{ btn_tooltip | escape }}">
             {% else %}
               <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
             {% endif %}
@@ -81,7 +81,7 @@
              data-slug="{{ cmd.namespace }}"
              title="{{ btn_tooltip | escape }}">
             {% if cmd.icon %}
-              <img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{{ btn_tooltip | escape }}">
+              <img src="{{ cmd.icon }}" alt="{{ cmd.title }}" title="{{ btn_tooltip | escape }}">
             {% else %}
               <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
             {% endif %}

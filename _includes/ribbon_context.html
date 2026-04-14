@@ -46,34 +46,34 @@
               {%- assign btn_label = cmd.ribbon_button_text | default: cmd.title -%}
               {%- if is_current -%}
                 <span class="ribbon-btn ribbon-btn--current" title="{{ cmd.title }}">
-                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon }}" alt="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
                   <span class="ribbon-btn-label">{{ btn_label }}</span>
                 </span>
                 {%- if cmd.ribbon_order_2 -%}
                 <span class="ribbon-btn ribbon-btn--current" title="{{ cmd.title }}">
-                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon }}" alt="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
                   <span class="ribbon-btn-label">{{ cmd.ribbon_button_text_2 | default: cmd.title }}</span>
                 </span>
                 {%- endif -%}
               {%- elsif cmd.wip -%}
                 <span class="ribbon-btn ribbon-btn--wip" title="{% t index.wip_tooltip %}">
-                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
                   <span class="ribbon-btn-label">{{ btn_label }}</span>
                 </span>
                 {%- if cmd.ribbon_order_2 -%}
                 <span class="ribbon-btn ribbon-btn--wip" title="{% t index.wip_tooltip %}">
-                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon }}" alt="{{ cmd.title }}" title="{% t index.wip_tooltip %}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
                   <span class="ribbon-btn-label">{{ cmd.ribbon_button_text_2 | default: cmd.title }}</span>
                 </span>
                 {%- endif -%}
               {%- else -%}
                 <a class="ribbon-btn" href="{{ cmd.url | relative_url }}" title="{{ cmd.title }}">
-                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon }}" alt="{{ cmd.title }}" title="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
                   <span class="ribbon-btn-label">{{ btn_label }}</span>
                 </a>
                 {%- if cmd.ribbon_order_2 -%}
                 <a class="ribbon-btn" href="{{ cmd.url | relative_url }}" title="{{ cmd.title }}">
-                  {%- if cmd.icon -%}<img src="{{ cmd.icon | relative_url }}" alt="{{ cmd.title }}" title="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
+                  {%- if cmd.icon -%}<img src="{{ cmd.icon }}" alt="{{ cmd.title }}" title="{{ cmd.title }}">{%- else -%}<div class="ribbon-btn-placeholder"></div>{%- endif -%}
                   <span class="ribbon-btn-label">{{ cmd.ribbon_button_text_2 | default: cmd.title }}</span>
                 </a>
                 {%- endif -%}
