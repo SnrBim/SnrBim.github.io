@@ -45,7 +45,7 @@ Ruta al informe anterior. Si se indica, aparecen columnas **Old** / **New** en l
 
 ### New Report Path
 
-Ruta para guardar el nuevo informe. Se genera por defecto como:
+Ruta para guardar el nuevo informe. Por defecto se genera como:
 
 ```
 %APPDATA%\Sener\BimTools\Reports\ModelAudit\{yyyy-MM-dd}\{ModelName}.xlsx
@@ -53,11 +53,27 @@ Ruta para guardar el nuevo informe. Se genera por defecto como:
 
 La fecha forma parte del nombre de la carpeta — ejecutar de nuevo el mismo día sobrescribe el archivo en la misma carpeta.
 
-Botones:
+**Checkbox "Usar ruta relativa"** (activo solo si se especifica archivo de configuración):
+
+Al activarlo, la ruta del informe se calcula automáticamente en relación a la carpeta del archivo de configuración:
+
+```
+[ConfigDir]/Reports/{ModelName}.xlsx
+```
+
+El campo de ruta y los botones quedan deshabilitados — la ruta solo se puede ver. En cada sobrescritura, el informe anterior se guarda automáticamente como copia de seguridad:
+
+```
+[ConfigDir]/Reports/backup/{ModelName}_{yyyy-MM-dd_HH-mm-ss}.xlsx
+```
+
+El estado del checkbox se guarda entre sesiones. Si el archivo de configuración no está especificado o no existe, el checkbox está deshabilitado.
+
+Botones (solo disponibles cuando "Usar ruta relativa" está desactivado):
 - **Browse…** — seleccionar la ruta manualmente mediante un diálogo de guardado.
 - **Default** — generar una nueva ruta con la fecha actual.
 
-> La ruta se guarda entre sesiones.
+> La ruta absoluta se guarda entre sesiones. En modo relativo no se sobrescribe — al desactivar el checkbox se restaura la ruta absoluta anterior.
 
 ### Ejecución
 
@@ -149,16 +165,16 @@ Las hojas `Checks`, `Categories`, `Parameters` almacenan la configuración utili
 | 15 | BrowserOrg | bo | Esquemas de organización del navegador: tipo (vistas/hojas/planillas), activo |
 | 16 | DesignOptions | do | Opciones de diseño: Id, nombre, activa |
 | 17 | GeneralData | gd | Metadatos del documento: Long/Short Name, tamaño de archivo, vista inicial, identificadores en la nube |
-| 18 | ProjectInfo | pi | Parámetros de ProjectInformation: todos los parámetros del elemento |
+| 18 | ProjectInfo | pi | Parámetros de ProjectInformation: todos los parámetros excepte los NonVisible |
 | 19 | ParamMapping | pm | Bindings de parámetros del proyecto: nombre, tipo (Instance/Type), categorías |
 | 20 | Phases | ph | Fases del proyecto: Id, nombre |
 | 21 | Warnings | wr | Advertencias de Revit: descripción, gravedad, Ids de elementos |
 | 22 | Worksets | ws | Worksets: Id, nombre |
 | 23 | Revisions | re | Revisiones de hojas: hoja, Id de revisión, fecha, número, descripción |
-| 24 | Sheets | sh | Hojas: Id, nombre, número, IsPlaceholder, cajetín + parámetros personalizados |
+| 24 | Sheets | sh | Hojas: Id, nombre, número, IsPlaceholder, cajetín, parámetros de agrupación del navegador y parámetros personalizados |
 | 25 | TitleBlocks | tb | Tipos de cajetín y hojas asignadas |
 | 26 | Viewports | vp | Viewports: tipo, vista, hoja |
-| 27 | Views | vw | Todas las vistas con 32 propiedades (plantilla, escala, recorte lejano, ViewRange, etc.) |
+| 27 | Views | vw | Todas las vistas con 32 propiedades (plantilla, escala, recorte lejano, ViewRange, etc.) y parámetros de agrupación del navegador |
 | 28 | WorksetElements | we | Distribución de elementos por workset: categoría, familia, tipo, cantidad (muy lento) |
 | 29 | Areas | ar | Áreas: área, perímetro, esquema de zonificación |
 | 30 | Rooms | rm | Habitaciones: área, altura, acabados, departamento + parámetros personalizados |
@@ -244,6 +260,7 @@ Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y
 - La ruta del nuevo informe se recuerda entre sesiones. Se genera automáticamente en el primer inicio.
 - El botón **Default** genera una nueva ruta con la fecha actual — útil al volver a ejecutar en otro día.
 - Dos ejecuciones el mismo día crean el archivo en la misma carpeta → la segunda ejecución lo sobrescribirá. Use **Browse** o **Default** para crear una nueva ruta si necesita conservar ambos resultados.
+- **"Usar ruta relativa"** — útil para trabajo en equipo: el informe se guarda junto a la configuración, no en `%APPDATA%`. Cada sobrescritura crea automáticamente una copia de seguridad con timestamp en la carpeta `backup/`.
 - Si el archivo de informe está abierto en Excel, aparece un diálogo de reintento. La auditoría no se iniciará mientras el archivo esté bloqueado.
 - La ruta del informe anterior **no se rellena automáticamente** — debe indicarse manualmente a través de Browse.
 
@@ -263,4 +280,17 @@ Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y
 - Los valores numéricos (coordenadas, áreas, distancias) se escriben como números de Excel — permite ordenar y filtrar correctamente.
 - Los valores compuestos (p. ej. una lista de Ids separada por espacios) permanecen como cadenas de texto.
 - Los saltos de línea dentro de los valores de parámetros se conservan.
+
+---
+
+## Historial de cambios
+
+### [25.34] — 2026/05/14
+- En las comprobaciones de **Sheets** y **Views** ahora se incluyen los parámetros de agrupación del Navegador de Proyectos.
+- Los parámetros integrados, que antes se establecían a través de la configuración, ahora siempre se incluyen de forma fija (por ejemplo, IFC para familias, Area Type/Design Option/Comments para Áreas, etc.). Esto garantiza el funcionamiento correcto independientemente del idioma de Revit; otros parámetros pueden añadirse mediante la configuración.
+- En los informes de **FamInstances** y **FamTypes**, los parámetros de tipo ya no se muestran para las instancias.
+- Añadida función **"Usar ruta relativa"** en la sección New Report Path.
+
+### [25.31] — 2026/04/13
+- Corregido un error que se producía al ejecutar la auditoría en proyectos con modelos vinculados anidados (vínculos dentro de vínculos). La verificación **RVT Links** ahora procesa correctamente todos los niveles de vínculos.
 
