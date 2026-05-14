@@ -167,7 +167,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
       </button><a href="/es/docs/2MEC.html" class="nav-list-link">MEC</a><ul class="nav-list"><li class="nav-list-item"><a href="/es/docs/assign-equip-to-schematic/" class="nav-list-link">Assign equip to schematic</a></li><li class="nav-list-item"><a href="/es/docs/assign-spaces-to-equipment/" class="nav-list-link">Assign spaces to equipment</a></li><li class="nav-list-item"><a href="/es/docs/create-dampers/" class="nav-list-link">Create dampers</a></li><li class="nav-list-item"><a href="/es/docs/pid-linker/" class="nav-list-link">P&ID Linker</a></li><li class="nav-list-item"><a href="/es/docs/set-ashrae-code/" class="nav-list-link">Set ASHRAE code</a></li><li class="nav-list-item"><a href="/es/docs/sync-air-flow-to-schematic/" class="nav-list-link">Sync air flow to schematic</a></li><li class="nav-list-item"><a href="/es/docs/sync-equip-to-schematic/" class="nav-list-link">Sync equip to schematic</a></li><li class="nav-list-item"><a href="/es/docs/sync-fire-alarm-diagram/" class="nav-list-link">Sync fire alarm diagram</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in ELE category" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
-      </button><a href="/es/docs/3ELE.html" class="nav-list-link">ELE</a><ul class="nav-list"><li class="nav-list-item"><a href="/es/docs/assign-circuit-to-conduits/" class="nav-list-link">Assign circuit to conduits</a></li><li class="nav-list-item"><a href="/es/docs/circuit-description/" class="nav-list-link">Circuit description</a></li><li class="nav-list-item"><a href="/es/docs/cloneshift/" class="nav-list-link">Clone&Shift</a></li><li class="nav-list-item"><a href="/es/docs/conduit-circuit-sync/" class="nav-list-link">Conduit circuit sync</a></li><li class="nav-list-item"><a href="/es/docs/convert-lines-to-wires/" class="nav-list-link">Convert lines to wires</a></li><li class="nav-list-item"><a href="/es/docs/count-sockets/" class="nav-list-link">Count sockets</a></li><li class="nav-list-item"><a href="/es/docs/create-sockets/" class="nav-list-link">Create sockets</a></li><li class="nav-list-item"><a href="/es/docs/sync-power-params/" class="nav-list-link">Sync power params</a></li><li class="nav-list-item"><a href="/es/docs/transfer-lighting-data-to-space/" class="nav-list-link">Transfer Lighting Data To Space</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Misc category" aria-pressed="false">
+      </button><a href="/es/docs/3ELE.html" class="nav-list-link">ELE</a><ul class="nav-list"><li class="nav-list-item"><a href="/es/docs/align-elevations/" class="nav-list-link">Align Elevations</a></li><li class="nav-list-item"><a href="/es/docs/assign-circuit-to-conduits/" class="nav-list-link">Assign circuit to conduits</a></li><li class="nav-list-item"><a href="/es/docs/circuit-description/" class="nav-list-link">Circuit description</a></li><li class="nav-list-item"><a href="/es/docs/cloneshift/" class="nav-list-link">Clone&Shift</a></li><li class="nav-list-item"><a href="/es/docs/conduit-circuit-sync/" class="nav-list-link">Conduit circuit sync</a></li><li class="nav-list-item"><a href="/es/docs/convert-lines-to-wires/" class="nav-list-link">Convert lines to wires</a></li><li class="nav-list-item"><a href="/es/docs/count-sockets/" class="nav-list-link">Count sockets</a></li><li class="nav-list-item"><a href="/es/docs/create-sockets/" class="nav-list-link">Create sockets</a></li><li class="nav-list-item"><a href="/es/docs/sync-power-params/" class="nav-list-link">Sync power params</a></li><li class="nav-list-item"><a href="/es/docs/transfer-lighting-data-to-space/" class="nav-list-link">Transfer Lighting Data To Space</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Misc category" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
       </button><a href="/es/docs/4Misc.html" class="nav-list-link">Misc</a><ul class="nav-list"><li class="nav-list-item"><a href="/es/docs/track-scheme/" class="nav-list-link">Track scheme</a></li></ul></li></ul>
   
@@ -336,6 +336,11 @@ code</span>
       <li><a href="#datos-del-informe" id="markdown-toc-datos-del-informe">Datos del informe</a></li>
     </ol>
   </li>
+  <li><a href="#historial-de-cambios" id="markdown-toc-historial-de-cambios">Historial de cambios</a>    <ol>
+      <li><a href="#2534--20260514" id="markdown-toc-2534--20260514">[25.34] — 2026/05/14</a></li>
+      <li><a href="#2531--20260413" id="markdown-toc-2531--20260413">[25.31] — 2026/04/13</a></li>
+    </ol>
+  </li>
 </ol>
 
 </details>
@@ -403,21 +408,35 @@ code</span>
 </h3>
     
 
-<p>Ruta para guardar el nuevo informe. Se genera por defecto como:</p>
+<p>Ruta para guardar el nuevo informe. Por defecto se genera como:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%APPDATA%\Sener\BimTools\Reports\ModelAudit\{yyyy-MM-dd}\{ModelName}.xlsx
 </code></pre></div></div>
 
 <p>La fecha forma parte del nombre de la carpeta — ejecutar de nuevo el mismo día sobrescribe el archivo en la misma carpeta.</p>
 
-<p>Botones:</p>
+<p><strong>Checkbox “Usar ruta relativa”</strong> (activo solo si se especifica archivo de configuración):</p>
+
+<p>Al activarlo, la ruta del informe se calcula automáticamente en relación a la carpeta del archivo de configuración:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ConfigDir]/Reports/{ModelName}.xlsx
+</code></pre></div></div>
+
+<p>El campo de ruta y los botones quedan deshabilitados — la ruta solo se puede ver. En cada sobrescritura, el informe anterior se guarda automáticamente como copia de seguridad:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ConfigDir]/Reports/backup/{ModelName}_{yyyy-MM-dd_HH-mm-ss}.xlsx
+</code></pre></div></div>
+
+<p>El estado del checkbox se guarda entre sesiones. Si el archivo de configuración no está especificado o no existe, el checkbox está deshabilitado.</p>
+
+<p>Botones (solo disponibles cuando “Usar ruta relativa” está desactivado):</p>
 <ul>
   <li><strong>Browse…</strong> — seleccionar la ruta manualmente mediante un diálogo de guardado.</li>
   <li><strong>Default</strong> — generar una nueva ruta con la fecha actual.</li>
 </ul>
 
 <blockquote>
-  <p>La ruta se guarda entre sesiones.</p>
+  <p>La ruta absoluta se guarda entre sesiones. En modo relativo no se sobrescribe — al desactivar el checkbox se restaura la ruta absoluta anterior.</p>
 </blockquote>
 <h3 id="ejecución">
   
@@ -699,7 +718,7 @@ code</span>
       <td>18</td>
       <td>ProjectInfo</td>
       <td>pi</td>
-      <td>Parámetros de ProjectInformation: todos los parámetros del elemento</td>
+      <td>Parámetros de ProjectInformation: todos los parámetros excepte los NonVisible</td>
     </tr>
     <tr>
       <td>19</td>
@@ -735,7 +754,7 @@ code</span>
       <td>24</td>
       <td>Sheets</td>
       <td>sh</td>
-      <td>Hojas: Id, nombre, número, IsPlaceholder, cajetín + parámetros personalizados</td>
+      <td>Hojas: Id, nombre, número, IsPlaceholder, cajetín, parámetros de agrupación del navegador y parámetros personalizados</td>
     </tr>
     <tr>
       <td>25</td>
@@ -753,7 +772,7 @@ code</span>
       <td>27</td>
       <td>Views</td>
       <td>vw</td>
-      <td>Todas las vistas con 32 propiedades (plantilla, escala, recorte lejano, ViewRange, etc.)</td>
+      <td>Todas las vistas con 32 propiedades (plantilla, escala, recorte lejano, ViewRange, etc.) y parámetros de agrupación del navegador</td>
     </tr>
     <tr>
       <td>28</td>
@@ -979,6 +998,7 @@ code</span>
   <li>La ruta del nuevo informe se recuerda entre sesiones. Se genera automáticamente en el primer inicio.</li>
   <li>El botón <strong>Default</strong> genera una nueva ruta con la fecha actual — útil al volver a ejecutar en otro día.</li>
   <li>Dos ejecuciones el mismo día crean el archivo en la misma carpeta → la segunda ejecución lo sobrescribirá. Use <strong>Browse</strong> o <strong>Default</strong> para crear una nueva ruta si necesita conservar ambos resultados.</li>
+  <li><strong>“Usar ruta relativa”</strong> — útil para trabajo en equipo: el informe se guarda junto a la configuración, no en <code class="language-plaintext highlighter-rouge">%APPDATA%</code>. Cada sobrescritura crea automáticamente una copia de seguridad con timestamp en la carpeta <code class="language-plaintext highlighter-rouge">backup/</code>.</li>
   <li>Si el archivo de informe está abierto en Excel, aparece un diálogo de reintento. La auditoría no se iniciará mientras el archivo esté bloqueado.</li>
   <li>La ruta del informe anterior <strong>no se rellena automáticamente</strong> — debe indicarse manualmente a través de Browse.</li>
 </ul>
@@ -1022,6 +1042,39 @@ code</span>
   <li>Los valores numéricos (coordenadas, áreas, distancias) se escriben como números de Excel — permite ordenar y filtrar correctamente.</li>
   <li>Los valores compuestos (p. ej. una lista de Ids separada por espacios) permanecen como cadenas de texto.</li>
   <li>Los saltos de línea dentro de los valores de parámetros se conservan.</li>
+</ul><hr />
+<h2 id="historial-de-cambios">
+  
+  
+    <a href="#historial-de-cambios" class="anchor-heading" aria-labelledby="historial-de-cambios"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Historial de cambios
+  
+  
+</h2>
+    
+<h3 id="2534--20260514">
+  
+  
+    <a href="#2534--20260514" class="anchor-heading" aria-labelledby="2534--20260514"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> [25.34] — 2026/05/14
+  
+  
+</h3>
+    
+<ul>
+  <li>En las comprobaciones de <strong>Sheets</strong> y <strong>Views</strong> ahora se incluyen los parámetros de agrupación del Navegador de Proyectos.</li>
+  <li>Los parámetros integrados, que antes se establecían a través de la configuración, ahora siempre se incluyen de forma fija (por ejemplo, IFC para familias, Area Type/Design Option/Comments para Áreas, etc.). Esto garantiza el funcionamiento correcto independientemente del idioma de Revit; otros parámetros pueden añadirse mediante la configuración.</li>
+  <li>En los informes de <strong>FamInstances</strong> y <strong>FamTypes</strong>, los parámetros de tipo ya no se muestran para las instancias.</li>
+  <li>Añadida función <strong>“Usar ruta relativa”</strong> en la sección New Report Path.</li>
+</ul>
+<h3 id="2531--20260413">
+  
+  
+    <a href="#2531--20260413" class="anchor-heading" aria-labelledby="2531--20260413"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> [25.31] — 2026/04/13
+  
+  
+</h3>
+    
+<ul>
+  <li>Corregido un error que se producía al ejecutar la auditoría en proyectos con modelos vinculados anidados (vínculos dentro de vínculos). La verificación <strong>RVT Links</strong> ahora procesa correctamente todos los niveles de vínculos.</li>
 </ul>
 
           

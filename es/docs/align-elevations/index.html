@@ -16,7 +16,7 @@
 
     .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(9)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
     .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
@@ -26,14 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(9) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > a {
       font-weight: 600;
       text-decoration: none;
     }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(9) > button svg {
+    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > button svg {
       transform: rotate(-90deg);
     }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(9) > ul.nav-list {
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Sync power params | Sener BimTools Docs</title>
+<title>Align Elevations | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Sync power params" />
+<meta property="og:title" content="Align Elevations" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
-<link rel="canonical" href="https://snrbim.github.io/es/docs/sync-power-params/" />
-<meta property="og:url" content="https://snrbim.github.io/es/docs/sync-power-params/" />
+<meta name="description" content="The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model." />
+<meta property="og:description" content="The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model." />
+<link rel="canonical" href="https://snrbim.github.io/es/docs/align-elevations/" />
+<meta property="og:url" content="https://snrbim.github.io/es/docs/align-elevations/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Sync power params" />
+<meta property="twitter:title" content="Align Elevations" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Sync power params","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/sync-power-params/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model.","headline":"Align Elevations","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/align-elevations/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,7 +254,7 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/es/docs/3ELE.html">ELE</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Sync power params</span></li>
+    <li class="breadcrumb-nav-list-item"><span>Align Elevations</span></li>
   </ol>
 </nav>
 
@@ -266,26 +266,33 @@
   <div class="ribbon-context-row"><span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>
     <div class="ribbon-context-group">
       <div class="ribbon-panel-buttons">
-        <a class="ribbon-btn" href="/es/docs/count-sockets/" title="Count sockets"><img src="/docs/count-sockets/logo.png" alt="Count sockets" title="Count sockets" /><span class="ribbon-btn-label">Count
-sockets</span>
-                </a><a class="ribbon-btn" href="/es/docs/circuit-description/" title="Circuit description"><img src="/docs/circuit-description/logo.png" alt="Circuit description" title="Circuit description" /><span class="ribbon-btn-label">Circuit
-description</span>
-                </a><span class="ribbon-btn ribbon-btn--current" title="Sync power params"><img src="/docs/sync-power-params/logo.png" alt="Sync power params" /><span class="ribbon-btn-label">Sync
-power</span>
-                </span><span class="ribbon-btn ribbon-btn--wip" title="Página en desarrollo. Contacte al desarrollador para obtener documentación."><img src="/docs/create-sockets/logo.png" alt="Create sockets" title="Página en desarrollo. Contacte al desarrollador para obtener documentación." /><span class="ribbon-btn-label">Create
-sockets</span>
-                </span><a class="ribbon-btn" href="/es/docs/assign-circuit-to-conduits/" title="Assign circuit to conduits"><img src="/docs/assign-circuit-to-conduits/logo.png" alt="Assign circuit to conduits" title="Assign circuit to conduits" /><span class="ribbon-btn-label">Assign circuit
-to conduits</span>
-                </a>
+        <a class="ribbon-btn" href="/es/docs/assign-equip-to-schematic/" title="Assign equip to schematic"><img src="/docs/assign-equip-to-schematic/logo.png" alt="Assign equip to schematic" title="Assign equip to schematic" /><span class="ribbon-btn-label">Assign equip
+to schematic</span>
+                </a><a class="ribbon-btn" href="/es/docs/sync-equip-to-schematic/" title="Sync equip to schematic"><img src="/docs/sync-equip-to-schematic/logo.png" alt="Sync equip to schematic" title="Sync equip to schematic" /><span class="ribbon-btn-label">Sync equip
+to schematic</span>
+                </a><span class="ribbon-btn ribbon-btn--current" title="Align Elevations"><div class="ribbon-btn-placeholder"></div><span class="ribbon-btn-label">Align
+Elevations</span>
+                </span>
       </div>
       <div class="ribbon-panel-name">ELE</div>
     </div>
+    
+    <div class="ribbon-context-group">
+      <div class="ribbon-panel-buttons">
+        <span class="ribbon-btn ribbon-btn--wip" title="Página en desarrollo. Contacte al desarrollador para obtener documentación."><img src="/docs/convert-curves-to-rebar/logo.png" alt="Convert curves to rebar" title="Página en desarrollo. Contacte al desarrollador para obtener documentación." /><span class="ribbon-btn-label">Convert
+to rebar</span>
+                </span><span class="ribbon-btn ribbon-btn--wip" title="Página en desarrollo. Contacte al desarrollador para obtener documentación."><img src="/docs/track-scheme/logo.png" alt="Track scheme" title="Página en desarrollo. Contacte al desarrollador para obtener documentación." /><span class="ribbon-btn-label">Track
+scheme</span>
+                </span>
+      </div>
+      <div class="ribbon-panel-name">Misc</div>
+    </div>
     <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
 </div>
-<h1 class="no_toc" id="título-del-comando-en-español">
+<h1 class="no_toc" id="alineación-de-cotas-de-luminarias">
   
   
-    <a href="#título-del-comando-en-español" class="anchor-heading" aria-labelledby="título-del-comando-en-español"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Título del Comando en Español
+    <a href="#alineación-de-cotas-de-luminarias" class="anchor-heading" aria-labelledby="alineación-de-cotas-de-luminarias"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Alineación de cotas de luminarias
   
   
 </h1>
@@ -295,10 +302,244 @@ to conduits</span>
   <summary class="text-delta">
     Tabla de contenidos
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#propósito" id="markdown-toc-propósito">Propósito</a></li>
+  <li><a href="#cuándo-utilizarla" id="markdown-toc-cuándo-utilizarla">Cuándo utilizarla</a></li>
+  <li><a href="#interfaz" id="markdown-toc-interfaz">Interfaz</a></li>
+  <li><a href="#modo-de-uso" id="markdown-toc-modo-de-uso">Modo de uso</a>    <ol>
+      <li><a href="#modo-proyecto-completo" id="markdown-toc-modo-proyecto-completo">Modo proyecto completo</a></li>
+      <li><a href="#modo-espacios-seleccionados" id="markdown-toc-modo-espacios-seleccionados">Modo espacios seleccionados</a></li>
+    </ol>
+  </li>
+  <li><a href="#algoritmo" id="markdown-toc-algoritmo">Algoritmo</a></li>
+  <li><a href="#informe" id="markdown-toc-informe">Informe</a></li>
+  <li><a href="#configuración" id="markdown-toc-configuración">Configuración</a></li>
+  <li><a href="#resolución-de-problemas" id="markdown-toc-resolución-de-problemas">Resolución de problemas</a></li>
+</ol>
 
 </details>
+<h2 id="propósito">
+  
+  
+    <a href="#propósito" class="anchor-heading" aria-labelledby="propósito"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Propósito
+  
+  
+</h2>
+    
 
-<p>Este es el contenido en español para la documentación del comando.</p>
+<p>La herramienta calcula automáticamente una cota media única para grupos de luminarias del mismo tipo dentro del mismo espacio y la escribe en el parámetro de instancia especificado. Esto elimina el valor <strong>«Varios»</strong> en los planillas generadas debido a pendientes estructurales en el modelo.</p><hr />
+<h2 id="cuándo-utilizarla">
+  
+  
+    <a href="#cuándo-utilizarla" class="anchor-heading" aria-labelledby="cuándo-utilizarla"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Cuándo utilizarla
+  
+  
+</h2>
+    
+
+<p>Utilice la herramienta antes de finalizar las planillas si observa lo siguiente:</p>
+
+<ul>
+  <li>Un grupo de luminarias muestra «Varios» en el parámetro de cota dentro de una planilla.</li>
+  <li>Las luminarias están montadas sobre una estructura inclinada o un forjado con cota variable.</li>
+</ul><hr />
+<h2 id="interfaz">
+  
+  
+    <a href="#interfaz" class="anchor-heading" aria-labelledby="interfaz"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interfaz
+  
+  
+</h2>
+    
+
+<p><img src="ui_screenshot.png" alt="Captura de pantalla" /></p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Descripción</th>
+      <th>Valor predeterminado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Source param</strong></td>
+      <td>Nombre del parámetro de instancia del que se lee la cota individual de cada luminaria (en mm).</td>
+      <td><code class="language-plaintext highlighter-rouge">SRS_MEP_Lighting_Elevation</code></td>
+    </tr>
+    <tr>
+      <td><strong>Target param</strong></td>
+      <td>Nombre del parámetro de instancia en el que se escribe el valor medio redondeado.</td>
+      <td><code class="language-plaintext highlighter-rouge">SRS_MEP_Lighting_Elevation_Average</code></td>
+    </tr>
+    <tr>
+      <td><strong>Rounding (mm)</strong></td>
+      <td>Paso de redondeo del resultado, en milímetros.</td>
+      <td><code class="language-plaintext highlighter-rouge">50</code></td>
+    </tr>
+    <tr>
+      <td><strong>Only selected spaces</strong></td>
+      <td>Si está marcado — solo se procesan las luminarias en los espacios seleccionados antes del lanzamiento. Si no está marcado — se procesan todas las luminarias del proyecto.</td>
+      <td>desmarcado</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="modo-de-uso">
+  
+  
+    <a href="#modo-de-uso" class="anchor-heading" aria-labelledby="modo-de-uso"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo de uso
+  
+  
+</h2>
+    
+<h3 id="modo-proyecto-completo">
+  
+  
+    <a href="#modo-proyecto-completo" class="anchor-heading" aria-labelledby="modo-proyecto-completo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo proyecto completo
+  
+  
+</h3>
+    
+
+<ol>
+  <li>Desmarque <strong>Only selected spaces</strong> (o déjelo desmarcado por defecto).</li>
+  <li>Ajuste los nombres de parámetros y el paso de redondeo si es necesario.</li>
+  <li>Haga clic en <strong>OK</strong> (o pulse <code class="language-plaintext highlighter-rouge">Enter</code>).</li>
+  <li>Espere a que finalice la operación y revise el informe.</li>
+</ol>
+<h3 id="modo-espacios-seleccionados">
+  
+  
+    <a href="#modo-espacios-seleccionados" class="anchor-heading" aria-labelledby="modo-espacios-seleccionados"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo espacios seleccionados
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>Antes de lanzar</strong> el plugin, seleccione uno o más elementos <strong>Space</strong> (MEP Space) en el modelo.</li>
+  <li>Marque <strong>Only selected spaces</strong>.</li>
+  <li>Haga clic en <strong>OK</strong>.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Importante:</strong> si la casilla está marcada pero no hay Spaces seleccionados, el plugin mostrará un error y no escribirá ningún valor.</p>
+</blockquote><hr />
+<h2 id="algoritmo">
+  
+  
+    <a href="#algoritmo" class="anchor-heading" aria-labelledby="algoritmo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Algoritmo
+  
+  
+</h2>
+    
+
+<ol>
+  <li>Se recopilan todas las luminarias (<code class="language-plaintext highlighter-rouge">OST_LightingFixtures</code>) — para todo el proyecto o filtradas por los espacios seleccionados.</li>
+  <li>Se determina el espacio contenedor de cada luminaria usando la siguiente secuencia: atributo <code class="language-plaintext highlighter-rouge">Space</code> integrado, luego el punto de ubicación y dos puntos de sondeo adicionales — 1,5 m y 3 m por debajo. <strong>Las luminarias sin espacio resuelto se omiten</strong> y se contabilizan como “Skipped” en el informe.</li>
+  <li>El plugin detecta automáticamente el tipo de parámetro (<strong>Length</strong> o <strong>Number</strong>) y realiza las conversiones de unidades necesarias.</li>
+  <li>Las luminarias se agrupan por el par <strong>Espacio + Tipo</strong> (el nombre del espacio incluye su número y nombre).</li>
+  <li>Se calcula la media aritmética del valor del parámetro de origen dentro de cada grupo.</li>
+  <li>La media se redondea al múltiplo más cercano del paso de redondeo: <code class="language-plaintext highlighter-rouge">round(avg / step) * step</code>.</li>
+  <li>El valor redondeado se escribe en el parámetro objetivo de cada luminaria del grupo — incluidos los grupos de una sola luminaria y los grupos con rango cero.</li>
+  <li>Se muestra un informe.</li>
+</ol><hr />
+<h2 id="informe">
+  
+  
+    <a href="#informe" class="anchor-heading" aria-labelledby="informe"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Informe
+  
+  
+</h2>
+    
+
+<p>Al finalizar la operación aparece un cuadro de diálogo con información resumida.</p>
+
+<p><strong>Instrucción principal</strong> contiene:</p>
+<ul>
+  <li>Número de grupos y luminarias procesados.</li>
+  <li>Número de luminarias omitidas sin espacio.</li>
+  <li>Número de grupos triviales (1 luminaria o rango &lt; 1 mm) — se escriben pero no aparecen en los detalles.</li>
+</ul>
+
+<p><strong>Área de contenido</strong> muestra el grupo con el mayor rango y la ruta al archivo de informe completo.</p>
+
+<p><strong>Desplegable “Show details”</strong> contiene hasta 20 grupos ordenados por rango de forma descendente. <strong>Solo incluye grupos con ≥ 2 luminarias y rango ≥ 1 mm</strong>.</p>
+
+<p>Formato de línea:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>101 Corridor
+  Luminaire Family: Type Name
+  5 fixtures  |  avg = 2850 mm  |  range = 45 mm
+</code></pre></div></div>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>avg</strong></td>
+      <td>Media redondeada escrita (mm)</td>
+    </tr>
+    <tr>
+      <td><strong>range</strong></td>
+      <td>Dispersión = Max − Min del parámetro de origen (mm)</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><strong>Archivo CSV completo</strong> se guarda en <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\Reports\Align Lighting Elevations\</code>. El archivo contiene todos los grupos relevantes con columnas: <code class="language-plaintext highlighter-rouge">Space Number</code>, <code class="language-plaintext highlighter-rouge">Space Name</code>, <code class="language-plaintext highlighter-rouge">Family: Type</code>, <code class="language-plaintext highlighter-rouge">Count</code>, <code class="language-plaintext highlighter-rouge">Avg (mm)</code>, <code class="language-plaintext highlighter-rouge">Min (mm)</code>, <code class="language-plaintext highlighter-rouge">Max (mm)</code>, <code class="language-plaintext highlighter-rouge">Range (mm)</code>.</p>
+
+<p>Los grupos con un <code class="language-plaintext highlighter-rouge">range</code> elevado requieren revisión: las luminarias pueden estar ubicadas a distintas cotas o el parámetro puede haberse rellenado incorrectamente.</p><hr />
+<h2 id="configuración">
+  
+  
+    <a href="#configuración" class="anchor-heading" aria-labelledby="configuración"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuración
+  
+  
+</h2>
+    
+
+<p>Todos los valores introducidos se guardan automáticamente en <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\Settings.json</code> y se restauran en el siguiente lanzamiento.</p><hr />
+<h2 id="resolución-de-problemas">
+  
+  
+    <a href="#resolución-de-problemas" class="anchor-heading" aria-labelledby="resolución-de-problemas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Resolución de problemas
+  
+  
+</h2>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Situación</th>
+      <th>Causa</th>
+      <th>Solución</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>El comando se ejecuta pero el parámetro objetivo no cambia</td>
+      <td>El <code class="language-plaintext highlighter-rouge">Target param</code> no existe o es de solo lectura</td>
+      <td>Verifique el nombre del parámetro y asegúrese de que sea un parámetro de instancia modificable</td>
+    </tr>
+    <tr>
+      <td>Mensaje “Please select at least one Space”</td>
+      <td>La casilla <strong>Only selected spaces</strong> está marcada pero no hay Spaces seleccionados</td>
+      <td>Seleccione elementos Space en el modelo antes de lanzar el plugin</td>
+    </tr>
+    <tr>
+      <td>El valor «range» en el informe es inesperadamente grande</td>
+      <td>El parámetro de origen se rellenó manualmente con errores, o las luminarias están realmente ubicadas a distintas cotas</td>
+      <td>Inspeccione el modelo y los valores del parámetro de origen</td>
+    </tr>
+  </tbody>
+</table></div>
 
           
 

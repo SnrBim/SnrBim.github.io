@@ -16,7 +16,7 @@
 
     .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(6)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
     .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
@@ -26,14 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(6) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > a {
       font-weight: 600;
       text-decoration: none;
-    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(6) > button svg {
+    }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > button svg {
       transform: rotate(-90deg);
-    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list {
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Create worksets from Excel | Sener BimTools Docs</title>
+<title>Align Elevations | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Create worksets from Excel" />
+<meta property="og:title" content="Align Elevations" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
-<link rel="canonical" href="https://snrbim.github.io/docs/create-worksets-from-excel/" />
-<meta property="og:url" content="https://snrbim.github.io/docs/create-worksets-from-excel/" />
+<meta name="description" content="The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model." />
+<meta property="og:description" content="The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model." />
+<link rel="canonical" href="https://snrbim.github.io/docs/align-elevations/" />
+<meta property="og:url" content="https://snrbim.github.io/docs/align-elevations/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Create worksets from Excel" />
+<meta property="twitter:title" content="Align Elevations" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Create worksets from Excel","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/create-worksets-from-excel/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model.","headline":"Align Elevations","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/align-elevations/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -253,8 +253,8 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/1Common.html">Common</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Create worksets from Excel</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/3ELE.html">ELE</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Align Elevations</span></li>
   </ol>
 </nav>
 
@@ -266,24 +266,33 @@
   <div class="ribbon-context-row"><span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>
     <div class="ribbon-context-group">
       <div class="ribbon-panel-buttons">
-        <a class="ribbon-btn" href="/docs/purge/" title="Purge"><img src="/docs/purge/logo.png" alt="Purge" title="Purge" /><span class="ribbon-btn-label">Purge</span>
-                </a><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/history/logo.png" alt="History" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">History</span>
-                </span><span class="ribbon-btn ribbon-btn--current" title="Create worksets from Excel"><img src="/docs/create-worksets-from-excel/logo.png" alt="Create worksets from Excel" /><span class="ribbon-btn-label">Worksets
-from Excel</span>
-                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><div class="ribbon-btn-placeholder"></div><span class="ribbon-btn-label">Change
-level</span>
-                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/read-parameters-from-excel/logo.png" alt="Read parameters from Excel" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Read
-parameters</span>
+        <a class="ribbon-btn" href="/docs/assign-equip-to-schematic/" title="Assign equip to schematic"><img src="/docs/assign-equip-to-schematic/logo.png" alt="Assign equip to schematic" title="Assign equip to schematic" /><span class="ribbon-btn-label">Assign equip
+to schematic</span>
+                </a><a class="ribbon-btn" href="/docs/sync-equip-to-schematic/" title="Sync equip to schematic"><img src="/docs/sync-equip-to-schematic/logo.png" alt="Sync equip to schematic" title="Sync equip to schematic" /><span class="ribbon-btn-label">Sync equip
+to schematic</span>
+                </a><span class="ribbon-btn ribbon-btn--current" title="Align Elevations"><div class="ribbon-btn-placeholder"></div><span class="ribbon-btn-label">Align
+Elevations</span>
                 </span>
       </div>
-      <div class="ribbon-panel-name">General</div>
+      <div class="ribbon-panel-name">ELE</div>
+    </div>
+    
+    <div class="ribbon-context-group">
+      <div class="ribbon-panel-buttons">
+        <span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/convert-curves-to-rebar/logo.png" alt="Convert curves to rebar" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Convert
+to rebar</span>
+                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/track-scheme/logo.png" alt="Track scheme" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Track
+scheme</span>
+                </span>
+      </div>
+      <div class="ribbon-panel-name">Misc</div>
     </div>
     <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
 </div>
-<h1 class="no_toc" id="english-command-title">
+<h1 class="no_toc" id="align-lighting-elevations">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#align-lighting-elevations" class="anchor-heading" aria-labelledby="align-lighting-elevations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Align Lighting Elevations
   
   
 </h1>
@@ -293,10 +302,244 @@ parameters</span>
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#purpose" id="markdown-toc-purpose">Purpose</a></li>
+  <li><a href="#when-to-use" id="markdown-toc-when-to-use">When to Use</a></li>
+  <li><a href="#interface" id="markdown-toc-interface">Interface</a></li>
+  <li><a href="#how-to-use" id="markdown-toc-how-to-use">How to Use</a>    <ol>
+      <li><a href="#whole-project-mode" id="markdown-toc-whole-project-mode">Whole-project mode</a></li>
+      <li><a href="#selected-spaces-mode" id="markdown-toc-selected-spaces-mode">Selected-spaces mode</a></li>
+    </ol>
+  </li>
+  <li><a href="#algorithm" id="markdown-toc-algorithm">Algorithm</a></li>
+  <li><a href="#report" id="markdown-toc-report">Report</a></li>
+  <li><a href="#settings" id="markdown-toc-settings">Settings</a></li>
+  <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a></li>
+</ol>
 
 </details>
+<h2 id="purpose">
+  
+  
+    <a href="#purpose" class="anchor-heading" aria-labelledby="purpose"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Purpose
+  
+  
+</h2>
+    
 
-<p>This is the English content for the command documentation.</p>
+<p>The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the <strong>“Various”</strong> value in schedules caused by structural slopes in the model.</p><hr />
+<h2 id="when-to-use">
+  
+  
+    <a href="#when-to-use" class="anchor-heading" aria-labelledby="when-to-use"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> When to Use
+  
+  
+</h2>
+    
+
+<p>Use the tool before finalizing schedules if you observe the following:</p>
+
+<ul>
+  <li>A lighting fixture group in a schedule shows “Various” in the elevation parameter.</li>
+  <li>Fixtures are mounted on a sloped structure or slab with a variable elevation.</li>
+</ul><hr />
+<h2 id="interface">
+  
+  
+    <a href="#interface" class="anchor-heading" aria-labelledby="interface"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interface
+  
+  
+</h2>
+    
+
+<p><img src="ui_screenshot.png" alt="UI screenshot" /></p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Source param</strong></td>
+      <td>Name of the instance parameter from which the individual elevation of each fixture is read (in mm).</td>
+      <td><code class="language-plaintext highlighter-rouge">SRS_MEP_Lighting_Elevation</code></td>
+    </tr>
+    <tr>
+      <td><strong>Target param</strong></td>
+      <td>Name of the instance parameter to which the rounded average value is written.</td>
+      <td><code class="language-plaintext highlighter-rouge">SRS_MEP_Lighting_Elevation_Average</code></td>
+    </tr>
+    <tr>
+      <td><strong>Rounding (mm)</strong></td>
+      <td>Rounding step for the result, in millimeters.</td>
+      <td><code class="language-plaintext highlighter-rouge">50</code></td>
+    </tr>
+    <tr>
+      <td><strong>Only selected spaces</strong></td>
+      <td>If checked — only fixtures in spaces selected before launch are processed. If unchecked — all fixtures in the project are processed.</td>
+      <td>unchecked</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="how-to-use">
+  
+  
+    <a href="#how-to-use" class="anchor-heading" aria-labelledby="how-to-use"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How to Use
+  
+  
+</h2>
+    
+<h3 id="whole-project-mode">
+  
+  
+    <a href="#whole-project-mode" class="anchor-heading" aria-labelledby="whole-project-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Whole-project mode
+  
+  
+</h3>
+    
+
+<ol>
+  <li>Uncheck <strong>Only selected spaces</strong> (or leave it unchecked by default).</li>
+  <li>Adjust parameter names and the rounding step if needed.</li>
+  <li>Click <strong>OK</strong> (or press <code class="language-plaintext highlighter-rouge">Enter</code>).</li>
+  <li>Wait for the operation to complete and review the report.</li>
+</ol>
+<h3 id="selected-spaces-mode">
+  
+  
+    <a href="#selected-spaces-mode" class="anchor-heading" aria-labelledby="selected-spaces-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Selected-spaces mode
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>Before launching</strong> the plugin, select one or more <strong>Space</strong> elements (MEP Space) in the model.</li>
+  <li>Check <strong>Only selected spaces</strong>.</li>
+  <li>Click <strong>OK</strong>.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Important:</strong> if the checkbox is checked but no Spaces are selected, the plugin will show an error and will not write any values.</p>
+</blockquote><hr />
+<h2 id="algorithm">
+  
+  
+    <a href="#algorithm" class="anchor-heading" aria-labelledby="algorithm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Algorithm
+  
+  
+</h2>
+    
+
+<ol>
+  <li>All lighting fixtures (<code class="language-plaintext highlighter-rouge">OST_LightingFixtures</code>) are collected — either for the whole project or filtered by selected spaces.</li>
+  <li>The containing space is resolved for each fixture using the following sequence: built-in <code class="language-plaintext highlighter-rouge">Space</code> attribute, then the placement point, then two additional probe points — 1.5 m and 3 m below. <strong>Fixtures with no resolved space are skipped</strong> and counted as “Skipped” in the report.</li>
+  <li>The plugin automatically detects the parameter type (<strong>Length</strong> or <strong>Number</strong>) and performs the necessary unit conversions.</li>
+  <li>Fixtures are grouped by the pair <strong>Space + Type</strong> (the space display name includes its number and name).</li>
+  <li>The arithmetic mean of the source parameter value is calculated within each group.</li>
+  <li>The average is rounded to the nearest multiple of the rounding step: <code class="language-plaintext highlighter-rouge">round(avg / step) * step</code>.</li>
+  <li>The rounded value is written to the target parameter of every fixture in the group — including single-fixture groups and zero-range groups.</li>
+  <li>A report is shown.</li>
+</ol><hr />
+<h2 id="report">
+  
+  
+    <a href="#report" class="anchor-heading" aria-labelledby="report"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Report
+  
+  
+</h2>
+    
+
+<p>After the operation completes, a dialog box appears with summary information.</p>
+
+<p><strong>Main instruction</strong> contains:</p>
+<ul>
+  <li>Number of processed groups and fixtures.</li>
+  <li>Number of skipped fixtures with no space.</li>
+  <li>Number of trivial groups (1 fixture or range &lt; 1 mm) — they are written but excluded from the details.</li>
+</ul>
+
+<p><strong>Content area</strong> shows the group with the largest range and the path to the full report file.</p>
+
+<p><strong>“Show details” spoiler</strong> contains up to 20 groups sorted by range descending. It <strong>only includes groups with ≥ 2 fixtures and range ≥ 1 mm</strong>.</p>
+
+<p>Line format:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>101 Corridor
+  Luminaire Family: Type Name
+  5 fixtures  |  avg = 2850 mm  |  range = 45 mm
+</code></pre></div></div>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>avg</strong></td>
+      <td>Written rounded average (mm)</td>
+    </tr>
+    <tr>
+      <td><strong>range</strong></td>
+      <td>Spread = Max − Min from the source parameter (mm)</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><strong>Full CSV file</strong> is saved to <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\Reports\Align Lighting Elevations\</code>. The file contains all report-worthy groups with columns: <code class="language-plaintext highlighter-rouge">Space Number</code>, <code class="language-plaintext highlighter-rouge">Space Name</code>, <code class="language-plaintext highlighter-rouge">Family: Type</code>, <code class="language-plaintext highlighter-rouge">Count</code>, <code class="language-plaintext highlighter-rouge">Avg (mm)</code>, <code class="language-plaintext highlighter-rouge">Min (mm)</code>, <code class="language-plaintext highlighter-rouge">Max (mm)</code>, <code class="language-plaintext highlighter-rouge">Range (mm)</code>.</p>
+
+<p>Groups with a large <code class="language-plaintext highlighter-rouge">range</code> require inspection: fixtures may be placed at different levels or the parameter may be filled incorrectly.</p><hr />
+<h2 id="settings">
+  
+  
+    <a href="#settings" class="anchor-heading" aria-labelledby="settings"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Settings
+  
+  
+</h2>
+    
+
+<p>All entered values are automatically saved to <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\Settings.json</code> and restored on the next launch.</p><hr />
+<h2 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h2>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Situation</th>
+      <th>Cause</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The command runs but the target parameter does not change</td>
+      <td>The <code class="language-plaintext highlighter-rouge">Target param</code> does not exist or is read-only</td>
+      <td>Check the parameter name and ensure it is a writable instance parameter</td>
+    </tr>
+    <tr>
+      <td>Message “Please select at least one Space”</td>
+      <td>The <strong>Only selected spaces</strong> checkbox is checked but no Spaces are selected</td>
+      <td>Select Space elements in the model before launching</td>
+    </tr>
+    <tr>
+      <td>The “range” value in the report is unexpectedly large</td>
+      <td>The source parameter was filled manually with errors, or fixtures are genuinely placed at different elevations</td>
+      <td>Inspect the model and the source parameter values</td>
+    </tr>
+  </tbody>
+</table></div>
 
           
 

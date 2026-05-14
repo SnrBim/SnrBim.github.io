@@ -148,7 +148,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
       </button><a href="/es/docs/2MEC.html" class="nav-list-link">MEC</a><ul class="nav-list"><li class="nav-list-item"><a href="/es/docs/assign-equip-to-schematic/" class="nav-list-link">Assign equip to schematic</a></li><li class="nav-list-item"><a href="/es/docs/assign-spaces-to-equipment/" class="nav-list-link">Assign spaces to equipment</a></li><li class="nav-list-item"><a href="/es/docs/create-dampers/" class="nav-list-link">Create dampers</a></li><li class="nav-list-item"><a href="/es/docs/pid-linker/" class="nav-list-link">P&ID Linker</a></li><li class="nav-list-item"><a href="/es/docs/set-ashrae-code/" class="nav-list-link">Set ASHRAE code</a></li><li class="nav-list-item"><a href="/es/docs/sync-air-flow-to-schematic/" class="nav-list-link">Sync air flow to schematic</a></li><li class="nav-list-item"><a href="/es/docs/sync-equip-to-schematic/" class="nav-list-link">Sync equip to schematic</a></li><li class="nav-list-item"><a href="/es/docs/sync-fire-alarm-diagram/" class="nav-list-link">Sync fire alarm diagram</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in ELE category" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
-      </button><a href="/es/docs/3ELE.html" class="nav-list-link">ELE</a><ul class="nav-list"><li class="nav-list-item"><a href="/es/docs/assign-circuit-to-conduits/" class="nav-list-link">Assign circuit to conduits</a></li><li class="nav-list-item"><a href="/es/docs/circuit-description/" class="nav-list-link">Circuit description</a></li><li class="nav-list-item"><a href="/es/docs/cloneshift/" class="nav-list-link">Clone&Shift</a></li><li class="nav-list-item"><a href="/es/docs/conduit-circuit-sync/" class="nav-list-link">Conduit circuit sync</a></li><li class="nav-list-item"><a href="/es/docs/convert-lines-to-wires/" class="nav-list-link">Convert lines to wires</a></li><li class="nav-list-item"><a href="/es/docs/count-sockets/" class="nav-list-link">Count sockets</a></li><li class="nav-list-item"><a href="/es/docs/create-sockets/" class="nav-list-link">Create sockets</a></li><li class="nav-list-item"><a href="/es/docs/sync-power-params/" class="nav-list-link">Sync power params</a></li><li class="nav-list-item"><a href="/es/docs/transfer-lighting-data-to-space/" class="nav-list-link">Transfer Lighting Data To Space</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Misc category" aria-pressed="false">
+      </button><a href="/es/docs/3ELE.html" class="nav-list-link">ELE</a><ul class="nav-list"><li class="nav-list-item"><a href="/es/docs/align-elevations/" class="nav-list-link">Align Elevations</a></li><li class="nav-list-item"><a href="/es/docs/assign-circuit-to-conduits/" class="nav-list-link">Assign circuit to conduits</a></li><li class="nav-list-item"><a href="/es/docs/circuit-description/" class="nav-list-link">Circuit description</a></li><li class="nav-list-item"><a href="/es/docs/cloneshift/" class="nav-list-link">Clone&Shift</a></li><li class="nav-list-item"><a href="/es/docs/conduit-circuit-sync/" class="nav-list-link">Conduit circuit sync</a></li><li class="nav-list-item"><a href="/es/docs/convert-lines-to-wires/" class="nav-list-link">Convert lines to wires</a></li><li class="nav-list-item"><a href="/es/docs/count-sockets/" class="nav-list-link">Count sockets</a></li><li class="nav-list-item"><a href="/es/docs/create-sockets/" class="nav-list-link">Create sockets</a></li><li class="nav-list-item"><a href="/es/docs/sync-power-params/" class="nav-list-link">Sync power params</a></li><li class="nav-list-item"><a href="/es/docs/transfer-lighting-data-to-space/" class="nav-list-link">Transfer Lighting Data To Space</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Misc category" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
       </button><a href="/es/docs/4Misc.html" class="nav-list-link">Misc</a><ul class="nav-list"><li class="nav-list-item"><a href="/es/docs/track-scheme/" class="nav-list-link">Track scheme</a></li></ul></li></ul>
   
@@ -679,6 +679,19 @@ to schematic</span>
           
           
         
+          
+          <div class="ribbon-btn-separator" aria-hidden="true"></div>
+          
+          <a class="ribbon-btn" href="/es/docs/align-elevations/" data-slug="align-elevations" title="Align Elevations — The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the **&quot;Various&quot;** value in schedules caused by structural slopes in the model.">
+            
+              <div class="ribbon-btn-placeholder" aria-hidden="true"></div>
+            
+            <span class="ribbon-btn-label">Align
+Elevations</span>
+          </a>
+          
+          
+        
       </div>
     </div>
   
@@ -763,7 +776,7 @@ Code</span>
     
     <label style="margin-left: 10px; user-select: none;">
       <input type="checkbox" class="filter-checkbox" value="ELE" />
-      ELE (9)
+      ELE (10)
     </label>
   
     
@@ -791,6 +804,31 @@ Code</span>
 </div>
 
 <ol id="doc-list">
+
+  <li data-group="ELE" data-slug="align-elevations">
+      <details>
+          <summary class="doc-item" title="La herramienta calcula automáticamente una cota media única para grupos de luminarias del mismo tipo dentro del mismo espacio y la escribe en el parámetro de instancia especificado. Esto elimina el valor «Varios» en los planillas generadas debido a pendientes estructurales en el modelo.">
+            <div class="doc-title">
+              <a href="/es/docs/align-elevations/">Align Elevations</a>
+            </div>
+            
+              
+                
+                <span>ELE</span>
+              
+            
+          </summary>
+          <div class="doc-description">
+            
+            
+            <p>La herramienta calcula automáticamente una cota media única para grupos de luminarias del mismo tipo dentro del mismo espacio y la escribe en el parámetro de instancia especificado. Esto elimina el valor <strong>«Varios»</strong> en los planillas generadas debido a pendientes estructurales en el modelo.</p>
+
+          </div>
+        </details>
+
+      
+    </li>
+  
 
   <li data-group="ELE" data-slug="assign-circuit-to-conduits">
       <details>
