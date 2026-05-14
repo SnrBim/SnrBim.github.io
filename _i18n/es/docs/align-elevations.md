@@ -27,7 +27,7 @@ Utilice la herramienta antes de finalizar las planillas si observa lo siguiente:
 
 ## Interfaz
 
-![Captura de pantalla](ui_screenshot.png)
+![Captura de pantalla](pic.png)
 
 | Campo | Descripción | Valor predeterminado |
 |---|---|---|

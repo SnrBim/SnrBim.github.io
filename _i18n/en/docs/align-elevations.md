@@ -27,7 +27,7 @@ Use the tool before finalizing schedules if you observe the following:
 
 ## Interface
 
-![UI screenshot](ui_screenshot.png)
+![UI screenshot](pic.png)
 
 | Field | Description | Default |
 |---|---|---|
