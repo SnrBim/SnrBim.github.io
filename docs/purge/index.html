@@ -293,6 +293,7 @@ from Excel</span>
 <ol id="markdown-toc">
   <li><a href="#what-can-be-removed" id="markdown-toc-what-can-be-removed">What can be removed?</a></li>
   <li><a href="#additional-features" id="markdown-toc-additional-features">Additional Features</a></li>
+  <li><a href="#work-log" id="markdown-toc-work-log">Work log</a></li>
   <li><a href="#usage" id="markdown-toc-usage">Usage</a></li>
 </ol>
 
@@ -316,7 +317,7 @@ from Excel</span>
   <li><strong>Unused View Filters</strong>: Removes filters that are not used in view graphic overrides.</li>
   <li><strong>Unused Line Styles</strong>: Removes line styles that are not used in the project.</li>
   <li><strong>Unused Text Styles</strong>: Removes text styles that are not used in any text notes or schedules.</li>
-  <li><strong>Material Duplicates</strong>: Finds and removes duplicate materials and appearance assets among unused elements. <em>(Available only in Revit 2024 and newer)</em></li>
+  <li><strong>Material Duplicates</strong>: Finds and removes duplicate materials and appearance assets among unused elements.</li>
   <li><strong>Unused Families and Other Elements</strong>: Removes all unused elements detected by Revit API, including families of all categories, groups, imported symbols, and more. Supports name pattern filtering with wildcards (<code class="language-plaintext highlighter-rouge">*</code> and <code class="language-plaintext highlighter-rouge">?</code>). <em>(Available only in Revit 2024 and newer)</em></li>
 </ul>
 <h2 id="additional-features">
@@ -338,6 +339,18 @@ from Excel</span>
   <li><strong>Auto-repeat</strong>: The tool can perform multiple cleanup passes to ensure maximum results, as deleting some elements may make others unused.</li>
   <li><strong>Run Native Revit Purge</strong>: The tool can also run the built-in Revit command to purge unused elements.</li>
   <li><strong>Work Report</strong>: After cleanup is complete, a text report is generated with a list of all deleted elements.</li>
+</ul><hr />
+<h2 id="work-log">
+  
+  
+    <a href="#work-log" class="anchor-heading" aria-labelledby="work-log"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Work log
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>2026-05-15</strong>: Support for old Revit versions (2019–2023) to clean up auto-generated “Default” materials using name and <code class="language-plaintext highlighter-rouge">LastChangedBy</code> heuristics.</li>
 </ul>
 
 <p><img src="image.png" alt="Window appearance" /></p>
