@@ -5,7 +5,7 @@ layout: default
 description: 'This tool is designed to distribute electrical conduits into segments and record their paths in the electrical circuit parameters to complete the cable schedule.'
 description_es: 'Esta herramienta está diseñada para distribuir los conductos eléctricos (Conduit) en segmentos y registrar sus rutas en los parámetros de los circuitos eléctricos para completar el journal de cables.'
 ribbon_panel: MEP electrical
-ribbon_order: 31
+ribbon_order: 32
 ribbon_button_text: "Conduit to\ncircuit sync "
 icon: /docs/conduit-circuit-sync/logo.png
 namespace: conduit-circuit-sync

@@ -21,7 +21,7 @@ The tool allows you to selectively remove the following types of elements:
 *   **Unused View Filters**: Removes filters that are not used in view graphic overrides.
 *   **Unused Line Styles**: Removes line styles that are not used in the project.
 *   **Unused Text Styles**: Removes text styles that are not used in any text notes or schedules.
-*   **Material Duplicates**: Finds and removes duplicate materials and appearance assets among unused elements. *(Available only in Revit 2024 and newer)*
+*   **Material Duplicates**: Finds and removes duplicate materials and appearance assets among unused elements.
 *   **Unused Families and Other Elements**: Removes all unused elements detected by Revit API, including families of all categories, groups, imported symbols, and more. Supports name pattern filtering with wildcards (`*` and `?`). *(Available only in Revit 2024 and newer)*
 
 ## Additional Features
@@ -32,6 +32,12 @@ The tool allows you to selectively remove the following types of elements:
 *   **Auto-repeat**: The tool can perform multiple cleanup passes to ensure maximum results, as deleting some elements may make others unused.
 *   **Run Native Revit Purge**: The tool can also run the built-in Revit command to purge unused elements.
 *   **Work Report**: After cleanup is complete, a text report is generated with a list of all deleted elements.
+
+---
+
+## Work log
+
+*   **2026-05-15**: Support for old Revit versions (2019–2023) to clean up auto-generated "Default" materials using name and `LastChangedBy` heuristics.
 
 ![Window appearance](image.png)
 
