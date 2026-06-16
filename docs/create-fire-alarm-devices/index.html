@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(3)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(2) > ul > li:nth-child(3) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(2) > ul > li:nth-child(3) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/assets/js/vendor/lunr.min.js"></script>
+    <script src="/assets/js/vendor/lunr.stemmer.support.min.js"></script>
+    <script src="/assets/js/vendor/lunr.es.min.js"></script>
+    <script src="/assets/js/vendor/lunr.multi.min.js"></script>
+  
+
+  <script src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Create Fire Alarm Devices | Sener BimTools Docs</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Create Fire Alarm Devices" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="The command automatically places fire alarm devices in selected MEP spaces: ceiling detectors on a grid and wall devices (siren, manual call point) at doors." />
+<meta property="og:description" content="The command automatically places fire alarm devices in selected MEP spaces: ceiling detectors on a grid and wall devices (siren, manual call point) at doors." />
+<link rel="canonical" href="https://snrbim.github.io/docs/create-fire-alarm-devices/" />
+<meta property="og:url" content="https://snrbim.github.io/docs/create-fire-alarm-devices/" />
+<meta property="og:site_name" content="Sener BimTools Docs" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Create Fire Alarm Devices" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"The command automatically places fire alarm devices in selected MEP spaces: ceiling detectors on a grid and wall devices (siren, manual call point) at doors.","headline":"Create Fire Alarm Devices","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/create-fire-alarm-devices/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link rel="stylesheet" href="/assets/css/commands.css">
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/" class="site-title lh-tight"><img src="/assets/images/logo.png" width="56">
+<pre> </pre>
+<span class="fs-4">Sener BimTools Docs</span>
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Common category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/docs/1Common.html" class="nav-list-link">Common</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/cad-to-revit/" class="nav-list-link">Cad to Revit</a></li><li class="nav-list-item"><a href="/docs/change-level/" class="nav-list-link">Change level</a></li><li class="nav-list-item"><a href="/docs/create-along-path/" class="nav-list-link">Create along path</a></li><li class="nav-list-item"><a href="/docs/create-hangers/" class="nav-list-link">Create hangers</a></li><li class="nav-list-item"><a href="/docs/create-print-set/" class="nav-list-link">Create print set</a></li><li class="nav-list-item"><a href="/docs/create-worksets-from-excel/" class="nav-list-link">Create worksets from Excel</a></li><li class="nav-list-item"><a href="/docs/edit-elements-in-excel/" class="nav-list-link">Edit elements in Excel</a></li><li class="nav-list-item"><a href="/docs/fill-code/" class="nav-list-link">Fill code</a></li><li class="nav-list-item"><a href="/docs/history/" class="nav-list-link">History</a></li><li class="nav-list-item"><a href="/docs/info/" class="nav-list-link">Info</a></li><li class="nav-list-item"><a href="/docs/model-audit/" class="nav-list-link">Model audit</a></li><li class="nav-list-item"><a href="/docs/position-check/" class="nav-list-link">Position check</a></li><li class="nav-list-item"><a href="/docs/purge/" class="nav-list-link">Purge</a></li><li class="nav-list-item"><a href="/docs/read-parameters-from-excel/" class="nav-list-link">Read parameters from Excel</a></li><li class="nav-list-item"><a href="/docs/set-project-params/" class="nav-list-link">Set project params</a></li><li class="nav-list-item"><a href="/docs/show-cads/" class="nav-list-link">Show CADs</a></li><li class="nav-list-item"><a href="/docs/sync-space-params/" class="nav-list-link">Sync space params</a></li><li class="nav-list-item"><a href="/docs/tag-elements-on-views/" class="nav-list-link">Tag elements on views</a></li><li class="nav-list-item"><a href="/docs/textomorph/" class="nav-list-link">TextoMorph</a></li><li class="nav-list-item"><a href="/docs/upload-to-acc/" class="nav-list-link">Upload to ACC</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in MEC category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/docs/2MEC.html" class="nav-list-link">MEC</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/assign-equip-to-schematic/" class="nav-list-link">Assign equip to schematic</a></li><li class="nav-list-item"><a href="/docs/assign-spaces-to-equipment/" class="nav-list-link">Assign spaces to equipment</a></li><li class="nav-list-item"><a href="/docs/create-fire-alarm-devices/" class="nav-list-link">Create Fire Alarm Devices</a></li><li class="nav-list-item"><a href="/docs/create-dampers/" class="nav-list-link">Create dampers</a></li><li class="nav-list-item"><a href="/docs/pid-linker/" class="nav-list-link">P&ID Linker</a></li><li class="nav-list-item"><a href="/docs/set-ashrae-code/" class="nav-list-link">Set ASHRAE code</a></li><li class="nav-list-item"><a href="/docs/sync-air-flow-to-schematic/" class="nav-list-link">Sync air flow to schematic</a></li><li class="nav-list-item"><a href="/docs/sync-equip-to-schematic/" class="nav-list-link">Sync equip to schematic</a></li><li class="nav-list-item"><a href="/docs/sync-fire-alarm-diagram/" class="nav-list-link">Sync fire alarm diagram</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in ELE category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/docs/3ELE.html" class="nav-list-link">ELE</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/align-elevations/" class="nav-list-link">Align Elevations</a></li><li class="nav-list-item"><a href="/docs/assign-circuit-to-conduits/" class="nav-list-link">Assign circuit to conduits</a></li><li class="nav-list-item"><a href="/docs/balance-panels/" class="nav-list-link">Balance Panels</a></li><li class="nav-list-item"><a href="/docs/circuit-description/" class="nav-list-link">Circuit description</a></li><li class="nav-list-item"><a href="/docs/cloneshift/" class="nav-list-link">Clone&Shift</a></li><li class="nav-list-item"><a href="/docs/conduit-circuit-sync/" class="nav-list-link">Conduit circuit sync</a></li><li class="nav-list-item"><a href="/docs/convert-lines-to-wires/" class="nav-list-link">Convert lines to wires</a></li><li class="nav-list-item"><a href="/docs/count-sockets/" class="nav-list-link">Count sockets</a></li><li class="nav-list-item"><a href="/docs/create-sockets/" class="nav-list-link">Create sockets</a></li><li class="nav-list-item"><a href="/docs/sync-power-params/" class="nav-list-link">Sync power params</a></li><li class="nav-list-item"><a href="/docs/transfer-lighting-data-to-space/" class="nav-list-link">Transfer Lighting Data To Space</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Misc category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/docs/4Misc.html" class="nav-list-link">Misc</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/track-scheme/" class="nav-list-link">Track scheme</a></li></ul></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-footer">
+      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Sener BimTools Docs" aria-label="Search Sener BimTools Docs" autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/SnrBim/BimTools/releases" class="site-button"
+          
+          target="_blank" rel="noopener noreferrer"
+          
+        >
+          Downloads
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="toggleTheme" class="site-button"
+          
+          target="_blank" rel="noopener noreferrer"
+          
+        >
+          🌙
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="langEn" class="site-button"
+          
+          target="_blank" rel="noopener noreferrer"
+          
+        >
+          EN
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="langEs" class="site-button"
+          
+          target="_blank" rel="noopener noreferrer"
+          
+        >
+          ES
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/docs/2MEC.html">MEC</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Create Fire Alarm Devices</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <div class="ribbon-context ribbon-context--cut-left ribbon-context--cut-right">
+  <div class="ribbon-context-row"><span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>
+    <div class="ribbon-context-group">
+      <div class="ribbon-panel-buttons">
+        <a class="ribbon-btn" href="/docs/sync-air-flow-to-schematic/" title="Sync air flow to schematic"><img src="/docs/sync-air-flow-to-schematic/logo.png" alt="Sync air flow to schematic" title="Sync air flow to schematic" /><span class="ribbon-btn-label">Sync
+air flow</span>
+                </a><a class="ribbon-btn" href="/docs/sync-fire-alarm-diagram/" title="Sync fire alarm diagram"><img src="/docs/sync-fire-alarm-diagram/logo.png" alt="Sync fire alarm diagram" title="Sync fire alarm diagram" /><span class="ribbon-btn-label">Sync
+fire alarm</span>
+                </a><span class="ribbon-btn ribbon-btn--current" title="Create Fire Alarm Devices"><img src="/docs/create-fire-alarm-devices/logo.png" alt="Create Fire Alarm Devices" /><span class="ribbon-btn-label">Fire Alarm
+Devices</span>
+                </span>
+      </div>
+      <div class="ribbon-panel-name">MEC</div>
+    </div>
+    
+    <div class="ribbon-context-group">
+      <div class="ribbon-panel-buttons">
+        <a class="ribbon-btn" href="/docs/count-sockets/" title="Count sockets"><img src="/docs/count-sockets/logo.png" alt="Count sockets" title="Count sockets" /><span class="ribbon-btn-label">Count
+sockets</span>
+                </a><a class="ribbon-btn" href="/docs/circuit-description/" title="Circuit description"><img src="/docs/circuit-description/logo.png" alt="Circuit description" title="Circuit description" /><span class="ribbon-btn-label">Circuit
+description</span>
+                </a>
+      </div>
+      <div class="ribbon-panel-name">ELE</div>
+    </div>
+    <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
+</div>
+
+<p class="no_toc"># Create Fire Alarm Devices — Automatic placement of fire alarm devices</p>
+
+<details open="">
+  <summary class="text-delta">
+    Table of contents
+  </summary>
+<ol id="markdown-toc">
+  <li><a href="#create-fire-alarm-devices--расстановка-устройств-пс" id="markdown-toc-create-fire-alarm-devices--расстановка-устройств-пс">Create Fire Alarm Devices — Расстановка устройств ПС</a>    <ol>
+      <li><a href="#what-the-command-does" id="markdown-toc-what-the-command-does">What the command does</a></li>
+      <li><a href="#preparation" id="markdown-toc-preparation">Preparation</a></li>
+      <li><a href="#usage" id="markdown-toc-usage">Usage</a></li>
+      <li><a href="#placement-rules" id="markdown-toc-placement-rules">Placement rules</a></li>
+      <li><a href="#settings" id="markdown-toc-settings">Settings</a></li>
+      <li><a href="#algorithms" id="markdown-toc-algorithms">Algorithms</a>        <ol>
+          <li><a href="#ceiling-detectors" id="markdown-toc-ceiling-detectors">Ceiling detectors</a></li>
+          <li><a href="#siren-above-the-door" id="markdown-toc-siren-above-the-door">Siren above the door</a></li>
+          <li><a href="#manual-call-point-at-the-door" id="markdown-toc-manual-call-point-at-the-door">Manual call point at the door</a></li>
+        </ol>
+      </li>
+      <li><a href="#output" id="markdown-toc-output">Output</a></li>
+      <li><a href="#limitations" id="markdown-toc-limitations">Limitations</a></li>
+    </ol>
+  </li>
+</ol>
+
+</details>
+
+<p>The command automatically places fire alarm devices in selected MEP spaces: ceiling detectors on a grid and wall devices (siren, manual call point) at doors.</p>
+<h1 id="create-fire-alarm-devices--расстановка-устройств-пс">
+  
+  
+    <a href="#create-fire-alarm-devices--расстановка-устройств-пс" class="anchor-heading" aria-labelledby="create-fire-alarm-devices--расстановка-устройств-пс"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create Fire Alarm Devices — Расстановка устройств ПС
+  
+  
+</h1>
+    
+
+<p>The command automatically places fire alarm devices in selected MEP spaces: ceiling detectors on a grid and wall devices (siren, manual call point) at doors.</p>
+<h2 id="what-the-command-does">
+  
+  
+    <a href="#what-the-command-does" class="anchor-heading" aria-labelledby="what-the-command-does"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> What the command does
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Determines device type from the space name (see rules table)</li>
+  <li>Computes an optimal ceiling grid using a 6300 mm coverage radius</li>
+  <li>Detects ceiling height automatically from model geometry or uses manual input</li>
+  <li>Places a siren above the door for spaces of type <strong>Control</strong> and <strong>Celdas</strong></li>
+  <li>Places a manual call point at every exterior door</li>
+  <li>Skips devices already placed by the command (idempotent)</li>
+  <li>Produces a text report with results</li>
+</ul>
+<h2 id="preparation">
+  
+  
+    <a href="#preparation" class="anchor-heading" aria-labelledby="preparation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Preparation
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Device families (detectors, siren, manual call point) must be loaded into the project</li>
+  <li>Walls, doors and ceilings may be in linked files — the command supports linked geometry</li>
+  <li>Space names must include the keywords listed in the rules table</li>
+</ul>
+<h2 id="usage">
+  
+  
+    <a href="#usage" class="anchor-heading" aria-labelledby="usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Usage
+  
+  
+</h2>
+    
+
+<ol>
+  <li>Select one or more MEP spaces (or uncheck <strong>Selected spaces only</strong> to process all spaces)</li>
+  <li>Run the command — the settings dialog will open</li>
+  <li>Optionally adjust family/type names and height parameters</li>
+  <li>Click <strong>Run</strong></li>
+</ol>
+
+<p><img src="image.png" alt="Settings dialog" /></p>
+<h2 id="placement-rules">
+  
+  
+    <a href="#placement-rules" class="anchor-heading" aria-labelledby="placement-rules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Placement rules
+  
+  
+</h2>
+    
+
+<p>Device type is determined from a substring in the space name (case-insensitive):</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Keyword in name</th>
+      <th>Ceiling</th>
+      <th>Wall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>rectificador</strong></td>
+      <td>hidrogeno + termoelectrico</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>transformador</strong></td>
+      <td>llamas</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>bater</strong></td>
+      <td>optico + hidrogeno</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>control</strong></td>
+      <td>optico + hidrogeno</td>
+      <td>siren above door</td>
+    </tr>
+    <tr>
+      <td><strong>celdas</strong></td>
+      <td>optico + termoelectrico</td>
+      <td>siren above door</td>
+    </tr>
+    <tr>
+      <td><em>other</em></td>
+      <td>optico</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><em>any with exterior door</em></td>
+      <td>—</td>
+      <td>manual call point</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="settings">
+  
+  
+    <a href="#settings" class="anchor-heading" aria-labelledby="settings"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Settings
+  
+  
+</h2>
+    
+
+<p><strong>Selected spaces only</strong> — process only selected spaces.</p>
+
+<p><strong>Auto-detect ceiling height</strong> — the height is found by casting a ray upward from each grid point (finds nearest ceiling or roof, including linked files). When off, the height is taken from manual input.</p>
+
+<p><strong>Manual height (mm)</strong> — height above the space floor used in manual mode.</p>
+
+<p><strong>Family: type configuration</strong> — family and type names for each device in the format <code class="language-plaintext highlighter-rouge">FamilyName: TypeName</code>. <strong>Defaults</strong> resets values to defaults.</p>
+<h2 id="algorithms">
+  
+  
+    <a href="#algorithms" class="anchor-heading" aria-labelledby="algorithms"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Algorithms
+  
+  
+</h2>
+    
+<h3 id="ceiling-detectors">
+  
+  
+    <a href="#ceiling-detectors" class="anchor-heading" aria-labelledby="ceiling-detectors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Ceiling detectors
+  
+  
+</h3>
+    
+
+<p>For each space the command builds a minimal rectangular N×M grid so that the cell half-diagonal does not exceed 6300 mm. The grid step is rounded down to 100 mm and any remainder is distributed symmetrically from the walls. If multiple detector types are required at the same grid point, they are spread along the X axis with 500 mm step.</p>
+
+<p>Each point’s height is taken from the nearest ceiling surface found above it (ray intersection) or from the manual height.</p>
+
+<p>Spaces with complex shapes (area &lt; 90% of bounding rectangle) are skipped and listed in the report.</p>
+<h3 id="siren-above-the-door">
+  
+  
+    <a href="#siren-above-the-door" class="anchor-heading" aria-labelledby="siren-above-the-door"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Siren above the door
+  
+  
+</h3>
+    
+
+<p>A siren is placed above the door opening center at 2500 mm above the bottom of the door. The device is offset toward the interior surface of the wall (half wall thickness + 10 mm) on the side belonging to the space so that adjacent spaces sharing the same door each receive their siren on their own side, facing into the room.</p>
+<h3 id="manual-call-point-at-the-door">
+  
+  
+    <a href="#manual-call-point-at-the-door" class="anchor-heading" aria-labelledby="manual-call-point-at-the-door"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Manual call point at the door
+  
+  
+</h3>
+    
+
+<p>A manual call point is placed on the wall beside each exterior door at 1400 mm high. Preferred side is hinge side; if not available, the handle side is used. Orientation faces into the space.</p>
+<h2 id="output">
+  
+  
+    <a href="#output" class="anchor-heading" aria-labelledby="output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Output
+  
+  
+</h2>
+    
+
+<p>After finishing the command shows a report:</p>
+<ul>
+  <li>Count of placed devices by family/type</li>
+  <li>Count of skipped points (already occupied)</li>
+  <li>List of complex-shaped spaces skipped for ceiling placement</li>
+</ul>
+<h2 id="limitations">
+  
+  
+    <a href="#limitations" class="anchor-heading" aria-labelledby="limitations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Limitations
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Complex-shaped spaces are not processed for ceiling placement — place devices manually</li>
+  <li>Family orientation assumes the instance front faces along -Y in the family’s base orientation</li>
+</ul>
+
+<p><strong>Auto-detect ceiling height</strong> — the height is found by casting a ray upward from each grid point (finds nearest ceiling or roof, including linked files). When off, the height is taken from manual input.</p>
+
+<p><strong>Manual height (mm)</strong> — height above the space floor used in manual mode.</p>
+
+<p><strong>Family: type configuration</strong> — family and type names for each device in the format <code class="language-plaintext highlighter-rouge">FamilyName: TypeName</code>. <strong>Defaults</strong> resets values to defaults.</p>
+
+<p>## Algorithms</p>
+
+<p>### Ceiling detectors</p>
+
+<p>For each space the command builds a minimal rectangular N×M grid so that the cell half-diagonal does not exceed 6300 mm. The grid step is rounded down to 100 mm and any remainder is distributed symmetrically from the walls. If multiple detector types are required at the same grid point, they are spread along the X axis with 500 mm step.</p>
+
+<p>Each point’s height is taken from the nearest ceiling surface found above it (ray intersection) or from the manual height.</p>
+
+<p>Spaces with complex shapes (area &lt; 90% of bounding rectangle) are skipped and listed in the report.</p>
+
+<p>### Siren above the door</p>
+
+<p>A siren is placed above the door opening center at 2500 mm above the bottom of the door. The device is offset toward the interior surface of the wall (half wall thickness + 10 mm) on the side belonging to the space so that adjacent spaces sharing the same door each receive their siren on their own side, facing into the room.</p>
+
+<p>### Manual call point at the door</p>
+
+<p>A manual call point is placed on the wall beside each exterior door at 1400 mm high. Preferred side is hinge side; if not available, the handle side is used. Orientation faces into the space.</p>
+
+<p>## Output</p>
+
+<p>After finishing the command shows a report:</p>
+<ul>
+  <li>Count of placed devices by family/type</li>
+  <li>Count of skipped points (already occupied)</li>
+  <li>List of complex-shaped spaces skipped for ceiling placement</li>
+</ul>
+
+<p>## Limitations</p>
+
+<ul>
+  <li>Complex-shaped spaces are not processed for ceiling placement — place devices manually</li>
+  <li>Family orientation assumes the instance front faces along -Y in the family’s base orientation</li>
+</ul>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+      <p><a href="#top" id="back-to-top">Back to top</a></p>
+    
+
+    <script>
+
+  function initDocumentFilter() {
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    const docList = document.getElementById('doc-list');
+    if (!(docList && checkboxes.length > 0)) return;
+
+    const listItems = docList.getElementsByTagName('li');
+
+    function filterDocs() {
+      const checkedGroups = Array.from(checkboxes)
+        .filter(i => i.checked)
+        .map(i => i.value);
+      for (const item of listItems) {
+        const itemGroup = item.getAttribute('data-group');
+        item.style.display = checkedGroups.length === 0 ||
+                             checkedGroups.includes(itemGroup)
+        ? ''
+        : 'none';
+      }
+    }
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', filterDocs);
+    });
+
+  }
+
+  function initThemeToggle() {
+    const toggleElem = document.querySelector('a[href*="toggleTheme"]');
+    if (!toggleElem) return;
+
+    function applyTheme(theme) {
+      jtd.setTheme(theme);
+      document.body.classList.toggle('jtd-dark', theme === 'dark');
+      localStorage.setItem('jtd-theme', theme);
+      toggleElem.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    toggleElem.addEventListener('click', function(e) {
+      e.preventDefault();
+      const newTheme = jtd.getTheme() === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    });
+
+    const savedTheme = localStorage.getItem('jtd-theme');
+    if (savedTheme) {
+      jtd.setTheme(savedTheme);
+    }
+    document.body.classList.toggle('jtd-dark', jtd.getTheme() === 'dark');
+    toggleElem.textContent = jtd.getTheme() === 'dark' ? '☀️' : '🌙';
+  }
+
+  function initLangSwither() {
+    const langEnLink = document.querySelector('a[href*="langEn"]');
+    const langEsLink = document.querySelector('a[href*="langEs"]');
+
+    const languageLinks = [];
+    if (langEnLink) languageLinks.push(langEnLink);
+    if (langEsLink) languageLinks.push(langEsLink);
+
+    if (languageLinks.length === 0) return;
+
+    const defaultLang = 'en'; // Assuming 'en' is the default language
+
+    languageLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        let targetLang;
+        if (this.href.includes('langEn')) {
+          targetLang = 'en';
+        } else if (this.href.includes('langEs')) {
+          targetLang = 'es';
+        }
+
+        if (!targetLang) return; // Do nothing if language is not determined
+
+        let currentPathname = window.location.pathname;
+
+        // Remove existing language prefix if present
+        const langRegex = /^\/(en|es)(\/|$)/; // Only 'en' and 'es'
+        let pathWithoutLang = currentPathname.replace(langRegex, '/');
+
+        // Ensure pathWithoutLang starts with a single slash
+        if (!pathWithoutLang.startsWith('/')) {
+          pathWithoutLang = '/' + pathWithoutLang;
+        }
+
+        let newPathname;
+        if (targetLang === defaultLang) {
+          newPathname = pathWithoutLang;
+        } else {
+          // Add new language prefix
+          newPathname = `/${targetLang}${pathWithoutLang}`;
+        }
+
+        // Handle root path specifically
+        if (pathWithoutLang === '/' && targetLang !== defaultLang) {
+          newPathname = `/${targetLang}/`;
+        } else if (pathWithoutLang === '/' && targetLang === defaultLang) {
+          newPathname = '/';
+        }
+
+        // Construct full URL
+        const newUrl = window.location.origin + newPathname + window.location.search;
+        window.location.href = newUrl;
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    initDocumentFilter();
+    initThemeToggle();
+    initLangSwither();
+  });
+</script>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+
