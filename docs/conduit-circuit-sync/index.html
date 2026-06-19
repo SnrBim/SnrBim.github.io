@@ -303,6 +303,7 @@ Light Data E</span>
   <li><a href="#possible-errors" id="markdown-toc-possible-errors">Possible Errors</a></li>
   <li><a href="#notifications-and-statistics" id="markdown-toc-notifications-and-statistics">Notifications and Statistics</a></li>
   <li><a href="#usage-tips" id="markdown-toc-usage-tips">Usage Tips</a></li>
+  <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
 </ol>
 
 </details>
@@ -334,13 +335,42 @@ Light Data E</span>
   <li><strong>Grouping by Circuit:</strong> Associates conduit chains with their respective electrical circuits.</li>
   <li><strong>Direction Determination:</strong> Sorts the conduits in the path from the load to the electrical panel.</li>
   <li><strong>Segment Division:</strong> The path is divided into segments between distribution boxes (a gap of up to 10 cm is allowed). The process stops with an error if there are more than 5 segments.</li>
-  <li><strong>Segment Naming:</strong> Each segment is assigned a unique name with the format <code class="language-plaintext highlighter-rouge">Location-Panel/Load-CC-TagTypeNumber</code>. The rules for forming the load name are as follows:
-| Input Data                                  | Resulting Load Name            | Comment                                                     |
-| ——————————————- | —————————— | ———————————————————– |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>                               | <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>                  | A single name remains the same.                             |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF02</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF03</code> | <code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code>                  | Names with the same base are grouped with <code class="language-plaintext highlighter-rouge">xx</code> at the end.  |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-XY02</code>                | <code class="language-plaintext highlighter-rouge">18D-DS-SF01, 18D-DS-XY02</code>     | Heterogeneous names are listed separated by commas.         |
-| <code class="language-plaintext highlighter-rouge">"" (ID: 12345)</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>             | <code class="language-plaintext highlighter-rouge">12345, 18D-DS-SF01</code>           | If there is no name, the element’s ID is used.              |</li>
+  <li><strong>Segment Naming:</strong> Each segment is assigned a unique name with the format <code class="language-plaintext highlighter-rouge">Location-Panel/Load-CC-TagTypeNumber</code>. The rules for forming the load name are as follows:</li>
+</ol>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Input Data</th>
+      <th style="text-align: left">Resulting Load Name</th>
+      <th style="text-align: left">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left">A single name remains the same.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF02</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF03</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code></td>
+      <td style="text-align: left">Names with the same base are grouped with <code class="language-plaintext highlighter-rouge">xx</code> at the end.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-XY02</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01, 18D-DS-XY02</code></td>
+      <td style="text-align: left">Heterogeneous names are listed separated by commas.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"" (ID: 12345)</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">12345, 18D-DS-SF01</code></td>
+      <td style="text-align: left">If there is no name, the element’s ID is used.</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<ol>
   <li><strong>Data Recording:</strong>
     <ul>
       <li>Updates <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> in all conduits of the segment.</li>
@@ -399,6 +429,15 @@ Light Data E</span>
 </ul>
 
 <p><img src="https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6" alt="image" /></p>
+<h2 id="changelog">
+  
+  
+    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+  
+  
+</h2>
+    
+<p>2026-06-19 Fixed error when <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> was missing on equipment or <code class="language-plaintext highlighter-rouge">SRS_Location</code> was empty (now defaults to ‘18D’). Parameter names moved to <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code>.</p>
 
           
 

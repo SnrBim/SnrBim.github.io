@@ -1009,7 +1009,7 @@
   },"144": {
     "doc": "Conduit circuit sync",
     "title": "Sync Conduit Circuit",
-    "content": ". | Required Data | Algorithm Description | Possible Errors | Notifications and Statistics | Usage Tips | . This tool is designed to distribute electrical conduits into segments and record their paths in the electrical circuit parameters to complete the cable schedule. ",
+    "content": ". | Required Data | Algorithm Description | Possible Errors | Notifications and Statistics | Usage Tips | Changelog | . This tool is designed to distribute electrical conduits into segments and record their paths in the electrical circuit parameters to complete the cable schedule. ",
     "url": "/docs/conduit-circuit-sync/#sync-conduit-circuit",
     
     "relUrl": "/docs/conduit-circuit-sync/#sync-conduit-circuit"
@@ -1023,7 +1023,7 @@
   },"146": {
     "doc": "Conduit circuit sync",
     "title": "Algorithm Description",
-    "content": ". | Parameter Unification: Prepares equipment names in the SRS_Schedule_Name parameter by concatenating SRS_Equipment_Type and SRS_Equipment_Number. The SRS_Location parameter is used as is from the elements. | Search: Finds all conduits and circuits where the SRS_MEP_Circuit_Names parameter is defined. | Section Identification: Detects groups of interconnected conduits (chains) based on physical connection and the shared value in SRS_MEP_Circuit_Names. | Grouping by Circuit: Associates conduit chains with their respective electrical circuits. | Direction Determination: Sorts the conduits in the path from the load to the electrical panel. | Segment Division: The path is divided into segments between distribution boxes (a gap of up to 10 cm is allowed). The process stops with an error if there are more than 5 segments. | Segment Naming: Each segment is assigned a unique name with the format Location-Panel/Load-CC-TagTypeNumber. The rules for forming the load name are as follows: | Input Data | Resulting Load Name | Comment | ——————————————- | —————————— | ———————————————————– | 18D-DS-SF01 | 18D-DS-SF01 | A single name remains the same. | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Names with the same base are grouped with xx at the end. | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Heterogeneous names are listed separated by commas. | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | If there is no name, the element’s ID is used. | | Data Recording: . | Updates SRS_MEP_Circuit_Names in all conduits of the segment. | Fills in SRS_MEP_Conduit_From, SRS_MEP_Conduit_To, and SRS_MEP_Conduit_Tag in the conduits. | Stores segment names in the electrical circuit’s SRS_MEP_Conduit_Segment_1 to SRS_MEP_Conduit_Segment_5 parameters. | . | Notification: Confirms the operation and reports suspicious distances (&gt;1m) between segments to detect potential assignment errors. | . ",
+    "content": ". | Parameter Unification: Prepares equipment names in the SRS_Schedule_Name parameter by concatenating SRS_Equipment_Type and SRS_Equipment_Number. The SRS_Location parameter is used as is from the elements. | Search: Finds all conduits and circuits where the SRS_MEP_Circuit_Names parameter is defined. | Section Identification: Detects groups of interconnected conduits (chains) based on physical connection and the shared value in SRS_MEP_Circuit_Names. | Grouping by Circuit: Associates conduit chains with their respective electrical circuits. | Direction Determination: Sorts the conduits in the path from the load to the electrical panel. | Segment Division: The path is divided into segments between distribution boxes (a gap of up to 10 cm is allowed). The process stops with an error if there are more than 5 segments. | Segment Naming: Each segment is assigned a unique name with the format Location-Panel/Load-CC-TagTypeNumber. The rules for forming the load name are as follows: | . | Input Data | Resulting Load Name | Comment | . | 18D-DS-SF01 | 18D-DS-SF01 | A single name remains the same. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Names with the same base are grouped with xx at the end. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Heterogeneous names are listed separated by commas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | If there is no name, the element’s ID is used. | . | Data Recording: . | Updates SRS_MEP_Circuit_Names in all conduits of the segment. | Fills in SRS_MEP_Conduit_From, SRS_MEP_Conduit_To, and SRS_MEP_Conduit_Tag in the conduits. | Stores segment names in the electrical circuit’s SRS_MEP_Conduit_Segment_1 to SRS_MEP_Conduit_Segment_5 parameters. | . | Notification: Confirms the operation and reports suspicious distances (&gt;1m) between segments to detect potential assignment errors. | . ",
     "url": "/docs/conduit-circuit-sync/#algorithm-description",
     
     "relUrl": "/docs/conduit-circuit-sync/#algorithm-description"
@@ -1050,278 +1050,292 @@
     "relUrl": "/docs/conduit-circuit-sync/#usage-tips"
   },"150": {
     "doc": "Conduit circuit sync",
+    "title": "Changelog",
+    "content": "2026-06-19 Fixed error when SRS_Schedule_Name was missing on equipment or SRS_Location was empty (now defaults to ‘18D’). Parameter names moved to %AppData%\\Sener\\BimTools\\Settings.json. ",
+    "url": "/docs/conduit-circuit-sync/#changelog",
+    
+    "relUrl": "/docs/conduit-circuit-sync/#changelog"
+  },"151": {
+    "doc": "Conduit circuit sync",
     "title": "Conduit circuit sync",
     "content": "… Create sockets Assign circuit to conduits Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E ELE … ",
     "url": "/docs/conduit-circuit-sync/",
     
     "relUrl": "/docs/conduit-circuit-sync/"
-  },"151": {
+  },"152": {
     "doc": "Show CADs",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/show-cads/#english-command-title",
     
     "relUrl": "/docs/show-cads/#english-command-title"
-  },"152": {
+  },"153": {
     "doc": "Show CADs",
     "title": "Show CADs",
     "content": "… Sync space params Print set Show CADs Upload to ACC Position check General … ",
     "url": "/docs/show-cads/",
     
     "relUrl": "/docs/show-cads/"
-  },"153": {
+  },"154": {
     "doc": "Create worksets from Excel",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-worksets-from-excel/#english-command-title",
     
     "relUrl": "/docs/create-worksets-from-excel/#english-command-title"
-  },"154": {
+  },"155": {
     "doc": "Create worksets from Excel",
     "title": "Create worksets from Excel",
     "content": "… Purge History Worksets from Excel Change level Read parameters General … ",
     "url": "/docs/create-worksets-from-excel/",
     
     "relUrl": "/docs/create-worksets-from-excel/"
-  },"155": {
+  },"156": {
     "doc": "Track scheme",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/track-scheme/#english-command-title",
     
     "relUrl": "/docs/track-scheme/#english-command-title"
-  },"156": {
+  },"157": {
     "doc": "Track scheme",
     "title": "Track scheme",
     "content": "… Sync equip to schematic ELE Convert to rebar Track scheme Cad to Revit Create openings Misc … ",
     "url": "/docs/track-scheme/",
     
     "relUrl": "/docs/track-scheme/"
-  },"157": {
+  },"158": {
     "doc": "Create hangers",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-hangers/#english-command-title",
     
     "relUrl": "/docs/create-hangers/#english-command-title"
-  },"158": {
+  },"159": {
     "doc": "Create hangers",
     "title": "Create hangers",
     "content": "… P&amp;ID Linker Set ASHRAE code Create hangers Adjust hangers Create dampers Create along path MEC … ",
     "url": "/docs/create-hangers/",
     
     "relUrl": "/docs/create-hangers/"
-  },"159": {
+  },"160": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Transfer Lighting Data to Spaces",
     "content": ". | What the Command Does | How to Use | Notifications and Reports | Parameter Mapping | . This tool transfers lighting analysis results from a Generic Model element to the Space element it is located in. ",
     "url": "/docs/transfer-lighting-data-to-space/#transfer-lighting-data-to-spaces",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#transfer-lighting-data-to-spaces"
-  },"160": {
+  },"161": {
     "doc": "Transfer Lighting Data To Space",
     "title": "What the Command Does",
     "content": ". | Identifies the Space that contains the selected Generic Model. | Copies parameter values from the source element to the target Space. | Uses a configurable mapping to match source and target parameters. | Processes multiple elements in a single operation. | . ",
     "url": "/docs/transfer-lighting-data-to-space/#what-the-command-does",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#what-the-command-does"
-  },"161": {
+  },"162": {
     "doc": "Transfer Lighting Data To Space",
     "title": "How to Use",
     "content": ". | Select Elements: In your Revit model, select one or more Generic Model elements that contain the lighting calculation results. These elements are typically volumetric shapes used for analysis in software like ElumTools. | Run the Command: Navigate to the SNR tab and click one of the buttons: . | “Transfer Light Data N” - for normal lighting mode (copies 5 parameters: average, minimum, maximum illuminance and ratios) | “Transfer Light Data E” - for emergency lighting mode (copies 2 parameters: average and minimum emergency illuminance) | . | Check the Results: The tool will automatically find the parent Space for each selected element and transfer the parameter values according to the configured mapping. | . ",
     "url": "/docs/transfer-lighting-data-to-space/#how-to-use",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#how-to-use"
-  },"162": {
+  },"163": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Notifications and Reports",
     "content": "After the command finishes, a dialog box will appear with a summary of the results: . | The number of successfully processed elements. | The number of elements that were skipped (e.g., if a containing space could not be found). | Warnings if any issues occurred during the process (e.g., a parameter was not found or is read-only). | . ",
     "url": "/docs/transfer-lighting-data-to-space/#notifications-and-reports",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#notifications-and-reports"
-  },"163": {
+  },"164": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Parameter Mapping",
     "content": "The mapping between the source Generic Model parameters and the target Space parameters is configurable separately for each mode. This allows you to adapt the tool to different project templates or parameter naming standards. The settings file is located at: %AppData%\\Sener\\BimTools\\Settings.json . Inside this file, find the SNR.BimTools.TransferLightingDataToSpace.Settings section. Default Mapping Example: . { \"SNR.BimTools.TransferLightingDataToSpace.Settings\": { \"SpaceSearchVerticalOffset\": 1.0, \"NormalParameterMapping\": { \"General Use Illuminance Average\": \"Illum average\", \"General Use Illuminance Minimum\": \"Illum minimum\", \"General Use Illuminance Maximum\": \"Illum maximum\", \"General Use Illuminance Minimum To Average\": \"Illum minimum to average\", \"General Use Illuminance Minimum To Maximum\": \"Illum minimum to maximum\" }, \"EmergencyParameterMapping\": { \"Emergency Direct Illuminance Average\": \"Illum em average\", \"Emergency Direct Illuminance Minimum\": \"Illum em minimum\" } } } . Parameter descriptions: . | SpaceSearchVerticalOffset - vertical offset (in feet) when searching for the containing space | NormalParameterMapping - parameter mapping for normal lighting mode | EmergencyParameterMapping - parameter mapping for emergency lighting mode | . You can edit this file to add, remove, or change the “source parameter”: “target parameter” pairs in the respective mapping sections. ",
     "url": "/docs/transfer-lighting-data-to-space/#parameter-mapping",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#parameter-mapping"
-  },"164": {
+  },"165": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Transfer Lighting Data To Space",
     "content": "… Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E Balance Panels Align Elevations ELE … ",
     "url": "/docs/transfer-lighting-data-to-space/",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/"
-  },"165": {
+  },"166": {
     "doc": "Set project params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/set-project-params/#english-command-title",
     
     "relUrl": "/docs/set-project-params/#english-command-title"
-  },"166": {
+  },"167": {
     "doc": "Set project params",
     "title": "Set project params",
     "content": "… Edit in Excel Clone &amp;shift Project params Sync space params Print set General … ",
     "url": "/docs/set-project-params/",
     
     "relUrl": "/docs/set-project-params/"
-  },"167": {
+  },"168": {
     "doc": "Assign spaces to equipment",
     "title": "Assign spaces to equipment",
     "content": ". | Brief Description | How it works | Parameter Name Configuration | Requirements | Usage | . ",
     "url": "/docs/assign-spaces-to-equipment/#assign-spaces-to-equipment",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#assign-spaces-to-equipment"
-  },"168": {
+  },"169": {
     "doc": "Assign spaces to equipment",
     "title": "Brief Description",
     "content": "The Assign spaces to equipment tool automatically assigns MEP space information to mechanical equipment, duct accessories, and duct terminals based on the MEP space they are located in. It finds the containing space for each element and writes the name and number of that space to an equipment parameter. ",
     "url": "/docs/assign-spaces-to-equipment/#brief-description",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#brief-description"
-  },"169": {
+  },"170": {
     "doc": "Assign spaces to equipment",
     "title": "How it works",
     "content": ". | Element Collection: The tool finds all families in the model from the following categories: . | Mechanical Equipment | Duct Accessories | Duct Terminals | MEP Spaces | . | Search and Linking: For each element from the tracked categories, the tool determines its insertion point and searches for the MEP space that contains this point. | Data Writing: If a space is found, the tool forms a text string in the format ”&lt;Space Name&gt;-&lt;Space Number&gt;“ and writes this value to the equipment’s parameter (the name of which can be configured, see “Parameter Name Configuration” section). By default, this is SRS_MEP_Room_Space_Mark. For example, if the space has the Name “Office” and Number “101”, the value “Office-101” will be written to the parameter. | Report: Upon completion, the tool displays a report indicating: . | The total number of elements found. | The number of elements whose parameters were updated. | The number of elements whose data was already up-to-date. | The number of successfully linked elements. | A list of errors and warnings if any elements could not be processed (e.g., if an element is not located in any space or if it lacks the necessary parameter). | . | . ",
     "url": "/docs/assign-spaces-to-equipment/#how-it-works",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#how-it-works"
-  },"170": {
+  },"171": {
     "doc": "Assign spaces to equipment",
     "title": "Parameter Name Configuration",
     "content": "The parameter name where room information is written is SRS_MEP_Room_Space_Mark by default. You can change this name by editing the command’s settings file. | Locate the settings file: The Settings.json file is located at the following path: %APPDATA%\\Sener\\BimTools\\Settings.json . | Open the file: Open Settings.json with any text editor (e.g., Notepad). | Change the value: Inside the file, find the section related to the AssignSpacesToEquipment command and change the value of the EquipmentSpaceParameter to your desired name. Example: . { \"SNR.BimTools.AssignSpacesToEquipment.Settings\": { \"EquipmentSpaceParameter\": \"My_Room_Parameter\" } } . Ensure that the new parameter name exactly matches the parameter name in your Revit project. | Save the file: Save the changes to Settings.json. The command will use the new parameter name the next time it runs, no Revit restart is required. | . ",
     "url": "/docs/assign-spaces-to-equipment/#parameter-name-configuration",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#parameter-name-configuration"
-  },"171": {
+  },"172": {
     "doc": "Assign spaces to equipment",
     "title": "Requirements",
     "content": ". | For correct operation, the tracked elements must have a text parameter with the name specified in the command’s settings (by default, this is SRS_MEP_Room_Space_Mark). | The model must contain correctly modeled MEP Spaces. | . ",
     "url": "/docs/assign-spaces-to-equipment/#requirements",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#requirements"
-  },"172": {
+  },"173": {
     "doc": "Assign spaces to equipment",
     "title": "Usage",
     "content": ". | Navigate to the SENER tab. | In the BIM Tools panel, click the “Assign spaces to equipment” button. | Wait for the window with the operation report to appear. | . The tool does not require prior selection of elements and processes all eligible elements in the project. ",
     "url": "/docs/assign-spaces-to-equipment/#usage",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#usage"
-  },"173": {
+  },"174": {
     "doc": "Assign spaces to equipment",
     "title": "Assign spaces to equipment",
     "content": "… Create along path Tag on views Assign spaces to equip Sync air flow Sync fire alarm MEC … ",
     "url": "/docs/assign-spaces-to-equipment/",
     
     "relUrl": "/docs/assign-spaces-to-equipment/"
-  },"174": {
+  },"175": {
     "doc": "Sync power params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/sync-power-params/#english-command-title",
     
     "relUrl": "/docs/sync-power-params/#english-command-title"
-  },"175": {
+  },"176": {
     "doc": "Sync power params",
     "title": "Sync power params",
     "content": "… Count sockets Circuit description Sync power Create sockets Assign circuit to conduits ELE … ",
     "url": "/docs/sync-power-params/",
     
     "relUrl": "/docs/sync-power-params/"
-  },"176": {
+  },"177": {
     "doc": "Create Fire Alarm Devices",
     "title": "Create Fire Alarm Devices — Расстановка устройств ПС",
     "content": "The command automatically places fire alarm devices in selected MEP spaces: ceiling detectors on a grid and wall devices (siren, manual call point) at doors. ",
     "url": "/docs/create-fire-alarm-devices/#create-fire-alarm-devices--%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2-%D0%BF%D1%81",
     
     "relUrl": "/docs/create-fire-alarm-devices/#create-fire-alarm-devices--расстановка-устройств-пс"
-  },"177": {
+  },"178": {
     "doc": "Create Fire Alarm Devices",
     "title": "What the command does",
     "content": ". | Determines device type from the space name (see rules table) | Computes an optimal ceiling grid using a 6300 mm coverage radius | Detects ceiling height automatically from model geometry or uses manual input | Places a siren above the door for spaces of type Control and Celdas | Places a manual call point at every exterior door | Skips devices already placed by the command (idempotent) | Produces a text report with results | . ",
     "url": "/docs/create-fire-alarm-devices/#what-the-command-does",
     
     "relUrl": "/docs/create-fire-alarm-devices/#what-the-command-does"
-  },"178": {
+  },"179": {
     "doc": "Create Fire Alarm Devices",
     "title": "Preparation",
     "content": ". | Device families (detectors, siren, manual call point) must be loaded into the project | Walls, doors and ceilings may be in linked files — the command supports linked geometry | Space names must include the keywords listed in the rules table | . ",
     "url": "/docs/create-fire-alarm-devices/#preparation",
     
     "relUrl": "/docs/create-fire-alarm-devices/#preparation"
-  },"179": {
+  },"180": {
     "doc": "Create Fire Alarm Devices",
     "title": "Usage",
     "content": ". | Select one or more MEP spaces (or uncheck Selected spaces only to process all spaces) | Run the command — the settings dialog will open | Optionally adjust family/type names and height parameters | Click Run | . ",
     "url": "/docs/create-fire-alarm-devices/#usage",
     
     "relUrl": "/docs/create-fire-alarm-devices/#usage"
-  },"180": {
+  },"181": {
     "doc": "Create Fire Alarm Devices",
     "title": "Placement rules",
     "content": "Device type is determined from a substring in the space name (case-insensitive): . | Keyword in name | Ceiling | Wall | . | rectificador | hidrogeno + termoelectrico | — | . | transformador | llamas | — | . | bater | optico + hidrogeno | — | . | control | optico + hidrogeno | siren above door | . | celdas | optico + termoelectrico | siren above door | . | other | optico | — | . | any with exterior door | — | manual call point | . ",
     "url": "/docs/create-fire-alarm-devices/#placement-rules",
     
     "relUrl": "/docs/create-fire-alarm-devices/#placement-rules"
-  },"181": {
+  },"182": {
     "doc": "Create Fire Alarm Devices",
     "title": "Settings",
     "content": "Selected spaces only — process only selected spaces. Auto-detect ceiling height — the height is found by casting a ray upward from each grid point (finds nearest ceiling or roof, including linked files). When off, the height is taken from manual input. Manual height (mm) — height above the space floor used in manual mode. Family: type configuration — family and type names for each device in the format FamilyName: TypeName. Defaults resets values to defaults. ",
     "url": "/docs/create-fire-alarm-devices/#settings",
     
     "relUrl": "/docs/create-fire-alarm-devices/#settings"
-  },"182": {
+  },"183": {
     "doc": "Create Fire Alarm Devices",
     "title": "Algorithms",
     "content": "Ceiling detectors . For each space the command builds a minimal rectangular N×M grid so that the cell half-diagonal does not exceed 6300 mm. The grid step is rounded down to 100 mm and any remainder is distributed symmetrically from the walls. If multiple detector types are required at the same grid point, they are spread along the X axis with 500 mm step. Each point’s height is taken from the nearest ceiling surface found above it (ray intersection) or from the manual height. Spaces with complex shapes (area &lt; 90% of bounding rectangle) are skipped and listed in the report. Siren above the door . A siren is placed above the door opening center at 2500 mm above the bottom of the door. The device is offset toward the interior surface of the wall (half wall thickness + 10 mm) on the side belonging to the space so that adjacent spaces sharing the same door each receive their siren on their own side, facing into the room. Manual call point at the door . A manual call point is placed on the wall beside each exterior door at 1400 mm high. Preferred side is hinge side; if not available, the handle side is used. Orientation faces into the space. ",
     "url": "/docs/create-fire-alarm-devices/#algorithms",
     
     "relUrl": "/docs/create-fire-alarm-devices/#algorithms"
-  },"183": {
+  },"184": {
     "doc": "Create Fire Alarm Devices",
     "title": "Output",
     "content": "After finishing the command shows a report: . | Count of placed devices by family/type | Count of skipped points (already occupied) | List of complex-shaped spaces skipped for ceiling placement | . ",
     "url": "/docs/create-fire-alarm-devices/#output",
     
     "relUrl": "/docs/create-fire-alarm-devices/#output"
-  },"184": {
+  },"185": {
     "doc": "Create Fire Alarm Devices",
     "title": "Limitations",
     "content": ". | Complex-shaped spaces are not processed for ceiling placement — place devices manually | Family orientation assumes the instance front faces along -Y in the family’s base orientation | . Auto-detect ceiling height — the height is found by casting a ray upward from each grid point (finds nearest ceiling or roof, including linked files). When off, the height is taken from manual input. Manual height (mm) — height above the space floor used in manual mode. Family: type configuration — family and type names for each device in the format FamilyName: TypeName. Defaults resets values to defaults. ## Algorithms . ### Ceiling detectors . For each space the command builds a minimal rectangular N×M grid so that the cell half-diagonal does not exceed 6300 mm. The grid step is rounded down to 100 mm and any remainder is distributed symmetrically from the walls. If multiple detector types are required at the same grid point, they are spread along the X axis with 500 mm step. Each point’s height is taken from the nearest ceiling surface found above it (ray intersection) or from the manual height. Spaces with complex shapes (area &lt; 90% of bounding rectangle) are skipped and listed in the report. ### Siren above the door . A siren is placed above the door opening center at 2500 mm above the bottom of the door. The device is offset toward the interior surface of the wall (half wall thickness + 10 mm) on the side belonging to the space so that adjacent spaces sharing the same door each receive their siren on their own side, facing into the room. ### Manual call point at the door . A manual call point is placed on the wall beside each exterior door at 1400 mm high. Preferred side is hinge side; if not available, the handle side is used. Orientation faces into the space. ## Output . After finishing the command shows a report: . | Count of placed devices by family/type | Count of skipped points (already occupied) | List of complex-shaped spaces skipped for ceiling placement | . ## Limitations . | Complex-shaped spaces are not processed for ceiling placement — place devices manually | Family orientation assumes the instance front faces along -Y in the family’s base orientation | . ",
     "url": "/docs/create-fire-alarm-devices/#limitations",
     
     "relUrl": "/docs/create-fire-alarm-devices/#limitations"
-  },"185": {
+  },"186": {
     "doc": "Create Fire Alarm Devices",
     "title": "Create Fire Alarm Devices",
     "content": "… Sync air flow Sync fire alarm Fire Alarm Devices MEC Count sockets Circuit description ELE … # Create Fire Alarm Devices — Automatic placement of fire alarm devices . | Create Fire Alarm Devices — Расстановка устройств ПС . | What the command does | Preparation | Usage | Placement rules | Settings | Algorithms . | Ceiling detectors | Siren above the door | Manual call point at the door | . | Output | Limitations | . | . The command automatically places fire alarm devices in selected MEP spaces: ceiling detectors on a grid and wall devices (siren, manual call point) at doors. ",
     "url": "/docs/create-fire-alarm-devices/",
     
     "relUrl": "/docs/create-fire-alarm-devices/"
-  },"186": {
+  },"187": {
     "doc": "Assign circuit to conduits",
     "title": "Assign Circuit to Conduits",
-    "content": ". | Required Data | Instructions for Use | . This tool is designed to add circuit information to the properties of electrical conduits. The user selects a circuit and the corresponding conduits, and the algorithm automatically updates their parameters, adding the circuit information to the SRS_MEP_Circuit_Names parameter. Before this, if the circuit name is empty, the algorithm generates it automatically from the SRS_Schedule_Name parameter values of the load and the electrical panel. This tool is used for the subsequent execution of SyncConduitCircuit. ",
+    "content": ". | Required Data | Instructions for Use | Changelog | . This tool is designed to add circuit information to the properties of electrical conduits. The user selects a circuit and the corresponding conduits, and the algorithm automatically updates their parameters, adding the circuit information to the SRS_MEP_Circuit_Names parameter. Before this, if the circuit name is empty, the algorithm generates it automatically from the SRS_Schedule_Name parameter values of the load and the electrical panel. This tool is used for the subsequent execution of SyncConduitCircuit. ",
     "url": "/docs/assign-circuit-to-conduits/#assign-circuit-to-conduits",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#assign-circuit-to-conduits"
-  },"187": {
+  },"188": {
     "doc": "Assign circuit to conduits",
     "title": "Required Data",
     "content": "Before running the command, ensure that the load, electrical panel, and intermediate distribution boxes have names in the SRS_Schedule_Name parameter. Otherwise, their IDs will be used. ",
     "url": "/docs/assign-circuit-to-conduits/#required-data",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#required-data"
-  },"188": {
+  },"189": {
     "doc": "Assign circuit to conduits",
     "title": "Instructions for Use",
-    "content": ". | Select Elements: . | Select a load family associated with a circuit. | If the load belongs to multiple circuits, select the desired circuit using the Tab key. | Select one or more electrical conduits. | . | Run the Tool: . | Upon launch, the algorithm will automatically validate the selection. | An error message will appear if multiple circuits are selected. If no conduits are selected, an auxiliary mode is activated: the plugin will identify the conduits belonging to the circuit, and the execution will stop. | . | Automatic Circuit Name Assignment: . | If the circuit already has a name, it will be used. | If the name is empty, it will be generated automatically based on the SRS_Schedule_Name parameters of the load and panel, following the format: 18D-[Panel]/[Load]-C-SystemNumber. | The following table details how load names are grouped to generate the segment name: | Input Data | Resulting Load Name | Comment | ——————————————- | —————————— | ———————————————————– | 18D-DS-SF01 | 18D-DS-SF01 | A single name remains the same. | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Names with the same base are grouped with xx at the end. | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Heterogeneous names are listed separated by commas. | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | If there is no name, the element’s ID is used. | . | Add Information to Conduits: . | The SRS_MEP_Circuit_Names parameter will be updated in all selected conduits, adding the new circuit name in alphabetical order without deleting previous data. | . | Notification: . | Upon completion, a notification will confirm the operation and indicate how many different circuits are now associated with each conduit. | . | . ",
+    "content": ". | Select Elements: . | Select a load family associated with a circuit. | If the load belongs to multiple circuits, select the desired circuit using the Tab key. | Select one or more electrical conduits. | . | Run the Tool: . | Upon launch, the algorithm will automatically validate the selection. | An error message will appear if multiple circuits are selected. If no conduits are selected, an auxiliary mode is activated: the plugin will identify the conduits belonging to the circuit, and the execution will stop. | . | Automatic Circuit Name Assignment: . | If the circuit already has a name, it will be used. | If the name is empty, it will be generated automatically based on the SRS_Schedule_Name parameters of the load and panel, following the format: 18D-[Panel]/[Load]-C-SystemNumber. | The following table details how load names are grouped to generate the segment name: | . | . | Input Data | Resulting Load Name | Comment | . | 18D-DS-SF01 | 18D-DS-SF01 | A single name remains the same. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Names with the same base are grouped with xx at the end. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Heterogeneous names are listed separated by commas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | If there is no name, the element’s ID is used. | . | Add Information to Conduits: . | The SRS_MEP_Circuit_Names parameter will be updated in all selected conduits, adding the new circuit name in alphabetical order without deleting previous data. | . | Notification: . | Upon completion, a notification will confirm the operation and indicate how many different circuits are now associated with each conduit. | . | . ",
     "url": "/docs/assign-circuit-to-conduits/#instructions-for-use",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#instructions-for-use"
-  },"189": {
+  },"190": {
+    "doc": "Assign circuit to conduits",
+    "title": "Changelog",
+    "content": "2026-06-19 Fixed circuit detection for elements that are intermediate panels. Parameter names moved to the SyncConduitCircuit section in %AppData%\\Sener\\BimTools\\Settings.json. ",
+    "url": "/docs/assign-circuit-to-conduits/#changelog",
+    
+    "relUrl": "/docs/assign-circuit-to-conduits/#changelog"
+  },"191": {
     "doc": "Assign circuit to conduits",
     "title": "Assign circuit to conduits",
     "content": "… Sync power Create sockets Assign circuit to conduits Conduit to circuit sync Line to wires ELE … ",

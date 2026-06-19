@@ -298,6 +298,7 @@ wires</span>
 <ol id="markdown-toc">
   <li><a href="#required-data" id="markdown-toc-required-data">Required Data</a></li>
   <li><a href="#instructions-for-use" id="markdown-toc-instructions-for-use">Instructions for Use</a></li>
+  <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
 </ol>
 
 </details>
@@ -342,15 +343,44 @@ wires</span>
     <ul>
       <li>If the circuit already has a name, it will be used.</li>
       <li>If the name is empty, it will be generated automatically based on the <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> parameters of the load and panel, following the format: <code class="language-plaintext highlighter-rouge">18D-[Panel]/[Load]-C-SystemNumber</code>.</li>
-      <li>The following table details how load names are grouped to generate the segment name:
-| Input Data                                  | Resulting Load Name            | Comment                                                     |
-| ——————————————- | —————————— | ———————————————————– |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>                               | <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>                  | A single name remains the same.                             |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF02</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF03</code> | <code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code>                  | Names with the same base are grouped with <code class="language-plaintext highlighter-rouge">xx</code> at the end.  |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-XY02</code>                | <code class="language-plaintext highlighter-rouge">18D-DS-SF01, 18D-DS-XY02</code>     | Heterogeneous names are listed separated by commas.         |
-| <code class="language-plaintext highlighter-rouge">"" (ID: 12345)</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>             | <code class="language-plaintext highlighter-rouge">12345, 18D-DS-SF01</code>           | If there is no name, the element’s ID is used.              |</li>
+      <li>The following table details how load names are grouped to generate the segment name:</li>
     </ul>
   </li>
+</ol>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Input Data</th>
+      <th style="text-align: left">Resulting Load Name</th>
+      <th style="text-align: left">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left">A single name remains the same.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF02</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF03</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code></td>
+      <td style="text-align: left">Names with the same base are grouped with <code class="language-plaintext highlighter-rouge">xx</code> at the end.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-XY02</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01, 18D-DS-XY02</code></td>
+      <td style="text-align: left">Heterogeneous names are listed separated by commas.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"" (ID: 12345)</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">12345, 18D-DS-SF01</code></td>
+      <td style="text-align: left">If there is no name, the element’s ID is used.</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<ol>
   <li><strong>Add Information to Conduits:</strong>
     <ul>
       <li>The <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> parameter will be updated in all selected conduits, adding the new circuit name in alphabetical order without deleting previous data.</li>
@@ -366,6 +396,15 @@ wires</span>
 <p><img src="https://github.com/user-attachments/assets/27ea5b1c-fa1b-4901-8c08-8274da4ae6da" alt="image" /></p>
 
 <p><img src="https://github.com/user-attachments/assets/abfc75f0-f174-4e89-8dc2-eb8db904fda4" alt="image" /></p>
+<h2 id="changelog">
+  
+  
+    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+  
+  
+</h2>
+    
+<p>2026-06-19 Fixed circuit detection for elements that are intermediate panels. Parameter names moved to the <code class="language-plaintext highlighter-rouge">SyncConduitCircuit</code> section in <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code>.</p>
 
           
 

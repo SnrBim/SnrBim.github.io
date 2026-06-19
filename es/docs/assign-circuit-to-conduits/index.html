@@ -298,6 +298,7 @@ wires</span>
 <ol id="markdown-toc">
   <li><a href="#datos-requeridos" id="markdown-toc-datos-requeridos">Datos Requeridos</a></li>
   <li><a href="#instrucciones-de-uso" id="markdown-toc-instrucciones-de-uso">Instrucciones de Uso</a></li>
+  <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
 </ol>
 
 </details>
@@ -342,15 +343,44 @@ wires</span>
     <ul>
       <li>Si el circuito ya tiene un nombre, se utilizará dicho nombre.</li>
       <li>Si el nombre está vacío, se generará automáticamente con base en los parámetros <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> de la carga y el cuadro eléctrico, siguiendo el formato: <code class="language-plaintext highlighter-rouge">18D-[Cuadro]/[Carga]-C-SistemaNúmero</code>.</li>
-      <li>La siguiente tabla detalla cómo se agrupan los nombres de las cargas para generar el nombre del segmento:
-| Datos de entrada                            | Nombre resultante del Carga    | Comentario                                                  |
-| ——————————————- | —————————— | ———————————————————– |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>                               | <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>                  | Un único nombre se mantiene igual.                          |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF02</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF03</code> | <code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code>                  | Los nombres con la misma base se agrupan con <code class="language-plaintext highlighter-rouge">xx</code> al final. |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-XY02</code>                | <code class="language-plaintext highlighter-rouge">18D-DS-SF01, 18D-DS-XY02</code>     | Los nombres heterogéneos se listan separados por comas.     |
-| <code class="language-plaintext highlighter-rouge">"" (ID: 12345)</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>             | <code class="language-plaintext highlighter-rouge">12345, 18D-DS-SF01</code>           | Si no hay nombre, se usa el ID del elemento.                |</li>
+      <li>La siguiente tabla detalla cómo se agrupan los nombres de las cargas para generar el nombre del segmento:</li>
     </ul>
   </li>
+</ol>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Datos de entrada</th>
+      <th style="text-align: left">Nombre resultante del Carga</th>
+      <th style="text-align: left">Comentario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left">Un único nombre se mantiene igual.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF02</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF03</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code></td>
+      <td style="text-align: left">Los nombres con la misma base se agrupan con <code class="language-plaintext highlighter-rouge">xx</code> al final.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-XY02</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01, 18D-DS-XY02</code></td>
+      <td style="text-align: left">Los nombres heterogéneos se listan separados por comas.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"" (ID: 12345)</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">12345, 18D-DS-SF01</code></td>
+      <td style="text-align: left">Si no hay nombre, se usa el ID del elemento.</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<ol>
   <li><strong>Agregar la información a los conductos:</strong>
     <ul>
       <li>En todos los conductos seleccionados, se actualizará el parámetro <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code>, agregando el nombre del circuito en orden alfabético sin eliminar datos previos.</li>
@@ -366,6 +396,15 @@ wires</span>
 <p><img src="https://github.com/user-attachments/assets/27ea5b1c-fa1b-4901-8c08-8274da4ae6da" alt="image" /></p>
 
 <p><img src="https://github.com/user-attachments/assets/abfc75f0-f174-4e89-8dc2-eb8db904fda4" alt="image" /></p>
+<h2 id="changelog">
+  
+  
+    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+  
+  
+</h2>
+    
+<p>2026-06-19 Se corrigió la detección de circuitos para elementos que son paneles intermedios. Los nombres de parámetros se movieron a la sección <code class="language-plaintext highlighter-rouge">SyncConduitCircuit</code> en <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code>.</p>
 
           
 

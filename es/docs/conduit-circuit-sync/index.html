@@ -303,6 +303,7 @@ Light Data E</span>
   <li><a href="#posibles-errores" id="markdown-toc-posibles-errores">Posibles Errores</a></li>
   <li><a href="#notificaciones-y-estadísticas" id="markdown-toc-notificaciones-y-estadísticas">Notificaciones y Estadísticas</a></li>
   <li><a href="#consejos-de-uso" id="markdown-toc-consejos-de-uso">Consejos de Uso</a></li>
+  <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
 </ol>
 
 </details>
@@ -333,13 +334,42 @@ Light Data E</span>
   <li><strong>Identificación de secciones:</strong> Detecta grupos de conductos conectados entre sí (cadenas) por conexión física y por el valor compartido en <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code>.</li>
   <li><strong>Agrupación por circuito:</strong> Asocia las cadenas de conductos con sus respectivos circuitos eléctricos.</li>
   <li><strong>División en segmentos:</strong> La ruta se divide en segmentos entre cajas de distribución (se permite un espacio de hasta 10 cm). El proceso se detiene con un error si hay más de 5 segmentos.</li>
-  <li><strong>Asignación de nombres a segmentos:</strong> A cada segmento se le asigna un nombre único con el formato <code class="language-plaintext highlighter-rouge">Ubicación-Cuadro/Carga-CC-TagtypeNúmero</code>. Las reglas para formar el nombre de la carga son las siguientes:
-| Datos de entrada                            | Nombre resultante del Carga    | Comentario                                                  |
-| ——————————————- | —————————— | ———————————————————– |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>                               | <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>                  | Un único nombre se mantiene igual.                          |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF02</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF03</code> | <code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code>                  | Los nombres con la misma base se agrupan con <code class="language-plaintext highlighter-rouge">xx</code> al final. |
-| <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-XY02</code>                | <code class="language-plaintext highlighter-rouge">18D-DS-SF01, 18D-DS-XY02</code>     | Los nombres heterogéneos se listan separados por comas.     |
-| <code class="language-plaintext highlighter-rouge">"" (ID: 12345)</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>             | <code class="language-plaintext highlighter-rouge">12345, 18D-DS-SF01</code>           | Si no hay nombre, se usa el ID del elemento.                |</li>
+  <li><strong>Asignación de nombres a segmentos:</strong> A cada segmento se le asigna un nombre único con el formato <code class="language-plaintext highlighter-rouge">Ubicación-Cuadro/Carga-CC-TagtypeNúmero</code>. Las reglas para formar el nombre de la carga son las siguientes:</li>
+</ol>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Datos de entrada</th>
+      <th style="text-align: left">Nombre resultante del Carga</th>
+      <th style="text-align: left">Comentario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left">Un único nombre se mantiene igual.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF02</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF03</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code></td>
+      <td style="text-align: left">Los nombres con la misma base se agrupan con <code class="language-plaintext highlighter-rouge">xx</code> al final.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01</code>, <code class="language-plaintext highlighter-rouge">18D-DS-XY02</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">18D-DS-SF01, 18D-DS-XY02</code></td>
+      <td style="text-align: left">Los nombres heterogéneos se listan separados por comas.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"" (ID: 12345)</code>, <code class="language-plaintext highlighter-rouge">18D-DS-SF01</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">12345, 18D-DS-SF01</code></td>
+      <td style="text-align: left">Si no hay nombre, se usa el ID del elemento.</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<ol>
   <li><strong>Registro de datos:</strong>
     <ul>
       <li>Actualiza <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> en todos los conductos del segmento.</li>
@@ -398,6 +428,15 @@ Light Data E</span>
 </ul>
 
 <p><img src="https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6" alt="image" /></p>
+<h2 id="changelog">
+  
+  
+    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+  
+  
+</h2>
+    
+<p>2026-06-19 Se corrigió un error cuando faltaba <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> en el equipo o <code class="language-plaintext highlighter-rouge">SRS_Location</code> estaba vacío (ahora se usa ‘18D’ por defecto). Los nombres de parámetros se movieron a <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code>.</p>
 
           
 
