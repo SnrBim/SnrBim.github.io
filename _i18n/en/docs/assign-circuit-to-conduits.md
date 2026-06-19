@@ -33,12 +33,13 @@ Before running the command, ensure that the load, electrical panel, and intermed
     -   If the circuit already has a name, it will be used.
     -   If the name is empty, it will be generated automatically based on the `SRS_Schedule_Name` parameters of the load and panel, following the format: `18D-[Panel]/[Load]-C-SystemNumber`.
     -   The following table details how load names are grouped to generate the segment name:
-        | Input Data                                  | Resulting Load Name            | Comment                                                     |
-        | ------------------------------------------- | ------------------------------ | ----------------------------------------------------------- |
-        | `18D-DS-SF01`                               | `18D-DS-SF01`                  | A single name remains the same.                             |
-        | `18D-DS-SF01`, `18D-DS-SF02`, `18D-DS-SF03` | `18D-DS-SFxx`                  | Names with the same base are grouped with `xx` at the end.  |
-        | `18D-DS-SF01`, `18D-DS-XY02`                | `18D-DS-SF01, 18D-DS-XY02`     | Heterogeneous names are listed separated by commas.         |
-        | `"" (ID: 12345)`, `18D-DS-SF01`             | `12345, 18D-DS-SF01`           | If there is no name, the element's ID is used.              |
+
+| Input Data | Resulting Load Name | Comment |
+| :--- | :--- | :--- |
+| `18D-DS-SF01` | `18D-DS-SF01` | A single name remains the same. |
+| `18D-DS-SF01`, `18D-DS-SF02`, `18D-DS-SF03` | `18D-DS-SFxx` | Names with the same base are grouped with `xx` at the end. |
+| `18D-DS-SF01`, `18D-DS-XY02` | `18D-DS-SF01, 18D-DS-XY02` | Heterogeneous names are listed separated by commas. |
+| `"" (ID: 12345)`, `18D-DS-SF01` | `12345, 18D-DS-SF01` | If there is no name, the element's ID is used. |
 
 4.  **Add Information to Conduits:**
     -   The `SRS_MEP_Circuit_Names` parameter will be updated in all selected conduits, adding the new circuit name in alphabetical order without deleting previous data.
@@ -49,3 +50,8 @@ Before running the command, ensure that the load, electrical panel, and intermed
 ![image](https://github.com/user-attachments/assets/27ea5b1c-fa1b-4901-8c08-8274da4ae6da)
 
 ![image](https://github.com/user-attachments/assets/abfc75f0-f174-4e89-8dc2-eb8db904fda4)
+
+
+## Changelog
+2026-06-19 Fixed circuit detection for elements that are intermediate panels. Parameter names moved to the `SyncConduitCircuit` section in `%AppData%\Sener\BimTools\Settings.json`.
+

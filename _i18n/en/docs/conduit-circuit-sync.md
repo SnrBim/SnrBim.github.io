@@ -25,12 +25,14 @@ Before running the command, ensure that at least one conduit in each segment has
 5.  **Direction Determination:** Sorts the conduits in the path from the load to the electrical panel.
 6.  **Segment Division:** The path is divided into segments between distribution boxes (a gap of up to 10 cm is allowed). The process stops with an error if there are more than 5 segments.
 7.  **Segment Naming:** Each segment is assigned a unique name with the format `Location-Panel/Load-CC-TagTypeNumber`. The rules for forming the load name are as follows:
-    | Input Data                                  | Resulting Load Name            | Comment                                                     |
-    | ------------------------------------------- | ------------------------------ | ----------------------------------------------------------- |
-    | `18D-DS-SF01`                               | `18D-DS-SF01`                  | A single name remains the same.                             |
-    | `18D-DS-SF01`, `18D-DS-SF02`, `18D-DS-SF03` | `18D-DS-SFxx`                  | Names with the same base are grouped with `xx` at the end.  |
-    | `18D-DS-SF01`, `18D-DS-XY02`                | `18D-DS-SF01, 18D-DS-XY02`     | Heterogeneous names are listed separated by commas.         |
-    | `"" (ID: 12345)`, `18D-DS-SF01`             | `12345, 18D-DS-SF01`           | If there is no name, the element's ID is used.              |
+
+| Input Data | Resulting Load Name | Comment |
+| :--- | :--- | :--- |
+| `18D-DS-SF01` | `18D-DS-SF01` | A single name remains the same. |
+| `18D-DS-SF01`, `18D-DS-SF02`, `18D-DS-SF03` | `18D-DS-SFxx` | Names with the same base are grouped with `xx` at the end. |
+| `18D-DS-SF01`, `18D-DS-XY02` | `18D-DS-SF01, 18D-DS-XY02` | Heterogeneous names are listed separated by commas. |
+| `"" (ID: 12345)`, `18D-DS-SF01` | `12345, 18D-DS-SF01` | If there is no name, the element's ID is used. |
+
 8.  **Data Recording:**
     -   Updates `SRS_MEP_Circuit_Names` in all conduits of the segment.
     -   Fills in `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, and `SRS_MEP_Conduit_Tag` in the conduits.
@@ -61,4 +63,8 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 - To avoid errors, ensure `SRS_Schedule_Name` is set on electrical equipment (generated automatically by concatenating `SRS_Location`, `SRS_Equipment_Type`, and `SRS_Equipment_Number`).
 
 ![image](https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6)
+
+
+## Changelog
+2026-06-19 Fixed error when `SRS_Schedule_Name` was missing on equipment or `SRS_Location` was empty (now defaults to '18D'). Parameter names moved to `%AppData%\Sener\BimTools\Settings.json`.
 

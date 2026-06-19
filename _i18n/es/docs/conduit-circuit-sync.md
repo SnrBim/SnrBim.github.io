@@ -24,12 +24,14 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
 4.  **Agrupación por circuito:** Asocia las cadenas de conductos con sus respectivos circuitos eléctricos.
 6.  **División en segmentos:** La ruta se divide en segmentos entre cajas de distribución (se permite un espacio de hasta 10 cm). El proceso se detiene con un error si hay más de 5 segmentos.
 7.  **Asignación de nombres a segmentos:** A cada segmento se le asigna un nombre único con el formato `Ubicación-Cuadro/Carga-CC-TagtypeNúmero`. Las reglas para formar el nombre de la carga son las siguientes:
-    | Datos de entrada                            | Nombre resultante del Carga    | Comentario                                                  |
-    | ------------------------------------------- | ------------------------------ | ----------------------------------------------------------- |
-    | `18D-DS-SF01`                               | `18D-DS-SF01`                  | Un único nombre se mantiene igual.                          |
-    | `18D-DS-SF01`, `18D-DS-SF02`, `18D-DS-SF03` | `18D-DS-SFxx`                  | Los nombres con la misma base se agrupan con `xx` al final. |
-    | `18D-DS-SF01`, `18D-DS-XY02`                | `18D-DS-SF01, 18D-DS-XY02`     | Los nombres heterogéneos se listan separados por comas.     |
-    | `"" (ID: 12345)`, `18D-DS-SF01`             | `12345, 18D-DS-SF01`           | Si no hay nombre, se usa el ID del elemento.                |
+
+| Datos de entrada | Nombre resultante del Carga | Comentario |
+| :--- | :--- | :--- |
+| `18D-DS-SF01` | `18D-DS-SF01` | Un único nombre se mantiene igual. |
+| `18D-DS-SF01`, `18D-DS-SF02`, `18D-DS-SF03` | `18D-DS-SFxx` | Los nombres con la misma base se agrupan con `xx` al final. |
+| `18D-DS-SF01`, `18D-DS-XY02` | `18D-DS-SF01, 18D-DS-XY02` | Los nombres heterogéneos se listan separados por comas. |
+| `"" (ID: 12345)`, `18D-DS-SF01` | `12345, 18D-DS-SF01` | Si no hay nombre, se usa el ID del elemento. |
+
 8.  **Registro de datos:**
     -   Actualiza `SRS_MEP_Circuit_Names` en todos los conductos del segmento.
     -   Rellena `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, y `SRS_MEP_Conduit_Tag` en los conductos.
@@ -60,3 +62,8 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 - Para evitar errores, asegúrese de que `SRS_Schedule_Name` esté configurado en equipos eléctricos (se genera automáticamente concatenando `SRS_Location`, `SRS_Equipment_Type` y `SRS_Equipment_Number`).
 
 ![image](https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6)
+
+
+## Changelog
+2026-06-19 Se corrigió un error cuando faltaba `SRS_Schedule_Name` en el equipo o `SRS_Location` estaba vacío (ahora se usa '18D' por defecto). Los nombres de parámetros se movieron a `%AppData%\Sener\BimTools\Settings.json`.
+

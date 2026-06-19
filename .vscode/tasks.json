@@ -1,0 +1,84 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Diagnose ribbon order",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"$appCs = 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\BIMTools\\App.cs'; . .\\Publish-Docs.ps1 -SourceRoot 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\BIMTools' -DestRoot 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\publish\\SnrBim.github.io' 2>&1 | Select-String -Pattern 'Loaded ribbon|Ribbon: |not found'\"",
+			"isBackground": false
+		},
+		{
+			"label": "Diagnose Get-RibbonOrder",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"$r = & { . 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\publish\\SnrBim.github.io\\Publish-Docs.ps1' 3>&1 2>&1 }; Write-Host 'done'\"",
+			"isBackground": false
+		},
+		{
+			"label": "Test App.cs regex",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"$lines = Get-Content 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\BIMTools\\App.cs'; $m = $lines | Select-String -Pattern 'CreateButton.*new\\s+(\\w+)\\.(Command\\w*)'; Write-Host ('Total CreateButton matches: ' + $m.Count); $m | Select-Object -First 5 | ForEach-Object { Write-Host $_.Line }\"",
+			"isBackground": false
+		},
+		{
+			"label": "Run ribbon diagnostic",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -File test-ribbon.ps1 2>&1",
+			"isBackground": false
+		},
+		{
+			"label": "Run ribbon diagnostic v2",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -File test-ribbon.ps1 2>&1",
+			"isBackground": false
+		},
+		{
+			"label": "Clean up test file",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"Remove-Item 'test-ribbon.ps1' -Force\"",
+			"isBackground": false
+		},
+		{
+			"label": "List Purge files",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"Get-ChildItem 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\BIMTools\\Purge' -Recurse | Select-Object FullName\"",
+			"isBackground": false
+		},
+		{
+			"label": "List Purge files v2",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"Get-ChildItem 'C:/Users/1M06174/OneDrive - SENER/repos/BIMTools/BIMTools/Purge' -Recurse | Select-Object FullName; exit 0\"",
+			"isBackground": false
+		},
+		{
+			"label": "Run Publish-Docs with button text check",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -File Publish-Docs.ps1 2>&1 | Select-String -Pattern 'button_text|ButtonText|Ribbon:|Processing|error|warning' | Select-Object -First 60",
+			"isBackground": false
+		},
+		{
+			"label": "Copy fallback icon",
+			"type": "shell",
+			"command": "Copy-Item 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\BIMTools\\Template\\docs\\Logo.png' 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\publish\\SnrBim.github.io\\assets\\images\\logo-fallback.png' -Force; Write-Host 'Done'"
+		},
+		{
+			"label": "Git status docs icons",
+			"type": "shell",
+			"command": "cd 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\publish\\SnrBim.github.io'; git status docs/fill-code/ docs/create-openings/; git ls-files --others --ignored --exclude-standard docs/fill-code/ docs/create-openings/"
+		},
+		{
+			"label": "Git ls-files icons",
+			"type": "shell",
+			"command": "cd 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\publish\\SnrBim.github.io'; git ls-files docs/fill-code/ docs/create-openings/"
+		},
+		{
+			"label": "Rename Logo.png to logo.png",
+			"type": "shell",
+			"command": "cd 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\publish\\SnrBim.github.io'; git mv docs/create-openings/Logo.png docs/create-openings/logo.png; git mv docs/fill-code/Logo.png docs/fill-code/logo.png; git status"
+		},
+		{
+			"label": "Find all Logo.png in git",
+			"type": "shell",
+			"command": "cd 'C:\\Users\\1M06174\\OneDrive - SENER\\repos\\BIMTools\\publish\\SnrBim.github.io'; git ls-files docs/ | grep -i logo"
+		}
+	]
+}

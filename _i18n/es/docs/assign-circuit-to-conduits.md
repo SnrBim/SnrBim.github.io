@@ -33,12 +33,13 @@ Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y
     -   Si el circuito ya tiene un nombre, se utilizará dicho nombre.
     -   Si el nombre está vacío, se generará automáticamente con base en los parámetros `SRS_Schedule_Name` de la carga y el cuadro eléctrico, siguiendo el formato: `18D-[Cuadro]/[Carga]-C-SistemaNúmero`.
     -   La siguiente tabla detalla cómo se agrupan los nombres de las cargas para generar el nombre del segmento:
-        | Datos de entrada                            | Nombre resultante del Carga    | Comentario                                                  |
-        | ------------------------------------------- | ------------------------------ | ----------------------------------------------------------- |
-        | `18D-DS-SF01`                               | `18D-DS-SF01`                  | Un único nombre se mantiene igual.                          |
-        | `18D-DS-SF01`, `18D-DS-SF02`, `18D-DS-SF03` | `18D-DS-SFxx`                  | Los nombres con la misma base se agrupan con `xx` al final. |
-        | `18D-DS-SF01`, `18D-DS-XY02`                | `18D-DS-SF01, 18D-DS-XY02`     | Los nombres heterogéneos se listan separados por comas.     |
-        | `"" (ID: 12345)`, `18D-DS-SF01`             | `12345, 18D-DS-SF01`           | Si no hay nombre, se usa el ID del elemento.                |
+
+| Datos de entrada | Nombre resultante del Carga | Comentario |
+| :--- | :--- | :--- |
+| `18D-DS-SF01` | `18D-DS-SF01` | Un único nombre se mantiene igual. |
+| `18D-DS-SF01`, `18D-DS-SF02`, `18D-DS-SF03` | `18D-DS-SFxx` | Los nombres con la misma base se agrupan con `xx` al final. |
+| `18D-DS-SF01`, `18D-DS-XY02` | `18D-DS-SF01, 18D-DS-XY02` | Los nombres heterogéneos se listan separados por comas. |
+| `"" (ID: 12345)`, `18D-DS-SF01` | `12345, 18D-DS-SF01` | Si no hay nombre, se usa el ID del elemento. |
 
 4.  **Agregar la información a los conductos:**
     -   En todos los conductos seleccionados, se actualizará el parámetro `SRS_MEP_Circuit_Names`, agregando el nombre del circuito en orden alfabético sin eliminar datos previos.
@@ -49,3 +50,8 @@ Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y
 ![image](https://github.com/user-attachments/assets/27ea5b1c-fa1b-4901-8c08-8274da4ae6da)
 
 ![image](https://github.com/user-attachments/assets/abfc75f0-f174-4e89-8dc2-eb8db904fda4)
+
+
+## Changelog
+2026-06-19 Se corrigió la detección de circuitos para elementos que son paneles intermedios. Los nombres de parámetros se movieron a la sección `SyncConduitCircuit` en `%AppData%\Sener\BimTools\Settings.json`.
+
