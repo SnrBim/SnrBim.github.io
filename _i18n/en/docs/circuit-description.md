@@ -65,14 +65,14 @@ The code is taken from the **`SRS_Schedule_Name`** parameter
 *Examples:* `AHU-01`, `FCU-02`, `PUMP-03`
 
 ### Lighting Fixtures
-1. First, the **`SRS_MEP_Equipment_Code`** parameter is checked (instance, then type)
+1. First, the **`SRS_MEP_Equipment_ID`** parameter is checked (instance, then type)
 2. If the **`SRS_Equipment_Number`** parameter is found, it's added to the code with a hyphen
 3. If no code is found, the standard designation **`LTG`** is used
 
 *Examples:* `LTG`, `LTG-01`, `LTG-02`
 
 ### Electrical Fixtures
-1. The code is taken from the **`SRS_MEP_Equipment_Code`** parameter (instance, then type)
+1. The code is taken from the **`SRS_MEP_Equipment_ID`** parameter (instance, then type)
 2. If the **`SRS_Equipment_Number`** parameter is found, it's added to the code with a hyphen
 3. If no code is found, **`?`** is used
 
@@ -145,4 +145,7 @@ The report is saved in the folder:
 
 ![alt text](pic1.png)
 ![alt text](pic2.png)
+
+## Changelog
+2026-06-23 Parameter `SRS_MEP_Equipment_Code` replaced with `SRS_MEP_Equipment_ID` to comply with new project standards. Parameter names moved to `Settings` class for configurability.
 

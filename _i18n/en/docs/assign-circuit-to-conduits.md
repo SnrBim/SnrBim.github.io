@@ -16,7 +16,7 @@ Before this, if the circuit name is empty, the algorithm generates it automatica
 
 ## Required Data
 
-Before running the command, ensure that the load, electrical panel, and intermediate distribution boxes have names in the `SRS_Schedule_Name` parameter. Otherwise, their IDs will be used.
+Before running the command, ensure that the load, electrical panel, and intermediate distribution boxes have names in the `SRS_Schedule_Name` parameter.
 
 ## Instructions for Use
 
@@ -30,8 +30,7 @@ Before running the command, ensure that the load, electrical panel, and intermed
     -   An error message will appear if multiple circuits are selected. If no conduits are selected, an **auxiliary mode** is activated: the plugin will identify the conduits belonging to the circuit, and the execution will stop.
 
 3.  **Automatic Circuit Name Assignment:**
-    -   If the circuit already has a name, it will be used.
-    -   If the name is empty, it will be generated automatically based on the `SRS_Schedule_Name` parameters of the load and panel, following the format: `18D-[Panel]/[Load]-C-SystemNumber`.
+    -   The circuit name is automatically recalculated based on the `SRS_Location` and `SRS_Schedule_Name` parameters of the load and panel, following the format: `[Location]-[Panel]/[Load]-C-SystemNumber`.
     -   The following table details how load names are grouped to generate the segment name:
 
 | Input Data | Resulting Load Name | Comment |

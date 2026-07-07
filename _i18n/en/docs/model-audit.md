@@ -98,13 +98,16 @@ Overview sheet. Rows — checks, columns — documents (current + linked).
 
 ![Summary — 14 projects, 33 checks](summary.png)
 
-- Check name — hyperlink to the detail sheet; **⊞** column — link to the matrix sheet (if any).
-- Two columns per document: **Old** (value from the previous report) and **New** (current).
+- Check name — hyperlink to the detail sheet.
+- **Extra** column contains links:
+  - **⊞** — to the matrix sheet (summary table for all projects).
+  - **☰** — to additional detail sheets (e.g., breakdown of views by type).
+- Two columns per document: **Old** (value from the previous report) and **New** (current). Old cells contain hyperlinks to the detail sheets of the previous report.
 - Right columns **DateTime** and **Duration** — date of last run and execution time.
 - Hovering over a short document name in the header shows the full file name.
 
 Color scheme:
-- **Yellow background** — High status (value requires attention).
+- **Yellow background** — High status (value requires attention) or specific warning in the matrix (e.g., multiple instances of the same link).
 - **Gray / faded text** — Low status (value is normal or unchanged).
 
 ### Detail Sheets
@@ -115,13 +118,13 @@ One sheet per active check. Most sheets include **Workset**, **CreatedBy**, **La
 
 ### Matrix Sheets
 
-Ten checks additionally generate a matrix sheet (name: `M` + detail sheet abbreviation). Links are in the **⊞** column of Summary.
+Checks can generate matrix sheets (name: `M` + detail sheet abbreviation) or additional nested sheets. Links to them are in the **Extra** column of Summary. Not all sheets have links (e.g., 5 additional view sheets).
 
 | Sheet | Rows × Columns |
 |-------|----------------|
 | Mgr   | Grids × Documents. `Mon` — monitored, `No` — present but not monitored |
 | Mlv   | Levels × Documents. Cell: elevation value, grayed if not monitored |
-| Mlr   | Linked files × Documents. Cell: number of link instances |
+| Mlr   | Linked files × Documents. Cell: number of link instances. Yellow — more than one instance. |
 | Mbo   | Documents × Browser organization type (Views / Schedules / Sheets / Modified) |
 | Mpi   | Documents × ProjectInfo parameters |
 | Mpm   | Parameters × Documents. Cell: number of categories in binding |
@@ -129,6 +132,8 @@ Ten checks additionally generate a matrix sheet (name: `M` + detail sheet abbrev
 | Mwr   | Warnings × Documents |
 | Mw1   | Worksets × Documents |
 | Mw2   | Block matrix: categories × worksets (separate block per document) |
+| Mun   | Unit types × Documents. Shows configured measurement units in projects where they are changed. |
+| vpE   | (Extra sheet) Location of viewports on sheets + link to interactive HTML viewer. |
 
 ![Mgr matrix — grids with Created/Modified tooltip](matrix-grids.png)
 
@@ -144,7 +149,7 @@ Mapping table of short document names to full names.
 
 ---
 
-## Check List (33)
+## Check List
 
 | # | Name | Sheet | Description |
 |---|------|-------|-------------|
@@ -160,27 +165,24 @@ Mapping table of short document names to full names.
 | 10 | LinksDwg | ld | DWG/DXF links: status, path, level, Z coordinate |
 | 11 | LinksRaster | li | Raster links: source, status, level |
 | 12 | LinksRvt | lr | Revit links: name, workset, attachment type (Overlay/Attachment), position |
-| 13 | BasePoints | bp | Project and survey base points: coordinates (cm) |
-| 14 | SiteLocations | sl | Project location: latitude, longitude, elevation, coordinate system |
-| 15 | BrowserOrg | bo | Browser organization schemes: type (views/sheets/schedules), active |
-| 16 | DesignOptions | do | Design options: Id, name, active |
-| 17 | GeneralData | gd | Document metadata: Long/Short Name, file size, starting view, cloud identifiers |
-| 18 | ProjectInfo | pi | ProjectInformation parameters: all parameters except NonVisible |
-| 19 | ParamMapping | pm | Project parameter bindings: name, type (Instance/Type), categories |
-| 20 | Phases | ph | Project phases: Id, name |
-| 21 | Warnings | wr | Revit warnings: description, severity, element Ids |
-| 22 | Worksets | ws | Worksets: Id, name |
-| 23 | Revisions | re | Sheet revisions: sheet, revision Id, date, number, description |
-| 24 | Sheets | sh | Sheets: Id, name, number, IsPlaceholder, title block, grouping parameters from Browser Organization, and custom parameters |
-| 25 | TitleBlocks | tb | Title block types and assigned sheets |
-| 26 | Viewports | vp | Viewports: type, view, sheet |
-| 27 | Views | vw | All views with 32 properties (template, scale, far clip, ViewRange, etc.) and grouping parameters from Browser Organization |
-| 28 | WorksetElements | we | Element distribution by workset: category, family, type, count (very slow) |
-| 29 | Areas | ar | Areas: area, perimeter, area scheme |
-| 30 | Rooms | rm | Rooms: area, height, finish, department + custom parameters |
-| 31 | Spaces | sp | MEP spaces: area, height, ventilation system + custom parameters |
-| 32 | Units | un | Units: deviations from default values |
-| 33 | Coordinates | co | Project coordinates: base points, survey, angle, site name |
+| 13 | BrowserOrg | bo | Browser organization schemes: type (views/sheets/schedules), active |
+| 14 | DesignOptions | do | Design options: Id, name, active |
+| 15 | GeneralData | gd | Document metadata: Long/Short Name, file size, starting view, cloud identifiers |
+| 16 | ProjectInfo | pi | ProjectInformation parameters: all parameters except NonVisible |
+| 17 | ParamMapping | pm | Project parameter bindings: name, type (Instance/Type), categories |
+| 18 | Phases | ph | Project phases: Id, name |
+| 19 | Warnings | wr | Revit warnings: description, severity, element Ids |
+| 20 | Worksets | ws | Worksets: Id, name |
+| 21 | Revisions | re | Revision summary: Id, date, description, SheetCount where present. |
+| 22 | Sheets | sh | Sheets: Id, number, name, IsPlaceholder, title block, grouping parameters, CurrentRevisionId. |
+| 23 | TitleBlocks | tb | Title block types: family, type, InstanceCount in document. |
+| 24 | Viewports | vp | Viewports: type, view, sheet. Generates extra sheet vpE and HTML report. |
+| 25 | Views | vw | Views: main properties + extra sheets grouped by type (Plans, Sections, 3D, Schedules, Others). |
+| 26 | Areas | ar | Areas: area, perimeter, area scheme |
+| 27 | Rooms | rm | Rooms: area, height, finish, department + custom parameters |
+| 28 | Spaces | sp | MEP spaces: area, height, ventilation system + custom parameters |
+| 29 | Units | un | Units: deviations from default values |
+| 30 | Coordinates | co | Project coordinates: base points, survey, angle, site name |
 
 > Some checks are disabled in the default configuration — managed in the configuration Excel (Checks sheet, Active column).
 
@@ -268,11 +270,11 @@ Short names are generated automatically on creation: the common prefix and suffi
 
 - **FamInstances** and **FamTypes** are disabled by default — they iterate all elements of the specified categories and extract parameters. Execution time depends on the number of active categories and model size.
 - **FamSizes** is disabled by default — `EditFamily` + `SaveAs` is called for each family to a temporary folder. May take several hours on large models.
-- **WorksetElements** is disabled by default — iterates all elements in all worksets.
 
 ### Linked Models
 
 - Only loaded Revit links are analyzed.
+- Non-loaded links are not included in the analysis.
 - Documents with the same `Title` are added once.
 
 ### Report Data
@@ -284,6 +286,15 @@ Short names are generated automatically on creation: the common prefix and suffi
 ---
 
 ## Changelog
+
+### [25.39] — 2026/06/30
+- Coordinates expanded; redundant SiteLocations, BasePoints, and WorksetElements removed.
+- TitleBlocks and Revisions: compressed output — reduced number of rows by adding a Count column.
+- Views data duplicated across 5 extra sheets (grouped by ViewType).
+- Units: implemented a matrix showing unit deviations from metric defaults across all projects.
+- Sheets: Added CurrentRevisionId column.
+- LinksRvt: Now highlights cells in the matrix in yellow if more than one instance of the same link is loaded in a file.
+- Viewports: Created a new interactive HTML report. An extra sheet vpE with a link to the HTML map is generated for the Viewports check, showing TitleBlocks distribution and viewport types on sheets.
 
 ### [25.34] — 2026/05/14
 - The **Sheets** and **Views** checks now include grouping parameters from the Project Browser.

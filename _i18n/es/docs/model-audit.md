@@ -98,13 +98,16 @@ Hoja resumen. Las filas son verificaciones, las columnas son documentos (actual 
 
 ![Summary — 14 proyectos, 33 verificaciones](summary.png)
 
-- Nombre de verificación — hipervínculo a la hoja de detalle; columna **⊞** — enlace a la hoja de matriz (si existe).
-- Dos columnas por documento: **Old** (valor del informe anterior) y **New** (actual).
+- Nombre de verificación — hipervínculo a la hoja de detalle.
+- La columna **Extra** contiene enlaces:
+  - **⊞** — a la hoja de matriz (tabla resumen para todos los proyectos).
+  - **☰** — a hojas de detalle adicionales (p. ej., desglose de vistas por tipo).
+- Dos columnas por documento: **Old** (valor del informe anterior) y **New** (actual). Las celdas Old contienen hipervínculos a las hojas de detalle del informe anterior.
 - Columnas derechas **DateTime** y **Duration** — fecha de la última ejecución y tiempo de ejecución.
 - Al pasar el cursor sobre el nombre corto del documento en el encabezado se muestra el nombre completo del archivo.
 
-Esquema de colores:
-- **Fondo amarillo** — estado High (el valor requiere atención).
+Color scheme:
+- **Fondo amarillo** — estado High (el valor requiere atención) o advertencia específica en la matriz (p. ej., múltiples instancias del mismo vínculo).
 - **Texto gris / pálido** — estado Low (valor normal o sin cambios).
 
 ### Hojas de detalle
@@ -115,13 +118,13 @@ Una hoja por verificación activa. La mayoría de las hojas incluyen columnas **
 
 ### Hojas de matriz
 
-Diez verificaciones generan adicionalmente una hoja de matriz (nombre: `M` + abreviatura de la hoja de detalle). Los enlaces están en la columna **⊞** de Summary.
+Las verificaciones pueden generar hojas de matriz (nombre: `M` + abreviatura de la hoja de detalle) u hojas anidadas adicionales. Los enlaces a ellas están en la columna **Extra** de Summary. No todas las hojas tienen enlaces (p. ej., 5 hojas adicionales de vistas).
 
 | Hoja | Filas × Columnas |
 |------|-----------------|
 | Mgr  | Ejes × Documentos. `Mon` — monitorizado, `No` — presente pero no monitorizado |
 | Mlv  | Niveles × Documentos. Celda: valor de cota, gris si no está monitorizado |
-| Mlr  | Archivos vinculados × Documentos. Celda: número de instancias del vínculo |
+| Mlr  | Archivos vinculados × Documentos. Celda: número de instancias del vínculo. Amarillo — más de una instancia. |
 | Mbo  | Documentos × Tipo de organización del navegador (Views / Schedules / Sheets / Modified) |
 | Mpi  | Documentos × Parámetros ProjectInfo |
 | Mpm  | Parámetros × Documentos. Celda: número de categorías en el binding |
@@ -129,6 +132,8 @@ Diez verificaciones generan adicionalmente una hoja de matriz (nombre: `M` + abr
 | Mwr  | Advertencias × Documentos |
 | Mw1  | Worksets × Documentos |
 | Mw2  | Matriz en bloque: categorías × worksets (bloque separado por documento) |
+| Mun  | Tipos de unidades × Documentos. Muestra las unidades de medida configuradas en los proyectos donde se han modificado. |
+| vpE  | (Hoja extra) Ubicación de los viewports en los planos + enlace al visor HTML interactivo. |
 
 ![Matriz Mgr — ejes con tooltip Created/Modified](matrix-grids.png)
 
@@ -144,7 +149,7 @@ Las hojas `Checks`, `Categories`, `Parameters` almacenan la configuración utili
 
 ---
 
-## Lista de verificaciones (33)
+## Lista de verificaciones
 
 | # | Nombre | Hoja | Descripción |
 |---|--------|------|-------------|
@@ -160,27 +165,24 @@ Las hojas `Checks`, `Categories`, `Parameters` almacenan la configuración utili
 | 10 | LinksDwg | ld | Vínculos DWG/DXF: estado, ruta, nivel, coordenada Z |
 | 11 | LinksRaster | li | Vínculos ráster: origen, estado, nivel |
 | 12 | LinksRvt | lr | Vínculos Revit: nombre, workset, tipo de adjunto (Overlay/Attachment), posición |
-| 13 | BasePoints | bp | Puntos base del proyecto y de levantamiento: coordenadas (cm) |
-| 14 | SiteLocations | sl | Ubicación del proyecto: latitud, longitud, elevación, sistema de coordenadas |
-| 15 | BrowserOrg | bo | Esquemas de organización del navegador: tipo (vistas/hojas/planillas), activo |
-| 16 | DesignOptions | do | Opciones de diseño: Id, nombre, activa |
-| 17 | GeneralData | gd | Metadatos del documento: Long/Short Name, tamaño de archivo, vista inicial, identificadores en la nube |
-| 18 | ProjectInfo | pi | Parámetros de ProjectInformation: todos los parámetros excepte los NonVisible |
-| 19 | ParamMapping | pm | Bindings de parámetros del proyecto: nombre, tipo (Instance/Type), categorías |
-| 20 | Phases | ph | Fases del proyecto: Id, nombre |
-| 21 | Warnings | wr | Advertencias de Revit: descripción, gravedad, Ids de elementos |
-| 22 | Worksets | ws | Worksets: Id, nombre |
-| 23 | Revisions | re | Revisiones de hojas: hoja, Id de revisión, fecha, número, descripción |
-| 24 | Sheets | sh | Hojas: Id, nombre, número, IsPlaceholder, cajetín, parámetros de agrupación del navegador y parámetros personalizados |
-| 25 | TitleBlocks | tb | Tipos de cajetín y hojas asignadas |
-| 26 | Viewports | vp | Viewports: tipo, vista, hoja |
-| 27 | Views | vw | Todas las vistas con 32 propiedades (plantilla, escala, recorte lejano, ViewRange, etc.) y parámetros de agrupación del navegador |
-| 28 | WorksetElements | we | Distribución de elementos por workset: categoría, familia, tipo, cantidad (muy lento) |
-| 29 | Areas | ar | Áreas: área, perímetro, esquema de zonificación |
-| 30 | Rooms | rm | Habitaciones: área, altura, acabados, departamento + parámetros personalizados |
-| 31 | Spaces | sp | Espacios MEP: área, altura, sistema de ventilación + parámetros personalizados |
-| 32 | Units | un | Unidades: desviaciones de los valores predeterminados |
-| 33 | Coordinates | co | Coordenadas del proyecto: puntos base, levantamiento, ángulo, nombre del sitio |
+| 13 | BrowserOrg | bo | Esquemas de organización del navegador: tipo (vistas/hojas/planillas), activo |
+| 14 | DesignOptions | do | Opciones de diseño: Id, nombre, activa |
+| 15 | GeneralData | gd | Metadatos del documento: Long/Short Name, tamaño de archivo, vista inicial, identificadores en la nube |
+| 16 | ProjectInfo | pi | Parámetros de ProjectInformation: todos los parámetros excepto los NonVisible |
+| 17 | ParamMapping | pm | Bindings de parámetros del proyecto: nombre, tipo (Instance/Type), categorías |
+| 18 | Phases | ph | Fases del proyecto: Id, nombre |
+| 19 | Warnings | wr | Advertencias de Revit: descripción, gravedad, Ids de elementos |
+| 20 | Worksets | ws | Worksets: Id, nombre |
+| 21 | Revisions | re | Resumen de revisiones: Id, fecha, descripción, SheetCount donde está presente. |
+| 22 | Sheets | sh | Hojas: Id, número, nombre, IsPlaceholder, cajetín, parámetros de agrupación, CurrentRevisionId. |
+| 23 | TitleBlocks | tb | Tipos de cajetín: familia, tipo, InstanceCount en el documento. |
+| 24 | Viewports | vp | Viewports: tipo, vista, hoja. Genera hoja extra vpE e informe HTML. |
+| 25 | Views | vw | Vistas: propiedades principales + hojas extra agrupadas por tipo (Planos, Secciones, 3D, Tablas, Otros). |
+| 26 | Areas | ar | Áreas: área, perímetro, esquema de zonificación |
+| 27 | Rooms | rm | Habitaciones: área, altura, acabados, departamento + parámetros personalizados |
+| 28 | Spaces | sp | Espacios MEP: área, altura, sistema de ventilación + parámetros personalizados |
+| 29 | Units | un | Unidades: desviaciones de los valores predeterminados |
+| 30 | Coordinates | co | Coordenadas del proyecto: puntos base, levantamiento, ángulo, nombre del sitio |
 
 > Algunas verificaciones están desactivadas en la configuración predeterminada — gestionadas en el Excel de configuración (hoja Checks, columna Active).
 
@@ -257,7 +259,7 @@ Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y
 
 ### Rutas de informes
 
-- La ruta del nuevo informe se recuerda entre sesiones. Se genera automáticamente en el primer inicio.
+- La ruta del nuevo informe se recuerda entre sesiones. Al primer inicio se genera automáticamente.
 - El botón **Default** genera una nueva ruta con la fecha actual — útil al volver a ejecutar en otro día.
 - Dos ejecuciones el mismo día crean el archivo en la misma carpeta → la segunda ejecución lo sobrescribirá. Use **Browse** o **Default** para crear una nueva ruta si necesita conservar ambos resultados.
 - **"Usar ruta relativa"** — útil para trabajo en equipo: el informe se guarda junto a la configuración, no en `%APPDATA%`. Cada sobrescritura crea automáticamente una copia de seguridad con timestamp en la carpeta `backup/`.
@@ -268,11 +270,11 @@ Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y
 
 - **FamInstances** y **FamTypes** están desactivadas por defecto — recorren todos los elementos de las categorías seleccionadas y extraen parámetros. El tiempo de ejecución depende del número de categorías activas y del tamaño del modelo.
 - **FamSizes** está desactivada por defecto — para cada familia se llama a `EditFamily` + `SaveAs` en una carpeta temporal. En modelos grandes puede tardar varias horas.
-- **WorksetElements** está desactivada por defecto — recorre todos los elementos de todos los worksets.
 
 ### Modelos vinculados
 
 - Solo se analizan los vínculos Revit cargados.
+- Los vínculos no cargados no se incluyen en el análisis.
 - Los documentos con el mismo `Title` se añaden una sola vez.
 
 ### Datos del informe
@@ -284,6 +286,15 @@ Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y
 ---
 
 ## Historial de cambios
+
+### [25.39] — 2026/06/30
+- Coordinates ampliado; eliminados SiteLocations, BasePoints y WorksetElements redundantes.
+- TitleBlocks y Revisions: salida comprimida — reducido el número de filas añadiendo una columna Count.
+- Datos de Views duplicados en 5 hojas extra (agrupadas por ViewType).
+- Units: implementada una matriz que muestra las desviaciones de unidades respecto a los valores métricos por defecto en todos los proyectos.
+- Sheets: Añadida columna CurrentRevisionId.
+- LinksRvt: Ahora resalta en amarillo las celdas de la matriz si hay más de una instancia del mismo vínculo cargada en un archivo.
+- Viewports: Creado un nuevo informe interactivo HTML. Se genera una hoja extra vpE con un enlace al mapa HTML para la comprobación de Viewports, mostrando la distribución de TitleBlocks y tipos de viewports en los planos.
 
 ### [25.34] — 2026/05/14
 - En las comprobaciones de **Sheets** y **Views** ahora se incluyen los parámetros de agrupación del Navegador de Proyectos.

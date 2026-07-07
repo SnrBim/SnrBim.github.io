@@ -65,14 +65,14 @@ El código se toma del parámetro **`SRS_Schedule_Name`**
 *Ejemplos:* `AHU-01`, `FCU-02`, `PUMP-03`
 
 ### Luminarias (Lighting Fixtures)
-1. Primero se verifica el parámetro **`SRS_MEP_Equipment_Code`** (instancia, luego tipo)
+1. Primero se verifica el parámetro **`SRS_MEP_Equipment_ID`** (instancia, luego tipo)
 2. Si se encuentra el parámetro **`SRS_Equipment_Number`**, se agrega al código con un guion
 3. Si no se encuentra ningún código, se usa la designación estándar **`LTG`**
 
 *Ejemplos:* `LTG`, `LTG-01`, `LTG-02`
 
 ### Dispositivos eléctricos (Electrical Fixtures)
-1. El código se toma del parámetro **`SRS_MEP_Equipment_Code`** (instancia, luego tipo)
+1. El código se toma del parámetro **`SRS_MEP_Equipment_ID`** (instancia, luego tipo)
 2. Si se encuentra el parámetro **`SRS_Equipment_Number`**, se agrega al código con un guion
 3. Si no se encuentra ningún código, se usa **`?`**
 
@@ -145,4 +145,7 @@ El informe se guarda en la carpeta:
 
 ![alt text](pic1.png)
 ![alt text](pic2.png)
+
+## Changelog
+2026-06-23 El parámetro `SRS_MEP_Equipment_Code` fue reemplazado por `SRS_MEP_Equipment_ID` para cumplir con los nuevos estándares del proyecto. Los nombres de los parámetros se movieron a la clase `Settings` para permitir su configuración.
 

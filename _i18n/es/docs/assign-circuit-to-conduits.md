@@ -30,8 +30,7 @@ Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y
     -   Si se seleccionan varios circuitos, aparecerá un mensaje de error. Si no se seleccionan conductos, se activará el **modo auxiliar**: el complemento identificará los conductos pertenecientes al circuito y la ejecución se detendrá.
 
 3.  **Asignación automática del nombre del circuito:**
-    -   Si el circuito ya tiene un nombre, se utilizará dicho nombre.
-    -   Si el nombre está vacío, se generará automáticamente con base en los parámetros `SRS_Schedule_Name` de la carga y el cuadro eléctrico, siguiendo el formato: `18D-[Cuadro]/[Carga]-C-SistemaNúmero`.
+    -   El nombre del circuito se recalcula automáticamente con base en los parámetros `SRS_Location` y `SRS_Schedule_Name` de la carga y el cuadro eléctrico, siguiendo el formato: `[Ubicación]-[Cuadro]/[Carga]-C-SistemaNúmero`.
     -   La siguiente tabla detalla cómo se agrupan los nombres de las cargas para generar el nombre del segmento:
 
 | Datos de entrada | Nombre resultante del Carga | Comentario |
