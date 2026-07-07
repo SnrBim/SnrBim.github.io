@@ -253,7 +253,7 @@
   },"36": {
     "doc": "Model audit",
     "title": "ModelAudit — Guía de usuario",
-    "content": "Tabla de contenidos . | Interfaz . | Configuration (Opcional) | Previous Report (Opcional) | New Report Path | Ejecución | . | Barra de progreso | Estructura del informe . | Summary | Hojas de detalle | Hojas de matriz | Aliases (oculta) | Config (hojas ocultas) | . | Lista de verificaciones (33) | Excel de configuración . | Hoja Checks | Hoja Categories | Hoja Parameters | Hoja Aliases | . | Consejos y notas . | Configuración | Nombres de documentos | Rutas de informes | Rendimiento | Modelos vinculados | Datos del informe | . | Historial de cambios . | [25.34] — 2026/05/14 | [25.31] — 2026/04/13 | . | . ModelAudit es una herramienta de auditoría automatizada de modelos BIM en Autodesk Revit. Analiza el documento actual y todos los vínculos Revit cargados. El resultado es un informe Excel con datos detallados para cada una de las más de treinta verificaciones. ",
+    "content": "Tabla de contenidos . | Interfaz . | Configuration (Opcional) | Previous Report (Opcional) | New Report Path | Ejecución | . | Barra de progreso | Estructura del informe . | Summary | Hojas de detalle | Hojas de matriz | Aliases (oculta) | Config (hojas ocultas) | . | Lista de verificaciones | Excel de configuración . | Hoja Checks | Hoja Categories | Hoja Parameters | Hoja Aliases | . | Consejos y notas . | Configuración | Nombres de documentos | Rutas de informes | Rendimiento | Modelos vinculados | Datos del informe | . | Historial de cambios . | [25.39] — 2026/06/30 | [25.34] — 2026/05/14 | [25.31] — 2026/04/13 | . | . ModelAudit es una herramienta de auditoría automatizada de modelos BIM en Autodesk Revit. Analiza el documento actual y todos los vínculos Revit cargados. El resultado es un informe Excel con datos detallados para cada una de las más de treinta verificaciones. ",
     "url": "/es/docs/model-audit/#modelaudit--gu%C3%ADa-de-usuario",
     
     "relUrl": "/docs/model-audit/#modelaudit--guía-de-usuario"
@@ -274,17 +274,17 @@
   },"39": {
     "doc": "Model audit",
     "title": "Estructura del informe",
-    "content": "El informe es un archivo Excel (.xlsx). Los nombres de las hojas son intencionalmente cortos (gr, lv, bo, etc.) — la navegación se realiza mediante hipervínculos, no cambiando pestañas manualmente: Summary enlaza a cada hoja de detalle y matriz; la primera celda de cada hoja vuelve a la fila correspondiente en Summary. Summary . Hoja resumen. Las filas son verificaciones, las columnas son documentos (actual + vinculados). | Nombre de verificación — hipervínculo a la hoja de detalle; columna ⊞ — enlace a la hoja de matriz (si existe). | Dos columnas por documento: Old (valor del informe anterior) y New (actual). | Columnas derechas DateTime y Duration — fecha de la última ejecución y tiempo de ejecución. | Al pasar el cursor sobre el nombre corto del documento en el encabezado se muestra el nombre completo del archivo. | . Esquema de colores: . | Fondo amarillo — estado High (el valor requiere atención). | Texto gris / pálido — estado Low (valor normal o sin cambios). | . Hojas de detalle . Una hoja por verificación activa. La mayoría de las hojas incluyen columnas Workset, CreatedBy, LastChangedBy. Hojas de matriz . Diez verificaciones generan adicionalmente una hoja de matriz (nombre: M + abreviatura de la hoja de detalle). Los enlaces están en la columna ⊞ de Summary. | Hoja | Filas × Columnas | . | Mgr | Ejes × Documentos. Mon — monitorizado, No — presente pero no monitorizado | . | Mlv | Niveles × Documentos. Celda: valor de cota, gris si no está monitorizado | . | Mlr | Archivos vinculados × Documentos. Celda: número de instancias del vínculo | . | Mbo | Documentos × Tipo de organización del navegador (Views / Schedules / Sheets / Modified) | . | Mpi | Documentos × Parámetros ProjectInfo | . | Mpm | Parámetros × Documentos. Celda: número de categorías en el binding | . | Mph | Documentos × Fases | . | Mwr | Advertencias × Documentos | . | Mw1 | Worksets × Documentos | . | Mw2 | Matriz en bloque: categorías × worksets (bloque separado por documento) | . Aliases (oculta) . Tabla de correspondencia entre nombres cortos y completos de los documentos. Config (hojas ocultas) . Las hojas Checks, Categories, Parameters almacenan la configuración utilizada en la ejecución. Permiten reproducir las condiciones de análisis a partir de un informe archivado. ",
+    "content": "El informe es un archivo Excel (.xlsx). Los nombres de las hojas son intencionalmente cortos (gr, lv, bo, etc.) — la navegación se realiza mediante hipervínculos, no cambiando pestañas manualmente: Summary enlaza a cada hoja de detalle y matriz; la primera celda de cada hoja vuelve a la fila correspondiente en Summary. Summary . Hoja resumen. Las filas son verificaciones, las columnas son documentos (actual + vinculados). | Nombre de verificación — hipervínculo a la hoja de detalle. | La columna Extra contiene enlaces: . | ⊞ — a la hoja de matriz (tabla resumen para todos los proyectos). | ☰ — a hojas de detalle adicionales (p. ej., desglose de vistas por tipo). | . | Dos columnas por documento: Old (valor del informe anterior) y New (actual). Las celdas Old contienen hipervínculos a las hojas de detalle del informe anterior. | Columnas derechas DateTime y Duration — fecha de la última ejecución y tiempo de ejecución. | Al pasar el cursor sobre el nombre corto del documento en el encabezado se muestra el nombre completo del archivo. | . Color scheme: . | Fondo amarillo — estado High (el valor requiere atención) o advertencia específica en la matriz (p. ej., múltiples instancias del mismo vínculo). | Texto gris / pálido — estado Low (valor normal o sin cambios). | . Hojas de detalle . Una hoja por verificación activa. La mayoría de las hojas incluyen columnas Workset, CreatedBy, LastChangedBy. Hojas de matriz . Las verificaciones pueden generar hojas de matriz (nombre: M + abreviatura de la hoja de detalle) u hojas anidadas adicionales. Los enlaces a ellas están en la columna Extra de Summary. No todas las hojas tienen enlaces (p. ej., 5 hojas adicionales de vistas). | Hoja | Filas × Columnas | . | Mgr | Ejes × Documentos. Mon — monitorizado, No — presente pero no monitorizado | . | Mlv | Niveles × Documentos. Celda: valor de cota, gris si no está monitorizado | . | Mlr | Archivos vinculados × Documentos. Celda: número de instancias del vínculo. Amarillo — más de una instancia. | . | Mbo | Documentos × Tipo de organización del navegador (Views / Schedules / Sheets / Modified) | . | Mpi | Documentos × Parámetros ProjectInfo | . | Mpm | Parámetros × Documentos. Celda: número de categorías en el binding | . | Mph | Documentos × Fases | . | Mwr | Advertencias × Documentos | . | Mw1 | Worksets × Documentos | . | Mw2 | Matriz en bloque: categorías × worksets (bloque separado por documento) | . | Mun | Tipos de unidades × Documentos. Muestra las unidades de medida configuradas en los proyectos donde se han modificado. | . | vpE | (Hoja extra) Ubicación de los viewports en los planos + enlace al visor HTML interactivo. | . Aliases (oculta) . Tabla de correspondencia entre nombres cortos y completos de los documentos. Config (hojas ocultas) . Las hojas Checks, Categories, Parameters almacenan la configuración utilizada en la ejecución. Permiten reproducir las condiciones de análisis a partir de un informe archivado. ",
     "url": "/es/docs/model-audit/#estructura-del-informe",
     
     "relUrl": "/docs/model-audit/#estructura-del-informe"
   },"40": {
     "doc": "Model audit",
-    "title": "Lista de verificaciones (33)",
-    "content": "| # | Nombre | Hoja | Descripción | . | 1 | Grids | gr | Ejes: nombre, Id, monitoreo (elemento vinculado), workset | . | 2 | Levels | lv | Niveles: cota (m), monitoreo, workset | . | 3 | Matchlines | ml | Líneas de coincidencia: coordenadas de segmentos | . | 4 | ScopeBoxes | sb | Marcos de vista: coordenadas, dimensiones, workset | . | 5 | Groups | gp | Grupos de modelo: nombre, Id, workset | . | 6 | FamInstances | ei | Instancias de familias con parámetros (lento) | . | 7 | FamTypes | et | Tipos de familias con parámetros (lento) | . | 8 | InPlaceFams | ip | Familias In-Place: categoría, Id, Ids de instancias | . | 9 | FamSizes | fs | Tamaño del archivo RFA por familia (muy lento — guarda cada familia en un archivo temporal) | . | 10 | LinksDwg | ld | Vínculos DWG/DXF: estado, ruta, nivel, coordenada Z | . | 11 | LinksRaster | li | Vínculos ráster: origen, estado, nivel | . | 12 | LinksRvt | lr | Vínculos Revit: nombre, workset, tipo de adjunto (Overlay/Attachment), posición | . | 13 | BasePoints | bp | Puntos base del proyecto y de levantamiento: coordenadas (cm) | . | 14 | SiteLocations | sl | Ubicación del proyecto: latitud, longitud, elevación, sistema de coordenadas | . | 15 | BrowserOrg | bo | Esquemas de organización del navegador: tipo (vistas/hojas/planillas), activo | . | 16 | DesignOptions | do | Opciones de diseño: Id, nombre, activa | . | 17 | GeneralData | gd | Metadatos del documento: Long/Short Name, tamaño de archivo, vista inicial, identificadores en la nube | . | 18 | ProjectInfo | pi | Parámetros de ProjectInformation: todos los parámetros excepte los NonVisible | . | 19 | ParamMapping | pm | Bindings de parámetros del proyecto: nombre, tipo (Instance/Type), categorías | . | 20 | Phases | ph | Fases del proyecto: Id, nombre | . | 21 | Warnings | wr | Advertencias de Revit: descripción, gravedad, Ids de elementos | . | 22 | Worksets | ws | Worksets: Id, nombre | . | 23 | Revisions | re | Revisiones de hojas: hoja, Id de revisión, fecha, número, descripción | . | 24 | Sheets | sh | Hojas: Id, nombre, número, IsPlaceholder, cajetín, parámetros de agrupación del navegador y parámetros personalizados | . | 25 | TitleBlocks | tb | Tipos de cajetín y hojas asignadas | . | 26 | Viewports | vp | Viewports: tipo, vista, hoja | . | 27 | Views | vw | Todas las vistas con 32 propiedades (plantilla, escala, recorte lejano, ViewRange, etc.) y parámetros de agrupación del navegador | . | 28 | WorksetElements | we | Distribución de elementos por workset: categoría, familia, tipo, cantidad (muy lento) | . | 29 | Areas | ar | Áreas: área, perímetro, esquema de zonificación | . | 30 | Rooms | rm | Habitaciones: área, altura, acabados, departamento + parámetros personalizados | . | 31 | Spaces | sp | Espacios MEP: área, altura, sistema de ventilación + parámetros personalizados | . | 32 | Units | un | Unidades: desviaciones de los valores predeterminados | . | 33 | Coordinates | co | Coordenadas del proyecto: puntos base, levantamiento, ángulo, nombre del sitio | . Algunas verificaciones están desactivadas en la configuración predeterminada — gestionadas en el Excel de configuración (hoja Checks, columna Active). ",
-    "url": "/es/docs/model-audit/#lista-de-verificaciones-33",
+    "title": "Lista de verificaciones",
+    "content": "| # | Nombre | Hoja | Descripción | . | 1 | Grids | gr | Ejes: nombre, Id, monitoreo (elemento vinculado), workset | . | 2 | Levels | lv | Niveles: cota (m), monitoreo, workset | . | 3 | Matchlines | ml | Líneas de coincidencia: coordenadas de segmentos | . | 4 | ScopeBoxes | sb | Marcos de vista: coordenadas, dimensiones, workset | . | 5 | Groups | gp | Grupos de modelo: nombre, Id, workset | . | 6 | FamInstances | ei | Instancias de familias con parámetros (lento) | . | 7 | FamTypes | et | Tipos de familias con parámetros (lento) | . | 8 | InPlaceFams | ip | Familias In-Place: categoría, Id, Ids de instancias | . | 9 | FamSizes | fs | Tamaño del archivo RFA por familia (muy lento — guarda cada familia en un archivo temporal) | . | 10 | LinksDwg | ld | Vínculos DWG/DXF: estado, ruta, nivel, coordenada Z | . | 11 | LinksRaster | li | Vínculos ráster: origen, estado, nivel | . | 12 | LinksRvt | lr | Vínculos Revit: nombre, workset, tipo de adjunto (Overlay/Attachment), posición | . | 13 | BrowserOrg | bo | Esquemas de organización del navegador: tipo (vistas/hojas/planillas), activo | . | 14 | DesignOptions | do | Opciones de diseño: Id, nombre, activa | . | 15 | GeneralData | gd | Metadatos del documento: Long/Short Name, tamaño de archivo, vista inicial, identificadores en la nube | . | 16 | ProjectInfo | pi | Parámetros de ProjectInformation: todos los parámetros excepto los NonVisible | . | 17 | ParamMapping | pm | Bindings de parámetros del proyecto: nombre, tipo (Instance/Type), categorías | . | 18 | Phases | ph | Fases del proyecto: Id, nombre | . | 19 | Warnings | wr | Advertencias de Revit: descripción, gravedad, Ids de elementos | . | 20 | Worksets | ws | Worksets: Id, nombre | . | 21 | Revisions | re | Resumen de revisiones: Id, fecha, descripción, SheetCount donde está presente. | . | 22 | Sheets | sh | Hojas: Id, número, nombre, IsPlaceholder, cajetín, parámetros de agrupación, CurrentRevisionId. | . | 23 | TitleBlocks | tb | Tipos de cajetín: familia, tipo, InstanceCount en el documento. | . | 24 | Viewports | vp | Viewports: tipo, vista, hoja. Genera hoja extra vpE e informe HTML. | . | 25 | Views | vw | Vistas: propiedades principales + hojas extra agrupadas por tipo (Planos, Secciones, 3D, Tablas, Otros). | . | 26 | Areas | ar | Áreas: área, perímetro, esquema de zonificación | . | 27 | Rooms | rm | Habitaciones: área, altura, acabados, departamento + parámetros personalizados | . | 28 | Spaces | sp | Espacios MEP: área, altura, sistema de ventilación + parámetros personalizados | . | 29 | Units | un | Unidades: desviaciones de los valores predeterminados | . | 30 | Coordinates | co | Coordenadas del proyecto: puntos base, levantamiento, ángulo, nombre del sitio | . Algunas verificaciones están desactivadas en la configuración predeterminada — gestionadas en el Excel de configuración (hoja Checks, columna Active). ",
+    "url": "/es/docs/model-audit/#lista-de-verificaciones",
     
-    "relUrl": "/docs/model-audit/#lista-de-verificaciones-33"
+    "relUrl": "/docs/model-audit/#lista-de-verificaciones"
   },"41": {
     "doc": "Model audit",
     "title": "Excel de configuración",
@@ -295,14 +295,14 @@
   },"42": {
     "doc": "Model audit",
     "title": "Consejos y notas",
-    "content": "Configuración . | Campo ConfigPath vacío equivale a la configuración predeterminada incorporada — limpiar la ruta es seguro. | El resumen debajo del campo se actualiza inmediatamente al cambiar la ruta — los errores de validación son visibles antes de ejecutar. | La validación se repite al pulsar Create/Update. Si la configuración es inválida, la ejecución se bloquea. | Nombre de verificación desconocido en la hoja Checks → error con la lista de nombres válidos. | BuiltInCategory inválida → error. Se acepta cualquier BIC válida de la API de Revit. | El orden de las filas en las hojas Checks y Categories no importa. | La configuración se lee de nuevo en cada ejecución (sin caché). | La configuración utilizada en una ejecución se almacena en hojas ocultas del informe. | . Nombres de documentos . | Los nombres cortos aparecen en los encabezados de Summary — mantiene la tabla compacta con muchos vínculos. | Si un documento vinculado aparece después de generar la configuración, su nombre se genera automáticamente; añádalo manualmente a la hoja Aliases si es necesario. | Edite la hoja Aliases en la configuración antes de ejecutar si las abreviaciones autogeneradas son inconvenientes. | . Rutas de informes . | La ruta del nuevo informe se recuerda entre sesiones. Se genera automáticamente en el primer inicio. | El botón Default genera una nueva ruta con la fecha actual — útil al volver a ejecutar en otro día. | Dos ejecuciones el mismo día crean el archivo en la misma carpeta → la segunda ejecución lo sobrescribirá. Use Browse o Default para crear una nueva ruta si necesita conservar ambos resultados. | “Usar ruta relativa” — útil para trabajo en equipo: el informe se guarda junto a la configuración, no en %APPDATA%. Cada sobrescritura crea automáticamente una copia de seguridad con timestamp en la carpeta backup/. | Si el archivo de informe está abierto en Excel, aparece un diálogo de reintento. La auditoría no se iniciará mientras el archivo esté bloqueado. | La ruta del informe anterior no se rellena automáticamente — debe indicarse manualmente a través de Browse. | . Rendimiento . | FamInstances y FamTypes están desactivadas por defecto — recorren todos los elementos de las categorías seleccionadas y extraen parámetros. El tiempo de ejecución depende del número de categorías activas y del tamaño del modelo. | FamSizes está desactivada por defecto — para cada familia se llama a EditFamily + SaveAs en una carpeta temporal. En modelos grandes puede tardar varias horas. | WorksetElements está desactivada por defecto — recorre todos los elementos de todos los worksets. | . Modelos vinculados . | Solo se analizan los vínculos Revit cargados. | Los documentos con el mismo Title se añaden una sola vez. | . Datos del informe . | Los valores numéricos (coordenadas, áreas, distancias) se escriben como números de Excel — permite ordenar y filtrar correctamente. | Los valores compuestos (p. ej. una lista de Ids separada por espacios) permanecen como cadenas de texto. | Los saltos de línea dentro de los valores de parámetros se conservan. | . ",
+    "content": "Configuración . | Campo ConfigPath vacío equivale a la configuración predeterminada incorporada — limpiar la ruta es seguro. | El resumen debajo del campo se actualiza inmediatamente al cambiar la ruta — los errores de validación son visibles antes de ejecutar. | La validación se repite al pulsar Create/Update. Si la configuración es inválida, la ejecución se bloquea. | Nombre de verificación desconocido en la hoja Checks → error con la lista de nombres válidos. | BuiltInCategory inválida → error. Se acepta cualquier BIC válida de la API de Revit. | El orden de las filas en las hojas Checks y Categories no importa. | La configuración se lee de nuevo en cada ejecución (sin caché). | La configuración utilizada en una ejecución se almacena en hojas ocultas del informe. | . Nombres de documentos . | Los nombres cortos aparecen en los encabezados de Summary — mantiene la tabla compacta con muchos vínculos. | Si un documento vinculado aparece después de generar la configuración, su nombre se genera automáticamente; añádalo manualmente a la hoja Aliases si es necesario. | Edite la hoja Aliases en la configuración antes de ejecutar si las abreviaciones autogeneradas son inconvenientes. | . Rutas de informes . | La ruta del nuevo informe se recuerda entre sesiones. Al primer inicio se genera automáticamente. | El botón Default genera una nueva ruta con la fecha actual — útil al volver a ejecutar en otro día. | Dos ejecuciones el mismo día crean el archivo en la misma carpeta → la segunda ejecución lo sobrescribirá. Use Browse o Default para crear una nueva ruta si necesita conservar ambos resultados. | “Usar ruta relativa” — útil para trabajo en equipo: el informe se guarda junto a la configuración, no en %APPDATA%. Cada sobrescritura crea automáticamente una copia de seguridad con timestamp en la carpeta backup/. | Si el archivo de informe está abierto en Excel, aparece un diálogo de reintento. La auditoría no se iniciará mientras el archivo esté bloqueado. | La ruta del informe anterior no se rellena automáticamente — debe indicarse manualmente a través de Browse. | . Rendimiento . | FamInstances y FamTypes están desactivadas por defecto — recorren todos los elementos de las categorías seleccionadas y extraen parámetros. El tiempo de ejecución depende del número de categorías activas y del tamaño del modelo. | FamSizes está desactivada por defecto — para cada familia se llama a EditFamily + SaveAs en una carpeta temporal. En modelos grandes puede tardar varias horas. | . Modelos vinculados . | Solo se analizan los vínculos Revit cargados. | Los vínculos no cargados no se incluyen en el análisis. | Los documentos con el mismo Title se añaden una sola vez. | . Datos del informe . | Los valores numéricos (coordenadas, áreas, distancias) se escriben como números de Excel — permite ordenar y filtrar correctamente. | Los valores compuestos (p. ej. una lista de Ids separada por espacios) permanecen como cadenas de texto. | Los saltos de línea dentro de los valores de parámetros se conservan. | . ",
     "url": "/es/docs/model-audit/#consejos-y-notas",
     
     "relUrl": "/docs/model-audit/#consejos-y-notas"
   },"43": {
     "doc": "Model audit",
     "title": "Historial de cambios",
-    "content": "[25.34] — 2026/05/14 . | En las comprobaciones de Sheets y Views ahora se incluyen los parámetros de agrupación del Navegador de Proyectos. | Los parámetros integrados, que antes se establecían a través de la configuración, ahora siempre se incluyen de forma fija (por ejemplo, IFC para familias, Area Type/Design Option/Comments para Áreas, etc.). Esto garantiza el funcionamiento correcto independientemente del idioma de Revit; otros parámetros pueden añadirse mediante la configuración. | En los informes de FamInstances y FamTypes, los parámetros de tipo ya no se muestran para las instancias. | Añadida función “Usar ruta relativa” en la sección New Report Path. | . [25.31] — 2026/04/13 . | Corregido un error que se producía al ejecutar la auditoría en proyectos con modelos vinculados anidados (vínculos dentro de vínculos). La verificación RVT Links ahora procesa correctamente todos los niveles de vínculos. | . ",
+    "content": "[25.39] — 2026/06/30 . | Coordinates ampliado; eliminados SiteLocations, BasePoints y WorksetElements redundantes. | TitleBlocks y Revisions: salida comprimida — reducido el número de filas añadiendo una columna Count. | Datos de Views duplicados en 5 hojas extra (agrupadas por ViewType). | Units: implementada una matriz que muestra las desviaciones de unidades respecto a los valores métricos por defecto en todos los proyectos. | Sheets: Añadida columna CurrentRevisionId. | LinksRvt: Ahora resalta en amarillo las celdas de la matriz si hay más de una instancia del mismo vínculo cargada en un archivo. | Viewports: Creado un nuevo informe interactivo HTML. Se genera una hoja extra vpE con un enlace al mapa HTML para la comprobación de Viewports, mostrando la distribución de TitleBlocks y tipos de viewports en los planos. | . [25.34] — 2026/05/14 . | En las comprobaciones de Sheets y Views ahora se incluyen los parámetros de agrupación del Navegador de Proyectos. | Los parámetros integrados, que antes se establecían a través de la configuración, ahora siempre se incluyen de forma fija (por ejemplo, IFC para familias, Area Type/Design Option/Comments para Áreas, etc.). Esto garantiza el funcionamiento correcto independientemente del idioma de Revit; otros parámetros pueden añadirse mediante la configuración. | En los informes de FamInstances y FamTypes, los parámetros de tipo ya no se muestran para las instancias. | Añadida función “Usar ruta relativa” en la sección New Report Path. | . [25.31] — 2026/04/13 . | Corregido un error que se producía al ejecutar la auditoría en proyectos con modelos vinculados anidados (vínculos dentro de vínculos). La verificación RVT Links ahora procesa correctamente todos los niveles de vínculos. | . ",
     "url": "/es/docs/model-audit/#historial-de-cambios",
     
     "relUrl": "/docs/model-audit/#historial-de-cambios"
@@ -344,7 +344,7 @@
   },"49": {
     "doc": "Sync air flow to schematic",
     "title": "Sync air flow to schematic",
-    "content": "… Tag on views Assign spaces to equip Sync air flow Sync fire alarm Fire Alarm Devices MEC … ",
+    "content": "… Tag on views Assign spaces to equip Sync air flow Sync fire alarm Security devices MEC … ",
     "url": "/es/docs/sync-air-flow-to-schematic/",
     
     "relUrl": "/docs/sync-air-flow-to-schematic/"
@@ -820,7 +820,7 @@
   },"117": {
     "doc": "Sync fire alarm diagram",
     "title": "Sync fire alarm diagram",
-    "content": "… Assign spaces to equip Sync air flow Sync fire alarm Fire Alarm Devices MEC Count sockets ELE … ",
+    "content": "… Assign spaces to equip Sync air flow Sync fire alarm Security devices MEC Count sockets ELE … ",
     "url": "/es/docs/sync-fire-alarm-diagram/",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/"
@@ -841,7 +841,7 @@
   },"120": {
     "doc": "Circuit description",
     "title": "Descripción de circuitos",
-    "content": "Tabla de contenidos . | Uso | Formato de descripción . | Ejemplos | . | Lógica de códigos de equipo . | Equipo eléctrico (Electrical Equipment) | Luminarias (Lighting Fixtures) | Dispositivos eléctricos (Electrical Fixtures) | Otras categorías | . | Marcado de equipos especiales | Determinación de ubicación . | Características de detección de habitaciones . | Lógica para preservar la entrada del usuario para habitaciones desconocidas | . | . | Informe | Consejos | . El comando Circuit description genera automáticamente descripciones uniformes e informativas para circuitos eléctricos basadas en el equipo conectado y su ubicación. La descripción se forma con los tipos de equipos, sus cantidades y los números de habitaciones donde están instalados. ",
+    "content": "Tabla de contenidos . | Uso | Formato de descripción . | Ejemplos | . | Lógica de códigos de equipo . | Equipo eléctrico (Electrical Equipment) | Luminarias (Lighting Fixtures) | Dispositivos eléctricos (Electrical Fixtures) | Otras categorías | . | Marcado de equipos especiales | Determinación de ubicación . | Características de detección de habitaciones . | Lógica para preservar la entrada del usuario para habitaciones desconocidas | . | . | Informe | Consejos | Changelog | . El comando Circuit description genera automáticamente descripciones uniformes e informativas para circuitos eléctricos basadas en el equipo conectado y su ubicación. La descripción se forma con los tipos de equipos, sus cantidades y los números de habitaciones donde están instalados. ",
     "url": "/es/docs/circuit-description/#descripci%C3%B3n-de-circuitos",
     
     "relUrl": "/docs/circuit-description/#descripción-de-circuitos"
@@ -862,7 +862,7 @@
   },"123": {
     "doc": "Circuit description",
     "title": "Lógica de códigos de equipo",
-    "content": "El comando determina automáticamente el código de cada elemento en el circuito según su categoría y parámetros: . Equipo eléctrico (Electrical Equipment) . El código se toma del parámetro SRS_Schedule_Name . Ejemplos: AHU-01, FCU-02, PUMP-03 . Luminarias (Lighting Fixtures) . | Primero se verifica el parámetro SRS_MEP_Equipment_Code (instancia, luego tipo) | Si se encuentra el parámetro SRS_Equipment_Number, se agrega al código con un guion | Si no se encuentra ningún código, se usa la designación estándar LTG | . Ejemplos: LTG, LTG-01, LTG-02 . Dispositivos eléctricos (Electrical Fixtures) . | El código se toma del parámetro SRS_MEP_Equipment_Code (instancia, luego tipo) | Si se encuentra el parámetro SRS_Equipment_Number, se agrega al código con un guion | Si no se encuentra ningún código, se usa ? | . Ejemplos: PANEL-01, DIST-02 . Otras categorías . Para todas las demás categorías (receptáculos, interruptores, etc.), se usa la designación estándar RECPT . RECPT = receptáculo . ",
+    "content": "El comando determina automáticamente el código de cada elemento en el circuito según su categoría y parámetros: . Equipo eléctrico (Electrical Equipment) . El código se toma del parámetro SRS_Schedule_Name . Ejemplos: AHU-01, FCU-02, PUMP-03 . Luminarias (Lighting Fixtures) . | Primero se verifica el parámetro SRS_MEP_Equipment_ID (instancia, luego tipo) | Si se encuentra el parámetro SRS_Equipment_Number, se agrega al código con un guion | Si no se encuentra ningún código, se usa la designación estándar LTG | . Ejemplos: LTG, LTG-01, LTG-02 . Dispositivos eléctricos (Electrical Fixtures) . | El código se toma del parámetro SRS_MEP_Equipment_ID (instancia, luego tipo) | Si se encuentra el parámetro SRS_Equipment_Number, se agrega al código con un guion | Si no se encuentra ningún código, se usa ? | . Ejemplos: PANEL-01, DIST-02 . Otras categorías . Para todas las demás categorías (receptáculos, interruptores, etc.), se usa la designación estándar RECPT . RECPT = receptáculo . ",
     "url": "/es/docs/circuit-description/#l%C3%B3gica-de-c%C3%B3digos-de-equipo",
     
     "relUrl": "/docs/circuit-description/#lógica-de-códigos-de-equipo"
@@ -896,446 +896,453 @@
     "relUrl": "/docs/circuit-description/#consejos"
   },"128": {
     "doc": "Circuit description",
+    "title": "Changelog",
+    "content": "2026-06-23 El parámetro SRS_MEP_Equipment_Code fue reemplazado por SRS_MEP_Equipment_ID para cumplir con los nuevos estándares del proyecto. Los nombres de los parámetros se movieron a la clase Settings para permitir su configuración. ",
+    "url": "/es/docs/circuit-description/#changelog",
+    
+    "relUrl": "/docs/circuit-description/#changelog"
+  },"129": {
+    "doc": "Circuit description",
     "title": "Circuit description",
-    "content": "… Fire Alarm Devices MEC Count sockets Circuit description Sync power Create sockets ELE … ",
+    "content": "… Security devices MEC Count sockets Circuit description Sync power Create sockets ELE … ",
     "url": "/es/docs/circuit-description/",
     
     "relUrl": "/docs/circuit-description/"
-  },"129": {
+  },"130": {
     "doc": "Sync equip to schematic",
     "title": "Sincronizar Equipo con Esquema",
     "content": "Tabla de contenidos . | Descripción | Funcionalidad | Pasos para Usar | Notas Importantes | . ",
     "url": "/es/docs/sync-equip-to-schematic/#sincronizar-equipo-con-esquema",
     
     "relUrl": "/docs/sync-equip-to-schematic/#sincronizar-equipo-con-esquema"
-  },"130": {
+  },"131": {
     "doc": "Sync equip to schematic",
     "title": "Descripción",
     "content": "Este comando actualiza automáticamente los datos de las anotaciones esquemáticas (Generic Annotation) en Revit, basándose en el ID de equipo previamente asignado. ",
     "url": "/es/docs/sync-equip-to-schematic/#descripci%C3%B3n",
     
     "relUrl": "/docs/sync-equip-to-schematic/#descripción"
-  },"131": {
+  },"132": {
     "doc": "Sync equip to schematic",
     "title": "Funcionalidad",
     "content": "Para cada anotación de esquema procesada, el comando realiza las siguientes acciones: . | Busca el equipo correspondiente utilizando los valores de los parámetros SRS_MEP_Equipment_Id y SRS_MEP_Link_Id. | Una vez encontrado el equipo, determina el espacio (MEP Space) y el nivel en el que este se encuentra. | Actualiza los siguientes parámetros en la anotación: . | SRS_MEP_Location: Se actualiza con el nombre del espacio. | SRS_MEP_RoomID: Se actualiza con el ID del espacio. | SRS_MEP_Level: Se actualiza con el nombre del nivel. | . | . ",
     "url": "/es/docs/sync-equip-to-schematic/#funcionalidad",
     
     "relUrl": "/docs/sync-equip-to-schematic/#funcionalidad"
-  },"132": {
+  },"133": {
     "doc": "Sync equip to schematic",
     "title": "Pasos para Usar",
     "content": ". | Asegúrate de que las anotaciones de esquema que deseas actualizar ya tienen asignados los valores en los parámetros SRS_MEP_Equipment_Id y SRS_MEP_Link_Id. | Ejecuta el comando Sync equip to schematic. | El sistema recorrerá las anotaciones y actualizará automáticamente los datos de ubicación en cada una. | . ",
     "url": "/es/docs/sync-equip-to-schematic/#pasos-para-usar",
     
     "relUrl": "/docs/sync-equip-to-schematic/#pasos-para-usar"
-  },"133": {
+  },"134": {
     "doc": "Sync equip to schematic",
     "title": "Notas Importantes",
     "content": ". | Se mostrará una advertencia en caso de que no se encuentre un equipo correspondiente al ID especificado en una anotación. | El valor del ID de equipo debe ser numérico para que el proceso funcione correctamente. | La búsqueda de espacios está optimizada; el comando prioriza la reutilización de espacios ya encontrados para mejorar el rendimiento. | . ",
     "url": "/es/docs/sync-equip-to-schematic/#notas-importantes",
     
     "relUrl": "/docs/sync-equip-to-schematic/#notas-importantes"
-  },"134": {
+  },"135": {
     "doc": "Sync equip to schematic",
     "title": "Sync equip to schematic",
     "content": "… Align Elevations Assign equip to schematic Sync equip to schematic ELE Convert to rebar Track scheme Misc … ",
     "url": "/es/docs/sync-equip-to-schematic/",
     
     "relUrl": "/docs/sync-equip-to-schematic/"
-  },"135": {
+  },"136": {
     "doc": "Count sockets",
     "title": "Recuento de Enchufes",
     "content": "Tabla de contenidos . | Qué Hace el Comando | Preparación | Uso | Resultados . | Parámetro “Sockets single” | Parámetro “Sockets twin” | Parámetro “ElemsDescr” | Parámetro “LocationDescr” | . | Características . | Detección de Enchufes Simples y Dobles | Códigos de Habitación Sharjah | Modelo Arquitectónico Vinculado | Algoritmo de Detección de Habitaciones | . | . El comando Count Sockets cuenta automáticamente los enchufes en los circuitos eléctricos seleccionados y escribe información detallada directamente en los parámetros del circuito. Obtiene una especificación completa de elementos con cantidades e información sobre su ubicación por habitaciones. ",
     "url": "/es/docs/count-sockets/#recuento-de-enchufes",
     
     "relUrl": "/docs/count-sockets/#recuento-de-enchufes"
-  },"136": {
+  },"137": {
     "doc": "Count sockets",
     "title": "Qué Hace el Comando",
     "content": ". | Cuenta enchufes simples y dobles en cada circuito seleccionado | Agrupa todos los elementos por tipos con indicación de cantidad | Determina la ubicación de elementos por habitaciones desde el modelo arquitectónico vinculado | Escribe toda la información en parámetros del circuito para usar en tablas e informes | . ",
     "url": "/es/docs/count-sockets/#qu%C3%A9-hace-el-comando",
     
     "relUrl": "/docs/count-sockets/#qué-hace-el-comando"
-  },"137": {
+  },"138": {
     "doc": "Count sockets",
     "title": "Preparación",
     "content": "Antes de ejecutar el comando, asegúrese de que: . | Los circuitos eléctricos a analizar están seleccionados en el proyecto | Existe un modelo arquitectónico vinculado con habitaciones (generalmente con el marcador “AR01” en el nombre) | Los parámetros para registrar resultados están creados en el proyecto: “Sockets single”, “Sockets twin”, “ElemsDescr”, “LocationDescr” | . ",
     "url": "/es/docs/count-sockets/#preparaci%C3%B3n",
     
     "relUrl": "/docs/count-sockets/#preparación"
-  },"138": {
+  },"139": {
     "doc": "Count sockets",
     "title": "Uso",
     "content": ". | Seleccione los circuitos eléctricos en el modelo para los que necesita contar enchufes | Ejecute el comando Count Sockets | Espere la finalización — el comando mostrará una barra de progreso con información sobre el circuito actual que se está procesando | Verifique los resultados en las propiedades del circuito o cree una tabla con parámetros completados | . ",
     "url": "/es/docs/count-sockets/#uso",
     
     "relUrl": "/docs/count-sockets/#uso"
-  },"139": {
+  },"140": {
     "doc": "Count sockets",
     "title": "Resultados",
     "content": "El comando completa los siguientes parámetros en cada circuito eléctrico: . Parámetro “Sockets single” . Número de enchufes simples (número entero). Ejemplo: 5 . Parámetro “Sockets twin” . Número de enchufes dobles (número entero). Ejemplo: 3 . Parámetro “ElemsDescr” . Especificación detallada de todos los elementos en el circuito por tipos (texto multilínea). Formato: . 2: Family Name: Type Name 1: Family Name 2: Type Name 2 3: Family Name 3: Type Name 3 . Ejemplo: . 5: Socket Standard: Type A 3: Socket USB: Type B 2: Socket Twin: Type C . Parámetro “LocationDescr” . Información sobre la ubicación de elementos por habitaciones con códigos Sharjah (texto multilínea). Formato: . cantidad: código_habitación Nombre Habitación cantidad: código_habitación Nombre Habitación cantidad: None id: element_id element_id . Ejemplo: . 5: L01-Z02-EU03-F04-005 Office 3: L01-Z02-EU03-F04-006 Corridor 2: None id: 123456 789012 . Los elementos con registro “None” no cayeron en ninguna habitación — se indican sus IDs de elemento. ",
     "url": "/es/docs/count-sockets/#resultados",
     
     "relUrl": "/docs/count-sockets/#resultados"
-  },"140": {
+  },"141": {
     "doc": "Count sockets",
     "title": "Características",
     "content": "Detección de Enchufes Simples y Dobles . El comando clasifica automáticamente los enchufes por la presencia de palabras clave en el nombre de la familia o el nombre del tipo de elemento (no distingue mayúsculas): . | Enchufes dobles — contienen la palabra “twin” en el nombre | Enchufes simples — contienen la palabra “single” en el nombre | Los enchufes sin estas palabras no caen en ninguna categoría y no se cuentan en los parámetros “Sockets single” y “Sockets twin” | . Ejemplos de enchufes dobles: . | Familia “Socket Twin” | Tipo “Twin Type A” | Familia “Standard Twin Socket” | . Ejemplos de enchufes simples: . | Familia “Socket Single” | Tipo “Single Type A” | Familia “Standard Single Socket” | . Códigos de Habitación Sharjah . Se genera un código especial para cada habitación a partir de cinco componentes: . Formato: L-Z-EU-F-S . | L — Código de Nivel (Level Code) | Z — Código de Zona (Zone Code) | EU — Código de Usuario Final (End-User Code) | F — Código de Función (Function Code) | S — Número de Serie (Series Number) | . Estos códigos se toman de los parámetros de habitación en el modelo arquitectónico. Modelo Arquitectónico Vinculado . El comando busca habitaciones en modelos Revit vinculados con el marcador “AR01” en el nombre. Si tiene un marcador de modelo arquitectónico diferente, contacte al desarrollador para la configuración. Algoritmo de Detección de Habitaciones . Para una detección precisa de habitaciones, el comando verifica la ubicación del elemento en varios niveles de altura (desde +0.2m hasta -5m desde el punto de colocación del elemento). Esto permite la operación correcta con enchufes montados en pared y elementos en pisos. ",
     "url": "/es/docs/count-sockets/#caracter%C3%ADsticas",
     
     "relUrl": "/docs/count-sockets/#características"
-  },"141": {
+  },"142": {
     "doc": "Count sockets",
     "title": "Count sockets",
-    "content": "… Sync fire alarm Fire Alarm Devices MEC Count sockets Circuit description Sync power ELE … ",
+    "content": "… Sync fire alarm Security devices MEC Count sockets Circuit description Sync power ELE … ",
     "url": "/es/docs/count-sockets/",
     
     "relUrl": "/docs/count-sockets/"
-  },"142": {
+  },"143": {
     "doc": "Change level",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/change-level/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/change-level/#título-del-comando-en-español"
-  },"143": {
+  },"144": {
     "doc": "Change level",
     "title": "Change level",
     "content": "… History Worksets from Excel Change level Read parameters Edit in Excel General … ",
     "url": "/es/docs/change-level/",
     
     "relUrl": "/docs/change-level/"
-  },"144": {
+  },"145": {
     "doc": "Conduit circuit sync",
     "title": "Sincronizar Circuito de Conducto",
     "content": "Tabla de contenidos . | Datos Requeridos | Descripción del Algoritmo | Posibles Errores | Notificaciones y Estadísticas | Consejos de Uso | Changelog | . Esta herramienta está diseñada para distribuir los conductos eléctricos (Conduit) en segmentos y registrar sus rutas en los parámetros de los circuitos eléctricos para completar el journal de cables. ",
     "url": "/es/docs/conduit-circuit-sync/#sincronizar-circuito-de-conducto",
     
     "relUrl": "/docs/conduit-circuit-sync/#sincronizar-circuito-de-conducto"
-  },"145": {
+  },"146": {
     "doc": "Conduit circuit sync",
     "title": "Datos Requeridos",
     "content": "Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada segmento tenga un nombre de circuito en SRS_MEP_Circuit_Names y que exista un circuito con el mismo nombre. Se recomienda usar el comando compañero AssignConduitToCircuit para esto. ",
     "url": "/es/docs/conduit-circuit-sync/#datos-requeridos",
     
     "relUrl": "/docs/conduit-circuit-sync/#datos-requeridos"
-  },"146": {
+  },"147": {
     "doc": "Conduit circuit sync",
     "title": "Descripción del Algoritmo",
     "content": ". | Unificación de parámetros: Prepara los nombres de los equipos en el parámetro SRS_Schedule_Name concatenando SRS_Equipment_Type y SRS_Equipment_Number. El parámetro SRS_Location se utiliza tal cual de los elementos. | Búsqueda: Encuentra todos los conductos y circuitos con el parámetro SRS_MEP_Circuit_Names definido. | Identificación de secciones: Detecta grupos de conductos conectados entre sí (cadenas) por conexión física y por el valor compartido en SRS_MEP_Circuit_Names. | Agrupación por circuito: Asocia las cadenas de conductos con sus respectivos circuitos eléctricos. | División en segmentos: La ruta se divide en segmentos entre cajas de distribución (se permite un espacio de hasta 10 cm). El proceso se detiene con un error si hay más de 5 segmentos. | Asignación de nombres a segmentos: A cada segmento se le asigna un nombre único con el formato Ubicación-Cuadro/Carga-CC-TagtypeNúmero. Las reglas para formar el nombre de la carga son las siguientes: | . | Datos de entrada | Nombre resultante del Carga | Comentario | . | 18D-DS-SF01 | 18D-DS-SF01 | Un único nombre se mantiene igual. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Los nombres con la misma base se agrupan con xx al final. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Los nombres heterogéneos se listan separados por comas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | Si no hay nombre, se usa el ID del elemento. | . | Registro de datos: . | Actualiza SRS_MEP_Circuit_Names en todos los conductos del segmento. | Rellena SRS_MEP_Conduit_From, SRS_MEP_Conduit_To, y SRS_MEP_Conduit_Tag en los conductos. | Almacena los nombres de los segmentos en los parámetros SRS_MEP_Conduit_Segment_1 a SRS_MEP_Conduit_Segment_5 del circuito eléctrico. | . | Notificación: Confirma la operación e informa sobre distancias sospechosas (&gt;1m) entre segmentos para detectar posibles errores de asignación. | . ",
     "url": "/es/docs/conduit-circuit-sync/#descripci%C3%B3n-del-algoritmo",
     
     "relUrl": "/docs/conduit-circuit-sync/#descripción-del-algoritmo"
-  },"147": {
+  },"148": {
     "doc": "Conduit circuit sync",
     "title": "Posibles Errores",
     "content": ". | No se encontraron conductos: Si no hay conductos con el parámetro SRS_MEP_Circuit_Names definido, el comando fallará. Verifique que al menos un conducto por segmento tenga este parámetro asignado (use AssignConduitToCircuit). | No se encontraron circuitos eléctricos: Si no existen circuitos con nombres coincidentes en SRS_MEP_Circuit_Names, el comando fallará. Asegúrese de que los circuitos existan y tengan nombres correctos. | Demasiados segmentos: Si una ruta tiene más de 5 segmentos, el proceso se detiene con un error. Simplifique la ruta o divida el circuito. | Parámetros faltantes: Si algún parámetro requerido (como SRS_Schedule_Name en equipos) no existe o está vacío, puede causar errores. Los cambios se realizan en una transacción y pueden deshacerse con Ctrl+Z. | . ",
     "url": "/es/docs/conduit-circuit-sync/#posibles-errores",
     
     "relUrl": "/docs/conduit-circuit-sync/#posibles-errores"
-  },"148": {
+  },"149": {
     "doc": "Conduit circuit sync",
     "title": "Notificaciones y Estadísticas",
     "content": "Después de la ejecución, aparece una notificación con: . | Número de circuitos procesados. | Longitud mínima y máxima del cable (en metros). | Máxima separación entre segmentos (en metros) y ID del circuito. | . Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede indicar conexiones incorrectas. ",
     "url": "/es/docs/conduit-circuit-sync/#notificaciones-y-estad%C3%ADsticas",
     
     "relUrl": "/docs/conduit-circuit-sync/#notificaciones-y-estadísticas"
-  },"149": {
+  },"150": {
     "doc": "Conduit circuit sync",
     "title": "Consejos de Uso",
     "content": ". | Ejecute el comando en una vista de plano para mejores resultados. | Si los nombres de circuitos cambian, actualice manualmente SRS_MEP_Circuit_Names en los conductos. | La herramienta procesa solo conductos y circuitos con el parámetro definido; ignore otros elementos. | Para evitar errores, asegúrese de que SRS_Schedule_Name esté configurado en equipos eléctricos (se genera automáticamente concatenando SRS_Location, SRS_Equipment_Type y SRS_Equipment_Number). | . ",
     "url": "/es/docs/conduit-circuit-sync/#consejos-de-uso",
     
     "relUrl": "/docs/conduit-circuit-sync/#consejos-de-uso"
-  },"150": {
+  },"151": {
     "doc": "Conduit circuit sync",
     "title": "Changelog",
     "content": "2026-06-19 Se corrigió un error cuando faltaba SRS_Schedule_Name en el equipo o SRS_Location estaba vacío (ahora se usa ‘18D’ por defecto). Los nombres de parámetros se movieron a %AppData%\\Sener\\BimTools\\Settings.json. ",
     "url": "/es/docs/conduit-circuit-sync/#changelog",
     
     "relUrl": "/docs/conduit-circuit-sync/#changelog"
-  },"151": {
+  },"152": {
     "doc": "Conduit circuit sync",
     "title": "Conduit circuit sync",
     "content": "… Create sockets Assign circuit to conduits Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E ELE … ",
     "url": "/es/docs/conduit-circuit-sync/",
     
     "relUrl": "/docs/conduit-circuit-sync/"
-  },"152": {
+  },"153": {
     "doc": "Show CADs",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/show-cads/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/show-cads/#título-del-comando-en-español"
-  },"153": {
+  },"154": {
     "doc": "Show CADs",
     "title": "Show CADs",
     "content": "… Sync space params Print set Show CADs Upload to ACC Position check General … ",
     "url": "/es/docs/show-cads/",
     
     "relUrl": "/docs/show-cads/"
-  },"154": {
+  },"155": {
     "doc": "Create worksets from Excel",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/create-worksets-from-excel/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/create-worksets-from-excel/#título-del-comando-en-español"
-  },"155": {
+  },"156": {
     "doc": "Create worksets from Excel",
     "title": "Create worksets from Excel",
     "content": "… Purge History Worksets from Excel Change level Read parameters General … ",
     "url": "/es/docs/create-worksets-from-excel/",
     
     "relUrl": "/docs/create-worksets-from-excel/"
-  },"156": {
+  },"157": {
     "doc": "Track scheme",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/track-scheme/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/track-scheme/#título-del-comando-en-español"
-  },"157": {
+  },"158": {
     "doc": "Track scheme",
     "title": "Track scheme",
     "content": "… Sync equip to schematic ELE Convert to rebar Track scheme Cad to Revit Create openings Misc … ",
     "url": "/es/docs/track-scheme/",
     
     "relUrl": "/docs/track-scheme/"
-  },"158": {
+  },"159": {
     "doc": "Create hangers",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/create-hangers/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/create-hangers/#título-del-comando-en-español"
-  },"159": {
+  },"160": {
     "doc": "Create hangers",
     "title": "Create hangers",
     "content": "… P&amp;ID Linker Set ASHRAE code Create hangers Adjust hangers Create dampers Create along path MEC … ",
     "url": "/es/docs/create-hangers/",
     
     "relUrl": "/docs/create-hangers/"
-  },"160": {
+  },"161": {
+    "doc": "Create Security Devices",
+    "title": "Create Security Devices — Colocación de dispositivos de Incendio, Intrusión y CCTV",
+    "content": "Tabla de contenidos . | Qué hace el comando | Preparación | Uso | Reglas de colocación | Configuración | Algoritmos . | Detectores de techo | Sirena sobre la puerta | Pulsador en la puerta | Sensor volumétrico (Intrusión) | Videovigilancia (CCTV) | . | Salida | Limitaciones | . El comando coloca automáticamente dispositivos de alarma contra incendios, sistemas de intrusión y videovigilancia (CCTV) en espacios MEP seleccionados: detectores de techo en una cuadrícula, dispositivos de pared (sirena, pulsador, sensores de intrusión) y cámaras (CCTV) en puertas y puntos estratégicos. ",
+    "url": "/es/docs/create-security-devices/#create-security-devices--colocaci%C3%B3n-de-dispositivos-de-incendio-intrusi%C3%B3n-y-cctv",
+    
+    "relUrl": "/docs/create-security-devices/#create-security-devices--colocación-de-dispositivos-de-incendio-intrusión-y-cctv"
+  },"162": {
+    "doc": "Create Security Devices",
+    "title": "Qué hace el comando",
+    "content": ". | Determina el tipo de dispositivo por el nombre del espacio (ver la tabla de reglas) | Calcula una cuadrícula óptima en el techo usando un radio de cobertura de 6300 mm | Detecta la altura del techo automáticamente a partir de la geometría del modelo o utiliza un valor manual | Coloca una sirena sobre la puerta para espacios de tipo Control y Celdas | Coloca un pulsador, un sensor de intrusión y una cámara CCTV en cada puerta exterior | Coloca cámaras CCTV en las esquinas del edificio (basado en líneas seleccionadas) y en postes existentes | Omite dispositivos ya colocados por el comando (idempotencia) | Genera un informe de texto con resultados detallados por tipo de familia | . ",
+    "url": "/es/docs/create-security-devices/#qu%C3%A9-hace-el-comando",
+    
+    "relUrl": "/docs/create-security-devices/#qué-hace-el-comando"
+  },"163": {
+    "doc": "Create Security Devices",
+    "title": "Preparación",
+    "content": ". | Las familias de dispositivos (detectores, sirena, pulsador) deben estar cargadas en el proyecto | Muros, puertas y techos pueden estar en archivos vinculados — el comando soporta geometría vinculada | Los nombres de los espacios deben contener las palabras clave indicadas en la tabla de reglas | . ",
+    "url": "/es/docs/create-security-devices/#preparaci%C3%B3n",
+    
+    "relUrl": "/docs/create-security-devices/#preparación"
+  },"164": {
+    "doc": "Create Security Devices",
+    "title": "Uso",
+    "content": ". | Seleccione uno o más espacios MEP (o desmarque Selected spaces only para procesar todos los espacios) | Ejecute el comando — se abrirá el diálogo de configuración | Opcionalmente ajuste los nombres de familia/tipo, los parámetros de altura y los subproyectos (Worksets) | Pulse Run | . ",
+    "url": "/es/docs/create-security-devices/#uso",
+    
+    "relUrl": "/docs/create-security-devices/#uso"
+  },"165": {
+    "doc": "Create Security Devices",
+    "title": "Reglas de colocación",
+    "content": "El tipo de dispositivo se determina por una subcadena en el nombre del espacio (sin distinguir mayúsculas/minúsculas): . | Palabra clave en el nombre | Techo | Pared | . | rectificador | hidrogeno + termoelectrico | — | . | transformador | llamas | — | . | bater | optico + hidrogeno | — | . | control | optico + hidrogeno | sirena sobre la puerta | . | celdas | optico + termoelectrico | sirena sobre la puerta | . | inversor | — | cámara en el centro | . | prot civil | — | central + expansor + teclado + bloque CCTV (suelo) | . | cabinas de mt | — | teclado + cámara en el centro | . | otros | optico | — | . | cualquier con puerta exterior | — | pulsador + sensor de intrusión + CCTV | . ",
+    "url": "/es/docs/create-security-devices/#reglas-de-colocaci%C3%B3n",
+    
+    "relUrl": "/docs/create-security-devices/#reglas-de-colocación"
+  },"166": {
+    "doc": "Create Security Devices",
+    "title": "Configuración",
+    "content": "Selected spaces only — procesar solo los espacios seleccionados. Auto-detect ceiling height — la altura se obtiene lanzando un rayo hacia arriba desde cada punto de la cuadrícula (encuentra el techo o la cubierta más cercana, incluyendo archivos vinculados). Si está desactivado, la altura se toma del valor manual. Manual height (mm) — altura sobre el suelo del espacio usada en modo manual. Activo solo cuando Auto-detect está apagado. Family: type configuration — nombres de familia y tipo para cada dispositivo en formato FamilyName: TypeName. Defaults restablece valores por defecto. ",
+    "url": "/es/docs/create-security-devices/#configuraci%C3%B3n",
+    
+    "relUrl": "/docs/create-security-devices/#configuración"
+  },"167": {
+    "doc": "Create Security Devices",
+    "title": "Algoritmos",
+    "content": "Detectores de techo . Para cada espacio, el comando construye una cuadrícula rectangular mínima N×M de modo que la semi-diagonal de la celda no exceda 6300 mm. El paso de la cuadrícula se redondea hacia abajo a 100 mm y el resto se distribuye simétricamente desde los muros. Si varios tipos de detectores son necesarios en el mismo punto de la cuadrícula, se separan a lo largo del eje X con paso de 500 mm. La altura de cada punto se toma de la superficie de techo más cercana sobre él (intersección por rayo) o del valor manual. Los espacios de forma compleja (área &lt; 90% del rectángulo delimitador) se omiten y se listan en el informe. Sirena sobre la puerta . La sirena se coloca sobre el centro del hueco de la puerta a 2500 mm por encima de la base de la puerta. Pulsador en la puerta . Un pulsador se coloca en la pared junto a cada puerta exterior a 1400 mm de altura. El lado preferido es el de la manecilla; si no está disponible (puerta cercana o fin de muro), se usa el lado de las bisagras. La orientación mira hacia el interior del espacio. Sensor volumétrico (Intrusión) . Se coloca en cada puerta exterior a 2400 mm sobre el suelo. El algoritmo intenta encontrar la mejor posición de visualización para la entrada: . | Prioridad de 2 metros: el sensor se coloca en la misma pared a 2 m de distancia del borde de la puerta y se gira 45° hacia la pared. | Manejo de esquinas: si una esquina de la pared está a menos de 2 metros, el sensor se mueve a la pared adyacente (a 1 metro de la esquina) y se dirige perpendicular a ella. | Emparejamiento inteligente: para cada puerta en la habitación, el algoritmo busca el dispositivo similar existente más cercano. Si ya existe un sensor (incluso si fue movido manualmente por el usuario), no se realiza una segunda colocación para esa puerta. | . Videovigilancia (CCTV) . El comando soporta varios escenarios de colocación de CCTV: . | Sobre la puerta: En cada puerta exterior (200 mm sobre el hueco, 300 mm de desplazamiento desde la pared). | En el centro del espacio: Para los tipos Inversor y Cabinas de MT (altura determinada automática o manualmente). | En las esquinas del edificio: Si se seleccionan Detail Lines que representan los límites de los muros antes de ejecutar, se colocan cámaras en las esquinas externas (1 m de desplazamiento desde la esquina a lo largo de la bisectriz). | En mástiles/postes: El comando encuentra instancias de mástiles (familia Pole especificada en la interfaz) y coloca cámaras en ellos a 5 m de altura. | . ",
+    "url": "/es/docs/create-security-devices/#algoritmos",
+    
+    "relUrl": "/docs/create-security-devices/#algoritmos"
+  },"168": {
+    "doc": "Create Security Devices",
+    "title": "Salida",
+    "content": "Al finalizar, el comando muestra un informe: . | Recuento de dispositivos colocados por familia/tipo | Recuento de puntos omitidos (ya ocupados) con detalles por tipo (tipos de familia e IDs de elementos existentes) | Lista de espacios de forma compleja omitidos para colocación en techo | . ",
+    "url": "/es/docs/create-security-devices/#salida",
+    
+    "relUrl": "/docs/create-security-devices/#salida"
+  },"169": {
+    "doc": "Create Security Devices",
+    "title": "Limitaciones",
+    "content": ". | Los espacios de forma compleja no se procesan para colocación en techo — coloque dispositivos manualmente | La orientación de la familia asume que el frente de la instancia mira hacia -Y en la orientación base de la familia | . ",
+    "url": "/es/docs/create-security-devices/#limitaciones",
+    
+    "relUrl": "/docs/create-security-devices/#limitaciones"
+  },"170": {
+    "doc": "Create Security Devices",
+    "title": "Create Security Devices",
+    "content": "… Sync air flow Sync fire alarm Security devices MEC Count sockets Circuit description ELE … ",
+    "url": "/es/docs/create-security-devices/",
+    
+    "relUrl": "/docs/create-security-devices/"
+  },"171": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Transferir Datos de Iluminación a Espacios",
     "content": "Tabla de contenidos . | ¿Qué hace el comando? | Cómo usar | Notificaciones e Informes | Mapeo de Parámetros | . Esta herramienta transfiere los resultados del análisis de iluminación desde un elemento de Modelo Genérico al Espacio en el que se encuentra. ",
     "url": "/es/docs/transfer-lighting-data-to-space/#transferir-datos-de-iluminaci%C3%B3n-a-espacios",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#transferir-datos-de-iluminación-a-espacios"
-  },"161": {
+  },"172": {
     "doc": "Transfer Lighting Data To Space",
     "title": "¿Qué hace el comando?",
     "content": ". | Identifica el Espacio que contiene el Modelo Genérico seleccionado. | Copia los valores de los parámetros del elemento de origen al Espacio de destino. | Utiliza un mapeo configurable para hacer coincidir los parámetros de origen y destino. | Procesa múltiples elementos en una sola operación. | . ",
     "url": "/es/docs/transfer-lighting-data-to-space/#qu%C3%A9-hace-el-comando",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#qué-hace-el-comando"
-  },"162": {
+  },"173": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Cómo usar",
     "content": ". | Seleccionar Elementos: En su modelo de Revit, seleccione uno o más elementos de Modelo Genérico que contengan los resultados del cálculo de iluminación. Estos elementos suelen ser formas volumétricas utilizadas para el análisis en software como ElumTools. | Ejecutar el Comando: Vaya a la pestaña SNR y haga clic en uno de los botones: . | “Transfer Light Data N” - para el modo de iluminación normal (copia 5 parámetros: iluminación promedio, mínima, máxima y relaciones) | “Transfer Light Data E” - para el modo de iluminación de emergencia (copia 2 parámetros: iluminación promedio y mínima de emergencia) | . | Verificar los Resultados: La herramienta encontrará automáticamente el Espacio principal para cada elemento seleccionado y transferirá los valores de los parámetros según el mapeo configurado. | . ",
     "url": "/es/docs/transfer-lighting-data-to-space/#c%C3%B3mo-usar",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#cómo-usar"
-  },"163": {
+  },"174": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Notificaciones e Informes",
     "content": "Al finalizar el comando, aparecerá un cuadro de diálogo con un resumen de los resultados: . | El número de elementos procesados con éxito. | El número de elementos que se omitieron (por ejemplo, si no se pudo encontrar un espacio contenedor). | Advertencias si surgieron problemas durante el proceso (por ejemplo, un parámetro no se encontró o es de solo lectura). | . ",
     "url": "/es/docs/transfer-lighting-data-to-space/#notificaciones-e-informes",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#notificaciones-e-informes"
-  },"164": {
+  },"175": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Mapeo de Parámetros",
     "content": "El mapeo entre los parámetros del Modelo Genérico de origen y los parámetros del Espacio de destino es configurable por separado para cada modo. Esto le permite adaptar la herramienta a diferentes plantillas de proyecto o estándares de nomenclatura de parámetros. El archivo de configuración se encuentra en: %AppData%\\Sener\\BimTools\\Settings.json . Dentro de este archivo, busque la sección SNR.BimTools.TransferLightingDataToSpace.Settings. Ejemplo de Mapeo por Defecto: . { \"SNR.BimTools.TransferLightingDataToSpace.Settings\": { \"SpaceSearchVerticalOffset\": 1.0, \"NormalParameterMapping\": { \"General Use Illuminance Average\": \"Illum average\", \"General Use Illuminance Minimum\": \"Illum minimum\", \"General Use Illuminance Maximum\": \"Illum maximum\", \"General Use Illuminance Minimum To Average\": \"Illum minimum to average\", \"General Use Illuminance Minimum To Maximum\": \"Illum minimum to maximum\" }, \"EmergencyParameterMapping\": { \"Emergency Direct Illuminance Average\": \"Illum em average\", \"Emergency Direct Illuminance Minimum\": \"Illum em minimum\" } } } . Descripción de parámetros: . | SpaceSearchVerticalOffset - desplazamiento vertical (en pies) al buscar el espacio contenedor | NormalParameterMapping - mapeo de parámetros para el modo de iluminación normal | EmergencyParameterMapping - mapeo de parámetros para el modo de iluminación de emergencia | . Puede editar este archivo para agregar, eliminar o cambiar los pares “parámetro de origen”: “parámetro de destino” en las respectivas secciones de mapeo. ",
     "url": "/es/docs/transfer-lighting-data-to-space/#mapeo-de-par%C3%A1metros",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/#mapeo-de-parámetros"
-  },"165": {
+  },"176": {
     "doc": "Transfer Lighting Data To Space",
     "title": "Transfer Lighting Data To Space",
     "content": "… Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E Balance Panels Align Elevations ELE … ",
     "url": "/es/docs/transfer-lighting-data-to-space/",
     
     "relUrl": "/docs/transfer-lighting-data-to-space/"
-  },"166": {
+  },"177": {
     "doc": "Set project params",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/set-project-params/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/set-project-params/#título-del-comando-en-español"
-  },"167": {
+  },"178": {
     "doc": "Set project params",
     "title": "Set project params",
     "content": "… Edit in Excel Clone &amp;shift Project params Sync space params Print set General … ",
     "url": "/es/docs/set-project-params/",
     
     "relUrl": "/docs/set-project-params/"
-  },"168": {
+  },"179": {
     "doc": "Assign spaces to equipment",
     "title": "Assign spaces to equipment",
     "content": "Tabla de contenidos . | Breve descripción | Cómo funciona | Configuración del nombre del parámetro | Requisitos | Uso | . ",
     "url": "/es/docs/assign-spaces-to-equipment/#assign-spaces-to-equipment",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#assign-spaces-to-equipment"
-  },"169": {
+  },"180": {
     "doc": "Assign spaces to equipment",
     "title": "Breve descripción",
     "content": "La herramienta Assign spaces to equipment asigna automáticamente a los equipos mecánicos, accesorios de conducto y terminales de conducto la información del espacio MEP en el que se encuentran. Encuentra para cada elemento el espacio que lo contiene y escribe el nombre y el número de ese espacio en un parámetro del equipo. ",
     "url": "/es/docs/assign-spaces-to-equipment/#breve-descripci%C3%B3n",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#breve-descripción"
-  },"170": {
+  },"181": {
     "doc": "Assign spaces to equipment",
     "title": "Cómo funciona",
     "content": ". | Recopilación de elementos: La herramienta busca en el modelo todas las familias de las siguientes categorías: . | Equipos mecánicos | Accesorios de conducto | Terminales de conducto | Espacios MEP | . | Búsqueda y vinculación: Para cada elemento de las categorías monitorizadas, la herramienta determina su punto de inserción y busca el espacio MEP que contiene dicho punto. | Escritura de datos: Si se encuentra un espacio, la herramienta crea una cadena de texto con el formato ”&lt;Nombre del espacio&gt;-&lt;Número del espacio&gt;“ y escribe este valor en el parámetro del equipo (cuyo nombre se puede configurar, consulte la sección “Configuración del nombre del parámetro”). Por defecto, es SRS_MEP_Room_Space_Mark. Por ejemplo, si el espacio tiene el Nombre “Office” y el Número “101”, en el parámetro se escribirá el valor “Office-101”. | Informe: Al finalizar, la herramienta muestra un informe que indica: . | El número total de elementos encontrados. | El número de elementos cuyo parámetro fue actualizado. | El número de elementos cuyos datos ya estaban actualizados. | El número de elementos vinculados con éxito. | Una lista de errores y advertencias si no se pudo procesar algún elemento (por ejemplo, si un elemento no se encuentra en ningún espacio o si le falta el parámetro necesario). | . | . ",
     "url": "/es/docs/assign-spaces-to-equipment/#c%C3%B3mo-funciona",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#cómo-funciona"
-  },"171": {
+  },"182": {
     "doc": "Assign spaces to equipment",
     "title": "Configuración del nombre del parámetro",
     "content": "El nombre del parámetro donde se escribe la información del espacio es SRS_MEP_Room_Space_Mark por defecto. Puede cambiar este nombre editando el archivo de configuración del comando. | Localice el archivo de configuración: El archivo Settings.json se encuentra en la siguiente ruta: %APPDATA%\\Sener\\BimTools\\Settings.json . | Abra el archivo: Abra Settings.json con cualquier editor de texto (por ejemplo, Bloc de notas). | Cambie el valor: Dentro del archivo, busque la sección relacionada con el comando AssignSpacesToEquipment y cambie el valor del parámetro EquipmentSpaceParameter al nombre deseado. Ejemplo: . { \"SNR.BimTools.AssignSpacesToEquipment.Settings\": { \"EquipmentSpaceParameter\": \"Mi_Parametro_de_Espacio\" } } . Asegúrese de que el nuevo nombre del parámetro coincida exactamente con el nombre del parámetro en su proyecto de Revit. | Guarde el archivo: Guarde los cambios en Settings.json. El comando utilizará el nuevo nombre del parámetro la próxima vez que se ejecute, no es necesario reiniciar Revit. | . ",
     "url": "/es/docs/assign-spaces-to-equipment/#configuraci%C3%B3n-del-nombre-del-par%C3%A1metro",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#configuración-del-nombre-del-parámetro"
-  },"172": {
+  },"183": {
     "doc": "Assign spaces to equipment",
     "title": "Requisitos",
     "content": ". | Para un correcto funcionamiento, los elementos monitorizados deben tener un parámetro de texto con el nombre especificado en la configuración del comando (por defecto, es SRS_MEP_Room_Space_Mark). | El modelo debe contener Espacios MEP modelados correctamente. | . ",
     "url": "/es/docs/assign-spaces-to-equipment/#requisitos",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#requisitos"
-  },"173": {
+  },"184": {
     "doc": "Assign spaces to equipment",
     "title": "Uso",
     "content": ". | Vaya a la pestaña SENER. | En el panel de BIM Tools, haga clic en el botón “Assign spaces to equipment”. | Espere a que aparezca la ventana con el informe de la operación. | . La herramienta no requiere una selección previa de elementos y procesa todos los elementos compatibles en el proyecto. ",
     "url": "/es/docs/assign-spaces-to-equipment/#uso",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#uso"
-  },"174": {
+  },"185": {
     "doc": "Assign spaces to equipment",
     "title": "Assign spaces to equipment",
     "content": "… Create along path Tag on views Assign spaces to equip Sync air flow Sync fire alarm MEC … ",
     "url": "/es/docs/assign-spaces-to-equipment/",
     
     "relUrl": "/docs/assign-spaces-to-equipment/"
-  },"175": {
+  },"186": {
     "doc": "Sync power params",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/sync-power-params/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/sync-power-params/#título-del-comando-en-español"
-  },"176": {
+  },"187": {
     "doc": "Sync power params",
     "title": "Sync power params",
     "content": "… Count sockets Circuit description Sync power Create sockets Assign circuit to conduits ELE … ",
     "url": "/es/docs/sync-power-params/",
     
     "relUrl": "/docs/sync-power-params/"
-  },"177": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Create Fire Alarm Devices — Colocación automática de dispositivos de alarma contra incendios",
-    "content": "Tabla de contenidos . | Qué hace el comando | Preparación | Uso | Reglas de colocación | Configuración | Algoritmos . | Detectores de techo | Sirena sobre la puerta | Pulsador en la puerta | . | Salida | Limitaciones | . El comando coloca automáticamente dispositivos de alarma contra incendios en espacios MEP seleccionados: detectores de techo en una cuadrícula y dispositivos de pared (sirena, pulsador) en puertas. ",
-    "url": "/es/docs/create-fire-alarm-devices/#create-fire-alarm-devices--colocaci%C3%B3n-autom%C3%A1tica-de-dispositivos-de-alarma-contra-incendios",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#create-fire-alarm-devices--colocación-automática-de-dispositivos-de-alarma-contra-incendios"
-  },"178": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Qué hace el comando",
-    "content": ". | Determina el tipo de dispositivo por el nombre del espacio (ver la tabla de reglas) | Calcula una cuadrícula óptima en el techo usando un radio de cobertura de 6300 mm | Detecta la altura del techo automáticamente a partir de la geometría del modelo o utiliza un valor manual | Coloca una sirena sobre la puerta para espacios de tipo Control y Celdas | Coloca un pulsador en cada puerta exterior | Omite dispositivos ya colocados por el comando (idempotencia) | Genera un informe de texto con los resultados | . ",
-    "url": "/es/docs/create-fire-alarm-devices/#qu%C3%A9-hace-el-comando",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#qué-hace-el-comando"
-  },"179": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Preparación",
-    "content": ". | Las familias de dispositivos (detectores, sirena, pulsador) deben estar cargadas en el proyecto | Muros, puertas y techos pueden estar en archivos vinculados — el comando soporta geometría vinculada | Los nombres de los espacios deben contener las palabras clave indicadas en la tabla de reglas | . ",
-    "url": "/es/docs/create-fire-alarm-devices/#preparaci%C3%B3n",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#preparación"
-  },"180": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Uso",
-    "content": ". | Seleccione uno o más espacios MEP (o desmarque Selected spaces only para procesar todos los espacios) | Ejecute el comando — se abrirá el diálogo de configuración | Opcionalmente ajuste los nombres de familia/tipo y los parámetros de altura | Pulse Run | . ",
-    "url": "/es/docs/create-fire-alarm-devices/#uso",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#uso"
-  },"181": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Reglas de colocación",
-    "content": "El tipo de dispositivo se determina por una subcadena en el nombre del espacio (sin distinguir mayúsculas/minúsculas): . | Palabra clave en el nombre | Techo | Pared | . | rectificador | hidrogeno + termoelectrico | — | . | transformador | llamas | — | . | bater | optico + hidrogeno | — | . | control | optico + hidrogeno | sirena sobre la puerta | . | celdas | optico + termoelectrico | sirena sobre la puerta | . | otros | optico | — | . | cualquier con puerta exterior | — | pulsador | . ",
-    "url": "/es/docs/create-fire-alarm-devices/#reglas-de-colocaci%C3%B3n",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#reglas-de-colocación"
-  },"182": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Configuración",
-    "content": "Selected spaces only — procesar solo los espacios seleccionados. Auto-detect ceiling height — la altura se obtiene lanzando un rayo hacia arriba desde cada punto de la cuadrícula (encuentra el techo o la cubierta más cercana, incluyendo archivos vinculados). Si está desactivado, la altura se toma del valor manual. Manual height (mm) — altura sobre el suelo del espacio usada en modo manual. Family: type configuration — nombres de familia y tipo para cada dispositivo en formato FamilyName: TypeName. Defaults restablece valores por defecto. ",
-    "url": "/es/docs/create-fire-alarm-devices/#configuraci%C3%B3n",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#configuración"
-  },"183": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Algoritmos",
-    "content": "Detectores de techo . Para cada espacio, el comando construye una cuadrícula rectangular mínima N×M de modo que la semi-diagonal de la celda no exceda 6300 mm. El paso de la cuadrícula se redondea hacia abajo a 100 mm y el resto se distribuye simétricamente desde los muros. Si varios tipos de detectores son necesarios en el mismo punto de la cuadrícula, se separan a lo largo del eje X con paso de 500 mm. La altura de cada punto se toma de la superficie de techo más cercana sobre él (intersección por rayo) o del valor manual. Los espacios de forma compleja (área &lt; 90% del rectángulo delimitador) se omiten y se listan en el informe. Sirena sobre la puerta . La sirena se coloca sobre el centro del hueco de la puerta a 2500 mm por encima de la base de la puerta. Pulsador en la puerta . Un pulsador se coloca en la pared junto a cada puerta exterior a 1400 mm de altura. El lado preferido es el de las bisagras; si no hay espacio, se usa el lado de la manilla. La orientación mira hacia el interior del espacio. ",
-    "url": "/es/docs/create-fire-alarm-devices/#algoritmos",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#algoritmos"
-  },"184": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Salida",
-    "content": "Al finalizar, el comando muestra un informe: . | Recuento de dispositivos colocados por familia/tipo | Recuento de puntos omitidos (ya ocupados) | Lista de espacios de forma compleja omitidos para colocación en techo | . ",
-    "url": "/es/docs/create-fire-alarm-devices/#salida",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#salida"
-  },"185": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Limitaciones",
-    "content": ". | Los espacios de forma compleja no se procesan para colocación en techo — coloque dispositivos manualmente | La orientación de la familia asume que el frente de la instancia mira hacia -Y en la orientación base de la familia | . ",
-    "url": "/es/docs/create-fire-alarm-devices/#limitaciones",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/#limitaciones"
-  },"186": {
-    "doc": "Create Fire Alarm Devices",
-    "title": "Create Fire Alarm Devices",
-    "content": "… Sync air flow Sync fire alarm Fire Alarm Devices MEC Count sockets Circuit description ELE … ",
-    "url": "/es/docs/create-fire-alarm-devices/",
-    
-    "relUrl": "/docs/create-fire-alarm-devices/"
-  },"187": {
+  },"188": {
     "doc": "Assign circuit to conduits",
     "title": "Asignar Circuito a Conductos",
     "content": "Tabla de contenidos . | Datos Requeridos | Instrucciones de Uso | Changelog | . Esta herramienta está diseñada para agregar información del circuito a las propiedades de los conductos eléctricos (Conduit). El usuario selecciona un circuito y los conductos correspondientes, y el algoritmo actualiza automáticamente sus parámetros, agregando la información del circuito en el parámetro SRS_MEP_Circuit_Names. Antes de esto, si el nombre del circuito está vacío, el algoritmo lo genera automáticamente a partir de los valores del parámetro SRS_Schedule_Name de la carga y el cuadro eléctrico. Esta herramienta se utiliza para la posterior ejecución de SyncConduitCircuit. ",
     "url": "/es/docs/assign-circuit-to-conduits/#asignar-circuito-a-conductos",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#asignar-circuito-a-conductos"
-  },"188": {
+  },"189": {
     "doc": "Assign circuit to conduits",
     "title": "Datos Requeridos",
     "content": "Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y las cajas de distribución intermedias tengan nombres en el parámetro SRS_Schedule_Name. De lo contrario, se utilizarán sus identificadores. ",
     "url": "/es/docs/assign-circuit-to-conduits/#datos-requeridos",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#datos-requeridos"
-  },"189": {
+  },"190": {
     "doc": "Assign circuit to conduits",
     "title": "Instrucciones de Uso",
-    "content": ". | Seleccionar los elementos: . | Seleccione una familia de carga asociada a un circuito. | Si la carga pertenece a varios circuitos, seleccione el circuito deseado usando la tecla Tab. | Seleccione uno o varios conductos eléctricos (Conduit). | . | Ejecutar la herramienta: . | Al iniciar, el algoritmo verificará automáticamente si la selección es válida. | Si se seleccionan varios circuitos, aparecerá un mensaje de error. Si no se seleccionan conductos, se activará el modo auxiliar: el complemento identificará los conductos pertenecientes al circuito y la ejecución se detendrá. | . | Asignación automática del nombre del circuito: . | Si el circuito ya tiene un nombre, se utilizará dicho nombre. | Si el nombre está vacío, se generará automáticamente con base en los parámetros SRS_Schedule_Name de la carga y el cuadro eléctrico, siguiendo el formato: 18D-[Cuadro]/[Carga]-C-SistemaNúmero. | La siguiente tabla detalla cómo se agrupan los nombres de las cargas para generar el nombre del segmento: | . | . | Datos de entrada | Nombre resultante del Carga | Comentario | . | 18D-DS-SF01 | 18D-DS-SF01 | Un único nombre se mantiene igual. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Los nombres con la misma base se agrupan con xx al final. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Los nombres heterogéneos se listan separados por comas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | Si no hay nombre, se usa el ID del elemento. | . | Agregar la información a los conductos: . | En todos los conductos seleccionados, se actualizará el parámetro SRS_MEP_Circuit_Names, agregando el nombre del circuito en orden alfabético sin eliminar datos previos. | . | Notificación: . | Al finalizar, aparecerá una notificación confirmando la operación e indicando cuántos circuitos diferentes están ahora asociados a cada conducto. | . | . ",
+    "content": ". | Seleccionar los elementos: . | Seleccione una familia de carga asociada a un circuito. | Si la carga pertenece a varios circuitos, seleccione el circuito deseado usando la tecla Tab. | Seleccione uno o varios conductos eléctricos (Conduit). | . | Ejecutar la herramienta: . | Al iniciar, el algoritmo verificará automáticamente si la selección es válida. | Si se seleccionan varios circuitos, aparecerá un mensaje de error. Si no se seleccionan conductos, se activará el modo auxiliar: el complemento identificará los conductos pertenecientes al circuito y la ejecución se detendrá. | . | Asignación automática del nombre del circuito: . | El nombre del circuito se recalcula automáticamente con base en los parámetros SRS_Location y SRS_Schedule_Name de la carga y el cuadro eléctrico, siguiendo el formato: [Ubicación]-[Cuadro]/[Carga]-C-SistemaNúmero. | La siguiente tabla detalla cómo se agrupan los nombres de las cargas para generar el nombre del segmento: | . | . | Datos de entrada | Nombre resultante del Carga | Comentario | . | 18D-DS-SF01 | 18D-DS-SF01 | Un único nombre se mantiene igual. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Los nombres con la misma base se agrupan con xx al final. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Los nombres heterogéneos se listan separados por comas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | Si no hay nombre, se usa el ID del elemento. | . | Agregar la información a los conductos: . | En todos los conductos seleccionados, se actualizará el parámetro SRS_MEP_Circuit_Names, agregando el nombre del circuito en orden alfabético sin eliminar datos previos. | . | Notificación: . | Al finalizar, aparecerá una notificación confirmando la operación e indicando cuántos circuitos diferentes están ahora asociados a cada conducto. | . | . ",
     "url": "/es/docs/assign-circuit-to-conduits/#instrucciones-de-uso",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#instrucciones-de-uso"
-  },"190": {
+  },"191": {
     "doc": "Assign circuit to conduits",
     "title": "Changelog",
     "content": "2026-06-19 Se corrigió la detección de circuitos para elementos que son paneles intermedios. Los nombres de parámetros se movieron a la sección SyncConduitCircuit en %AppData%\\Sener\\BimTools\\Settings.json. ",
     "url": "/es/docs/assign-circuit-to-conduits/#changelog",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#changelog"
-  },"191": {
+  },"192": {
     "doc": "Assign circuit to conduits",
     "title": "Assign circuit to conduits",
     "content": "… Sync power Create sockets Assign circuit to conduits Conduit to circuit sync Line to wires ELE … ",
