@@ -334,7 +334,7 @@ Light Data E</span>
   <li><strong>Identificación de secciones:</strong> Detecta grupos de conductos conectados entre sí (cadenas) por conexión física y por el valor compartido en <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code>.</li>
   <li><strong>Agrupación por circuito:</strong> Asocia las cadenas de conductos con sus respectivos circuitos eléctricos.</li>
   <li><strong>División en segmentos:</strong> La ruta se divide en segmentos entre cajas de distribución (se permite un espacio de hasta 10 cm). El proceso se detiene con un error si hay más de 5 segmentos.</li>
-  <li><strong>Asignación de nombres a segmentos:</strong> A cada segmento se le asigna un nombre único con el formato <code class="language-plaintext highlighter-rouge">Ubicación-Cuadro/Carga-CC-TagtypeNúmero</code>. Las reglas para formar el nombre de la carga son las siguientes:</li>
+  <li><strong>Asignación de nombres a segmentos:</strong> A cada segmento se le asigna un nombre basado en las ubicaciones del cuadro y la carga. Si las ubicaciones son diferentes, se especifican ambas (<code class="language-plaintext highlighter-rouge">Loc1-Cuadro/Loc2-Carga-Tag</code>); si son iguales, el prefijo se escribe una sola vez. Se ha eliminado la abreviatura “CC” de las etiquetas para mayor brevedad. Las reglas para formar el nombre de la carga son las siguientes:</li>
 </ol>
 
 <div class="table-wrapper"><table>
@@ -374,6 +374,7 @@ Light Data E</span>
     <ul>
       <li>Actualiza <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> en todos los conductos del segmento.</li>
       <li>Rellena <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_From</code>, <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_To</code>, y <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Tag</code> en los conductos.</li>
+      <li>La longitud del cable se registra en el parámetro <code class="language-plaintext highlighter-rouge">SRS_MEP_Cable_Length</code>, incluyendo una reserva de seguridad (+10% para líneas de hasta 100 m y +5% para líneas de más de 100 m), <strong>redondeada al metro entero superior</strong>.</li>
       <li>Almacena los nombres de los segmentos en los parámetros <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_1</code> a <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_5</code> del circuito eléctrico.</li>
     </ul>
   </li>
@@ -436,6 +437,14 @@ Light Data E</span>
   
 </h2>
     
+<p>2026-07-09</p>
+<ol>
+  <li>Refinado el nombre de los segmentos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag).</li>
+  <li>Se eliminó la abreviatura “CC” de las etiquetas de conducto (<code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Tag</code>).</li>
+  <li>Se implementó el redondeo hacia arriba de la longitud del cable calculada (<code class="language-plaintext highlighter-rouge">SRS_MEP_Cable_Length</code>) al metro más cercano (<code class="language-plaintext highlighter-rouge">Math.Ceiling</code>), manteniendo la precisión decimal en los informes de usuario para el control de huecos.</li>
+  <li>Se implementó la selección automática del prefijo de ubicación (p. ej., 16D, 18D) basada en el parámetro <code class="language-plaintext highlighter-rouge">Functional_Breakdown_Code</code>.</li>
+</ol>
+
 <p>2026-06-19 Se corrigió un error cuando faltaba <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> en el equipo o <code class="language-plaintext highlighter-rouge">SRS_Location</code> estaba vacío (ahora se usa ‘18D’ por defecto). Los nombres de parámetros se movieron a <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code>.</p>
 
           

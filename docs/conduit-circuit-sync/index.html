@@ -335,7 +335,7 @@ Light Data E</span>
   <li><strong>Grouping by Circuit:</strong> Associates conduit chains with their respective electrical circuits.</li>
   <li><strong>Direction Determination:</strong> Sorts the conduits in the path from the load to the electrical panel.</li>
   <li><strong>Segment Division:</strong> The path is divided into segments between distribution boxes (a gap of up to 10 cm is allowed). The process stops with an error if there are more than 5 segments.</li>
-  <li><strong>Segment Naming:</strong> Each segment is assigned a unique name with the format <code class="language-plaintext highlighter-rouge">Location-Panel/Load-CC-TagTypeNumber</code>. The rules for forming the load name are as follows:</li>
+  <li><strong>Segment Naming:</strong> Each segment is assigned a name based on the panel and load locations. If the locations are different, both are specified (<code class="language-plaintext highlighter-rouge">Loc1-From/Loc2-To-Tag</code>); if they are the same, the prefix is written only once. The “CC” abbreviation has been removed from tags for brevity. The rules for forming the load name are as follows:</li>
 </ol>
 
 <div class="table-wrapper"><table>
@@ -375,6 +375,7 @@ Light Data E</span>
     <ul>
       <li>Updates <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> in all conduits of the segment.</li>
       <li>Fills in <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_From</code>, <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_To</code>, and <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Tag</code> in the conduits.</li>
+      <li>The cable length is recorded in the <code class="language-plaintext highlighter-rouge">SRS_MEP_Cable_Length</code> parameter, including a safety reserve (+10% for lines up to 100 m and +5% for lines over 100 m), <strong>rounded up to the nearest meter</strong>.</li>
       <li>Stores segment names in the electrical circuit’s <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_1</code> to <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_5</code> parameters.</li>
     </ul>
   </li>
@@ -437,6 +438,14 @@ Light Data E</span>
   
 </h2>
     
+<p>2026-07-09</p>
+<ol>
+  <li>Segment naming refined: if panel and load locations differ, both are specified (Loc1-From/Loc2-To-Tag); if they match, only one prefix is used (Loc-From/To-Tag).</li>
+  <li>Removed “CC” abbreviation from conduit tags (<code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Tag</code>).</li>
+  <li>Implemented upward rounding of calculated cable length (<code class="language-plaintext highlighter-rouge">SRS_MEP_Cable_Length</code>) to the nearest meter (<code class="language-plaintext highlighter-rouge">Math.Ceiling</code>), while maintaining decimal precision in user reports for gap monitoring.</li>
+  <li>Implemented automatic location prefix selection (e.g., 16D, 18D) based on the <code class="language-plaintext highlighter-rouge">Functional_Breakdown_Code</code> parameter.</li>
+</ol>
+
 <p>2026-06-19 Fixed error when <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> was missing on equipment or <code class="language-plaintext highlighter-rouge">SRS_Location</code> was empty (now defaults to ‘18D’). Parameter names moved to <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code>.</p>
 
           
