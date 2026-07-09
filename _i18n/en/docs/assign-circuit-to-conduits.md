@@ -16,7 +16,7 @@ Before this, if the circuit name is empty, the algorithm generates it automatica
 
 ## Required Data
 
-Before running the command, ensure that the load, electrical panel, and intermediate distribution boxes have names in the `SRS_Schedule_Name` parameter.
+Before running the command, ensure that the load, electrical panel, and intermediate distribution boxes have names in the `SRS_Schedule_Name` parameter. Otherwise, their IDs will be used.
 
 ## Instructions for Use
 
@@ -30,7 +30,8 @@ Before running the command, ensure that the load, electrical panel, and intermed
     -   An error message will appear if multiple circuits are selected. If no conduits are selected, an **auxiliary mode** is activated: the plugin will identify the conduits belonging to the circuit, and the execution will stop.
 
 3.  **Automatic Circuit Name Assignment:**
-    -   The circuit name is automatically recalculated based on the `SRS_Location` and `SRS_Schedule_Name` parameters of the load and panel, following the format: `[Location]-[Panel]/[Load]-C-SystemNumber`.
+    -   The circuit name is automatically recalculated based on the locations and `SRS_Schedule_Name` parameters of the load and panel. If panel and load locations differ, both are specified (`Loc1-From/Loc2-To-Tag`); if they match, only one prefix is used.
+    -   The default location prefix is automatically determined based on the `Functional_Breakdown_Code` project parameter mapping in settings.
     -   The following table details how load names are grouped to generate the segment name:
 
 | Input Data | Resulting Load Name | Comment |
@@ -52,5 +53,6 @@ Before running the command, ensure that the load, electrical panel, and intermed
 
 
 ## Changelog
+2026-07-09 Implemented circuit name generation considering two locations (from/to) when the panel and load are in different zones. Added automatic detection of the default location prefix (16D...20D) based on the `Functional_Breakdown_Code` project parameter.
 2026-06-19 Fixed circuit detection for elements that are intermediate panels. Parameter names moved to the `SyncConduitCircuit` section in `%AppData%\Sener\BimTools\Settings.json`.
 

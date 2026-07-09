@@ -30,7 +30,7 @@ Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y
     -   Si se seleccionan varios circuitos, aparecerá un mensaje de error. Si no se seleccionan conductos, se activará el **modo auxiliar**: el complemento identificará los conductos pertenecientes al circuito y la ejecución se detendrá.
 
 3.  **Asignación automática del nombre del circuito:**
-    -   El nombre del circuito se recalcula automáticamente con base en los parámetros `SRS_Location` y `SRS_Schedule_Name` de la carga y el cuadro eléctrico, siguiendo el formato: `[Ubicación]-[Cuadro]/[Carga]-C-SistemaNúmero`.
+    -   El nombre del circuito se recalcula automáticamente con base en las ubicaciones y los parámetros `SRS_Schedule_Name` de la carga y el cuadro eléctrico. Si las ubicaciones del cuadro y la carga difieren, se especifican ambas (`Loc1-Cuadro/Loc2-Carga-Tag`); si son iguales, el prefijo se escribe una sola vez.
     -   La siguiente tabla detalla cómo se agrupan los nombres de las cargas para generar el nombre del segmento:
 
 | Datos de entrada | Nombre resultante del Carga | Comentario |
@@ -52,5 +52,9 @@ Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y
 
 
 ## Changelog
+2026-07-09
+1. Refinado el nombre de los circuitos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag).
+2. Se implementó la selección automática del prefijo de ubicación basada en el mapeo `Functional_Breakdown_Code` en la configuración.
+
 2026-06-19 Se corrigió la detección de circuitos para elementos que son paneles intermedios. Los nombres de parámetros se movieron a la sección `SyncConduitCircuit` en `%AppData%\Sener\BimTools\Settings.json`.
 

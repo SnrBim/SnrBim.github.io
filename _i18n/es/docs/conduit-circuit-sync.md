@@ -23,7 +23,7 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
 3.  **Identificación de secciones:** Detecta grupos de conductos conectados entre sí (cadenas) por conexión física y por el valor compartido en `SRS_MEP_Circuit_Names`.
 4.  **Agrupación por circuito:** Asocia las cadenas de conductos con sus respectivos circuitos eléctricos.
 6.  **División en segmentos:** La ruta se divide en segmentos entre cajas de distribución (se permite un espacio de hasta 10 cm). El proceso se detiene con un error si hay más de 5 segmentos.
-7.  **Asignación de nombres a segmentos:** A cada segmento se le asigna un nombre único con el formato `Ubicación-Cuadro/Carga-CC-TagtypeNúmero`. Las reglas para formar el nombre de la carga son las siguientes:
+7.  **Asignación de nombres a segmentos:** A cada segmento se le asigna un nombre basado en las ubicaciones del cuadro y la carga. Si las ubicaciones son diferentes, se especifican ambas (`Loc1-Cuadro/Loc2-Carga-Tag`); si son iguales, el prefijo se escribe una sola vez. Se ha eliminado la abreviatura "CC" de las etiquetas para mayor brevedad. Las reglas para formar el nombre de la carga son las siguientes:
 
 | Datos de entrada | Nombre resultante del Carga | Comentario |
 | :--- | :--- | :--- |
@@ -35,6 +35,7 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
 8.  **Registro de datos:**
     -   Actualiza `SRS_MEP_Circuit_Names` en todos los conductos del segmento.
     -   Rellena `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, y `SRS_MEP_Conduit_Tag` en los conductos.
+    -   La longitud del cable se registra en el parámetro `SRS_MEP_Cable_Length`, incluyendo una reserva de seguridad (+10% para líneas de hasta 100 m y +5% para líneas de más de 100 m), **redondeada al metro entero superior**.
     -   Almacena los nombres de los segmentos en los parámetros `SRS_MEP_Conduit_Segment_1` a `SRS_MEP_Conduit_Segment_5` del circuito eléctrico.
 9.  **Notificación:** Confirma la operación e informa sobre distancias sospechosas (>1m) entre segmentos para detectar posibles errores de asignación.
 
@@ -65,5 +66,11 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 
 
 ## Changelog
+2026-07-09
+1. Refinado el nombre de los segmentos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag).
+2. Se eliminó la abreviatura "CC" de las etiquetas de conducto (`SRS_MEP_Conduit_Tag`).
+3. Se implementó el redondeo hacia arriba de la longitud del cable calculada (`SRS_MEP_Cable_Length`) al metro más cercano (`Math.Ceiling`), manteniendo la precisión decimal en los informes de usuario para el control de huecos.
+4. Se implementó la selección automática del prefijo de ubicación (p. ej., 16D, 18D) basada en el parámetro `Functional_Breakdown_Code`.
+
 2026-06-19 Se corrigió un error cuando faltaba `SRS_Schedule_Name` en el equipo o `SRS_Location` estaba vacío (ahora se usa '18D' por defecto). Los nombres de parámetros se movieron a `%AppData%\Sener\BimTools\Settings.json`.
 

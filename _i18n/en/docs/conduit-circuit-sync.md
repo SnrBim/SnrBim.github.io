@@ -24,7 +24,7 @@ Before running the command, ensure that at least one conduit in each segment has
 4.  **Grouping by Circuit:** Associates conduit chains with their respective electrical circuits.
 5.  **Direction Determination:** Sorts the conduits in the path from the load to the electrical panel.
 6.  **Segment Division:** The path is divided into segments between distribution boxes (a gap of up to 10 cm is allowed). The process stops with an error if there are more than 5 segments.
-7.  **Segment Naming:** Each segment is assigned a unique name with the format `Location-Panel/Load-CC-TagTypeNumber`. The rules for forming the load name are as follows:
+7.  **Segment Naming:** Each segment is assigned a name based on the panel and load locations. If the locations are different, both are specified (`Loc1-From/Loc2-To-Tag`); if they are the same, the prefix is written only once. The "CC" abbreviation has been removed from tags for brevity. The rules for forming the load name are as follows:
 
 | Input Data | Resulting Load Name | Comment |
 | :--- | :--- | :--- |
@@ -36,6 +36,7 @@ Before running the command, ensure that at least one conduit in each segment has
 8.  **Data Recording:**
     -   Updates `SRS_MEP_Circuit_Names` in all conduits of the segment.
     -   Fills in `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, and `SRS_MEP_Conduit_Tag` in the conduits.
+    -   The cable length is recorded in the `SRS_MEP_Cable_Length` parameter, including a safety reserve (+10% for lines up to 100 m and +5% for lines over 100 m), **rounded up to the nearest meter**.
     -   Stores segment names in the electrical circuit's `SRS_MEP_Conduit_Segment_1` to `SRS_MEP_Conduit_Segment_5` parameters.
 9.  **Notification:** Confirms the operation and reports suspicious distances (>1m) between segments to detect potential assignment errors.
 
@@ -66,5 +67,11 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 
 
 ## Changelog
+2026-07-09
+1. Segment naming refined: if panel and load locations differ, both are specified (Loc1-From/Loc2-To-Tag); if they match, only one prefix is used (Loc-From/To-Tag).
+2. Removed "CC" abbreviation from conduit tags (`SRS_MEP_Conduit_Tag`).
+3. Implemented upward rounding of calculated cable length (`SRS_MEP_Cable_Length`) to the nearest meter (`Math.Ceiling`), while maintaining decimal precision in user reports for gap monitoring.
+4. Implemented automatic location prefix selection (e.g., 16D, 18D) based on the `Functional_Breakdown_Code` parameter.
+
 2026-06-19 Fixed error when `SRS_Schedule_Name` was missing on equipment or `SRS_Location` was empty (now defaults to '18D'). Parameter names moved to `%AppData%\Sener\BimTools\Settings.json`.
 
