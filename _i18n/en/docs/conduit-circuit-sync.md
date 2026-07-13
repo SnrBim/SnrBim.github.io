@@ -65,8 +65,27 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 
 ![image](https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6)
 
+## Processing Options
+
+- **Only selected conduits**: When enabled, the algorithm processes only those conduits you selected in Revit before launching. This is useful for precise synchronization of specific circuits.
+- **Show result in specialized 3D view**: Creates or updates a special 3D view named `Conduit Review <user>` for a quick check of the result.
+    - **Isolation and Section Box**: The tool automatically adjusts visibility and crops the view (Section Box) to the boundaries of the selected area.
+    - **Clean View**: Helper elements (center lines, linked files) are hidden.
+
+## Interface
+
+- **Show this dialog (Shift/Ctrl to invert)**: Allows you to disable this window for instant tool launch with the last saved settings.
+- **Inversion (XOR)**: If you want to bring up the window one time when the setting is off (or vice versa), hold **Shift** or **Ctrl** while clicking the button in Revit.
+
+![UI](image.png)
 
 ## Changelog
+
+2026-07-13
+1. **Diagnostic 3D View**: Automatic view creation for review with path isolation, hiding of center lines, and automatic section box.
+2. **Selection Mode**: Added support for processing only manually selected conduits.
+3. **Silent Launch**: Instant tool launch implemented with Shift/Ctrl hotkey support to call settings.
+
 2026-07-09
 1. Segment naming refined: if panel and load locations differ, both are specified (Loc1-From/Loc2-To-Tag); if they match, only one prefix is used (Loc-From/To-Tag).
 2. Removed "CC" abbreviation from conduit tags (`SRS_MEP_Conduit_Tag`).

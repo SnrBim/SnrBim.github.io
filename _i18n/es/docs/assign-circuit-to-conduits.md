@@ -50,8 +50,31 @@ Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y
 
 ![image](https://github.com/user-attachments/assets/abfc75f0-f174-4e89-8dc2-eb8db904fda4)
 
+## Modos Especiales
 
-## Changelog
+### Modo Simple (Simple Mode)
+Si la opción **"Overwrite existing circuits"** está activada, la herramienta borra completamente el contenido anterior del parámetro `SRS_MEP_Circuit_Names` antes de registrar el nuevo circuito. Esto es útil si cometió un error durante el trazado y desea "limpiar" el conducto.
+> La herramienta mostrará una advertencia si se borran otros nombres de circuitos en el proceso.
+
+### Sincronización Automática (Run Sync)
+Si la opción **"Then run Sync for selected & show 3D View"** está activada, el plugin iniciará la herramienta de sincronización inmediatamente después de asignar el circuito.
+
+### Modo de Inspección de Ruta
+Si selecciona un circuito (o cuadro/carga) pero **no selecciona ningún conducto**, el plugin encontrará y resaltará automáticamente todos los conductos ya vinculados a ese circuito.
+> En combinación con la opción **"Then run Sync for selected & show 3D View"**, esto permite abrir inmediatamente una vista 3D con la ruta actual para su verificación visual.
+
+### Modo Silencioso (Silent Mode)
+Mediante la casilla **Show UI** puede desactivar esta ventana. La herramienta se iniciará instantáneamente con los últimos ajustes guardados.
+- Para invocar temporalmente la ventana cuando está desactivada, mantenga presionado **Shift** o **Ctrl** durante el inicio.
+
+![UI](image.png)
+
+## Historial de Cambios
+
+2026-07-13
+1. Silent Mode: Soporte para inicio instantáneo con modificadores Shift/Ctrl.
+2. Simple Mode: Se añadió la opción para sobrescribir circuitos existentes en el conducto.
+
 2026-07-09
 1. Refinado el nombre de los circuitos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag).
 2. Se implementó la selección automática del prefijo de ubicación basada en el mapeo `Functional_Breakdown_Code` en la configuración.

@@ -64,8 +64,27 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 
 ![image](https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6)
 
+## Opciones de Procesamiento (Processing Options)
 
-## Changelog
+- **Only selected conduits**: Al activarse, el algoritmo procesa solo los conductos que haya seleccionado en Revit antes de iniciar. Útil para sincronizaciones puntuales de circuitos específicos.
+- **Show result in specialized 3D view**: Crea o actualiza una vista 3D especial `Conduit Review <usuario>` para una comprobación rápida del resultado.
+    - **Aislamiento y Caja de Sección**: La herramienta ajusta automáticamente la visibilidad y recorta la vista (Section Box) a los límites del área seleccionada.
+    - **Vista Limpia**: Se ocultan elementos auxiliares (líneas de eje, vínculos).
+
+## Interfaz (Interface)
+
+- **Show this dialog (Shift/Ctrl to invert)**: Permite desactivar esta ventana para un inicio instantáneo con la última configuración guardada.
+- **Inversión (XOR)**: Si desea abrir la ventana puntualmente cuando la opción está desactivada (o viceversa), mantenga presionada la tecla **Shift** o **Ctrl** al hacer clic en el botón en Revit.
+
+![UI](image.png)
+
+## Historial de Cambios
+
+2026-07-13
+1. **Vista 3D de Diagnóstico**: Creación automática de vista para revisión con aislamiento de ruta, ocultación de ejes y recorte automático.
+2. **Modo de selección (Selection Mode)**: Soporte para procesar solo conductos seleccionados manualmente.
+3. **Inicio Silencioso**: Implementación de inicio instantáneo con soporte para Shift/Ctrl para invocar los ajustes.
+
 2026-07-09
 1. Refinado el nombre de los segmentos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag).
 2. Se eliminó la abreviatura "CC" de las etiquetas de conducto (`SRS_MEP_Conduit_Tag`).

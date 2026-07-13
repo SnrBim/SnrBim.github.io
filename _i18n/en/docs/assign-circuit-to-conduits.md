@@ -51,8 +51,31 @@ Before running the command, ensure that the load, electrical panel, and intermed
 
 ![image](https://github.com/user-attachments/assets/abfc75f0-f174-4e89-8dc2-eb8db904fda4)
 
+## Special Modes
+
+### Simple Mode
+If the **"Overwrite existing circuits"** option is enabled, the tool completely clears the previous content of the `SRS_MEP_Circuit_Names` parameter before writing the new circuit. This is useful if you made a mistake during routing and want to reset the conduit.
+> The tool will display a warning if other circuit names are erased during the process.
+
+### Automatic Synchronization (Run Sync)
+If the **"Then run Sync for selected & show 3D View"** option is enabled, the plugin will launch the synchronization tool immediately after assigning the circuit.
+
+### Route Inspection Mode
+If you select a circuit (or panel/load) but do **not select any conduits**, the plugin will automatically find and highlight all conduits already linked to that circuit.
+> When combined with the **"Then run Sync for selected & show 3D View"** option, this allows you to immediately open a 3D view with the current circuit path for visual verification.
+
+### Silent Mode
+Using the **"Show UI"** checkbox, you can disable this window. The tool will then launch instantly with the last saved settings.
+- To temporarily bring up the window when checked off, hold **Shift** or **Ctrl** during launch.
+
+![UI](image.png)
 
 ## Changelog
+
+2026-07-13
+1. Silent Mode: Support for instant launch with Shift/Ctrl modifiers.
+2. Simple Mode: Added option to overwrite existing circuits in the conduit.
+
 2026-07-09 Implemented circuit name generation considering two locations (from/to) when the panel and load are in different zones. Added automatic detection of the default location prefix (16D...20D) based on the `Functional_Breakdown_Code` project parameter.
 2026-06-19 Fixed circuit detection for elements that are intermediate panels. Parameter names moved to the `SyncConduitCircuit` section in `%AppData%\Sener\BimTools\Settings.json`.
 
