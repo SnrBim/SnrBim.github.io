@@ -298,6 +298,13 @@ wires</span>
 <ol id="markdown-toc">
   <li><a href="#required-data" id="markdown-toc-required-data">Required Data</a></li>
   <li><a href="#instructions-for-use" id="markdown-toc-instructions-for-use">Instructions for Use</a></li>
+  <li><a href="#special-modes" id="markdown-toc-special-modes">Special Modes</a>    <ol>
+      <li><a href="#simple-mode" id="markdown-toc-simple-mode">Simple Mode</a></li>
+      <li><a href="#automatic-synchronization-run-sync" id="markdown-toc-automatic-synchronization-run-sync">Automatic Synchronization (Run Sync)</a></li>
+      <li><a href="#route-inspection-mode" id="markdown-toc-route-inspection-mode">Route Inspection Mode</a></li>
+      <li><a href="#silent-mode" id="markdown-toc-silent-mode">Silent Mode</a></li>
+    </ol>
+  </li>
   <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
 </ol>
 
@@ -396,6 +403,61 @@ wires</span>
 <p><img src="https://github.com/user-attachments/assets/27ea5b1c-fa1b-4901-8c08-8274da4ae6da" alt="image" /></p>
 
 <p><img src="https://github.com/user-attachments/assets/abfc75f0-f174-4e89-8dc2-eb8db904fda4" alt="image" /></p>
+<h2 id="special-modes">
+  
+  
+    <a href="#special-modes" class="anchor-heading" aria-labelledby="special-modes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Special Modes
+  
+  
+</h2>
+    
+<h3 id="simple-mode">
+  
+  
+    <a href="#simple-mode" class="anchor-heading" aria-labelledby="simple-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Simple Mode
+  
+  
+</h3>
+    
+<p>If the <strong>“Overwrite existing circuits”</strong> option is enabled, the tool completely clears the previous content of the <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> parameter before writing the new circuit. This is useful if you made a mistake during routing and want to reset the conduit.</p>
+<blockquote>
+  <p>The tool will display a warning if other circuit names are erased during the process.</p>
+</blockquote>
+<h3 id="automatic-synchronization-run-sync">
+  
+  
+    <a href="#automatic-synchronization-run-sync" class="anchor-heading" aria-labelledby="automatic-synchronization-run-sync"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automatic Synchronization (Run Sync)
+  
+  
+</h3>
+    
+<p>If the <strong>“Then run Sync for selected &amp; show 3D View”</strong> option is enabled, the plugin will launch the synchronization tool immediately after assigning the circuit.</p>
+<h3 id="route-inspection-mode">
+  
+  
+    <a href="#route-inspection-mode" class="anchor-heading" aria-labelledby="route-inspection-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route Inspection Mode
+  
+  
+</h3>
+    
+<p>If you select a circuit (or panel/load) but do <strong>not select any conduits</strong>, the plugin will automatically find and highlight all conduits already linked to that circuit.</p>
+<blockquote>
+  <p>When combined with the <strong>“Then run Sync for selected &amp; show 3D View”</strong> option, this allows you to immediately open a 3D view with the current circuit path for visual verification.</p>
+</blockquote>
+<h3 id="silent-mode">
+  
+  
+    <a href="#silent-mode" class="anchor-heading" aria-labelledby="silent-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Silent Mode
+  
+  
+</h3>
+    
+<p>Using the <strong>“Show UI”</strong> checkbox, you can disable this window. The tool will then launch instantly with the last saved settings.</p>
+<ul>
+  <li>To temporarily bring up the window when checked off, hold <strong>Shift</strong> or <strong>Ctrl</strong> during launch.</li>
+</ul>
+
+<p><img src="image.png" alt="UI" /></p>
 <h2 id="changelog">
   
   
@@ -404,6 +466,13 @@ wires</span>
   
 </h2>
     
+
+<p>2026-07-13</p>
+<ol>
+  <li>Silent Mode: Support for instant launch with Shift/Ctrl modifiers.</li>
+  <li>Simple Mode: Added option to overwrite existing circuits in the conduit.</li>
+</ol>
+
 <p>2026-07-09 Implemented circuit name generation considering two locations (from/to) when the panel and load are in different zones. Added automatic detection of the default location prefix (16D…20D) based on the <code class="language-plaintext highlighter-rouge">Functional_Breakdown_Code</code> project parameter.
 2026-06-19 Fixed circuit detection for elements that are intermediate panels. Parameter names moved to the <code class="language-plaintext highlighter-rouge">SyncConduitCircuit</code> section in <code class="language-plaintext highlighter-rouge">%AppData%\Sener\BimTools\Settings.json</code>.</p>
 

@@ -303,6 +303,8 @@ Light Data E</span>
   <li><a href="#possible-errors" id="markdown-toc-possible-errors">Possible Errors</a></li>
   <li><a href="#notifications-and-statistics" id="markdown-toc-notifications-and-statistics">Notifications and Statistics</a></li>
   <li><a href="#usage-tips" id="markdown-toc-usage-tips">Usage Tips</a></li>
+  <li><a href="#processing-options" id="markdown-toc-processing-options">Processing Options</a></li>
+  <li><a href="#interface" id="markdown-toc-interface">Interface</a></li>
   <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
 </ol>
 
@@ -430,6 +432,39 @@ Light Data E</span>
 </ul>
 
 <p><img src="https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6" alt="image" /></p>
+<h2 id="processing-options">
+  
+  
+    <a href="#processing-options" class="anchor-heading" aria-labelledby="processing-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Processing Options
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Only selected conduits</strong>: When enabled, the algorithm processes only those conduits you selected in Revit before launching. This is useful for precise synchronization of specific circuits.</li>
+  <li><strong>Show result in specialized 3D view</strong>: Creates or updates a special 3D view named <code class="language-plaintext highlighter-rouge">Conduit Review &lt;user&gt;</code> for a quick check of the result.
+    <ul>
+      <li><strong>Isolation and Section Box</strong>: The tool automatically adjusts visibility and crops the view (Section Box) to the boundaries of the selected area.</li>
+      <li><strong>Clean View</strong>: Helper elements (center lines, linked files) are hidden.</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="interface">
+  
+  
+    <a href="#interface" class="anchor-heading" aria-labelledby="interface"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interface
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Show this dialog (Shift/Ctrl to invert)</strong>: Allows you to disable this window for instant tool launch with the last saved settings.</li>
+  <li><strong>Inversion (XOR)</strong>: If you want to bring up the window one time when the setting is off (or vice versa), hold <strong>Shift</strong> or <strong>Ctrl</strong> while clicking the button in Revit.</li>
+</ul>
+
+<p><img src="image.png" alt="UI" /></p>
 <h2 id="changelog">
   
   
@@ -438,6 +473,14 @@ Light Data E</span>
   
 </h2>
     
+
+<p>2026-07-13</p>
+<ol>
+  <li><strong>Diagnostic 3D View</strong>: Automatic view creation for review with path isolation, hiding of center lines, and automatic section box.</li>
+  <li><strong>Selection Mode</strong>: Added support for processing only manually selected conduits.</li>
+  <li><strong>Silent Launch</strong>: Instant tool launch implemented with Shift/Ctrl hotkey support to call settings.</li>
+</ol>
+
 <p>2026-07-09</p>
 <ol>
   <li>Segment naming refined: if panel and load locations differ, both are specified (Loc1-From/Loc2-To-Tag); if they match, only one prefix is used (Loc-From/To-Tag).</li>

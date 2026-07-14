@@ -303,7 +303,9 @@ Light Data E</span>
   <li><a href="#posibles-errores" id="markdown-toc-posibles-errores">Posibles Errores</a></li>
   <li><a href="#notificaciones-y-estadísticas" id="markdown-toc-notificaciones-y-estadísticas">Notificaciones y Estadísticas</a></li>
   <li><a href="#consejos-de-uso" id="markdown-toc-consejos-de-uso">Consejos de Uso</a></li>
-  <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
+  <li><a href="#opciones-de-procesamiento-processing-options" id="markdown-toc-opciones-de-procesamiento-processing-options">Opciones de Procesamiento (Processing Options)</a></li>
+  <li><a href="#interfaz-interface" id="markdown-toc-interfaz-interface">Interfaz (Interface)</a></li>
+  <li><a href="#historial-de-cambios" id="markdown-toc-historial-de-cambios">Historial de Cambios</a></li>
 </ol>
 
 </details>
@@ -429,14 +431,55 @@ Light Data E</span>
 </ul>
 
 <p><img src="https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6" alt="image" /></p>
-<h2 id="changelog">
+<h2 id="opciones-de-procesamiento-processing-options">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#opciones-de-procesamiento-processing-options" class="anchor-heading" aria-labelledby="opciones-de-procesamiento-processing-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Opciones de Procesamiento (Processing Options)
   
   
 </h2>
     
+
+<ul>
+  <li><strong>Only selected conduits</strong>: Al activarse, el algoritmo procesa solo los conductos que haya seleccionado en Revit antes de iniciar. Útil para sincronizaciones puntuales de circuitos específicos.</li>
+  <li><strong>Show result in specialized 3D view</strong>: Crea o actualiza una vista 3D especial <code class="language-plaintext highlighter-rouge">Conduit Review &lt;usuario&gt;</code> para una comprobación rápida del resultado.
+    <ul>
+      <li><strong>Aislamiento y Caja de Sección</strong>: La herramienta ajusta automáticamente la visibilidad y recorta la vista (Section Box) a los límites del área seleccionada.</li>
+      <li><strong>Vista Limpia</strong>: Se ocultan elementos auxiliares (líneas de eje, vínculos).</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="interfaz-interface">
+  
+  
+    <a href="#interfaz-interface" class="anchor-heading" aria-labelledby="interfaz-interface"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interfaz (Interface)
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Show this dialog (Shift/Ctrl to invert)</strong>: Permite desactivar esta ventana para un inicio instantáneo con la última configuración guardada.</li>
+  <li><strong>Inversión (XOR)</strong>: Si desea abrir la ventana puntualmente cuando la opción está desactivada (o viceversa), mantenga presionada la tecla <strong>Shift</strong> o <strong>Ctrl</strong> al hacer clic en el botón en Revit.</li>
+</ul>
+
+<p><img src="image.png" alt="UI" /></p>
+<h2 id="historial-de-cambios">
+  
+  
+    <a href="#historial-de-cambios" class="anchor-heading" aria-labelledby="historial-de-cambios"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Historial de Cambios
+  
+  
+</h2>
+    
+
+<p>2026-07-13</p>
+<ol>
+  <li><strong>Vista 3D de Diagnóstico</strong>: Creación automática de vista para revisión con aislamiento de ruta, ocultación de ejes y recorte automático.</li>
+  <li><strong>Modo de selección (Selection Mode)</strong>: Soporte para procesar solo conductos seleccionados manualmente.</li>
+  <li><strong>Inicio Silencioso</strong>: Implementación de inicio instantáneo con soporte para Shift/Ctrl para invocar los ajustes.</li>
+</ol>
+
 <p>2026-07-09</p>
 <ol>
   <li>Refinado el nombre de los segmentos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag).</li>

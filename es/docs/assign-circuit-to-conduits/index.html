@@ -298,7 +298,14 @@ wires</span>
 <ol id="markdown-toc">
   <li><a href="#datos-requeridos" id="markdown-toc-datos-requeridos">Datos Requeridos</a></li>
   <li><a href="#instrucciones-de-uso" id="markdown-toc-instrucciones-de-uso">Instrucciones de Uso</a></li>
-  <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
+  <li><a href="#modos-especiales" id="markdown-toc-modos-especiales">Modos Especiales</a>    <ol>
+      <li><a href="#modo-simple-simple-mode" id="markdown-toc-modo-simple-simple-mode">Modo Simple (Simple Mode)</a></li>
+      <li><a href="#sincronización-automática-run-sync" id="markdown-toc-sincronización-automática-run-sync">Sincronización Automática (Run Sync)</a></li>
+      <li><a href="#modo-de-inspección-de-ruta" id="markdown-toc-modo-de-inspección-de-ruta">Modo de Inspección de Ruta</a></li>
+      <li><a href="#modo-silencioso-silent-mode" id="markdown-toc-modo-silencioso-silent-mode">Modo Silencioso (Silent Mode)</a></li>
+    </ol>
+  </li>
+  <li><a href="#historial-de-cambios" id="markdown-toc-historial-de-cambios">Historial de Cambios</a></li>
 </ol>
 
 </details>
@@ -395,14 +402,76 @@ wires</span>
 <p><img src="https://github.com/user-attachments/assets/27ea5b1c-fa1b-4901-8c08-8274da4ae6da" alt="image" /></p>
 
 <p><img src="https://github.com/user-attachments/assets/abfc75f0-f174-4e89-8dc2-eb8db904fda4" alt="image" /></p>
-<h2 id="changelog">
+<h2 id="modos-especiales">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#modos-especiales" class="anchor-heading" aria-labelledby="modos-especiales"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modos Especiales
   
   
 </h2>
     
+<h3 id="modo-simple-simple-mode">
+  
+  
+    <a href="#modo-simple-simple-mode" class="anchor-heading" aria-labelledby="modo-simple-simple-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo Simple (Simple Mode)
+  
+  
+</h3>
+    
+<p>Si la opción <strong>“Overwrite existing circuits”</strong> está activada, la herramienta borra completamente el contenido anterior del parámetro <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> antes de registrar el nuevo circuito. Esto es útil si cometió un error durante el trazado y desea “limpiar” el conducto.</p>
+<blockquote>
+  <p>La herramienta mostrará una advertencia si se borran otros nombres de circuitos en el proceso.</p>
+</blockquote>
+<h3 id="sincronización-automática-run-sync">
+  
+  
+    <a href="#sincronización-automática-run-sync" class="anchor-heading" aria-labelledby="sincronización-automática-run-sync"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Sincronización Automática (Run Sync)
+  
+  
+</h3>
+    
+<p>Si la opción <strong>“Then run Sync for selected &amp; show 3D View”</strong> está activada, el plugin iniciará la herramienta de sincronización inmediatamente después de asignar el circuito.</p>
+<h3 id="modo-de-inspección-de-ruta">
+  
+  
+    <a href="#modo-de-inspección-de-ruta" class="anchor-heading" aria-labelledby="modo-de-inspección-de-ruta"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo de Inspección de Ruta
+  
+  
+</h3>
+    
+<p>Si selecciona un circuito (o cuadro/carga) pero <strong>no selecciona ningún conducto</strong>, el plugin encontrará y resaltará automáticamente todos los conductos ya vinculados a ese circuito.</p>
+<blockquote>
+  <p>En combinación con la opción <strong>“Then run Sync for selected &amp; show 3D View”</strong>, esto permite abrir inmediatamente una vista 3D con la ruta actual para su verificación visual.</p>
+</blockquote>
+<h3 id="modo-silencioso-silent-mode">
+  
+  
+    <a href="#modo-silencioso-silent-mode" class="anchor-heading" aria-labelledby="modo-silencioso-silent-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo Silencioso (Silent Mode)
+  
+  
+</h3>
+    
+<p>Mediante la casilla <strong>Show UI</strong> puede desactivar esta ventana. La herramienta se iniciará instantáneamente con los últimos ajustes guardados.</p>
+<ul>
+  <li>Para invocar temporalmente la ventana cuando está desactivada, mantenga presionado <strong>Shift</strong> o <strong>Ctrl</strong> durante el inicio.</li>
+</ul>
+
+<p><img src="image.png" alt="UI" /></p>
+<h2 id="historial-de-cambios">
+  
+  
+    <a href="#historial-de-cambios" class="anchor-heading" aria-labelledby="historial-de-cambios"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Historial de Cambios
+  
+  
+</h2>
+    
+
+<p>2026-07-13</p>
+<ol>
+  <li>Silent Mode: Soporte para inicio instantáneo con modificadores Shift/Ctrl.</li>
+  <li>Simple Mode: Se añadió la opción para sobrescribir circuitos existentes en el conducto.</li>
+</ol>
+
 <p>2026-07-09</p>
 <ol>
   <li>Refinado el nombre de los circuitos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag).</li>
