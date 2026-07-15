@@ -18,7 +18,7 @@ Before running the command, ensure that at least one conduit in each segment has
 
 ## Algorithm Description
 
-1.  **Parameter Unification:** Prepares equipment names in the `SRS_Schedule_Name` parameter by concatenating `SRS_Equipment_Type` and `SRS_Equipment_Number`. The `SRS_Location` parameter is used as is from the elements.
+1.  **Parameter Unification:** Prepares equipment names in the `SRS_Schedule_Name` parameter by concatenating `SRS_Equipment_Type` and `SRS_Equipment_Number`. Instance-level overrides are supported (they take priority over Type), and redundant hyphens in the resulting name are removed automatically. The `SRS_Location` parameter is used as is from the elements.
 2.  **Search:** Finds all conduits and circuits where the `SRS_MEP_Circuit_Names` parameter is defined.
 3.  **Section Identification:** Detects groups of interconnected conduits (chains) based on physical connection and the shared value in `SRS_MEP_Circuit_Names`.
 4.  **Grouping by Circuit:** Associates conduit chains with their respective electrical circuits.
@@ -61,7 +61,7 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 - Run the command in a floor plan view for best results.
 - If circuit names change, manually update `SRS_MEP_Circuit_Names` on the conduits.
 - The tool processes only conduits and circuits with the parameter defined; ignore other elements.
-- To avoid errors, ensure `SRS_Schedule_Name` is set on electrical equipment (generated automatically by concatenating `SRS_Location`, `SRS_Equipment_Type`, and `SRS_Equipment_Number`).
+- The `SRS_Schedule_Name` parameter on equipment is updated automatically during each synchronization (concatenating type and number), so it does not need to be filled manually.
 
 ![image](https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6)
 
@@ -80,6 +80,10 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 ![UI](image.png)
 
 ## Changelog
+
+2026-07-15
+1. **Instance Parameter Priority**: `SRS_Equipment_Type` and `SRS_MEP_Tag_Type_Id` are now sought in the element parameters first, only falling back to Type if empty. This allows instance-level overrides.
+2. **Name Cleaning**: Improved `SRS_Schedule_Name` assembly, eliminating trailing/leading hyphens when parameters are partially missing.
 
 2026-07-13
 1. **Diagnostic 3D View**: Automatic view creation for review with path isolation, hiding of center lines, and automatic section box.

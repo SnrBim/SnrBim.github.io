@@ -18,7 +18,7 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
 
 ## Descripción del Algoritmo
 
-1.  **Unificación de parámetros:** Prepara los nombres de los equipos en el parámetro `SRS_Schedule_Name` concatenando `SRS_Equipment_Type` y `SRS_Equipment_Number`. El parámetro `SRS_Location` se utiliza tal cual de los elementos.
+1.  **Unificación de parámetros:** Prepara los nombres de los equipos en el parámetro `SRS_Schedule_Name` concatenando `SRS_Equipment_Type` y `SRS_Equipment_Number`. Se admite la sobrescritura de estos parámetros a nivel de instancia (tienen prioridad sobre el tipo), y los guiones redundantes en el nombre resultante se eliminan automáticamente. El parámetro `SRS_Location` se utiliza tal cual de los elementos.
 2.  **Búsqueda:** Encuentra todos los conductos y circuitos con el parámetro `SRS_MEP_Circuit_Names` definido.
 3.  **Identificación de secciones:** Detecta grupos de conductos conectados entre sí (cadenas) por conexión física y por el valor compartido en `SRS_MEP_Circuit_Names`.
 4.  **Agrupación por circuito:** Asocia las cadenas de conductos con sus respectivos circuitos eléctricos.
@@ -60,7 +60,7 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 - Ejecute el comando en una vista de plano para mejores resultados.
 - Si los nombres de circuitos cambian, actualice manualmente `SRS_MEP_Circuit_Names` en los conductos.
 - La herramienta procesa solo conductos y circuitos con el parámetro definido; ignore otros elementos.
-- Para evitar errores, asegúrese de que `SRS_Schedule_Name` esté configurado en equipos eléctricos (se genera automáticamente concatenando `SRS_Location`, `SRS_Equipment_Type` y `SRS_Equipment_Number`).
+- El parámetro `SRS_Schedule_Name` en los equipos se actualiza automáticamente durante cada sincronización (concatenando tipo y número), por lo que no es necesario rellenarlo manualmente.
 
 ![image](https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6)
 
@@ -79,6 +79,10 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 ![UI](image.png)
 
 ## Historial de Cambios
+
+2026-07-15
+1. **Prioridad de parámetros de instancia**: `SRS_Equipment_Type` y `SRS_MEP_Tag_Type_Id` se buscan primero en los parámetros del elemento, y solo en el tipo si están vacíos. Esto permite sobrescrituras a nivel de instancia.
+2. **Limpieza de nombres**: Se mejoró la generación de `SRS_Schedule_Name`, eliminando guiones sobrantes cuando faltan datos parciales.
 
 2026-07-13
 1. **Vista 3D de Diagnóstico**: Creación automática de vista para revisión con aislamiento de ruta, ocultación de ejes y recorte automático.
