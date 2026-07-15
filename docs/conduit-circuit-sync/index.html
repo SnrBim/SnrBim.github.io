@@ -331,7 +331,7 @@ Light Data E</span>
     
 
 <ol>
-  <li><strong>Parameter Unification:</strong> Prepares equipment names in the <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> parameter by concatenating <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> and <code class="language-plaintext highlighter-rouge">SRS_Equipment_Number</code>. The <code class="language-plaintext highlighter-rouge">SRS_Location</code> parameter is used as is from the elements.</li>
+  <li><strong>Parameter Unification:</strong> Prepares equipment names in the <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> parameter by concatenating <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> and <code class="language-plaintext highlighter-rouge">SRS_Equipment_Number</code>. Instance-level overrides are supported (they take priority over Type), and redundant hyphens in the resulting name are removed automatically. The <code class="language-plaintext highlighter-rouge">SRS_Location</code> parameter is used as is from the elements.</li>
   <li><strong>Search:</strong> Finds all conduits and circuits where the <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> parameter is defined.</li>
   <li><strong>Section Identification:</strong> Detects groups of interconnected conduits (chains) based on physical connection and the shared value in <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code>.</li>
   <li><strong>Grouping by Circuit:</strong> Associates conduit chains with their respective electrical circuits.</li>
@@ -428,7 +428,7 @@ Light Data E</span>
   <li>Run the command in a floor plan view for best results.</li>
   <li>If circuit names change, manually update <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> on the conduits.</li>
   <li>The tool processes only conduits and circuits with the parameter defined; ignore other elements.</li>
-  <li>To avoid errors, ensure <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> is set on electrical equipment (generated automatically by concatenating <code class="language-plaintext highlighter-rouge">SRS_Location</code>, <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code>, and <code class="language-plaintext highlighter-rouge">SRS_Equipment_Number</code>).</li>
+  <li>The <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> parameter on equipment is updated automatically during each synchronization (concatenating type and number), so it does not need to be filled manually.</li>
 </ul>
 
 <p><img src="https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6" alt="image" /></p>
@@ -473,6 +473,12 @@ Light Data E</span>
   
 </h2>
     
+
+<p>2026-07-15</p>
+<ol>
+  <li><strong>Instance Parameter Priority</strong>: <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> and <code class="language-plaintext highlighter-rouge">SRS_MEP_Tag_Type_Id</code> are now sought in the element parameters first, only falling back to Type if empty. This allows instance-level overrides.</li>
+  <li><strong>Name Cleaning</strong>: Improved <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> assembly, eliminating trailing/leading hyphens when parameters are partially missing.</li>
+</ol>
 
 <p>2026-07-13</p>
 <ol>

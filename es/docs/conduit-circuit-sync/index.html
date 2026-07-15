@@ -331,7 +331,7 @@ Light Data E</span>
     
 
 <ol>
-  <li><strong>Unificación de parámetros:</strong> Prepara los nombres de los equipos en el parámetro <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> concatenando <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> y <code class="language-plaintext highlighter-rouge">SRS_Equipment_Number</code>. El parámetro <code class="language-plaintext highlighter-rouge">SRS_Location</code> se utiliza tal cual de los elementos.</li>
+  <li><strong>Unificación de parámetros:</strong> Prepara los nombres de los equipos en el parámetro <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> concatenando <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> y <code class="language-plaintext highlighter-rouge">SRS_Equipment_Number</code>. Se admite la sobrescritura de estos parámetros a nivel de instancia (tienen prioridad sobre el tipo), y los guiones redundantes en el nombre resultante se eliminan automáticamente. El parámetro <code class="language-plaintext highlighter-rouge">SRS_Location</code> se utiliza tal cual de los elementos.</li>
   <li><strong>Búsqueda:</strong> Encuentra todos los conductos y circuitos con el parámetro <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> definido.</li>
   <li><strong>Identificación de secciones:</strong> Detecta grupos de conductos conectados entre sí (cadenas) por conexión física y por el valor compartido en <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code>.</li>
   <li><strong>Agrupación por circuito:</strong> Asocia las cadenas de conductos con sus respectivos circuitos eléctricos.</li>
@@ -427,7 +427,7 @@ Light Data E</span>
   <li>Ejecute el comando en una vista de plano para mejores resultados.</li>
   <li>Si los nombres de circuitos cambian, actualice manualmente <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> en los conductos.</li>
   <li>La herramienta procesa solo conductos y circuitos con el parámetro definido; ignore otros elementos.</li>
-  <li>Para evitar errores, asegúrese de que <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> esté configurado en equipos eléctricos (se genera automáticamente concatenando <code class="language-plaintext highlighter-rouge">SRS_Location</code>, <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> y <code class="language-plaintext highlighter-rouge">SRS_Equipment_Number</code>).</li>
+  <li>El parámetro <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> en los equipos se actualiza automáticamente durante cada sincronización (concatenando tipo y número), por lo que no es necesario rellenarlo manualmente.</li>
 </ul>
 
 <p><img src="https://github.com/user-attachments/assets/9a9058a0-1832-4f33-b80b-af01cc471fc6" alt="image" /></p>
@@ -472,6 +472,12 @@ Light Data E</span>
   
 </h2>
     
+
+<p>2026-07-15</p>
+<ol>
+  <li><strong>Prioridad de parámetros de instancia</strong>: <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> y <code class="language-plaintext highlighter-rouge">SRS_MEP_Tag_Type_Id</code> se buscan primero en los parámetros del elemento, y solo en el tipo si están vacíos. Esto permite sobrescrituras a nivel de instancia.</li>
+  <li><strong>Limpieza de nombres</strong>: Se mejoró la generación de <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code>, eliminando guiones sobrantes cuando faltan datos parciales.</li>
+</ol>
 
 <p>2026-07-13</p>
 <ol>
