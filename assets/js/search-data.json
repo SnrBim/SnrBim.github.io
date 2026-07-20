@@ -43,7 +43,7 @@
   },"6": {
     "doc": "Sync air flow to schematic",
     "title": "Sync air flow to schematic",
-    "content": "… Tag on views Assign spaces to equip Sync air flow Sync fire alarm Security devices MEC … ",
+    "content": "… Set ASHRAE code Assign spaces to equip Sync air flow Sync fire alarm Security devices MEC … ",
     "url": "/docs/sync-air-flow-to-schematic/",
     
     "relUrl": "/docs/sync-air-flow-to-schematic/"
@@ -57,7 +57,7 @@
   },"8": {
     "doc": "Tag elements on views",
     "title": "Tag elements on views",
-    "content": "… Create dampers Create along path Tag on views Assign spaces to equip Sync air flow MEC … ",
+    "content": "… Create dampers Create along path Tag on views Cad to Revit P&amp;ID Linker MEC … ",
     "url": "/docs/tag-elements-on-views/",
     
     "relUrl": "/docs/tag-elements-on-views/"
@@ -104,1276 +104,1290 @@
     
     "relUrl": "/docs/transfer-lighting-data-to-space/"
   },"15": {
+    "doc": "Create view filters",
+    "title": "Create View Filters",
+    "content": ". | What the Command Does | Preparation | Usage | Results | Features | . This tool allows for the batch creation and modification of view filters using Excel. What the Command Does . | Exports existing filters to an Excel table. | Enables batch editing of names, categories, and filtering rules in the table. | Creates new filters if the Id column is empty. | . Preparation . | There should be at least basic filters created in the project for an export example. | Use exact values from Revit for naming parameters and categories (it’s best to take them from the initial export). | . Usage . | Click the Create filters button. | Sort by name or by newest via the right-click context menu. | In the opened window, select the desired filters (use search or the active view filter, group selection with Shift/Ctrl). | Click Export Selected and save the file. | Edit the Excel file: . | Change names in the Name column. | Edit categories and rules (up to 3 per filter). | To create a filter copy, copy the row and clear the Id column. | . | Return to Revit, click Import from File… and select the modified file. | . Results . | New filters: created in the project with settings from Excel. | Existing filters: updated only in case of actual data changes (the algorithm skips unchanged rows). | Report: upon completion, you will see a notification with the number of created and modified elements. | . Features . | Complex nested filters are not yet supported (contact the developer if necessary). | Parameter format: in Excel, parameters are stored in the format ID | Name | Type — this is necessary for precise identification. The export relies on the ID; the parameter name is displayed only for user convenience. | If a filter name already exists in the project when creating a new one, the import will result in an error to avoid duplicates. | . ",
+    "url": "/docs/create-view-filters/#create-view-filters",
+    
+    "relUrl": "/docs/create-view-filters/#create-view-filters"
+  },"16": {
+    "doc": "Create view filters",
+    "title": "Create view filters",
+    "content": "… Show CADs Print set Create filters Worksets from Excel Project params General … ",
+    "url": "/docs/create-view-filters/",
+    
+    "relUrl": "/docs/create-view-filters/"
+  },"17": {
     "doc": "Set ASHRAE code",
     "title": "Change Loss Method",
     "content": ". | The Problem | The Solution . | How It Works | . | . This command solves the problem of bulk assigning ASHRAE codes to engineering system fittings in Revit. ",
     "url": "/docs/set-ashrae-code/#change-loss-method",
     
     "relUrl": "/docs/set-ashrae-code/#change-loss-method"
-  },"16": {
+  },"18": {
     "doc": "Set ASHRAE code",
     "title": "The Problem",
     "content": "Revit’s standard interface has two significant limitations when working with ASHRAE codes: . | No Batch Processing: It’s impossible to assign codes to multiple elements at once. You have to select each fitting individually and assign the code manually. | Complex Selection: For each element, you must manually find the correct code in a long list based on its parameters (name, diameter, angle, etc.), which is time-consuming and error-prone. | . ",
     "url": "/docs/set-ashrae-code/#the-problem",
     
     "relUrl": "/docs/set-ashrae-code/#the-problem"
-  },"17": {
+  },"19": {
     "doc": "Set ASHRAE code",
     "title": "The Solution",
     "content": "This tool automates the process, allowing you to assign ASHRAE codes to hundreds of elements at once based on a pre-prepared table in Excel. How It Works . | Lookup Table: You create a table in Excel where the corresponding ASHRAE code is specified for each type of fitting (considering its name, diameter, angle, and system). | Element Selection: You select all the necessary fittings in Revit. | Automatic Assignment: The plugin reads the parameters of each element, finds the corresponding code for it in your Excel table, and assigns it. | Report: Upon completion, you receive a report on which elements the codes were successfully applied to. | . ",
     "url": "/docs/set-ashrae-code/#the-solution",
     
     "relUrl": "/docs/set-ashrae-code/#the-solution"
-  },"18": {
+  },"20": {
     "doc": "Set ASHRAE code",
     "title": "Set ASHRAE code",
-    "content": "… Model audit General P&amp;ID Linker Set ASHRAE code Create hangers Adjust hangers Create dampers MEC … ",
+    "content": "… Position check Convert to rebar General Set ASHRAE code Assign spaces to equip Sync air flow MEC … ",
     "url": "/docs/set-ashrae-code/",
     
     "relUrl": "/docs/set-ashrae-code/"
-  },"19": {
+  },"21": {
     "doc": "Assign spaces to equipment",
     "title": "Assign spaces to equipment",
     "content": ". | Brief Description | How it works | Parameter Name Configuration | Requirements | Usage | . ",
     "url": "/docs/assign-spaces-to-equipment/#assign-spaces-to-equipment",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#assign-spaces-to-equipment"
-  },"20": {
+  },"22": {
     "doc": "Assign spaces to equipment",
     "title": "Brief Description",
     "content": "The Assign spaces to equipment tool automatically assigns MEP space information to mechanical equipment, duct accessories, and duct terminals based on the MEP space they are located in. It finds the containing space for each element and writes the name and number of that space to an equipment parameter. ",
     "url": "/docs/assign-spaces-to-equipment/#brief-description",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#brief-description"
-  },"21": {
+  },"23": {
     "doc": "Assign spaces to equipment",
     "title": "How it works",
     "content": ". | Element Collection: The tool finds all families in the model from the following categories: . | Mechanical Equipment | Duct Accessories | Duct Terminals | MEP Spaces | . | Search and Linking: For each element from the tracked categories, the tool determines its insertion point and searches for the MEP space that contains this point. | Data Writing: If a space is found, the tool forms a text string in the format ”&lt;Space Name&gt;-&lt;Space Number&gt;“ and writes this value to the equipment’s parameter (the name of which can be configured, see “Parameter Name Configuration” section). By default, this is SRS_MEP_Room_Space_Mark. For example, if the space has the Name “Office” and Number “101”, the value “Office-101” will be written to the parameter. | Report: Upon completion, the tool displays a report indicating: . | The total number of elements found. | The number of elements whose parameters were updated. | The number of elements whose data was already up-to-date. | The number of successfully linked elements. | A list of errors and warnings if any elements could not be processed (e.g., if an element is not located in any space or if it lacks the necessary parameter). | . | . ",
     "url": "/docs/assign-spaces-to-equipment/#how-it-works",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#how-it-works"
-  },"22": {
+  },"24": {
     "doc": "Assign spaces to equipment",
     "title": "Parameter Name Configuration",
     "content": "The parameter name where room information is written is SRS_MEP_Room_Space_Mark by default. You can change this name by editing the command’s settings file. | Locate the settings file: The Settings.json file is located at the following path: %APPDATA%\\Sener\\BimTools\\Settings.json . | Open the file: Open Settings.json with any text editor (e.g., Notepad). | Change the value: Inside the file, find the section related to the AssignSpacesToEquipment command and change the value of the EquipmentSpaceParameter to your desired name. Example: . { \"SNR.BimTools.AssignSpacesToEquipment.Settings\": { \"EquipmentSpaceParameter\": \"My_Room_Parameter\" } } . Ensure that the new parameter name exactly matches the parameter name in your Revit project. | Save the file: Save the changes to Settings.json. The command will use the new parameter name the next time it runs, no Revit restart is required. | . ",
     "url": "/docs/assign-spaces-to-equipment/#parameter-name-configuration",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#parameter-name-configuration"
-  },"23": {
+  },"25": {
     "doc": "Assign spaces to equipment",
     "title": "Requirements",
     "content": ". | For correct operation, the tracked elements must have a text parameter with the name specified in the command’s settings (by default, this is SRS_MEP_Room_Space_Mark). | The model must contain correctly modeled MEP Spaces. | . ",
     "url": "/docs/assign-spaces-to-equipment/#requirements",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#requirements"
-  },"24": {
+  },"26": {
     "doc": "Assign spaces to equipment",
     "title": "Usage",
     "content": ". | Navigate to the SENER tab. | In the BIM Tools panel, click the “Assign spaces to equipment” button. | Wait for the window with the operation report to appear. | . The tool does not require prior selection of elements and processes all eligible elements in the project. ",
     "url": "/docs/assign-spaces-to-equipment/#usage",
     
     "relUrl": "/docs/assign-spaces-to-equipment/#usage"
-  },"25": {
+  },"27": {
     "doc": "Assign spaces to equipment",
     "title": "Assign spaces to equipment",
-    "content": "… Create along path Tag on views Assign spaces to equip Sync air flow Sync fire alarm MEC … ",
+    "content": "… Convert to rebar General Set ASHRAE code Assign spaces to equip Sync air flow Sync fire alarm MEC … ",
     "url": "/docs/assign-spaces-to-equipment/",
     
     "relUrl": "/docs/assign-spaces-to-equipment/"
-  },"26": {
+  },"28": {
     "doc": "Assign circuit to conduits",
     "title": "Assign Circuit to Conduits",
     "content": ". | Required Data | Instructions for Use | Special Modes . | Simple Mode | Automatic Synchronization (Run Sync) | Route Inspection Mode | Silent Mode | . | Changelog | . This tool is designed to add circuit information to the properties of electrical conduits. The user selects a circuit and the corresponding conduits, and the algorithm automatically updates their parameters, adding the circuit information to the SRS_MEP_Circuit_Names parameter. Before this, if the circuit name is empty, the algorithm generates it automatically from the SRS_Schedule_Name parameter values of the load and the electrical panel. This tool is used for the subsequent execution of SyncConduitCircuit. ",
     "url": "/docs/assign-circuit-to-conduits/#assign-circuit-to-conduits",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#assign-circuit-to-conduits"
-  },"27": {
+  },"29": {
     "doc": "Assign circuit to conduits",
     "title": "Required Data",
     "content": "Before running the command, ensure that the load, electrical panel, and intermediate distribution boxes have names in the SRS_Schedule_Name parameter. Otherwise, their IDs will be used. ",
     "url": "/docs/assign-circuit-to-conduits/#required-data",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#required-data"
-  },"28": {
+  },"30": {
     "doc": "Assign circuit to conduits",
     "title": "Instructions for Use",
     "content": ". | Select Elements: . | Select a load family associated with a circuit. | If the load belongs to multiple circuits, select the desired circuit using the Tab key. | Select one or more electrical conduits. | . | Run the Tool: . | Upon launch, the algorithm will automatically validate the selection. | An error message will appear if multiple circuits are selected. If no conduits are selected, an auxiliary mode is activated: the plugin will identify the conduits belonging to the circuit, and the execution will stop. | . | Automatic Circuit Name Assignment: . | The circuit name is automatically recalculated based on the locations and SRS_Schedule_Name parameters of the load and panel. If panel and load locations differ, both are specified (Loc1-From/Loc2-To-Tag); if they match, only one prefix is used. | The default location prefix is automatically determined based on the Functional_Breakdown_Code project parameter mapping in settings. | The following table details how load names are grouped to generate the segment name: | . | . | Input Data | Resulting Load Name | Comment | . | 18D-DS-SF01 | 18D-DS-SF01 | A single name remains the same. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Names with the same base are grouped with xx at the end. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Heterogeneous names are listed separated by commas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | If there is no name, the element’s ID is used. | . | Add Information to Conduits: . | The SRS_MEP_Circuit_Names parameter will be updated in all selected conduits, adding the new circuit name in alphabetical order without deleting previous data. | . | Notification: . | Upon completion, a notification will confirm the operation and indicate how many different circuits are now associated with each conduit. | . | . ",
     "url": "/docs/assign-circuit-to-conduits/#instructions-for-use",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#instructions-for-use"
-  },"29": {
+  },"31": {
     "doc": "Assign circuit to conduits",
     "title": "Special Modes",
     "content": "Simple Mode . If the “Overwrite existing circuits” option is enabled, the tool completely clears the previous content of the SRS_MEP_Circuit_Names parameter before writing the new circuit. This is useful if you made a mistake during routing and want to reset the conduit. The tool will display a warning if other circuit names are erased during the process. Automatic Synchronization (Run Sync) . If the “Then run Sync for selected &amp; show 3D View” option is enabled, the plugin will launch the synchronization tool immediately after assigning the circuit. Route Inspection Mode . If you select a circuit (or panel/load) but do not select any conduits, the plugin will automatically find and highlight all conduits already linked to that circuit. When combined with the “Then run Sync for selected &amp; show 3D View” option, this allows you to immediately open a 3D view with the current circuit path for visual verification. Silent Mode . Using the “Show UI” checkbox, you can disable this window. The tool will then launch instantly with the last saved settings. | To temporarily bring up the window when checked off, hold Shift or Ctrl during launch. | . ",
     "url": "/docs/assign-circuit-to-conduits/#special-modes",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#special-modes"
-  },"30": {
+  },"32": {
     "doc": "Assign circuit to conduits",
     "title": "Changelog",
     "content": "2026-07-13 . | Silent Mode: Support for instant launch with Shift/Ctrl modifiers. | Simple Mode: Added option to overwrite existing circuits in the conduit. | . 2026-07-09 Implemented circuit name generation considering two locations (from/to) when the panel and load are in different zones. Added automatic detection of the default location prefix (16D…20D) based on the Functional_Breakdown_Code project parameter. 2026-06-19 Fixed circuit detection for elements that are intermediate panels. Parameter names moved to the SyncConduitCircuit section in %AppData%\\Sener\\BimTools\\Settings.json. ",
     "url": "/docs/assign-circuit-to-conduits/#changelog",
     
     "relUrl": "/docs/assign-circuit-to-conduits/#changelog"
-  },"31": {
+  },"33": {
     "doc": "Assign circuit to conduits",
     "title": "Assign circuit to conduits",
-    "content": "… Sync power Create sockets Assign circuit to conduits Conduit to circuit sync Line to wires ELE … ",
+    "content": "… Sync power Create sockets Assign circuit to conduits Align Elevations Conduit to circuit sync ELE … ",
     "url": "/docs/assign-circuit-to-conduits/",
     
     "relUrl": "/docs/assign-circuit-to-conduits/"
-  },"32": {
+  },"34": {
     "doc": "History",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/history/#english-command-title",
     
     "relUrl": "/docs/history/#english-command-title"
-  },"33": {
+  },"35": {
     "doc": "History",
     "title": "History",
-    "content": "Info Purge History Worksets from Excel Change level General … ",
+    "content": "… Project params Sync space params History Read parameters Clone &amp;shift General … ",
     "url": "/docs/history/",
     
     "relUrl": "/docs/history/"
-  },"34": {
+  },"36": {
     "doc": "Create hangers",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-hangers/#english-command-title",
     
     "relUrl": "/docs/create-hangers/#english-command-title"
-  },"35": {
+  },"37": {
     "doc": "Create hangers",
     "title": "Create hangers",
-    "content": "… P&amp;ID Linker Set ASHRAE code Create hangers Adjust hangers Create dampers Create along path MEC … ",
+    "content": "… Sync fire alarm Security devices Create hangers Adjust hangers Create openings Create dampers MEC … ",
     "url": "/docs/create-hangers/",
     
     "relUrl": "/docs/create-hangers/"
-  },"36": {
+  },"38": {
     "doc": "Upload to ACC",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/upload-to-acc/#english-command-title",
     
     "relUrl": "/docs/upload-to-acc/#english-command-title"
-  },"37": {
+  },"39": {
     "doc": "Upload to ACC",
     "title": "Upload to ACC",
-    "content": "… Print set Show CADs Upload to ACC Position check Model audit General … ",
+    "content": "… Read parameters Clone &amp;shift Upload to ACC Position check Convert to rebar General … ",
     "url": "/docs/upload-to-acc/",
     
     "relUrl": "/docs/upload-to-acc/"
-  },"38": {
+  },"40": {
     "doc": "Circuit description",
     "title": "Circuit Description",
     "content": ". | Usage | Description Format . | Examples | . | Equipment Code Logic . | Electrical Equipment | Lighting Fixtures | Electrical Fixtures | Other Categories | . | Special Equipment Marking | Location Determination . | Room Detection Features . | Logic for Preserving User Input for Unknown Rooms | . | . | Report | Tips | Changelog | . The Circuit description command automatically generates uniform and informative descriptions for electrical circuits based on connected equipment and their location. The description is formed with equipment types, quantities, and room numbers where they are installed. ",
     "url": "/docs/circuit-description/#circuit-description",
     
     "relUrl": "/docs/circuit-description/#circuit-description"
-  },"39": {
+  },"41": {
     "doc": "Circuit description",
     "title": "Usage",
     "content": ". | Open an electrical panel schedule (Panel Schedule) in Revit . | You can select multiple schedules in the project browser for batch processing | . | Run the command Circuit description | Wait for completion — the command will process all circuits of the selected panels | Check the results in the Load Name parameter of each circuit | Open the report — click on the notification to view a detailed report in Excel | . ",
     "url": "/docs/circuit-description/#usage",
     
     "relUrl": "/docs/circuit-description/#usage"
-  },"40": {
+  },"42": {
     "doc": "Circuit description",
     "title": "Description Format",
     "content": "Circuit description is formed in the following format: . Equipment Code × Quantity, Code2 × Quantity | Room Number × Quantity, Room2 × Quantity . Examples . Example 1: Circuit with lighting and receptacles in different rooms . LTG × 4, RECPT × 2 | 101 × 3, 102 × 3 . Explanation: The circuit has 4 lighting fixtures (LTG) and 2 receptacles (RECPT) connected. Of these, 3 elements are installed in room 101, and 3 elements in room 102. Example 2: Circuit with receptacles only in one room . RECPT × 5 | 201 . Explanation: The circuit has 5 receptacles, all in room 201. The quantity “× 1” is automatically simplified. Example 3: Circuit with electrical equipment . AHU-01 × 2 | 305 × 2 . Explanation: The circuit has 2 AHU-01 equipment units connected, both in room 305. Example 4: Circuit with numbered lighting fixtures . LTG-01, LTG-02, LTG-03 | 101 × 3 . Explanation: The circuit has three numbered lighting fixtures in room 101. ",
     "url": "/docs/circuit-description/#description-format",
     
     "relUrl": "/docs/circuit-description/#description-format"
-  },"41": {
+  },"43": {
     "doc": "Circuit description",
     "title": "Equipment Code Logic",
     "content": "The command automatically determines the code for each element in the circuit based on its category and parameters: . Electrical Equipment . The code is taken from the SRS_Schedule_Name parameter . Examples: AHU-01, FCU-02, PUMP-03 . Lighting Fixtures . | First, the SRS_MEP_Equipment_ID parameter is checked (instance, then type) | If the SRS_Equipment_Number parameter is found, it’s added to the code with a hyphen | If no code is found, the standard designation LTG is used | . Examples: LTG, LTG-01, LTG-02 . Electrical Fixtures . | The code is taken from the SRS_MEP_Equipment_ID parameter (instance, then type) | If the SRS_Equipment_Number parameter is found, it’s added to the code with a hyphen | If no code is found, ? is used | . Examples: PANEL-01, DIST-02 . Other Categories . For all other categories (receptacles, switches, etc.), the standard designation RECPT is used . RECPT = receptacle . ",
     "url": "/docs/circuit-description/#equipment-code-logic",
     
     "relUrl": "/docs/circuit-description/#equipment-code-logic"
-  },"42": {
+  },"44": {
     "doc": "Circuit description",
     "title": "Special Equipment Marking",
     "content": "Circuits containing equipment with specific type name prefixes (default: “R5”) are automatically marked with an asterisk (*) at the beginning of Load Name. Configure the pattern in %APPDATA%\\Sener\\BimTools\\Settings.json under GenCircuitDescription.SpecialEquipmentPrefixPattern. ",
     "url": "/docs/circuit-description/#special-equipment-marking",
     
     "relUrl": "/docs/circuit-description/#special-equipment-marking"
-  },"43": {
+  },"45": {
     "doc": "Circuit description",
     "title": "Location Determination",
     "content": "The command determines the room number for each element in the following order: . | MEP Spaces — primary method. The command checks if the element’s placement point is inside an MEP space | Location Parameter — if the element is not in any MEP space, the standard Revit location parameter is used | ”?” Symbol — if the location cannot be determined | . Room Detection Features . | The command uses an optimized algorithm with caching for fast processing of large numbers of elements | For elements from the same circuit, frequently used rooms are checked first | . Logic for Preserving User Input for Unknown Rooms . If automatic room detection fails for some elements (“?”), the command uses the old circuit description to recover: it parses room numbers, excludes those already found automatically, combines new ones into a group separated by spaces, and assigns the quantity from “?”. Examples: . - Auto: \"RECPT × 5 | ? × 5\" # All elements without room Old: \"RECPT × 7 | 103 × 7\" # User specified 103 for 7 elements Result: \"RECPT × 5 | 103 × 5\" # Number from old, quantity from auto - Auto: \"LTG × 4 | 101 × 2, ? × 2\" # 2 elements without room Old: \"LTG × 4 | 101 × 2, 102 × 2\" # User specified 102 for 2 elements Result: \"LTG × 4 | 101 × 2, 102 × 2\" # Number from old, quantity from auto - Auto: \"RECPT × 5 | 101 × 3, ? × 2\" # 2 elements without room Old: \"RECPT × 5 | 101 × 3, 102 × 1, 103 × 1\" # User specified 102 and 103 Result: \"RECPT × 5 | 101 × 3, 102 103 × 2\" # Numbers combined, quantity from auto . ",
     "url": "/docs/circuit-description/#location-determination",
     
     "relUrl": "/docs/circuit-description/#location-determination"
-  },"44": {
+  },"46": {
     "doc": "Circuit description",
     "title": "Report",
     "content": "After processing, a detailed Excel report is created with the following information: . | Panel — electrical panel name | PanelId — panel ID in Revit | Circuit — circuit name | CircuitId — circuit ID in Revit | OldDescription — previous circuit description | NewDescription — new generated description (or “=” if description hasn’t changed) | . The report is saved in the folder: . %APPDATA%\\Sener\\BimTools\\Reports\\GenCircuitDescription\\ . ",
     "url": "/docs/circuit-description/#report",
     
     "relUrl": "/docs/circuit-description/#report"
-  },"45": {
+  },"47": {
     "doc": "Circuit description",
     "title": "Tips",
     "content": ". | Batch Processing: Select multiple panel schedules in the project browser before running the command for simultaneous processing | Re-run: The command can be run repeatedly — it will update descriptions based on the current model state | Report Review: Pay attention to rows with “=” in the report — these are circuits that already had the correct description | Undefined Elements: If “?” symbols appear in the description, check for MEP Spaces in the model and correct element placement | . ",
     "url": "/docs/circuit-description/#tips",
     
     "relUrl": "/docs/circuit-description/#tips"
-  },"46": {
+  },"48": {
     "doc": "Circuit description",
     "title": "Changelog",
     "content": "2026-06-23 Parameter SRS_MEP_Equipment_Code replaced with SRS_MEP_Equipment_ID to comply with new project standards. Parameter names moved to Settings class for configurability. ",
     "url": "/docs/circuit-description/#changelog",
     
     "relUrl": "/docs/circuit-description/#changelog"
-  },"47": {
+  },"49": {
     "doc": "Circuit description",
     "title": "Circuit description",
-    "content": "… Security devices MEC Count sockets Circuit description Sync power Create sockets ELE … ",
+    "content": "… Track scheme MEC Count sockets Circuit description Sync power Create sockets ELE … ",
     "url": "/docs/circuit-description/",
     
     "relUrl": "/docs/circuit-description/"
-  },"48": {
+  },"50": {
     "doc": "Sync equip to schematic",
     "title": "Sync Equipment to Schematic",
     "content": ". | Description | Functionality | How to Use | Important Notes | . ",
     "url": "/docs/sync-equip-to-schematic/#sync-equipment-to-schematic",
     
     "relUrl": "/docs/sync-equip-to-schematic/#sync-equipment-to-schematic"
-  },"49": {
+  },"51": {
     "doc": "Sync equip to schematic",
     "title": "Description",
     "content": "This command automatically updates the data of schematic annotations (Generic Annotation) in Revit, based on the previously assigned equipment ID. ",
     "url": "/docs/sync-equip-to-schematic/#description",
     
     "relUrl": "/docs/sync-equip-to-schematic/#description"
-  },"50": {
+  },"52": {
     "doc": "Sync equip to schematic",
     "title": "Functionality",
     "content": "For each processed schematic annotation, the command performs the following actions: . | It searches for the corresponding equipment using the values in the SRS_MEP_Equipment_Id and SRS_MEP_Link_Id parameters. | Once the equipment is found, it determines the MEP Space and the Level where the equipment is located. | It updates the following parameters in the annotation: . | SRS_MEP_Location: Updated with the space’s name. | SRS_MEP_RoomID: Updated with the space’s ID. | SRS_MEP_Level: Updated with the level’s name. | . | . ",
     "url": "/docs/sync-equip-to-schematic/#functionality",
     
     "relUrl": "/docs/sync-equip-to-schematic/#functionality"
-  },"51": {
+  },"53": {
     "doc": "Sync equip to schematic",
     "title": "How to Use",
     "content": ". | Ensure that the schematic annotations you want to update already have values assigned to the SRS_MEP_Equipment_Id and SRS_MEP_Link_Id parameters. | Run the Sync equip to schematic command. | The system will process the annotations and automatically update the location data in each one. | . ",
     "url": "/docs/sync-equip-to-schematic/#how-to-use",
     
     "relUrl": "/docs/sync-equip-to-schematic/#how-to-use"
-  },"52": {
+  },"54": {
     "doc": "Sync equip to schematic",
     "title": "Important Notes",
     "content": ". | A warning will be displayed if the equipment corresponding to the ID specified in an annotation is not found. | The equipment ID value must be numeric for the process to work correctly. | The space search is optimized; the command prioritizes reusing already found spaces to improve performance. | . ",
     "url": "/docs/sync-equip-to-schematic/#important-notes",
     
     "relUrl": "/docs/sync-equip-to-schematic/#important-notes"
-  },"53": {
+  },"55": {
     "doc": "Sync equip to schematic",
     "title": "Sync equip to schematic",
-    "content": "… Assign equip to schematic Align Elevations Sync equip to schematic ELE Convert to rebar Track scheme Misc … ",
+    "content": "… Balance Panels Assign equip to schematic Sync equip to schematic ELE ",
     "url": "/docs/sync-equip-to-schematic/",
     
     "relUrl": "/docs/sync-equip-to-schematic/"
-  },"54": {
+  },"56": {
     "doc": "Conduit circuit sync",
     "title": "Sync Conduit Circuit",
     "content": ". | Required Data | Algorithm Description | Possible Errors | Notifications and Statistics | Usage Tips | Processing Options | Interface | Changelog | . This tool is designed to distribute electrical conduits into segments and record their paths in the electrical circuit parameters to complete the cable schedule. ",
     "url": "/docs/conduit-circuit-sync/#sync-conduit-circuit",
     
     "relUrl": "/docs/conduit-circuit-sync/#sync-conduit-circuit"
-  },"55": {
+  },"57": {
     "doc": "Conduit circuit sync",
     "title": "Required Data",
     "content": "Before running the command, ensure that at least one conduit in each segment has a circuit name in SRS_MEP_Circuit_Names and that a circuit with the same name exists. It is recommended to use the companion command AssignConduitToCircuit for this purpose. ",
     "url": "/docs/conduit-circuit-sync/#required-data",
     
     "relUrl": "/docs/conduit-circuit-sync/#required-data"
-  },"56": {
+  },"58": {
     "doc": "Conduit circuit sync",
     "title": "Algorithm Description",
     "content": ". | Parameter Unification: Prepares equipment names in the SRS_Schedule_Name parameter by concatenating SRS_Equipment_Type and SRS_Equipment_Number. Instance-level overrides are supported (they take priority over Type), and redundant hyphens in the resulting name are removed automatically. The SRS_Location parameter is used as is from the elements. | Search: Finds all conduits and circuits where the SRS_MEP_Circuit_Names parameter is defined. | Section Identification: Detects groups of interconnected conduits (chains) based on physical connection and the shared value in SRS_MEP_Circuit_Names. | Grouping by Circuit: Associates conduit chains with their respective electrical circuits. | Direction Determination: Sorts the conduits in the path from the load to the electrical panel. | Segment Division: The path is divided into segments between distribution boxes (a gap of up to 10 cm is allowed). The process stops with an error if there are more than 5 segments. | Segment Naming: Each segment is assigned a name based on the panel and load locations. If the locations are different, both are specified (Loc1-From/Loc2-To-Tag); if they are the same, the prefix is written only once. The “CC” abbreviation has been removed from tags for brevity. The rules for forming the load name are as follows: | . | Input Data | Resulting Load Name | Comment | . | 18D-DS-SF01 | 18D-DS-SF01 | A single name remains the same. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Names with the same base are grouped with xx at the end. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Heterogeneous names are listed separated by commas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | If there is no name, the element’s ID is used. | . | Data Recording: . | Updates SRS_MEP_Circuit_Names in all conduits of the segment. | Fills in SRS_MEP_Conduit_From, SRS_MEP_Conduit_To, and SRS_MEP_Conduit_Tag in the conduits. | The cable length is recorded in the SRS_MEP_Cable_Length parameter, including a safety reserve (+10% for lines up to 100 m and +5% for lines over 100 m), rounded up to the nearest meter. | Stores segment names in the electrical circuit’s SRS_MEP_Conduit_Segment_1 to SRS_MEP_Conduit_Segment_5 parameters. | . | Notification: Confirms the operation and reports suspicious distances (&gt;1m) between segments to detect potential assignment errors. | . ",
     "url": "/docs/conduit-circuit-sync/#algorithm-description",
     
     "relUrl": "/docs/conduit-circuit-sync/#algorithm-description"
-  },"57": {
+  },"59": {
     "doc": "Conduit circuit sync",
     "title": "Possible Errors",
     "content": ". | No conduits found: If there are no conduits with the SRS_MEP_Circuit_Names parameter defined, the command will fail. Check that at least one conduit per segment has this parameter assigned (use AssignConduitToCircuit). | No electrical circuits found: If no circuits with matching names in SRS_MEP_Circuit_Names exist, the command will fail. Ensure circuits exist and have correct names. | Too many segments: If a path has more than 5 segments, the process stops with an error. Simplify the path or split the circuit. | Missing parameters: If any required parameter (such as SRS_Schedule_Name on equipment) is missing or empty, it may cause errors. Changes are made in a transaction and can be undone with Ctrl+Z. | . ",
     "url": "/docs/conduit-circuit-sync/#possible-errors",
     
     "relUrl": "/docs/conduit-circuit-sync/#possible-errors"
-  },"58": {
+  },"60": {
     "doc": "Conduit circuit sync",
     "title": "Notifications and Statistics",
     "content": "After execution, a notification appears with: . | Number of circuits processed. | Minimum and maximum cable length (in meters). | Maximum gap between segments (in meters) and circuit ID. | . If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect connections. ",
     "url": "/docs/conduit-circuit-sync/#notifications-and-statistics",
     
     "relUrl": "/docs/conduit-circuit-sync/#notifications-and-statistics"
-  },"59": {
+  },"61": {
     "doc": "Conduit circuit sync",
     "title": "Usage Tips",
     "content": ". | Run the command in a floor plan view for best results. | If circuit names change, manually update SRS_MEP_Circuit_Names on the conduits. | The tool processes only conduits and circuits with the parameter defined; ignore other elements. | The SRS_Schedule_Name parameter on equipment is updated automatically during each synchronization (concatenating type and number), so it does not need to be filled manually. | . ",
     "url": "/docs/conduit-circuit-sync/#usage-tips",
     
     "relUrl": "/docs/conduit-circuit-sync/#usage-tips"
-  },"60": {
+  },"62": {
     "doc": "Conduit circuit sync",
     "title": "Processing Options",
     "content": ". | Only selected conduits: When enabled, the algorithm processes only those conduits you selected in Revit before launching. This is useful for precise synchronization of specific circuits. | Show result in specialized 3D view: Creates or updates a special 3D view named Conduit Review &lt;user&gt; for a quick check of the result. | Isolation and Section Box: The tool automatically adjusts visibility and crops the view (Section Box) to the boundaries of the selected area. | Clean View: Helper elements (center lines, linked files) are hidden. | . | . ",
     "url": "/docs/conduit-circuit-sync/#processing-options",
     
     "relUrl": "/docs/conduit-circuit-sync/#processing-options"
-  },"61": {
+  },"63": {
     "doc": "Conduit circuit sync",
     "title": "Interface",
     "content": ". | Show this dialog (Shift/Ctrl to invert): Allows you to disable this window for instant tool launch with the last saved settings. | Inversion (XOR): If you want to bring up the window one time when the setting is off (or vice versa), hold Shift or Ctrl while clicking the button in Revit. | . ",
     "url": "/docs/conduit-circuit-sync/#interface",
     
     "relUrl": "/docs/conduit-circuit-sync/#interface"
-  },"62": {
+  },"64": {
     "doc": "Conduit circuit sync",
     "title": "Changelog",
     "content": "2026-07-17 . | Ducks and Fitting Chains Support: Redesigned the connection traversal algorithm. The tool now correctly processes fittings connected directly to each other (without straight conduit segments between them). | Crash Fixing: Resolved the Sequence contains no elements error that occurred when analyzing incomplete or empty routes. Added safety checks. | . 2026-07-15 . | Instance Parameter Priority: SRS_Equipment_Type and SRS_MEP_Tag_Type_Id are now sought in the element parameters first, only falling back to Type if empty. This allows instance-level overrides. | Name Cleaning: Improved SRS_Schedule_Name assembly, eliminating trailing/leading hyphens when parameters are partially missing. | . 2026-07-13 . | Diagnostic 3D View: Automatic view creation for review with path isolation, hiding of center lines, and automatic section box. | Selection Mode: Added support for processing only manually selected conduits. | Silent Launch: Instant tool launch implemented with Shift/Ctrl hotkey support to call settings. | . 2026-07-09 . | Segment naming refined: if panel and load locations differ, both are specified (Loc1-From/Loc2-To-Tag); if they match, only one prefix is used (Loc-From/To-Tag). | Removed “CC” abbreviation from conduit tags (SRS_MEP_Conduit_Tag). | Implemented upward rounding of calculated cable length (SRS_MEP_Cable_Length) to the nearest meter (Math.Ceiling), while maintaining decimal precision in user reports for gap monitoring. | Implemented automatic location prefix selection (e.g., 16D, 18D) based on the Functional_Breakdown_Code parameter. | . 2026-06-19 Fixed error when SRS_Schedule_Name was missing on equipment or SRS_Location was empty (now defaults to ‘18D’). Parameter names moved to %AppData%\\Sener\\BimTools\\Settings.json. ",
     "url": "/docs/conduit-circuit-sync/#changelog",
     
     "relUrl": "/docs/conduit-circuit-sync/#changelog"
-  },"63": {
+  },"65": {
     "doc": "Conduit circuit sync",
     "title": "Conduit circuit sync",
-    "content": "… Create sockets Assign circuit to conduits Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E ELE … ",
+    "content": "… Assign circuit to conduits Align Elevations Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E ELE … ",
     "url": "/docs/conduit-circuit-sync/",
     
     "relUrl": "/docs/conduit-circuit-sync/"
-  },"64": {
+  },"66": {
     "doc": "Convert curves to rebar",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/convert-curves-to-rebar/#english-command-title",
     
     "relUrl": "/docs/convert-curves-to-rebar/#english-command-title"
-  },"65": {
+  },"67": {
     "doc": "Convert curves to rebar",
     "title": "Convert curves to rebar",
-    "content": "… Align Elevations Sync equip to schematic ELE Convert to rebar Track scheme Cad to Revit Misc … ",
+    "content": "… Upload to ACC Position check Convert to rebar General Set ASHRAE code Assign spaces to equip MEC … ",
     "url": "/docs/convert-curves-to-rebar/",
     
     "relUrl": "/docs/convert-curves-to-rebar/"
-  },"66": {
+  },"68": {
     "doc": "Sync fire alarm diagram",
     "title": "User Guide for the “Sync Fire Alarm Diagram” Command",
     "content": ". | 1. Purpose of the Command | 2. Preparation | 3. Step 1: Selecting Source Data . | 3.1. Layout and Mapping Configuration | 3.2. Additional Options | 3.3. Manual Placement and Room Locking | . | 4. Step 2: Synchronization Process | 5. Result and Color Indication | 6. Change Tracking (“Sync info” Parameter) | 7. Known Limitations | . ",
     "url": "/docs/sync-fire-alarm-diagram/#user-guide-for-the-sync-fire-alarm-diagram-command",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#user-guide-for-the-sync-fire-alarm-diagram-command"
-  },"67": {
+  },"69": {
     "doc": "Sync fire alarm diagram",
     "title": "1. Purpose of the Command",
     "content": "The command is designed for the automatic creation and subsequent synchronization of a 2D layout diagram of fire alarm devices based on a 3D model. It generates 2D elements on a drafting view corresponding to rooms and devices and tracks changes in the model to update the diagram. ",
     "url": "/docs/sync-fire-alarm-diagram/#1-purpose-of-the-command",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#1-purpose-of-the-command"
-  },"68": {
+  },"70": {
     "doc": "Sync fire alarm diagram",
     "title": "2. Preparation",
     "content": ". | Architectural Model: A linked model (Revit Link) with architectural rooms (Rooms) must be loaded into the project. | Active View: Before running the command, you must open a drafting view where the diagram will be placed. | . ",
     "url": "/docs/sync-fire-alarm-diagram/#2-preparation",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#2-preparation"
-  },"69": {
+  },"71": {
     "doc": "Sync fire alarm diagram",
     "title": "3. Step 1: Selecting Source Data",
     "content": "When the command is launched, a dialog box opens where you need to specify the source data for synchronization. | Architectural Link: . | The dropdown list shows all linked Revit files where rooms have been found. | The list is automatically sorted: priority is given to links with “AR” in their name, and then by the descending number of rooms. As a rule, the required link is already selected by default. | . | Levels for Synchronization: . | After selecting a link, the list below displays only those levels from that link where rooms containing fire alarm devices have been found. | For each level, the UI now displays a separate count for rooms with devices and empty rooms in the format Rooms: 7 + 10. It also indicates the total number of devices in rooms and homeless devices (not assigned to any room). | You can select one or more levels for processing by checking the boxes next to them. | . | . 3.1. Layout and Mapping Configuration . At the bottom of the window, there are two fields for fine-tuning the command’s behavior: . | Sensor Definitions (Sensors): . | This field determines which devices will be placed in the top row of the diagram (considered “sensors”). All other devices will be placed in the bottom row. | Each line corresponds to one rule. | Format: FamilyName: TypeName. The type name can be omitted, in which case all types of the specified family will be considered sensors. Matching is case-insensitive. | . | Family Mapping: . | This field defines the rules by which 3D device families and types are transformed into 2D symbols on the diagram. | Format: 3D_Family: 3D_Type: 2D_Family: 2D_Type. | Each line represents a single rule. For example, the line SRS_Smoke_Detector: Standard: Fire alarm 2d: Smoke detector means that all 3D devices with family SRS_Smoke_Detector and type Standard will be represented on the diagram by the 2D symbol Smoke detector from the family Fire alarm 2d. Matching of 3D family and type names is case-insensitive. | Automatic Pre-population: When the dialog opens, the command automatically scans the Revit model and identifies all unique (3D_Family, 3D_Type) combinations of fire alarm devices. | Any newly discovered (3D_Family, 3D_Type) combinations that are not yet in the user’s saved mapping settings are automatically appended to the list. For these new entries, the default values Fire alarm 2d and Generic are used for the 2D family and 2D type, respectively. | Existing user settings, including comments and order, are always preserved. | . | Editing Features: The field includes a built-in header demonstrating the string format and uses a monospaced font for convenience. | Comments: Lines starting with a ; character are ignored during parsing but are preserved and can be used for comments. | Alignment: Text in this field is automatically aligned for better readability. | . | . 3.2. Additional Options . | Create empty rooms: . | If this option is enabled (checked), the command will create 2D representations for all rooms on the selected levels, even if they do not contain any fire alarm devices. | By default, this option is disabled, and 2D rooms are only created for 3D rooms that contain at least one device. | . | . 3.3. Manual Placement and Room Locking . After the initial diagram creation, you may want to manually adjust the layout of devices within certain rooms and lock their positions to prevent them from being reset during subsequent synchronizations. This is achieved using the “Manual placement” instance parameter (a Yes/No type) on the 2D room family. | How it works: . | Select one or more 2D rooms on the diagram. | In the Properties palette, find the “Manual placement” parameter and check the box (set its value to “Yes”). | . | What happens on the next sync: . | Device Positions are Preserved: The command will no longer automatically arrange the existing 2D devices within this room. Their current positions will be locked. | Room Width is Preserved: The width of this 2D room will also be locked and will not automatically change based on the number of devices. | New Devices: If new devices are added to this room in the 3D model, their 2D symbols will appear in the center of the locked room. This allows you to easily find and manually place them where needed. | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#3-step-1-selecting-source-data",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#3-step-1-selecting-source-data"
-  },"70": {
+  },"72": {
     "doc": "Sync fire alarm diagram",
     "title": "4. Step 2: Synchronization Process",
     "content": "After clicking the “OK” button, the process of creating and updating the 2D diagram on the active drafting view begins. | Creating 2D Rooms: . | For each room from the selected levels that contains at least one device, a 2D room (family “Room”) is created on the diagram. | If a 2D room for such a room already exists on the diagram, a new one is not created, but the existing one is updated. | The width of the room is calculated automatically based on the maximum number of devices in one of the two rows to ensure they all fit. The minimum room width is 40 mm. | The Number, Name, and Level from the source 3D room are written into the parameters of the 2D room. | . | Creating 2D Devices: . | Inside each 2D room, 2D device symbols are placed according to their 3D prototypes. | 2D Symbol Selection: The type of 2D symbol is determined based on the rules defined in the “Family Mapping” field. If no suitable rule is found for a 3D device, a default symbol (“Generic”) is used, and the element is colored red. | Placement: Devices are placed in two rows based on the rules from the “Sensor Definitions” field. | The following are written into the parameters of the 2D device: . | Code: Copied from the Mark parameter of the 3D device. | Room: Room number and name. | RoomLevel: Name of the room’s level. | . | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#4-step-2-synchronization-process",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#4-step-2-synchronization-process"
-  },"71": {
+  },"73": {
     "doc": "Sync fire alarm diagram",
     "title": "5. Result and Color Indication",
     "content": "After synchronization, the elements on the diagram are colored differently depending on their status. This allows for a quick assessment of what changes have occurred in the model. | Black (standard color): . | A new 2D room and all devices in it, created for the first time. | . | Green: . | A new 2D device that was added to an existing 2D room on the diagram. | . | Orange: . | Data updated. An element is colored this way if: . | The room’s number or name has changed. | The type of the 3D device has been changed, resulting in a different 2D symbol according to the mapping rules. | . | . | Purple: . | Element moved. If a 3D device was moved from one room to another, its 2D symbol on the diagram is also moved to the corresponding room and colored purple. | . | Blue: . | Manually moved element. If a 2D device was manually dragged from one 2D room to another on the diagram by the user, its 2D symbol will be colored blue. This indicates a user-initiated change in the diagram layout that is preserved across synchronizations. | . | Red: . | “Orphaned” element or error. An element is colored red if: . | The original 3D element (room or device) was deleted from the model. | No mapping rule was found for the 3D device, and the default 2D symbol was used. | . | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#5-result-and-color-indication",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#5-result-and-color-indication"
-  },"72": {
+  },"74": {
     "doc": "Sync fire alarm diagram",
     "title": "6. Change Tracking (“Sync info” Parameter)",
     "content": "Each 2D element on the diagram (both room and device) has a text parameter “Sync info”. It automatically records the history of all changes that have occurred during synchronization, with the date and time. Example record: “Moved from ‘101 - Office’ to ‘102 - Corridor’ [2025-10-28 14:30:15]” . ",
     "url": "/docs/sync-fire-alarm-diagram/#6-change-tracking-sync-info-parameter",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#6-change-tracking-sync-info-parameter"
-  },"73": {
+  },"75": {
     "doc": "Sync fire alarm diagram",
     "title": "7. Known Limitations",
     "content": ". | Level assignment for “homeless” devices: Devices not belonging to any room (“homeless”) are assigned to the nearest level below from a list of “valid levels” (i.e., those that contain rooms with devices). This is done to ensure that only relevant levels are displayed in the level selection list. | Room Detection: Room detection is performed with an additional check 200 mm above and 1000 mm below. In rare cases, if devices in the 3D model are located very close to the floor and outside a room, the algorithm may incorrectly assign the device to a room on the floor below. | Automatic Room Width Adjustment: When the number of devices in a room changes, its width on the diagram will be automatically adjusted. This behavior can be disabled for a specific room by using the “Manual placement” parameter (see section 3.3). | No Automatic Shifting: The script does not shift adjacent rooms if one of them has expanded. This is done to preserve the manual layout of elements on the diagram. If one room starts to overlap another, you will need to manually select and move the adjacent elements. | . ",
     "url": "/docs/sync-fire-alarm-diagram/#7-known-limitations",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#7-known-limitations"
-  },"74": {
+  },"76": {
     "doc": "Sync fire alarm diagram",
     "title": "Sync fire alarm diagram",
-    "content": "… Assign spaces to equip Sync air flow Sync fire alarm Security devices MEC Count sockets ELE … ",
+    "content": "… Assign spaces to equip Sync air flow Sync fire alarm Security devices Create hangers Adjust hangers MEC … ",
     "url": "/docs/sync-fire-alarm-diagram/",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/"
-  },"75": {
+  },"77": {
     "doc": "Create openings",
     "title": "Create Openings",
     "content": ". | What the Command Does | Preparation | Usage | Results | . The command automates the process of creating and updating openings in walls for the passage of MEP elements. It analyzes intersections, considers existing openings, merges closely located new openings, and generates a detailed report on the actions performed. What the Command Does . | Finds intersections between walls and MEP elements (ducts, pipes, cable trays, etc.) in both the current project and linked models. | Manages existing openings: Instead of creating duplicates, the command can expand or merge openings that already exist in the wall. | Automatically merges closely located calculated openings into a single common one to avoid numerous small holes. | Writes the final dimensions of all openings into a specified wall parameter as a numbered list. | Is flexibly configured through a dialog box, allowing the user to control all key parameters. | Creates a detailed report of all actions performed (creation, modification, deletion) and displays it in an interactive window. | . Preparation . Before running the command, ensure that your 3D view is set up to show all the walls and MEP elements you want to process. Usage . When the command is launched, a settings dialog box opens. | Wall Selection: . | Process selected walls only: If this checkbox is marked, the command will only work with the walls you selected before launching. Otherwise, all walls in the project will be processed. | The OK button dynamically displays the number of walls that will be processed. | . | MEP Category Selection: . | Mark the checkboxes for the MEP system categories for which openings need to be created. | . | Opening Parameters: . | Air gap (mm): A buffer added to the dimensions of each MEP element. This increases the final size of the opening. Default: 30 mm. | Merge threshold (mm): The maximum width of a wall section between openings. If the gap between the edges of two adjacent openings is less than this value, they will be merged into one. Default: 100 mm. | Info Parameter: The name of the text parameter in the wall where the final list of all opening sizes will be written. Default: Comments. | . | Filtering and Rounding: . | Min MEP element size (mm): MEP elements whose largest dimension is smaller than the specified value will be ignored. Useful for filtering out small elements. Default: 0. | Rounding step (mm): Rounds the final width and height of the opening to a multiple of the specified number. Default: 10. | Up (checkbox enabled): Rounds up to the nearest greater multiple (e.g., 405 -&gt; 410). | Nearest (checkbox disabled): Mathematical rounding (e.g., 405 -&gt; 400). | . | Visualize Bounding Box for debugging: Creates geometry in the model showing the bounding boxes of MEP elements. Warning: This geometry is not automatically deleted. Use this option for debugging only and delete the created elements manually to avoid cluttering the project. | . | Ignore by Parameter: . | Allows setting rules to filter MEP elements. Elements that satisfy at least one rule will be ignored. Parameter names are case-sensitive, while values are not. | Format: Each rule on a new line: ParameterName: Value. | Wildcard: You can use the * symbol to match any sequence of characters. | Pseudo-parameters: Family (family name) and Type (type name) are supported. | Comments: Lines starting with ; are ignored. | Example: ; Ignore all elements on worksets containing \"placeholder\" Workset: *placeholder* ; Ignore elements with a specific comment Comment: *ignore* . | . | . Results . After performing the calculations, the command displays an interactive report with the results, creates/modifies/deletes openings in the Revit model, and writes the final information to the walls. Writing to Wall Parameter: A numbered list of the final sizes (WxH) of all openings in a given wall is written to the text parameter specified in the settings. Example: . 1. 630x480 2. 280x330 3. 70x70 . If there are no openings in the wall after processing, the parameter is cleared. When processing only selected walls, the parameters of unprocessed walls are not changed. This parameter is useful for creating view filters to display only those walls that have openings (by setting up a filter rule for “parameter is not empty”). Report Format: The report contains lines for each action in the format: Action | Wall ID | Opening ID | Description . The Description column has a 5-part structure: Old ID | New Size (WxH) | Old Size (WxH) | Source (MEP ID) | Merge Info . | CREATED: A new opening was created. | Example: CREATED | w777 | op888 | 500x300 | MEP_IDs: main:1,2 | . | MODIFIED: An existing opening was modified. | Example: MODIFIED | w778 | op999 | 123 | 600x400 | 500x300 | MEP_IDs: link:3 | Merged with: 456 | . | DELETED: An existing opening was deleted because it was merged with another. | Example: DELETED | w779 | op456 | | | Merged into: 999 | . | . ",
     "url": "/docs/create-openings/#create-openings",
     
     "relUrl": "/docs/create-openings/#create-openings"
-  },"76": {
+  },"78": {
     "doc": "Create openings",
     "title": "Create openings",
-    "content": "… Track scheme Cad to Revit Create openings Fill Code Misc ",
+    "content": "… Security devices Create hangers Adjust hangers Create openings Create dampers Create along path MEC … ",
     "url": "/docs/create-openings/",
     
     "relUrl": "/docs/create-openings/"
-  },"77": {
+  },"79": {
     "doc": "Change level",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/change-level/#english-command-title",
     
     "relUrl": "/docs/change-level/#english-command-title"
-  },"78": {
+  },"80": {
     "doc": "Change level",
     "title": "Change level",
-    "content": "… History Worksets from Excel Change level Read parameters Edit in Excel General … ",
+    "content": "Info Purge Change level Edit in Excel Model audit General … ",
     "url": "/docs/change-level/",
     
     "relUrl": "/docs/change-level/"
-  },"79": {
+  },"81": {
     "doc": "Set project params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/set-project-params/#english-command-title",
     
     "relUrl": "/docs/set-project-params/#english-command-title"
-  },"80": {
+  },"82": {
     "doc": "Set project params",
     "title": "Set project params",
-    "content": "… Edit in Excel Clone &amp;shift Project params Sync space params Print set General … ",
+    "content": "… Create filters Worksets from Excel Project params Sync space params History General … ",
     "url": "/docs/set-project-params/",
     
     "relUrl": "/docs/set-project-params/"
-  },"81": {
+  },"83": {
     "doc": "Sync power params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/sync-power-params/#english-command-title",
     
     "relUrl": "/docs/sync-power-params/#english-command-title"
-  },"82": {
+  },"84": {
     "doc": "Sync power params",
     "title": "Sync power params",
     "content": "… Count sockets Circuit description Sync power Create sockets Assign circuit to conduits ELE … ",
     "url": "/docs/sync-power-params/",
     
     "relUrl": "/docs/sync-power-params/"
-  },"83": {
+  },"85": {
     "doc": "Create worksets from Excel",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-worksets-from-excel/#english-command-title",
     
     "relUrl": "/docs/create-worksets-from-excel/#english-command-title"
-  },"84": {
+  },"86": {
     "doc": "Create worksets from Excel",
     "title": "Create worksets from Excel",
-    "content": "… Purge History Worksets from Excel Change level Read parameters General … ",
+    "content": "… Print set Create filters Worksets from Excel Project params Sync space params General … ",
     "url": "/docs/create-worksets-from-excel/",
     
     "relUrl": "/docs/create-worksets-from-excel/"
-  },"85": {
+  },"87": {
     "doc": "Balance Panels",
     "title": "Balance Panels",
     "content": ". | Main Features | Color Coding | Instructions | Troubleshooting (Workflow) | . The tool is designed to analyze the panel hierarchy and automatically redistribute circuits to minimize phase load imbalance. ",
     "url": "/docs/balance-panels/#balance-panels",
     
     "relUrl": "/docs/balance-panels/#balance-panels"
-  },"86": {
+  },"88": {
     "doc": "Balance Panels",
     "title": "Main Features",
     "content": ". | Interactive Panel Map: Visualization of the project’s entire electrical network as a graph. Two modes are supported: . | Hierarchical: Classic “top-down” power tree. | Organic: A physics-based model, useful for finding isolated groups or working with very large networks. | . | Imbalance Diagnostics: Panel colors change depending on the percentage of phase imbalance. | Potential Indicator: The brightness of the nodes (circles) shows how much the balance can be improved in a given panel. If the circle is dim, the balance is close to ideal for that specific set of circuits. | Smart Balancing: The algorithm tests combinations of circuits (1P, 2P, 3P) to achieve the minimum theoretical imbalance. | . ",
     "url": "/docs/balance-panels/#main-features",
     
     "relUrl": "/docs/balance-panels/#main-features"
-  },"87": {
+  },"89": {
     "doc": "Balance Panels",
     "title": "Color Coding",
     "content": "Node colors depend on the configured Thresholds at the top left of the window: . | Green Zone: Balance is within normal limits (default &lt;5%). | Yellow Zone: Medium imbalance. | Red Zone: High imbalance, requires correction. | Black Border: The panel has high improvement potential (theoretical balance is significantly better than current). | White/Grey Border: Balance is already close to the maximum possible for the current set of loads. | . ",
     "url": "/docs/balance-panels/#color-coding",
     
     "relUrl": "/docs/balance-panels/#color-coding"
-  },"88": {
+  },"90": {
     "doc": "Balance Panels",
     "title": "Instructions",
     "content": ". | Launch: Click the Balance Panels button on the Sener panel. | Analysis: Examine the panel tree. Use the search box (top) to quickly find a specific panel. | Selection: Select one or more panels on the graph. | View Settings: You can change Hierarchical mode, Level Separation, and Node Spacing. These changes are applied only after clicking the Redraw button. | Balancing: Click the Balance button. The tool will attempt to automatically move slots in the panel schedule. | Results: Upon completion, you will receive a report with “Before” and “After” imbalance metrics. | Display Modes: Use the Hierarchical checkbox in settings. When enabled, the graph builds a clear tree structure from source to consumers. When disabled, the graph enters “spider web” (organic) mode, where nodes are placed more freely, which is useful for an overview of complex systems. | . ",
     "url": "/docs/balance-panels/#instructions",
     
     "relUrl": "/docs/balance-panels/#instructions"
-  },"89": {
+  },"91": {
     "doc": "Balance Panels",
     "title": "Troubleshooting (Workflow)",
     "content": "In some cases, the Revit API does not allow the program to automatically move multi-phase circuits (2P, 3P) due to system limitations. If an error occurs during balancing: . | Select the problematic panel in the tool window. | Click the Open Panel Schedule View button (table icon). | In the standard Revit panel schedule view that opens, run the built-in Rebalance loads command. | . Currently (due to the technical limitations with multi-phase panels), the tool serves as a “navigator,” helping you focus only on the panels that truly require attention and can be improved. ",
     "url": "/docs/balance-panels/#troubleshooting-workflow",
     
     "relUrl": "/docs/balance-panels/#troubleshooting-workflow"
-  },"90": {
+  },"92": {
     "doc": "Balance Panels",
     "title": "Balance Panels",
-    "content": "… Line to wires Transfer Light Data N Transfer Light Data E Balance Panels Assign equip to schematic Align Elevations ELE … ",
+    "content": "… Line to wires Transfer Light Data N Transfer Light Data E Balance Panels Assign equip to schematic Sync equip to schematic ELE ",
     "url": "/docs/balance-panels/",
     
     "relUrl": "/docs/balance-panels/"
-  },"91": {
+  },"93": {
     "doc": "Assign equip to schematic",
     "title": "Assign Equipment to Schematic",
     "content": ". | General Description | Core Functionality | Status Visualization Mode | How to Use . | Standard Assignment | Assignment from Linked Files | . | Requirements and Validations | . ",
     "url": "/docs/assign-equip-to-schematic/#assign-equipment-to-schematic",
     
     "relUrl": "/docs/assign-equip-to-schematic/#assign-equipment-to-schematic"
-  },"92": {
+  },"94": {
     "doc": "Assign equip to schematic",
     "title": "General Description",
     "content": "This command allows you to automatically associate an MEP equipment (family) with one or more schematic diagrams (generic annotations) within the Revit model. It is designed to facilitate system documentation and tracking by linking real model elements to their schematic representations. ",
     "url": "/docs/assign-equip-to-schematic/#general-description",
     
     "relUrl": "/docs/assign-equip-to-schematic/#general-description"
-  },"93": {
+  },"95": {
     "doc": "Assign equip to schematic",
     "title": "Core Functionality",
     "content": "When the command is executed with an equipment and a schematic selected, it updates the following parameters in the schematic’s annotation: . | SRS_MEP_Equipment_Id: Contains the ID, type, and name of the equipment. | Example: 123456 FamilyType: EquipmentName | . | SRS_MEP_Link_Id: Indicates the origin of the equipment. | If it comes from a linked model, its name is displayed. | If it belongs to the current model, it is indicated as “current model”. | . | . ",
     "url": "/docs/assign-equip-to-schematic/#core-functionality",
     
     "relUrl": "/docs/assign-equip-to-schematic/#core-functionality"
-  },"94": {
+  },"96": {
     "doc": "Assign equip to schematic",
     "title": "Status Visualization Mode",
     "content": "If you run the command without selecting any elements, a graphical visualization mode is activated in the current view. This mode creates status circles over visible equipment to indicate if they are linked to a 2D schematic: . | Red Circle: The equipment is not linked to a 2D schematic. | Green Circle: The equipment is already linked to a 2D schematic. | . Running the command again with no selection will remove the status circles (it acts as a toggle). ",
     "url": "/docs/assign-equip-to-schematic/#status-visualization-mode",
     
     "relUrl": "/docs/assign-equip-to-schematic/#status-visualization-mode"
-  },"95": {
+  },"97": {
     "doc": "Assign equip to schematic",
     "title": "How to Use",
     "content": "Standard Assignment . | Select a single piece of equipment (family) from the active model. | Select one or more annotations belonging to the Generic Annotation category. | Run the Assign Equipment to Schematic command. | A notification will confirm the assignment. | . Assignment from Linked Files . You do not need to select the equipment directly inside the linked file. | Activate the Status Visualization Mode to see the colored circles. | Select the status circle (red or green) over the equipment you want to link. | Select the corresponding 2D schematic symbol. | Run the command. The algorithm will automatically detect the correct link between the two elements. | . ",
     "url": "/docs/assign-equip-to-schematic/#how-to-use",
     
     "relUrl": "/docs/assign-equip-to-schematic/#how-to-use"
-  },"96": {
+  },"98": {
     "doc": "Assign equip to schematic",
     "title": "Requirements and Validations",
     "content": ". | For assignment, only one piece of equipment (or its status circle) must be selected. If more than one is selected, the command will show an error and stop. | The annotations must be of the Generic Annotations category. | . ",
     "url": "/docs/assign-equip-to-schematic/#requirements-and-validations",
     
     "relUrl": "/docs/assign-equip-to-schematic/#requirements-and-validations"
-  },"97": {
+  },"99": {
     "doc": "Assign equip to schematic",
     "title": "Assign equip to schematic",
-    "content": "… Transfer Light Data N Transfer Light Data E Balance Panels Assign equip to schematic Align Elevations Sync equip to schematic ELE … ",
+    "content": "… Transfer Light Data N Transfer Light Data E Balance Panels Assign equip to schematic Sync equip to schematic ELE ",
     "url": "/docs/assign-equip-to-schematic/",
     
     "relUrl": "/docs/assign-equip-to-schematic/"
-  },"98": {
+  },"100": {
     "doc": "Align Elevations",
     "title": "Align Lighting Elevations",
     "content": ". | Purpose | When to Use | Interface | How to Use . | Whole-project mode | Selected-spaces mode | . | Algorithm | Report | Settings | Troubleshooting | . ",
     "url": "/docs/align-elevations/#align-lighting-elevations",
     
     "relUrl": "/docs/align-elevations/#align-lighting-elevations"
-  },"99": {
+  },"101": {
     "doc": "Align Elevations",
     "title": "Purpose",
     "content": "The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model. ",
     "url": "/docs/align-elevations/#purpose",
     
     "relUrl": "/docs/align-elevations/#purpose"
-  },"100": {
+  },"102": {
     "doc": "Align Elevations",
     "title": "When to Use",
     "content": "Use the tool before finalizing schedules if you observe the following: . | A lighting fixture group in a schedule shows “Various” in the elevation parameter. | Fixtures are mounted on a sloped structure or slab with a variable elevation. | . ",
     "url": "/docs/align-elevations/#when-to-use",
     
     "relUrl": "/docs/align-elevations/#when-to-use"
-  },"101": {
+  },"103": {
     "doc": "Align Elevations",
     "title": "Interface",
     "content": ". | Field | Description | Default | . | Source param | Name of the instance parameter from which the individual elevation of each fixture is read (in mm). | SRS_MEP_Lighting_Elevation | . | Target param | Name of the instance parameter to which the rounded average value is written. | SRS_MEP_Lighting_Elevation_Average | . | Rounding (mm) | Rounding step for the result, in millimeters. | 50 | . | Only selected spaces | If checked — only fixtures in spaces selected before launch are processed. If unchecked — all fixtures in the project are processed. | unchecked | . ",
     "url": "/docs/align-elevations/#interface",
     
     "relUrl": "/docs/align-elevations/#interface"
-  },"102": {
+  },"104": {
     "doc": "Align Elevations",
     "title": "How to Use",
     "content": "Whole-project mode . | Uncheck Only selected spaces (or leave it unchecked by default). | Adjust parameter names and the rounding step if needed. | Click OK (or press Enter). | Wait for the operation to complete and review the report. | . Selected-spaces mode . | Before launching the plugin, select one or more Space elements (MEP Space) in the model. | Check Only selected spaces. | Click OK. | . Important: if the checkbox is checked but no Spaces are selected, the plugin will show an error and will not write any values. ",
     "url": "/docs/align-elevations/#how-to-use",
     
     "relUrl": "/docs/align-elevations/#how-to-use"
-  },"103": {
+  },"105": {
     "doc": "Align Elevations",
     "title": "Algorithm",
     "content": ". | All lighting fixtures (OST_LightingFixtures) are collected — either for the whole project or filtered by selected spaces. | The containing space is resolved for each fixture using the following sequence: built-in Space attribute, then the placement point, then two additional probe points — 1.5 m and 3 m below. Fixtures with no resolved space are skipped and counted as “Skipped” in the report. | The plugin automatically detects the parameter type (Length or Number) and performs the necessary unit conversions. | Fixtures are grouped by the pair Space + Type (the space display name includes its number and name). | The arithmetic mean of the source parameter value is calculated within each group. | The average is rounded to the nearest multiple of the rounding step: round(avg / step) * step. | The rounded value is written to the target parameter of every fixture in the group — including single-fixture groups and zero-range groups. | A report is shown. | . ",
     "url": "/docs/align-elevations/#algorithm",
     
     "relUrl": "/docs/align-elevations/#algorithm"
-  },"104": {
+  },"106": {
     "doc": "Align Elevations",
     "title": "Report",
     "content": "After the operation completes, a dialog box appears with summary information. Main instruction contains: . | Number of processed groups and fixtures. | Number of skipped fixtures with no space. | Number of trivial groups (1 fixture or range &lt; 1 mm) — they are written but excluded from the details. | . Content area shows the group with the largest range and the path to the full report file. “Show details” spoiler contains up to 20 groups sorted by range descending. It only includes groups with ≥ 2 fixtures and range ≥ 1 mm. Line format: . 101 Corridor Luminaire Family: Type Name 5 fixtures | avg = 2850 mm | range = 45 mm . | Field | Value | . | avg | Written rounded average (mm) | . | range | Spread = Max − Min from the source parameter (mm) | . Full CSV file is saved to %APPDATA%\\Sener\\BimTools\\Reports\\Align Lighting Elevations\\. The file contains all report-worthy groups with columns: Space Number, Space Name, Family: Type, Count, Avg (mm), Min (mm), Max (mm), Range (mm). Groups with a large range require inspection: fixtures may be placed at different levels or the parameter may be filled incorrectly. ",
     "url": "/docs/align-elevations/#report",
     
     "relUrl": "/docs/align-elevations/#report"
-  },"105": {
+  },"107": {
     "doc": "Align Elevations",
     "title": "Settings",
     "content": "All entered values are automatically saved to %APPDATA%\\Sener\\BimTools\\Settings.json and restored on the next launch. ",
     "url": "/docs/align-elevations/#settings",
     
     "relUrl": "/docs/align-elevations/#settings"
-  },"106": {
+  },"108": {
     "doc": "Align Elevations",
     "title": "Troubleshooting",
     "content": "| Situation | Cause | Solution | . | The command runs but the target parameter does not change | The Target param does not exist or is read-only | Check the parameter name and ensure it is a writable instance parameter | . | Message “Please select at least one Space” | The Only selected spaces checkbox is checked but no Spaces are selected | Select Space elements in the model before launching | . | The “range” value in the report is unexpectedly large | The source parameter was filled manually with errors, or fixtures are genuinely placed at different elevations | Inspect the model and the source parameter values | . ",
     "url": "/docs/align-elevations/#troubleshooting",
     
     "relUrl": "/docs/align-elevations/#troubleshooting"
-  },"107": {
+  },"109": {
     "doc": "Align Elevations",
     "title": "Align Elevations",
-    "content": "… Balance Panels Assign equip to schematic Align Elevations Sync equip to schematic ELE Convert to rebar Misc … ",
+    "content": "… Create sockets Assign circuit to conduits Align Elevations Conduit to circuit sync Line to wires ELE … ",
     "url": "/docs/align-elevations/",
     
     "relUrl": "/docs/align-elevations/"
-  },"108": {
+  },"110": {
     "doc": "Track scheme",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/track-scheme/#english-command-title",
     
     "relUrl": "/docs/track-scheme/#english-command-title"
-  },"109": {
+  },"111": {
     "doc": "Track scheme",
     "title": "Track scheme",
-    "content": "… Sync equip to schematic ELE Convert to rebar Track scheme Cad to Revit Create openings Misc … ",
+    "content": "… Cad to Revit P&amp;ID Linker Track scheme MEC Count sockets Circuit description ELE … ",
     "url": "/docs/track-scheme/",
     
     "relUrl": "/docs/track-scheme/"
-  },"110": {
+  },"112": {
     "doc": "Create sockets",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-sockets/#english-command-title",
     
     "relUrl": "/docs/create-sockets/#english-command-title"
-  },"111": {
+  },"113": {
     "doc": "Create sockets",
     "title": "Create sockets",
-    "content": "… Circuit description Sync power Create sockets Assign circuit to conduits Conduit to circuit sync ELE … ",
+    "content": "… Circuit description Sync power Create sockets Assign circuit to conduits Align Elevations ELE … ",
     "url": "/docs/create-sockets/",
     
     "relUrl": "/docs/create-sockets/"
-  },"112": {
+  },"114": {
     "doc": "Cad to Revit",
     "title": "CadToRevit: Place and Sync Family Instances from CAD Blocks",
     "content": ". | Key Features | Workflow . | Step 1: Preparation and Analysis (button “Prepare/Update…”) | Step 2: Configure Mapping | Step 3: Create Elements (button “Create Families”) | . | UI Overview | Updating and Synchronization | Placement Height Logic (Offset Z) | Additional Features and Important Notes | . This tool is designed to automatically create and update Revit family instances based on blocks from DWG files. It allows you to significantly speed up the process of transferring data from 2D drawings to a 3D model and keep it up to date. ",
     "url": "/docs/cad-to-revit/#cadtorevit-place-and-sync-family-instances-from-cad-blocks",
     
     "relUrl": "/docs/cad-to-revit/#cadtorevit-place-and-sync-family-instances-from-cad-blocks"
-  },"113": {
+  },"115": {
     "doc": "Cad to Revit",
     "title": "Key Features",
     "content": ". | Batch creation and updating: Fast processing of a large number of blocks. | Flexible mapping: Configure the correspondence between CAD blocks and Revit families using Excel. | Height control: Precise control over the placement height using multiple levels of settings. | Duplicate handling: Intelligent filtering of duplicate blocks. | Detailed reports: Generation of Excel reports on created, updated, and skipped elements. | . ",
     "url": "/docs/cad-to-revit/#key-features",
     
     "relUrl": "/docs/cad-to-revit/#key-features"
-  },"114": {
+  },"116": {
     "doc": "Cad to Revit",
     "title": "Workflow",
     "content": "Step 1: Preparation and Analysis (button “Prepare/Update…”) . At this stage, the tool analyzes the selected DWG files and the current Revit project, and then creates or updates the Excel mapping file. This file contains not only the configuration table but also several helper sheets. Main configuration sheet: . | Block-Family Mapping: This is the main worksheet where you manually define which CAD block corresponds to which Revit family. | . Helper sheets (read-only): . | Blocks: Contains a complete list of all unique blocks found in the specified DWG files, their counts, and all their attributes. Use it as a reference to copy the exact block names for mapping. | Families and Families (Transposed): Two sheets representing the same data in different formats. They list all compatible families found in the Revit project and their writable parameters. They help in choosing the correct family and parameter names for mapping. | Comparison: Shows the changes in the block composition (added, removed, modified) between the last two analysis runs. | Duplicates: Provides detailed information about all found duplicate blocks, indicating which one was used and which were ignored. | . Step 2: Configure Mapping . Edit the Block-Family Mapping sheet, filling in at least the three mandatory columns: BlockName, FamilyName, FamilyType. Step 3: Create Elements (button “Create Families”) . After configuring the mapping, start the creation process. The tool will place families in the model according to your rules and generate a final Excel report. ",
     "url": "/docs/cad-to-revit/#workflow",
     
     "relUrl": "/docs/cad-to-revit/#workflow"
-  },"115": {
+  },"117": {
     "doc": "Cad to Revit",
     "title": "UI Overview",
     "content": ". | Input Fields: A large text box for DWG file paths (you can paste multiple paths, each on a new line) and a field for the Excel mapping file path. | “…” Menu Buttons: To the right of each input field, there is a ... button that opens a menu on a left-click: . | For DWG: . | Add new path(s)...: Opens a dialog to select DWG files. | Recent Files: Shows a list of recently used files for quick access. | . | For Excel: . | Select new path...: Opens a dialog to select an Excel file. | Generate default path: Automatically creates a path for the mapping file in the plugin’s reports folder (%AppData%\\Sener\\BimTools\\Reports\\CadToRevit\\). The file will be named mapping_&lt;project_name&gt;.xlsx. | Recent Files: A list of recent mapping files. | . | . | Hotkeys: . | Enter: Starts the family creation process (Create Families). | Esc: Closes the window (Cancel). | . | . ",
     "url": "/docs/cad-to-revit/#ui-overview",
     
     "relUrl": "/docs/cad-to-revit/#ui-overview"
-  },"116": {
+  },"118": {
     "doc": "Cad to Revit",
     "title": "Updating and Synchronization",
     "content": "When run again, the tool does not recreate elements but updates existing ones by tracking changes. | Link: The tool tracks the created elements using the “DWG info” service parameter, which is written to each family. Do not delete or modify this parameter. | Change Detection: Synchronization is triggered if there are changes in: . | Position: The element’s offset exceeds 100 mm. | Rotation: The rotation angle has changed by more than 0.1°. | Parameters: The value of at least one of the tracked parameters has changed. | . | “Orphaned” Elements: If a block has been deleted from the DWG, the corresponding element in Revit is not deleted but is marked in the report as “Orphaned”. This allows for a manual decision on deletion. | . ",
     "url": "/docs/cad-to-revit/#updating-and-synchronization",
     
     "relUrl": "/docs/cad-to-revit/#updating-and-synchronization"
-  },"117": {
+  },"119": {
     "doc": "Cad to Revit",
     "title": "Placement Height Logic (Offset Z)",
     "content": "The element’s height is determined by a three-level priority system: . | offset attribute in CAD block (Highest priority): If the block has an offset attribute, its value is used for the height. Values &gt; 5 are considered millimeters; ≤ 5 are considered meters. | DefaultZ (mm) column in Excel (Medium priority): If the attribute is not present, the value from this column is used. | Default by category (Lowest priority): If nothing is specified, the default height for the family’s category is applied: . | Lighting Fixtures (OST_LightingFixtures): 2999 mm | Lighting Devices (OST_LightingDevices): 999 mm | All other categories: 99 mm | . | . ",
     "url": "/docs/cad-to-revit/#placement-height-logic-offset-z",
     
     "relUrl": "/docs/cad-to-revit/#placement-height-logic-offset-z"
-  },"118": {
+  },"120": {
     "doc": "Cad to Revit",
     "title": "Additional Features and Important Notes",
     "content": ". | Working with Views and Cropping: The tool processes not just linked DWG files from the link manager, but their specific instances placed on views (primarily floor plans). This is a key mechanism for correctly correlating coordinates when a single DWG file contains multiple floor plans offset from each other. | Your Action: Before running the tool, you must manually place and align each instance of the linked DWG on the corresponding plan view in Revit. | Tool’s Action: The tool reads the transformation (offset and rotation) of each instance and correctly calculates the block positions in the shared Revit coordinate system. | Filtering: Additionally, you will have to use the Crop Box on the view to limit processing to only the desired part of the DWG. Blocks outside the crop box will be ignored for that level. | Verification: You can check if your setup is correct on the Blocks sheet in the Excel file. For each block, it shows the number of its occurrences on each view (in “View: \" columns). If the count does not match your expectations, check the alignment and crop boundaries of the DWG link. | . | “Corner” Mode: If you specify “Corner” in the OffsetX or OffsetY columns, the offset will be automatically calculated as half the family’s width/length. This is useful for elements that are inserted by their corner, not their center. | Unit Recognition: When transferring numeric parameters, the tool automatically recognizes and converts values with suffixes such as kW, MW, W, V, kV, kg. | Backups: Before modifying your Excel mapping file, the tool automatically creates a full copy of it with a timestamp. The files are saved in the folder: %AppData%\\Sener\\BimTools\\Reports\\CadToRevit\\Backups\\. | Comments in DWG Paths: In the tool’s window, you can paste a list of paths to DWG files. Lines starting with a ; symbol will be ignored, allowing you to temporarily disable files from processing. | Caution with Manual Copying: When you copy a family instance created by this tool, you also copy its “DWG info” service parameter. This creates a duplicate link, and during the next sync, the tool will silently update only the original instance, ignoring all copies. | Recommendation: Do not copy elements managed by this tool. If you need a “dumb” copy, be sure to clear the value of its “DWG info” parameter to break the link. | Note: In the future, this behavior is planned to be improved so that the tool itself updates the link (based on location) and reports such collisions. | . | . ",
     "url": "/docs/cad-to-revit/#additional-features-and-important-notes",
     
     "relUrl": "/docs/cad-to-revit/#additional-features-and-important-notes"
-  },"119": {
+  },"121": {
     "doc": "Cad to Revit",
     "title": "Cad to Revit",
-    "content": "… Convert to rebar Track scheme Cad to Revit Create openings Fill Code Misc ",
+    "content": "… Create along path Tag on views Cad to Revit P&amp;ID Linker Track scheme MEC … ",
     "url": "/docs/cad-to-revit/",
     
     "relUrl": "/docs/cad-to-revit/"
-  },"120": {
+  },"122": {
     "doc": "Create along path",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-along-path/#english-command-title",
     
     "relUrl": "/docs/create-along-path/#english-command-title"
-  },"121": {
+  },"123": {
     "doc": "Create along path",
     "title": "Create along path",
-    "content": "… Create hangers Adjust hangers Create dampers Create along path Tag on views Assign spaces to equip MEC … ",
+    "content": "… Create openings Create dampers Create along path Tag on views Cad to Revit MEC … ",
     "url": "/docs/create-along-path/",
     
     "relUrl": "/docs/create-along-path/"
-  },"122": {
+  },"124": {
     "doc": "P&ID Linker",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/pid-linker/#english-command-title",
     
     "relUrl": "/docs/pid-linker/#english-command-title"
-  },"123": {
+  },"125": {
     "doc": "P&ID Linker",
     "title": "P&ID Linker",
-    "content": "… Position check Model audit General P&amp;ID Linker Set ASHRAE code Create hangers Adjust hangers MEC … ",
+    "content": "… Tag on views Cad to Revit P&amp;ID Linker Track scheme MEC Count sockets ELE … ",
     "url": "/docs/pid-linker/",
     
     "relUrl": "/docs/pid-linker/"
-  },"124": {
+  },"126": {
     "doc": "Purge",
     "title": "Purge - Project Cleanup",
     "content": ". | What can be removed? | Additional Features | Work log | Usage | . The Purge tool is designed to clean up a project from unused elements in addition to the built-in Purge Unused command. ",
     "url": "/docs/purge/#purge---project-cleanup",
     
     "relUrl": "/docs/purge/#purge---project-cleanup"
-  },"125": {
+  },"127": {
     "doc": "Purge",
     "title": "What can be removed?",
     "content": "The tool allows you to selectively remove the following types of elements: . | Sheet-free Views and Schedules: Removes views and schedules that are not placed on any project sheet. | Unused View Templates: Removes view templates that are not applied to any view. | Unused View Filters: Removes filters that are not used in view graphic overrides. | Unused Line Styles: Removes line styles that are not used in the project. | Unused Text Styles: Removes text styles that are not used in any text notes or schedules. | Material Duplicates: Finds and removes duplicate materials and appearance assets among unused elements. | Unused Families and Other Elements: Removes all unused elements detected by Revit API, including families of all categories, groups, imported symbols, and more. Supports name pattern filtering with wildcards (* and ?). (Available only in Revit 2024 and newer) | . ",
     "url": "/docs/purge/#what-can-be-removed",
     
     "relUrl": "/docs/purge/#what-can-be-removed"
-  },"126": {
+  },"128": {
     "doc": "Purge",
     "title": "Additional Features",
     "content": ". | Customizable Ignore List: . | For views and schedules: specify parameters and values (format: ParameterName: Value). The list can be automatically generated based on the project browser organization. | For families: use name patterns with wildcards (* = any characters, ? = one character). Example: SNR_*, *_KEEP, Template?Family. | . | Auto-repeat: The tool can perform multiple cleanup passes to ensure maximum results, as deleting some elements may make others unused. | Run Native Revit Purge: The tool can also run the built-in Revit command to purge unused elements. | Work Report: After cleanup is complete, a text report is generated with a list of all deleted elements. | . ",
     "url": "/docs/purge/#additional-features",
     
     "relUrl": "/docs/purge/#additional-features"
-  },"127": {
+  },"129": {
     "doc": "Purge",
     "title": "Work log",
     "content": ". | 2026-05-15: Support for old Revit versions (2019–2023) to clean up auto-generated “Default” materials using name and LastChangedBy heuristics. | . ",
     "url": "/docs/purge/#work-log",
     
     "relUrl": "/docs/purge/#work-log"
-  },"128": {
+  },"130": {
     "doc": "Purge",
     "title": "Usage",
     "content": ". | Run the “Purge” command in Revit. | In the opened window, select the element categories you want to remove by checking the corresponding checkboxes. | Tip: Right-click on a checkbox to quickly select only that category (all others will be deselected). | Preview: The “?” button next to “Unused families and other elements” opens a deletion plan without executing the operation. | . | If necessary, specify an ignore list in the text box. You can generate a default list. | Click the “Run” button to start the cleanup process. | For operations with a large number of elements (more than 1000), a progress bar with cancellation option will be displayed. | . | Review the work report after completion. | . ",
     "url": "/docs/purge/#usage",
     
     "relUrl": "/docs/purge/#usage"
-  },"129": {
+  },"131": {
     "doc": "Purge",
     "title": "Purge",
-    "content": "Info Purge History Worksets from Excel General … ",
+    "content": "Info Purge Change level Edit in Excel General … ",
     "url": "/docs/purge/",
     
     "relUrl": "/docs/purge/"
-  },"130": {
+  },"132": {
     "doc": "Create dampers",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-dampers/#english-command-title",
     
     "relUrl": "/docs/create-dampers/#english-command-title"
-  },"131": {
+  },"133": {
     "doc": "Create dampers",
     "title": "Create dampers",
-    "content": "… Set ASHRAE code Create hangers Adjust hangers Create dampers Create along path Tag on views MEC … ",
+    "content": "… Create hangers Adjust hangers Create openings Create dampers Create along path Tag on views MEC … ",
     "url": "/docs/create-dampers/",
     
     "relUrl": "/docs/create-dampers/"
-  },"132": {
+  },"134": {
     "doc": "Position check",
     "title": "Position Check",
     "content": ". | What the Command Does | Preparation | Usage | Results . | “Summary” Sheet | “Detail” Sheet | . | Features | Known Limitations | . Command tracks changes in equipment positions and sizes within spaces between two model snapshots, generating a detailed Excel report to determine if lighting recalculation is needed. ",
     "url": "/docs/position-check/#position-check",
     
     "relUrl": "/docs/position-check/#position-check"
-  },"133": {
+  },"135": {
     "doc": "Position check",
     "title": "What the Command Does",
     "content": ". | Collects all equipment families (size &gt; 100 mm) from current project and linked files | Groups equipment by spaces (MEP Spaces) | Compares current state with previous report (if specified) | Determines change types: new elements, deleted, moved, size changed | Tracks changes in space parameters (area, perimeter) | Generates Excel report with two sheets: summary by spaces and detail by elements | Shows who last edited each element | . ",
     "url": "/docs/position-check/#what-the-command-does",
     
     "relUrl": "/docs/position-check/#what-the-command-does"
-  },"134": {
+  },"136": {
     "doc": "Position check",
     "title": "Preparation",
     "content": "Requirements: . | Project must contain MEP Spaces | Equipment families must have maximum dimension greater than 100 mm | For change tracking: previous report generated by this command | . Recommendations: . | Ensure all spaces are correctly placed and have area | For first run, previous report is not required — a baseline snapshot will be created | . ",
     "url": "/docs/position-check/#preparation",
     
     "relUrl": "/docs/position-check/#preparation"
-  },"135": {
+  },"137": {
     "doc": "Position check",
     "title": "Usage",
     "content": ". | Launch Position Check command from BIMTools panel | In the opened window, specify file paths: . | Previous Report: path to previous Excel report (optional, leave empty for first run) | New Report Path: path and filename for new Excel report (required) | . | Use Browse… buttons to select files through dialog | Click Run button (or press Enter) | Wait for analysis completion — progress bar will show space processing | After completion, open the generated Excel file | . ",
     "url": "/docs/position-check/#usage",
     
     "relUrl": "/docs/position-check/#usage"
-  },"136": {
+  },"138": {
     "doc": "Position check",
     "title": "Results",
     "content": "Command creates Excel file with two sheets: . “Summary” Sheet . Contains information for each space: . | Column | Description | Example | . | Space | Space name (clickable link to details) | “Office 101” | . | Area (m²) | Space area in square meters | 42.5 | . | Perimeter (m) | Space perimeter in meters | 26.3 | . | Status | Change status | “Equipment changed” | . | Changed Count | Number of changed elements | 3 | . | Sample Items | First 5 changed elements | “Lamp_01, Lamp_02, Socket_03” | . | Deltas | Movement distances in meters | “0.5, 0.3, 1.2” | . Space statuses: . | Unchanged — no changes | Equipment changed — equipment changed | Space changed — space parameters changed | Space and equipment changed — both changed | . “Detail” Sheet . Contains detailed information for each element: . | Column | Description | . | Space | Space name (clickable link to summary) | . | Model | Model name (current document or linked file) | . | Element Id | Element identifier in Revit | . | Element Name | Element name | . | Category | Element category | . | Old X/Y/Z (m) | Previous position in meters | . | New X/Y/Z (m) | Current position in meters | . | Delta (m) | Movement distance | . | Old Size (m) | Previous size (W × H × D) | . | New Size (m) | Current size (W × H × D) | . | Status | Change type: New, Deleted, Moved, SizeChanged, Unchanged | . | Last Changed By | Last editor name (workshared projects only) | . Sorting: Elements within each space are sorted by movement distance (descending). Navigation: All space names are hyperlinks for quick navigation between Summary and Detail sheets. ",
     "url": "/docs/position-check/#results",
     
     "relUrl": "/docs/position-check/#results"
-  },"137": {
+  },"139": {
     "doc": "Position check",
     "title": "Features",
     "content": "Change detection threshold: . | Movement is detected when displacement exceeds 50 mm (0.05 m) | Size change is detected when difference exceeds 50 mm | . Element size: . | Only elements with maximum dimension greater than 100 mm are tracked | Small elements (fasteners, hardware) are not included | . Unique identification: . | Each element is identified by combination of model name and Element ID | This allows correct tracking of elements from different linked files | . ",
     "url": "/docs/position-check/#features",
     
     "relUrl": "/docs/position-check/#features"
-  },"138": {
+  },"140": {
     "doc": "Position check",
     "title": "Known Limitations",
     "content": ". | Command tracks only elements with insertion point (LocationPoint), linear elements (LocationCurve) are not included | Elements outside spaces are not included in report | To get last editor information, project must be workshared | On first run (without previous report), all elements will be marked as New | Space collection from linked models is disabled (can be enabled if needed) | . ",
     "url": "/docs/position-check/#known-limitations",
     
     "relUrl": "/docs/position-check/#known-limitations"
-  },"139": {
+  },"141": {
     "doc": "Position check",
     "title": "Position check",
-    "content": "… Show CADs Upload to ACC Position check Model audit General P&amp;ID Linker MEC … ",
+    "content": "… Clone &amp;shift Upload to ACC Position check Convert to rebar General Set ASHRAE code MEC … ",
     "url": "/docs/position-check/",
     
     "relUrl": "/docs/position-check/"
-  },"140": {
+  },"142": {
     "doc": "Create print set",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/create-print-set/#english-command-title",
     
     "relUrl": "/docs/create-print-set/#english-command-title"
-  },"141": {
+  },"143": {
     "doc": "Create print set",
     "title": "Create print set",
-    "content": "… Project params Sync space params Print set Show CADs Upload to ACC General … ",
+    "content": "… Fill Code Show CADs Print set Create filters Worksets from Excel General … ",
     "url": "/docs/create-print-set/",
     
     "relUrl": "/docs/create-print-set/"
-  },"142": {
+  },"144": {
     "doc": "Count sockets",
     "title": "Count Sockets",
     "content": ". | What the Command Does | Preparation | Usage | Results . | Parameter “Sockets single” | Parameter “Sockets twin” | Parameter “ElemsDescr” | Parameter “LocationDescr” | . | Features . | Single and Twin Sockets Detection | Sharjah Room Codes | Linked Architectural Model | Room Detection Algorithm | . | . The Count Sockets command automatically counts sockets in selected electrical circuits and writes detailed information directly to circuit parameters. You get a complete specification of elements with quantities and information about their location by rooms. ",
     "url": "/docs/count-sockets/#count-sockets",
     
     "relUrl": "/docs/count-sockets/#count-sockets"
-  },"143": {
+  },"145": {
     "doc": "Count sockets",
     "title": "What the Command Does",
     "content": ". | Counts single and twin sockets in each selected circuit | Groups all elements by types with quantity indication | Determines element location by rooms from the linked architectural model | Writes all information to circuit parameters for use in schedules and reports | . ",
     "url": "/docs/count-sockets/#what-the-command-does",
     
     "relUrl": "/docs/count-sockets/#what-the-command-does"
-  },"144": {
+  },"146": {
     "doc": "Count sockets",
     "title": "Preparation",
     "content": "Before running the command, make sure that: . | Electrical circuits to be analyzed are selected in the project | There is a linked architectural model with rooms (usually with the “AR01” marker in the name) | Parameters for recording results are created in the project: “Sockets single”, “Sockets twin”, “ElemsDescr”, “LocationDescr” | . ",
     "url": "/docs/count-sockets/#preparation",
     
     "relUrl": "/docs/count-sockets/#preparation"
-  },"145": {
+  },"147": {
     "doc": "Count sockets",
     "title": "Usage",
     "content": ". | Select electrical circuits in the model for which you need to count sockets | Run the command Count Sockets | Wait for completion — the command will show a progress bar with information about the current circuit being processed | Check results in circuit properties or create a schedule with filled parameters | . ",
     "url": "/docs/count-sockets/#usage",
     
     "relUrl": "/docs/count-sockets/#usage"
-  },"146": {
+  },"148": {
     "doc": "Count sockets",
     "title": "Results",
     "content": "The command fills the following parameters in each electrical circuit: . Parameter “Sockets single” . Number of single sockets (integer). Example: 5 . Parameter “Sockets twin” . Number of twin sockets (integer). Example: 3 . Parameter “ElemsDescr” . Detailed specification of all elements in the circuit by types (multi-line text). Format: . 2: Family Name: Type Name 1: Family Name 2: Type Name 2 3: Family Name 3: Type Name 3 . Example: . 5: Socket Standard: Type A 3: Socket USB: Type B 2: Socket Twin: Type C . Parameter “LocationDescr” . Information about element location by rooms with Sharjah codes (multi-line text). Format: . quantity: room_code Room Name quantity: room_code Room Name quantity: None id: element_id element_id . Example: . 5: L01-Z02-EU03-F04-005 Office 3: L01-Z02-EU03-F04-006 Corridor 2: None id: 123456 789012 . Elements with “None” record did not fall into any room — their element IDs are indicated. ",
     "url": "/docs/count-sockets/#results",
     
     "relUrl": "/docs/count-sockets/#results"
-  },"147": {
+  },"149": {
     "doc": "Count sockets",
     "title": "Features",
     "content": "Single and Twin Sockets Detection . The command automatically classifies sockets by the presence of keywords in the family name or element type name (case insensitive): . | Twin sockets — contain the word “twin” in the name | Single sockets — contain the word “single” in the name | Sockets without these words do not fall into any category and are not counted in “Sockets single” and “Sockets twin” parameters | . Examples of twin sockets: . | Family “Socket Twin” | Type “Twin Type A” | Family “Standard Twin Socket” | . Examples of single sockets: . | Family “Socket Single” | Type “Single Type A” | Family “Standard Single Socket” | . Sharjah Room Codes . A special code is generated for each room from five components: . Format: L-Z-EU-F-S . | L — Level Code | Z — Zone Code | EU — End-User Code | F — Function Code | S — Series Number | . These codes are taken from room parameters in the architectural model. Linked Architectural Model . The command searches for rooms in linked Revit models with the “AR01” marker in the name. If you have a different architectural model marker, contact the developer for configuration. Room Detection Algorithm . For accurate room detection, the command checks the element location at several height levels (from +0.2m to -5m from the element placement point). This allows correct operation with wall-mounted sockets and elements in floors. ",
     "url": "/docs/count-sockets/#features",
     
     "relUrl": "/docs/count-sockets/#features"
-  },"148": {
+  },"150": {
     "doc": "Count sockets",
     "title": "Count sockets",
-    "content": "… Sync fire alarm Security devices MEC Count sockets Circuit description Sync power ELE … ",
+    "content": "… P&amp;ID Linker Track scheme MEC Count sockets Circuit description Sync power ELE … ",
     "url": "/docs/count-sockets/",
     
     "relUrl": "/docs/count-sockets/"
-  },"149": {
+  },"151": {
     "doc": "Edit elements in Excel",
     "title": "Editing Parameters in Excel",
     "content": ". | Description | Additional Features | Usage | Use Cases . | 1. Renumbering Sheets or Rooms | 2. Copying Wall Lengths to the “Comments” Parameter | 3. Bulk Updating Data from an External File | . | Changelog | . ",
     "url": "/docs/edit-elements-in-excel/#editing-parameters-in-excel",
     
     "relUrl": "/docs/edit-elements-in-excel/#editing-parameters-in-excel"
-  },"150": {
+  },"152": {
     "doc": "Edit elements in Excel",
     "title": "Description",
     "content": "This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas, simultaneous work with multiple open documents, and can update or add data to previously created files. ",
     "url": "/docs/edit-elements-in-excel/#description",
     
     "relUrl": "/docs/edit-elements-in-excel/#description"
-  },"151": {
+  },"153": {
     "doc": "Edit elements in Excel",
     "title": "Additional Features",
     "content": ". | Custom Columns in Excel: You can add new columns (parameters) directly in the Excel file. When using the “Update file…” function, the command automatically recognizes these new columns and fills them with data, eliminating the need to select parameters in the interface every time you run it. | Preservation of Formulas and Column Order: If you use Excel formulas in cells, they will be preserved when the file is updated (such cells are marked in green). The column order is also preserved, allowing you to customize the table view to your needs. | Edit in TXT Mode: For simple edits, you can use the “Edit as txt file” option from the additional options menu (⋮). The data is exported to a text file where each value is on a new line. | Special Parameters (nonParams): The command allows you to export not only standard Revit parameters but also special, calculated values. They have a _ prefix (e.g., _Coordinates, _HostId, _SpaceName, _RoomNumber). These parameters are read-only. | . ",
     "url": "/docs/edit-elements-in-excel/#additional-features",
     
     "relUrl": "/docs/edit-elements-in-excel/#additional-features"
-  },"152": {
+  },"154": {
     "doc": "Edit elements in Excel",
     "title": "Usage",
     "content": ". | Run the “Edit in Excel” command from the BIMTools tab in Revit. | In the window that appears, select the element parameters you want to export/edit. | Use the options to include type parameters, instance parameters, alphabetical sorting, or include a sheet with project information. | Click “Edit in Excel” to export and start editing. | The command will create an Excel file with Revit elements as rows and the selected parameters as columns. | After finishing editing in Excel, confirm in Revit to import the changes. | Note: When you use the “Edit in Excel” option to export data and wait for editing, the created Excel file is saved by default to the folder: %appdata%\\Roaming\\Sener\\BimTools\\Reports\\EditInExcel\\&lt;Revit_Model_Name&gt;\\, with a name that includes the current date and time. | . | Use “Write to file…” to save the Excel file without waiting for import. | Use “Update file…” to add new elements or update existing ones in an already created Excel file. | Use “Read from file…” to import data from a previously saved Excel file. | When importing data from model audit reports (without the “Elements” sheet), the tool will prompt you to select the desired sheets and automatically distribute the data to the corresponding open Revit projects based on the filenames in the first column (Element IDs must be in the second column). The order of other columns does not matter. | . | . ",
     "url": "/docs/edit-elements-in-excel/#usage",
     
     "relUrl": "/docs/edit-elements-in-excel/#usage"
-  },"153": {
+  },"155": {
     "doc": "Edit elements in Excel",
     "title": "Use Cases",
     "content": "1. Renumbering Sheets or Rooms . | Task: You have a large set of sheets (e.g., 100+), and you need to quickly change their numbering by adding a prefix (e.g., A-101 -&gt; AR-101). Doing this manually in Revit is slow and inconvenient. | Solution: . | Select all sheets in the Project Browser. | Run the “Edit in Excel” command and export the “Sheet Number” parameter. | In the resulting Excel file, use formulas to bulk-change the numbers. For example, in an adjacent cell, write =\"AR-\" &amp; MID(A2,3,100), copy the formula for all rows, and then copy the result as values back into the “Sheet Number” column. | Save the file and import the changes back into Revit. All sheets will be instantly renumbered. | . | . 2. Copying Wall Lengths to the “Comments” Parameter . | Task: To create an external schedule or report, you need the length of each wall to be written to its “Comments” parameter. | Solution: . | Select all the desired walls. | Run the command and export the “Length” and “Comments” parameters. | In the Excel file, you will get two columns. In the “Comments” column, enter a simple formula that references the cell with the length (e.g., =C2), and extend it to all rows. | You can also add text, for example, =\"Wall length: \" &amp; C2 &amp; \" mm\". | Save the file and import the changes. The “Comments” parameter for all walls will be filled with their length values. | . | . 3. Bulk Updating Data from an External File . | Task: An engineer or designer has sent you an Excel spreadsheet with updated data for rooms (e.g., new names, floor finish, ceiling finish). Entering these changes manually is time-consuming and prone to errors. | Solution: . | Select all rooms in the Revit model. | Export the parameters to be updated (e.g., “Number”, “Name”, “Floor Finish”), as well as ElementId, to Excel. | Use the ElementId or room “Number” as a unique key to link with the external file. Use the VLOOKUP function in Excel to transfer the updated data from the engineer’s file to your working spreadsheet. | Save the file and import. All room data in the Revit model will be updated according to the spreadsheet. | . | . ",
     "url": "/docs/edit-elements-in-excel/#use-cases",
     
     "relUrl": "/docs/edit-elements-in-excel/#use-cases"
-  },"154": {
+  },"156": {
     "doc": "Edit elements in Excel",
     "title": "Changelog",
     "content": "2026-07-20 Model Audit Support: Added the ability to import data directly from model audit reports. If the standard “Elements” sheet is missing, the user is prompted to select sheets. It then looks for documents by filename in the first column, supporting simultaneous data import into all open Revit documents. ",
     "url": "/docs/edit-elements-in-excel/#changelog",
     
     "relUrl": "/docs/edit-elements-in-excel/#changelog"
-  },"155": {
+  },"157": {
     "doc": "Edit elements in Excel",
     "title": "Edit elements in Excel",
-    "content": "… Change level Read parameters Edit in Excel Clone &amp;shift Project params General … ",
+    "content": "… Purge Change level Edit in Excel Model audit Fill Code General … ",
     "url": "/docs/edit-elements-in-excel/",
     
     "relUrl": "/docs/edit-elements-in-excel/"
-  },"156": {
+  },"158": {
     "doc": "Model audit",
     "title": "ModelAudit — User Guide",
     "content": ". | Interface . | Configuration (Optional) | Previous Report (Optional) | New Report Path | Run | . | Progress Bar | Report Structure . | Summary | Detail Sheets | Matrix Sheets | Aliases (hidden) | Config (hidden sheets) | . | Check List | Configuration Excel . | Checks Sheet | Categories Sheet | Parameters Sheet | Aliases Sheet | . | Tips and Notes . | Configuration | Document Names | Report Paths | Performance | Linked Models | Report Data | . | Changelog . | [25.44] — 2026/07/17 | [25.39] — 2026/06/30 | [25.34] — 2026/05/14 | [25.31] — 2026/04/13 | . | . ModelAudit is an automated BIM model audit tool for Autodesk Revit. It analyzes the current document and all loaded linked Revit models. The result is an Excel report with detailed data for each of over thirty checks. ",
     "url": "/docs/model-audit/#modelaudit--user-guide",
     
     "relUrl": "/docs/model-audit/#modelaudit--user-guide"
-  },"157": {
+  },"159": {
     "doc": "Model audit",
     "title": "Interface",
     "content": "A dialog with three sections opens on launch. Configuration (Optional) . Path to an Excel configuration file. Controls which checks to run, which Revit categories to export, and which element parameters to include in the report. If empty — the built-in default configuration is used (heavy checks disabled, standard set of categories and parameters). Buttons: . | Browse… — select an existing configuration file. | Generate… — create a new configuration file with default values. The dialog suggests the path %APPDATA%\\Sener\\BimTools\\ModelAudit\\Config-{ModelName}.xlsx. An Aliases sheet with auto-generated short names for linked documents is also added — these can be edited manually. | . A configuration summary is shown below the field in three columns: . | left — number of active checks and categories (hover for full list) | center — number of parameters per category | right — configuration file name and last modified time | . If the configuration contains errors, the summary is replaced with an error message. The configuration path is saved between sessions. Previous Report (Optional) . Path to a previous report. If provided, the Summary sheet will include Old / New columns for comparing values between runs. Old cells contain hyperlinks to detail sheets of the previous report. New Report Path . Path to save the new report. By default, it is generated as: . %APPDATA%\\Sener\\BimTools\\Reports\\ModelAudit\\{yyyy-MM-dd}\\{ModelName}.xlsx . The date is part of the folder name — re-running on the same day overwrites the file in the same folder. “Use relative path” checkbox (enabled only if a config file is specified): . When checked, the report path is automatically calculated relative to the config file directory: . [ConfigDir]/Reports/{ModelName}.xlsx . The path field and its buttons become disabled — the path is view-only. On each overwrite, the previous report is automatically saved as a backup: . [ConfigDir]/Reports/backup/{ModelName}_{yyyy-MM-dd_HH-mm-ss}.xlsx . The checkbox state is saved between sessions. If the config file is not specified or does not exist, the checkbox is disabled. Buttons (available only when “Use relative path” is off): . | Browse… — select a path manually via save dialog. | Default — generate a new path with the current date. | . The absolute path is saved between sessions. In relative mode, it is not overwritten — when the checkbox is unchecked, the previous absolute path is restored. Run . | Create / Update (or Enter) — create or update the report. | Cancel (or Esc) — close the dialog without running. | . ",
     "url": "/docs/model-audit/#interface",
     
     "relUrl": "/docs/model-audit/#interface"
-  },"158": {
+  },"160": {
     "doc": "Model audit",
     "title": "Progress Bar",
     "content": "A progress window with a text log is shown during analysis. The log is read-only. The Stop button cancels processing. ",
     "url": "/docs/model-audit/#progress-bar",
     
     "relUrl": "/docs/model-audit/#progress-bar"
-  },"159": {
+  },"161": {
     "doc": "Model audit",
     "title": "Report Structure",
     "content": "The report is an Excel file (.xlsx). Sheet names are intentionally short (gr, lv, bo, etc.) — navigation is done via hyperlinks, not manual tab switching: Summary links to every detail and matrix sheet; the first cell of each sheet links back to the corresponding Summary row. Summary . Overview sheet. Rows — checks, columns — documents (current + linked). | Check name — hyperlink to the detail sheet. | Extra column contains links: . | ⊞ — to the matrix sheet (summary table for all projects). | ☰ — to additional detail sheets (e.g., breakdown of views by type). | . | Two columns per document: Old (value from the previous report) and New (current). Old cells contain hyperlinks to the detail sheets of the previous report. | Right columns DateTime and Duration — date of last run and execution time. | Hovering over a short document name in the header shows the full file name. | . Color scheme: . | Yellow background — High status (value requires attention) or specific warning in the matrix (e.g., multiple instances of the same link). | Gray / faded text — Low status (value is normal or unchanged). | . Detail Sheets . One sheet per active check. Most sheets include Workset, CreatedBy, LastChangedBy columns. Matrix Sheets . Checks can generate matrix sheets (name: M + detail sheet abbreviation) or additional nested sheets. Links to them are in the Extra column of Summary. Not all sheets have links (e.g., 5 additional view sheets). | Sheet | Rows × Columns | . | Mgr | Grids × Documents. Mon — monitored, No — present but not monitored | . | Mlv | Levels × Documents. Cell: elevation value, grayed if not monitored | . | Mlr | Linked files × Documents. Cell: number of link instances. Yellow — more than one instance. | . | Mbo | Documents × Browser organization type (Views / Schedules / Sheets / Modified) | . | Mpi | Documents × ProjectInfo parameters | . | Mpm | Parameters × Documents. Cell: number of categories in binding | . | Mph | Documents × Phases | . | Mwr | Warnings × Documents | . | Mw1 | Worksets × Documents | . | Mw2 | Block matrix: categories × worksets (separate block per document) | . | Mun | Unit types × Documents. Shows configured measurement units in projects where they are changed. | . | vpE | (Extra sheet) Location of viewports on sheets + link to interactive HTML viewer. | . Aliases (hidden) . Mapping table of short document names to full names. Config (hidden sheets) . Checks, Categories, Parameters sheets save the configuration used at run time. Allows reproducing analysis conditions from an archived report. ",
     "url": "/docs/model-audit/#report-structure",
     
     "relUrl": "/docs/model-audit/#report-structure"
-  },"160": {
+  },"162": {
     "doc": "Model audit",
     "title": "Check List",
     "content": "| # | Name | Sheet | Description | . | 1 | Grids | gr | Grids: name, Id, monitoring (linked element), workset | . | 2 | Levels | lv | Levels: elevation (m), monitoring, workset | . | 3 | Matchlines | ml | Match lines: segment coordinates | . | 4 | ScopeBoxes | sb | Scope Boxes: coordinates, dimensions, workset | . | 5 | Groups | gp | Model groups: name, Id, workset | . | 6 | FamInstances | ei | Family instances with parameters (slow) | . | 7 | FamTypes | et | Family types with parameters (slow) | . | 8 | InPlaceFams | ip | In-Place families: category, Id, instance Ids | . | 9 | FamSizes | fs | RFA file size per family (very slow — saves each family to a temp file) | . | 10 | LinksDwg | ld | DWG/DXF links: status, path, level, Z coordinate | . | 11 | LinksRaster | li | Raster links: source, status, level | . | 12 | LinksRvt | lr | Revit links: name, workset, attachment type (Overlay/Attachment), position | . | 13 | BrowserOrg | bo | Browser organization schemes: type (views/sheets/schedules), active | . | 14 | DesignOptions | do | Design options: Id, name, active | . | 15 | GeneralData | gd | Document metadata: Long/Short Name, file size, starting view, cloud identifiers | . | 16 | ProjectInfo | pi | ProjectInformation parameters: all parameters except NonVisible | . | 17 | ParamMapping | pm | Project parameter bindings: name, type (Instance/Type), categories | . | 18 | Phases | ph | Project phases: Id, name | . | 19 | Warnings | wr | Revit warnings: description, severity, element Ids | . | 20 | Worksets | ws | Worksets: Id, name | . | 21 | Revisions | re | Revision summary: Id, date, description, SheetCount where present. | . | 22 | Sheets | sh | Sheets: Id, number, name, IsPlaceholder, title block, grouping parameters, CurrentRevisionId. | . | 23 | TitleBlocks | tb | Title block types: family, type, InstanceCount in document. | . | 24 | Viewports | vp | Viewports: type, view, sheet. Generates extra sheet vpE and HTML report. | . | 25 | Views | vw | Views: main properties + extra sheets grouped by type (Plans, Sections, 3D, Schedules, Others). | . | 26 | Areas | ar | Areas: area, perimeter, area scheme | . | 27 | Rooms | rm | Rooms: area, height, finish, department + custom parameters | . | 28 | Spaces | sp | MEP spaces: area, height, ventilation system + custom parameters | . | 29 | Units | un | Units: deviations from default values | . | 30 | Coordinates | co | Project coordinates: base points, survey, angle, site name | . Some checks are disabled in the default configuration — managed in the configuration Excel (Checks sheet, Active column). ",
     "url": "/docs/model-audit/#check-list",
     
     "relUrl": "/docs/model-audit/#check-list"
-  },"161": {
+  },"163": {
     "doc": "Model audit",
     "title": "Configuration Excel",
     "content": "Generated by the Generate… button. It is recommended to edit the file before running the audit. Checks Sheet . Controls check activity. | Column | Description | . | Check Name | Check name (matches code, do not change) | . | Active | yes / no (or true / false / 1 / 0) | . | Description | Additional information | . Categories Sheet . Controls active categories for FamInstances and FamTypes checks. | Column | Description | . | BuiltInCategory | Revit enum value, e.g. OST_Walls (do not change) | . | Active | yes / no (or true / false / 1 / 0) | . | Category Name | Localized name (auto-filled, do not change) | . Parameters Sheet . Controls exported element parameters. | First row — headers: Common, then names of active categories. | Common column — parameters exported for all active categories. | Other columns — category-specific parameters. | Empty cells are ignored. | Parameters are searched first on the instance, then on the type. | Non-existent parameters are logged. | . Aliases Sheet . Short document names for Summary headers. | Column | Description | . | Full Name | Full document name (key, do not change) | . | Short Name | Short display name (editable) | . Short names are generated automatically on creation: the common prefix and suffix are trimmed from all names. Documents not found in the Aliases file get auto-generated short names at run time. ",
     "url": "/docs/model-audit/#configuration-excel",
     
     "relUrl": "/docs/model-audit/#configuration-excel"
-  },"162": {
+  },"164": {
     "doc": "Model audit",
     "title": "Tips and Notes",
     "content": "Configuration . | Empty ConfigPath is equivalent to the built-in default configuration — safe to clear. | The summary below the field updates immediately on path change — validation errors are visible before running. | Validation runs again on Create/Update. If the config is invalid, the run is blocked. | Unknown check name in Checks sheet → error with list of valid names. | Invalid BuiltInCategory → error. Any valid BIC from the Revit API is accepted. | Row order in Checks and Categories sheets does not matter. | The configuration is re-read on every run (no caching). | The configuration used at run time is saved in hidden sheets of the report. | . Document Names . | Short names appear in Summary headers — keeps the table compact with many links. | If a linked document appears after config generation — its name is auto-generated; add it manually to the Aliases sheet if needed. | Edit the Aliases sheet in the config before running if auto-generated abbreviations are inconvenient. | . Report Paths . | The new report path is remembered between sessions. Generated automatically on first run. | The Default button generates a new path with the current date — useful when re-running on a different day. | Two runs on the same day create files in the same folder → the second run overwrites the file. Use Browse or Default to create a new path if both results need to be kept. | “Use relative path” — convenient for team workflows: the report is stored next to the config, not in %APPDATA%. Each overwrite automatically creates a backup with a timestamp in the backup/ folder. | If the report file is open in Excel — a retry dialog appears. The audit will not start until the file is released. | The previous report path is not filled automatically — specify it manually via Browse. | . Performance . | FamInstances and FamTypes are disabled by default — they iterate all elements of the specified categories and extract parameters. Execution time depends on the number of active categories and model size. | FamSizes is disabled by default — EditFamily + SaveAs is called for each family to a temporary folder. May take several hours on large models. | . Linked Models . | Only loaded Revit links are analyzed. | Non-loaded links are not included in the analysis. | Documents with the same Title are added once. | . Report Data . | Numeric values (coordinates, areas, distances) are written as Excel numbers — allowing correct sorting and filtering. | Composite values (e.g. space-separated Id list) remain strings. | Line breaks inside parameter values are preserved. | . ",
     "url": "/docs/model-audit/#tips-and-notes",
     
     "relUrl": "/docs/model-audit/#tips-and-notes"
-  },"163": {
+  },"165": {
     "doc": "Model audit",
     "title": "Changelog",
     "content": "[25.44] — 2026/07/17 . | Coordinates: Fixed angle calculation (Angle to True North) — inverted direction (CCW → CW) to align report data with Revit UI values. | . [25.39] — 2026/06/30 . | Coordinates expanded; redundant SiteLocations, BasePoints, and WorksetElements removed. | TitleBlocks and Revisions: compressed output — reduced number of rows by adding a Count column. | Views data duplicated across 5 extra sheets (grouped by ViewType). | Units: implemented a matrix showing unit deviations from metric defaults across all projects. | Sheets: Added CurrentRevisionId column. | LinksRvt: Now highlights cells in the matrix in yellow if more than one instance of the same link is loaded in a file. | Viewports: Created a new interactive HTML report. An extra sheet vpE with a link to the HTML map is generated for the Viewports check, showing TitleBlocks distribution and viewport types on sheets. | . [25.34] — 2026/05/14 . | The Sheets and Views checks now include grouping parameters from the Project Browser. | Built-in parameters that were previously set via config are now always included as hardcoded (e.g., IFC for families, Area Type/Design Option/Comments for Areas, etc.). This ensures correct operation regardless of Revit language; other parameters can be added via config. | In the FamInstances and FamTypes reports, type parameters are no longer shown for instances. | Added “Use relative path” feature to the New Report Path section. | . [25.31] — 2026/04/13 . | Fixed an error that occurred when running the audit on a project with nested linked models (links inside links). The RVT Links check now correctly processes all levels of links. | . ",
     "url": "/docs/model-audit/#changelog",
     
     "relUrl": "/docs/model-audit/#changelog"
-  },"164": {
+  },"166": {
     "doc": "Model audit",
     "title": "Model audit",
-    "content": "… Upload to ACC Position check Model audit General P&amp;ID Linker Set ASHRAE code MEC … ",
+    "content": "… Change level Edit in Excel Model audit Fill Code Show CADs General … ",
     "url": "/docs/model-audit/",
     
     "relUrl": "/docs/model-audit/"
-  },"165": {
+  },"167": {
     "doc": "Show CADs",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/show-cads/#english-command-title",
     
     "relUrl": "/docs/show-cads/#english-command-title"
-  },"166": {
+  },"168": {
     "doc": "Show CADs",
     "title": "Show CADs",
-    "content": "… Sync space params Print set Show CADs Upload to ACC Position check General … ",
+    "content": "… Model audit Fill Code Show CADs Print set Create filters General … ",
     "url": "/docs/show-cads/",
     
     "relUrl": "/docs/show-cads/"
-  },"167": {
+  },"169": {
     "doc": "Create Security Devices",
     "title": "Create Security Devices — Fire, Intrusion and CCTV placement",
     "content": ". | What the command does | Preparation | Usage | Placement rules | Settings | Algorithms . | Ceiling detectors | Siren above the door | Manual call point at the door | Volumetric sensor (Intrusion) | Video Surveillance (CCTV) | . | Output | Limitations | . The command automatically places fire alarm, intrusion (security), and CCTV (Closed-Circuit Television) devices in selected MEP spaces: ceiling detectors on a grid, wall devices (siren, manual call point, intrusion sensors), and CCTV cameras at doors and strategic points. ",
     "url": "/docs/create-security-devices/#create-security-devices--fire-intrusion-and-cctv-placement",
     
     "relUrl": "/docs/create-security-devices/#create-security-devices--fire-intrusion-and-cctv-placement"
-  },"168": {
+  },"170": {
     "doc": "Create Security Devices",
     "title": "What the command does",
     "content": ". | Determines device type from the space name (see rules table) | Computes an optimal ceiling grid using a 6300 mm coverage radius | Detects ceiling height automatically from model geometry or uses manual input | Places a siren above the door for spaces of type Control and Celdas | Places a manual call point, intrusion sensor, and CCTV camera at every exterior door | Places CCTV cameras on building corners (based on selected lines) and on existing poles | Skips devices already placed by the command (idempotent) | Produces a text report with detailed results by family type | . ",
     "url": "/docs/create-security-devices/#what-the-command-does",
     
     "relUrl": "/docs/create-security-devices/#what-the-command-does"
-  },"169": {
+  },"171": {
     "doc": "Create Security Devices",
     "title": "Preparation",
     "content": ". | Device families (detectors, siren, manual call point) must be loaded into the project | Walls, doors and ceilings may be in linked files — the command supports linked geometry | Space names must include the keywords listed in the rules table | . ",
     "url": "/docs/create-security-devices/#preparation",
     
     "relUrl": "/docs/create-security-devices/#preparation"
-  },"170": {
+  },"172": {
     "doc": "Create Security Devices",
     "title": "Usage",
     "content": ". | Select one or more MEP spaces (or uncheck Selected spaces only to process all spaces) | Run the command — the settings dialog will open | Optionally adjust family/type names, height parameters, and worksets | Click Run | . ",
     "url": "/docs/create-security-devices/#usage",
     
     "relUrl": "/docs/create-security-devices/#usage"
-  },"171": {
+  },"173": {
     "doc": "Create Security Devices",
     "title": "Placement rules",
     "content": "Device type is determined from a substring in the space name (case-insensitive): . | Keyword in name | Ceiling | Wall | . | rectificador | hidrogeno + termoelectrico | — | . | transformador | llamas | — | . | bater | optico + hidrogeno | — | . | control | optico + hidrogeno | siren above door | . | celdas | optico + termoelectrico | siren above door | . | inversor | — | camera in center | . | prot civil | — | control + expansion + keyboard + CCTV block (floor) | . | cabinas de mt | — | keyboard + camera in center | . | other | optico | — | . | any with exterior door | — | manual call point + intrusion sensor + CCTV | . ",
     "url": "/docs/create-security-devices/#placement-rules",
     
     "relUrl": "/docs/create-security-devices/#placement-rules"
-  },"172": {
+  },"174": {
     "doc": "Create Security Devices",
     "title": "Settings",
     "content": "Selected spaces only — process only selected spaces. Auto-detect ceiling height — the height is found by casting a ray upward from each grid point (finds nearest ceiling or roof, including linked files). When off, the height is taken from manual input. Manual height (mm) — height above the space floor used in manual mode. Active only when Auto-detect is off. Family: type configuration — family and type names for each device in the format FamilyName: TypeName. Defaults resets values to defaults. ",
     "url": "/docs/create-security-devices/#settings",
     
     "relUrl": "/docs/create-security-devices/#settings"
-  },"173": {
+  },"175": {
     "doc": "Create Security Devices",
     "title": "Algorithms",
     "content": "Ceiling detectors . For each space the command builds a minimal rectangular N×M grid so that the cell half-diagonal does not exceed 6300 mm. The grid step is rounded down to 100 mm and any remainder is distributed symmetrically from the walls. If multiple detector types are required at the same grid point, they are spread along the X axis with 500 mm step. Each point’s height is taken from the nearest ceiling surface found above it (ray intersection) or from the manual height. Spaces with complex shapes (area &lt; 90% of bounding rectangle) are skipped and listed in the report. Siren above the door . A siren is placed above the door opening center at 2500 mm above the bottom of the door. Manual call point at the door . A manual call point is placed on the wall beside each exterior door at 1400 mm high. Preferred side is handle side; if not available (nearby door or wall end), it uses the hinge side. Orientation faces into the space. Volumetric sensor (Intrusion) . Placed at every exterior door at 2400 mm above floor. The algorithm attempts to find the best viewing position for the entrance: . | 2-meter priority: the sensor is placed on the same wall at 2 m distance from the door edge and rotated 45° to the wall. | Handling corners: if a wall corner is within 2 meters, the sensor is moved to the adjacent wall (1 meter from corner) and directed perpendicular to it. | Smart matching: for each door in the room, the algorithm searches for the nearest existing similar device. If a sensor already exists (even if moved manually by the user), no second placement is performed for that door. | . Video Surveillance (CCTV) . The command supports several CCTV placement scenarios: . | Above door: At each exterior door (200 mm above opening, 300 mm offset from wall). | In space center: For Inversor and Cabinas de MT types (height determined automatically or manually). | On building corners: If Detail Lines representing wall boundaries are selected before running, cameras are placed at external corners (1 m offset from corner along the bisector). | On masts/poles: The command finds instances of masts (Pole family specified in UI) and places cameras on them at 5 m height. | . ",
     "url": "/docs/create-security-devices/#algorithms",
     
     "relUrl": "/docs/create-security-devices/#algorithms"
-  },"174": {
+  },"176": {
     "doc": "Create Security Devices",
     "title": "Output",
     "content": "After finishing the command shows a report: . | Count of placed devices by family/type | Count of skipped points (already occupied) with details by type (family types and IDs of existing elements) | List of complex-shaped spaces skipped for ceiling placement | . ",
     "url": "/docs/create-security-devices/#output",
     
     "relUrl": "/docs/create-security-devices/#output"
-  },"175": {
+  },"177": {
     "doc": "Create Security Devices",
     "title": "Limitations",
     "content": ". | Complex-shaped spaces are not processed for ceiling placement — place devices manually | Family orientation assumes the instance front faces along -Y in the family’s base orientation | . ",
     "url": "/docs/create-security-devices/#limitations",
     
     "relUrl": "/docs/create-security-devices/#limitations"
-  },"176": {
+  },"178": {
     "doc": "Create Security Devices",
     "title": "Create Security Devices",
-    "content": "… Sync air flow Sync fire alarm Security devices MEC Count sockets Circuit description ELE … ",
+    "content": "… Sync air flow Sync fire alarm Security devices Create hangers Adjust hangers Create openings MEC … ",
     "url": "/docs/create-security-devices/",
     
     "relUrl": "/docs/create-security-devices/"
-  },"177": {
+  },"179": {
     "doc": "Fill code",
     "title": "FillCode Command",
     "content": ". | Purpose | How to Use . | 1. Mapping Configuration . | Managing the Mapping File: | . | 2. Filters and Options | 3. Summary Panel | 4. Execution and Reporting | . | Generated Code Structure | Excel File Structure | . ",
     "url": "/docs/fill-code/#fillcode-command",
     
     "relUrl": "/docs/fill-code/#fillcode-command"
-  },"178": {
+  },"180": {
     "doc": "Fill code",
     "title": "Purpose",
     "content": "The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter. This allows for the standardization of element identification according to project requirements. ",
     "url": "/docs/fill-code/#purpose",
     
     "relUrl": "/docs/fill-code/#purpose"
-  },"179": {
+  },"181": {
     "doc": "Fill code",
     "title": "How to Use",
     "content": "When the command is launched, a settings window opens, allowing you to control the code generation process. 1. Mapping Configuration . The command’s behavior is entirely determined by mapping rules. You have two options: . | Use Default Values: If the “Path to Excel file” field is empty, the command will use an internal, hard-coded set of rules. | Use an External Excel File: You can specify the path to an Excel file with your own rules. This provides maximum flexibility. | . Managing the Mapping File: . | “Path to Excel file” field: Enter the path to your .xlsx file here. The path is saved between Revit sessions. | “Browse…” button: Opens a dialog to select the file. | “Export Default Settings” button: Creates a template Excel file with the standard rules. You can use this as a starting point for your own mappings. | “Reload” button: Allows you to manually refresh the summary information after making changes to the Excel file. | . 2. Filters and Options . | “Ignore ‘Generic Models’ category”: Enabled by default. This excludes elements of this category from processing, as they are often auxiliary. | “Debug mode”: If this checkbox is selected, the command will execute all logic, analyze the elements, and generate a detailed report, but will not make any changes to the model. This is a safe way to verify the correctness of the settings before actually applying the codes. | . 3. Summary Panel . This read-only text field displays summary information about how the command will operate with the current settings. | Data Source: Shows whether “Default Values” or the specified Excel file is being used. | Launch Parameters: Displays key identifiers extracted from the current Revit file’s name (Work Package, Building Code), which are used to find the correct rules. | Mapping Summary: Shows how many rules have been loaded (number of categories, disciplines, location codes, levels for the current work package). | Element Count: Shows how many elements in the current view or selection will be processed. | . 4. Execution and Reporting . After clicking the “OK” button, the command processes the elements and displays a final message with the number of successful operations, warnings, and errors. You will be prompted to open a detailed text report, which contains: . | Summary: Full information about the launch parameters and loaded rules. | Problematic Elements: A list of elements that could not be processed, with the reason (e.g., “sublocation code not found,” “level not determined”). | Successfully Processed Elements: A table of all elements for which the code was successfully generated. The data is presented in a format ready for copying into Excel and is sorted by category. | . ",
     "url": "/docs/fill-code/#how-to-use",
     
     "relUrl": "/docs/fill-code/#how-to-use"
-  },"180": {
+  },"182": {
     "doc": "Fill code",
     "title": "Generated Code Structure",
     "content": "The final code has the following format: . DisciplineCode-CategoryCode-LocationCode-SubLocationCode-LevelCode . | DisciplineCode: The discipline code (e.g., “H” for HVAC, “E” for Electrical), determined by the element’s category. | CategoryCode: The element’s category code (e.g., “DCT” for ducts). | LocationCode: The location code, determined by the building code from the file name. | SubLocationCode: The sub-location code, read from the instance parameter IDD_SUBLOCATION. If the parameter is empty, ? is used. | LevelCode: The level code, determined based on the element’s Z-coordinate and the “Work Package” from the file name. | . ",
     "url": "/docs/fill-code/#generated-code-structure",
     
     "relUrl": "/docs/fill-code/#generated-code-structure"
-  },"181": {
+  },"183": {
     "doc": "Fill code",
     "title": "Excel File Structure",
     "content": "The mapping file can contain several sheets to configure different rules: . | CategoryDiscipline: A matrix for mapping Revit categories to discipline codes (DisciplineCode) and category codes (CategoryCode). | Location: A table for mapping “building codes” (from the file name) to LocationCode. | Levels: A sheet for mapping Z-coordinates to level codes (LevelCode). The data on this sheet is organized into blocks of two columns, where each block has a two-row header: . | Row 1: Contains the mapping key. This can be a “Work Package” (e.g., CNT3) or a composite key \"{Work Package} {Building Code}\" (e.g., CNT7 E110). | Row 2: Contains the data headers: Min Z for the minimum level elevation (in meters) and Code for the level code. | . | . ",
     "url": "/docs/fill-code/#excel-file-structure",
     
     "relUrl": "/docs/fill-code/#excel-file-structure"
-  },"182": {
+  },"184": {
     "doc": "Fill code",
     "title": "Fill code",
-    "content": "… Cad to Revit Create openings Fill Code Misc ",
+    "content": "… Edit in Excel Model audit Fill Code Show CADs Print set General … ",
     "url": "/docs/fill-code/",
     
     "relUrl": "/docs/fill-code/"
-  },"183": {
+  },"185": {
     "doc": "Info",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/info/#english-command-title",
     
     "relUrl": "/docs/info/#english-command-title"
-  },"184": {
+  },"186": {
     "doc": "Info",
     "title": "Info",
-    "content": "Info Purge History General … ",
+    "content": "Info Purge Change level General … ",
     "url": "/docs/info/",
     
     "relUrl": "/docs/info/"
-  },"185": {
+  },"187": {
     "doc": "Read parameters from Excel",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/read-parameters-from-excel/#english-command-title",
     
     "relUrl": "/docs/read-parameters-from-excel/#english-command-title"
-  },"186": {
+  },"188": {
     "doc": "Read parameters from Excel",
     "title": "Read parameters from Excel",
-    "content": "… Worksets from Excel Change level Read parameters Edit in Excel Clone &amp;shift General … ",
+    "content": "… Sync space params History Read parameters Clone &amp;shift Upload to ACC General … ",
     "url": "/docs/read-parameters-from-excel/",
     
     "relUrl": "/docs/read-parameters-from-excel/"
-  },"187": {
+  },"189": {
     "doc": "TextoMorph",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/textomorph/#english-command-title",
     
     "relUrl": "/docs/textomorph/#english-command-title"
-  },"188": {
+  },"190": {
     "doc": "TextoMorph",
     "title": "TextoMorph",
-    "content": "Info Purge History General … ",
+    "content": "Info Purge Change level General … ",
     "url": "/docs/textomorph/",
     
     "relUrl": "/docs/textomorph/"
-  },"189": {
+  },"191": {
     "doc": "Convert lines to wires",
     "title": "Line to Wires",
     "content": ". | How to Use | Features and Settings . | Operating Modes | Settings | Mappings . | Line Style to Wire Type Mapping | Connector Mapping | . | . | . The Line to Wires command allows you to quickly convert ordinary detail lines into electrical wires in an Autodesk Revit project. It analyzes the selected lines, finds nearby electrical devices (such as lighting fixtures, equipment, and outlets), determines their connectors, and automatically creates wires connecting them. ",
     "url": "/docs/convert-lines-to-wires/#line-to-wires",
     
     "relUrl": "/docs/convert-lines-to-wires/#line-to-wires"
-  },"190": {
+  },"192": {
     "doc": "Convert lines to wires",
     "title": "How to Use",
     "content": ". | Draw detail lines in your Revit view to represent the path of the electrical wires. | Run the Line to Wires command from the BIM Tools panel. | The command will automatically detect the lines and nearby electrical devices. | Adjust the settings in the dialog window if necessary. | Click “OK” to create the wires. The original lines will be deleted by default. | . ",
     "url": "/docs/convert-lines-to-wires/#how-to-use",
     
     "relUrl": "/docs/convert-lines-to-wires/#how-to-use"
-  },"191": {
+  },"193": {
     "doc": "Convert lines to wires",
     "title": "Features and Settings",
     "content": "Operating Modes . | Delete input lines: (Default: Enabled) Deletes the original detail lines after the wires are created. | Auto split by devices: (Default: Enabled) Automatically splits a single line into multiple wire segments where it intersects with electrical devices. This allows you to draw one continuous line across multiple devices. | Shift mode: (Default: Disabled) If a line’s endpoint is exactly at a device connector, it will be shifted by 1 mm to prevent potential errors. | Silent mode: (Default: Disabled) If you pre-select lines in the model before running the command, it will execute immediately using the last saved settings, without showing the dialog window. | . Settings . | Search threshold: (Default: 30 mm) The radius around the lines and their endpoints within which the command will search for electrical devices to connect to. | Auto split max distance: (Default: 1000 mm) An additional check for the maximum distance from a line to a device’s connector, which is particularly useful for diagonal lines. | . Mappings . Line Style to Wire Type Mapping . You can map specific line styles to corresponding wire types. If a mapping is not provided, the command will try to match the wire type by the line style’s name or use the project’s default wire type. Format: LineStyleName: WireTypeName . Use a semicolon ; at the beginning of a line to comment it out. Example: . DASHED_LINE: Wire-PVC-1.5 SOLID_LINE: Wire-PVC-2.5 . Connector Mapping . For device families with multiple connectors, you can specify which connector index the wire should connect to. Format: FamilyName: TypeName: ConnectorIndex . The ConnectorIndex is a zero-based integer. Example: . GenericOutlet: Duplex: 0 SpecificFixture: Model-A: 1 . ",
     "url": "/docs/convert-lines-to-wires/#features-and-settings",
     
     "relUrl": "/docs/convert-lines-to-wires/#features-and-settings"
-  },"192": {
+  },"194": {
     "doc": "Convert lines to wires",
     "title": "Convert lines to wires",
-    "content": "… Assign circuit to conduits Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E Balance Panels ELE … ",
+    "content": "… Align Elevations Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E Balance Panels ELE … ",
     "url": "/docs/convert-lines-to-wires/",
     
     "relUrl": "/docs/convert-lines-to-wires/"
-  },"193": {
+  },"195": {
     "doc": "Clone&Shift",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/cloneshift/#english-command-title",
     
     "relUrl": "/docs/cloneshift/#english-command-title"
-  },"194": {
+  },"196": {
     "doc": "Clone&Shift",
     "title": "Clone&Shift",
-    "content": "… Read parameters Edit in Excel Clone &amp;shift Project params Sync space params General … ",
+    "content": "… History Read parameters Clone &amp;shift Upload to ACC Position check General … ",
     "url": "/docs/cloneshift/",
     
     "relUrl": "/docs/cloneshift/"
-  },"195": {
+  },"197": {
     "doc": "Sync space params",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/sync-space-params/#english-command-title",
     
     "relUrl": "/docs/sync-space-params/#english-command-title"
-  },"196": {
+  },"198": {
     "doc": "Sync space params",
     "title": "Sync space params",
-    "content": "… Clone &amp;shift Project params Sync space params Print set Show CADs General … ",
+    "content": "… Worksets from Excel Project params Sync space params History Read parameters General … ",
     "url": "/docs/sync-space-params/",
     
     "relUrl": "/docs/sync-space-params/"

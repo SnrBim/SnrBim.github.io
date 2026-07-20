@@ -63,12 +63,11 @@ function Get-RibbonOrder {
         return $result
     }
 
-    $lines        = Get-Content -Path $AppCsPath
-    $currentPanel = $null
-    $globalOrder  = 0          # increments across ALL panels — fixes Liquid sort order
-    $nextSep      = $false
-    # No seenPrefixes dedup — each unique prefix.commandClass gets its own entry
-    # (handles split-buttons and multi-command folders like TransferLightingDataToSpace)
+    $lines         = Get-Content -Path $AppCsPath
+    $currentPanel  = $null
+    $globalOrder   = 0          # increments across ALL panels — fixes Liquid sort order
+    $nextSepCount  = 0
+    $lastItemWasSplit = $false
 
     foreach ($line in $lines) {
         $trimmed = $line.Trim()
@@ -80,36 +79,47 @@ function Get-RibbonOrder {
 
         # Detect panel section: panelName = "..."  or  panelName = $"General{...}"
         if ($codePart -match 'panelName\s*=\s*["\$]"?([^"${}]+)') {
-            $currentPanel = $Matches[1].Trim()
-            $nextSep      = $false
+            $currentPanel     = $Matches[1].Trim()
+            $nextSepCount     = 0
+            $lastItemWasSplit = $false
             continue
         }
 
         if ($null -eq $currentPanel) { continue }
 
         # Detect separator
-        if ($codePart -match 'AddSeparator\s*\(') {
-            $nextSep = $true
+        if ($codePart -match 'AddSeparator\s*\(' -or $codePart -match 'CreateSplit\s*\(.*null\)') {
+            $nextSepCount++
             continue
         }
 
-        # Detect CreateButton call (panel or splitButton host, any Command* suffix)
-        if ($codePart -match 'CreateButton\s*\(.*new\s+(\w+)\.(Command\w*)') {
-            $prefix       = $Matches[1]
-            $commandClass = $Matches[2]
+        # Detect CreateButton or CreateSplit call (panel or splitButton host, any Command* suffix)
+        if ($codePart -match '(CreateButton|CreateSplit)\s*\(.*new\s+(\w+)\.(Command\w*)') {
+            $method       = $Matches[1]
+            $prefix       = $Matches[2]
+            $commandClass = $Matches[3]
             $key          = "$prefix.$commandClass"
+            $isSplit      = $method -eq "CreateSplit"
 
             if (-not $result.Contains($key)) {
                 $globalOrder++
+
+                $finalSep = $nextSepCount
+                # Option B: Automatic 3-sep on transition to SplitButton
+                if ($isSplit -and -not $lastItemWasSplit -and $finalSep -eq 0) {
+                    $finalSep = 3
+                }
+
                 $result[$key] = @{
                     Panel           = $currentPanel
                     Order           = $globalOrder
-                    SeparatorBefore = $nextSep
+                    SeparatorBefore = $finalSep
                     CommandClass    = $commandClass
                     FolderPrefix    = $prefix
                 }
+                $lastItemWasSplit = $isSplit
             }
-            $nextSep = $false
+            $nextSepCount = 0
             continue
         }
     }
@@ -169,7 +179,7 @@ $buttonTexts = Get-ButtonTexts -SourceRoot $SourceRoot
 Write-Host "Loaded button texts for $($buttonTexts.Count) command variants." -ForegroundColor Cyan
 
 $commandFolders = Get-ChildItem -Path $SourceRoot -Directory | Where-Object {
-    ($_.Name -ne "Template") -and ($_.Name -ne "Manifest") -and ($_.Name -ne "Res") -and ($_.Name -ne "Properties") -and ($_.Name -ne "bin") -and ($_.Name -ne "obj") -and (Test-Path -Path (Join-Path $_.FullName "Docs"))
+    ($_.Name -ne "Template") -and ($_.Name -ne "Manifest") -and ($_.Name -ne "Res") -and ($_.Name -ne "Properties") -and ($_.Name -ne "bin") -and ($_.Name -ne "obj") -and (Test-Path -Path (Join-Path $_.FullName "Docs") -ErrorAction SilentlyContinue)
 }
 
 if (-not $commandFolders) {
@@ -402,8 +412,8 @@ foreach ($commandFolder in $commandFolders) {
                 if ($ribbonInfo) {
                     $newFrontMatterLines.Add("ribbon_panel: $($ribbonInfo.Panel)")
                     $newFrontMatterLines.Add("ribbon_order: $($ribbonInfo.Order)")
-                    if ($ribbonInfo.SeparatorBefore) {
-                        $newFrontMatterLines.Add("ribbon_separator_before: true")
+                    if ($ribbonInfo.SeparatorBefore -gt 0) {
+                        $newFrontMatterLines.Add("ribbon_separator_before: $($ribbonInfo.SeparatorBefore)")
                     }
                     $btnText = $buttonTexts["$commandNamePascalCase.$($ribbonInfo.CommandClass)"]
                     if ($btnText) {
