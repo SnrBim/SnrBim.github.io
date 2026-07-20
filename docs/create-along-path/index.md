@@ -6,8 +6,8 @@ wip: true
 description: 'This is the English content for the command documentation.'
 description_es: 'Este es el contenido en español para la documentación del comando.'
 ribbon_panel: MEP mechanical
-ribbon_order: 21
-ribbon_separator_before: true
+ribbon_order: 28
+ribbon_separator_before: 1
 ribbon_button_text: "Create\nalong path"
 icon: /docs/create-along-path/logo.png
 namespace: create-along-path

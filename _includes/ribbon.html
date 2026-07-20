@@ -33,7 +33,13 @@
       <div class="ribbon-panel-buttons">
         {% for cmd in panel_cmds %}
           {% if cmd.ribbon_separator_before %}
-          <div class="ribbon-btn-separator" aria-hidden="true"></div>
+            {% if cmd.ribbon_separator_before == true %}
+              <div class="ribbon-btn-separator" aria-hidden="true"></div>
+            {% else %}
+              {% for i in (1..cmd.ribbon_separator_before) %}
+                <div class="ribbon-btn-separator" aria-hidden="true"></div>
+              {% endfor %}
+            {% endif %}
           {% endif %}
           {%- assign btn_label = cmd.ribbon_button_text | default: cmd.title -%}
           {%- assign btn_tooltip = cmd.title -%}

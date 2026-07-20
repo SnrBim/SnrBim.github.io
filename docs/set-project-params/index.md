@@ -6,7 +6,7 @@ wip: true
 description: 'This is the English content for the command documentation.'
 description_es: 'Este es el contenido en español para la documentación del comando.'
 ribbon_panel: General
-ribbon_order: 9
+ribbon_order: 11
 ribbon_button_text: "Project\nparams"
 icon: /docs/set-project-params/logo.png
 namespace: set-project-params

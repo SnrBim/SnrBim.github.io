@@ -6,7 +6,8 @@ wip: true
 description: 'This is the English content for the command documentation.'
 description_es: 'Este es el contenido en español para la documentación del comando.'
 ribbon_panel: General
-ribbon_order: 12
+ribbon_order: 7
+ribbon_separator_before: 3
 ribbon_button_text: "Show\nCADs"
 icon: /docs/show-cads/logo.png
 namespace: show-cads

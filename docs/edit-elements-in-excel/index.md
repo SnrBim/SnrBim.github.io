@@ -2,10 +2,10 @@
 parent: Common
 title: Edit elements in Excel
 layout: default
-description: 'This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas and can update or add data to previously created files.'
-description_es: 'Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel y puede actualizar o añadir datos a archivos creados anteriormente.'
+description: 'This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas, simultaneous work with multiple open documents, and can update or add data to previously created files.'
+description_es: 'Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel, el trabajo simultáneo con varios documentos abiertos y puede actualizar o añadir datos a archivos creados anteriormente.'
 ribbon_panel: General
-ribbon_order: 7
+ribbon_order: 4
 ribbon_button_text: "Edit in\nExcel"
 icon: /docs/edit-elements-in-excel/logo.png
 namespace: edit-elements-in-excel
