@@ -81,6 +81,10 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 
 ## Changelog
 
+2026-07-17
+1. **Ducks and Fitting Chains Support**: Redesigned the connection traversal algorithm. The tool now correctly processes fittings connected directly to each other (without straight conduit segments between them).
+2. **Crash Fixing**: Resolved the `Sequence contains no elements` error that occurred when analyzing incomplete or empty routes. Added safety checks.
+
 2026-07-15
 1. **Instance Parameter Priority**: `SRS_Equipment_Type` and `SRS_MEP_Tag_Type_Id` are now sought in the element parameters first, only falling back to Type if empty. This allows instance-level overrides.
 2. **Name Cleaning**: Improved `SRS_Schedule_Name` assembly, eliminating trailing/leading hyphens when parameters are partially missing.

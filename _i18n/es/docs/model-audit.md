@@ -287,6 +287,9 @@ Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y
 
 ## Historial de cambios
 
+### [25.44] — 2026/07/17
+- Coordinates: Se ha corregido el cálculo del ángulo (Angle to True North) — se ha invertido la dirección (CCW → CW) para que los datos del informe coincidan con los valores de la interfaz de Revit.
+
 ### [25.39] — 2026/06/30
 - Coordinates ampliado; eliminados SiteLocations, BasePoints y WorksetElements redundantes.
 - TitleBlocks y Revisions: salida comprimida — reducido el número de filas añadiendo una columna Count.

@@ -80,6 +80,10 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 
 ## Historial de Cambios
 
+2026-07-17
+1. **Soporte para codos sucesivos y cadenas de accesorios**: Se ha rediseñado el algoritmo de recorrido de conexiones. La herramienta ahora procesa correctamente los accesorios conectados directamente entre sí (sin tramos rectos de tubo intermedios).
+2. **Corrección de errores (Crash)**: Se ha solucionado el error `Sequence contains no elements` al analizar rutas incompletas o vacías. Se añadieron comprobaciones de seguridad.
+
 2026-07-15
 1. **Prioridad de parámetros de instancia**: `SRS_Equipment_Type` y `SRS_MEP_Tag_Type_Id` se buscan primero en los parámetros del elemento, y solo en el tipo si están vacíos. Esto permite sobrescrituras a nivel de instancia.
 2. **Limpieza de nombres**: Se mejoró la generación de `SRS_Schedule_Name`, eliminando guiones sobrantes cuando faltan datos parciales.

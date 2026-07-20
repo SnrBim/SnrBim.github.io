@@ -12,7 +12,7 @@
 
 ## Descripción
 
-Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel y puede actualizar o añadir datos a archivos creados anteriormente.
+Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel, el trabajo simultáneo con varios documentos abiertos y puede actualizar o añadir datos a archivos creados anteriormente.
 
 ## Funciones adicionales
 
@@ -36,6 +36,7 @@ Este comando permite exportar los parámetros seleccionados de elementos de Revi
 5.  Utilice "Write to file..." para guardar el archivo de Excel sin esperar a la importación.
 6.  Utilice "Update file..." para añadir nuevos elementos o actualizar los existentes en un archivo de Excel ya creado.
 7.  Utilice "Read from file..." para importar datos de un archivo de Excel guardado anteriormente.
+    *   Al importar datos de informes de auditoría de modelos (donde no hay una hoja "Elements"), la herramienta le pedirá que seleccione las hojas deseadas и distribuirá automáticamente los datos a los proyectos de Revit abiertos correspondientes basándose en los nombres de archivo en la primera columna (los IDs de los elementos deben estar en la segunda columna). El orden de las demás columnas no importa.
 
 ![alt text](image.png)
 
@@ -68,3 +69,7 @@ Este comando permite exportar los parámetros seleccionados de elementos de Revi
     2.  Exporte a Excel los parámetros que deben actualizarse (por ejemplo, "Número", "Nombre", "Acabado de suelo"), así como el `ElementId`.
     3.  Utilice el `ElementId` o el "Número" de la habitación como clave única para vincularlo con el archivo externo. Con la función `BUSCARV` (`VLOOKUP`) en Excel, transfiera los datos actualizados del archivo del ingeniero a su hoja de trabajo.
     4.  Guarde el archivo e importe. Todos los datos de las habitaciones en el modelo de Revit se actualizarán de acuerdo con la hoja de cálculo.
+
+## Historial de cambios
+2026-07-20 Soporte para Model Audit: Se ha añadido la capacidad de importar datos directamente desde los informes de auditoría del modelo. Si falta la hoja estándar "Elements", se solicita al usuario que seleccione las hojas. A continuación, busca documentos por nombre de archivo en la primera columna, lo que permite la importación simultánea de datos en todos los documentos de Revit abiertos.
+

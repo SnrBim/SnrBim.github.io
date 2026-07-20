@@ -287,6 +287,9 @@ Short names are generated automatically on creation: the common prefix and suffi
 
 ## Changelog
 
+### [25.44] — 2026/07/17
+- Coordinates: Fixed angle calculation (Angle to True North) — inverted direction (CCW → CW) to align report data with Revit UI values.
+
 ### [25.39] — 2026/06/30
 - Coordinates expanded; redundant SiteLocations, BasePoints, and WorksetElements removed.
 - TitleBlocks and Revisions: compressed output — reduced number of rows by adding a Count column.

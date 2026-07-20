@@ -12,7 +12,7 @@
 
 ## Description
 
-This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas and can update or add data to previously created files.
+This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas, simultaneous work with multiple open documents, and can update or add data to previously created files.
 
 ## Additional Features
 
@@ -36,6 +36,7 @@ This command allows you to export selected parameters of Revit elements to an Ex
 5.  Use "Write to file..." to save the Excel file without waiting for import.
 6.  Use "Update file..." to add new elements or update existing ones in an already created Excel file.
 7.  Use "Read from file..." to import data from a previously saved Excel file.
+    *   When importing data from model audit reports (without the "Elements" sheet), the tool will prompt you to select the desired sheets and automatically distribute the data to the corresponding open Revit projects based on the filenames in the first column (Element IDs must be in the second column). The order of other columns does not matter.
 
 ![alt text](image.png)
 
@@ -68,3 +69,7 @@ This command allows you to export selected parameters of Revit elements to an Ex
     2.  Export the parameters to be updated (e.g., "Number", "Name", "Floor Finish"), as well as `ElementId`, to Excel.
     3.  Use the `ElementId` or room "Number" as a unique key to link with the external file. Use the `VLOOKUP` function in Excel to transfer the updated data from the engineer's file to your working spreadsheet.
     4.  Save the file and import. All room data in the Revit model will be updated according to the spreadsheet.
+
+## Changelog
+2026-07-20 Model Audit Support: Added the ability to import data directly from model audit reports. If the standard "Elements" sheet is missing, the user is prompted to select sheets. It then looks for documents by filename in the first column, supporting simultaneous data import into all open Revit documents.
+
