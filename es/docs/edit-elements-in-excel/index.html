@@ -305,6 +305,7 @@ params</span>
       <li><a href="#3-actualización-masiva-de-datos-desde-un-archivo-externo" id="markdown-toc-3-actualización-masiva-de-datos-desde-un-archivo-externo">3. Actualización masiva de datos desde un archivo externo</a></li>
     </ol>
   </li>
+  <li><a href="#historial-de-cambios" id="markdown-toc-historial-de-cambios">Historial de cambios</a></li>
 </ol>
 
 </details>
@@ -317,7 +318,7 @@ params</span>
 </h2>
     
 
-<p>Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel y puede actualizar o añadir datos a archivos creados anteriormente.</p>
+<p>Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel, el trabajo simultáneo con varios documentos abiertos y puede actualizar o añadir datos a archivos creados anteriormente.</p>
 <h2 id="funciones-adicionales">
   
   
@@ -363,7 +364,11 @@ params</span>
   </li>
   <li>Utilice “Write to file…” para guardar el archivo de Excel sin esperar a la importación.</li>
   <li>Utilice “Update file…” para añadir nuevos elementos o actualizar los existentes en un archivo de Excel ya creado.</li>
-  <li>Utilice “Read from file…” para importar datos de un archivo de Excel guardado anteriormente.</li>
+  <li>Utilice “Read from file…” para importar datos de un archivo de Excel guardado anteriormente.
+    <ul>
+      <li>Al importar datos de informes de auditoría de modelos (donde no hay una hoja “Elements”), la herramienta le pedirá que seleccione las hojas deseadas и distribuirá automáticamente los datos a los proyectos de Revit abiertos correspondientes basándose en los nombres de archivo en la primera columna (los IDs de los elementos deben estar en la segunda columna). El orden de las demás columnas no importa.</li>
+    </ul>
+  </li>
 </ol>
 
 <p><img src="image.png" alt="alt text" /></p>
@@ -436,6 +441,15 @@ params</span>
     </ol>
   </li>
 </ul>
+<h2 id="historial-de-cambios">
+  
+  
+    <a href="#historial-de-cambios" class="anchor-heading" aria-labelledby="historial-de-cambios"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Historial de cambios
+  
+  
+</h2>
+    
+<p>2026-07-20 Soporte para Model Audit: Se ha añadido la capacidad de importar datos directamente desde los informes de auditoría del modelo. Si falta la hoja estándar “Elements”, se solicita al usuario que seleccione las hojas. A continuación, busca documentos por nombre de archivo en la primera columna, lo que permite la importación simultánea de datos en todos los documentos de Revit abiertos.</p>
 
           
 

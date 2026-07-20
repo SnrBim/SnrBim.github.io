@@ -473,6 +473,12 @@ Light Data E</span>
 </h2>
     
 
+<p>2026-07-17</p>
+<ol>
+  <li><strong>Soporte para codos sucesivos y cadenas de accesorios</strong>: Se ha rediseñado el algoritmo de recorrido de conexiones. La herramienta ahora procesa correctamente los accesorios conectados directamente entre sí (sin tramos rectos de tubo intermedios).</li>
+  <li><strong>Corrección de errores (Crash)</strong>: Se ha solucionado el error <code class="language-plaintext highlighter-rouge">Sequence contains no elements</code> al analizar rutas incompletas o vacías. Se añadieron comprobaciones de seguridad.</li>
+</ol>
+
 <p>2026-07-15</p>
 <ol>
   <li><strong>Prioridad de parámetros de instancia</strong>: <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> y <code class="language-plaintext highlighter-rouge">SRS_MEP_Tag_Type_Id</code> se buscan primero en los parámetros del elemento, y solo en el tipo si están vacíos. Esto permite sobrescrituras a nivel de instancia.</li>

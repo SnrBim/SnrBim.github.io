@@ -435,7 +435,7 @@
   },"62": {
     "doc": "Conduit circuit sync",
     "title": "Historial de Cambios",
-    "content": "2026-07-15 . | Prioridad de parámetros de instancia: SRS_Equipment_Type y SRS_MEP_Tag_Type_Id se buscan primero en los parámetros del elemento, y solo en el tipo si están vacíos. Esto permite sobrescrituras a nivel de instancia. | Limpieza de nombres: Se mejoró la generación de SRS_Schedule_Name, eliminando guiones sobrantes cuando faltan datos parciales. | . 2026-07-13 . | Vista 3D de Diagnóstico: Creación automática de vista para revisión con aislamiento de ruta, ocultación de ejes y recorte automático. | Modo de selección (Selection Mode): Soporte para procesar solo conductos seleccionados manualmente. | Inicio Silencioso: Implementación de inicio instantáneo con soporte para Shift/Ctrl para invocar los ajustes. | . 2026-07-09 . | Refinado el nombre de los segmentos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag). | Se eliminó la abreviatura “CC” de las etiquetas de conducto (SRS_MEP_Conduit_Tag). | Se implementó el redondeo hacia arriba de la longitud del cable calculada (SRS_MEP_Cable_Length) al metro más cercano (Math.Ceiling), manteniendo la precisión decimal en los informes de usuario para el control de huecos. | Se implementó la selección automática del prefijo de ubicación (p. ej., 16D, 18D) basada en el parámetro Functional_Breakdown_Code. | . 2026-06-19 Se corrigió un error cuando faltaba SRS_Schedule_Name en el equipo o SRS_Location estaba vacío (ahora se usa ‘18D’ por defecto). Los nombres de parámetros se movieron a %AppData%\\Sener\\BimTools\\Settings.json. ",
+    "content": "2026-07-17 . | Soporte para codos sucesivos y cadenas de accesorios: Se ha rediseñado el algoritmo de recorrido de conexiones. La herramienta ahora procesa correctamente los accesorios conectados directamente entre sí (sin tramos rectos de tubo intermedios). | Corrección de errores (Crash): Se ha solucionado el error Sequence contains no elements al analizar rutas incompletas o vacías. Se añadieron comprobaciones de seguridad. | . 2026-07-15 . | Prioridad de parámetros de instancia: SRS_Equipment_Type y SRS_MEP_Tag_Type_Id se buscan primero en los parámetros del elemento, y solo en el tipo si están vacíos. Esto permite sobrescrituras a nivel de instancia. | Limpieza de nombres: Se mejoró la generación de SRS_Schedule_Name, eliminando guiones sobrantes cuando faltan datos parciales. | . 2026-07-13 . | Vista 3D de Diagnóstico: Creación automática de vista para revisión con aislamiento de ruta, ocultación de ejes y recorte automático. | Modo de selección (Selection Mode): Soporte para procesar solo conductos seleccionados manualmente. | Inicio Silencioso: Implementación de inicio instantáneo con soporte para Shift/Ctrl para invocar los ajustes. | . 2026-07-09 . | Refinado el nombre de los segmentos: si las ubicaciones del cuadro y la carga difieren, se especifican ambas (Loc1-De/Loc2-A-Tag); si coinciden, se usa un solo prefijo (Loc-De/A-Tag). | Se eliminó la abreviatura “CC” de las etiquetas de conducto (SRS_MEP_Conduit_Tag). | Se implementó el redondeo hacia arriba de la longitud del cable calculada (SRS_MEP_Cable_Length) al metro más cercano (Math.Ceiling), manteniendo la precisión decimal en los informes de usuario para el control de huecos. | Se implementó la selección automática del prefijo de ubicación (p. ej., 16D, 18D) basada en el parámetro Functional_Breakdown_Code. | . 2026-06-19 Se corrigió un error cuando faltaba SRS_Schedule_Name en el equipo o SRS_Location estaba vacío (ahora se usa ‘18D’ por defecto). Los nombres de parámetros se movieron a %AppData%\\Sener\\BimTools\\Settings.json. ",
     "url": "/es/docs/conduit-circuit-sync/#historial-de-cambios",
     
     "relUrl": "/docs/conduit-circuit-sync/#historial-de-cambios"
@@ -1044,14 +1044,14 @@
   },"149": {
     "doc": "Edit elements in Excel",
     "title": "Edición de parámetros en Excel",
-    "content": "Tabla de contenidos . | Descripción | Funciones adicionales | Uso | Ejemplos de uso . | 1. Renumeración de planos o habitaciones | 2. Copiar la longitud de los muros al parámetro “Comentarios” | 3. Actualización masiva de datos desde un archivo externo | . | . ",
+    "content": "Tabla de contenidos . | Descripción | Funciones adicionales | Uso | Ejemplos de uso . | 1. Renumeración de planos o habitaciones | 2. Copiar la longitud de los muros al parámetro “Comentarios” | 3. Actualización masiva de datos desde un archivo externo | . | Historial de cambios | . ",
     "url": "/es/docs/edit-elements-in-excel/#edici%C3%B3n-de-par%C3%A1metros-en-excel",
     
     "relUrl": "/docs/edit-elements-in-excel/#edición-de-parámetros-en-excel"
   },"150": {
     "doc": "Edit elements in Excel",
     "title": "Descripción",
-    "content": "Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel y puede actualizar o añadir datos a archivos creados anteriormente. ",
+    "content": "Este comando permite exportar los parámetros seleccionados de elementos de Revit a un archivo de Excel para una edición cómoda y, a continuación, importar los datos modificados de nuevo al modelo de Revit. Admite el uso de fórmulas de Excel, el trabajo simultáneo con varios documentos abiertos y puede actualizar o añadir datos a archivos creados anteriormente. ",
     "url": "/es/docs/edit-elements-in-excel/#descripci%C3%B3n",
     
     "relUrl": "/docs/edit-elements-in-excel/#descripción"
@@ -1065,7 +1065,7 @@
   },"152": {
     "doc": "Edit elements in Excel",
     "title": "Uso",
-    "content": ". | Ejecute el comando “Edit in Excel” desde la pestaña BIMTools en Revit. | En la ventana que aparece, seleccione los parámetros de los elementos que desea exportar/editar. | Utilice las opciones para incluir parámetros de tipo, parámetros de instancia, ordenación alfabética o incluir una hoja con información del proyecto. | Haga clic en “Edit in Excel” para exportar y comenzar a editar. | El comando creará un archivo de Excel con los elementos de Revit como filas y los parámetros seleccionados como columnas. | Después de terminar de editar en Excel, confirme en Revit para importar los cambios. | Nota: Cuando utilice la opción “Edit in Excel” para exportar datos y esperar su edición, el archivo Excel creado se guarda por defecto en la carpeta: %appdata%\\Roaming\\Sener\\BimTools\\Reports\\EditInExcel\\&lt;Nombre_del_Modelo_Revit&gt;\\, con un nombre que incluye la fecha y hora actuales. | . | Utilice “Write to file…” para guardar el archivo de Excel sin esperar a la importación. | Utilice “Update file…” para añadir nuevos elementos o actualizar los existentes en un archivo de Excel ya creado. | Utilice “Read from file…” para importar datos de un archivo de Excel guardado anteriormente. | . ",
+    "content": ". | Ejecute el comando “Edit in Excel” desde la pestaña BIMTools en Revit. | En la ventana que aparece, seleccione los parámetros de los elementos que desea exportar/editar. | Utilice las opciones para incluir parámetros de tipo, parámetros de instancia, ordenación alfabética o incluir una hoja con información del proyecto. | Haga clic en “Edit in Excel” para exportar y comenzar a editar. | El comando creará un archivo de Excel con los elementos de Revit como filas y los parámetros seleccionados como columnas. | Después de terminar de editar en Excel, confirme en Revit para importar los cambios. | Nota: Cuando utilice la opción “Edit in Excel” para exportar datos y esperar su edición, el archivo Excel creado se guarda por defecto en la carpeta: %appdata%\\Roaming\\Sener\\BimTools\\Reports\\EditInExcel\\&lt;Nombre_del_Modelo_Revit&gt;\\, con un nombre que incluye la fecha y hora actuales. | . | Utilice “Write to file…” para guardar el archivo de Excel sin esperar a la importación. | Utilice “Update file…” para añadir nuevos elementos o actualizar los existentes en un archivo de Excel ya creado. | Utilice “Read from file…” para importar datos de un archivo de Excel guardado anteriormente. | Al importar datos de informes de auditoría de modelos (donde no hay una hoja “Elements”), la herramienta le pedirá que seleccione las hojas deseadas и distribuirá automáticamente los datos a los proyectos de Revit abiertos correspondientes basándose en los nombres de archivo en la primera columna (los IDs de los elementos deben estar en la segunda columna). El orden de las demás columnas no importa. | . | . ",
     "url": "/es/docs/edit-elements-in-excel/#uso",
     
     "relUrl": "/docs/edit-elements-in-excel/#uso"
@@ -1078,292 +1078,299 @@
     "relUrl": "/docs/edit-elements-in-excel/#ejemplos-de-uso"
   },"154": {
     "doc": "Edit elements in Excel",
+    "title": "Historial de cambios",
+    "content": "2026-07-20 Soporte para Model Audit: Se ha añadido la capacidad de importar datos directamente desde los informes de auditoría del modelo. Si falta la hoja estándar “Elements”, se solicita al usuario que seleccione las hojas. A continuación, busca documentos por nombre de archivo en la primera columna, lo que permite la importación simultánea de datos en todos los documentos de Revit abiertos. ",
+    "url": "/es/docs/edit-elements-in-excel/#historial-de-cambios",
+    
+    "relUrl": "/docs/edit-elements-in-excel/#historial-de-cambios"
+  },"155": {
+    "doc": "Edit elements in Excel",
     "title": "Edit elements in Excel",
     "content": "… Change level Read parameters Edit in Excel Clone &amp;shift Project params General … ",
     "url": "/es/docs/edit-elements-in-excel/",
     
     "relUrl": "/docs/edit-elements-in-excel/"
-  },"155": {
+  },"156": {
     "doc": "Model audit",
     "title": "ModelAudit — Guía de usuario",
-    "content": "Tabla de contenidos . | Interfaz . | Configuration (Opcional) | Previous Report (Opcional) | New Report Path | Ejecución | . | Barra de progreso | Estructura del informe . | Summary | Hojas de detalle | Hojas de matriz | Aliases (oculta) | Config (hojas ocultas) | . | Lista de verificaciones | Excel de configuración . | Hoja Checks | Hoja Categories | Hoja Parameters | Hoja Aliases | . | Consejos y notas . | Configuración | Nombres de documentos | Rutas de informes | Rendimiento | Modelos vinculados | Datos del informe | . | Historial de cambios . | [25.39] — 2026/06/30 | [25.34] — 2026/05/14 | [25.31] — 2026/04/13 | . | . ModelAudit es una herramienta de auditoría automatizada de modelos BIM en Autodesk Revit. Analiza el documento actual y todos los vínculos Revit cargados. El resultado es un informe Excel con datos detallados para cada una de las más de treinta verificaciones. ",
+    "content": "Tabla de contenidos . | Interfaz . | Configuration (Opcional) | Previous Report (Opcional) | New Report Path | Ejecución | . | Barra de progreso | Estructura del informe . | Summary | Hojas de detalle | Hojas de matriz | Aliases (oculta) | Config (hojas ocultas) | . | Lista de verificaciones | Excel de configuración . | Hoja Checks | Hoja Categories | Hoja Parameters | Hoja Aliases | . | Consejos y notas . | Configuración | Nombres de documentos | Rutas de informes | Rendimiento | Modelos vinculados | Datos del informe | . | Historial de cambios . | [25.44] — 2026/07/17 | [25.39] — 2026/06/30 | [25.34] — 2026/05/14 | [25.31] — 2026/04/13 | . | . ModelAudit es una herramienta de auditoría automatizada de modelos BIM en Autodesk Revit. Analiza el documento actual y todos los vínculos Revit cargados. El resultado es un informe Excel con datos detallados para cada una de las más de treinta verificaciones. ",
     "url": "/es/docs/model-audit/#modelaudit--gu%C3%ADa-de-usuario",
     
     "relUrl": "/docs/model-audit/#modelaudit--guía-de-usuario"
-  },"156": {
+  },"157": {
     "doc": "Model audit",
     "title": "Interfaz",
     "content": "Al iniciarse se abre un diálogo con tres secciones. Configuration (Opcional) . Ruta al archivo Excel de configuración. Controla qué verificaciones ejecutar, qué categorías de Revit exportar y qué parámetros de elementos incluir en el informe. Si está vacío — se utiliza la configuración predeterminada incorporada (verificaciones pesadas desactivadas, conjunto estándar de categorías y parámetros). Botones: . | Browse… — seleccionar un archivo de configuración existente. | Generate… — crear un nuevo archivo de configuración con valores predeterminados. El diálogo sugiere la ruta %APPDATA%\\Sener\\BimTools\\ModelAudit\\Config-{ModelName}.xlsx. El archivo también incluye una hoja Aliases con nombres cortos autogenerados para los documentos vinculados — se pueden editar manualmente. | . Se muestra un resumen de configuración debajo del campo en tres columnas: . | izquierda — número de verificaciones y categorías activas (pase el cursor para la lista completa) | centro — número de parámetros por categoría | derecha — nombre del archivo de configuración y hora de última modificación | . Si la configuración contiene errores, se muestra un mensaje de error en lugar del resumen. La ruta de configuración se guarda entre sesiones. Previous Report (Opcional) . Ruta al informe anterior. Si se indica, aparecen columnas Old / New en la hoja Summary para comparar valores entre ejecuciones. Las celdas Old contienen hipervínculos a las hojas de detalle del informe anterior. New Report Path . Ruta para guardar el nuevo informe. Por defecto se genera como: . %APPDATA%\\Sener\\BimTools\\Reports\\ModelAudit\\{yyyy-MM-dd}\\{ModelName}.xlsx . La fecha forma parte del nombre de la carpeta — ejecutar de nuevo el mismo día sobrescribe el archivo en la misma carpeta. Checkbox “Usar ruta relativa” (activo solo si se especifica archivo de configuración): . Al activarlo, la ruta del informe se calcula automáticamente en relación a la carpeta del archivo de configuración: . [ConfigDir]/Reports/{ModelName}.xlsx . El campo de ruta y los botones quedan deshabilitados — la ruta solo se puede ver. En cada sobrescritura, el informe anterior se guarda automáticamente como copia de seguridad: . [ConfigDir]/Reports/backup/{ModelName}_{yyyy-MM-dd_HH-mm-ss}.xlsx . El estado del checkbox se guarda entre sesiones. Si el archivo de configuración no está especificado o no existe, el checkbox está deshabilitado. Botones (solo disponibles cuando “Usar ruta relativa” está desactivado): . | Browse… — seleccionar la ruta manualmente mediante un diálogo de guardado. | Default — generar una nueva ruta con la fecha actual. | . La ruta absoluta se guarda entre sesiones. En modo relativo no se sobrescribe — al desactivar el checkbox se restaura la ruta absoluta anterior. Ejecución . | Create / Update (o Enter) — crear o actualizar el informe. | Cancel (o Esc) — cerrar el diálogo sin ejecutar. | . ",
     "url": "/es/docs/model-audit/#interfaz",
     
     "relUrl": "/docs/model-audit/#interfaz"
-  },"157": {
+  },"158": {
     "doc": "Model audit",
     "title": "Barra de progreso",
     "content": "Durante el análisis se muestra una ventana de progreso con un registro de texto de la ejecución. El registro es de solo lectura. El botón Stop interrumpe el procesamiento. ",
     "url": "/es/docs/model-audit/#barra-de-progreso",
     
     "relUrl": "/docs/model-audit/#barra-de-progreso"
-  },"158": {
+  },"159": {
     "doc": "Model audit",
     "title": "Estructura del informe",
     "content": "El informe es un archivo Excel (.xlsx). Los nombres de las hojas son intencionalmente cortos (gr, lv, bo, etc.) — la navegación se realiza mediante hipervínculos, no cambiando pestañas manualmente: Summary enlaza a cada hoja de detalle y matriz; la primera celda de cada hoja vuelve a la fila correspondiente en Summary. Summary . Hoja resumen. Las filas son verificaciones, las columnas son documentos (actual + vinculados). | Nombre de verificación — hipervínculo a la hoja de detalle. | La columna Extra contiene enlaces: . | ⊞ — a la hoja de matriz (tabla resumen para todos los proyectos). | ☰ — a hojas de detalle adicionales (p. ej., desglose de vistas por tipo). | . | Dos columnas por documento: Old (valor del informe anterior) y New (actual). Las celdas Old contienen hipervínculos a las hojas de detalle del informe anterior. | Columnas derechas DateTime y Duration — fecha de la última ejecución y tiempo de ejecución. | Al pasar el cursor sobre el nombre corto del documento en el encabezado se muestra el nombre completo del archivo. | . Color scheme: . | Fondo amarillo — estado High (el valor requiere atención) o advertencia específica en la matriz (p. ej., múltiples instancias del mismo vínculo). | Texto gris / pálido — estado Low (valor normal o sin cambios). | . Hojas de detalle . Una hoja por verificación activa. La mayoría de las hojas incluyen columnas Workset, CreatedBy, LastChangedBy. Hojas de matriz . Las verificaciones pueden generar hojas de matriz (nombre: M + abreviatura de la hoja de detalle) u hojas anidadas adicionales. Los enlaces a ellas están en la columna Extra de Summary. No todas las hojas tienen enlaces (p. ej., 5 hojas adicionales de vistas). | Hoja | Filas × Columnas | . | Mgr | Ejes × Documentos. Mon — monitorizado, No — presente pero no monitorizado | . | Mlv | Niveles × Documentos. Celda: valor de cota, gris si no está monitorizado | . | Mlr | Archivos vinculados × Documentos. Celda: número de instancias del vínculo. Amarillo — más de una instancia. | . | Mbo | Documentos × Tipo de organización del navegador (Views / Schedules / Sheets / Modified) | . | Mpi | Documentos × Parámetros ProjectInfo | . | Mpm | Parámetros × Documentos. Celda: número de categorías en el binding | . | Mph | Documentos × Fases | . | Mwr | Advertencias × Documentos | . | Mw1 | Worksets × Documentos | . | Mw2 | Matriz en bloque: categorías × worksets (bloque separado por documento) | . | Mun | Tipos de unidades × Documentos. Muestra las unidades de medida configuradas en los proyectos donde se han modificado. | . | vpE | (Hoja extra) Ubicación de los viewports en los planos + enlace al visor HTML interactivo. | . Aliases (oculta) . Tabla de correspondencia entre nombres cortos y completos de los documentos. Config (hojas ocultas) . Las hojas Checks, Categories, Parameters almacenan la configuración utilizada en la ejecución. Permiten reproducir las condiciones de análisis a partir de un informe archivado. ",
     "url": "/es/docs/model-audit/#estructura-del-informe",
     
     "relUrl": "/docs/model-audit/#estructura-del-informe"
-  },"159": {
+  },"160": {
     "doc": "Model audit",
     "title": "Lista de verificaciones",
     "content": "| # | Nombre | Hoja | Descripción | . | 1 | Grids | gr | Ejes: nombre, Id, monitoreo (elemento vinculado), workset | . | 2 | Levels | lv | Niveles: cota (m), monitoreo, workset | . | 3 | Matchlines | ml | Líneas de coincidencia: coordenadas de segmentos | . | 4 | ScopeBoxes | sb | Marcos de vista: coordenadas, dimensiones, workset | . | 5 | Groups | gp | Grupos de modelo: nombre, Id, workset | . | 6 | FamInstances | ei | Instancias de familias con parámetros (lento) | . | 7 | FamTypes | et | Tipos de familias con parámetros (lento) | . | 8 | InPlaceFams | ip | Familias In-Place: categoría, Id, Ids de instancias | . | 9 | FamSizes | fs | Tamaño del archivo RFA por familia (muy lento — guarda cada familia en un archivo temporal) | . | 10 | LinksDwg | ld | Vínculos DWG/DXF: estado, ruta, nivel, coordenada Z | . | 11 | LinksRaster | li | Vínculos ráster: origen, estado, nivel | . | 12 | LinksRvt | lr | Vínculos Revit: nombre, workset, tipo de adjunto (Overlay/Attachment), posición | . | 13 | BrowserOrg | bo | Esquemas de organización del navegador: tipo (vistas/hojas/planillas), activo | . | 14 | DesignOptions | do | Opciones de diseño: Id, nombre, activa | . | 15 | GeneralData | gd | Metadatos del documento: Long/Short Name, tamaño de archivo, vista inicial, identificadores en la nube | . | 16 | ProjectInfo | pi | Parámetros de ProjectInformation: todos los parámetros excepto los NonVisible | . | 17 | ParamMapping | pm | Bindings de parámetros del proyecto: nombre, tipo (Instance/Type), categorías | . | 18 | Phases | ph | Fases del proyecto: Id, nombre | . | 19 | Warnings | wr | Advertencias de Revit: descripción, gravedad, Ids de elementos | . | 20 | Worksets | ws | Worksets: Id, nombre | . | 21 | Revisions | re | Resumen de revisiones: Id, fecha, descripción, SheetCount donde está presente. | . | 22 | Sheets | sh | Hojas: Id, número, nombre, IsPlaceholder, cajetín, parámetros de agrupación, CurrentRevisionId. | . | 23 | TitleBlocks | tb | Tipos de cajetín: familia, tipo, InstanceCount en el documento. | . | 24 | Viewports | vp | Viewports: tipo, vista, hoja. Genera hoja extra vpE e informe HTML. | . | 25 | Views | vw | Vistas: propiedades principales + hojas extra agrupadas por tipo (Planos, Secciones, 3D, Tablas, Otros). | . | 26 | Areas | ar | Áreas: área, perímetro, esquema de zonificación | . | 27 | Rooms | rm | Habitaciones: área, altura, acabados, departamento + parámetros personalizados | . | 28 | Spaces | sp | Espacios MEP: área, altura, sistema de ventilación + parámetros personalizados | . | 29 | Units | un | Unidades: desviaciones de los valores predeterminados | . | 30 | Coordinates | co | Coordenadas del proyecto: puntos base, levantamiento, ángulo, nombre del sitio | . Algunas verificaciones están desactivadas en la configuración predeterminada — gestionadas en el Excel de configuración (hoja Checks, columna Active). ",
     "url": "/es/docs/model-audit/#lista-de-verificaciones",
     
     "relUrl": "/docs/model-audit/#lista-de-verificaciones"
-  },"160": {
+  },"161": {
     "doc": "Model audit",
     "title": "Excel de configuración",
     "content": "Se genera con el botón Generate…. Se recomienda editar el archivo antes de ejecutar la auditoría. Hoja Checks . Controla la actividad de las verificaciones. | Columna | Descripción | . | Check Name | Nombre de la verificación (coincide con el código, no modificar) | . | Active | yes / no (o true / false / 1 / 0) | . | Description | Información adicional | . Hoja Categories . Controla las categorías activas para las verificaciones FamInstances y FamTypes. | Columna | Descripción | . | BuiltInCategory | Valor enum de Revit, p. ej. OST_Walls (no modificar) | . | Active | yes / no (o true / false / 1 / 0) | . | Category Name | Nombre localizado (se rellena automáticamente, no modificar) | . Hoja Parameters . Controla los parámetros de elementos a exportar. | Primera fila — encabezados: Common, luego nombres de las categorías activas. | Columna Common — parámetros exportados para todas las categorías activas. | Las demás columnas — parámetros específicos de una categoría. | Las celdas vacías se ignoran. | Un parámetro se busca primero en la instancia y luego en el tipo. | Los parámetros inexistentes se registran en el log. | . Hoja Aliases . Nombres cortos de los documentos para los encabezados de Summary. | Columna | Descripción | . | Full Name | Nombre completo del documento (clave, no modificar) | . | Short Name | Nombre de visualización abreviado (editable) | . Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y sufijo común. Los documentos ausentes del archivo Aliases obtienen su nombre corto generado automáticamente en tiempo de ejecución. ",
     "url": "/es/docs/model-audit/#excel-de-configuraci%C3%B3n",
     
     "relUrl": "/docs/model-audit/#excel-de-configuración"
-  },"161": {
+  },"162": {
     "doc": "Model audit",
     "title": "Consejos y notas",
     "content": "Configuración . | Campo ConfigPath vacío equivale a la configuración predeterminada incorporada — limpiar la ruta es seguro. | El resumen debajo del campo se actualiza inmediatamente al cambiar la ruta — los errores de validación son visibles antes de ejecutar. | La validación se repite al pulsar Create/Update. Si la configuración es inválida, la ejecución se bloquea. | Nombre de verificación desconocido en la hoja Checks → error con la lista de nombres válidos. | BuiltInCategory inválida → error. Se acepta cualquier BIC válida de la API de Revit. | El orden de las filas en las hojas Checks y Categories no importa. | La configuración se lee de nuevo en cada ejecución (sin caché). | La configuración utilizada en una ejecución se almacena en hojas ocultas del informe. | . Nombres de documentos . | Los nombres cortos aparecen en los encabezados de Summary — mantiene la tabla compacta con muchos vínculos. | Si un documento vinculado aparece después de generar la configuración, su nombre se genera automáticamente; añádalo manualmente a la hoja Aliases si es necesario. | Edite la hoja Aliases en la configuración antes de ejecutar si las abreviaciones autogeneradas son inconvenientes. | . Rutas de informes . | La ruta del nuevo informe se recuerda entre sesiones. Al primer inicio se genera automáticamente. | El botón Default genera una nueva ruta con la fecha actual — útil al volver a ejecutar en otro día. | Dos ejecuciones el mismo día crean el archivo en la misma carpeta → la segunda ejecución lo sobrescribirá. Use Browse o Default para crear una nueva ruta si necesita conservar ambos resultados. | “Usar ruta relativa” — útil para trabajo en equipo: el informe se guarda junto a la configuración, no en %APPDATA%. Cada sobrescritura crea automáticamente una copia de seguridad con timestamp en la carpeta backup/. | Si el archivo de informe está abierto en Excel, aparece un diálogo de reintento. La auditoría no se iniciará mientras el archivo esté bloqueado. | La ruta del informe anterior no se rellena automáticamente — debe indicarse manualmente a través de Browse. | . Rendimiento . | FamInstances y FamTypes están desactivadas por defecto — recorren todos los elementos de las categorías seleccionadas y extraen parámetros. El tiempo de ejecución depende del número de categorías activas y del tamaño del modelo. | FamSizes está desactivada por defecto — para cada familia se llama a EditFamily + SaveAs en una carpeta temporal. En modelos grandes puede tardar varias horas. | . Modelos vinculados . | Solo se analizan los vínculos Revit cargados. | Los vínculos no cargados no se incluyen en el análisis. | Los documentos con el mismo Title se añaden una sola vez. | . Datos del informe . | Los valores numéricos (coordenadas, áreas, distancias) se escriben como números de Excel — permite ordenar y filtrar correctamente. | Los valores compuestos (p. ej. una lista de Ids separada por espacios) permanecen como cadenas de texto. | Los saltos de línea dentro de los valores de parámetros se conservan. | . ",
     "url": "/es/docs/model-audit/#consejos-y-notas",
     
     "relUrl": "/docs/model-audit/#consejos-y-notas"
-  },"162": {
+  },"163": {
     "doc": "Model audit",
     "title": "Historial de cambios",
-    "content": "[25.39] — 2026/06/30 . | Coordinates ampliado; eliminados SiteLocations, BasePoints y WorksetElements redundantes. | TitleBlocks y Revisions: salida comprimida — reducido el número de filas añadiendo una columna Count. | Datos de Views duplicados en 5 hojas extra (agrupadas por ViewType). | Units: implementada una matriz que muestra las desviaciones de unidades respecto a los valores métricos por defecto en todos los proyectos. | Sheets: Añadida columna CurrentRevisionId. | LinksRvt: Ahora resalta en amarillo las celdas de la matriz si hay más de una instancia del mismo vínculo cargada en un archivo. | Viewports: Creado un nuevo informe interactivo HTML. Se genera una hoja extra vpE con un enlace al mapa HTML para la comprobación de Viewports, mostrando la distribución de TitleBlocks y tipos de viewports en los planos. | . [25.34] — 2026/05/14 . | En las comprobaciones de Sheets y Views ahora se incluyen los parámetros de agrupación del Navegador de Proyectos. | Los parámetros integrados, que antes se establecían a través de la configuración, ahora siempre se incluyen de forma fija (por ejemplo, IFC para familias, Area Type/Design Option/Comments para Áreas, etc.). Esto garantiza el funcionamiento correcto independientemente del idioma de Revit; otros parámetros pueden añadirse mediante la configuración. | En los informes de FamInstances y FamTypes, los parámetros de tipo ya no se muestran para las instancias. | Añadida función “Usar ruta relativa” en la sección New Report Path. | . [25.31] — 2026/04/13 . | Corregido un error que se producía al ejecutar la auditoría en proyectos con modelos vinculados anidados (vínculos dentro de vínculos). La verificación RVT Links ahora procesa correctamente todos los niveles de vínculos. | . ",
+    "content": "[25.44] — 2026/07/17 . | Coordinates: Se ha corregido el cálculo del ángulo (Angle to True North) — se ha invertido la dirección (CCW → CW) para que los datos del informe coincidan con los valores de la interfaz de Revit. | . [25.39] — 2026/06/30 . | Coordinates ampliado; eliminados SiteLocations, BasePoints y WorksetElements redundantes. | TitleBlocks y Revisions: salida comprimida — reducido el número de filas añadiendo una columna Count. | Datos de Views duplicados en 5 hojas extra (agrupadas por ViewType). | Units: implementada una matriz que muestra las desviaciones de unidades respecto a los valores métricos por defecto en todos los proyectos. | Sheets: Añadida columna CurrentRevisionId. | LinksRvt: Ahora resalta en amarillo las celdas de la matriz si hay más de una instancia del mismo vínculo cargada en un archivo. | Viewports: Creado un nuevo informe interactivo HTML. Se genera una hoja extra vpE con un enlace al mapa HTML para la comprobación de Viewports, mostrando la distribución de TitleBlocks y tipos de viewports en los planos. | . [25.34] — 2026/05/14 . | En las comprobaciones de Sheets y Views ahora se incluyen los parámetros de agrupación del Navegador de Proyectos. | Los parámetros integrados, que antes se establecían a través de la configuración, ahora siempre se incluyen de forma fija (por ejemplo, IFC para familias, Area Type/Design Option/Comments para Áreas, etc.). Esto garantiza el funcionamiento correcto independientemente del idioma de Revit; otros parámetros pueden añadirse mediante la configuración. | En los informes de FamInstances y FamTypes, los parámetros de tipo ya no se muestran para las instancias. | Añadida función “Usar ruta relativa” en la sección New Report Path. | . [25.31] — 2026/04/13 . | Corregido un error que se producía al ejecutar la auditoría en proyectos con modelos vinculados anidados (vínculos dentro de vínculos). La verificación RVT Links ahora procesa correctamente todos los niveles de vínculos. | . ",
     "url": "/es/docs/model-audit/#historial-de-cambios",
     
     "relUrl": "/docs/model-audit/#historial-de-cambios"
-  },"163": {
+  },"164": {
     "doc": "Model audit",
     "title": "Model audit",
     "content": "… Upload to ACC Position check Model audit General P&amp;ID Linker Set ASHRAE code MEC … ",
     "url": "/es/docs/model-audit/",
     
     "relUrl": "/docs/model-audit/"
-  },"164": {
+  },"165": {
     "doc": "Show CADs",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/show-cads/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/show-cads/#título-del-comando-en-español"
-  },"165": {
+  },"166": {
     "doc": "Show CADs",
     "title": "Show CADs",
     "content": "… Sync space params Print set Show CADs Upload to ACC Position check General … ",
     "url": "/es/docs/show-cads/",
     
     "relUrl": "/docs/show-cads/"
-  },"166": {
+  },"167": {
     "doc": "Create Security Devices",
     "title": "Create Security Devices — Colocación de dispositivos de Incendio, Intrusión y CCTV",
     "content": "Tabla de contenidos . | Qué hace el comando | Preparación | Uso | Reglas de colocación | Configuración | Algoritmos . | Detectores de techo | Sirena sobre la puerta | Pulsador en la puerta | Sensor volumétrico (Intrusión) | Videovigilancia (CCTV) | . | Salida | Limitaciones | . El comando coloca automáticamente dispositivos de alarma contra incendios, sistemas de intrusión y videovigilancia (CCTV) en espacios MEP seleccionados: detectores de techo en una cuadrícula, dispositivos de pared (sirena, pulsador, sensores de intrusión) y cámaras (CCTV) en puertas y puntos estratégicos. ",
     "url": "/es/docs/create-security-devices/#create-security-devices--colocaci%C3%B3n-de-dispositivos-de-incendio-intrusi%C3%B3n-y-cctv",
     
     "relUrl": "/docs/create-security-devices/#create-security-devices--colocación-de-dispositivos-de-incendio-intrusión-y-cctv"
-  },"167": {
+  },"168": {
     "doc": "Create Security Devices",
     "title": "Qué hace el comando",
     "content": ". | Determina el tipo de dispositivo por el nombre del espacio (ver la tabla de reglas) | Calcula una cuadrícula óptima en el techo usando un radio de cobertura de 6300 mm | Detecta la altura del techo automáticamente a partir de la geometría del modelo o utiliza un valor manual | Coloca una sirena sobre la puerta para espacios de tipo Control y Celdas | Coloca un pulsador, un sensor de intrusión y una cámara CCTV en cada puerta exterior | Coloca cámaras CCTV en las esquinas del edificio (basado en líneas seleccionadas) y en postes existentes | Omite dispositivos ya colocados por el comando (idempotencia) | Genera un informe de texto con resultados detallados por tipo de familia | . ",
     "url": "/es/docs/create-security-devices/#qu%C3%A9-hace-el-comando",
     
     "relUrl": "/docs/create-security-devices/#qué-hace-el-comando"
-  },"168": {
+  },"169": {
     "doc": "Create Security Devices",
     "title": "Preparación",
     "content": ". | Las familias de dispositivos (detectores, sirena, pulsador) deben estar cargadas en el proyecto | Muros, puertas y techos pueden estar en archivos vinculados — el comando soporta geometría vinculada | Los nombres de los espacios deben contener las palabras clave indicadas en la tabla de reglas | . ",
     "url": "/es/docs/create-security-devices/#preparaci%C3%B3n",
     
     "relUrl": "/docs/create-security-devices/#preparación"
-  },"169": {
+  },"170": {
     "doc": "Create Security Devices",
     "title": "Uso",
     "content": ". | Seleccione uno o más espacios MEP (o desmarque Selected spaces only para procesar todos los espacios) | Ejecute el comando — se abrirá el diálogo de configuración | Opcionalmente ajuste los nombres de familia/tipo, los parámetros de altura y los subproyectos (Worksets) | Pulse Run | . ",
     "url": "/es/docs/create-security-devices/#uso",
     
     "relUrl": "/docs/create-security-devices/#uso"
-  },"170": {
+  },"171": {
     "doc": "Create Security Devices",
     "title": "Reglas de colocación",
     "content": "El tipo de dispositivo se determina por una subcadena en el nombre del espacio (sin distinguir mayúsculas/minúsculas): . | Palabra clave en el nombre | Techo | Pared | . | rectificador | hidrogeno + termoelectrico | — | . | transformador | llamas | — | . | bater | optico + hidrogeno | — | . | control | optico + hidrogeno | sirena sobre la puerta | . | celdas | optico + termoelectrico | sirena sobre la puerta | . | inversor | — | cámara en el centro | . | prot civil | — | central + expansor + teclado + bloque CCTV (suelo) | . | cabinas de mt | — | teclado + cámara en el centro | . | otros | optico | — | . | cualquier con puerta exterior | — | pulsador + sensor de intrusión + CCTV | . ",
     "url": "/es/docs/create-security-devices/#reglas-de-colocaci%C3%B3n",
     
     "relUrl": "/docs/create-security-devices/#reglas-de-colocación"
-  },"171": {
+  },"172": {
     "doc": "Create Security Devices",
     "title": "Configuración",
     "content": "Selected spaces only — procesar solo los espacios seleccionados. Auto-detect ceiling height — la altura se obtiene lanzando un rayo hacia arriba desde cada punto de la cuadrícula (encuentra el techo o la cubierta más cercana, incluyendo archivos vinculados). Si está desactivado, la altura se toma del valor manual. Manual height (mm) — altura sobre el suelo del espacio usada en modo manual. Activo solo cuando Auto-detect está apagado. Family: type configuration — nombres de familia y tipo para cada dispositivo en formato FamilyName: TypeName. Defaults restablece valores por defecto. ",
     "url": "/es/docs/create-security-devices/#configuraci%C3%B3n",
     
     "relUrl": "/docs/create-security-devices/#configuración"
-  },"172": {
+  },"173": {
     "doc": "Create Security Devices",
     "title": "Algoritmos",
     "content": "Detectores de techo . Para cada espacio, el comando construye una cuadrícula rectangular mínima N×M de modo que la semi-diagonal de la celda no exceda 6300 mm. El paso de la cuadrícula se redondea hacia abajo a 100 mm y el resto se distribuye simétricamente desde los muros. Si varios tipos de detectores son necesarios en el mismo punto de la cuadrícula, se separan a lo largo del eje X con paso de 500 mm. La altura de cada punto se toma de la superficie de techo más cercana sobre él (intersección por rayo) o del valor manual. Los espacios de forma compleja (área &lt; 90% del rectángulo delimitador) se omiten y se listan en el informe. Sirena sobre la puerta . La sirena se coloca sobre el centro del hueco de la puerta a 2500 mm por encima de la base de la puerta. Pulsador en la puerta . Un pulsador se coloca en la pared junto a cada puerta exterior a 1400 mm de altura. El lado preferido es el de la manecilla; si no está disponible (puerta cercana o fin de muro), se usa el lado de las bisagras. La orientación mira hacia el interior del espacio. Sensor volumétrico (Intrusión) . Se coloca en cada puerta exterior a 2400 mm sobre el suelo. El algoritmo intenta encontrar la mejor posición de visualización para la entrada: . | Prioridad de 2 metros: el sensor se coloca en la misma pared a 2 m de distancia del borde de la puerta y se gira 45° hacia la pared. | Manejo de esquinas: si una esquina de la pared está a menos de 2 metros, el sensor se mueve a la pared adyacente (a 1 metro de la esquina) y se dirige perpendicular a ella. | Emparejamiento inteligente: para cada puerta en la habitación, el algoritmo busca el dispositivo similar existente más cercano. Si ya existe un sensor (incluso si fue movido manualmente por el usuario), no se realiza una segunda colocación para esa puerta. | . Videovigilancia (CCTV) . El comando soporta varios escenarios de colocación de CCTV: . | Sobre la puerta: En cada puerta exterior (200 mm sobre el hueco, 300 mm de desplazamiento desde la pared). | En el centro del espacio: Para los tipos Inversor y Cabinas de MT (altura determinada automática o manualmente). | En las esquinas del edificio: Si se seleccionan Detail Lines que representan los límites de los muros antes de ejecutar, se colocan cámaras en las esquinas externas (1 m de desplazamiento desde la esquina a lo largo de la bisectriz). | En mástiles/postes: El comando encuentra instancias de mástiles (familia Pole especificada en la interfaz) y coloca cámaras en ellos a 5 m de altura. | . ",
     "url": "/es/docs/create-security-devices/#algoritmos",
     
     "relUrl": "/docs/create-security-devices/#algoritmos"
-  },"173": {
+  },"174": {
     "doc": "Create Security Devices",
     "title": "Salida",
     "content": "Al finalizar, el comando muestra un informe: . | Recuento de dispositivos colocados por familia/tipo | Recuento de puntos omitidos (ya ocupados) con detalles por tipo (tipos de familia e IDs de elementos existentes) | Lista de espacios de forma compleja omitidos para colocación en techo | . ",
     "url": "/es/docs/create-security-devices/#salida",
     
     "relUrl": "/docs/create-security-devices/#salida"
-  },"174": {
+  },"175": {
     "doc": "Create Security Devices",
     "title": "Limitaciones",
     "content": ". | Los espacios de forma compleja no se procesan para colocación en techo — coloque dispositivos manualmente | La orientación de la familia asume que el frente de la instancia mira hacia -Y en la orientación base de la familia | . ",
     "url": "/es/docs/create-security-devices/#limitaciones",
     
     "relUrl": "/docs/create-security-devices/#limitaciones"
-  },"175": {
+  },"176": {
     "doc": "Create Security Devices",
     "title": "Create Security Devices",
     "content": "… Sync air flow Sync fire alarm Security devices MEC Count sockets Circuit description ELE … ",
     "url": "/es/docs/create-security-devices/",
     
     "relUrl": "/docs/create-security-devices/"
-  },"176": {
+  },"177": {
     "doc": "Fill code",
     "title": "Comando FillCode",
     "content": "Tabla de contenidos . | Propósito | Cómo usar . | 1. Configuración de Mapeos (Mappings) . | Gestión del archivo de mapeo: | . | 2. Filtros y Opciones | 3. Panel de Resumen (Summary) | 4. Ejecución y Reporte | . | Estructura del Código Generado | Estructura del Archivo de Excel | . ",
     "url": "/es/docs/fill-code/#comando-fillcode",
     
     "relUrl": "/docs/fill-code/#comando-fillcode"
-  },"177": {
+  },"178": {
     "doc": "Fill code",
     "title": "Propósito",
     "content": "El comando FillCode está diseñado para generar y asignar automáticamente un código de identificación único a los elementos en un modelo de Revit. El código se crea en base a un conjunto de reglas que se pueden configurar mediante un archivo de Excel externo y se escribe en el parámetro IDD_PDS_CODE del elemento. Esto permite estandarizar la identificación de elementos de acuerdo con los requisitos del proyecto. ",
     "url": "/es/docs/fill-code/#prop%C3%B3sito",
     
     "relUrl": "/docs/fill-code/#propósito"
-  },"178": {
+  },"179": {
     "doc": "Fill code",
     "title": "Cómo usar",
     "content": "Al ejecutar el comando, se abre una ventana de configuración que le permite controlar el proceso de generación de códigos. 1. Configuración de Mapeos (Mappings) . El comportamiento del comando está completamente determinado por las reglas de mapeo. Tienes dos opciones: . | Usar valores por defecto: Si el campo “Ruta al archivo de Excel” está vacío, el comando utilizará un conjunto de reglas internas y predefinidas. | Usar un archivo de Excel externo: Puede especificar la ruta a un archivo de Excel con sus propias reglas. Esto proporciona la máxima flexibilidad. | . Gestión del archivo de mapeo: . | Campo “Ruta al archivo de Excel”: Introduzca la ruta a su archivo .xlsx aquí. La ruta se guarda entre sesiones de Revit. | Botón “Examinar…”: Abre un cuadro de diálogo para seleccionar el archivo. | Botón “Exportar configuración por defecto”: Crea un archivo de Excel de plantilla con las reglas estándar. Puede usarlo como punto de partida para sus propios mapeos. | Botón “Recargar”: Le permite actualizar manualmente la información del resumen después de realizar cambios en el archivo de Excel. | . 2. Filtros y Opciones . | “Ignorar la categoría ‘Modelos genéricos’”: Habilitado por defecto. Excluye los elementos de esta categoría del procesamiento, ya que a menudo son auxiliares. | “Modo de depuración (Debug mode)”: Si esta casilla está marcada, el comando ejecutará toda la lógica, analizará los elementos y generará un informe detallado, pero no realizará ningún cambio en el modelo. Esta es una forma segura de verificar la corrección de la configuración antes de aplicar realmente los códigos. | . 3. Panel de Resumen (Summary) . Este campo de texto de solo lectura muestra información resumida sobre cómo funcionará el comando con la configuración actual. | Fuente de datos: Muestra si se están utilizando los “Valores por defecto” o el archivo de Excel especificado. | Parámetros de ejecución: Muestra los identificadores clave extraídos del nombre del archivo de Revit actual (Paquete de trabajo, Código de edificio), que se utilizan para encontrar las reglas correctas. | Resumen de mapeos: Muestra cuántas reglas se han cargado (número de categorías, disciplinas, códigos de ubicación, niveles para el paquete de trabajo actual). | Cantidad de elementos: Muestra cuántos elementos en la vista actual o selección serán procesados. | . 4. Ejecución y Reporte . Después de hacer clic en el botón “Aceptar”, el comando procesa los elementos y muestra un mensaje final con el número de operaciones exitosas, advertencias y errores. Se le pedirá que abra un informe de texto detallado, que contiene: . | Resumen (Summary): Información completa sobre los parámetros de ejecución y las reglas cargadas. | Elementos con problemas: Una lista de elementos que no se pudieron procesar, con el motivo (p. ej., “código de sububicación no encontrado”, “nivel no determinado”). | Elementos procesados con éxito: Una tabla de todos los elementos para los que el código se generó con éxito. Los datos se presentan en un formato listo para copiar en Excel y están ordenados por categoría. | . ",
     "url": "/es/docs/fill-code/#c%C3%B3mo-usar",
     
     "relUrl": "/docs/fill-code/#cómo-usar"
-  },"179": {
+  },"180": {
     "doc": "Fill code",
     "title": "Estructura del Código Generado",
     "content": "El código final tiene el siguiente formato: . DisciplineCode-CategoryCode-LocationCode-SubLocationCode-LevelCode . | DisciplineCode: El código de la disciplina (p. ej., “H” para HVAC, “E” para Eléctrico), determinado por la categoría del elemento. | CategoryCode: El código de la categoría del elemento (p. ej., “DCT” para conductos). | LocationCode: El código de la ubicación, determinado por el código de edificio del nombre del archivo. | SubLocationCode: El código de la sububicación, leído del parámetro de instancia IDD_SUBLOCATION. Si el parámetro está vacío, se usa ?. | LevelCode: El código del nivel, determinado en función de la coordenada Z del elemento y el “Paquete de trabajo” del nombre del archivo. | . ",
     "url": "/es/docs/fill-code/#estructura-del-c%C3%B3digo-generado",
     
     "relUrl": "/docs/fill-code/#estructura-del-código-generado"
-  },"180": {
+  },"181": {
     "doc": "Fill code",
     "title": "Estructura del Archivo de Excel",
     "content": "El archivo de mapeo puede contener varias hojas para configurar diferentes reglas: . | CategoryDiscipline: Una matriz para mapear categorías de Revit a códigos de disciplina (DisciplineCode) y códigos de categoría (CategoryCode). | Location: Una tabla para mapear “códigos de edificio” (del nombre del archivo) a LocationCode. | Levels: Una hoja para mapear coordenadas Z a códigos de nivel (LevelCode). Los datos en esta hoja se organizan en bloques de dos columnas, donde cada bloque tiene un encabezado de dos filas: . | Fila 1: Contiene la clave de mapeo. Puede ser un “Paquete de Trabajo” (p. ej., CNT3) o una clave compuesta \"{Paquete de Trabajo} {Código de Edificio}\" (p. ej., CNT7 E110). | Fila 2: Contiene los encabezados de los datos: Min Z para la elevación mínima del nivel (en metros) y Code для el código de nivel. | . | . ",
     "url": "/es/docs/fill-code/#estructura-del-archivo-de-excel",
     
     "relUrl": "/docs/fill-code/#estructura-del-archivo-de-excel"
-  },"181": {
+  },"182": {
     "doc": "Fill code",
     "title": "Fill code",
     "content": "… Cad to Revit Create openings Fill Code Misc ",
     "url": "/es/docs/fill-code/",
     
     "relUrl": "/docs/fill-code/"
-  },"182": {
+  },"183": {
     "doc": "Info",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/info/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/info/#título-del-comando-en-español"
-  },"183": {
+  },"184": {
     "doc": "Info",
     "title": "Info",
     "content": "Info Purge History General … ",
     "url": "/es/docs/info/",
     
     "relUrl": "/docs/info/"
-  },"184": {
+  },"185": {
     "doc": "Read parameters from Excel",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/read-parameters-from-excel/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/read-parameters-from-excel/#título-del-comando-en-español"
-  },"185": {
+  },"186": {
     "doc": "Read parameters from Excel",
     "title": "Read parameters from Excel",
     "content": "… Worksets from Excel Change level Read parameters Edit in Excel Clone &amp;shift General … ",
     "url": "/es/docs/read-parameters-from-excel/",
     
     "relUrl": "/docs/read-parameters-from-excel/"
-  },"186": {
+  },"187": {
     "doc": "TextoMorph",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/textomorph/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/textomorph/#título-del-comando-en-español"
-  },"187": {
+  },"188": {
     "doc": "TextoMorph",
     "title": "TextoMorph",
     "content": "Info Purge History General … ",
     "url": "/es/docs/textomorph/",
     
     "relUrl": "/docs/textomorph/"
-  },"188": {
+  },"189": {
     "doc": "Convert lines to wires",
     "title": "De Línea a Cable",
     "content": "Tabla de contenidos . | Cómo Usar | Características y Configuración . | Modos de Operación | Configuración | Mapeos . | Mapeo de Estilo de Línea a Tipo de Cable | Mapeo de Conectores | . | . | . El comando De Línea a Cable permite convertir rápidamente líneas de detalle ordinarias en cables eléctricos en un proyecto de Autodesk Revit. Analiza las líneas seleccionadas, encuentra dispositivos eléctricos cercanos (como luminarias, equipos y tomas de corriente), determina sus conectores y crea automáticamente los cables que los conectan. ",
     "url": "/es/docs/convert-lines-to-wires/#de-l%C3%ADnea-a-cable",
     
     "relUrl": "/docs/convert-lines-to-wires/#de-línea-a-cable"
-  },"189": {
+  },"190": {
     "doc": "Convert lines to wires",
     "title": "Cómo Usar",
     "content": ". | Dibuja líneas de detalle en tu vista de Revit para representar la ruta de los cables eléctricos. | Ejecuta el comando De Línea a Cable desde el panel de BIM Tools. | El comando detectará automáticamente las líneas y los dispositivos eléctricos cercanos. | Ajusta la configuración en la ventana de diálogo si es necesario. | Haz clic en “Aceptar” para crear los cables. Las líneas originales se eliminarán por defecto. | . ",
     "url": "/es/docs/convert-lines-to-wires/#c%C3%B3mo-usar",
     
     "relUrl": "/docs/convert-lines-to-wires/#cómo-usar"
-  },"190": {
+  },"191": {
     "doc": "Convert lines to wires",
     "title": "Características y Configuración",
     "content": "Modos de Operación . | Eliminar líneas de entrada: (Por defecto: Activado) Elimina las líneas de detalle originales después de crear los cables. | División automática por dispositivos: (Por defecto: Activado) Divide automáticamente una sola línea en múltiples segmentos de cable donde se cruza con dispositivos eléctricos. Esto te permite dibujar una línea continua a través de varios dispositivos. | Modo de desplazamiento (Shift): (Por defecto: Desactivado) Si el punto final de una línea coincide exactamente con un conector de dispositivo, se desplazará 1 mm para evitar posibles errores. | Modo silencioso: (Por defecto: Desactivado) Si preseleccionas las líneas en el modelo antes de ejecutar el comando, se ejecutará inmediatamente utilizando la última configuración guardada, sin mostrar la ventana de diálogo. | . Configuración . | Umbral de búsqueda: (Por defecto: 30 mm) El radio alrededor de las líneas y sus puntos finales dentro del cual el comando buscará dispositivos eléctricos para conectarse. | Distancia máxima de división automática: (Por defecto: 1000 mm) Una comprobación adicional para la distancia máxima desde una línea hasta el conector de un dispositivo, lo cual es particularmente útil para líneas diagonales. | . Mapeos . Mapeo de Estilo de Línea a Tipo de Cable . Puedes mapear estilos de línea específicos a los tipos de cable correspondientes. Si no se proporciona un mapeo, el comando intentará hacer coincidir el tipo de cable con el nombre del estilo de línea o usará el tipo de cable por defecto del proyecto. Formato: NombreEstiloDeLinea: NombreTipoDeCable . Usa un punto y coma ; al principio de una línea para comentarla. Ejemplo: . LINEA_DISCONTINUA: Cable-PVC-1.5 LINEA_SOLIDA: Cable-PVC-2.5 . Mapeo de Conectores . Para familias de dispositivos con múltiples conectores, puedes especificar a qué índice de conector debe conectarse el cable. Formato: NombreFamilia: NombreTipo: IndiceConector . El IndiceConector es un número entero basado en cero. Ejemplo: . EnchufeGenerico: Duplex: 0 LuminariaEspecifica: Modelo-A: 1 . ",
     "url": "/es/docs/convert-lines-to-wires/#caracter%C3%ADsticas-y-configuraci%C3%B3n",
     
     "relUrl": "/docs/convert-lines-to-wires/#características-y-configuración"
-  },"191": {
+  },"192": {
     "doc": "Convert lines to wires",
     "title": "Convert lines to wires",
     "content": "… Assign circuit to conduits Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E Balance Panels ELE … ",
     "url": "/es/docs/convert-lines-to-wires/",
     
     "relUrl": "/docs/convert-lines-to-wires/"
-  },"192": {
+  },"193": {
     "doc": "Clone&Shift",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/cloneshift/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/cloneshift/#título-del-comando-en-español"
-  },"193": {
+  },"194": {
     "doc": "Clone&Shift",
     "title": "Clone&Shift",
     "content": "… Read parameters Edit in Excel Clone &amp;shift Project params Sync space params General … ",
     "url": "/es/docs/cloneshift/",
     
     "relUrl": "/docs/cloneshift/"
-  },"194": {
+  },"195": {
     "doc": "Sync space params",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/sync-space-params/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/sync-space-params/#título-del-comando-en-español"
-  },"195": {
+  },"196": {
     "doc": "Sync space params",
     "title": "Sync space params",
     "content": "… Clone &amp;shift Project params Sync space params Print set Show CADs General … ",

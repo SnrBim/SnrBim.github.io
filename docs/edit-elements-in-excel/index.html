@@ -305,6 +305,7 @@ params</span>
       <li><a href="#3-bulk-updating-data-from-an-external-file" id="markdown-toc-3-bulk-updating-data-from-an-external-file">3. Bulk Updating Data from an External File</a></li>
     </ol>
   </li>
+  <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a></li>
 </ol>
 
 </details>
@@ -317,7 +318,7 @@ params</span>
 </h2>
     
 
-<p>This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas and can update or add data to previously created files.</p>
+<p>This command allows you to export selected parameters of Revit elements to an Excel file for easy editing, and then import the modified data back into the Revit model. It supports the use of Excel formulas, simultaneous work with multiple open documents, and can update or add data to previously created files.</p>
 <h2 id="additional-features">
   
   
@@ -363,7 +364,11 @@ params</span>
   </li>
   <li>Use “Write to file…” to save the Excel file without waiting for import.</li>
   <li>Use “Update file…” to add new elements or update existing ones in an already created Excel file.</li>
-  <li>Use “Read from file…” to import data from a previously saved Excel file.</li>
+  <li>Use “Read from file…” to import data from a previously saved Excel file.
+    <ul>
+      <li>When importing data from model audit reports (without the “Elements” sheet), the tool will prompt you to select the desired sheets and automatically distribute the data to the corresponding open Revit projects based on the filenames in the first column (Element IDs must be in the second column). The order of other columns does not matter.</li>
+    </ul>
+  </li>
 </ol>
 
 <p><img src="image.png" alt="alt text" /></p>
@@ -436,6 +441,15 @@ params</span>
     </ol>
   </li>
 </ul>
+<h2 id="changelog">
+  
+  
+    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+  
+  
+</h2>
+    
+<p>2026-07-20 Model Audit Support: Added the ability to import data directly from model audit reports. If the standard “Elements” sheet is missing, the user is prompted to select sheets. It then looks for documents by filename in the first column, supporting simultaneous data import into all open Revit documents.</p>
 
           
 

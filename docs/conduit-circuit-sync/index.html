@@ -474,6 +474,12 @@ Light Data E</span>
 </h2>
     
 
+<p>2026-07-17</p>
+<ol>
+  <li><strong>Ducks and Fitting Chains Support</strong>: Redesigned the connection traversal algorithm. The tool now correctly processes fittings connected directly to each other (without straight conduit segments between them).</li>
+  <li><strong>Crash Fixing</strong>: Resolved the <code class="language-plaintext highlighter-rouge">Sequence contains no elements</code> error that occurred when analyzing incomplete or empty routes. Added safety checks.</li>
+</ol>
+
 <p>2026-07-15</p>
 <ol>
   <li><strong>Instance Parameter Priority</strong>: <code class="language-plaintext highlighter-rouge">SRS_Equipment_Type</code> and <code class="language-plaintext highlighter-rouge">SRS_MEP_Tag_Type_Id</code> are now sought in the element parameters first, only falling back to Type if empty. This allows instance-level overrides.</li>
