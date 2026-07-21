@@ -92,3 +92,8 @@ La columna `Descripción` tiene una estructura de 5 partes:
     *   *Ejemplo: `MODIFIED | w778 | op999 | 123 | 600x400 | 500x300 | MEP_IDs: link:3 | Merged with: 456`*
 *   **DELETED**: Se ha eliminado un vano existente porque se ha unido a otro.
     *   *Ejemplo: `DELETED | w779 | op456 | | | | | Merged into: 999`*
+
+## Registro de Trabajo (Work Log)
+
+2026-07-21 Transición a Familias: En lugar de "huecos de muro" nativos, la herramienta ahora coloca familias basadas en cara (Face-Based) para preservar anotaciones y etiquetas.
+

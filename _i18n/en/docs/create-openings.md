@@ -92,3 +92,8 @@ The `Description` column has a 5-part structure:
     *   *Example: `MODIFIED | w778 | op999 | 123 | 600x400 | 500x300 | MEP_IDs: link:3 | Merged with: 456`*
 *   **DELETED**: An existing opening was deleted because it was merged with another.
     *   *Example: `DELETED | w779 | op456 | | | | | Merged into: 999`*
+
+## Work Log
+
+2026-07-21 Transition to Families: Instead of native "wall openings", the tool now places Face-Based families to preserve annotations and tags.
+
