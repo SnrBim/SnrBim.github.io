@@ -477,3 +477,11 @@ foreach ($commandFolder in $commandFolders) {
 }
 
 Write-Host "`nDocumentation publishing finished." -ForegroundColor Green
+
+$gitStatus = @(git -C $DestRoot status --short)
+Write-Host "`nChanged files: $($gitStatus.Count)" -ForegroundColor Cyan
+$gitStatus | ForEach-Object { Write-Host $_ }
+
+if ($gitStatus.Count -eq 0) {
+    Write-Host "No documentation changes detected." -ForegroundColor Green
+}

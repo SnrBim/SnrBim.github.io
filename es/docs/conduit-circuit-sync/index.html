@@ -381,7 +381,16 @@ Light Data E</span>
       <li>La longitud del cable se registra en el parámetro <code class="language-plaintext highlighter-rouge">SRS_MEP_Cable_Length</code>, que se calcula según el siguiente algoritmo:
         <ol>
           <li><strong>Tubos y accesorios</strong>: se toma la suma de las longitudes de todos los elementos. Para los codos, se utiliza la distancia entre conectores multiplicada por un coeficiente (<strong>1.15</strong> para ángulos &gt;45° y <strong>1.05</strong> para ángulos ≤45°) para mantener la independencia de los parámetros de las familias.</li>
-          <li><strong>Huecos de equipos</strong>: se añaden las distancias rectilíneas desde el Cuadro hasta el primer conducto y desde el último conducto hasta la carga más cercana.</li>
+          <li><strong>Huecos de equipos</strong>: se añaden las distancias rectilíneas desde el punto objetivo virtual del cuadro hasta el primer conducto y desde el último conducto hasta el punto objetivo virtual de la carga más cercana. El punto objetivo no coincide con el punto de inserción del equipo; se sitúa en el borde vertical opuesto del equipo con respecto al extremo del conducto.
+            <ul>
+              <li>Los límites verticales del equipo se determinan con respecto al punto de inserción mediante los parámetros <code class="language-plaintext highlighter-rouge">Default Elevation</code> (<code class="language-plaintext highlighter-rouge">DE</code>) y <code class="language-plaintext highlighter-rouge">SRS_Height</code> (<code class="language-plaintext highlighter-rouge">H</code>).</li>
+              <li>Si <code class="language-plaintext highlighter-rouge">DE &gt; 0</code>, el límite inferior es <code class="language-plaintext highlighter-rouge">DE - H</code> y el superior es <code class="language-plaintext highlighter-rouge">DE</code>.</li>
+              <li>Si <code class="language-plaintext highlighter-rouge">DE &lt;= 0</code>, el límite inferior es <code class="language-plaintext highlighter-rouge">0</code> y el superior es <code class="language-plaintext highlighter-rouge">H</code>.</li>
+              <li><code class="language-plaintext highlighter-rouge">Default Elevation</code> se lee del tipo de equipo. <code class="language-plaintext highlighter-rouge">SRS_Height</code> se lee primero de la instancia y, si el parámetro no existe, del tipo.</li>
+              <li>Si el extremo del conducto está por encima del límite superior del equipo, se utiliza el límite inferior como objetivo. Si está por debajo del límite inferior, se utiliza el límite superior.</li>
+              <li>Si el extremo del conducto se encuentra entre ambos límites, se selecciona el borde con mayor distancia vertical al extremo del conducto.</li>
+            </ul>
+          </li>
           <li><strong>Cajas de derivación</strong>: se tienen en cuenta los huecos en los puntos de rotura de la ruta por las cajas.</li>
           <li><strong>Circuitos con múltiples dispositivos</strong>: si hay varias cargas (por ejemplo, luminarias), se calcula la ruta más corta que pase por todos los puntos (“serpiente”) desde la última caja.</li>
           <li><strong>Reserva</strong>: se añade una reserva de seguridad fija de <strong>+2 metros</strong>.</li>
@@ -494,6 +503,8 @@ Light Data E</span>
 <p>2026-08-03</p>
 <ol>
   <li><strong>Corrección de la configuración</strong>: La opción para ejecutar Sync después de Assign ya no afecta a la ejecución independiente de Sync. Las opciones de la vista 3D y del procesamiento de conductos seleccionados funcionan de forma independiente.</li>
+  <li><strong>Cálculo de las distancias terminales hasta los límites del equipo</strong>: Se añadió el cálculo hasta un borde virtual del equipo en lugar del punto de inserción.</li>
+  <li><strong>Reserva fija de cable</strong>: Según las nuevas normas, la reserva automática de cable ahora es fija, de <strong>+2 metros</strong> por ruta, en lugar de basarse en un porcentaje.</li>
 </ol>
 
 <p>2026-07-30</p>
