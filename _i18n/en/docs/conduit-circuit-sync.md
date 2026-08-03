@@ -20,11 +20,11 @@ Before running the command, ensure that at least one conduit in each segment has
 
 1.  **Parameter Unification:** Prepares equipment names in the `SRS_Schedule_Name` parameter by concatenating `SRS_Equipment_Type` and `SRS_Equipment_Number`. Instance-level overrides are supported (they take priority over Type), and redundant hyphens in the resulting name are removed automatically. The `SRS_Location` parameter is used as is from the elements.
 2.  **Search:** Finds all conduits and circuits where the `SRS_MEP_Circuit_Names` parameter is defined.
-3.  **Section Identification:** Detects groups of interconnected conduits (chains) based on physical connection and the shared value in `SRS_MEP_Circuit_Names`.
-4.  **Grouping by Circuit:** Associates conduit chains with their respective electrical circuits.
-5.  **Direction Determination:** Sorts the conduits in the path from the load to the electrical panel.
-6.  **Segment Division:** The path is divided into segments between distribution boxes (a gap of up to 10 cm is allowed). The process stops with an error if there are more than 5 segments.
-7.  **Segment Naming:** Each segment is assigned a name based on the panel and load locations. If the locations are different, both are specified (`Loc1-From/Loc2-To-Tag`); if they are the same, the prefix is written only once. The "CC" abbreviation has been removed from tags for brevity. The rules for forming the load name are as follows:
+3.  **Section Identification:** Detects groups of interconnected conduits (chains) based on physical connection. The tool automatically recognizes parallel branches within a segment using the `SRS_MEP_Parallel_Id` parameter.
+4.  **Grouping by Circuit:** Associates conduit chains with their respective electrical circuits. It validates the uniqueness of circuit names across the entire project to prevent duplicates on mounting schemes.
+5.  **Direction Determination:** Sorts route components from load to panel, consistently handling parallel branches.
+6.  **Segment Division:** The route is divided into logical segments between distribution boxes.
+7.  **Segment Naming:** Each segment is assigned a name based on the panel and load locations. For parallel chains within a single segment, unique suffixes are generated for each branch (e.g., `-PS01`, `-PS02`). The rules for forming the load name are as follows:
 
 | Input Data | Resulting Load Name | Comment |
 | :--- | :--- | :--- |
@@ -36,9 +36,18 @@ Before running the command, ensure that at least one conduit in each segment has
 8.  **Data Recording:**
     -   Updates `SRS_MEP_Circuit_Names` in all conduits of the segment.
     -   Fills in `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, and `SRS_MEP_Conduit_Tag` in the conduits.
-    -   The cable length is recorded in the `SRS_MEP_Cable_Length` parameter, including a safety reserve (+10% for lines up to 100 m and +5% for lines over 100 m), **rounded up to the nearest meter**.
+    -   Records the segment length (including fittings and parallel branches) in the `SRS_MEP_Length` parameter of each element, rounded up to the nearest meter.
+    -   The cable length is recorded in the `SRS_MEP_Cable_Length` parameter, which is calculated according to the following algorithm:
+        1.  **Conduits and Fittings**: the sum of lengths for all elements. For elbows, the distance between connectors multiplied by a coefficient (**1.15** for angles >45° and **1.05** for angles ≤45°) is used for family parameter independence.
+        2.  **Equipment Gaps**: rectilinear distances from the Panel to the first conduit and from the last conduit to the nearest load are added.
+        3.  **Junction Boxes**: gaps at box locations where the run is broken are accounted for.
+        4.  **Multi-device Circuits**: if there are multiple loads (e.g., lighting), the shortest path passing through all points ("snake") from the last box is calculated.
+        5.  **Reserve**: a fixed safety reserve of **+2 meters** is added.
+        6.  **Rounding**: the final value is rounded up to the nearest meter.
+        - For parallel branches, the length of the **longest branch** is recorded for the circuit.
     -   Stores segment names in the electrical circuit's `SRS_MEP_Conduit_Segment_1` to `SRS_MEP_Conduit_Segment_5` parameters.
 9.  **Notification:** Confirms the operation and reports suspicious distances (>1m) between segments to detect potential assignment errors.
+10.  **Collision Check:** Validates unique identifiers (BaseCode) assigned to different electrical circuits. If overlaps are found, a summary report is provided upon completion.
 
 ## Possible Errors
 
@@ -69,8 +78,10 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 
 - **Only selected conduits**: When enabled, the algorithm processes only those conduits you selected in Revit before launching. This is useful for precise synchronization of specific circuits.
 - **Show result in specialized 3D view**: Creates or updates a special 3D view named `Conduit Review <user>` for a quick check of the result.
-    - **Isolation and Section Box**: The tool automatically adjusts visibility and crops the view (Section Box) to the boundaries of the selected area.
+    - **Isolation and Section Box**: The tool automatically adjusts the Section Box to the boundaries of the selected area.
+    - **Optional Isolation**: Use "Isolate elements in 3D view" to hide everything except the route, panel, and loads. If disabled, elements are shown within the building context (transparent or wireframe depending on view settings).
     - **Clean View**: Helper elements (center lines, linked files) are hidden.
+    - **Full System View**: The view automatically includes the electrical panel and all loads of the circuit.
 
 ## Interface
 
@@ -80,6 +91,23 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 ![UI](image.png)
 
 ## Changelog
+
+2026-08-03
+1. **Settings fix**: The setting to run Sync after Assign no longer affects standalone Sync. The 3D view and selected conduits settings now work independently.
+
+2026-07-30
+1. **Configurable 3D View Isolation**: Added "Isolate elements in 3D view" option.
+2. **Enhanced Visualization**: The review view now automatically includes the panel and all loads.
+
+2026-07-29
+1. **Segment Length Recording in Conduits**: Implemented recording of the segment length into the `SRS_MEP_Length` parameter for each route element. The value is rounded up to the nearest meter.
+2. **Reserve Logic Update**: Cable length reserve calculation changed from percentage-based (5-10%) to a fixed value (+2 meters to the total route length).
+
+2026-07-23
+1. **Parallel Circuit Support**: Implemented the ability to link a single electrical circuit to multiple physically parallel conduit chains (using the `SRS_MEP_Parallel_Id` parameter).
+2. **Parallel Branch Numbering**: Added unique numbering for each branch in a parallel group (e.g., `-PS01`, `-PS02`), ensuring tag uniqueness and mounting scheme accuracy.
+3. **Global Uniqueness Control**: Introduced a system to check `BaseCode` uniqueness across the model. If the same tag is accidentally assigned to different circuits, the tool provides a warning.
+4. **Length Calculation for Parallel Systems**: The algorithm now correctly determines cable length based on the longest parallel branch rather than summing them.
 
 2026-07-17
 1. **Ducks and Fitting Chains Support**: Redesigned the connection traversal algorithm. The tool now correctly processes fittings connected directly to each other (without straight conduit segments between them).

@@ -59,6 +59,7 @@ If the **"Overwrite existing circuits"** option is enabled, the tool completely 
 
 ### Automatic Synchronization (Run Sync)
 If the **"Then run Sync for selected & show 3D View"** option is enabled, the plugin will launch the synchronization tool immediately after assigning the circuit.
+- **Isolate elements in 3D view**: Determines if the diagnostic 3D view (created during sync) should isolate only relevant elements or show them in context.
 
 ### Route Inspection Mode
 If you select a circuit (or panel/load) but do **not select any conduits**, the plugin will automatically find and highlight all conduits already linked to that circuit.
@@ -71,6 +72,9 @@ Using the **"Show UI"** checkbox, you can disable this window. The tool will the
 ![UI](image.png)
 
 ## Changelog
+
+2026-07-30
+1. **Sync Integration**: Added "Isolate elements" toggle for consistent sync behavior.
 
 2026-07-13
 1. Silent Mode: Support for instant launch with Shift/Ctrl modifiers.

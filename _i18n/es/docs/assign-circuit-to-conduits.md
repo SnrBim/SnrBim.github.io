@@ -58,6 +58,7 @@ Si la opción **"Overwrite existing circuits"** está activada, la herramienta b
 
 ### Sincronización Automática (Run Sync)
 Si la opción **"Then run Sync for selected & show 3D View"** está activada, el plugin iniciará la herramienta de sincronización inmediatamente después de asignar el circuito.
+- **Isolate elements in 3D view**: Determina si la vista 3D de diagnóstico (creada durante la sincronización) debe aislar solo los elementos relevantes o mostrarlos en contexto.
 
 ### Modo de Inspección de Ruta
 Si selecciona un circuito (o cuadro/carga) pero **no selecciona ningún conducto**, el plugin encontrará y resaltará automáticamente todos los conductos ya vinculados a ese circuito.
@@ -70,6 +71,9 @@ Mediante la casilla **Show UI** puede desactivar esta ventana. La herramienta se
 ![UI](image.png)
 
 ## Historial de Cambios
+
+2026-07-30
+1. **Integración con Sync**: Se añadió el interruptor "Isolate elements" para un comportamiento de sincronización coherente.
 
 2026-07-13
 1. Silent Mode: Soporte para inicio instantáneo con modificadores Shift/Ctrl.

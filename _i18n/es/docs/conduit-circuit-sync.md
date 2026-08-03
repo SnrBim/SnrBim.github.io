@@ -20,10 +20,11 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
 
 1.  **Unificación de parámetros:** Prepara los nombres de los equipos en el parámetro `SRS_Schedule_Name` concatenando `SRS_Equipment_Type` y `SRS_Equipment_Number`. Se admite la sobrescritura de estos parámetros a nivel de instancia (tienen prioridad sobre el tipo), y los guiones redundantes en el nombre resultante se eliminan automáticamente. El parámetro `SRS_Location` se utiliza tal cual de los elementos.
 2.  **Búsqueda:** Encuentra todos los conductos y circuitos con el parámetro `SRS_MEP_Circuit_Names` definido.
-3.  **Identificación de secciones:** Detecta grupos de conductos conectados entre sí (cadenas) por conexión física y por el valor compartido en `SRS_MEP_Circuit_Names`.
-4.  **Agrupación por circuito:** Asocia las cadenas de conductos con sus respectivos circuitos eléctricos.
-6.  **División en segmentos:** La ruta se divide en segmentos entre cajas de distribución (se permite un espacio de hasta 10 cm). El proceso se detiene con un error si hay más de 5 segmentos.
-7.  **Asignación de nombres a segmentos:** A cada segmento se le asigna un nombre basado en las ubicaciones del cuadro y la carga. Si las ubicaciones son diferentes, se especifican ambas (`Loc1-Cuadro/Loc2-Carga-Tag`); si son iguales, el prefijo se escribe una sola vez. Se ha eliminado la abreviatura "CC" de las etiquetas para mayor brevedad. Las reglas para formar el nombre de la carga son las siguientes:
+3.  **Identificación de secciones:** Detecta grupos de conductos conectados entre sí (cadenas) por conexión física. La herramienta reconoce automáticamente ramales paralelos dentro de un segmento mediante el parámetro `SRS_MEP_Parallel_Id`.
+4.  **Agrupación por circuito:** Asocia las cadenas de conductos con sus respectivos circuitos eléctricos. Valida la unicidad de los nombres de circuitos en todo el proyecto para evitar duplicados en los esquemas de montaje.
+5.  **Determinación de la dirección:** Ordena los componentes de la ruta desde la carga hacia el cuadro, gestionando los ramales paralelos de forma coherente.
+6.  **División en segmentos:** La ruta se divide en segmentos lógicos entre cajas de distribución.
+7.  **Asignación de nombres a segmentos:** A cada segmento se le asigna un nombre basado en las ubicaciones del cuadro y la carga. Para cadenas paralelas dentro de un mismo segmento, se generan sufijos únicos para cada ramal (p. ej., `-PS01`, `-PS02`). Las reglas para formar el nombre de la carga son las siguientes:
 
 | Datos de entrada | Nombre resultante del Carga | Comentario |
 | :--- | :--- | :--- |
@@ -35,9 +36,18 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
 8.  **Registro de datos:**
     -   Actualiza `SRS_MEP_Circuit_Names` en todos los conductos del segmento.
     -   Rellena `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, y `SRS_MEP_Conduit_Tag` en los conductos.
-    -   La longitud del cable se registra en el parámetro `SRS_MEP_Cable_Length`, incluyendo una reserva de seguridad (+10% para líneas de hasta 100 m y +5% para líneas de más de 100 m), **redondeada al metro entero superior**.
+    -   Registra la longitud del segmento (incluyendo accesorios y ramales paralelos) en el parámetro `SRS_MEP_Length` de cada elemento, redondeada al metro entero superior.
+    -   La longitud del cable se registra en el parámetro `SRS_MEP_Cable_Length`, que se calcula según el siguiente algoritmo:
+        1.  **Tubos y accesorios**: se toma la suma de las longitudes de todos los elementos. Para los codos, se utiliza la distancia entre conectores multiplicada por un coeficiente (**1.15** para ángulos >45° y **1.05** para ángulos ≤45°) para mantener la independencia de los parámetros de las familias.
+        2.  **Huecos de equipos**: se añaden las distancias rectilíneas desde el Cuadro hasta el primer conducto y desde el último conducto hasta la carga más cercana.
+        3.  **Cajas de derivación**: se tienen en cuenta los huecos en los puntos de rotura de la ruta por las cajas.
+        4.  **Circuitos con múltiples dispositivos**: si hay varias cargas (por ejemplo, luminarias), se calcula la ruta más corta que pase por todos los puntos ("serpiente") desde la última caja.
+        5.  **Reserva**: se añade una reserva de seguridad fija de **+2 metros**.
+        6.  **Redondeo**: el valor final se redondea al metro entero superior.
+        - Para ramales paralelos, se registra en el circuito la longitud del **ramal más largo**.
     -   Almacena los nombres de los segmentos en los parámetros `SRS_MEP_Conduit_Segment_1` a `SRS_MEP_Conduit_Segment_5` del circuito eléctrico.
 9.  **Notificación:** Confirma la operación e informa sobre distancias sospechosas (>1m) entre segmentos para detectar posibles errores de asignación.
+10. **Comprobación de colisiones:** Valida los identificadores únicos (BaseCode) asignados a diferentes circuitos eléctricos. Si se encuentran solapamientos, se proporciona un informe resumen al finalizar.
 
 ## Posibles Errores
 
@@ -68,8 +78,10 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 
 - **Only selected conduits**: Al activarse, el algoritmo procesa solo los conductos que haya seleccionado en Revit antes de iniciar. Útil para sincronizaciones puntuales de circuitos específicos.
 - **Show result in specialized 3D view**: Crea o actualiza una vista 3D especial `Conduit Review <usuario>` para una comprobación rápida del resultado.
-    - **Aislamiento y Caja de Sección**: La herramienta ajusta automáticamente la visibilidad y recorta la vista (Section Box) a los límites del área seleccionada.
-    - **Vista Limpia**: Se ocultan elementos auxiliares (líneas de eje, vínculos).
+    - **Caja de sección (Section Box)**: La herramienta ajusta automáticamente la caja de sección a los límites del área seleccionada.
+    - **Aislamiento opcional**: Use "Isolate elements in 3D view" para ocultar todo excepto la ruta, el panel y las cargas. Si está desactivado, los elementos se muestran dentro del contexto del edificio.
+    - **Vista limpia**: Se ocultan elementos auxiliares (líneas centrales, archivos vinculados).
+    - **Vista completa del sistema**: La vista incluye automáticamente el panel eléctrico y todas las cargas del circuito.
 
 ## Interfaz (Interface)
 
@@ -79,6 +91,23 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 ![UI](image.png)
 
 ## Historial de Cambios
+
+2026-08-03
+1. **Corrección de la configuración**: La opción para ejecutar Sync después de Assign ya no afecta a la ejecución independiente de Sync. Las opciones de la vista 3D y del procesamiento de conductos seleccionados funcionan de forma independiente.
+
+2026-07-30
+1. **Aislamiento configurable**: Se añadió la opción de alternar entre vista aislada o en contexto.
+2. **Visualización mejorada**: El panel y las cargas se incluyen ahora automáticamente en la vista de revisión.
+
+2026-07-29
+1. **Registro de longitud de segmento en conductos**: Se implementó el registro de la longitud del segmento en el parámetro `SRS_MEP_Length` de cada elemento de la ruta. El valor se redondea al metro entero superior.
+2. **Actualización de la lógica de reserva**: El cálculo de la longitud de reserva del cable cambió de porcentual (5-10%) a un valor fijo (+2 metros a la longitud total de la ruta).
+
+2026-07-23
+1. **Soporte para circuitos paralelos**: Implementada la capacidad de vincular un solo circuito eléctrico a múltiples cadenas de conductos físicamente paralelas (usando el parámetro `SRS_MEP_Parallel_Id`).
+2. **Numeración de ramales paralelos**: Añadida numeración única para cada ramal en un grupo paralelo (p. ej., `-PS01`, `-PS02`), garantizando la unicidad de las etiquetas y la precisión de los esquemas de montaje.
+3. **Control de unicidad global**: Introducido un sistema para verificar la unicidad de `BaseCode` en todo el modelo. Si se asigna accidentalmente la misma etiqueta a diferentes circuitos, la herramienta mostrará una advertencia.
+4. **Cálculo de longitud para sistemas paralelos**: El algoritmo ahora determina correctamente la longitud del cable basándose en el ramal paralelo más largo en lugar de sumarlos.
 
 2026-07-17
 1. **Soporte para codos sucesivos y cadenas de accesorios**: Se ha rediseñado el algoritmo de recorrido de conexiones. La herramienta ahora procesa correctamente los accesorios conectados directamente entre sí (sin tramos rectos de tubo intermedios).
