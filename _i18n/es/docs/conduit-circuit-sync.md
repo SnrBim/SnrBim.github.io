@@ -39,7 +39,13 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
     -   Registra la longitud del segmento (incluyendo accesorios y ramales paralelos) en el parámetro `SRS_MEP_Length` de cada elemento, redondeada al metro entero superior.
     -   La longitud del cable se registra en el parámetro `SRS_MEP_Cable_Length`, que se calcula según el siguiente algoritmo:
         1.  **Tubos y accesorios**: se toma la suma de las longitudes de todos los elementos. Para los codos, se utiliza la distancia entre conectores multiplicada por un coeficiente (**1.15** para ángulos >45° y **1.05** para ángulos ≤45°) para mantener la independencia de los parámetros de las familias.
-        2.  **Huecos de equipos**: se añaden las distancias rectilíneas desde el Cuadro hasta el primer conducto y desde el último conducto hasta la carga más cercana.
+        2.  **Huecos de equipos**: se añaden las distancias rectilíneas desde el punto objetivo virtual del cuadro hasta el primer conducto y desde el último conducto hasta el punto objetivo virtual de la carga más cercana. El punto objetivo no coincide con el punto de inserción del equipo; se sitúa en el borde vertical opuesto del equipo con respecto al extremo del conducto.
+            - Los límites verticales del equipo se determinan con respecto al punto de inserción mediante los parámetros `Default Elevation` (`DE`) y `SRS_Height` (`H`).
+            - Si `DE > 0`, el límite inferior es `DE - H` y el superior es `DE`.
+            - Si `DE <= 0`, el límite inferior es `0` y el superior es `H`.
+            - `Default Elevation` se lee del tipo de equipo. `SRS_Height` se lee primero de la instancia y, si el parámetro no existe, del tipo.
+            - Si el extremo del conducto está por encima del límite superior del equipo, se utiliza el límite inferior como objetivo. Si está por debajo del límite inferior, se utiliza el límite superior.
+            - Si el extremo del conducto se encuentra entre ambos límites, se selecciona el borde con mayor distancia vertical al extremo del conducto.
         3.  **Cajas de derivación**: se tienen en cuenta los huecos en los puntos de rotura de la ruta por las cajas.
         4.  **Circuitos con múltiples dispositivos**: si hay varias cargas (por ejemplo, luminarias), se calcula la ruta más corta que pase por todos los puntos ("serpiente") desde la última caja.
         5.  **Reserva**: se añade una reserva de seguridad fija de **+2 metros**.
@@ -94,6 +100,8 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 
 2026-08-03
 1. **Corrección de la configuración**: La opción para ejecutar Sync después de Assign ya no afecta a la ejecución independiente de Sync. Las opciones de la vista 3D y del procesamiento de conductos seleccionados funcionan de forma independiente.
+2. **Cálculo de las distancias terminales hasta los límites del equipo**: Se añadió el cálculo hasta un borde virtual del equipo en lugar del punto de inserción.
+3. **Reserva fija de cable**: Según las nuevas normas, la reserva automática de cable ahora es fija, de **+2 metros** por ruta, en lugar de basarse en un porcentaje.
 
 2026-07-30
 1. **Aislamiento configurable**: Se añadió la opción de alternar entre vista aislada o en contexto.

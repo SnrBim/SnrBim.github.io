@@ -39,7 +39,13 @@ Before running the command, ensure that at least one conduit in each segment has
     -   Records the segment length (including fittings and parallel branches) in the `SRS_MEP_Length` parameter of each element, rounded up to the nearest meter.
     -   The cable length is recorded in the `SRS_MEP_Cable_Length` parameter, which is calculated according to the following algorithm:
         1.  **Conduits and Fittings**: the sum of lengths for all elements. For elbows, the distance between connectors multiplied by a coefficient (**1.15** for angles >45° and **1.05** for angles ≤45°) is used for family parameter independence.
-        2.  **Equipment Gaps**: rectilinear distances from the Panel to the first conduit and from the last conduit to the nearest load are added.
+        2.  **Equipment Gaps**: rectilinear distances from the panel's virtual target point to the first conduit and from the last conduit to the nearest load's virtual target point are added. The target point does not coincide with the equipment insertion point; it is located at the equipment's opposite vertical edge relative to the conduit endpoint.
+            - The equipment's vertical boundaries are determined relative to the insertion point using `Default Elevation` (`DE`) and `SRS_Height` (`H`).
+            - If `DE > 0`, the lower boundary is `DE - H` and the upper boundary is `DE`.
+            - If `DE <= 0`, the lower boundary is `0` and the upper boundary is `H`.
+            - `Default Elevation` is read from the equipment type. `SRS_Height` is read from the instance first and, if the parameter is absent, from the type.
+            - If the conduit endpoint is above the equipment's upper boundary, the lower boundary is used as the target. If the conduit endpoint is below the lower boundary, the upper boundary is used.
+            - If the conduit endpoint is between the boundaries, the edge with the greater vertical distance from the conduit endpoint is selected.
         3.  **Junction Boxes**: gaps at box locations where the run is broken are accounted for.
         4.  **Multi-device Circuits**: if there are multiple loads (e.g., lighting), the shortest path passing through all points ("snake") from the last box is calculated.
         5.  **Reserve**: a fixed safety reserve of **+2 meters** is added.
@@ -94,6 +100,8 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 
 2026-08-03
 1. **Settings fix**: The setting to run Sync after Assign no longer affects standalone Sync. The 3D view and selected conduits settings now work independently.
+2. **Terminal distance calculation to equipment boundaries**: Added calculation to a virtual equipment edge instead of the insertion point.
+3. **Fixed cable reserve**: According to the new standards, the automatic cable reserve is now a fixed **+2 meters** per route instead of a percentage-based value.
 
 2026-07-30
 1. **Configurable 3D View Isolation**: Added "Isolate elements in 3D view" option.
