@@ -99,7 +99,7 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 ## Changelog
 
 2026-08-06
-1. **Cable length calculation fix**: Fixed an error that caused the ends of conduit chains to be determined in reverse order in some cases. This resulted in incorrect terminal distance calculations.
+1. **Cable length calculation fix**: Fixed an error that caused the ends of conduit chains to be determined in reverse order in some cases. This resulted in incorrect terminal distance calculations..
 
 2026-08-03
 1. **Settings fix**: The setting to run Sync after Assign no longer affects standalone Sync. The 3D view and selected conduits settings now work independently.
