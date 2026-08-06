@@ -98,6 +98,9 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 
 ## Historial de Cambios
 
+2026-08-06
+1. **Corrección del cálculo de la longitud del cable**: Se ha corregido un error por el que los extremos de las cadenas de conductos se determinaban en orden inverso en algunos casos. Esto provocaba un cálculo incorrecto de las distancias de los tramos terminales.
+
 2026-08-03
 1. **Corrección de la configuración**: La opción para ejecutar Sync después de Assign ya no afecta a la ejecución independiente de Sync. Las opciones de la vista 3D y del procesamiento de conductos seleccionados funcionan de forma independiente.
 2. **Cálculo de las distancias terminales hasta los límites del equipo**: Se añadió el cálculo hasta un borde virtual del equipo en lugar del punto de inserción.
