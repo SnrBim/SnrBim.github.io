@@ -478,10 +478,85 @@ foreach ($commandFolder in $commandFolders) {
 
 Write-Host "`nDocumentation publishing finished." -ForegroundColor Green
 
-$gitStatus = @(git -C $DestRoot status --short)
+$gitStatus = @(git --no-pager -C $DestRoot status --short)
 Write-Host "`nChanged files: $($gitStatus.Count)" -ForegroundColor Cyan
 $gitStatus | ForEach-Object { Write-Host $_ }
 
 if ($gitStatus.Count -eq 0) {
     Write-Host "No documentation changes detected." -ForegroundColor Green
+    exit 0
+}
+
+Write-Host "`nDiff:" -ForegroundColor Cyan
+git --no-pager -C $DestRoot diff HEAD --
+
+$untrackedFiles = @($gitStatus | Where-Object { $_.Substring(0, 2) -eq "??" })
+foreach ($statusLine in $untrackedFiles) {
+    $relativePath = $statusLine.Substring(3)
+    $filePath = Join-Path $DestRoot $relativePath
+
+    if (-not (Test-Path -LiteralPath $filePath -PathType Leaf)) { continue }
+
+    Write-Host "`nNew file: $relativePath" -ForegroundColor Cyan
+    git --no-pager -C $DestRoot diff --no-index --no-ext-diff -- /dev/null $relativePath
+    $diffExitCode = $LASTEXITCODE
+    if ($diffExitCode -gt 1) {
+        Write-Warning "Could not show diff for '$relativePath' (git exit code $diffExitCode)."
+    }
+}
+
+Write-Host "`nChanged files: $($gitStatus.Count)" -ForegroundColor Cyan
+$gitStatus | ForEach-Object { Write-Host $_ }
+
+Write-Host "`nChoose an action:" -ForegroundColor Yellow
+Write-Host "  1 - Commit and push all listed changes"
+Write-Host "  2 - Open the docs repository in VS Code"
+Write-Host "  3 - Skip"
+$action = Read-Host "Enter 1, 2 or 3"
+
+switch ($action) {
+    "1" {
+        $commitMessage = Read-Host "Commit message"
+        if ([string]::IsNullOrWhiteSpace($commitMessage)) {
+            Write-Error "Commit message cannot be empty. No changes were committed or pushed."
+            exit 1
+        }
+
+        git --no-pager -C $DestRoot add -A
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "git add failed. No commit or push was performed."
+            exit 1
+        }
+
+        git --no-pager -C $DestRoot commit -m $commitMessage
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "git commit failed. Nothing was pushed."
+            exit 1
+        }
+
+        git --no-pager -C $DestRoot push
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "git push failed. The commit exists locally but was not pushed."
+            exit 1
+        }
+
+        Write-Host "Changes committed and pushed successfully." -ForegroundColor Green
+    }
+    "2" {
+        try {
+            code --new-window $DestRoot
+            if ($LASTEXITCODE -ne 0) {
+                Write-Error "VS Code could not be opened (exit code $LASTEXITCODE)."
+                exit 1
+            }
+            Write-Host "Opened docs repository in VS Code." -ForegroundColor Green
+        }
+        catch {
+            Write-Error "VS Code could not be opened: $($_.Exception.Message)"
+            exit 1
+        }
+    }
+    default {
+        Write-Host "No Git or VS Code action selected." -ForegroundColor Yellow
+    }
 }
