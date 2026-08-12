@@ -376,8 +376,8 @@ Light Data E</span>
   <li><strong>Registro de datos:</strong>
     <ul>
       <li>Actualiza <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> en todos los conductos del segmento.</li>
-      <li>Rellena <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_From</code>, <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_To</code>, y <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Tag</code> en los conductos.</li>
-      <li>Registra la longitud del segmento (incluyendo accesorios y ramales paralelos) en el parámetro <code class="language-plaintext highlighter-rouge">SRS_MEP_Length</code> de cada elemento, redondeada al metro entero superior.</li>
+      <li>Rellena <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_From</code>, <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_To</code> y <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Tag</code> en los conductos. Añade las ubicaciones del cuadro y de la carga a <code class="language-plaintext highlighter-rouge">From</code> y <code class="language-plaintext highlighter-rouge">To</code>, respectivamente.</li>
+      <li>Agrupa las longitudes de conductos y accesorios dentro de cada segmento según los códigos <code class="language-plaintext highlighter-rouge">RGS</code>, <code class="language-plaintext highlighter-rouge">PVC</code> y <code class="language-plaintext highlighter-rouge">FIBERGLASS</code> del nombre del tipo. Cada grupo se redondea por separado al metro entero superior, conservando la regla de elegir la longitud máxima para ramales paralelos, y se escribe en <code class="language-plaintext highlighter-rouge">SRS_MEP_Length</code> para los elementos del grupo. Los tipos sin código reconocido forman un grupo independiente con su propia suma.</li>
       <li>La longitud del cable se registra en el parámetro <code class="language-plaintext highlighter-rouge">SRS_MEP_Cable_Length</code>, que se calcula según el siguiente algoritmo:
         <ol>
           <li><strong>Tubos y accesorios</strong>: se toma la suma de las longitudes de todos los elementos. Para los codos, se utiliza la distancia entre conectores multiplicada por un coeficiente (<strong>1.15</strong> para ángulos &gt;45° y <strong>1.05</strong> para ángulos ≤45°) para mantener la independencia de los parámetros de las familias.</li>
@@ -499,6 +499,12 @@ Light Data E</span>
   
 </h2>
     
+
+<p>2026-08-12</p>
+<ol>
+  <li><strong>Ubicaciones en los parámetros de los conductos</strong>: Se añadieron las ubicaciones del cuadro y de la carga a <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_From</code> y <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_To</code>, respectivamente, para mostrar la identificación completa del equipo en las tablas.</li>
+  <li><strong>Separación de longitudes por material</strong>: Las longitudes de conductos y accesorios dentro de cada segmento se separan por los códigos <code class="language-plaintext highlighter-rouge">RGS</code>, <code class="language-plaintext highlighter-rouge">PVC</code> y <code class="language-plaintext highlighter-rouge">FIBERGLASS</code>, se redondean por separado al metro entero superior y se escriben en <code class="language-plaintext highlighter-rouge">SRS_MEP_Length</code>. Los tipos sin código se tratan como un grupo independiente.</li>
+</ol>
 
 <p>2026-08-06</p>
 <ol>

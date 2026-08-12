@@ -376,8 +376,8 @@ Light Data E</span>
   <li><strong>Data Recording:</strong>
     <ul>
       <li>Updates <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> in all conduits of the segment.</li>
-      <li>Fills in <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_From</code>, <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_To</code>, and <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Tag</code> in the conduits.</li>
-      <li>Records the segment length (including fittings and parallel branches) in the <code class="language-plaintext highlighter-rouge">SRS_MEP_Length</code> parameter of each element, rounded up to the nearest meter.</li>
+      <li>Fills in <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_From</code>, <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_To</code>, and <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Tag</code> in the conduits. The panel and load locations are added to <code class="language-plaintext highlighter-rouge">From</code> and <code class="language-plaintext highlighter-rouge">To</code>, respectively.</li>
+      <li>Groups conduit and fitting lengths within each segment by the <code class="language-plaintext highlighter-rouge">RGS</code>, <code class="language-plaintext highlighter-rouge">PVC</code>, and <code class="language-plaintext highlighter-rouge">FIBERGLASS</code> codes in the type name. Each group is rounded up to the nearest meter, preserving the maximum-length rule for parallel branches, and written to <code class="language-plaintext highlighter-rouge">SRS_MEP_Length</code> for the elements in that group. Types without a recognized code form a separate group with their own total length.</li>
       <li>The cable length is recorded in the <code class="language-plaintext highlighter-rouge">SRS_MEP_Cable_Length</code> parameter, which is calculated according to the following algorithm:
         <ol>
           <li><strong>Conduits and Fittings</strong>: the sum of lengths for all elements. For elbows, the distance between connectors multiplied by a coefficient (<strong>1.15</strong> for angles &gt;45° and <strong>1.05</strong> for angles ≤45°) is used for family parameter independence.</li>
@@ -499,6 +499,12 @@ Light Data E</span>
   
 </h2>
     
+
+<p>2026-08-12</p>
+<ol>
+  <li><strong>Locations in conduit parameters</strong>: Added the panel and load locations to <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_From</code> and <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_To</code>, respectively, so schedules display the complete equipment identifiers.</li>
+  <li><strong>Material-specific length separation</strong>: Conduit and fitting lengths within each segment are separated by the <code class="language-plaintext highlighter-rouge">RGS</code>, <code class="language-plaintext highlighter-rouge">PVC</code>, and <code class="language-plaintext highlighter-rouge">FIBERGLASS</code> codes, rounded up separately to the nearest meter, and written to <code class="language-plaintext highlighter-rouge">SRS_MEP_Length</code>. Types without a code are handled as a separate group.</li>
+</ol>
 
 <p>2026-08-06</p>
 <ol>
