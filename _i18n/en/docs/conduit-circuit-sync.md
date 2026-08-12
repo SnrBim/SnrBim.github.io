@@ -35,8 +35,8 @@ Before running the command, ensure that at least one conduit in each segment has
 
 8.  **Data Recording:**
     -   Updates `SRS_MEP_Circuit_Names` in all conduits of the segment.
-    -   Fills in `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, and `SRS_MEP_Conduit_Tag` in the conduits.
-    -   Records the segment length (including fittings and parallel branches) in the `SRS_MEP_Length` parameter of each element, rounded up to the nearest meter.
+    -   Fills in `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, and `SRS_MEP_Conduit_Tag` in the conduits. The panel and load locations are added to `From` and `To`, respectively.
+    -   Groups conduit and fitting lengths within each segment by the `RGS`, `PVC`, and `FIBERGLASS` codes in the type name. Each group is rounded up to the nearest meter, preserving the maximum-length rule for parallel branches, and written to `SRS_MEP_Length` for the elements in that group. Types without a recognized code form a separate group with their own total length.
     -   The cable length is recorded in the `SRS_MEP_Cable_Length` parameter, which is calculated according to the following algorithm:
         1.  **Conduits and Fittings**: the sum of lengths for all elements. For elbows, the distance between connectors multiplied by a coefficient (**1.15** for angles >45° and **1.05** for angles ≤45°) is used for family parameter independence.
         2.  **Equipment Gaps**: rectilinear distances from the panel's virtual target point to the first conduit and from the last conduit to the nearest load's virtual target point are added. The target point does not coincide with the equipment insertion point; it is located at the equipment's opposite vertical edge relative to the conduit endpoint.
@@ -97,6 +97,10 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 ![UI](image.png)
 
 ## Changelog
+
+2026-08-12
+1. **Locations in conduit parameters**: Added the panel and load locations to `SRS_MEP_Conduit_From` and `SRS_MEP_Conduit_To`, respectively, so schedules display the complete equipment identifiers.
+2. **Material-specific length separation**: Conduit and fitting lengths within each segment are separated by the `RGS`, `PVC`, and `FIBERGLASS` codes, rounded up separately to the nearest meter, and written to `SRS_MEP_Length`. Types without a code are handled as a separate group.
 
 2026-08-06
 1. **Cable length calculation fix**: Fixed an error that caused the ends of conduit chains to be determined in reverse order in some cases. This resulted in incorrect terminal distance calculations.

@@ -35,8 +35,8 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
 
 8.  **Registro de datos:**
     -   Actualiza `SRS_MEP_Circuit_Names` en todos los conductos del segmento.
-    -   Rellena `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To`, y `SRS_MEP_Conduit_Tag` en los conductos.
-    -   Registra la longitud del segmento (incluyendo accesorios y ramales paralelos) en el parámetro `SRS_MEP_Length` de cada elemento, redondeada al metro entero superior.
+    -   Rellena `SRS_MEP_Conduit_From`, `SRS_MEP_Conduit_To` y `SRS_MEP_Conduit_Tag` en los conductos. Añade las ubicaciones del cuadro y de la carga a `From` y `To`, respectivamente.
+    -   Agrupa las longitudes de conductos y accesorios dentro de cada segmento según los códigos `RGS`, `PVC` y `FIBERGLASS` del nombre del tipo. Cada grupo se redondea por separado al metro entero superior, conservando la regla de elegir la longitud máxima para ramales paralelos, y se escribe en `SRS_MEP_Length` para los elementos del grupo. Los tipos sin código reconocido forman un grupo independiente con su propia suma.
     -   La longitud del cable se registra en el parámetro `SRS_MEP_Cable_Length`, que se calcula según el siguiente algoritmo:
         1.  **Tubos y accesorios**: se toma la suma de las longitudes de todos los elementos. Para los codos, se utiliza la distancia entre conectores multiplicada por un coeficiente (**1.15** para ángulos >45° y **1.05** para ángulos ≤45°) para mantener la independencia de los parámetros de las familias.
         2.  **Huecos de equipos**: se añaden las distancias rectilíneas desde el punto objetivo virtual del cuadro hasta el primer conducto y desde el último conducto hasta el punto objetivo virtual de la carga más cercana. El punto objetivo no coincide con el punto de inserción del equipo; se sitúa en el borde vertical opuesto del equipo con respecto al extremo del conducto.
@@ -97,6 +97,10 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 ![UI](image.png)
 
 ## Historial de Cambios
+
+2026-08-12
+1. **Ubicaciones en los parámetros de los conductos**: Se añadieron las ubicaciones del cuadro y de la carga a `SRS_MEP_Conduit_From` y `SRS_MEP_Conduit_To`, respectivamente, para mostrar la identificación completa del equipo en las tablas.
+2. **Separación de longitudes por material**: Las longitudes de conductos y accesorios dentro de cada segmento se separan por los códigos `RGS`, `PVC` y `FIBERGLASS`, se redondean por separado al metro entero superior y se escriben en `SRS_MEP_Length`. Los tipos sin código se tratan como un grupo independiente.
 
 2026-08-06
 1. **Corrección del cálculo de la longitud del cable**: Se ha corregido un error por el que los extremos de las cadenas de conductos se determinaban en orden inverso en algunos casos. Esto provocaba un cálculo incorrecto de las distancias de los tramos terminales.
