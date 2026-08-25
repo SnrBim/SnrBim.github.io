@@ -85,7 +85,8 @@ function Get-RibbonOrder {
             continue
         }
 
-        if ($null -eq $currentPanel) { continue }
+        # History is a runtime-only panel with a ComboBox and stacked buttons.
+        if ($currentPanel -eq 'History' -or $null -eq $currentPanel) { continue }
 
         # Detect separator
         if ($codePart -match 'AddSeparator\s*\(' -or $codePart -match 'CreateSplit\s*\(.*null\)') {
