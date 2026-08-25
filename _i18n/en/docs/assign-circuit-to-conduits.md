@@ -43,6 +43,7 @@ Before running the command, ensure that the load, electrical panel, and intermed
 
 4.  **Add Information to Conduits:**
     -   The `SRS_MEP_Circuit_Names` parameter will be updated in all selected conduits, adding the new circuit name in alphabetical order without deleting previous data.
+    -   The circuit parameters `SRS_MEP_Conduit_From` and `SRS_MEP_Conduit_To` will be filled with the panel location and name, and the load location and name, respectively.
 
 5.  **Notification:**
     -   Upon completion, a notification will confirm the operation and indicate how many different circuits are now associated with each conduit.
@@ -72,6 +73,9 @@ Using the **"Show UI"** checkbox, you can disable this window. The tool will the
 ![UI](image.png)
 
 ## Changelog
+
+2026-08-25
+1. **Circuit From and To parameters**: Added the panel and load location/name values to `SRS_MEP_Conduit_From` and `SRS_MEP_Conduit_To` on the electrical circuit.
 
 2026-07-30
 1. **Sync Integration**: Added "Isolate elements" toggle for consistent sync behavior.

@@ -42,6 +42,7 @@ Antes de ejecutar el comando, asegúrese de que la carga, el cuadro eléctrico y
 
 4.  **Agregar la información a los conductos:**
     -   En todos los conductos seleccionados, se actualizará el parámetro `SRS_MEP_Circuit_Names`, agregando el nombre del circuito en orden alfabético sin eliminar datos previos.
+    -   En los parámetros del circuito eléctrico `SRS_MEP_Conduit_From` y `SRS_MEP_Conduit_To` se escribirán, respectivamente, la ubicación y el nombre del cuadro, y la ubicación y el nombre de la carga.
 
 5.  **Notificación:**
     -   Al finalizar, aparecerá una notificación confirmando la operación e indicando cuántos circuitos diferentes están ahora asociados a cada conducto.
@@ -71,6 +72,9 @@ Mediante la casilla **Show UI** puede desactivar esta ventana. La herramienta se
 ![UI](image.png)
 
 ## Historial de Cambios
+
+2026-08-25
+1. **Parámetros From y To del circuito**: Se añadieron la ubicación y el nombre del cuadro y de la carga a `SRS_MEP_Conduit_From` y `SRS_MEP_Conduit_To` del circuito eléctrico.
 
 2026-07-30
 1. **Integración con Sync**: Se añadió el interruptor "Isolate elements" para un comportamiento de sincronización coherente.
