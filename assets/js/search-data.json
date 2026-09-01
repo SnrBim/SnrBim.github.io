@@ -834,7 +834,7 @@
   },"119": {
     "doc": "History",
     "title": "View History",
-    "content": ". | Why View History Is Useful | Enabling History Recording | Working with the View List | View Navigation | Display Settings | History Scope and Filtering | Favorite Views | Document and View Aliases | Managing History | Performance and Stability | . The History tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the History panel on the SNR tab. ",
+    "content": ". | Why View History Is Useful | Enabling History Recording | Working with the View List | View Navigation | Display Settings | History Scope and Filtering | Favorite Views | Document and View Aliases | Managing History | Performance and Stability | . The History tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the History panel on the SNR tab. Temporary location: This page currently uses the legacy History entry in the documentation structure. The feature described here is the new View History, and this page should be moved to its own documentation entry. ",
     "url": "/docs/history/#view-history",
     
     "relUrl": "/docs/history/#view-history"
@@ -848,14 +848,14 @@
   },"121": {
     "doc": "History",
     "title": "Enabling History Recording",
-    "content": "History recording is disabled by default. Enable it in Info &gt; Extra. After it is enabled, the History panel is added to the ribbon and starts building a list of recently visited views. To open the settings, select Open settings… from the history drop-down list. ",
+    "content": "History recording is disabled by default. Enable it in Info &gt; Extra. After it is enabled, the History panel is added to the ribbon and starts building a list of recently visited views. ",
     "url": "/docs/history/#enabling-history-recording",
     
     "relUrl": "/docs/history/#enabling-history-recording"
   },"122": {
     "doc": "History",
     "title": "Working with the View List",
-    "content": "Open View history to see recently visited views. The content and order of the displayed information can be configured in View history display. Select an entry to activate the corresponding view. If a modifier key is held while selecting it (any of Ctrl, Shift, Alt, or Win), the tool closes other Revit views. The list may contain empty slots. This is caused by limitations of Revit’s Ribbon interface and does not indicate an error in the history. ",
+    "content": "Open View history to see recently visited views. The content and order of the displayed information can be configured in Settings -&gt; View history display. Select an entry to activate the corresponding view. If a modifier key is held while selecting it (any of Ctrl, Shift, Alt, or Win), the tool closes other Revit views. The list may contain empty slots. This is caused by limitations of Revit’s Ribbon interface and does not indicate an error in the history. ",
     "url": "/docs/history/#working-with-the-view-list",
     
     "relUrl": "/docs/history/#working-with-the-view-list"
@@ -869,7 +869,7 @@
   },"124": {
     "doc": "History",
     "title": "Display Settings",
-    "content": "The View history display section lets you configure: . | whether slot numbers are shown; | whether the last visit time is shown; | whether total activity or activity from previous sessions is shown; | whether activity from the current session is shown; | whether short visits are marked; | whether visits shorter than a specified duration are excluded; | whether highly active views are marked; | whether the project label is shown; | whether the project name is shown; | whether project information is hidden when only one document is open. | . The project label is calculated automatically and shows how recently the project was last visited. The active document receives index 0, while other open documents are numbered by the time of their last visit: 1, 2, 3, and so on. The letter P denotes a project, and F denotes a family. For example, P0 is the active project, P1 is the previous project, and F2 is a family visited before P1. The duration threshold is specified as a string with a time unit, such as 5s, 30m, or 2h. A view name does not always show how important it is to the current work: names may be long, similar to one another, or say nothing about how often a view is used. History therefore shows additional statistics: the last visit time, the total time spent on the view, and activity in the current session. This makes it easier to distinguish a working view that is revisited regularly from one that was opened accidentally or only briefly. By default, the view list contains a minimum amount of information so it is easier to understand when you first start working with it. Experienced users can enable additional display options as needed and depending on their work context. ",
+    "content": "To open the settings, select Open settings… from the history drop-down list. The View history display section lets you configure: . | whether slot numbers are shown; | whether the last visit time is shown; | whether total activity or activity from previous sessions is shown; | whether activity from the current session is shown; | whether short visits are marked; | whether visits shorter than a specified duration are excluded; | whether highly active views are marked; | whether the project label is shown; | whether the project name is shown; | whether project information is hidden when only one document is open. | . The project label is calculated automatically and shows how recently the project was last visited. The active document receives index 0, while other open documents are numbered by the time of their last visit: 1, 2, 3, and so on. The letter P denotes a project, and F denotes a family. For example, P0 is the active project, P1 is the previous project, and F2 is a family visited before P1. The duration threshold is specified as a string with a time unit, such as 5s, 30m, or 2h. A view name does not always show how important it is to the current work: names may be long, similar to one another, or say nothing about how often a view is used. History therefore shows additional statistics: the last visit time, the total time spent on the view, and activity in the current session. This makes it easier to distinguish a working view that is revisited regularly from one that was opened accidentally or only briefly. By default, the view list contains a minimum amount of information so it is easier to understand when you first start working with it. Experienced users can enable additional display options as needed and depending on their work context. ",
     "url": "/docs/history/#display-settings",
     
     "relUrl": "/docs/history/#display-settings"
