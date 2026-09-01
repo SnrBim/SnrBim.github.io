@@ -24,7 +24,7 @@ Es fácil perder el contexto de trabajo en Revit: un proyecto puede tener abiert
 El historial de vistas reduce este problema:
 
 - muestra qué vistas se han utilizado recientemente, independientemente del orden en que se abrieron originalmente;
-- permite volver a una vista con un clic, sin buscarla en la estructura del proyecto;
+- permite volver a una vista con solo un par de clics, sin buscarla en la estructura del proyecto;
 - ayuda a cambiar rápidamente entre la vista actual y la anterior con el botón Prev o `Ctrl+Tab`;
 - conserva el contexto entre sesiones de Revit: después de volver a abrir un proyecto, puede seleccionar la vista necesaria desde el historial sin buscarla en el Navegador de proyectos;
 - ayuda a distinguir las vistas de distintos documentos abiertos mediante etiquetas y nombres, sin cambiar de ventana ni recordar dónde estaba la vista necesaria;

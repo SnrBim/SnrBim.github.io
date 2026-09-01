@@ -24,7 +24,7 @@ It is easy to lose your working context in Revit: a project may have dozens of p
 View History reduces this problem:
 
 - shows which views were used recently, regardless of the order in which they were originally opened;
-- lets you return to a view with one click, without searching through the project structure;
+- lets you return to a view in just a couple of clicks, without searching through the project structure;
 - helps you quickly switch between the current and previous view with the Prev button or `Ctrl+Tab`;
 - preserves context between Revit sessions: after reopening a project, you can select the required view from the history without searching in the Project Browser;
 - helps distinguish views from different open documents by labels and names, without switching between windows or trying to remember where the required view was;
