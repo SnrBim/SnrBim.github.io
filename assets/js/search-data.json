@@ -848,7 +848,7 @@
   },"121": {
     "doc": "History",
     "title": "Enabling History Recording",
-    "content": "History recording is disabled by default. Enable it in Info &gt; Extra. After it is enabled, the History panel is added to the ribbon and starts building a list of recently visited views. ",
+    "content": "History recording is disabled by default. Enable it in Info &gt; Extra &gt; ✅ View history recording. After it is enabled, the History panel is added to the ribbon and starts building a list of recently visited views. ",
     "url": "/docs/history/#enabling-history-recording",
     
     "relUrl": "/docs/history/#enabling-history-recording"

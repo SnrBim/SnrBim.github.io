@@ -848,7 +848,7 @@
   },"121": {
     "doc": "History",
     "title": "Activar el registro del historial",
-    "content": "El registro del historial está desactivado de forma predeterminada. Se activa en Info &gt; Extra. Después de activarlo, el panel History se añade a la cinta y comienza a formarse una lista de las vistas visitadas recientemente. ",
+    "content": "El registro del historial está desactivado de forma predeterminada. Se activa en Info &gt; Extra &gt; ✅ View history recording. Después de activarlo, el panel History se añade a la cinta y comienza a formarse una lista de las vistas visitadas recientemente. ",
     "url": "/es/docs/history/#activar-el-registro-del-historial",
     
     "relUrl": "/docs/history/#activar-el-registro-del-historial"
