@@ -12,6 +12,9 @@
 
 La herramienta **History** guarda las vistas de Revit visitadas recientemente y permite volver rápidamente a ellas. El historial se conserva entre sesiones de Revit y se muestra en el panel **History** de la pestaña **SNR**.
 
+> **Ubicación temporal:** Esta página utiliza actualmente la entrada legacy History en la estructura de documentación. La función descrita aquí es el nuevo View History y esta página debe trasladarse a una entrada de documentación independiente.
+{: .warning }
+
 ![Panel de la cinta](ribbon.png)
 
 ## Para qué sirve el historial de vistas
@@ -32,11 +35,9 @@ El historial de vistas reduce este problema:
 
 El registro del historial está desactivado de forma predeterminada. Se activa en **Info > Extra**. Después de activarlo, el panel **History** se añade a la cinta y comienza a formarse una lista de las vistas visitadas recientemente.
 
-Para abrir la configuración, seleccione **Open settings...** en la lista desplegable del historial.
-
 ## Trabajar con la lista de vistas
 
-Abra **View history** para ver las vistas visitadas recientemente. El contenido y el orden de la información mostrada se configuran en **View history display**.
+Abra **View history** para ver las vistas visitadas recientemente. El contenido y el orden de la información mostrada se configuran en **Settings -> View history display**.
 
 ![Lista del historial de vistas en la cinta](combobox.png)
 
@@ -59,6 +60,8 @@ Cuando está activada la opción **Use view history for Ctrl+Tab navigation** (a
 - pulsar `Tab` de nuevo mientras se mantiene `Ctrl`: retroceder por el historial.
 
 ## Configuración de la visualización
+
+Para abrir la configuración, seleccione **Open settings...** en la lista desplegable del historial.
 
 En la sección **View history display** puede configurar:
 

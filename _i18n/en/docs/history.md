@@ -12,6 +12,9 @@
 
 The **History** tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the **History** panel on the **SNR** tab.
 
+> **Temporary location:** This page currently uses the legacy History entry in the documentation structure. The feature described here is the new View History, and this page should be moved to its own documentation entry.
+{: .warning }
+
 ![Ribbon panel](ribbon.png)
 
 ## Why View History Is Useful
@@ -32,11 +35,9 @@ View History reduces this problem:
 
 History recording is disabled by default. Enable it in **Info > Extra**. After it is enabled, the **History** panel is added to the ribbon and starts building a list of recently visited views.
 
-To open the settings, select **Open settings...** from the history drop-down list.
-
 ## Working with the View List
 
-Open **View history** to see recently visited views. The content and order of the displayed information can be configured in **View history display**.
+Open **View history** to see recently visited views. The content and order of the displayed information can be configured in **Settings -> View history display**.
 
 ![View history list on the ribbon](combobox.png)
 
@@ -59,6 +60,8 @@ When **Use view history for Ctrl+Tab navigation** is enabled (by default), these
 - press `Tab` again while holding `Ctrl`: move backward through the history.
 
 ## Display Settings
+
+To open the settings, select **Open settings...** from the history drop-down list.
 
 The **View history display** section lets you configure:
 
