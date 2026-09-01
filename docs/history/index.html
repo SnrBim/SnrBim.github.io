@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="History" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The History tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the History panel on the SNR tab." />
+<meta property="og:description" content="The History tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the History panel on the SNR tab." />
 <link rel="canonical" href="https://snrbim.github.io/docs/history/" />
 <meta property="og:url" content="https://snrbim.github.io/docs/history/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="History" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"History","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/history/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The History tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the History panel on the SNR tab.","headline":"History","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/history/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -281,10 +281,10 @@ parameters</span>
     </div>
     <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
 </div>
-<h1 class="no_toc" id="english-command-title">
+<h1 class="no_toc" id="view-history">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#view-history" class="anchor-heading" aria-labelledby="view-history"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> View History
   
   
 </h1>
@@ -294,10 +294,239 @@ parameters</span>
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#why-view-history-is-useful" id="markdown-toc-why-view-history-is-useful">Why View History Is Useful</a></li>
+  <li><a href="#enabling-history-recording" id="markdown-toc-enabling-history-recording">Enabling History Recording</a></li>
+  <li><a href="#working-with-the-view-list" id="markdown-toc-working-with-the-view-list">Working with the View List</a></li>
+  <li><a href="#view-navigation" id="markdown-toc-view-navigation">View Navigation</a></li>
+  <li><a href="#display-settings" id="markdown-toc-display-settings">Display Settings</a></li>
+  <li><a href="#history-scope-and-filtering" id="markdown-toc-history-scope-and-filtering">History Scope and Filtering</a></li>
+  <li><a href="#favorite-views" id="markdown-toc-favorite-views">Favorite Views</a></li>
+  <li><a href="#document-and-view-aliases" id="markdown-toc-document-and-view-aliases">Document and View Aliases</a></li>
+  <li><a href="#managing-history" id="markdown-toc-managing-history">Managing History</a></li>
+  <li><a href="#performance-and-stability" id="markdown-toc-performance-and-stability">Performance and Stability</a></li>
+</ol>
 
 </details>
 
-<p>This is the English content for the command documentation.</p>
+<p>The <strong>History</strong> tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the <strong>History</strong> panel on the <strong>SNR</strong> tab.</p>
+
+<p><img src="ribbon.png" alt="Ribbon panel" /></p>
+<h2 id="why-view-history-is-useful">
+  
+  
+    <a href="#why-view-history-is-useful" class="anchor-heading" aria-labelledby="why-view-history-is-useful"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Why View History Is Useful
+  
+  
+</h2>
+    
+
+<p>It is easy to lose your working context in Revit: a project may have dozens of plans, sections, 3D views, and sheets open, and you may need to switch between them constantly. After such a switch, the required view is not always easy to find among the tabs or in the Project Browser.</p>
+
+<p>View History reduces this problem:</p>
+
+<ul>
+  <li>shows which views were used recently, regardless of the order in which they were originally opened;</li>
+  <li>lets you return to a view with one click, without searching through the project structure;</li>
+  <li>helps you quickly switch between the current and previous view with the Prev button or <code class="language-plaintext highlighter-rouge">Ctrl+Tab</code>;</li>
+  <li>preserves context between Revit sessions: after reopening a project, you can select the required view from the history without searching in the Project Browser;</li>
+  <li>helps distinguish views from different open documents by labels and names, without switching between windows or trying to remember where the required view was;</li>
+  <li>lets you replace long and hard-to-read project and view names with short, clear names using aliases;</li>
+  <li>lets you mark important views as favorites so they are not lost among less important transitions.</li>
+</ul>
+<h2 id="enabling-history-recording">
+  
+  
+    <a href="#enabling-history-recording" class="anchor-heading" aria-labelledby="enabling-history-recording"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Enabling History Recording
+  
+  
+</h2>
+    
+
+<p>History recording is disabled by default. Enable it in <strong>Info &gt; Extra</strong>. After it is enabled, the <strong>History</strong> panel is added to the ribbon and starts building a list of recently visited views.</p>
+
+<p>To open the settings, select <strong>Open settings…</strong> from the history drop-down list.</p>
+<h2 id="working-with-the-view-list">
+  
+  
+    <a href="#working-with-the-view-list" class="anchor-heading" aria-labelledby="working-with-the-view-list"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Working with the View List
+  
+  
+</h2>
+    
+
+<p>Open <strong>View history</strong> to see recently visited views. The content and order of the displayed information can be configured in <strong>View history display</strong>.</p>
+
+<p><img src="combobox.png" alt="View history list on the ribbon" /></p>
+
+<p>Select an entry to activate the corresponding view. If a modifier key is held while selecting it (any of Ctrl, Shift, Alt, or Win), the tool closes other Revit views.</p>
+
+<p>The list may contain empty slots. This is caused by limitations of Revit’s Ribbon interface and does not indicate an error in the history.</p>
+<h2 id="view-navigation">
+  
+  
+    <a href="#view-navigation" class="anchor-heading" aria-labelledby="view-navigation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> View Navigation
+  
+  
+</h2>
+    
+
+<p>The <strong>History</strong> panel provides these commands:</p>
+
+<ul>
+  <li><strong>Prev</strong>: switches to the previous view, ping-ponging between two views;</li>
+  <li><strong>Back</strong>: moves backward through the current session’s navigation history;</li>
+  <li><strong>Forward</strong>: moves forward after navigating back.</li>
+</ul>
+
+<p>When <strong>Use view history for Ctrl+Tab navigation</strong> is enabled (by default), these keyboard shortcuts are available:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ctrl+Tab</code>: previous view;</li>
+  <li><code class="language-plaintext highlighter-rouge">Ctrl+Shift+Tab</code>: move forward;</li>
+  <li>press <code class="language-plaintext highlighter-rouge">Tab</code> again while holding <code class="language-plaintext highlighter-rouge">Ctrl</code>: move backward through the history.</li>
+</ul>
+<h2 id="display-settings">
+  
+  
+    <a href="#display-settings" class="anchor-heading" aria-labelledby="display-settings"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Display Settings
+  
+  
+</h2>
+    
+
+<p>The <strong>View history display</strong> section lets you configure:</p>
+
+<ul>
+  <li>whether slot numbers are shown;</li>
+  <li>whether the last visit time is shown;</li>
+  <li>whether total activity or activity from previous sessions is shown;</li>
+  <li>whether activity from the current session is shown;</li>
+  <li>whether short visits are marked;</li>
+  <li>whether visits shorter than a specified duration are excluded;</li>
+  <li>whether highly active views are marked;</li>
+  <li>whether the project label is shown;</li>
+  <li>whether the project name is shown;</li>
+  <li>whether project information is hidden when only one document is open.</li>
+</ul>
+
+<p>The project label is calculated automatically and shows how recently the project was last visited. The active document receives index <code class="language-plaintext highlighter-rouge">0</code>, while other open documents are numbered by the time of their last visit: <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, and so on. The letter <code class="language-plaintext highlighter-rouge">P</code> denotes a project, and <code class="language-plaintext highlighter-rouge">F</code> denotes a family. For example, <code class="language-plaintext highlighter-rouge">P0</code> is the active project, <code class="language-plaintext highlighter-rouge">P1</code> is the previous project, and <code class="language-plaintext highlighter-rouge">F2</code> is a family visited before <code class="language-plaintext highlighter-rouge">P1</code>.</p>
+
+<p>The duration threshold is specified as a string with a time unit, such as <code class="language-plaintext highlighter-rouge">5s</code>, <code class="language-plaintext highlighter-rouge">30m</code>, or <code class="language-plaintext highlighter-rouge">2h</code>.</p>
+
+<p><img src="settings.png" alt="View history settings window" /></p>
+
+<p>A view name does not always show how important it is to the current work: names may be long, similar to one another, or say nothing about how often a view is used. History therefore shows additional statistics: the last visit time, the total time spent on the view, and activity in the current session. This makes it easier to distinguish a working view that is revisited regularly from one that was opened accidentally or only briefly.</p>
+
+<p>By default, the view list contains a minimum amount of information so it is easier to understand when you first start working with it. Experienced users can enable additional display options as needed and depending on their work context.</p>
+
+<p><img src="image.png" alt="Settings diagram" /></p>
+<h2 id="history-scope-and-filtering">
+  
+  
+    <a href="#history-scope-and-filtering" class="anchor-heading" aria-labelledby="history-scope-and-filtering"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> History Scope and Filtering
+  
+  
+</h2>
+    
+
+<p>The <strong>History scope and filtering</strong> section provides these options:</p>
+
+<ul>
+  <li>the period for which visited views are shown;</li>
+  <li>the maximum number of entries in the list;</li>
+  <li>showing favorites only;</li>
+  <li>showing only the last view of each background document;</li>
+  <li>limiting the number of background documents;</li>
+  <li>showing views from the active document only;</li>
+  <li>using history for <code class="language-plaintext highlighter-rouge">Ctrl+Tab</code> navigation (this overrides Revit’s native behavior, where the switching order is determined by the order in which views were opened rather than visited).</li>
+</ul>
+
+<p>Filters affect only the displayed list. They do not delete entries from the history file.</p>
+<h2 id="favorite-views">
+  
+  
+    <a href="#favorite-views" class="anchor-heading" aria-labelledby="favorite-views"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Favorite Views
+  
+  
+</h2>
+    
+
+<p>To mark the current view as a favorite, enable <strong>Favorite current view</strong> in the settings window. Favorite views are not displaced by ordinary views when the number of entries is limited and occupy available list slots before them. A favorite can also remain in the list when the <strong>Only favorites</strong> filter is enabled.</p>
+<h2 id="document-and-view-aliases">
+  
+  
+    <a href="#document-and-view-aliases" class="anchor-heading" aria-labelledby="document-and-view-aliases"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Document and View Aliases
+  
+  
+</h2>
+    
+
+<p>In <strong>Aliases for docs and views</strong>, you can specify custom names for documents and views. One line defines one alias in this format:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALIAS display_name
+</code></pre></div></div>
+
+<p>The alias is the first word on the line. The first space separates the alias from the full document or view name, so an alias cannot contain spaces. Spaces are allowed in the document or view name. For example:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MyView Original Long View Name
+</code></pre></div></div>
+
+<p>Here, <code class="language-plaintext highlighter-rouge">MyView</code> is the alias and <code class="language-plaintext highlighter-rouge">Original Long View Name</code> is the view name. If you write <code class="language-plaintext highlighter-rouge">My View Original Long View Name</code>, the alias is recognized as <code class="language-plaintext highlighter-rouge">My</code> and the view name as <code class="language-plaintext highlighter-rouge">View Original Long View Name</code>.</p>
+
+<p>Lines beginning with <code class="language-plaintext highlighter-rouge">;</code> are treated as comments and are not processed.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">...</code> menu in the corner of the field lets you:</p>
+
+<ul>
+  <li>add an alias for the active document;</li>
+  <li>add an alias for the active view;</li>
+  <li>sort lines by alias name;</li>
+  <li>sort lines by document or view name.</li>
+</ul>
+
+<p>Aliases are preserved when the other settings are reset.</p>
+<h2 id="managing-history">
+  
+  
+    <a href="#managing-history" class="anchor-heading" aria-labelledby="managing-history"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Managing History
+  
+  
+</h2>
+    
+
+<p>The settings window provides these commands:</p>
+
+<ul>
+  <li><strong>Reset settings to default (except aliases)</strong>: reset settings while preserving aliases;</li>
+  <li><strong>Clear active doc history</strong>: delete the history of the active document;</li>
+  <li><strong>Clear other docs history</strong>: delete the history of all documents except the active one, including closed documents whose entries are stored in the log;</li>
+  <li><strong>Show history file</strong>: open the folder containing the history file;</li>
+  <li><strong>Reload history</strong>: reread the history from disk.</li>
+</ul>
+
+<p>History is stored in:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%APPDATA%\Sener\BimTools\ViewHistory.json
+</code></pre></div></div>
+
+<p>When the size limit is reached, the old file is automatically moved to an archive.</p>
+
+<p>Click <strong>Save</strong> to apply changes. <strong>Cancel</strong> closes the window without applying changes.</p>
+<h2 id="performance-and-stability">
+  
+  
+    <a href="#performance-and-stability" class="anchor-heading" aria-labelledby="performance-and-stability"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance and Stability
+  
+  
+</h2>
+    
+
+<p>History tracks view switches and performs additional processing when views change. Under normal conditions this should not be noticeable, but the feature may affect switching speed or Revit stability if errors occur.</p>
+
+<p>During the first few months, monitor Revit after enabling history recording. Report performance problems, delays, or instability to the developer, including the Revit version and the sequence of actions that led to the problem.</p>
+
+<p>History recording is disabled by default. For the near future, the feature will be distributed in the disabled state so users can enable it deliberately and check Revit’s behavior in their own working environment.</p>
 
           
 

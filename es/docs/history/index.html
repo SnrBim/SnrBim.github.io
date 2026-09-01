@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="History" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The History tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the History panel on the SNR tab." />
+<meta property="og:description" content="The History tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the History panel on the SNR tab." />
 <link rel="canonical" href="https://snrbim.github.io/es/docs/history/" />
 <meta property="og:url" content="https://snrbim.github.io/es/docs/history/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="History" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"History","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/history/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The History tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the History panel on the SNR tab.","headline":"History","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/history/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -281,10 +281,10 @@ parameters</span>
     </div>
     <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
 </div>
-<h1 class="no_toc" id="título-del-comando-en-español">
+<h1 class="no_toc" id="historial-de-vistas">
   
   
-    <a href="#título-del-comando-en-español" class="anchor-heading" aria-labelledby="título-del-comando-en-español"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Título del Comando en Español
+    <a href="#historial-de-vistas" class="anchor-heading" aria-labelledby="historial-de-vistas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Historial de vistas
   
   
 </h1>
@@ -294,10 +294,239 @@ parameters</span>
   <summary class="text-delta">
     Tabla de contenidos
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#para-qué-sirve-el-historial-de-vistas" id="markdown-toc-para-qué-sirve-el-historial-de-vistas">Para qué sirve el historial de vistas</a></li>
+  <li><a href="#activar-el-registro-del-historial" id="markdown-toc-activar-el-registro-del-historial">Activar el registro del historial</a></li>
+  <li><a href="#trabajar-con-la-lista-de-vistas" id="markdown-toc-trabajar-con-la-lista-de-vistas">Trabajar con la lista de vistas</a></li>
+  <li><a href="#navegación-entre-vistas" id="markdown-toc-navegación-entre-vistas">Navegación entre vistas</a></li>
+  <li><a href="#configuración-de-la-visualización" id="markdown-toc-configuración-de-la-visualización">Configuración de la visualización</a></li>
+  <li><a href="#ámbito-y-filtros-del-historial" id="markdown-toc-ámbito-y-filtros-del-historial">Ámbito y filtros del historial</a></li>
+  <li><a href="#vistas-favoritas" id="markdown-toc-vistas-favoritas">Vistas favoritas</a></li>
+  <li><a href="#alias-de-documentos-y-vistas" id="markdown-toc-alias-de-documentos-y-vistas">Alias de documentos y vistas</a></li>
+  <li><a href="#gestionar-el-historial" id="markdown-toc-gestionar-el-historial">Gestionar el historial</a></li>
+  <li><a href="#rendimiento-y-estabilidad" id="markdown-toc-rendimiento-y-estabilidad">Rendimiento y estabilidad</a></li>
+</ol>
 
 </details>
 
-<p>Este es el contenido en español para la documentación del comando.</p>
+<p>La herramienta <strong>History</strong> guarda las vistas de Revit visitadas recientemente y permite volver rápidamente a ellas. El historial se conserva entre sesiones de Revit y se muestra en el panel <strong>History</strong> de la pestaña <strong>SNR</strong>.</p>
+
+<p><img src="ribbon.png" alt="Panel de la cinta" /></p>
+<h2 id="para-qué-sirve-el-historial-de-vistas">
+  
+  
+    <a href="#para-qué-sirve-el-historial-de-vistas" class="anchor-heading" aria-labelledby="para-qué-sirve-el-historial-de-vistas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Para qué sirve el historial de vistas
+  
+  
+</h2>
+    
+
+<p>Es fácil perder el contexto de trabajo en Revit: un proyecto puede tener abiertas decenas de plantas, secciones, vistas 3D y planos, y durante el trabajo es necesario cambiar constantemente entre ellas. Después de cambiar de vista, no siempre es fácil encontrar la vista necesaria entre las pestañas o en el Navegador de proyectos.</p>
+
+<p>El historial de vistas reduce este problema:</p>
+
+<ul>
+  <li>muestra qué vistas se han utilizado recientemente, independientemente del orden en que se abrieron originalmente;</li>
+  <li>permite volver a una vista con un clic, sin buscarla en la estructura del proyecto;</li>
+  <li>ayuda a cambiar rápidamente entre la vista actual y la anterior con el botón Prev o <code class="language-plaintext highlighter-rouge">Ctrl+Tab</code>;</li>
+  <li>conserva el contexto entre sesiones de Revit: después de volver a abrir un proyecto, puede seleccionar la vista necesaria desde el historial sin buscarla en el Navegador de proyectos;</li>
+  <li>ayuda a distinguir las vistas de distintos documentos abiertos mediante etiquetas y nombres, sin cambiar de ventana ni recordar dónde estaba la vista necesaria;</li>
+  <li>permite sustituir los nombres largos y difíciles de leer de proyectos y vistas por nombres cortos y claros mediante alias;</li>
+  <li>permite marcar las vistas importantes como favoritas para que no se pierdan entre cambios menos relevantes.</li>
+</ul>
+<h2 id="activar-el-registro-del-historial">
+  
+  
+    <a href="#activar-el-registro-del-historial" class="anchor-heading" aria-labelledby="activar-el-registro-del-historial"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Activar el registro del historial
+  
+  
+</h2>
+    
+
+<p>El registro del historial está desactivado de forma predeterminada. Se activa en <strong>Info &gt; Extra</strong>. Después de activarlo, el panel <strong>History</strong> se añade a la cinta y comienza a formarse una lista de las vistas visitadas recientemente.</p>
+
+<p>Para abrir la configuración, seleccione <strong>Open settings…</strong> en la lista desplegable del historial.</p>
+<h2 id="trabajar-con-la-lista-de-vistas">
+  
+  
+    <a href="#trabajar-con-la-lista-de-vistas" class="anchor-heading" aria-labelledby="trabajar-con-la-lista-de-vistas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Trabajar con la lista de vistas
+  
+  
+</h2>
+    
+
+<p>Abra <strong>View history</strong> para ver las vistas visitadas recientemente. El contenido y el orden de la información mostrada se configuran en <strong>View history display</strong>.</p>
+
+<p><img src="combobox.png" alt="Lista del historial de vistas en la cinta" /></p>
+
+<p>Seleccione una entrada para activar la vista correspondiente. Si mantiene pulsada una tecla modificadora al seleccionarla (Ctrl, Shift, Alt o Win), la herramienta cierra las demás vistas de Revit.</p>
+
+<p>La lista puede contener espacios vacíos. Esto se debe a las limitaciones de la interfaz Ribbon de Revit y no indica un error en el historial.</p>
+<h2 id="navegación-entre-vistas">
+  
+  
+    <a href="#navegación-entre-vistas" class="anchor-heading" aria-labelledby="navegación-entre-vistas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Navegación entre vistas
+  
+  
+</h2>
+    
+
+<p>El panel <strong>History</strong> ofrece estos comandos:</p>
+
+<ul>
+  <li><strong>Prev</strong>: cambia a la vista anterior, alternando entre dos vistas;</li>
+  <li><strong>Back</strong>: retrocede por el historial de navegación de la sesión actual;</li>
+  <li><strong>Forward</strong>: avanza después de retroceder.</li>
+</ul>
+
+<p>Cuando está activada la opción <strong>Use view history for Ctrl+Tab navigation</strong> (activada de forma predeterminada), están disponibles estos atajos de teclado:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ctrl+Tab</code>: vista anterior;</li>
+  <li><code class="language-plaintext highlighter-rouge">Ctrl+Shift+Tab</code>: avanzar;</li>
+  <li>pulsar <code class="language-plaintext highlighter-rouge">Tab</code> de nuevo mientras se mantiene <code class="language-plaintext highlighter-rouge">Ctrl</code>: retroceder por el historial.</li>
+</ul>
+<h2 id="configuración-de-la-visualización">
+  
+  
+    <a href="#configuración-de-la-visualización" class="anchor-heading" aria-labelledby="configuración-de-la-visualización"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuración de la visualización
+  
+  
+</h2>
+    
+
+<p>En la sección <strong>View history display</strong> puede configurar:</p>
+
+<ul>
+  <li>mostrar los números de las posiciones;</li>
+  <li>mostrar la hora de la última visita;</li>
+  <li>mostrar la actividad total o la actividad de sesiones anteriores;</li>
+  <li>mostrar la actividad de la sesión actual;</li>
+  <li>marcar las visitas breves;</li>
+  <li>excluir las visitas más cortas que la duración indicada;</li>
+  <li>marcar las vistas con mucha actividad;</li>
+  <li>mostrar la etiqueta del proyecto;</li>
+  <li>mostrar el nombre del proyecto;</li>
+  <li>ocultar la información del proyecto cuando solo hay un documento abierto.</li>
+</ul>
+
+<p>La etiqueta del proyecto se calcula automáticamente y muestra cuánto tiempo ha pasado desde la última visita al proyecto. El documento activo recibe el índice <code class="language-plaintext highlighter-rouge">0</code>, mientras que los demás documentos abiertos se numeran según la hora de su última visita: <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, etc. La letra <code class="language-plaintext highlighter-rouge">P</code> representa un proyecto y <code class="language-plaintext highlighter-rouge">F</code> representa una familia. Por ejemplo, <code class="language-plaintext highlighter-rouge">P0</code> es el proyecto activo, <code class="language-plaintext highlighter-rouge">P1</code> es el proyecto anterior y <code class="language-plaintext highlighter-rouge">F2</code> es una familia visitada antes que <code class="language-plaintext highlighter-rouge">P1</code>.</p>
+
+<p>El umbral de duración se indica como una cadena con una unidad de tiempo, por ejemplo <code class="language-plaintext highlighter-rouge">5s</code>, <code class="language-plaintext highlighter-rouge">30m</code> o <code class="language-plaintext highlighter-rouge">2h</code>.</p>
+
+<p><img src="settings.png" alt="Ventana de configuración del historial de vistas" /></p>
+
+<p>El nombre de una vista no siempre permite entender su importancia para el trabajo actual: los nombres pueden ser largos, parecidos entre sí o no indicar con qué frecuencia se utiliza la vista. Por eso, el historial muestra estadísticas adicionales: la hora de la última visita, el tiempo total de trabajo con la vista y la actividad de la sesión actual. Estos datos facilitan distinguir una vista de trabajo a la que se vuelve regularmente de una vista abierta por casualidad o durante poco tiempo.</p>
+
+<p>De forma predeterminada, la lista de vistas contiene la cantidad mínima de información para que sea más fácil de entender al comenzar a trabajar. Los usuarios experimentados pueden activar opciones de visualización adicionales según sus necesidades y el contexto de trabajo.</p>
+
+<p><img src="image.png" alt="Esquema de configuración" /></p>
+<h2 id="ámbito-y-filtros-del-historial">
+  
+  
+    <a href="#ámbito-y-filtros-del-historial" class="anchor-heading" aria-labelledby="ámbito-y-filtros-del-historial"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Ámbito y filtros del historial
+  
+  
+</h2>
+    
+
+<p>En la sección <strong>History scope and filtering</strong> están disponibles estos parámetros:</p>
+
+<ul>
+  <li>el período durante el que se muestran las vistas visitadas;</li>
+  <li>el número máximo de entradas de la lista;</li>
+  <li>mostrar únicamente las vistas favoritas;</li>
+  <li>mostrar únicamente la última vista de cada documento en segundo plano;</li>
+  <li>limitar el número de documentos en segundo plano;</li>
+  <li>mostrar únicamente las vistas del documento activo;</li>
+  <li>utilizar el historial para la navegación <code class="language-plaintext highlighter-rouge">Ctrl+Tab</code> (esto sustituye el comportamiento nativo de Revit, en el que el orden de cambio depende del orden en que se abrieron las vistas y no de las visitas).</li>
+</ul>
+
+<p>Los filtros solo afectan a la lista mostrada. No eliminan entradas del archivo de historial.</p>
+<h2 id="vistas-favoritas">
+  
+  
+    <a href="#vistas-favoritas" class="anchor-heading" aria-labelledby="vistas-favoritas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Vistas favoritas
+  
+  
+</h2>
+    
+
+<p>Para marcar la vista actual como favorita, active <strong>Favorite current view</strong> en la ventana de configuración. Las vistas favoritas no son desplazadas por las vistas normales cuando se limita el número de entradas y ocupan las posiciones disponibles antes que ellas. También es posible mantener una vista favorita en la lista al activar el filtro <strong>Only favorites</strong>.</p>
+<h2 id="alias-de-documentos-y-vistas">
+  
+  
+    <a href="#alias-de-documentos-y-vistas" class="anchor-heading" aria-labelledby="alias-de-documentos-y-vistas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Alias de documentos y vistas
+  
+  
+</h2>
+    
+
+<p>En <strong>Aliases for docs and views</strong> puede definir nombres personalizados para documentos y vistas. Cada línea define un alias con este formato:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALIAS nombre_mostrado
+</code></pre></div></div>
+
+<p>El alias es la primera palabra de la línea. El primer espacio separa el alias del nombre completo del documento o de la vista, por lo que el alias no puede contener espacios. El nombre del documento o de la vista sí puede contenerlos. Por ejemplo:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MyView Original Long View Name
+</code></pre></div></div>
+
+<p>Aquí, <code class="language-plaintext highlighter-rouge">MyView</code> es el alias y <code class="language-plaintext highlighter-rouge">Original Long View Name</code> es el nombre de la vista. Si escribe <code class="language-plaintext highlighter-rouge">My View Original Long View Name</code>, el alias se reconoce como <code class="language-plaintext highlighter-rouge">My</code> y el nombre de la vista como <code class="language-plaintext highlighter-rouge">View Original Long View Name</code>.</p>
+
+<p>Las líneas que empiezan por <code class="language-plaintext highlighter-rouge">;</code> se consideran comentarios y no se procesan.</p>
+
+<p>El menú <code class="language-plaintext highlighter-rouge">...</code> de la esquina del campo permite:</p>
+
+<ul>
+  <li>añadir un alias para el documento activo;</li>
+  <li>añadir un alias para la vista activa;</li>
+  <li>ordenar las líneas por el nombre del alias;</li>
+  <li>ordenar las líneas por el nombre del documento o de la vista.</li>
+</ul>
+
+<p>Los alias se conservan al restablecer el resto de la configuración.</p>
+<h2 id="gestionar-el-historial">
+  
+  
+    <a href="#gestionar-el-historial" class="anchor-heading" aria-labelledby="gestionar-el-historial"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Gestionar el historial
+  
+  
+</h2>
+    
+
+<p>En la ventana de configuración están disponibles estos comandos:</p>
+
+<ul>
+  <li><strong>Reset settings to default (except aliases)</strong>: restablecer la configuración conservando los alias;</li>
+  <li><strong>Clear active doc history</strong>: eliminar el historial del documento activo;</li>
+  <li><strong>Clear other docs history</strong>: eliminar el historial de todos los documentos excepto el activo, incluidos los documentos cerrados cuyas entradas estén guardadas en el registro;</li>
+  <li><strong>Show history file</strong>: abrir la carpeta que contiene el archivo de historial;</li>
+  <li><strong>Reload history</strong>: volver a leer el historial desde el disco.</li>
+</ul>
+
+<p>El historial se guarda en el archivo:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%APPDATA%\Sener\BimTools\ViewHistory.json
+</code></pre></div></div>
+
+<p>Al alcanzar el límite de tamaño, el archivo antiguo se mueve automáticamente a un archivo de respaldo.</p>
+
+<p>Pulse <strong>Save</strong> para aplicar los cambios. <strong>Cancel</strong> cierra la ventana sin aplicar los cambios.</p>
+<h2 id="rendimiento-y-estabilidad">
+  
+  
+    <a href="#rendimiento-y-estabilidad" class="anchor-heading" aria-labelledby="rendimiento-y-estabilidad"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Rendimiento y estabilidad
+  
+  
+</h2>
+    
+
+<p>El historial registra los cambios de vista y realiza un procesamiento adicional cuando cambian. En condiciones normales no debería notarse, pero la función puede afectar a la velocidad de cambio o a la estabilidad de Revit si se producen errores.</p>
+
+<p>Durante los primeros meses, se recomienda observar el funcionamiento de Revit después de activar el registro del historial. Informe al desarrollador sobre problemas de rendimiento, retrasos o inestabilidad e indique la versión de Revit y la secuencia de acciones después de la cual apareció el problema.</p>
+
+<p>El registro del historial está desactivado de forma predeterminada. Durante el futuro próximo, la función se distribuirá desactivada para que los usuarios puedan activarla conscientemente y comprobar el funcionamiento de Revit en su entorno de trabajo.</p>
 
           
 
