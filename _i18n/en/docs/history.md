@@ -153,6 +153,11 @@ When the size limit is reached, the old file is automatically moved to an archiv
 
 Click **Save** to apply changes. **Cancel** closes the window without applying changes.
 
+## Current Limitations
+
+- An unsaved project (or a family opened from a project rather than from disk and not saved to disk during the current session) can be used for navigation only while it is the active document. Switching to an unsaved document from another document is not possible due to API limitations.
+- The `Ctrl+Tab` interception works only when both history recording and **Use view history for Ctrl+Tab navigation** are enabled.
+
 ## Performance and Stability
 
 History tracks view switches and performs additional processing when views change. Under normal conditions this should not be noticeable, but the feature may affect switching speed or Revit stability if errors occur.

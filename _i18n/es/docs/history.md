@@ -153,6 +153,11 @@ Al alcanzar el límite de tamaño, el archivo antiguo se mueve automáticamente 
 
 Pulse **Save** para aplicar los cambios. **Cancel** cierra la ventana sin aplicar los cambios.
 
+## Limitaciones actuales
+
+- Un proyecto no guardado (o una familia abierta desde un proyecto en lugar de desde el disco y que no se haya guardado en el disco durante la sesión actual) solo se puede utilizar para la navegación mientras sea el documento activo. No es posible cambiar a un documento no guardado desde otro documento debido a las limitaciones de la API.
+- La interceptación de `Ctrl+Tab` funciona únicamente cuando están activados tanto el registro del historial como **Use view history for Ctrl+Tab navigation**.
+
 ## Rendimiento y estabilidad
 
 El historial registra los cambios de vista y realiza un procesamiento adicional cuando cambian. En condiciones normales no debería notarse, pero la función puede afectar a la velocidad de cambio o a la estabilidad de Revit si se producen errores.
