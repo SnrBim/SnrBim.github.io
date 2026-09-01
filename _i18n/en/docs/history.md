@@ -10,7 +10,7 @@
 {:toc}
 </details>
 
-The **History** tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the **History** panel on the **SNR** tab.
+The **View History** tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the **History** panel on the **SNR** tab.
 
 > **Temporary location:** This page currently uses the legacy History entry in the documentation structure. The feature described here is the new View History, and this page should be moved to its own documentation entry.
 {: .warning }

@@ -10,7 +10,7 @@
 {:toc}
 </details>
 
-La herramienta **History** guarda las vistas de Revit visitadas recientemente y permite volver rápidamente a ellas. El historial se conserva entre sesiones de Revit y se muestra en el panel **History** de la pestaña **SNR**.
+La herramienta **View History** guarda las vistas de Revit visitadas recientemente y permite volver rápidamente a ellas. El historial se conserva entre sesiones de Revit y se muestra en el panel **History** de la pestaña **SNR**.
 
 > **Ubicación temporal:** Esta página utiliza actualmente la entrada legacy History en la estructura de documentación. La función descrita aquí es el nuevo View History y esta página debe trasladarse a una entrada de documentación independiente.
 {: .warning }
