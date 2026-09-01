@@ -33,7 +33,7 @@ El historial de vistas reduce este problema:
 
 ## Activar el registro del historial
 
-El registro del historial está desactivado de forma predeterminada. Se activa en **Info > Extra**. Después de activarlo, el panel **History** se añade a la cinta y comienza a formarse una lista de las vistas visitadas recientemente.
+El registro del historial está desactivado de forma predeterminada. Se activa en **Info > Extra > ✅ View history recording**. Después de activarlo, el panel **History** se añade a la cinta y comienza a formarse una lista de las vistas visitadas recientemente.
 
 ## Trabajar con la lista de vistas
 

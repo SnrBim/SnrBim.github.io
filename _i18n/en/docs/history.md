@@ -33,7 +33,7 @@ View History reduces this problem:
 
 ## Enabling History Recording
 
-History recording is disabled by default. Enable it in **Info > Extra**. After it is enabled, the **History** panel is added to the ribbon and starts building a list of recently visited views.
+History recording is disabled by default. Enable it in **Info > Extra > ✅ View history recording**. After it is enabled, the **History** panel is added to the ribbon and starts building a list of recently visited views.
 
 ## Working with the View List
 
