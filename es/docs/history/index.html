@@ -304,6 +304,7 @@ parameters</span>
   <li><a href="#vistas-favoritas" id="markdown-toc-vistas-favoritas">Vistas favoritas</a></li>
   <li><a href="#alias-de-documentos-y-vistas" id="markdown-toc-alias-de-documentos-y-vistas">Alias de documentos y vistas</a></li>
   <li><a href="#gestionar-el-historial" id="markdown-toc-gestionar-el-historial">Gestionar el historial</a></li>
+  <li><a href="#limitaciones-actuales" id="markdown-toc-limitaciones-actuales">Limitaciones actuales</a></li>
   <li><a href="#rendimiento-y-estabilidad" id="markdown-toc-rendimiento-y-estabilidad">Rendimiento y estabilidad</a></li>
 </ol>
 
@@ -517,6 +518,19 @@ parameters</span>
 <p>Al alcanzar el límite de tamaño, el archivo antiguo se mueve automáticamente a un archivo de respaldo.</p>
 
 <p>Pulse <strong>Save</strong> para aplicar los cambios. <strong>Cancel</strong> cierra la ventana sin aplicar los cambios.</p>
+<h2 id="limitaciones-actuales">
+  
+  
+    <a href="#limitaciones-actuales" class="anchor-heading" aria-labelledby="limitaciones-actuales"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Limitaciones actuales
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Un proyecto no guardado (o una familia abierta desde un proyecto en lugar de desde el disco y que no se haya guardado en el disco durante la sesión actual) solo se puede utilizar para la navegación mientras sea el documento activo. No es posible cambiar a un documento no guardado desde otro documento debido a las limitaciones de la API.</li>
+  <li>La interceptación de <code class="language-plaintext highlighter-rouge">Ctrl+Tab</code> funciona únicamente cuando están activados tanto el registro del historial como <strong>Use view history for Ctrl+Tab navigation</strong>.</li>
+</ul>
 <h2 id="rendimiento-y-estabilidad">
   
   

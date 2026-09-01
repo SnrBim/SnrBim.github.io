@@ -304,6 +304,7 @@ parameters</span>
   <li><a href="#favorite-views" id="markdown-toc-favorite-views">Favorite Views</a></li>
   <li><a href="#document-and-view-aliases" id="markdown-toc-document-and-view-aliases">Document and View Aliases</a></li>
   <li><a href="#managing-history" id="markdown-toc-managing-history">Managing History</a></li>
+  <li><a href="#current-limitations" id="markdown-toc-current-limitations">Current Limitations</a></li>
   <li><a href="#performance-and-stability" id="markdown-toc-performance-and-stability">Performance and Stability</a></li>
 </ol>
 
@@ -517,6 +518,19 @@ parameters</span>
 <p>When the size limit is reached, the old file is automatically moved to an archive.</p>
 
 <p>Click <strong>Save</strong> to apply changes. <strong>Cancel</strong> closes the window without applying changes.</p>
+<h2 id="current-limitations">
+  
+  
+    <a href="#current-limitations" class="anchor-heading" aria-labelledby="current-limitations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Current Limitations
+  
+  
+</h2>
+    
+
+<ul>
+  <li>An unsaved project (or a family opened from a project rather than from disk and not saved to disk during the current session) can be used for navigation only while it is the active document. Switching to an unsaved document from another document is not possible due to API limitations.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Ctrl+Tab</code> interception works only when both history recording and <strong>Use view history for Ctrl+Tab navigation</strong> are enabled.</li>
+</ul>
 <h2 id="performance-and-stability">
   
   
