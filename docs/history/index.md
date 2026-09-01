@@ -2,9 +2,8 @@
 parent: Common
 title: History
 layout: default
-wip: true
-description: 'This is the English content for the command documentation.'
-description_es: 'Este es el contenido en español para la documentación del comando.'
+description: 'The **History** tool stores recently visited Revit views and lets you return to them quickly. The history is preserved between Revit sessions and displayed in the **History** panel on the **SNR** tab.'
+description_es: 'La herramienta **History** guarda las vistas de Revit visitadas recientemente y permite volver rápidamente a ellas. El historial se conserva entre sesiones de Revit y se muestra en el panel **History** de la pestaña **SNR**.'
 ribbon_panel: General
 ribbon_order: 13
 ribbon_separator_before: 1
