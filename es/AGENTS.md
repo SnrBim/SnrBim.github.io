@@ -75,6 +75,7 @@ Setting it to `true` triggers a code path in the plugin that calls a Ruby method
 ## Key Files
 
 *   **`index.md`** — main page. Renders the filterable command list and the ribbon replica. WIP items show a tooltip instead of inline status text. Items with descriptions show the description as a hover tooltip.
+*   **`404.html`** — handles requests for unpublished documentation. Shows the requested slug, uses the language indicated by the URL, provides the developer's contact for requesting publication, and links back to the relevant home page.
 *   **`_includes/ribbon.html`** — renders the full Revit ribbon replica on the main page. Determines panel display order from the global command sort order. WIP commands are shown as non-clickable, dimmed buttons. Panel names are shortened for display; the `ribbon_panel` field in front-matter stores the original Revit name.
 *   **`_includes/ribbon_context.html`** — renders a compact ribbon on command pages, showing only the commands near the current one in the global order. Commands from different panels may appear together if they are adjacent. WIP and dual-button commands are handled consistently with the main ribbon. When the window is cut off at an edge, the visual border is removed on that side to signal continuation.
 *   **`_includes/head_custom.html`** — injects the global stylesheet into every page via the just-the-docs hook.
