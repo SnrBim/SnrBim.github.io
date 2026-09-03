@@ -5,11 +5,12 @@
     Publishes documentation from the BIMTools source repository to the Jekyll website repository.
 
 .DESCRIPTION
-    This script automates the process of collecting and restructuring documentation files.
-    It uses the 'title' from each command's 'front-matter.yaml' as the single source of truth
-    to generate URL-friendly names (slugs) in kebab-case.
+    This script automates the process of collecting and restructuring documentation content.
+    Source folders with a 'Docs' subdirectory are classified by the 'type' field in
+    'front-matter.yaml'. Command folders are published as command documentation, while
+    folders with 'type: article' are published as standalone articles.
 
-    The script performs the following actions for each command:
+    The script performs the following actions for command folders:
     1. Pre-scans all 'front-matter.yaml' files to detect duplicate titles and stops if any are found.
     2. Parses App.cs (via Get-RibbonOrder) to derive ribbon panel, order, and separator info.
     3. Reads the 'title' and optional 'parent' override from 'front-matter.yaml'.
@@ -22,6 +23,13 @@
     9. Copies all other assets (images, etc.) to the command's dest folder.
     10. Warns if any expected language content files (En.md, Es.md) are missing.
 
+    Article folders are identified by 'type: article'. Their URL slug is read from
+    'front-matter.yaml', localized titles are read from the Markdown content, and
+    their content and assets are published as standalone bilingual articles.
+
+    The script also synchronizes the shared project CHANGELOG.md into the site's includes,
+    keeping only the versioned entries and excluding introductory and reference sections.
+
 .PARAMETER SourceRoot
     The absolute path to the source directory containing the command folders.
 
@@ -30,8 +38,13 @@
 #>
 param(
     [string]$SourceRoot = "C:\Users\1M06174\OneDrive - SENER\repos\BIMTools\BIMTools",
-    [string]$DestRoot = "C:\Users\1M06174\OneDrive - SENER\repos\BIMTools\publish\SnrBim.github.io"
+    [string]$DestRoot = "C:\Users\1M06174\OneDrive - SENER\repos\BIMTools\publish\SnrBim.github.io",
+    [string]$ChangelogPath = ""
 )
+
+if ([string]::IsNullOrWhiteSpace($ChangelogPath)) {
+    $ChangelogPath = Join-Path (Split-Path $SourceRoot -Parent) "CHANGELOG.md"
+}
 
 # ---------------------------------------------------------------------------
 # Helper: extract the first non-heading paragraph from a markdown file
@@ -43,6 +56,44 @@ function Get-FirstParagraph($FilePath) {
         if ($t -ne "" -and -not $t.StartsWith("#")) { return $t }
     }
     return $null
+}
+
+# ---------------------------------------------------------------------------
+# Helper: extract the page title from the first Markdown heading
+# ---------------------------------------------------------------------------
+function Get-MarkdownTitle($FilePath) {
+    if (-not (Test-Path $FilePath)) { return $null }
+    foreach ($line in (Get-Content -Path $FilePath)) {
+        if ($line -match '^#\s+(.+?)\s*$') { return $Matches[1].Trim() }
+    }
+    return $null
+}
+
+# ---------------------------------------------------------------------------
+# Helper: extract only the versioned entries from the project changelog
+# ---------------------------------------------------------------------------
+function Get-ChangelogEntries($FilePath) {
+    $content = [System.IO.File]::ReadAllText($FilePath, [System.Text.Encoding]::UTF8)
+    $lines = @($content -split '\r?\n')
+    $entryPattern = '^##\s+\[[^\]]+\]\s+\D'
+    $entryIndexes = @(
+        for ($index = 0; $index -lt $lines.Count; $index++) {
+            if ($lines[$index] -match $entryPattern) { $index }
+        }
+    )
+
+    if ($entryIndexes.Count -eq 0) { return $null }
+
+    $startIndex = $entryIndexes[0]
+    $endIndex = $lines.Count
+    for ($index = $entryIndexes[-1] + 1; $index -lt $lines.Count; $index++) {
+        if ($lines[$index] -match '^---\s*$') {
+            $endIndex = $index
+            break
+        }
+    }
+
+    return ($lines[$startIndex..($endIndex - 1)] -join [Environment]::NewLine).Trim() + [Environment]::NewLine
 }
 
 # ---------------------------------------------------------------------------
@@ -166,6 +217,20 @@ Write-Host "Starting documentation publishing process..." -ForegroundColor Green
 Write-Host "Source: $SourceRoot"
 Write-Host "Destination: $DestRoot"
 
+# --- Sync the shared project changelog ---
+$changelogDestination = Join-Path $DestRoot "_includes\changelog.md"
+if (Test-Path -LiteralPath $ChangelogPath) {
+    $changelogEntries = Get-ChangelogEntries -FilePath $ChangelogPath
+    if ($null -eq $changelogEntries) {
+        Write-Warning "No versioned entries found in '$ChangelogPath'. The existing site changelog was left unchanged."
+    } else {
+        Set-Content -Path $changelogDestination -Value $changelogEntries -Encoding UTF8
+        Write-Host "Synchronized changelog entries -> $changelogDestination" -ForegroundColor Cyan
+    }
+} else {
+    Write-Warning "CHANGELOG.md not found at '$ChangelogPath'. The existing site changelog was left unchanged."
+}
+
 # --- Load ribbon order from App.cs ---
 $appCsPath   = Join-Path $SourceRoot "App.cs"
 $ribbonOrder = Get-RibbonOrder -AppCsPath $appCsPath
@@ -179,9 +244,15 @@ if ($ribbonOrder.Count -gt 0) {
 $buttonTexts = Get-ButtonTexts -SourceRoot $SourceRoot
 Write-Host "Loaded button texts for $($buttonTexts.Count) command variants." -ForegroundColor Cyan
 
-$commandFolders = Get-ChildItem -Path $SourceRoot -Directory | Where-Object {
+$sourceFolders = Get-ChildItem -Path $SourceRoot -Directory | Where-Object {
     ($_.Name -ne "Template") -and ($_.Name -ne "Manifest") -and ($_.Name -ne "Res") -and ($_.Name -ne "Properties") -and ($_.Name -ne "bin") -and ($_.Name -ne "obj") -and (Test-Path -Path (Join-Path $_.FullName "Docs") -ErrorAction SilentlyContinue)
 }
+
+$articleFolders = @($sourceFolders | Where-Object {
+    $frontMatterPath = Join-Path $_.FullName "Docs\front-matter.yaml"
+    (Test-Path $frontMatterPath) -and ((Get-Content $frontMatterPath) -match '^type:\s*article\s*$')
+})
+$commandFolders = @($sourceFolders | Where-Object { $articleFolders -notcontains $_ })
 
 if (-not $commandFolders) {
     Write-Warning "No command folders with a 'Docs' subdirectory found in '$SourceRoot'."
@@ -475,6 +546,54 @@ foreach ($commandFolder in $commandFolders) {
     if (-not $foundEs) {
         Write-Warning "  WARNING: Spanish content (Es.md) was not found for command '$commandNamePascalCase'. The Spanish page might be empty or missing."
     }
+}
+
+# --- Publish article folders ---
+foreach ($articleFolder in $articleFolders) {
+    $sourceArticlePath = Join-Path $articleFolder.FullName "Docs"
+    $articleFrontMatterPath = Join-Path $sourceArticlePath "front-matter.yaml"
+    $slugLine = Get-Content $articleFrontMatterPath | Select-String -Pattern '^slug:\s*(.+)$' | Select-Object -First 1
+    $articleSlug = if ($slugLine) { $slugLine.Matches[0].Groups[1].Value.Trim().Trim('"', "'") } else { $null }
+    $enTitle = Get-MarkdownTitle -FilePath (Join-Path $sourceArticlePath "En.md")
+    $esTitle = Get-MarkdownTitle -FilePath (Join-Path $sourceArticlePath "Es.md")
+
+    if ([string]::IsNullOrWhiteSpace($articleSlug) -or [string]::IsNullOrWhiteSpace($enTitle)) {
+        Write-Warning "  Article '$($articleFolder.Name)' has no valid slug or English Markdown title. Skipping."
+        continue
+    }
+
+    $articleDestination = Join-Path $DestRoot "articles\$articleSlug"
+    $articleEnDestination = Join-Path $DestRoot "_i18n\en\articles\$articleSlug.md"
+    $articleEsDestination = Join-Path $DestRoot "_i18n\es\articles\$articleSlug.md"
+    New-Item -ItemType Directory -Path $articleDestination -Force | Out-Null
+    New-Item -ItemType Directory -Path (Split-Path $articleEnDestination -Parent) -Force | Out-Null
+    New-Item -ItemType Directory -Path (Split-Path $articleEsDestination -Parent) -Force | Out-Null
+
+    $articleIndex = [System.Collections.Generic.List[string]]::new()
+    $articleIndex.Add('---')
+    $articleIndex.Add('layout: default')
+    $articleIndex.Add('article: true')
+    $articleIndex.Add("title: $enTitle")
+    if ($esTitle) { $articleIndex.Add("title_es: $esTitle") }
+    $articleIndex.Add("permalink: /articles/$articleSlug/")
+    $articleIndex.Add('---')
+    $articleIndex.Add("{% translate_file articles/$articleSlug.md %}")
+    Set-Content -Path (Join-Path $articleDestination "index.md") -Value $articleIndex
+
+    foreach ($file in (Get-ChildItem -Path $sourceArticlePath -File)) {
+        switch ($file.Name) {
+            "En.md" { Copy-Item $file.FullName $articleEnDestination -Force }
+            "Es.md" { Copy-Item $file.FullName $articleEsDestination -Force }
+            "Ru.md" { Write-Host "  Ignoring file: $($file.Name)" -ForegroundColor Gray }
+            "front-matter.yaml" { }
+            default {
+                Copy-Item $file.FullName (Join-Path $articleDestination $file.Name) -Force
+                Write-Host "  Copied article asset -> $(Join-Path $articleDestination $file.Name)"
+            }
+        }
+    }
+
+    Write-Host "Processing article: $($articleFolder.Name) -> $articleSlug" -ForegroundColor Yellow
 }
 
 Write-Host "`nDocumentation publishing finished." -ForegroundColor Green

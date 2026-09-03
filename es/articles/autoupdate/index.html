@@ -14,10 +14,9 @@
   <style id="jtd-nav-activation">
   
 
-    .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
-    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
+    .site-nav > ul.nav-list:first-child > li:not(:nth-child(6)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li a {
       background-image: none;
     }
 
@@ -26,14 +25,12 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(6) > a {
       font-weight: 600;
       text-decoration: none;
-    }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > button svg {
+    }.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg {
       transform: rotate(-90deg);
-    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +55,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Align Elevations | Sener BimTools Docs</title>
+<title>Automatic BIMTools Update | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Align Elevations" />
+<meta property="og:title" content="Automatic BIMTools Update" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model." />
-<meta property="og:description" content="The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model." />
-<link rel="canonical" href="https://snrbim.github.io/es/docs/align-elevations/" />
-<meta property="og:url" content="https://snrbim.github.io/es/docs/align-elevations/" />
+<meta name="description" content="Official documentation for the Sener BimTools Revit plugin." />
+<meta property="og:description" content="Official documentation for the Sener BimTools Revit plugin." />
+<link rel="canonical" href="https://snrbim.github.io/es/articles/autoupdate/" />
+<meta property="og:url" content="https://snrbim.github.io/es/articles/autoupdate/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Align Elevations" />
+<meta property="twitter:title" content="Automatic BIMTools Update" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"The tool automatically calculates a single average elevation for groups of lighting fixtures of the same type within the same space and writes it to the specified instance parameter. This eliminates the “Various” value in schedules caused by structural slopes in the model.","headline":"Align Elevations","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/align-elevations/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Official documentation for the Sener BimTools Revit plugin.","headline":"Automatic BIMTools Update","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/articles/autoupdate/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -251,288 +248,172 @@
 </div>
 
     <div class="main-content-wrap">
-      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-  <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/es/docs/3ELE.html">ELE</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Align Elevations</span></li>
-  </ol>
-</nav>
-
-
+      
       <div id="main-content" class="main-content">
         <main>
           
-            <div class="ribbon-context ribbon-context--cut-left ribbon-context--cut-right">
-  <div class="ribbon-context-row"><span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>
-    <div class="ribbon-context-group">
-      <div class="ribbon-panel-buttons">
-        <span class="ribbon-btn ribbon-btn--wip" title="Página en desarrollo. Contacte al desarrollador para obtener documentación."><img src="/docs/create-sockets/logo.png" alt="Create sockets" title="Página en desarrollo. Contacte al desarrollador para obtener documentación." /><span class="ribbon-btn-label">Create
-sockets</span>
-                </span><a class="ribbon-btn" href="/es/docs/assign-circuit-to-conduits/" title="Assign circuit to conduits"><img src="/docs/assign-circuit-to-conduits/logo.png" alt="Assign circuit to conduits" title="Assign circuit to conduits" /><span class="ribbon-btn-label">Assign circuit
-to conduits</span>
-                </a><span class="ribbon-btn ribbon-btn--current" title="Align Elevations"><div class="ribbon-btn-placeholder"></div><span class="ribbon-btn-label">Align
-Elevations</span>
-                </span><a class="ribbon-btn" href="/es/docs/conduit-circuit-sync/" title="Conduit circuit sync"><img src="/docs/conduit-circuit-sync/logo.png" alt="Conduit circuit sync" title="Conduit circuit sync" /><span class="ribbon-btn-label">Conduit to
-circuit sync </span>
-                </a><a class="ribbon-btn" href="/es/docs/convert-lines-to-wires/" title="Convert lines to wires"><img src="/docs/convert-lines-to-wires/logo.png" alt="Convert lines to wires" title="Convert lines to wires" /><span class="ribbon-btn-label">Line to
-wires</span>
-                </a>
-      </div>
-      <div class="ribbon-panel-name">ELE</div>
-    </div>
-    <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
-</div>
-<h1 class="no_toc" id="alineación-de-cotas-de-luminarias">
+            <h1 id="actualización-automática-de-bimtools">
   
   
-    <a href="#alineación-de-cotas-de-luminarias" class="anchor-heading" aria-labelledby="alineación-de-cotas-de-luminarias"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Alineación de cotas de luminarias
+    <a href="#actualización-automática-de-bimtools" class="anchor-heading" aria-labelledby="actualización-automática-de-bimtools"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Actualización automática de BIMTools
   
   
 </h1>
-    
-
-<details open="">
-  <summary class="text-delta">
-    Tabla de contenidos
-  </summary>
-<ol id="markdown-toc">
-  <li><a href="#propósito" id="markdown-toc-propósito">Propósito</a></li>
-  <li><a href="#cuándo-utilizarla" id="markdown-toc-cuándo-utilizarla">Cuándo utilizarla</a></li>
-  <li><a href="#interfaz" id="markdown-toc-interfaz">Interfaz</a></li>
-  <li><a href="#modo-de-uso" id="markdown-toc-modo-de-uso">Modo de uso</a>    <ol>
-      <li><a href="#modo-proyecto-completo" id="markdown-toc-modo-proyecto-completo">Modo proyecto completo</a></li>
-      <li><a href="#modo-espacios-seleccionados" id="markdown-toc-modo-espacios-seleccionados">Modo espacios seleccionados</a></li>
-    </ol>
-  </li>
-  <li><a href="#algoritmo" id="markdown-toc-algoritmo">Algoritmo</a></li>
-  <li><a href="#informe" id="markdown-toc-informe">Informe</a></li>
-  <li><a href="#configuración" id="markdown-toc-configuración">Configuración</a></li>
-  <li><a href="#resolución-de-problemas" id="markdown-toc-resolución-de-problemas">Resolución de problemas</a></li>
-</ol>
-
-</details>
-<h2 id="propósito">
+    <hr />
+<h2 id="1-qué-ha-cambiado-para-el-usuario">
   
   
-    <a href="#propósito" class="anchor-heading" aria-labelledby="propósito"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Propósito
+    <a href="#1-qué-ha-cambiado-para-el-usuario" class="anchor-heading" aria-labelledby="1-qué-ha-cambiado-para-el-usuario"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Qué ha cambiado para el usuario
   
   
 </h2>
     
-
-<p>La herramienta calcula automáticamente una cota media única para grupos de luminarias del mismo tipo dentro del mismo espacio y la escribe en el parámetro de instancia especificado. Esto elimina el valor <strong>«Varios»</strong> en los planillas generadas debido a pendientes estructurales en el modelo.</p><hr />
-<h2 id="cuándo-utilizarla">
-  
-  
-    <a href="#cuándo-utilizarla" class="anchor-heading" aria-labelledby="cuándo-utilizarla"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Cuándo utilizarla
-  
-  
-</h2>
-    
-
-<p>Utilice la herramienta antes de finalizar las planillas si observa lo siguiente:</p>
 
 <ul>
-  <li>Un grupo de luminarias muestra «Varios» en el parámetro de cota dentro de una planilla.</li>
-  <li>Las luminarias están montadas sobre una estructura inclinada o un forjado con cota variable.</li>
+  <li><strong>Antes:</strong> El complemento mostraba una ventana de diálogo y descargaba un instalador MSI. El usuario tenía que completar manualmente los pasos de instalación, cerrar Revit y los proyectos abiertos, y confirmar la carga de cada nueva versión al iniciar Revit.</li>
+  <li><strong>Ahora:</strong> Las actualizaciones se descargan silenciosamente en segundo plano. Para empezar a trabajar con la nueva versión, basta con cerrar y volver a abrir Revit, sin ventanas de instalación ni acciones manuales.</li>
+  <li><strong>Hot-reload:</strong> Ahora es posible aplicar una actualización ya descargada sobre la marcha, sin reiniciar Revit ni volver a abrir modelos pesados.
+    <blockquote>
+      <p><strong>Nota:</strong> La actualización automática está disponible a partir de la versión <strong>v25.33</strong> (7 de mayo de 2026). Si actualizó el complemento después de esa fecha, el cargador ya está instalado y la función está activa.</p>
+    </blockquote>
+  </li>
 </ul><hr />
-<h2 id="interfaz">
+<h2 id="2-instrucciones-de-uso-menú-info---extra">
   
   
-    <a href="#interfaz" class="anchor-heading" aria-labelledby="interfaz"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interfaz
-  
-  
-</h2>
-    
-
-<p><img src="pic.png" alt="Captura de pantalla" /></p>
-
-<div class="table-wrapper"><table>
-  <thead>
-    <tr>
-      <th>Campo</th>
-      <th>Descripción</th>
-      <th>Valor predeterminado</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Source param</strong></td>
-      <td>Nombre del parámetro de instancia del que se lee la cota individual de cada luminaria (en mm).</td>
-      <td><code class="language-plaintext highlighter-rouge">SRS_MEP_Lighting_Elevation</code></td>
-    </tr>
-    <tr>
-      <td><strong>Target param</strong></td>
-      <td>Nombre del parámetro de instancia en el que se escribe el valor medio redondeado.</td>
-      <td><code class="language-plaintext highlighter-rouge">SRS_MEP_Lighting_Elevation_Average</code></td>
-    </tr>
-    <tr>
-      <td><strong>Rounding (mm)</strong></td>
-      <td>Paso de redondeo del resultado, en milímetros.</td>
-      <td><code class="language-plaintext highlighter-rouge">50</code></td>
-    </tr>
-    <tr>
-      <td><strong>Only selected spaces</strong></td>
-      <td>Si está marcado — solo se procesan las luminarias en los espacios seleccionados antes del lanzamiento. Si no está marcado — se procesan todas las luminarias del proyecto.</td>
-      <td>desmarcado</td>
-    </tr>
-  </tbody>
-</table></div><hr />
-<h2 id="modo-de-uso">
-  
-  
-    <a href="#modo-de-uso" class="anchor-heading" aria-labelledby="modo-de-uso"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo de uso
+    <a href="#2-instrucciones-de-uso-menú-info---extra" class="anchor-heading" aria-labelledby="2-instrucciones-de-uso-menú-info---extra"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Instrucciones de uso (menú Info -&gt; Extra)
   
   
 </h2>
     
-<h3 id="modo-proyecto-completo">
+<h3 id="modo-automático">
   
   
-    <a href="#modo-proyecto-completo" class="anchor-heading" aria-labelledby="modo-proyecto-completo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo proyecto completo
+    <a href="#modo-automático" class="anchor-heading" aria-labelledby="modo-automático"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo automático
   
   
 </h3>
     
 
-<ol>
-  <li>Desmarque <strong>Only selected spaces</strong> (o déjelo desmarcado por defecto).</li>
-  <li>Ajuste los nombres de parámetros y el paso de redondeo si es necesario.</li>
-  <li>Haga clic en <strong>OK</strong> (o pulse <code class="language-plaintext highlighter-rouge">Enter</code>).</li>
-  <li>Espere a que finalice la operación y revise el informe.</li>
-</ol>
-<h3 id="modo-espacios-seleccionados">
+<ul>
+  <li>Al iniciar Revit y después cada 2 horas, el complemento comprueba si hay actualizaciones en el servidor.</li>
+  <li>La nueva versión se descarga silenciosamente en segundo plano.</li>
+  <li>En el siguiente inicio de Revit se carga la versión más reciente, se eliminan las versiones antiguas y se muestra una notificación con un breve resumen de cambios y un enlace a GitHub.</li>
+</ul>
+<h3 id="comprobar-manualmente-check-for-updates-now">
   
   
-    <a href="#modo-espacios-seleccionados" class="anchor-heading" aria-labelledby="modo-espacios-seleccionados"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modo espacios seleccionados
+    <a href="#comprobar-manualmente-check-for-updates-now" class="anchor-heading" aria-labelledby="comprobar-manualmente-check-for-updates-now"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Comprobar manualmente (<code class="language-plaintext highlighter-rouge">Check for updates now</code>)
   
   
 </h3>
     
 
-<ol>
-  <li><strong>Antes de lanzar</strong> el plugin, seleccione uno o más elementos <strong>Space</strong> (MEP Space) en el modelo.</li>
-  <li>Marque <strong>Only selected spaces</strong>.</li>
-  <li>Haga clic en <strong>OK</strong>.</li>
-</ol>
+<p>Inicia inmediatamente una comprobación del servidor e informa del estado:</p>
+
+<ul>
+  <li>No hay actualizaciones disponibles.</li>
+  <li>La actualización se ha descargado y se aplicará después de reiniciar Revit.</li>
+  <li>Las actualizaciones automáticas están desactivadas.</li>
+</ul>
+<h3 id="aplicar-sin-reiniciar-apply-downloaded-update-now">
+  
+  
+    <a href="#aplicar-sin-reiniciar-apply-downloaded-update-now" class="anchor-heading" aria-labelledby="aplicar-sin-reiniciar-apply-downloaded-update-now"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Aplicar sin reiniciar (<code class="language-plaintext highlighter-rouge">Apply downloaded update now</code>)
+  
+  
+</h3>
+    
+
+<p>Inicia el procedimiento de <strong>Hot-reload</strong>. Es útil cuando hay un modelo pesado abierto y reiniciar Revit resulta inconveniente. La nueva versión se carga inmediatamente en la sesión actual.</p>
+<h3 id="carga-manual-de-una-dll-load-dll-manually">
+  
+  
+    <a href="#carga-manual-de-una-dll-load-dll-manually" class="anchor-heading" aria-labelledby="carga-manual-de-una-dll-load-dll-manually"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Carga manual de una DLL (<code class="language-plaintext highlighter-rouge">Load DLL manually...</code>)
+  
+  
+</h3>
+    
+
+<p>Permite seleccionar un archivo <code class="language-plaintext highlighter-rouge">.dll</code> del disco, por ejemplo una compilación de prueba de un desarrollador, y activarlo inmediatamente en la sesión actual mediante Hot-reload.</p>
 
 <blockquote>
-  <p><strong>Importante:</strong> si la casilla está marcada pero no hay Spaces seleccionados, el plugin mostrará un error y no escribirá ningún valor.</p>
-</blockquote><hr />
-<h2 id="algoritmo">
+  <p><strong>Importante:</strong> La carga desde la interfaz es <strong>temporal</strong>. Después de reiniciar Revit, volverá a cargarse la versión oficial instalada.</p>
+</blockquote>
+<h3 id="gestión-de-las-actualizaciones-automáticas-auto-update-enabled">
   
   
-    <a href="#algoritmo" class="anchor-heading" aria-labelledby="algoritmo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Algoritmo
+    <a href="#gestión-de-las-actualizaciones-automáticas-auto-update-enabled" class="anchor-heading" aria-labelledby="gestión-de-las-actualizaciones-automáticas-auto-update-enabled"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Gestión de las actualizaciones automáticas (<code class="language-plaintext highlighter-rouge">Auto-update enabled</code>)
+  
+  
+</h3>
+    
+
+<p>Esta casilla controla la comprobación y la descarga en segundo plano. Al desmarcarla, se desactiva el modo automático, pero la comprobación manual sigue disponible.</p>
+
+<p><img src="infoWindow.png" alt="Ventana Info" /></p><hr />
+<h2 id="3-detalles-técnicos-cómo-funciona-internamente">
+  
+  
+    <a href="#3-detalles-técnicos-cómo-funciona-internamente" class="anchor-heading" aria-labelledby="3-detalles-técnicos-cómo-funciona-internamente"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Detalles técnicos (Cómo funciona internamente)
   
   
 </h2>
     
+<h3 id="arquitectura-del-cargador-ligero-loader-y-el-aviso-de-seguridad-para-complementos-sin-firmar">
+  
+  
+    <a href="#arquitectura-del-cargador-ligero-loader-y-el-aviso-de-seguridad-para-complementos-sin-firmar" class="anchor-heading" aria-labelledby="arquitectura-del-cargador-ligero-loader-y-el-aviso-de-seguridad-para-complementos-sin-firmar"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Arquitectura del cargador ligero (Loader) y el aviso de seguridad para complementos sin firmar
+  
+  
+</h3>
+    
+
+<p>Revit solicita al usuario que confirme el inicio de un complemento sin firmar cuando su archivo binario ha cambiado. Para evitar comprar un certificado costoso y distribuir certificados autofirmados a través del departamento de TI de la empresa, la arquitectura se divide en dos partes:</p>
 
 <ol>
-  <li>Se recopilan todas las luminarias (<code class="language-plaintext highlighter-rouge">OST_LightingFixtures</code>) — para todo el proyecto o filtradas por los espacios seleccionados.</li>
-  <li>Se determina el espacio contenedor de cada luminaria usando la siguiente secuencia: atributo <code class="language-plaintext highlighter-rouge">Space</code> integrado, luego el punto de ubicación y dos puntos de sondeo adicionales — 1,5 m y 3 m por debajo. <strong>Las luminarias sin espacio resuelto se omiten</strong> y se contabilizan como “Skipped” en el informe.</li>
-  <li>El plugin detecta automáticamente el tipo de parámetro (<strong>Length</strong> o <strong>Number</strong>) y realiza las conversiones de unidades necesarias.</li>
-  <li>Las luminarias se agrupan por el par <strong>Espacio + Tipo</strong> (el nombre del espacio incluye su número y nombre).</li>
-  <li>Se calcula la media aritmética del valor del parámetro de origen dentro de cada grupo.</li>
-  <li>La media se redondea al múltiplo más cercano del paso de redondeo: <code class="language-plaintext highlighter-rouge">round(avg / step) * step</code>.</li>
-  <li>El valor redondeado se escribe en el parámetro objetivo de cada luminaria del grupo — incluidos los grupos de una sola luminaria y los grupos con rango cero.</li>
-  <li>Se muestra un informe.</li>
-</ol><hr />
-<h2 id="informe">
-  
-  
-    <a href="#informe" class="anchor-heading" aria-labelledby="informe"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Informe
-  
-  
-</h2>
-    
+  <li>El manifiesto <code class="language-plaintext highlighter-rouge">.addin</code> (<code class="language-plaintext highlighter-rouge">%APPDATA%\Autodesk\Revit\Addins\20YY\</code>) registra <code class="language-plaintext highlighter-rouge">BimToolsLoader.dll</code>, que normalmente no cambia cuando se actualizan los comandos del complemento.</li>
+  <li>El usuario aprueba el inicio del Loader en Revit una sola vez.</li>
+  <li>Al iniciarse, el Loader examina el directorio de trabajo (<code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\bin\</code>), selecciona la subcarpeta con la versión más reciente e inicia la DLL principal.</li>
+  <li>Desde el punto de vista de Revit, el registro del complemento permanece sin cambios, por lo que no aparecen ventanas de confirmación del complemento durante las actualizaciones.</li>
+</ol>
 
-<p>Al finalizar la operación aparece un cuadro de diálogo con información resumida.</p>
+<details>
+<summary>Cómo abrir la carpeta AppData en Windows</summary>
 
-<p><strong>Instrucción principal</strong> contiene:</p>
-<ul>
-  <li>Número de grupos y luminarias procesados.</li>
-  <li>Número de luminarias omitidas sin espacio.</li>
-  <li>Número de grupos triviales (1 luminaria o rango &lt; 1 mm) — se escriben pero no aparecen en los detalles.</li>
-</ul>
+`%appdata%` es una variable del sistema que apunta a la carpeta oculta de configuración de aplicaciones del usuario actual: `C:\Users\<user>\AppData\Roaming`.
 
-<p><strong>Área de contenido</strong> muestra el grupo con el mayor rango y la ruta al archivo de informe completo.</p>
+La forma más rápida:
 
-<p><strong>Desplegable “Show details”</strong> contiene hasta 20 grupos ordenados por rango de forma descendente. <strong>Solo incluye grupos con ≥ 2 luminarias y rango ≥ 1 mm</strong>.</p>
+1. Pulse **Win + R**.
+2. Pegue `%appdata%\Autodesk\Revit\Addins`.
+3. Pulse **Enter**.
 
-<p>Formato de línea:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>101 Corridor
-  Luminaire Family: Type Name
-  5 fixtures  |  avg = 2850 mm  |  range = 45 mm
-</code></pre></div></div>
+También puede pegar esta ruta en la barra de direcciones del Explorador de archivos de Windows y pulsar **Enter**.
 
-<div class="table-wrapper"><table>
-  <thead>
-    <tr>
-      <th>Campo</th>
-      <th>Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>avg</strong></td>
-      <td>Media redondeada escrita (mm)</td>
-    </tr>
-    <tr>
-      <td><strong>range</strong></td>
-      <td>Dispersión = Max − Min del parámetro de origen (mm)</td>
-    </tr>
-  </tbody>
-</table></div>
+&lt;/details&gt;
 
-<p><strong>Archivo CSV completo</strong> se guarda en <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\Reports\Align Lighting Elevations\</code>. El archivo contiene todos los grupos relevantes con columnas: <code class="language-plaintext highlighter-rouge">Space Number</code>, <code class="language-plaintext highlighter-rouge">Space Name</code>, <code class="language-plaintext highlighter-rouge">Family: Type</code>, <code class="language-plaintext highlighter-rouge">Count</code>, <code class="language-plaintext highlighter-rouge">Avg (mm)</code>, <code class="language-plaintext highlighter-rouge">Min (mm)</code>, <code class="language-plaintext highlighter-rouge">Max (mm)</code>, <code class="language-plaintext highlighter-rouge">Range (mm)</code>.</p>
+### Particularidades del mecanismo Hot-reload
 
-<p>Los grupos con un <code class="language-plaintext highlighter-rouge">range</code> elevado requieren revisión: las luminarias pueden estar ubicadas a distintas cotas o el parámetro puede haberse rellenado incorrectamente.</p><hr />
-<h2 id="configuración">
-  
-  
-    <a href="#configuración" class="anchor-heading" aria-labelledby="configuración"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuración
-  
-  
-</h2>
-    
+No es posible reemplazar directamente una `.dll` mientras Revit está en ejecución porque el sistema operativo bloquea el archivo. Hot-reload resuelve este problema cargando la nueva versión junto a la anterior y desvinculando la versión anterior de los eventos de Revit:
 
-<p>Todos los valores introducidos se guardan automáticamente en <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\Settings.json</code> y se restauran en el siguiente lanzamiento.</p><hr />
-<h2 id="resolución-de-problemas">
-  
-  
-    <a href="#resolución-de-problemas" class="anchor-heading" aria-labelledby="resolución-de-problemas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Resolución de problemas
-  
-  
-</h2>
-    
+* **Limitación de .NET:** La DLL anterior no se puede descargar completamente del dominio de aplicación principal de Revit y permanece en memoria hasta que se cierra el programa.
+* **Interfaz:** La pestaña anterior de la cinta se oculta y se crea una nueva.
+* **Efectos secundarios:** Las teclas de acceso rápido (Hotkeys) y los botones añadidos a la barra de herramientas de acceso rápido (QAT) permanecen vinculados a la primera versión cargada. El consumo de memoria también aumenta ligeramente.
 
-<div class="table-wrapper"><table>
-  <thead>
-    <tr>
-      <th>Situación</th>
-      <th>Causa</th>
-      <th>Solución</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>El comando se ejecuta pero el parámetro objetivo no cambia</td>
-      <td>El <code class="language-plaintext highlighter-rouge">Target param</code> no existe o es de solo lectura</td>
-      <td>Verifique el nombre del parámetro y asegúrese de que sea un parámetro de instancia modificable</td>
-    </tr>
-    <tr>
-      <td>Mensaje “Please select at least one Space”</td>
-      <td>La casilla <strong>Only selected spaces</strong> está marcada pero no hay Spaces seleccionados</td>
-      <td>Seleccione elementos Space en el modelo antes de lanzar el plugin</td>
-    </tr>
-    <tr>
-      <td>El valor «range» en el informe es inesperadamente grande</td>
-      <td>El parámetro de origen se rellenó manualmente con errores, o las luminarias están realmente ubicadas a distintas cotas</td>
-      <td>Inspeccione el modelo y los valores del parámetro de origen</td>
-    </tr>
-  </tbody>
-</table></div>
+*Por estas limitaciones, Hot-reload es una acción manual opcional. La forma estándar de aplicar las actualizaciones es reiniciar Revit.*
+
+### Mantener una DLL personalizada y reglas de nomenclatura de versiones
+
+Si necesita mantener una DLL de prueba activa después de reiniciar Revit:
+
+* Coloque la DLL manualmente en `%APPDATA%\Sener\BimTools\bin\X.Y.1\` (las versiones oficiales utilizan `X.Y`, sin un tercer componente).
+* **Importante:** No cree manualmente una carpeta para la siguiente versión mayor `X.Y+1`. El cargador la considerará más reciente y bloqueará la descarga de la versión oficial `X.Y+1`. El uso de un tercer componente (`X.Y.1`) mantiene el funcionamiento correcto de las actualizaciones automáticas.
+
+## Registro de cambios
+
+2026-09-04 v26.12 - añadida una notificación al iniciar una versión actualizada.
+</user></details>
 
           
 

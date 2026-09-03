@@ -81,6 +81,7 @@ Setting it to `true` triggers a code path in the plugin that calls a Ruby method
 *   **`_includes/head_custom.html`** — injects the global stylesheet into every page via the just-the-docs hook.
 *   **`assets/css/commands.css`** — all visual rules for the command list, ribbon replica, and context ribbon. All ribbon colors are defined as CSS custom properties with dark-mode overrides.
 *   **`assets/js/commands.js`** — controls three independent behaviours: discipline filter checkboxes, animated collapsible descriptions, and mutual hover highlight between ribbon buttons and list items.
+*   **`assets/js/just-the-docs.js`** — controls the site search and the theme behaviour for localized pages.
 *   **`docs/1Common.md`, `docs/2MEC.md`, `docs/3ELE.md`, `docs/4Misc.md`** — discipline parent pages. Each command's `parent` field must resolve to one of these page titles for sidebar navigation to work.
 *   **`Publish-Docs.ps1`** — the only mechanism for syncing content from the BIMTools source repo. See «Script Functions» above.
 *   **`_includes/footer_custom.html`** — global scripts: language switcher and theme toggle. The theme toggle persists the selected theme and synchronises a body marker so that custom CSS overrides in `commands.css` take effect.

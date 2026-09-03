@@ -14,10 +14,9 @@
   <style id="jtd-nav-activation">
   
 
-    .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(9)) > a,
-    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
+    .site-nav > ul.nav-list:first-child > li:not(:nth-child(6)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li a {
       background-image: none;
     }
 
@@ -26,14 +25,12 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(9) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(6) > a {
       font-weight: 600;
       text-decoration: none;
-    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(9) > button svg {
+    }.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg {
       transform: rotate(-90deg);
-    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(9) > ul.nav-list {
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list {
       display: block;
     }
   </style>
@@ -58,20 +55,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Fill code | Sener BimTools Docs</title>
+<title>Automatic BIMTools Update | Sener BimTools Docs</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Fill code" />
+<meta property="og:title" content="Automatic BIMTools Update" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter." />
-<meta property="og:description" content="The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter." />
-<link rel="canonical" href="https://snrbim.github.io/docs/fill-code/" />
-<meta property="og:url" content="https://snrbim.github.io/docs/fill-code/" />
+<meta name="description" content="Official documentation for the Sener BimTools Revit plugin." />
+<meta property="og:description" content="Official documentation for the Sener BimTools Revit plugin." />
+<link rel="canonical" href="https://snrbim.github.io/articles/autoupdate/" />
+<meta property="og:url" content="https://snrbim.github.io/articles/autoupdate/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Fill code" />
+<meta property="twitter:title" content="Automatic BIMTools Update" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"The FillCode command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s IDD_PDS_CODE parameter.","headline":"Fill code","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/fill-code/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Official documentation for the Sener BimTools Revit plugin.","headline":"Automatic BIMTools Update","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/articles/autoupdate/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -251,212 +248,172 @@
 </div>
 
     <div class="main-content-wrap">
-      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-  <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/1Common.html">Common</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Fill code</span></li>
-  </ol>
-</nav>
-
-
+      
       <div id="main-content" class="main-content">
         <main>
           
-            <div class="ribbon-context ribbon-context--cut-left ribbon-context--cut-right">
-  <div class="ribbon-context-row"><span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>
-    <div class="ribbon-context-group">
-      <div class="ribbon-panel-buttons">
-        <a class="ribbon-btn" href="/docs/edit-elements-in-excel/" title="Edit elements in Excel"><img src="/docs/edit-elements-in-excel/logo.png" alt="Edit elements in Excel" title="Edit elements in Excel" /><span class="ribbon-btn-label">Edit in
-Excel</span>
-                </a><a class="ribbon-btn" href="/docs/model-audit/" title="Model audit"><img src="/docs/model-audit/logo.png" alt="Model audit" title="Model audit" /><span class="ribbon-btn-label">Model
-audit</span>
-                </a><span class="ribbon-btn ribbon-btn--current" title="Fill code"><img src="/docs/fill-code/logo.png" alt="Fill code" /><span class="ribbon-btn-label">Fill
-Code</span>
-                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/show-cads/logo.png" alt="Show CADs" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Show
-CADs</span>
-                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/create-print-set/logo.png" alt="Create print set" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Print
-set</span>
-                </span>
-      </div>
-      <div class="ribbon-panel-name">General</div>
-    </div>
-    <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
-</div>
-<h1 class="no_toc" id="fillcode-command">
+            <h1 id="automatic-bimtools-update">
   
   
-    <a href="#fillcode-command" class="anchor-heading" aria-labelledby="fillcode-command"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> FillCode Command
+    <a href="#automatic-bimtools-update" class="anchor-heading" aria-labelledby="automatic-bimtools-update"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automatic BIMTools Update
   
   
 </h1>
+    <hr />
+<h2 id="1-what-has-changed-for-users">
+  
+  
+    <a href="#1-what-has-changed-for-users" class="anchor-heading" aria-labelledby="1-what-has-changed-for-users"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. What has changed for users
+  
+  
+</h2>
     
 
-<details open="">
-  <summary class="text-delta">
-    Table of contents
-  </summary>
-<ol id="markdown-toc">
-  <li><a href="#purpose" id="markdown-toc-purpose">Purpose</a></li>
-  <li><a href="#how-to-use" id="markdown-toc-how-to-use">How to Use</a>    <ol>
-      <li><a href="#1-mapping-configuration" id="markdown-toc-1-mapping-configuration">1. Mapping Configuration</a>        <ol>
-          <li><a href="#managing-the-mapping-file" id="markdown-toc-managing-the-mapping-file">Managing the Mapping File:</a></li>
-        </ol>
-      </li>
-      <li><a href="#2-filters-and-options" id="markdown-toc-2-filters-and-options">2. Filters and Options</a></li>
-      <li><a href="#3-summary-panel" id="markdown-toc-3-summary-panel">3. Summary Panel</a></li>
-      <li><a href="#4-execution-and-reporting" id="markdown-toc-4-execution-and-reporting">4. Execution and Reporting</a></li>
-    </ol>
+<ul>
+  <li><strong>Before:</strong> The plugin displayed a dialog and downloaded an MSI installer. Users had to complete the installation steps manually, close Revit and any open projects, and confirm loading each new version when Revit started.</li>
+  <li><strong>Now:</strong> Updates are downloaded silently in the background. To start working with the new version, simply close and reopen Revit, with no installation windows or manual steps.</li>
+  <li><strong>Hot-reload:</strong> An already downloaded update can be applied on the fly while working, without restarting Revit or reopening heavy models.
+    <blockquote>
+      <p><strong>Note:</strong> Automatic updating is available starting with version <strong>v25.33</strong> (May 7, 2026). If you updated the plugin after this date, the loader is already installed and the feature is active.</p>
+    </blockquote>
   </li>
-  <li><a href="#generated-code-structure" id="markdown-toc-generated-code-structure">Generated Code Structure</a></li>
-  <li><a href="#excel-file-structure" id="markdown-toc-excel-file-structure">Excel File Structure</a></li>
-</ol>
-
-</details>
-<h2 id="purpose">
+</ul><hr />
+<h2 id="2-how-to-use-it-info---extra-menu">
   
   
-    <a href="#purpose" class="anchor-heading" aria-labelledby="purpose"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Purpose
+    <a href="#2-how-to-use-it-info---extra-menu" class="anchor-heading" aria-labelledby="2-how-to-use-it-info---extra-menu"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. How to use it (Info -&gt; Extra menu)
   
   
 </h2>
     
-
-<p>The <strong>FillCode</strong> command is designed to automatically generate and assign a unique identification code to elements in a Revit model. The code is created based on a set of rules that can be configured using an external Excel file and is written to the element’s <code class="language-plaintext highlighter-rouge">IDD_PDS_CODE</code> parameter.</p>
-
-<p>This allows for the standardization of element identification according to project requirements.</p>
-<h2 id="how-to-use">
+<h3 id="automatic-mode">
   
   
-    <a href="#how-to-use" class="anchor-heading" aria-labelledby="how-to-use"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How to Use
+    <a href="#automatic-mode" class="anchor-heading" aria-labelledby="automatic-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automatic mode
+  
+  
+</h3>
+    
+
+<ul>
+  <li>At Revit startup and every 2 hours afterwards, the plugin checks the server for updates.</li>
+  <li>A new version is downloaded silently in the background.</li>
+  <li>At the next Revit startup, the latest release is loaded, old versions are removed, and a notification with a brief change summary and a GitHub link is shown.</li>
+</ul>
+<h3 id="manual-check-check-for-updates-now">
+  
+  
+    <a href="#manual-check-check-for-updates-now" class="anchor-heading" aria-labelledby="manual-check-check-for-updates-now"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Manual check (<code class="language-plaintext highlighter-rouge">Check for updates now</code>)
+  
+  
+</h3>
+    
+
+<p>Immediately starts a server check and reports the status:</p>
+
+<ul>
+  <li>No updates are available.</li>
+  <li>The update was downloaded and will be applied after restarting Revit.</li>
+  <li>Automatic updates are disabled.</li>
+</ul>
+<h3 id="applying-without-restarting-apply-downloaded-update-now">
+  
+  
+    <a href="#applying-without-restarting-apply-downloaded-update-now" class="anchor-heading" aria-labelledby="applying-without-restarting-apply-downloaded-update-now"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Applying without restarting (<code class="language-plaintext highlighter-rouge">Apply downloaded update now</code>)
+  
+  
+</h3>
+    
+
+<p>Starts the <strong>Hot-reload</strong> procedure. This is useful when a heavy model is open and restarting Revit is inconvenient. The new version is loaded immediately in the current session.</p>
+<h3 id="manual-dll-loading-load-dll-manually">
+  
+  
+    <a href="#manual-dll-loading-load-dll-manually" class="anchor-heading" aria-labelledby="manual-dll-loading-load-dll-manually"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Manual DLL loading (<code class="language-plaintext highlighter-rouge">Load DLL manually...</code>)
+  
+  
+</h3>
+    
+
+<p>Lets you select a <code class="language-plaintext highlighter-rouge">.dll</code> file from disk, for example a test build from a developer, and activate it immediately in the current session through Hot-reload.</p>
+
+<blockquote>
+  <p><strong>Please note:</strong> Loading through the interface is <strong>temporary</strong>. After restarting Revit, the official installed version will be loaded again.</p>
+</blockquote>
+<h3 id="managing-automatic-updates-auto-update-enabled">
+  
+  
+    <a href="#managing-automatic-updates-auto-update-enabled" class="anchor-heading" aria-labelledby="managing-automatic-updates-auto-update-enabled"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Managing automatic updates (<code class="language-plaintext highlighter-rouge">Auto-update enabled</code>)
+  
+  
+</h3>
+    
+
+<p>This checkbox controls background checking and downloading. When it is cleared, automatic background updating is disabled, but the manual check remains available.</p>
+
+<p><img src="infoWindow.png" alt="Info window" /></p><hr />
+<h2 id="3-technical-details-under-the-hood">
+  
+  
+    <a href="#3-technical-details-under-the-hood" class="anchor-heading" aria-labelledby="3-technical-details-under-the-hood"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Technical details (Under the hood)
   
   
 </h2>
     
-
-<p>When the command is launched, a settings window opens, allowing you to control the code generation process.</p>
-
-<p><img src="image.png" alt="FillCode UI" /></p>
-<h3 id="1-mapping-configuration">
+<h3 id="thin-loader-architecture-and-the-security-prompt-for-unsigned-plugins">
   
   
-    <a href="#1-mapping-configuration" class="anchor-heading" aria-labelledby="1-mapping-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Mapping Configuration
+    <a href="#thin-loader-architecture-and-the-security-prompt-for-unsigned-plugins" class="anchor-heading" aria-labelledby="thin-loader-architecture-and-the-security-prompt-for-unsigned-plugins"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Thin Loader architecture and the security prompt for unsigned plugins
   
   
 </h3>
     
 
-<p>The command’s behavior is entirely determined by mapping rules. You have two options:</p>
-
-<ul>
-  <li><strong>Use Default Values:</strong> If the “Path to Excel file” field is empty, the command will use an internal, hard-coded set of rules.</li>
-  <li><strong>Use an External Excel File:</strong> You can specify the path to an Excel file with your own rules. This provides maximum flexibility.</li>
-</ul>
-<h4 id="managing-the-mapping-file">
-  
-  
-    <a href="#managing-the-mapping-file" class="anchor-heading" aria-labelledby="managing-the-mapping-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Managing the Mapping File:
-  
-  
-</h4>
-    
-
-<ul>
-  <li><strong>“Path to Excel file” field:</strong> Enter the path to your <code class="language-plaintext highlighter-rouge">.xlsx</code> file here. The path is saved between Revit sessions.</li>
-  <li><strong>“Browse…” button:</strong> Opens a dialog to select the file.</li>
-  <li><strong>“Export Default Settings” button:</strong> Creates a template Excel file with the standard rules. You can use this as a starting point for your own mappings.</li>
-  <li><strong>“Reload” button:</strong> Allows you to manually refresh the summary information after making changes to the Excel file.</li>
-</ul>
-<h3 id="2-filters-and-options">
-  
-  
-    <a href="#2-filters-and-options" class="anchor-heading" aria-labelledby="2-filters-and-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Filters and Options
-  
-  
-</h3>
-    
-
-<ul>
-  <li><strong>“Ignore ‘Generic Models’ category”:</strong> Enabled by default. This excludes elements of this category from processing, as they are often auxiliary.</li>
-  <li><strong>“Debug mode”:</strong> If this checkbox is selected, the command will execute all logic, analyze the elements, and generate a detailed report, <strong>but will not make any changes to the model</strong>. This is a safe way to verify the correctness of the settings before actually applying the codes.</li>
-</ul>
-<h3 id="3-summary-panel">
-  
-  
-    <a href="#3-summary-panel" class="anchor-heading" aria-labelledby="3-summary-panel"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Summary Panel
-  
-  
-</h3>
-    
-
-<p>This read-only text field displays summary information about how the command will operate with the current settings.</p>
-
-<ul>
-  <li><strong>Data Source:</strong> Shows whether “Default Values” or the specified Excel file is being used.</li>
-  <li><strong>Launch Parameters:</strong> Displays key identifiers extracted from the current Revit file’s name (Work Package, Building Code), which are used to find the correct rules.</li>
-  <li><strong>Mapping Summary:</strong> Shows how many rules have been loaded (number of categories, disciplines, location codes, levels for the current work package).</li>
-  <li><strong>Element Count:</strong> Shows how many elements in the current view or selection will be processed.</li>
-</ul>
-<h3 id="4-execution-and-reporting">
-  
-  
-    <a href="#4-execution-and-reporting" class="anchor-heading" aria-labelledby="4-execution-and-reporting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Execution and Reporting
-  
-  
-</h3>
-    
-
-<p>After clicking the <strong>“OK”</strong> button, the command processes the elements and displays a final message with the number of successful operations, warnings, and errors.</p>
-
-<p>You will be prompted to open a <strong>detailed text report</strong>, which contains:</p>
+<p>Revit asks the user to confirm the launch of an unsigned plugin when its binary file has changed. To avoid purchasing an expensive certificate and distributing self-signed certificates through the company IT department, the architecture is split into two parts:</p>
 
 <ol>
-  <li><strong>Summary:</strong> Full information about the launch parameters and loaded rules.</li>
-  <li><strong>Problematic Elements:</strong> A list of elements that could not be processed, with the reason (e.g., “sublocation code not found,” “level not determined”).</li>
-  <li><strong>Successfully Processed Elements:</strong> A table of all elements for which the code was successfully generated. The data is presented in a format ready for copying into Excel and is sorted by category.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">.addin</code> manifest (<code class="language-plaintext highlighter-rouge">%APPDATA%\Autodesk\Revit\Addins\20YY\</code>) registers <code class="language-plaintext highlighter-rouge">BimToolsLoader.dll</code>, which normally does not change when plugin commands are updated.</li>
+  <li>The user approves the Loader in Revit once.</li>
+  <li>At startup, the Loader scans the working directory (<code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\bin\</code>), selects the newest version subfolder, and starts the main DLL.</li>
+  <li>The plugin registration remains unchanged from Revit’s perspective, so update-related plugin confirmation windows do not appear.</li>
 </ol>
-<h2 id="generated-code-structure">
-  
-  
-    <a href="#generated-code-structure" class="anchor-heading" aria-labelledby="generated-code-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Generated Code Structure
-  
-  
-</h2>
-    
 
-<p>The final code has the following format:</p>
+<details>
+<summary>How to open the AppData folder in Windows</summary>
 
-<p><code class="language-plaintext highlighter-rouge">DisciplineCode-CategoryCode-LocationCode-SubLocationCode-LevelCode</code></p>
+`%appdata%` is a system variable that points to the current user's hidden application settings folder: `C:\Users\<user>\AppData\Roaming`.
 
-<ul>
-  <li><strong>DisciplineCode:</strong> The discipline code (e.g., “H” for HVAC, “E” for Electrical), determined by the element’s category.</li>
-  <li><strong>CategoryCode:</strong> The element’s category code (e.g., “DCT” for ducts).</li>
-  <li><strong>LocationCode:</strong> The location code, determined by the building code from the file name.</li>
-  <li><strong>SubLocationCode:</strong> The sub-location code, read from the instance parameter <code class="language-plaintext highlighter-rouge">IDD_SUBLOCATION</code>. If the parameter is empty, <code class="language-plaintext highlighter-rouge">?</code> is used.</li>
-  <li><strong>LevelCode:</strong> The level code, determined based on the element’s Z-coordinate and the “Work Package” from the file name.</li>
-</ul>
-<h2 id="excel-file-structure">
-  
-  
-    <a href="#excel-file-structure" class="anchor-heading" aria-labelledby="excel-file-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Excel File Structure
-  
-  
-</h2>
-    
+The fastest way:
 
-<p>The mapping file can contain several sheets to configure different rules:</p>
+1. Press **Win + R**.
+2. Paste `%appdata%\Autodesk\Revit\Addins`.
+3. Press **Enter**.
 
-<ul>
-  <li><strong>CategoryDiscipline:</strong> A matrix for mapping Revit categories to discipline codes (<code class="language-plaintext highlighter-rouge">DisciplineCode</code>) and category codes (<code class="language-plaintext highlighter-rouge">CategoryCode</code>).</li>
-  <li><strong>Location:</strong> A table for mapping “building codes” (from the file name) to <code class="language-plaintext highlighter-rouge">LocationCode</code>.</li>
-  <li><strong>Levels:</strong> A sheet for mapping Z-coordinates to level codes (<code class="language-plaintext highlighter-rouge">LevelCode</code>). The data on this sheet is organized into blocks of two columns, where each block has a two-row header:
-    <ol>
-      <li><strong>Row 1:</strong> Contains the <strong>mapping key</strong>. This can be a “Work Package” (e.g., <code class="language-plaintext highlighter-rouge">CNT3</code>) or a composite key <code class="language-plaintext highlighter-rouge">"{Work Package} {Building Code}"</code> (e.g., <code class="language-plaintext highlighter-rouge">CNT7 E110</code>).</li>
-      <li><strong>Row 2:</strong> Contains the data headers: <code class="language-plaintext highlighter-rouge">Min Z</code> for the minimum level elevation (in meters) and <code class="language-plaintext highlighter-rouge">Code</code> for the level code.</li>
-    </ol>
-  </li>
-</ul>
+You can also paste this path into the address bar of Windows File Explorer and press **Enter**.
 
-<p><img src="image-1.png" alt="Matrix Table" /></p>
+&lt;/details&gt;
+
+### Hot-reload mechanics
+
+Directly replacing a `.dll` while Revit is running is impossible because the operating system locks the file. Hot-reload solves this by loading the new version alongside the old one and unsubscribing the old version from Revit events:
+
+* **.NET limitation:** The old `.dll` cannot be completely unloaded from Revit's main application domain and remains in memory until the program closes.
+* **Interface:** The old ribbon tab is hidden and a new one is created.
+* **Side effects:** Hotkeys and buttons added to the Quick Access Toolbar (QAT) remain linked to the first loaded version. Memory usage also increases slightly.
+
+*Because of these limitations, Hot-reload is an optional manual action. The standard way to apply updates is to restart Revit.*
+
+### Keeping a custom DLL and version naming rules
+
+If you need to keep a test DLL active across Revit restarts:
+
+* Place the DLL manually in `%APPDATA%\Sener\BimTools\bin\X.Y.1\` (official versions use `X.Y` without a third component).
+* **Important:** Do not create a folder for the next major version `X.Y+1` manually. The loader will consider it newer and this will block the official `X.Y+1` release from being downloaded. Using a third component (`X.Y.1`) keeps automatic updating working correctly.
+
+## Changelog
+
+2026-09-04 v26.12 - added a notification when an updated version starts.
+</user></details>
 
           
 
