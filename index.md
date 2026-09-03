@@ -128,4 +128,21 @@ has_toc: false
   }
 </style>
 
+## {% t index.articles %}
+
+{% assign articles = site.pages | where_exp: "item", "item.article" | sort: "title" %}
+<ul id="article-list">
+{% for article in articles %}
+  {% assign article_title = article.title %}
+  {% if site.lang == 'es' and article.title_es %}
+    {% assign article_title = article.title_es %}
+  {% endif %}
+  <li><a href="{{ article.url | relative_url }}">{{ article_title }}</a></li>
+{% endfor %}
+</ul>
+
+## {% t index.changelog %}
+
+{% include changelog.md %}
+
 <script src="/assets/js/commands.js"></script>

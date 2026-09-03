@@ -7,6 +7,8 @@ index:
   wipstatus: "En progreso"
   wip_tooltip: "Página en desarrollo. Contacte al desarrollador para obtener documentación."
   other: "Otros"
+  articles: "Artículos"
+  changelog: "Registro de cambios"
 discipline:
   common: "Herramientas aplicables en varias disciplinas"
   mec: "Comandos para flujos de trabajo de ventilación, mecánica y fontanería"
