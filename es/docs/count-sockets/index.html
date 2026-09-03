@@ -649,10 +649,20 @@ cantidad: None id: element_id element_id
     });
   }
 
+  function initLocalizedHomeLink() {
+    const siteTitleLink = document.querySelector('a.site-title');
+    if (!siteTitleLink) return;
+
+    siteTitleLink.href = window.location.pathname.startsWith('/es/')
+      ? '/es/'
+      : '/';
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     initDocumentFilter();
     initThemeToggle();
     initLangSwither();
+    initLocalizedHomeLink();
   });
 </script>
 

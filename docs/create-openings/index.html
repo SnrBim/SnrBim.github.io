@@ -555,10 +555,20 @@ The report contains lines for each action in the format: <code class="language-p
     });
   }
 
+  function initLocalizedHomeLink() {
+    const siteTitleLink = document.querySelector('a.site-title');
+    if (!siteTitleLink) return;
+
+    siteTitleLink.href = window.location.pathname.startsWith('/es/')
+      ? '/es/'
+      : '/';
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     initDocumentFilter();
     initThemeToggle();
     initLangSwither();
+    initLocalizedHomeLink();
   });
 </script>
 

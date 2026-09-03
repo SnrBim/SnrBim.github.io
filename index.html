@@ -3747,10 +3747,20 @@ Added the Ignore feature (hides items in the report).</li>
     });
   }
 
+  function initLocalizedHomeLink() {
+    const siteTitleLink = document.querySelector('a.site-title');
+    if (!siteTitleLink) return;
+
+    siteTitleLink.href = window.location.pathname.startsWith('/es/')
+      ? '/es/'
+      : '/';
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     initDocumentFilter();
     initThemeToggle();
     initLangSwither();
+    initLocalizedHomeLink();
   });
 </script>
 
