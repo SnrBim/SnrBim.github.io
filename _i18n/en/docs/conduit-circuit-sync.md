@@ -88,6 +88,7 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
     - **Optional Isolation**: Use "Isolate elements in 3D view" to hide everything except the route, panel, and loads. If disabled, elements are shown within the building context (transparent or wireframe depending on view settings).
     - **Clean View**: Helper elements (center lines, linked files) are hidden.
     - **Full System View**: The view automatically includes the electrical panel and all loads of the circuit.
+- **Create debug lines**: Creates auxiliary lines for visual verification of calculated rectilinear distances. In a workshared document, the lines are placed in the `SRS_Placeholders` workset when it exists. The lines are automatically deleted before the next command run, when saving, and when synchronizing with the central file.
 
 ## Interface
 
@@ -97,6 +98,9 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 ![UI](image.png)
 
 ## Changelog
+
+2026-09-03
+1. **Debug lines**: Added auxiliary lines for distance verification.
 
 2026-08-12
 1. **Locations in conduit parameters**: Added the panel and load locations to `SRS_MEP_Conduit_From` and `SRS_MEP_Conduit_To`, respectively, so schedules display the complete equipment identifiers.

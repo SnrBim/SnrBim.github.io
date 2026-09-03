@@ -88,6 +88,7 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
     - **Aislamiento opcional**: Use "Isolate elements in 3D view" para ocultar todo excepto la ruta, el panel y las cargas. Si está desactivado, los elementos se muestran dentro del contexto del edificio.
     - **Vista limpia**: Se ocultan elementos auxiliares (líneas centrales, archivos vinculados).
     - **Vista completa del sistema**: La vista incluye automáticamente el panel eléctrico y todas las cargas del circuito.
+- **Create debug lines**: Crea líneas auxiliares para comprobar visualmente las distancias rectilíneas calculadas. En un documento compartido, las líneas se colocan en el workset `SRS_Placeholders` cuando existe. Las líneas se eliminan automáticamente antes de la siguiente ejecución del comando, al guardar y al sincronizar con el archivo central.
 
 ## Interfaz (Interface)
 
@@ -97,6 +98,9 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 ![UI](image.png)
 
 ## Historial de Cambios
+
+2026-09-03
+1. **Líneas de depuración**: Se añadieron líneas auxiliares para comprobar las distancias.
 
 2026-08-12
 1. **Ubicaciones en los parámetros de los conductos**: Se añadieron las ubicaciones del cuadro y de la carga a `SRS_MEP_Conduit_From` y `SRS_MEP_Conduit_To`, respectivamente, para mostrar la identificación completa del equipo en las tablas.

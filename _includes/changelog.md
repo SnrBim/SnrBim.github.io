@@ -1,3 +1,6 @@
+﻿## [26.12] — 2026-09-03
+*Sync Conduit Circuit*: Debug lines are created in the `SRS_Placeholders` workset and removed before the next run, on save or synchronize with central, and during hot reload cleanup. Their element IDs are tracked in memory across all documents.
+
 ## [26.11] — 2026-09-01
 *View history*: Fixed error of navigating in unsaved doc, add notification with the reason if navigation failed.
 
