@@ -377,43 +377,49 @@
   <li>Al iniciarse, el Loader examina el directorio de trabajo (<code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\bin\</code>), selecciona la subcarpeta con la versión más reciente e inicia la DLL principal.</li>
   <li>Desde el punto de vista de Revit, el registro del complemento permanece sin cambios, por lo que no aparecen ventanas de confirmación del complemento durante las actualizaciones.</li>
 </ol>
+<h3 id="particularidades-del-mecanismo-hot-reload">
+  
+  
+    <a href="#particularidades-del-mecanismo-hot-reload" class="anchor-heading" aria-labelledby="particularidades-del-mecanismo-hot-reload"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Particularidades del mecanismo Hot-reload
+  
+  
+</h3>
+    
 
-<details>
-<summary>Cómo abrir la carpeta AppData en Windows</summary>
+<p>No es posible reemplazar directamente una <code class="language-plaintext highlighter-rouge">.dll</code> mientras Revit está en ejecución porque el sistema operativo bloquea el archivo. Hot-reload resuelve este problema cargando la nueva versión junto a la anterior y desvinculando la versión anterior de los eventos de Revit:</p>
 
-`%appdata%` es una variable del sistema que apunta a la carpeta oculta de configuración de aplicaciones del usuario actual: `C:\Users\<user>\AppData\Roaming`.
+<ul>
+  <li><strong>Limitación de .NET:</strong> La DLL anterior no se puede descargar completamente del dominio de aplicación principal de Revit y permanece en memoria hasta que se cierra el programa.</li>
+  <li><strong>Interfaz:</strong> La pestaña anterior de la cinta se oculta y se crea una nueva.</li>
+  <li><strong>Efectos secundarios:</strong> Las teclas de acceso rápido (Hotkeys) y los botones añadidos a la barra de herramientas de acceso rápido (QAT) permanecen vinculados a la primera versión cargada. El consumo de memoria también aumenta ligeramente.</li>
+</ul>
 
-La forma más rápida:
+<p><em>Por estas limitaciones, Hot-reload es una acción manual opcional. La forma estándar de aplicar las actualizaciones es reiniciar Revit.</em></p>
+<h3 id="mantener-una-dll-personalizada-y-reglas-de-nomenclatura-de-versiones">
+  
+  
+    <a href="#mantener-una-dll-personalizada-y-reglas-de-nomenclatura-de-versiones" class="anchor-heading" aria-labelledby="mantener-una-dll-personalizada-y-reglas-de-nomenclatura-de-versiones"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Mantener una DLL personalizada y reglas de nomenclatura de versiones
+  
+  
+</h3>
+    
 
-1. Pulse **Win + R**.
-2. Pegue `%appdata%\Autodesk\Revit\Addins`.
-3. Pulse **Enter**.
+<p>Si necesita mantener una DLL de prueba activa después de reiniciar Revit:</p>
 
-También puede pegar esta ruta en la barra de direcciones del Explorador de archivos de Windows y pulsar **Enter**.
+<ul>
+  <li>Coloque la DLL manualmente en <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\bin\X.Y.1\</code> (las versiones oficiales utilizan <code class="language-plaintext highlighter-rouge">X.Y</code>, sin un tercer componente).</li>
+  <li><strong>Importante:</strong> No cree manualmente una carpeta para la siguiente versión mayor <code class="language-plaintext highlighter-rouge">X.Y+1</code>. El cargador la considerará más reciente y bloqueará la descarga de la versión oficial <code class="language-plaintext highlighter-rouge">X.Y+1</code>. El uso de un tercer componente (<code class="language-plaintext highlighter-rouge">X.Y.1</code>) mantiene el funcionamiento correcto de las actualizaciones automáticas.</li>
+</ul>
+<h2 id="registro-de-cambios">
+  
+  
+    <a href="#registro-de-cambios" class="anchor-heading" aria-labelledby="registro-de-cambios"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Registro de cambios
+  
+  
+</h2>
+    
 
-&lt;/details&gt;
-
-### Particularidades del mecanismo Hot-reload
-
-No es posible reemplazar directamente una `.dll` mientras Revit está en ejecución porque el sistema operativo bloquea el archivo. Hot-reload resuelve este problema cargando la nueva versión junto a la anterior y desvinculando la versión anterior de los eventos de Revit:
-
-* **Limitación de .NET:** La DLL anterior no se puede descargar completamente del dominio de aplicación principal de Revit y permanece en memoria hasta que se cierra el programa.
-* **Interfaz:** La pestaña anterior de la cinta se oculta y se crea una nueva.
-* **Efectos secundarios:** Las teclas de acceso rápido (Hotkeys) y los botones añadidos a la barra de herramientas de acceso rápido (QAT) permanecen vinculados a la primera versión cargada. El consumo de memoria también aumenta ligeramente.
-
-*Por estas limitaciones, Hot-reload es una acción manual opcional. La forma estándar de aplicar las actualizaciones es reiniciar Revit.*
-
-### Mantener una DLL personalizada y reglas de nomenclatura de versiones
-
-Si necesita mantener una DLL de prueba activa después de reiniciar Revit:
-
-* Coloque la DLL manualmente en `%APPDATA%\Sener\BimTools\bin\X.Y.1\` (las versiones oficiales utilizan `X.Y`, sin un tercer componente).
-* **Importante:** No cree manualmente una carpeta para la siguiente versión mayor `X.Y+1`. El cargador la considerará más reciente y bloqueará la descarga de la versión oficial `X.Y+1`. El uso de un tercer componente (`X.Y.1`) mantiene el funcionamiento correcto de las actualizaciones automáticas.
-
-## Registro de cambios
-
-2026-09-04 v26.12 - añadida una notificación al iniciar una versión actualizada.
-</user></details>
+<p>2026-09-04 v26.12 - añadida una notificación al iniciar una versión actualizada.</p>
 
           
 
