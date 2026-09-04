@@ -59,15 +59,15 @@ Revit asks the user to confirm the launch of an unsigned plugin when its binary 
 <details markdown="block">
 <summary>How to open the AppData folder in Windows</summary>
 
-`%appdata%` is a system variable that points to the current user's hidden application settings folder: `C:\Users\<user>\AppData\Roaming`.
-
-The fastest way:
-
-1. Press **Win + R**.
-2. Paste `%appdata%\Autodesk\Revit\Addins`.
-3. Press **Enter**.
-
-You can also paste this path into the address bar of Windows File Explorer and press **Enter**.
+> `%appdata%` is a system variable that points to the current user's hidden application settings folder: `C:\Users\<user>\AppData\Roaming`.
+> 
+> The fastest way:
+> 
+> 1. Press **Win + R**.
+> 2. Paste `%appdata%\Autodesk\Revit\Addins`.
+> 3. Press **Enter**.
+> 
+> You can also paste this path into the address bar of Windows File Explorer and press **Enter**.
 
 </details>
 
