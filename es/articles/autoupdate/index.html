@@ -377,6 +377,25 @@
   <li>Al iniciarse, el Loader examina el directorio de trabajo (<code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\bin\</code>), selecciona la subcarpeta con la versión más reciente e inicia la DLL principal.</li>
   <li>Desde el punto de vista de Revit, el registro del complemento permanece sin cambios, por lo que no aparecen ventanas de confirmación del complemento durante las actualizaciones.</li>
 </ol>
+
+<details>
+  <summary>Cómo abrir la carpeta AppData en Windows</summary>
+
+  <blockquote>
+    <p><code class="language-plaintext highlighter-rouge">%appdata%</code> es una variable del sistema que apunta a la carpeta oculta de configuración de aplicaciones del usuario actual: <code class="language-plaintext highlighter-rouge">C:\Users\&lt;user&gt;\AppData\Roaming</code>.</p>
+
+    <p>La forma más rápida:</p>
+
+    <ol>
+      <li>Pulse <strong>Win + R</strong>.</li>
+      <li>Pegue <code class="language-plaintext highlighter-rouge">%appdata%\Autodesk\Revit\Addins</code>.</li>
+      <li>Pulse <strong>Enter</strong>.</li>
+    </ol>
+
+    <p>También puede pegar esta ruta en la barra de direcciones del Explorador de archivos de Windows y pulsar <strong>Enter</strong>.</p>
+  </blockquote>
+
+</details>
 <h3 id="particularidades-del-mecanismo-hot-reload">
   
   
