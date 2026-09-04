@@ -56,20 +56,6 @@ Revit solicita al usuario que confirme el inicio de un complemento sin firmar cu
 3. Al iniciarse, el Loader examina el directorio de trabajo (`%APPDATA%\Sener\BimTools\bin\`), selecciona la subcarpeta con la versión más reciente e inicia la DLL principal.
 4. Desde el punto de vista de Revit, el registro del complemento permanece sin cambios, por lo que no aparecen ventanas de confirmación del complemento durante las actualizaciones.
 
-<details>
-<summary>Cómo abrir la carpeta AppData en Windows</summary>
-
-`%appdata%` es una variable del sistema que apunta a la carpeta oculta de configuración de aplicaciones del usuario actual: `C:\Users\<user>\AppData\Roaming`.
-
-La forma más rápida:
-
-1. Pulse **Win + R**.
-2. Pegue `%appdata%\Autodesk\Revit\Addins`.
-3. Pulse **Enter**.
-
-También puede pegar esta ruta en la barra de direcciones del Explorador de archivos de Windows y pulsar **Enter**.
-
-</details>
 
 ### Particularidades del mecanismo Hot-reload
 
