@@ -56,7 +56,7 @@ Revit asks the user to confirm the launch of an unsigned plugin when its binary 
 3. At startup, the Loader scans the working directory (`%APPDATA%\Sener\BimTools\bin\`), selects the newest version subfolder, and starts the main DLL.
 4. The plugin registration remains unchanged from Revit's perspective, so update-related plugin confirmation windows do not appear.
 
-<details>
+<details markdown="block">
 <summary>How to open the AppData folder in Windows</summary>
 
 `%appdata%` is a system variable that points to the current user's hidden application settings folder: `C:\Users\<user>\AppData\Roaming`.
