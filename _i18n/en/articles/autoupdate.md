@@ -56,6 +56,21 @@ Revit asks the user to confirm the launch of an unsigned plugin when its binary 
 3. At startup, the Loader scans the working directory (`%APPDATA%\Sener\BimTools\bin\`), selects the newest version subfolder, and starts the main DLL.
 4. The plugin registration remains unchanged from Revit's perspective, so update-related plugin confirmation windows do not appear.
 
+<details>
+<summary>How to open the AppData folder in Windows</summary>
+
+`%appdata%` is a system variable that points to the current user's hidden application settings folder: `C:\Users\<user>\AppData\Roaming`.
+
+The fastest way:
+
+1. Press **Win + R**.
+2. Paste `%appdata%\Autodesk\Revit\Addins`.
+3. Press **Enter**.
+
+You can also paste this path into the address bar of Windows File Explorer and press **Enter**.
+
+</details>
+
 ### Hot-reload mechanics
 
 Directly replacing a `.dll` while Revit is running is impossible because the operating system locks the file. Hot-reload solves this by loading the new version alongside the old one and unsubscribing the old version from Revit events:

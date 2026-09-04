@@ -52,10 +52,10 @@ body.jtd-dark blockquote.warning {
   display: inline-flex;
   align-items: center;
 }
-summary {
+summary.doc-item {
   list-style: none;
 }
-summary::-webkit-details-marker {
+summary.doc-item::-webkit-details-marker {
   display: none;
 }
 summary.doc-item {
