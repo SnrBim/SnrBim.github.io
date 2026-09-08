@@ -1,3 +1,9 @@
+## [26.13] — 2026-09-08
+*Sync Conduit Circuit*:
+1. Removed the rigid requirement not to exceed five segments. The first five segments are written to the standard parameters, while the sixth and subsequent segments are written to `SRS_MEP_Comments` on separate lines. Preserved the existing logic for writing shortened names of multiple circuit elements to the same parameter.
+2. Removed the intermediate `-C-` marker from circuit names.
+3. Fixed selected-only synchronization after Assign for circuits with shared routes and branches: the original selection is expanded once by physical connectivity, `SRS_MEP_Parallel_Id`, and circuit names without cascading search. Notifications now also show the number of unique physical conduit chains processed, and the behavior is documented for Assign.
+
 ## [26.12] — 2026-09-03
 *Sync Conduit Circuit*: Debug lines are created in the `SRS_Placeholders` workset and removed before the next run, on save or synchronize with central, and during hot reload cleanup. Their element IDs are tracked in memory across all documents.
 

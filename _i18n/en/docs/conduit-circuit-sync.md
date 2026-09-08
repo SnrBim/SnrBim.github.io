@@ -51,7 +51,8 @@ Before running the command, ensure that at least one conduit in each segment has
         5.  **Reserve**: a fixed safety reserve of **+2 meters** is added.
         6.  **Rounding**: the final value is rounded up to the nearest meter.
         - For parallel branches, the length of the **longest branch** is recorded for the circuit.
-    -   Stores segment names in the electrical circuit's `SRS_MEP_Conduit_Segment_1` to `SRS_MEP_Conduit_Segment_5` parameters.
+    -   If the circuit contains more than one load element, `SRS_Schedule_Name` receives a grouped identifier: names with the same base and numeric suffixes are replaced with an `xx` pattern (for example, `18D-DS-SFxx`), while different bases retain the full list in parentheses. The shortened element names (for example, `SF01, SF02`) are written to `SRS_MEP_Comments`.
+    -   Stores the first five segment names in the electrical circuit's `SRS_MEP_Conduit_Segment_1` to `SRS_MEP_Conduit_Segment_5` parameters. Segment names beyond the fifth are written to `SRS_MEP_Comments`, separated by line breaks.
 9.  **Notification:** Confirms the operation and reports suspicious distances (>1m) between segments to detect potential assignment errors.
 10.  **Collision Check:** Validates unique identifiers (BaseCode) assigned to different electrical circuits. If overlaps are found, a summary report is provided upon completion.
 
@@ -59,13 +60,13 @@ Before running the command, ensure that at least one conduit in each segment has
 
 - **No conduits found:** If there are no conduits with the `SRS_MEP_Circuit_Names` parameter defined, the command will fail. Check that at least one conduit per segment has this parameter assigned (use **AssignConduitToCircuit**).
 - **No electrical circuits found:** If no circuits with matching names in `SRS_MEP_Circuit_Names` exist, the command will fail. Ensure circuits exist and have correct names.
-- **Too many segments:** If a path has more than 5 segments, the process stops with an error. Simplify the path or split the circuit.
 - **Missing parameters:** If any required parameter (such as `SRS_Schedule_Name` on equipment) is missing or empty, it may cause errors. Changes are made in a transaction and can be undone with Ctrl+Z.
 
 ## Notifications and Statistics
 
 After execution, a notification appears with:
 - Number of circuits processed.
+- Number of unique physical conduit chains processed.
 - Minimum and maximum cable length (in meters).
 - Maximum gap between segments (in meters) and circuit ID.
 
@@ -83,6 +84,8 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 ## Processing Options
 
 - **Only selected conduits**: When enabled, the algorithm processes only those conduits you selected in Revit before launching. This is useful for precise synchronization of specific circuits.
+    - Starting from the original selection, the processing scope expands in three directions: all physically connected conduits, parallel branches with the same `SRS_MEP_Parallel_Id`, and all conduits belonging to any circuit listed in `SRS_MEP_Circuit_Names` on the selected elements.
+    - All three expansions use only the original selection and do not trigger a cascading search.
 - **Show result in specialized 3D view**: Creates or updates a special 3D view named `Conduit Review <user>` for a quick check of the result.
     - **Isolation and Section Box**: The tool automatically adjusts the Section Box to the boundaries of the selected area.
     - **Optional Isolation**: Use "Isolate elements in 3D view" to hide everything except the route, panel, and loads. If disabled, elements are shown within the building context (transparent or wireframe depending on view settings).
@@ -98,6 +101,12 @@ If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect
 ![UI](image.png)
 
 ## Changelog
+
+2026-09-08
+1. **Additional segments in comments**: Removed the rigid requirement not to exceed five segments. The first five segments are written to the standard parameters, while the sixth and subsequent segments are written to `SRS_MEP_Comments` on separate lines. The legacy logic for writing shortened names of multiple circuit elements to the same parameter has been preserved.
+2. **Circuit naming**: Removed the intermediate `-C-` marker from circuit names.
+3. **Selected-only processing fix**: Fixed incomplete segment counts after running Sync following Assign for circuits with shared routes and branches. The scope is expanded once from the original selection by physical connectivity, `SRS_MEP_Parallel_Id`, and circuit names, without cascading search.
+4. **Processing statistics**: Notifications now also show the number of unique physical conduit chains processed.
 
 2026-09-03
 1. **Debug lines**: Added auxiliary lines for distance verification.

@@ -61,6 +61,8 @@ If the **"Overwrite existing circuits"** option is enabled, the tool completely 
 ### Automatic Synchronization (Run Sync)
 If the **"Then run Sync for selected & show 3D View"** option is enabled, the plugin will launch the synchronization tool immediately after assigning the circuit.
 - **Isolate elements in 3D view**: Determines if the diagnostic 3D view (created during sync) should isolate only relevant elements or show them in context.
+- During synchronization, the scope expands from the original selection in three directions: all physically connected conduits, parallel branches with the same `SRS_MEP_Parallel_Id`, and all conduits belonging to any circuit listed in `SRS_MEP_Circuit_Names` on the selected elements.
+- All three expansions use only the original selection and do not trigger a cascading search.
 
 ### Route Inspection Mode
 If you select a circuit (or panel/load) but do **not select any conduits**, the plugin will automatically find and highlight all conduits already linked to that circuit.
@@ -73,6 +75,9 @@ Using the **"Show UI"** checkbox, you can disable this window. The tool will the
 ![UI](image.png)
 
 ## Changelog
+
+2026-09-08
+1. **Automatic Sync scope expansion**: After circuit assignment, `SyncConduitCircuit` now processes physically connected conduits, parallel branches identified by `SRS_MEP_Parallel_Id`, and all conduits belonging to circuits listed in `SRS_MEP_Circuit_Names`, without cascading search.
 
 2026-08-25
 1. **Circuit From and To parameters**: Added the panel and load location/name values to `SRS_MEP_Conduit_From` and `SRS_MEP_Conduit_To` on the electrical circuit.

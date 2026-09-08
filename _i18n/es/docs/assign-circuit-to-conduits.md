@@ -60,6 +60,8 @@ Si la opción **"Overwrite existing circuits"** está activada, la herramienta b
 ### Sincronización Automática (Run Sync)
 Si la opción **"Then run Sync for selected & show 3D View"** está activada, el plugin iniciará la herramienta de sincronización inmediatamente después de asignar el circuito.
 - **Isolate elements in 3D view**: Determina si la vista 3D de diagnóstico (creada durante la sincronización) debe aislar solo los elementos relevantes o mostrarlos en contexto.
+- Durante la sincronización, el alcance se amplía desde la selección inicial en tres direcciones: todos los conductos físicamente conectados, los ramales paralelos con el mismo `SRS_MEP_Parallel_Id` y todos los conductos pertenecientes a cualquier circuito incluido en `SRS_MEP_Circuit_Names` de los elementos seleccionados.
+- Las tres ampliaciones utilizan únicamente la selección inicial y no desencadenan una búsqueda en cascada.
 
 ### Modo de Inspección de Ruta
 Si selecciona un circuito (o cuadro/carga) pero **no selecciona ningún conducto**, el plugin encontrará y resaltará automáticamente todos los conductos ya vinculados a ese circuito.
@@ -72,6 +74,9 @@ Mediante la casilla **Show UI** puede desactivar esta ventana. La herramienta se
 ![UI](image.png)
 
 ## Historial de Cambios
+
+2026-09-08
+1. **Ampliación del alcance de la sincronización automática**: Después de asignar el circuito, `SyncConduitCircuit` procesa los conductos físicamente conectados, los ramales paralelos identificados por `SRS_MEP_Parallel_Id` y todos los conductos pertenecientes a los circuitos indicados en `SRS_MEP_Circuit_Names`, sin búsqueda en cascada.
 
 2026-08-25
 1. **Parámetros From y To del circuito**: Se añadieron la ubicación y el nombre del cuadro y de la carga a `SRS_MEP_Conduit_From` y `SRS_MEP_Conduit_To` del circuito eléctrico.

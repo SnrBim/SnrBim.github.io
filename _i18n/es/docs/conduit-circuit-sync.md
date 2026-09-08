@@ -51,7 +51,8 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
         5.  **Reserva**: se añade una reserva de seguridad fija de **+2 metros**.
         6.  **Redondeo**: el valor final se redondea al metro entero superior.
         - Para ramales paralelos, se registra en el circuito la longitud del **ramal más largo**.
-    -   Almacena los nombres de los segmentos en los parámetros `SRS_MEP_Conduit_Segment_1` a `SRS_MEP_Conduit_Segment_5` del circuito eléctrico.
+    -   Si el circuito contiene más de un elemento de carga, `SRS_Schedule_Name` recibe una identificación agrupada: los nombres con la misma base y sufijos numéricos se sustituyen por un patrón con `xx` (por ejemplo, `18D-DS-SFxx`), mientras que para bases diferentes se conserva la lista completa entre paréntesis. En `SRS_MEP_Comments` se escriben los nombres abreviados de los elementos (por ejemplo, `SF01, SF02`).
+    -   Almacena los nombres de los primeros cinco segmentos en los parámetros `SRS_MEP_Conduit_Segment_1` a `SRS_MEP_Conduit_Segment_5` del circuito eléctrico. Los nombres posteriores se escriben en `SRS_MEP_Comments`, separados por saltos de línea.
 9.  **Notificación:** Confirma la operación e informa sobre distancias sospechosas (>1m) entre segmentos para detectar posibles errores de asignación.
 10. **Comprobación de colisiones:** Valida los identificadores únicos (BaseCode) asignados a diferentes circuitos eléctricos. Si se encuentran solapamientos, se proporciona un informe resumen al finalizar.
 
@@ -59,12 +60,12 @@ Antes de ejecutar el comando, asegúrese de que al menos un conducto en cada seg
 
 - **No se encontraron conductos:** Si no hay conductos con el parámetro `SRS_MEP_Circuit_Names` definido, el comando fallará. Verifique que al menos un conducto por segmento tenga este parámetro asignado (use **AssignConduitToCircuit**).
 - **No se encontraron circuitos eléctricos:** Si no existen circuitos con nombres coincidentes en `SRS_MEP_Circuit_Names`, el comando fallará. Asegúrese de que los circuitos existan y tengan nombres correctos.
-- **Demasiados segmentos:** Si una ruta tiene más de 5 segmentos, el proceso se detiene con un error. Simplifique la ruta o divida el circuito.
 - **Parámetros faltantes:** Si algún parámetro requerido (como `SRS_Schedule_Name` en equipos) no existe o está vacío, puede causar errores. Los cambios se realizan en una transacción y pueden deshacerse con Ctrl+Z.
 
 ## Notificaciones y Estadísticas
 
 Después de la ejecución, aparece una notificación con:
+- Número de cadenas físicas únicas de conductos procesadas.
 - Número de circuitos procesados.
 - Longitud mínima y máxima del cable (en metros).
 - Máxima separación entre segmentos (en metros) y ID del circuito.
@@ -83,6 +84,8 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 ## Opciones de Procesamiento (Processing Options)
 
 - **Only selected conduits**: Al activarse, el algoritmo procesa solo los conductos que haya seleccionado en Revit antes de iniciar. Útil para sincronizaciones puntuales de circuitos específicos.
+    - Partiendo de la selección inicial, el alcance se amplía en tres direcciones: todos los conductos físicamente conectados, los ramales paralelos con el mismo `SRS_MEP_Parallel_Id` y todos los conductos pertenecientes a cualquier circuito incluido en `SRS_MEP_Circuit_Names` de los elementos seleccionados.
+    - Las tres ampliaciones utilizan únicamente la selección inicial y no desencadenan una búsqueda en cascada.
 - **Show result in specialized 3D view**: Crea o actualiza una vista 3D especial `Conduit Review <usuario>` para una comprobación rápida del resultado.
     - **Caja de sección (Section Box)**: La herramienta ajusta automáticamente la caja de sección a los límites del área seleccionada.
     - **Aislamiento opcional**: Use "Isolate elements in 3D view" para ocultar todo excepto la ruta, el panel y las cargas. Si está desactivado, los elementos se muestran dentro del contexto del edificio.
@@ -98,6 +101,12 @@ Si la separación supera 1 m, revise las asignaciones de conductos, ya que puede
 ![UI](image.png)
 
 ## Historial de Cambios
+
+2026-09-08
+1. **Segmentos adicionales en los comentarios**: Se eliminó el requisito rígido de no superar cinco segmentos. Los primeros cinco segmentos se escriben en los parámetros estándar, mientras que el sexto y los siguientes se escriben en `SRS_MEP_Comments` en líneas separadas. Se conservó la lógica secundaria para escribir en el mismo parámetro los nombres abreviados de varios elementos del circuito.
+2. **Nombres de circuitos**: Se eliminó el marcador intermedio `-C-` de los nombres de circuitos.
+3. **Corrección del procesamiento de la selección**: Se corrigió el recuento incompleto de segmentos después de ejecutar Sync tras Assign para circuitos con tramos compartidos y ramificaciones. El alcance se amplía una vez desde la selección inicial por conectividad física, `SRS_MEP_Parallel_Id` y nombres de circuitos, sin búsqueda en cascada.
+4. **Estadísticas de procesamiento**: Las notificaciones ahora también muestran el número de cadenas físicas de conductos únicas procesadas.
 
 2026-09-03
 1. **Líneas de depuración**: Se añadieron líneas auxiliares para comprobar las distancias.
