@@ -401,7 +401,8 @@ Light Data E</span>
           </li>
         </ol>
       </li>
-      <li>Stores segment names in the electrical circuit’s <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_1</code> to <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_5</code> parameters.</li>
+      <li>If the circuit contains more than one load element, <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> receives a grouped identifier: names with the same base and numeric suffixes are replaced with an <code class="language-plaintext highlighter-rouge">xx</code> pattern (for example, <code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code>), while different bases retain the full list in parentheses. The shortened element names (for example, <code class="language-plaintext highlighter-rouge">SF01, SF02</code>) are written to <code class="language-plaintext highlighter-rouge">SRS_MEP_Comments</code>.</li>
+      <li>Stores the first five segment names in the electrical circuit’s <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_1</code> to <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_5</code> parameters. Segment names beyond the fifth are written to <code class="language-plaintext highlighter-rouge">SRS_MEP_Comments</code>, separated by line breaks.</li>
     </ul>
   </li>
   <li><strong>Notification:</strong> Confirms the operation and reports suspicious distances (&gt;1m) between segments to detect potential assignment errors.</li>
@@ -419,7 +420,6 @@ Light Data E</span>
 <ul>
   <li><strong>No conduits found:</strong> If there are no conduits with the <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> parameter defined, the command will fail. Check that at least one conduit per segment has this parameter assigned (use <strong>AssignConduitToCircuit</strong>).</li>
   <li><strong>No electrical circuits found:</strong> If no circuits with matching names in <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> exist, the command will fail. Ensure circuits exist and have correct names.</li>
-  <li><strong>Too many segments:</strong> If a path has more than 5 segments, the process stops with an error. Simplify the path or split the circuit.</li>
   <li><strong>Missing parameters:</strong> If any required parameter (such as <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> on equipment) is missing or empty, it may cause errors. Changes are made in a transaction and can be undone with Ctrl+Z.</li>
 </ul>
 <h2 id="notifications-and-statistics">
@@ -434,6 +434,7 @@ Light Data E</span>
 <p>After execution, a notification appears with:</p>
 <ul>
   <li>Number of circuits processed.</li>
+  <li>Number of unique physical conduit chains processed.</li>
   <li>Minimum and maximum cable length (in meters).</li>
   <li>Maximum gap between segments (in meters) and circuit ID.</li>
 </ul>
@@ -466,7 +467,12 @@ Light Data E</span>
     
 
 <ul>
-  <li><strong>Only selected conduits</strong>: When enabled, the algorithm processes only those conduits you selected in Revit before launching. This is useful for precise synchronization of specific circuits.</li>
+  <li><strong>Only selected conduits</strong>: When enabled, the algorithm processes only those conduits you selected in Revit before launching. This is useful for precise synchronization of specific circuits.
+    <ul>
+      <li>Starting from the original selection, the processing scope expands in three directions: all physically connected conduits, parallel branches with the same <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code>, and all conduits belonging to any circuit listed in <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> on the selected elements.</li>
+      <li>All three expansions use only the original selection and do not trigger a cascading search.</li>
+    </ul>
+  </li>
   <li><strong>Show result in specialized 3D view</strong>: Creates or updates a special 3D view named <code class="language-plaintext highlighter-rouge">Conduit Review &lt;user&gt;</code> for a quick check of the result.
     <ul>
       <li><strong>Isolation and Section Box</strong>: The tool automatically adjusts the Section Box to the boundaries of the selected area.</li>
@@ -500,6 +506,14 @@ Light Data E</span>
   
 </h2>
     
+
+<p>2026-09-08</p>
+<ol>
+  <li><strong>Additional segments in comments</strong>: Removed the rigid requirement not to exceed five segments. The first five segments are written to the standard parameters, while the sixth and subsequent segments are written to <code class="language-plaintext highlighter-rouge">SRS_MEP_Comments</code> on separate lines. The legacy logic for writing shortened names of multiple circuit elements to the same parameter has been preserved.</li>
+  <li><strong>Circuit naming</strong>: Removed the intermediate <code class="language-plaintext highlighter-rouge">-C-</code> marker from circuit names.</li>
+  <li><strong>Selected-only processing fix</strong>: Fixed incomplete segment counts after running Sync following Assign for circuits with shared routes and branches. The scope is expanded once from the original selection by physical connectivity, <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code>, and circuit names, without cascading search.</li>
+  <li><strong>Processing statistics</strong>: Notifications now also show the number of unique physical conduit chains processed.</li>
+</ol>
 
 <p>2026-09-03</p>
 <ol>

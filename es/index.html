@@ -1925,6 +1925,20 @@ to schematic</span>
   
 </h2>
     
+<h2 id="2613--2026-09-08">
+  
+  
+    <a href="#2613--2026-09-08" class="anchor-heading" aria-labelledby="2613--2026-09-08"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> [26.13] — 2026-09-08
+  
+  
+</h2>
+    
+<p><em>Sync Conduit Circuit</em>:</p>
+<ol>
+  <li>Removed the rigid requirement not to exceed five segments. The first five segments are written to the standard parameters, while the sixth and subsequent segments are written to <code class="language-plaintext highlighter-rouge">SRS_MEP_Comments</code> on separate lines. Preserved the existing logic for writing shortened names of multiple circuit elements to the same parameter.</li>
+  <li>Removed the intermediate <code class="language-plaintext highlighter-rouge">-C-</code> marker from circuit names.</li>
+  <li>Fixed selected-only synchronization after Assign for circuits with shared routes and branches: the original selection is expanded once by physical connectivity, <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code>, and circuit names without cascading search. Notifications now also show the number of unique physical conduit chains processed, and the behavior is documented for Assign.</li>
+</ol>
 <h2 id="2612--2026-09-03">
   
   

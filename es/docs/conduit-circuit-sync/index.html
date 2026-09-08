@@ -401,7 +401,8 @@ Light Data E</span>
           </li>
         </ol>
       </li>
-      <li>Almacena los nombres de los segmentos en los parámetros <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_1</code> a <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_5</code> del circuito eléctrico.</li>
+      <li>Si el circuito contiene más de un elemento de carga, <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> recibe una identificación agrupada: los nombres con la misma base y sufijos numéricos se sustituyen por un patrón con <code class="language-plaintext highlighter-rouge">xx</code> (por ejemplo, <code class="language-plaintext highlighter-rouge">18D-DS-SFxx</code>), mientras que para bases diferentes se conserva la lista completa entre paréntesis. En <code class="language-plaintext highlighter-rouge">SRS_MEP_Comments</code> se escriben los nombres abreviados de los elementos (por ejemplo, <code class="language-plaintext highlighter-rouge">SF01, SF02</code>).</li>
+      <li>Almacena los nombres de los primeros cinco segmentos en los parámetros <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_1</code> a <code class="language-plaintext highlighter-rouge">SRS_MEP_Conduit_Segment_5</code> del circuito eléctrico. Los nombres posteriores se escriben en <code class="language-plaintext highlighter-rouge">SRS_MEP_Comments</code>, separados por saltos de línea.</li>
     </ul>
   </li>
   <li><strong>Notificación:</strong> Confirma la operación e informa sobre distancias sospechosas (&gt;1m) entre segmentos para detectar posibles errores de asignación.</li>
@@ -419,7 +420,6 @@ Light Data E</span>
 <ul>
   <li><strong>No se encontraron conductos:</strong> Si no hay conductos con el parámetro <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> definido, el comando fallará. Verifique que al menos un conducto por segmento tenga este parámetro asignado (use <strong>AssignConduitToCircuit</strong>).</li>
   <li><strong>No se encontraron circuitos eléctricos:</strong> Si no existen circuitos con nombres coincidentes en <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code>, el comando fallará. Asegúrese de que los circuitos existan y tengan nombres correctos.</li>
-  <li><strong>Demasiados segmentos:</strong> Si una ruta tiene más de 5 segmentos, el proceso se detiene con un error. Simplifique la ruta o divida el circuito.</li>
   <li><strong>Parámetros faltantes:</strong> Si algún parámetro requerido (como <code class="language-plaintext highlighter-rouge">SRS_Schedule_Name</code> en equipos) no existe o está vacío, puede causar errores. Los cambios se realizan en una transacción y pueden deshacerse con Ctrl+Z.</li>
 </ul>
 <h2 id="notificaciones-y-estadísticas">
@@ -433,6 +433,7 @@ Light Data E</span>
 
 <p>Después de la ejecución, aparece una notificación con:</p>
 <ul>
+  <li>Número de cadenas físicas únicas de conductos procesadas.</li>
   <li>Número de circuitos procesados.</li>
   <li>Longitud mínima y máxima del cable (en metros).</li>
   <li>Máxima separación entre segmentos (en metros) y ID del circuito.</li>
@@ -466,7 +467,12 @@ Light Data E</span>
     
 
 <ul>
-  <li><strong>Only selected conduits</strong>: Al activarse, el algoritmo procesa solo los conductos que haya seleccionado en Revit antes de iniciar. Útil para sincronizaciones puntuales de circuitos específicos.</li>
+  <li><strong>Only selected conduits</strong>: Al activarse, el algoritmo procesa solo los conductos que haya seleccionado en Revit antes de iniciar. Útil para sincronizaciones puntuales de circuitos específicos.
+    <ul>
+      <li>Partiendo de la selección inicial, el alcance se amplía en tres direcciones: todos los conductos físicamente conectados, los ramales paralelos con el mismo <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code> y todos los conductos pertenecientes a cualquier circuito incluido en <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> de los elementos seleccionados.</li>
+      <li>Las tres ampliaciones utilizan únicamente la selección inicial y no desencadenan una búsqueda en cascada.</li>
+    </ul>
+  </li>
   <li><strong>Show result in specialized 3D view</strong>: Crea o actualiza una vista 3D especial <code class="language-plaintext highlighter-rouge">Conduit Review &lt;usuario&gt;</code> para una comprobación rápida del resultado.
     <ul>
       <li><strong>Caja de sección (Section Box)</strong>: La herramienta ajusta automáticamente la caja de sección a los límites del área seleccionada.</li>
@@ -500,6 +506,14 @@ Light Data E</span>
   
 </h2>
     
+
+<p>2026-09-08</p>
+<ol>
+  <li><strong>Segmentos adicionales en los comentarios</strong>: Se eliminó el requisito rígido de no superar cinco segmentos. Los primeros cinco segmentos se escriben en los parámetros estándar, mientras que el sexto y los siguientes se escriben en <code class="language-plaintext highlighter-rouge">SRS_MEP_Comments</code> en líneas separadas. Se conservó la lógica secundaria para escribir en el mismo parámetro los nombres abreviados de varios elementos del circuito.</li>
+  <li><strong>Nombres de circuitos</strong>: Se eliminó el marcador intermedio <code class="language-plaintext highlighter-rouge">-C-</code> de los nombres de circuitos.</li>
+  <li><strong>Corrección del procesamiento de la selección</strong>: Se corrigió el recuento incompleto de segmentos después de ejecutar Sync tras Assign para circuitos con tramos compartidos y ramificaciones. El alcance se amplía una vez desde la selección inicial por conectividad física, <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code> y nombres de circuitos, sin búsqueda en cascada.</li>
+  <li><strong>Estadísticas de procesamiento</strong>: Las notificaciones ahora también muestran el número de cadenas físicas de conductos únicas procesadas.</li>
+</ol>
 
 <p>2026-09-03</p>
 <ol>

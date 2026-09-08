@@ -435,6 +435,8 @@ circuit sync </span>
 <p>If the <strong>“Then run Sync for selected &amp; show 3D View”</strong> option is enabled, the plugin will launch the synchronization tool immediately after assigning the circuit.</p>
 <ul>
   <li><strong>Isolate elements in 3D view</strong>: Determines if the diagnostic 3D view (created during sync) should isolate only relevant elements or show them in context.</li>
+  <li>During synchronization, the scope expands from the original selection in three directions: all physically connected conduits, parallel branches with the same <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code>, and all conduits belonging to any circuit listed in <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> on the selected elements.</li>
+  <li>All three expansions use only the original selection and do not trigger a cascading search.</li>
 </ul>
 <h3 id="route-inspection-mode">
   
@@ -470,6 +472,11 @@ circuit sync </span>
   
 </h2>
     
+
+<p>2026-09-08</p>
+<ol>
+  <li><strong>Automatic Sync scope expansion</strong>: After circuit assignment, <code class="language-plaintext highlighter-rouge">SyncConduitCircuit</code> now processes physically connected conduits, parallel branches identified by <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code>, and all conduits belonging to circuits listed in <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code>, without cascading search.</li>
+</ol>
 
 <p>2026-08-25</p>
 <ol>

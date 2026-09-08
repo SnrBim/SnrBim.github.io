@@ -245,7 +245,7 @@ $buttonTexts = Get-ButtonTexts -SourceRoot $SourceRoot
 Write-Host "Loaded button texts for $($buttonTexts.Count) command variants." -ForegroundColor Cyan
 
 $sourceFolders = Get-ChildItem -Path $SourceRoot -Directory | Where-Object {
-    ($_.Name -ne "Template") -and ($_.Name -ne "Manifest") -and ($_.Name -ne "Res") -and ($_.Name -ne "Properties") -and ($_.Name -ne "bin") -and ($_.Name -ne "obj") -and (Test-Path -Path (Join-Path $_.FullName "Docs") -ErrorAction SilentlyContinue)
+    (-not $_.Name.StartsWith("Template", [System.StringComparison]::OrdinalIgnoreCase)) -and ($_.Name -ne "Manifest") -and ($_.Name -ne "Res") -and ($_.Name -ne "Properties") -and ($_.Name -ne "bin") -and ($_.Name -ne "obj") -and (Test-Path -Path (Join-Path $_.FullName "Docs") -ErrorAction SilentlyContinue)
 }
 
 $articleFolders = @($sourceFolders | Where-Object {

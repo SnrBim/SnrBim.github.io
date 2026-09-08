@@ -434,6 +434,8 @@ circuit sync </span>
 <p>Si la opción <strong>“Then run Sync for selected &amp; show 3D View”</strong> está activada, el plugin iniciará la herramienta de sincronización inmediatamente después de asignar el circuito.</p>
 <ul>
   <li><strong>Isolate elements in 3D view</strong>: Determina si la vista 3D de diagnóstico (creada durante la sincronización) debe aislar solo los elementos relevantes o mostrarlos en contexto.</li>
+  <li>Durante la sincronización, el alcance se amplía desde la selección inicial en tres direcciones: todos los conductos físicamente conectados, los ramales paralelos con el mismo <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code> y todos los conductos pertenecientes a cualquier circuito incluido en <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code> de los elementos seleccionados.</li>
+  <li>Las tres ampliaciones utilizan únicamente la selección inicial y no desencadenan una búsqueda en cascada.</li>
 </ul>
 <h3 id="modo-de-inspección-de-ruta">
   
@@ -469,6 +471,11 @@ circuit sync </span>
   
 </h2>
     
+
+<p>2026-09-08</p>
+<ol>
+  <li><strong>Ampliación del alcance de la sincronización automática</strong>: Después de asignar el circuito, <code class="language-plaintext highlighter-rouge">SyncConduitCircuit</code> procesa los conductos físicamente conectados, los ramales paralelos identificados por <code class="language-plaintext highlighter-rouge">SRS_MEP_Parallel_Id</code> y todos los conductos pertenecientes a los circuitos indicados en <code class="language-plaintext highlighter-rouge">SRS_MEP_Circuit_Names</code>, sin búsqueda en cascada.</li>
+</ol>
 
 <p>2026-08-25</p>
 <ol>
