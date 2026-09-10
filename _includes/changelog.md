@@ -1,3 +1,6 @@
+## [26.14] — 2026-09-10
+*Link manager*: Added a new command for finding replacement files for Revit and AutoCAD links, reviewing link metadata, and updating or deleting selected links.
+
 ## [26.13] — 2026-09-08
 *Sync Conduit Circuit*:
 1. Removed the rigid requirement not to exceed five segments. The first five segments are written to the standard parameters, while the sixth and subsequent segments are written to `SRS_MEP_Comments` on separate lines. Preserved the existing logic for writing shortened names of multiple circuit elements to the same parameter.
