@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(12)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(12) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(12) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(12) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/assets/js/vendor/lunr.min.js"></script>
+    <script src="/assets/js/vendor/lunr.stemmer.support.min.js"></script>
+    <script src="/assets/js/vendor/lunr.es.min.js"></script>
+    <script src="/assets/js/vendor/lunr.multi.min.js"></script>
+  
+
+  <script src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon">
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Linkman | Sener BimTools Docs</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Linkman" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Link manager helps you update Revit and AutoCAD links by selecting a folder for file search and lets you review link information." />
+<meta property="og:description" content="Link manager helps you update Revit and AutoCAD links by selecting a folder for file search and lets you review link information." />
+<link rel="canonical" href="https://snrbim.github.io/docs/linkman/" />
+<meta property="og:url" content="https://snrbim.github.io/docs/linkman/" />
+<meta property="og:site_name" content="Sener BimTools Docs" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Linkman" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Link manager helps you update Revit and AutoCAD links by selecting a folder for file search and lets you review link information.","headline":"Linkman","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/linkman/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link rel="stylesheet" href="/assets/css/commands.css">
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/" class="site-title lh-tight"><img src="/assets/images/logo.png" width="56">
+<pre> </pre>
+<span class="fs-4">Sener BimTools Docs</span>
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Common category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/docs/1Common.html" class="nav-list-link">Common</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/cad-to-revit/" class="nav-list-link">Cad to Revit</a></li><li class="nav-list-item"><a href="/docs/change-level/" class="nav-list-link">Change level</a></li><li class="nav-list-item"><a href="/docs/create-along-path/" class="nav-list-link">Create along path</a></li><li class="nav-list-item"><a href="/docs/create-hangers/" class="nav-list-link">Create hangers</a></li><li class="nav-list-item"><a href="/docs/create-print-set/" class="nav-list-link">Create print set</a></li><li class="nav-list-item"><a href="/docs/create-view-filters/" class="nav-list-link">Create view filters</a></li><li class="nav-list-item"><a href="/docs/create-worksets-from-excel/" class="nav-list-link">Create worksets from Excel</a></li><li class="nav-list-item"><a href="/docs/edit-elements-in-excel/" class="nav-list-link">Edit elements in Excel</a></li><li class="nav-list-item"><a href="/docs/fill-code/" class="nav-list-link">Fill code</a></li><li class="nav-list-item"><a href="/docs/history/" class="nav-list-link">History</a></li><li class="nav-list-item"><a href="/docs/info/" class="nav-list-link">Info</a></li><li class="nav-list-item"><a href="/docs/linkman/" class="nav-list-link">Linkman</a></li><li class="nav-list-item"><a href="/docs/model-audit/" class="nav-list-link">Model audit</a></li><li class="nav-list-item"><a href="/docs/position-check/" class="nav-list-link">Position check</a></li><li class="nav-list-item"><a href="/docs/purge/" class="nav-list-link">Purge</a></li><li class="nav-list-item"><a href="/docs/read-parameters-from-excel/" class="nav-list-link">Read parameters from Excel</a></li><li class="nav-list-item"><a href="/docs/set-project-params/" class="nav-list-link">Set project params</a></li><li class="nav-list-item"><a href="/docs/show-cads/" class="nav-list-link">Show CADs</a></li><li class="nav-list-item"><a href="/docs/sync-space-params/" class="nav-list-link">Sync space params</a></li><li class="nav-list-item"><a href="/docs/tag-elements-on-views/" class="nav-list-link">Tag elements on views</a></li><li class="nav-list-item"><a href="/docs/textomorph/" class="nav-list-link">TextoMorph</a></li><li class="nav-list-item"><a href="/docs/upload-to-acc/" class="nav-list-link">Upload to ACC</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in MEC category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/docs/2MEC.html" class="nav-list-link">MEC</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/assign-equip-to-schematic/" class="nav-list-link">Assign equip to schematic</a></li><li class="nav-list-item"><a href="/docs/assign-spaces-to-equipment/" class="nav-list-link">Assign spaces to equipment</a></li><li class="nav-list-item"><a href="/docs/create-security-devices/" class="nav-list-link">Create Security Devices</a></li><li class="nav-list-item"><a href="/docs/create-dampers/" class="nav-list-link">Create dampers</a></li><li class="nav-list-item"><a href="/docs/pid-linker/" class="nav-list-link">P&ID Linker</a></li><li class="nav-list-item"><a href="/docs/set-ashrae-code/" class="nav-list-link">Set ASHRAE code</a></li><li class="nav-list-item"><a href="/docs/sync-air-flow-to-schematic/" class="nav-list-link">Sync air flow to schematic</a></li><li class="nav-list-item"><a href="/docs/sync-equip-to-schematic/" class="nav-list-link">Sync equip to schematic</a></li><li class="nav-list-item"><a href="/docs/sync-fire-alarm-diagram/" class="nav-list-link">Sync fire alarm diagram</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in ELE category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/docs/3ELE.html" class="nav-list-link">ELE</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/align-elevations/" class="nav-list-link">Align Elevations</a></li><li class="nav-list-item"><a href="/docs/assign-circuit-to-conduits/" class="nav-list-link">Assign circuit to conduits</a></li><li class="nav-list-item"><a href="/docs/balance-panel-loads/" class="nav-list-link">Balance Panel Loads</a></li><li class="nav-list-item"><a href="/docs/circuit-description/" class="nav-list-link">Circuit description</a></li><li class="nav-list-item"><a href="/docs/cloneshift/" class="nav-list-link">Clone&Shift</a></li><li class="nav-list-item"><a href="/docs/conduit-circuit-sync/" class="nav-list-link">Conduit circuit sync</a></li><li class="nav-list-item"><a href="/docs/convert-lines-to-wires/" class="nav-list-link">Convert lines to wires</a></li><li class="nav-list-item"><a href="/docs/count-sockets/" class="nav-list-link">Count sockets</a></li><li class="nav-list-item"><a href="/docs/create-sockets/" class="nav-list-link">Create sockets</a></li><li class="nav-list-item"><a href="/docs/sync-power-params/" class="nav-list-link">Sync power params</a></li><li class="nav-list-item"><a href="/docs/transfer-lighting-data-to-space/" class="nav-list-link">Transfer Lighting Data To Space</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Misc category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/docs/4Misc.html" class="nav-list-link">Misc</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/track-scheme/" class="nav-list-link">Track scheme</a></li></ul></li><li class="nav-list-item"><a href="/articles/autoupdate/" class="nav-list-link">Automatic BIMTools Update</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-footer">
+      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Sener BimTools Docs" aria-label="Search Sener BimTools Docs" autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/SnrBim/BimTools/releases" class="site-button"
+          
+          target="_blank" rel="noopener noreferrer"
+          
+        >
+          Downloads
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="toggleTheme" class="site-button"
+          
+          target="_blank" rel="noopener noreferrer"
+          
+        >
+          🌙
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="langEn" class="site-button"
+          
+          target="_blank" rel="noopener noreferrer"
+          
+        >
+          EN
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="langEs" class="site-button"
+          
+          target="_blank" rel="noopener noreferrer"
+          
+        >
+          ES
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/docs/1Common.html">Common</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Linkman</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <div class="ribbon-context ribbon-context--cut-left ribbon-context--cut-right">
+  <div class="ribbon-context-row"><span class="ribbon-btn--ellipsis" aria-hidden="true">…</span>
+    <div class="ribbon-context-group">
+      <div class="ribbon-panel-buttons">
+        <a class="ribbon-btn" href="/docs/model-audit/" title="Model audit"><img src="/docs/model-audit/logo.png" alt="Model audit" title="Model audit" /><span class="ribbon-btn-label">Model
+audit</span>
+                </a><a class="ribbon-btn" href="/docs/fill-code/" title="Fill code"><img src="/docs/fill-code/logo.png" alt="Fill code" title="Fill code" /><span class="ribbon-btn-label">Fill
+Code</span>
+                </a><span class="ribbon-btn ribbon-btn--current" title="Linkman"><img src="/docs/linkman/logo.png" alt="Linkman" /><span class="ribbon-btn-label">Link
+man</span>
+                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/show-cads/logo.png" alt="Show CADs" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Show
+CADs</span>
+                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/create-print-set/logo.png" alt="Create print set" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Print
+set</span>
+                </span>
+      </div>
+      <div class="ribbon-panel-name">General</div>
+    </div>
+    <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
+</div>
+<h1 class="no_toc" id="link-manager">
+  
+  
+    <a href="#link-manager" class="anchor-heading" aria-labelledby="link-manager"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Link manager
+  
+  
+</h1>
+    
+
+<details open="">
+  <summary class="text-delta">
+    Table of contents
+  </summary>
+<ol id="markdown-toc">
+  <li><a href="#searching-and-updating-links" id="markdown-toc-searching-and-updating-links">Searching and updating links</a></li>
+  <li><a href="#important-limitations" id="markdown-toc-important-limitations">Important limitations</a></li>
+  <li><a href="#revit-warning-handling" id="markdown-toc-revit-warning-handling">Revit warning handling</a></li>
+  <li><a href="#viewing-and-display" id="markdown-toc-viewing-and-display">Viewing and display</a></li>
+  <li><a href="#deleting-links" id="markdown-toc-deleting-links">Deleting links</a></li>
+</ol>
+
+</details>
+
+<p>Link manager helps you update Revit and AutoCAD links by selecting a folder for file search and lets you review link information.</p>
+
+<p><img src="ui.png" alt="LinkMan interface" /></p>
+<h2 id="searching-and-updating-links">
+  
+  
+    <a href="#searching-and-updating-links" class="anchor-heading" aria-labelledby="searching-and-updating-links"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Searching and updating links
+  
+  
+</h2>
+    
+
+<ol>
+  <li>Click <strong>Select folder…</strong> and choose a search folder. LinkMan searches it and its subfolders, matching files to project links by file name. It checks the selected folder first, then nested folders level by level; folders at the same level are checked in reverse natural order.</li>
+  <li>After a match is found, the row is selected automatically if the new path differs from the current path and the link is available for editing. A matching path or a link owned by another user is not selected automatically, but you can select it manually. Check the new path, file size, and modified date.</li>
+  <li>You can choose a new file with the individual button in the row or paste its path into <strong>Found path</strong>. <strong>Current path</strong> is available only for viewing and copying. <strong>Found path</strong> accepts absolute and relative paths; a relative path is resolved from the folder containing the current link.</li>
+  <li>The label to the left of <strong>Update</strong> shows the selected links split between new and current paths. The button itself shows the number of selected links by type: CAD and RVT.</li>
+</ol>
+
+<blockquote>
+  <p>A progress window is shown during the update. Clicking the cancel button does not interrupt the update already in progress, but the next link will not be processed.</p>
+</blockquote>
+<h2 id="important-limitations">
+  
+  
+    <a href="#important-limitations" class="anchor-heading" aria-labelledby="important-limitations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Important limitations
+  
+  
+</h2>
+    
+
+<p>Updating or deleting Revit links clears the operation history, so <code class="language-plaintext highlighter-rouge">Ctrl+Z</code> cannot undo the action. Updating AutoCAD links does not have this limitation.</p>
+<h2 id="revit-warning-handling">
+  
+  
+    <a href="#revit-warning-handling" class="anchor-heading" aria-labelledby="revit-warning-handling"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Revit warning handling
+  
+  
+</h2>
+    
+
+<p>During the update, LinkMan automatically confirms selected standard Revit warnings that do not require user input, such as messages about geometry exceeding allowed extents or elements being lost during import. If Revit shows a warning about deleting dimensions, LinkMan presses the <strong>Delete Dimension(s)</strong> button in the Revit dialog because there is no other way to continue the update. Other dialogs are not suppressed and remain available for the user to review.</p>
+
+<p><img src="invalidRefs.png" alt="Invalid references warning" /> <img src="33km.png" alt="Extents warning" /></p>
+
+<blockquote>
+  <p>The list of handled warnings is incomplete. If an unhandled Revit dialog appears, send its screenshot to the tool author so the warning can be added to the automatic handling.</p>
+</blockquote>
+<h2 id="viewing-and-display">
+  
+  
+    <a href="#viewing-and-display" class="anchor-heading" aria-labelledby="viewing-and-display"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Viewing and display
+  
+  
+</h2>
+    
+
+<ul>
+  <li>The <strong>Instances</strong> column shows the number of link instances. Hover over the value to see a tooltip with details. Right-click the value to copy the data to the clipboard.</li>
+  <li><strong>Narrow view</strong> combines the current and new path, size, and date into compact two-line cells. It is useful for long paths and comparing the old and new files; in the regular view, the new file information is shown in separate columns.</li>
+  <li><strong>Right alignment</strong> aligns paths to the right, making it easier to compare file names without their directories.</li>
+</ul>
+<h2 id="deleting-links">
+  
+  
+    <a href="#deleting-links" class="anchor-heading" aria-labelledby="deleting-links"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Deleting links
+  
+  
+</h2>
+    
+
+<p>Right-click a link row to delete it; multiple links can be selected. LinkMan asks for confirmation and shows the selected items. Deleting removes the link types and all their instances from the current project, but does not delete the source files from disk.</p>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+      <p><a href="#top" id="back-to-top">Back to top</a></p>
+    
+
+    <script>
+
+  function initDocumentFilter() {
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    const docList = document.getElementById('doc-list');
+    if (!(docList && checkboxes.length > 0)) return;
+
+    const listItems = docList.getElementsByTagName('li');
+
+    function filterDocs() {
+      const checkedGroups = Array.from(checkboxes)
+        .filter(i => i.checked)
+        .map(i => i.value);
+      for (const item of listItems) {
+        const itemGroup = item.getAttribute('data-group');
+        item.style.display = checkedGroups.length === 0 ||
+                             checkedGroups.includes(itemGroup)
+        ? ''
+        : 'none';
+      }
+    }
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', filterDocs);
+    });
+
+  }
+
+  function initThemeToggle() {
+    const toggleElem = document.querySelector('a[href*="toggleTheme"]');
+    if (!toggleElem) return;
+
+    function applyTheme(theme) {
+      jtd.setTheme(theme);
+      document.body.classList.toggle('jtd-dark', theme === 'dark');
+      localStorage.setItem('jtd-theme', theme);
+      toggleElem.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    toggleElem.addEventListener('click', function(e) {
+      e.preventDefault();
+      const newTheme = jtd.getTheme() === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    });
+
+    const savedTheme = localStorage.getItem('jtd-theme');
+    if (savedTheme) {
+      jtd.setTheme(savedTheme);
+    }
+    document.body.classList.toggle('jtd-dark', jtd.getTheme() === 'dark');
+    toggleElem.textContent = jtd.getTheme() === 'dark' ? '☀️' : '🌙';
+  }
+
+  function initLangSwither() {
+    const langEnLink = document.querySelector('a[href*="langEn"]');
+    const langEsLink = document.querySelector('a[href*="langEs"]');
+
+    const languageLinks = [];
+    if (langEnLink) languageLinks.push(langEnLink);
+    if (langEsLink) languageLinks.push(langEsLink);
+
+    if (languageLinks.length === 0) return;
+
+    const defaultLang = 'en'; // Assuming 'en' is the default language
+
+    languageLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        let targetLang;
+        if (this.href.includes('langEn')) {
+          targetLang = 'en';
+        } else if (this.href.includes('langEs')) {
+          targetLang = 'es';
+        }
+
+        if (!targetLang) return; // Do nothing if language is not determined
+
+        let currentPathname = window.location.pathname;
+
+        // Remove existing language prefix if present
+        const langRegex = /^\/(en|es)(\/|$)/; // Only 'en' and 'es'
+        let pathWithoutLang = currentPathname.replace(langRegex, '/');
+
+        // Ensure pathWithoutLang starts with a single slash
+        if (!pathWithoutLang.startsWith('/')) {
+          pathWithoutLang = '/' + pathWithoutLang;
+        }
+
+        let newPathname;
+        if (targetLang === defaultLang) {
+          newPathname = pathWithoutLang;
+        } else {
+          // Add new language prefix
+          newPathname = `/${targetLang}${pathWithoutLang}`;
+        }
+
+        // Handle root path specifically
+        if (pathWithoutLang === '/' && targetLang !== defaultLang) {
+          newPathname = `/${targetLang}/`;
+        } else if (pathWithoutLang === '/' && targetLang === defaultLang) {
+          newPathname = '/';
+        }
+
+        // Construct full URL
+        const newUrl = window.location.origin + newPathname + window.location.search;
+        window.location.href = newUrl;
+      });
+    });
+  }
+
+  function initLocalizedHomeLink() {
+    const siteTitleLink = document.querySelector('a.site-title');
+    if (!siteTitleLink) return;
+
+    siteTitleLink.href = window.location.pathname.startsWith('/es/')
+      ? '/es/'
+      : '/';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    initDocumentFilter();
+    initThemeToggle();
+    initLangSwither();
+    initLocalizedHomeLink();
+  });
+</script>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+
