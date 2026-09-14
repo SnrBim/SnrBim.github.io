@@ -330,6 +330,7 @@ man</span>
     </ol>
   </li>
   <li><a href="#historial-de-cambios" id="markdown-toc-historial-de-cambios">Historial de cambios</a>    <ol>
+      <li><a href="#2616--20260914" id="markdown-toc-2616--20260914">[26.16] — 2026/09/14</a></li>
       <li><a href="#2544--20260717" id="markdown-toc-2544--20260717">[25.44] — 2026/07/17</a></li>
       <li><a href="#2539--20260630" id="markdown-toc-2539--20260630">[25.39] — 2026/06/30</a></li>
       <li><a href="#2534--20260514" id="markdown-toc-2534--20260514">[25.34] — 2026/05/14</a></li>
@@ -372,12 +373,15 @@ man</span>
   <li><strong>Generate…</strong> — crear un nuevo archivo de configuración con valores predeterminados. El diálogo sugiere la ruta <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\ModelAudit\Config-{ModelName}.xlsx</code>. El archivo también incluye una hoja <strong>Aliases</strong> con nombres cortos autogenerados para los documentos vinculados — se pueden editar manualmente.</li>
 </ul>
 
-<p>Se muestra un <strong>resumen de configuración</strong> debajo del campo en tres columnas:</p>
+<p>Se muestra un <strong>resumen de configuración</strong> debajo del campo en cuatro columnas:</p>
 <ul>
   <li>izquierda — número de verificaciones y categorías activas (pase el cursor para la lista completa)</li>
-  <li>centro — número de parámetros por categoría</li>
+  <li>siguiente — número de parámetros por categoría</li>
+  <li>siguiente — resumen de alias de documentos</li>
   <li>derecha — nombre del archivo de configuración y hora de última modificación</li>
 </ul>
+
+<p>El resumen de alias muestra el número de alias, los documentos sin correspondencia en Revit y Excel, y el comando <strong>Copy missing</strong> para copiar nuevas filas a Excel.</p>
 
 <p>Si la configuración contiene errores, se muestra un mensaje de error en lugar del resumen.</p>
 
@@ -1042,6 +1046,17 @@ man</span>
   
 </h2>
     
+<h3 id="2616--20260914">
+  
+  
+    <a href="#2616--20260914" class="anchor-heading" aria-labelledby="2616--20260914"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> [26.16] — 2026/09/14
+  
+  
+</h3>
+    
+<ul>
+  <li>Añadido un resumen de alias a la interfaz de ModelAudit, con los alias y los documentos sin correspondencia en Revit o Excel, además del comando <strong>Copy missing</strong> para preparar nuevas filas de configuración.</li>
+</ul>
 <h3 id="2544--20260717">
   
   

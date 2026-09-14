@@ -330,6 +330,7 @@ man</span>
     </ol>
   </li>
   <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a>    <ol>
+      <li><a href="#2616--20260914" id="markdown-toc-2616--20260914">[26.16] — 2026/09/14</a></li>
       <li><a href="#2544--20260717" id="markdown-toc-2544--20260717">[25.44] — 2026/07/17</a></li>
       <li><a href="#2539--20260630" id="markdown-toc-2539--20260630">[25.39] — 2026/06/30</a></li>
       <li><a href="#2534--20260514" id="markdown-toc-2534--20260514">[25.34] — 2026/05/14</a></li>
@@ -372,12 +373,15 @@ man</span>
   <li><strong>Generate…</strong> — create a new configuration file with default values. The dialog suggests the path <code class="language-plaintext highlighter-rouge">%APPDATA%\Sener\BimTools\ModelAudit\Config-{ModelName}.xlsx</code>. An <strong>Aliases</strong> sheet with auto-generated short names for linked documents is also added — these can be edited manually.</li>
 </ul>
 
-<p>A <strong>configuration summary</strong> is shown below the field in three columns:</p>
+<p>A <strong>configuration summary</strong> is shown below the field in four columns:</p>
 <ul>
   <li>left — number of active checks and categories (hover for full list)</li>
-  <li>center — number of parameters per category</li>
+  <li>next — number of parameters per category</li>
+  <li>next — document alias summary</li>
   <li>right — configuration file name and last modified time</li>
 </ul>
+
+<p>The alias summary shows the number of aliases, documents without matches in Revit and Excel, and the <strong>Copy missing</strong> command for copying new rows to Excel.</p>
 
 <p>If the configuration contains errors, the summary is replaced with an error message.</p>
 
@@ -1042,6 +1046,17 @@ man</span>
   
 </h2>
     
+<h3 id="2616--20260914">
+  
+  
+    <a href="#2616--20260914" class="anchor-heading" aria-labelledby="2616--20260914"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> [26.16] — 2026/09/14
+  
+  
+</h3>
+    
+<ul>
+  <li>Added an alias summary to the ModelAudit interface, showing aliases, documents without matches in Revit or Excel, and the <strong>Copy missing</strong> command for preparing new configuration rows.</li>
+</ul>
 <h3 id="2544--20260717">
   
   
