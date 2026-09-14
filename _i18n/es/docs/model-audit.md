@@ -30,10 +30,13 @@ Botones:
 - **Browse…** — seleccionar un archivo de configuración existente.
 - **Generate…** — crear un nuevo archivo de configuración con valores predeterminados. El diálogo sugiere la ruta `%APPDATA%\Sener\BimTools\ModelAudit\Config-{ModelName}.xlsx`. El archivo también incluye una hoja **Aliases** con nombres cortos autogenerados para los documentos vinculados — se pueden editar manualmente.
 
-Se muestra un **resumen de configuración** debajo del campo en tres columnas:
+Se muestra un **resumen de configuración** debajo del campo en cuatro columnas:
 - izquierda — número de verificaciones y categorías activas (pase el cursor para la lista completa)
-- centro — número de parámetros por categoría
+- siguiente — número de parámetros por categoría
+- siguiente — resumen de alias de documentos
 - derecha — nombre del archivo de configuración y hora de última modificación
+
+El resumen de alias muestra el número de alias, los documentos sin correspondencia en Revit y Excel, y el comando **Copy missing** para copiar nuevas filas a Excel.
 
 Si la configuración contiene errores, se muestra un mensaje de error en lugar del resumen.
 
@@ -286,6 +289,9 @@ Al generar, los nombres cortos se crean automáticamente eliminando el prefijo y
 ---
 
 ## Historial de cambios
+
+### [26.16] — 2026/09/14
+- Añadido un resumen de alias a la interfaz de ModelAudit, con los alias y los documentos sin correspondencia en Revit o Excel, además del comando **Copy missing** para preparar nuevas filas de configuración.
 
 ### [25.44] — 2026/07/17
 - Coordinates: Se ha corregido el cálculo del ángulo (Angle to True North) — se ha invertido la dirección (CCW → CW) para que los datos del informe coincidan con los valores de la interfaz de Revit.
