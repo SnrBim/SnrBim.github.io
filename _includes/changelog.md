@@ -1,3 +1,6 @@
+﻿## [26.15] — 2026-09-14
+*View history*: Fixed a critical error when loading ribbon icons in Revit 2023.
+
 ## [26.14] — 2026-09-10
 *Link manager*: Added a new command for finding replacement files for Revit and AutoCAD links, reviewing link metadata, and updating or deleting selected links.
 
