@@ -2,9 +2,8 @@
 parent: Common
 title: Upload to ACC
 layout: default
-wip: true
-description: 'This is the English content for the command documentation.'
-description_es: 'Este es el contenido en español para la documentación del comando.'
+description: 'The **UploadToAcc** command uploads local Revit models to Autodesk Construction Cloud (ACC) in batches, without requiring you to open each model manually.'
+description_es: 'El comando **UploadToAcc** carga modelos locales de Revit en Autodesk Construction Cloud (ACC) por lotes, sin necesidad de abrir cada modelo manualmente.'
 ribbon_panel: General
 ribbon_order: 17
 ribbon_button_text: "Upload\nto ACC"

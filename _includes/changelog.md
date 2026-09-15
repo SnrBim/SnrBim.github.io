@@ -1,4 +1,4 @@
-﻿## [26.16] — 2026-09-14
+## [26.16] — 2026-09-14
 *Model audit*: Added an alias summary to the configuration dialog, showing aliases and documents without matches in Revit or Excel, plus a **Copy missing** command for preparing new configuration rows.
 
 ## [26.15] — 2026-09-14
