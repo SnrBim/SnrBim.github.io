@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Upload to ACC" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The UploadToAcc command uploads local Revit models to Autodesk Construction Cloud (ACC) in batches, without requiring you to open each model manually." />
+<meta property="og:description" content="The UploadToAcc command uploads local Revit models to Autodesk Construction Cloud (ACC) in batches, without requiring you to open each model manually." />
 <link rel="canonical" href="https://snrbim.github.io/es/docs/upload-to-acc/" />
 <meta property="og:url" content="https://snrbim.github.io/es/docs/upload-to-acc/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Upload to ACC" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Upload to ACC","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/upload-to-acc/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The UploadToAcc command uploads local Revit models to Autodesk Construction Cloud (ACC) in batches, without requiring you to open each model manually.","headline":"Upload to ACC","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/upload-to-acc/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -282,10 +282,10 @@ to rebar</span>
     </div>
     <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
 </div>
-<h1 class="no_toc" id="título-del-comando-en-español">
+<h1 class="no_toc" id="uploadtoacc---guía-de-uso">
   
   
-    <a href="#título-del-comando-en-español" class="anchor-heading" aria-labelledby="título-del-comando-en-español"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Título del Comando en Español
+    <a href="#uploadtoacc---guía-de-uso" class="anchor-heading" aria-labelledby="uploadtoacc---guía-de-uso"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> UploadToAcc - Guía de uso
   
   
 </h1>
@@ -295,10 +295,172 @@ to rebar</span>
   <summary class="text-delta">
     Tabla de contenidos
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#descripción" id="markdown-toc-descripción">Descripción</a></li>
+  <li><a href="#cómo-obtener-las-url-necesarias-de-acc" id="markdown-toc-cómo-obtener-las-url-necesarias-de-acc">Cómo obtener las URL necesarias de ACC</a>    <ol>
+      <li><a href="#1-url-de-cuenta--proyecto" id="markdown-toc-1-url-de-cuenta--proyecto">1. URL de cuenta + proyecto</a></li>
+      <li><a href="#2-url-de-proyecto--carpeta" id="markdown-toc-2-url-de-proyecto--carpeta">2. URL de proyecto + carpeta</a></li>
+    </ol>
+  </li>
+  <li><a href="#proceso-de-carga" id="markdown-toc-proceso-de-carga">Proceso de carga</a></li>
+  <li><a href="#notas-importantes" id="markdown-toc-notas-importantes">Notas importantes</a></li>
+  <li><a href="#solución-de-problemas" id="markdown-toc-solución-de-problemas">Solución de problemas</a></li>
+</ol>
 
 </details>
+<h2 id="descripción">
+  
+  
+    <a href="#descripción" class="anchor-heading" aria-labelledby="descripción"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Descripción
+  
+  
+</h2>
+    
 
-<p>Este es el contenido en español para la documentación del comando.</p>
+<p>El comando <strong>UploadToAcc</strong> carga modelos locales de Revit en Autodesk Construction Cloud (ACC) por lotes, sin necesidad de abrir cada modelo manualmente.</p>
+<h2 id="cómo-obtener-las-url-necesarias-de-acc">
+  
+  
+    <a href="#cómo-obtener-las-url-necesarias-de-acc" class="anchor-heading" aria-labelledby="cómo-obtener-las-url-necesarias-de-acc"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Cómo obtener las URL necesarias de ACC
+  
+  
+</h2>
+    
+
+<p>Para cargar modelos, proporciona dos URL desde la interfaz web de ACC:</p>
+<h3 id="1-url-de-cuenta--proyecto">
+  
+  
+    <a href="#1-url-de-cuenta--proyecto" class="anchor-heading" aria-labelledby="1-url-de-cuenta--proyecto"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. URL de cuenta + proyecto
+  
+  
+</h3>
+    
+
+<p><strong>Pasos:</strong></p>
+
+<ol>
+  <li>Abre https://acc.autodesk.com/insight en el navegador
+    <ul>
+      <li>Se te redirigirá automáticamente a uno de tus proyectos</li>
+    </ul>
+  </li>
+  <li>
+    <p>Busca el menú desplegable para seleccionar el proyecto en la parte superior de la página</p>
+  </li>
+  <li>
+    <p>Selecciona el proyecto necesario</p>
+  </li>
+  <li>Copia la URL de la barra de direcciones del navegador</li>
+</ol>
+
+<p><strong>Formato de la URL:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://acc.autodesk.com/insight/accounts/{accountId}/projects/{projectId}/my-dashboard
+https://acc.autodesk.com/insight/accounts/11111111-1111-1111-1111-111111111111/projects/22222222-2222-2222-2222-222222222222/my-dashboard
+
+</code></pre></div></div>
+<p><img src="image.png" alt="Aspecto del menú de selección del proyecto" /></p>
+<h3 id="2-url-de-proyecto--carpeta">
+  
+  
+    <a href="#2-url-de-proyecto--carpeta" class="anchor-heading" aria-labelledby="2-url-de-proyecto--carpeta"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. URL de proyecto + carpeta
+  
+  
+</h3>
+    
+
+<p><strong>Pasos:</strong></p>
+
+<ol>
+  <li>En el mismo proyecto, cambia de <strong>Insight</strong> a <strong>Docs</strong>
+    <ul>
+      <li>Utiliza el selector situado en la esquina superior izquierda de la página</li>
+    </ul>
+  </li>
+  <li>
+    <p>Se abrirá la estructura de archivos del proyecto</p>
+  </li>
+  <li>
+    <p>Ve a la carpeta donde quieres cargar los modelos</p>
+  </li>
+  <li>Copia la URL de la barra de direcciones del navegador</li>
+</ol>
+
+<p><strong>Formato de la URL:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://acc.autodesk.com/docs/files/projects/{projectId}?folderUrn={folderId}
+https://acc.autodesk.com/docs/files/projects/22222222-2222-2222-2222-222222222222?folderUrn={folderId}
+</code></pre></div></div>
+<p><img src="image-1.png" alt="Aspecto del cambio de Insight a Docs" /></p>
+<h2 id="proceso-de-carga">
+  
+  
+    <a href="#proceso-de-carga" class="anchor-heading" aria-labelledby="proceso-de-carga"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Proceso de carga
+  
+  
+</h2>
+    
+
+<ol>
+  <li><strong>Seleccionar archivos</strong>
+    <ul>
+      <li>Haz clic en el botón “Select files…”</li>
+      <li>Selecciona uno o varios archivos <code class="language-plaintext highlighter-rouge">.rvt</code></li>
+    </ul>
+  </li>
+  <li><strong>Introducir las URL</strong>
+    <ul>
+      <li>Pega la primera URL (Cuenta + Proyecto) en el campo “Account + Project URL”</li>
+      <li>Pega la segunda URL (Proyecto + Carpeta) en el campo “Project + Folder URL”</li>
+    </ul>
+  </li>
+  <li><strong>Etiqueta (opcional)</strong>
+    <ul>
+      <li>Se genera automáticamente un nombre único para este par de URL</li>
+      <li>Puedes cambiarlo para identificarlo más fácilmente. Se recomienda el formato NombreCortoDelProyecto NombreDeLaCarpeta.</li>
+      <li>Utiliza el botón “History…” para seleccionar URL utilizadas anteriormente</li>
+    </ul>
+  </li>
+  <li><strong>Cargar</strong>
+    <ul>
+      <li>Haz clic en el botón “Upload”</li>
+      <li>Se mostrarán el progreso y el tiempo transcurrido para cada archivo</li>
+      <li>Cuando finalice el proceso, aparecerá un diálogo con los resultados</li>
+    </ul>
+  </li>
+</ol>
+<h2 id="notas-importantes">
+  
+  
+    <a href="#notas-importantes" class="anchor-heading" aria-labelledby="notas-importantes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Notas importantes
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Worksharing:</strong> Si el modelo no utiliza worksharing, la herramienta activará esta función automáticamente antes de cargarlo</li>
+  <li><strong>Tiempo de carga:</strong> Ten paciencia: incluso un proyecto vacío (300 KB) tarda entre 20 y 30 segundos en cargarse. Los modelos reales pueden tardar bastante más.</li>
+  <li><strong>Historial:</strong> Los pares de URL se guardan automáticamente en el historial para volver a utilizarlos</li>
+  <li><strong>Cancelación:</strong> El proceso se puede cancelar con el botón “Cancel” de la barra de progreso. El archivo actual terminará de cargarse, pero los siguientes archivos no se procesarán.</li>
+</ul>
+<h2 id="solución-de-problemas">
+  
+  
+    <a href="#solución-de-problemas" class="anchor-heading" aria-labelledby="solución-de-problemas"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solución de problemas
+  
+  
+</h2>
+    
+
+<p>Si se producen errores:</p>
+
+<ol>
+  <li>Comprueba que has iniciado sesión en tu cuenta en Revit</li>
+  <li>Verifica que las URL se han copiado completas, sin truncamientos</li>
+  <li>Utiliza el botón “Open Log” para consultar los registros detallados</li>
+  <li>Comprueba que tienes permisos para cargar archivos en la carpeta de proyecto seleccionada</li>
+  <li>Comprueba que los archivos no sean vínculos en los documentos abiertos actualmente</li>
+</ol>
 
           
 

@@ -1526,54 +1526,89 @@
     "relUrl": "/docs/textomorph/"
   },"218": {
     "doc": "Upload to ACC",
-    "title": "Título del Comando en Español",
-    "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
-    "url": "/es/docs/upload-to-acc/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
+    "title": "UploadToAcc - Guía de uso",
+    "content": "Tabla de contenidos . | Descripción | Cómo obtener las URL necesarias de ACC . | 1. URL de cuenta + proyecto | 2. URL de proyecto + carpeta | . | Proceso de carga | Notas importantes | Solución de problemas | . ",
+    "url": "/es/docs/upload-to-acc/#uploadtoacc---gu%C3%ADa-de-uso",
     
-    "relUrl": "/docs/upload-to-acc/#título-del-comando-en-español"
+    "relUrl": "/docs/upload-to-acc/#uploadtoacc---guía-de-uso"
   },"219": {
+    "doc": "Upload to ACC",
+    "title": "Descripción",
+    "content": "El comando UploadToAcc carga modelos locales de Revit en Autodesk Construction Cloud (ACC) por lotes, sin necesidad de abrir cada modelo manualmente. ",
+    "url": "/es/docs/upload-to-acc/#descripci%C3%B3n",
+    
+    "relUrl": "/docs/upload-to-acc/#descripción"
+  },"220": {
+    "doc": "Upload to ACC",
+    "title": "Cómo obtener las URL necesarias de ACC",
+    "content": "Para cargar modelos, proporciona dos URL desde la interfaz web de ACC: . 1. URL de cuenta + proyecto . Pasos: . | Abre https://acc.autodesk.com/insight en el navegador . | Se te redirigirá automáticamente a uno de tus proyectos | . | Busca el menú desplegable para seleccionar el proyecto en la parte superior de la página . | Selecciona el proyecto necesario . | Copia la URL de la barra de direcciones del navegador | . Formato de la URL: . https://acc.autodesk.com/insight/accounts/{accountId}/projects/{projectId}/my-dashboard https://acc.autodesk.com/insight/accounts/11111111-1111-1111-1111-111111111111/projects/22222222-2222-2222-2222-222222222222/my-dashboard . 2. URL de proyecto + carpeta . Pasos: . | En el mismo proyecto, cambia de Insight a Docs . | Utiliza el selector situado en la esquina superior izquierda de la página | . | Se abrirá la estructura de archivos del proyecto . | Ve a la carpeta donde quieres cargar los modelos . | Copia la URL de la barra de direcciones del navegador | . Formato de la URL: . https://acc.autodesk.com/docs/files/projects/{projectId}?folderUrn={folderId} https://acc.autodesk.com/docs/files/projects/22222222-2222-2222-2222-222222222222?folderUrn={folderId} . ",
+    "url": "/es/docs/upload-to-acc/#c%C3%B3mo-obtener-las-url-necesarias-de-acc",
+    
+    "relUrl": "/docs/upload-to-acc/#cómo-obtener-las-url-necesarias-de-acc"
+  },"221": {
+    "doc": "Upload to ACC",
+    "title": "Proceso de carga",
+    "content": ". | Seleccionar archivos . | Haz clic en el botón “Select files…” | Selecciona uno o varios archivos .rvt | . | Introducir las URL . | Pega la primera URL (Cuenta + Proyecto) en el campo “Account + Project URL” | Pega la segunda URL (Proyecto + Carpeta) en el campo “Project + Folder URL” | . | Etiqueta (opcional) . | Se genera automáticamente un nombre único para este par de URL | Puedes cambiarlo para identificarlo más fácilmente. Se recomienda el formato NombreCortoDelProyecto NombreDeLaCarpeta. | Utiliza el botón “History…” para seleccionar URL utilizadas anteriormente | . | Cargar . | Haz clic en el botón “Upload” | Se mostrarán el progreso y el tiempo transcurrido para cada archivo | Cuando finalice el proceso, aparecerá un diálogo con los resultados | . | . ",
+    "url": "/es/docs/upload-to-acc/#proceso-de-carga",
+    
+    "relUrl": "/docs/upload-to-acc/#proceso-de-carga"
+  },"222": {
+    "doc": "Upload to ACC",
+    "title": "Notas importantes",
+    "content": ". | Worksharing: Si el modelo no utiliza worksharing, la herramienta activará esta función automáticamente antes de cargarlo | Tiempo de carga: Ten paciencia: incluso un proyecto vacío (300 KB) tarda entre 20 y 30 segundos en cargarse. Los modelos reales pueden tardar bastante más. | Historial: Los pares de URL se guardan automáticamente en el historial para volver a utilizarlos | Cancelación: El proceso se puede cancelar con el botón “Cancel” de la barra de progreso. El archivo actual terminará de cargarse, pero los siguientes archivos no se procesarán. | . ",
+    "url": "/es/docs/upload-to-acc/#notas-importantes",
+    
+    "relUrl": "/docs/upload-to-acc/#notas-importantes"
+  },"223": {
+    "doc": "Upload to ACC",
+    "title": "Solución de problemas",
+    "content": "Si se producen errores: . | Comprueba que has iniciado sesión en tu cuenta en Revit | Verifica que las URL se han copiado completas, sin truncamientos | Utiliza el botón “Open Log” para consultar los registros detallados | Comprueba que tienes permisos para cargar archivos en la carpeta de proyecto seleccionada | Comprueba que los archivos no sean vínculos en los documentos abiertos actualmente | . ",
+    "url": "/es/docs/upload-to-acc/#soluci%C3%B3n-de-problemas",
+    
+    "relUrl": "/docs/upload-to-acc/#solución-de-problemas"
+  },"224": {
     "doc": "Upload to ACC",
     "title": "Upload to ACC",
     "content": "… Read parameters Clone &amp;shift Upload to ACC Position check Convert to rebar General … ",
     "url": "/es/docs/upload-to-acc/",
     
     "relUrl": "/docs/upload-to-acc/"
-  },"220": {
+  },"225": {
     "doc": "Create dampers",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/create-dampers/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/create-dampers/#título-del-comando-en-español"
-  },"221": {
+  },"226": {
     "doc": "Create dampers",
     "title": "Create dampers",
     "content": "… Create hangers Adjust hangers Create openings Create dampers Create along path Tag on views MEC … ",
     "url": "/es/docs/create-dampers/",
     
     "relUrl": "/docs/create-dampers/"
-  },"222": {
+  },"227": {
     "doc": "Clone&Shift",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/cloneshift/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/cloneshift/#título-del-comando-en-español"
-  },"223": {
+  },"228": {
     "doc": "Clone&Shift",
     "title": "Clone&Shift",
     "content": "… History Read parameters Clone &amp;shift Upload to ACC Position check General … ",
     "url": "/es/docs/cloneshift/",
     
     "relUrl": "/docs/cloneshift/"
-  },"224": {
+  },"229": {
     "doc": "Read parameters from Excel",
     "title": "Título del Comando en Español",
     "content": "Tabla de contenidos Este es el contenido en español para la documentación del comando. ",
     "url": "/es/docs/read-parameters-from-excel/#t%C3%ADtulo-del-comando-en-espa%C3%B1ol",
     
     "relUrl": "/docs/read-parameters-from-excel/#título-del-comando-en-español"
-  },"225": {
+  },"230": {
     "doc": "Read parameters from Excel",
     "title": "Read parameters from Excel",
     "content": "… Sync space params History Read parameters Clone &amp;shift Upload to ACC General … ",

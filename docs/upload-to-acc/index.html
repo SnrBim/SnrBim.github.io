@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Upload to ACC" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The UploadToAcc command uploads local Revit models to Autodesk Construction Cloud (ACC) in batches, without requiring you to open each model manually." />
+<meta property="og:description" content="The UploadToAcc command uploads local Revit models to Autodesk Construction Cloud (ACC) in batches, without requiring you to open each model manually." />
 <link rel="canonical" href="https://snrbim.github.io/docs/upload-to-acc/" />
 <meta property="og:url" content="https://snrbim.github.io/docs/upload-to-acc/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Upload to ACC" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Upload to ACC","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/upload-to-acc/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The UploadToAcc command uploads local Revit models to Autodesk Construction Cloud (ACC) in batches, without requiring you to open each model manually.","headline":"Upload to ACC","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/upload-to-acc/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -282,10 +282,10 @@ to rebar</span>
     </div>
     <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
 </div>
-<h1 class="no_toc" id="english-command-title">
+<h1 class="no_toc" id="uploadtoacc---user-guide">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#uploadtoacc---user-guide" class="anchor-heading" aria-labelledby="uploadtoacc---user-guide"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> UploadToAcc - User Guide
   
   
 </h1>
@@ -295,10 +295,172 @@ to rebar</span>
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#description" id="markdown-toc-description">Description</a></li>
+  <li><a href="#how-to-get-the-required-urls-from-acc" id="markdown-toc-how-to-get-the-required-urls-from-acc">How to Get the Required URLs from ACC</a>    <ol>
+      <li><a href="#1-account--project-url" id="markdown-toc-1-account--project-url">1. Account + Project URL</a></li>
+      <li><a href="#2-project--folder-url" id="markdown-toc-2-project--folder-url">2. Project + Folder URL</a></li>
+    </ol>
+  </li>
+  <li><a href="#upload-process" id="markdown-toc-upload-process">Upload Process</a></li>
+  <li><a href="#important-notes" id="markdown-toc-important-notes">Important Notes</a></li>
+  <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a></li>
+</ol>
 
 </details>
+<h2 id="description">
+  
+  
+    <a href="#description" class="anchor-heading" aria-labelledby="description"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Description
+  
+  
+</h2>
+    
 
-<p>This is the English content for the command documentation.</p>
+<p>The <strong>UploadToAcc</strong> command uploads local Revit models to Autodesk Construction Cloud (ACC) in batches, without requiring you to open each model manually.</p>
+<h2 id="how-to-get-the-required-urls-from-acc">
+  
+  
+    <a href="#how-to-get-the-required-urls-from-acc" class="anchor-heading" aria-labelledby="how-to-get-the-required-urls-from-acc"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How to Get the Required URLs from ACC
+  
+  
+</h2>
+    
+
+<p>To upload models, provide two URLs from the ACC web interface:</p>
+<h3 id="1-account--project-url">
+  
+  
+    <a href="#1-account--project-url" class="anchor-heading" aria-labelledby="1-account--project-url"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Account + Project URL
+  
+  
+</h3>
+    
+
+<p><strong>Steps:</strong></p>
+
+<ol>
+  <li>Open https://acc.autodesk.com/insight in your browser
+    <ul>
+      <li>You will be automatically redirected to one of your projects</li>
+    </ul>
+  </li>
+  <li>
+    <p>Find the project selection drop-down menu at the top of the page</p>
+  </li>
+  <li>
+    <p>Select the required project</p>
+  </li>
+  <li>Copy the URL from the browser address bar</li>
+</ol>
+
+<p><strong>URL format:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://acc.autodesk.com/insight/accounts/{accountId}/projects/{projectId}/my-dashboard
+https://acc.autodesk.com/insight/accounts/11111111-1111-1111-1111-111111111111/projects/22222222-2222-2222-2222-222222222222/my-dashboard
+
+</code></pre></div></div>
+<p><img src="image.png" alt="How the project selection menu looks" /></p>
+<h3 id="2-project--folder-url">
+  
+  
+    <a href="#2-project--folder-url" class="anchor-heading" aria-labelledby="2-project--folder-url"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Project + Folder URL
+  
+  
+</h3>
+    
+
+<p><strong>Steps:</strong></p>
+
+<ol>
+  <li>In the same project, switch from <strong>Insight</strong> to <strong>Docs</strong>
+    <ul>
+      <li>Use the switcher in the upper-left corner of the page</li>
+    </ul>
+  </li>
+  <li>
+    <p>The project file structure will open</p>
+  </li>
+  <li>
+    <p>Navigate to the folder where you want to upload the models</p>
+  </li>
+  <li>Copy the URL from the browser address bar</li>
+</ol>
+
+<p><strong>URL format:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://acc.autodesk.com/docs/files/projects/{projectId}?folderUrn={folderId}
+https://acc.autodesk.com/docs/files/projects/22222222-2222-2222-2222-222222222222?folderUrn={folderId}
+</code></pre></div></div>
+<p><img src="image-1.png" alt="How the switch from Insight to Docs looks" /></p>
+<h2 id="upload-process">
+  
+  
+    <a href="#upload-process" class="anchor-heading" aria-labelledby="upload-process"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Upload Process
+  
+  
+</h2>
+    
+
+<ol>
+  <li><strong>Select files</strong>
+    <ul>
+      <li>Click the “Select files…” button</li>
+      <li>Select one or more <code class="language-plaintext highlighter-rouge">.rvt</code> files</li>
+    </ul>
+  </li>
+  <li><strong>Enter URLs</strong>
+    <ul>
+      <li>Paste the first URL (Account + Project) into the “Account + Project URL” field</li>
+      <li>Paste the second URL (Project + Folder) into the “Project + Folder URL” field</li>
+    </ul>
+  </li>
+  <li><strong>Label (optional)</strong>
+    <ul>
+      <li>A unique name for this URL pair is generated automatically</li>
+      <li>You can change it to make it easier to recognize. The recommended format is ShortProjectName FolderName.</li>
+      <li>Use the “History…” button to select previously used URLs</li>
+    </ul>
+  </li>
+  <li><strong>Upload</strong>
+    <ul>
+      <li>Click the “Upload” button</li>
+      <li>Progress and elapsed time will be shown for each file</li>
+      <li>A results dialog will appear when the process is complete</li>
+    </ul>
+  </li>
+</ol>
+<h2 id="important-notes">
+  
+  
+    <a href="#important-notes" class="anchor-heading" aria-labelledby="important-notes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Important Notes
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Worksharing:</strong> If the model is not workshared, the tool will enable this feature automatically before uploading</li>
+  <li><strong>Upload time:</strong> Please be patient - even an empty project (300 KB) takes 20-30 seconds to upload. Real models may take considerably longer.</li>
+  <li><strong>History:</strong> URL pairs are automatically saved to history for reuse</li>
+  <li><strong>Cancellation:</strong> The process can be cancelled with the “Cancel” button in the progress bar. The current file will finish uploading, but subsequent files will not be processed.</li>
+</ul>
+<h2 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h2>
+    
+
+<p>If errors occur:</p>
+
+<ol>
+  <li>Make sure you are signed in to your account in Revit</li>
+  <li>Check that the URLs were copied in full, without truncation</li>
+  <li>Use the “Open Log” button to view detailed logs</li>
+  <li>Make sure you have permission to upload to the selected project folder</li>
+  <li>Make sure the files are not links in currently open documents</li>
+</ol>
 
           
 
