@@ -1,3 +1,8 @@
+﻿## [26.17] — 2026-09-18
+*Link manager*: Fixed cloud link path display.
+*View history*: Fixed `Alt+Tab` being intercepted as view navigation.
+*Create Hangers* and *Create openings*: Various minor improvements and fixes, including better handling of the section box and linked models.
+
 ## [26.16] — 2026-09-14
 *Model audit*: Added an alias summary to the configuration dialog, showing aliases and documents without matches in Revit or Excel, plus a **Copy missing** command for preparing new configuration rows.
 
