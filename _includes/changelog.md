@@ -1,4 +1,7 @@
-﻿## [26.17] — 2026-09-18
+﻿## [26.18] — 2026-09-22
+*Find empty parameters*: Added a command for checking empty element and type parameters in the current model and loaded links. Supports configurable categories and exports a summary Excel report.
+
+## [26.17] — 2026-09-18
 *Link manager*: Fixed cloud link path display.
 *View history*: Fixed `Alt+Tab` being intercepted as view navigation.
 *Create Hangers* and *Create openings*: Various minor improvements and fixes, including better handling of the section box and linked models.

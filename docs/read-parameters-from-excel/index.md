@@ -6,7 +6,7 @@ wip: true
 description: 'This is the English content for the command documentation.'
 description_es: 'Este es el contenido en español para la documentación del comando.'
 ribbon_panel: General
-ribbon_order: 15
+ribbon_order: 16
 ribbon_button_text: "Read\nparameters"
 icon: /docs/read-parameters-from-excel/logo.png
 namespace: read-parameters-from-excel

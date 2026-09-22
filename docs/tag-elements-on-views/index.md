@@ -6,7 +6,7 @@ wip: true
 description: 'This is the English content for the command documentation.'
 description_es: 'Este es el contenido en español para la documentación del comando.'
 ribbon_panel: MEP mechanical
-ribbon_order: 30
+ribbon_order: 31
 ribbon_button_text: "Tag\non views"
 icon: /docs/tag-elements-on-views/logo.png
 namespace: tag-elements-on-views
