@@ -1,4 +1,9 @@
-﻿## [26.18] — 2026-09-22
+﻿## [26.19] — 2026-09-23
+*Create Openings*: Pipe sizing now uses the outside diameter.
+*Create Openings*: The minimum size threshold is now applied to merged opening groups, so multiple small MEP elements can jointly qualify for an opening.
+*Create Openings*: Added optional circular openings for round pipes and ducts.
+
+## [26.18] — 2026-09-22
 *Find empty parameters*: Added a command for checking empty element and type parameters in the current model and loaded links. Supports configurable categories and exports a summary Excel report.
 
 ## [26.17] — 2026-09-18
