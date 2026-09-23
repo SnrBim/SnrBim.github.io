@@ -1,4 +1,4 @@
-﻿## [26.19] — 2026-09-23
+## [26.19] — 2026-09-23
 *Create Openings*: Pipe sizing now uses the outside diameter.
 *Create Openings*: The minimum size threshold is now applied to merged opening groups, so multiple small MEP elements can jointly qualify for an opening.
 *Create Openings*: Added optional circular openings for round pipes and ducts.
