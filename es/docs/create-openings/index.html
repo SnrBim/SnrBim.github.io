@@ -342,6 +342,7 @@ along path</span>
   </li>
   <li><strong>Parámetros de vanos</strong>:
     <ul>
+      <li><strong>Crear vanos circulares para tuberías y conductos redondos</strong>: Si se marca, las intersecciones individuales con tuberías y conductos redondos crean vanos circulares. Si no se marca, crean vanos rectangulares. Los vanos combinados siempre son rectangulares. La holgura, el aislamiento y el redondeo se tienen en cuenta al calcular el tamaño del vano circular.</li>
       <li><strong>Holgura (mm)</strong>: Un margen añadido a las dimensiones de cada elemento MEP. Aumenta el tamaño final del vano. <em>Por defecto: 30 mm.</em></li>
       <li><strong>Umbral de unión (mm)</strong>: El ancho máximo de un tabique entre vanos. Si el espacio entre los bordes de dos vanos adyacentes es menor que este valor, se unirán en uno solo. <em>Por defecto: 100 mm.</em></li>
       <li><strong>Parámetro para información</strong>: El nombre del parámetro de texto en el muro donde se escribirá la lista final de todos los tamaños de vanos. <em>Por defecto: Comments.</em></li>
@@ -427,6 +428,8 @@ El informe contiene líneas para cada acción en el formato: <code class="langua
   
 </h2>
     
+
+<p>2026-09-23 Se añadió la opción de crear vanos circulares para tuberías y conductos redondos. Para calcular el tamaño de las tuberías se utiliza ahora el diámetro exterior. El tamaño mínimo se comprueba en el grupo combinado, en lugar de descartar elementos pequeños antes de unirlos.</p>
 
 <p>2026-07-21 Transición a Familias: En lugar de “huecos de muro” nativos, la herramienta ahora coloca familias basadas en cara (Face-Based) para preservar anotaciones y etiquetas.</p>
 

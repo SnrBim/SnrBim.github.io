@@ -342,6 +342,7 @@ along path</span>
   </li>
   <li><strong>Opening Parameters</strong>:
     <ul>
+      <li><strong>Create circular openings for round pipes and ducts</strong>: When checked, individual intersections with round pipes and round ducts create circular openings. When unchecked, they create rectangular openings. Merged openings are always rectangular. Air gap, insulation, and rounding are included in the circular opening size.</li>
       <li><strong>Air gap (mm)</strong>: A buffer added to the dimensions of each MEP element. This increases the final size of the opening. <em>Default: 30 mm.</em></li>
       <li><strong>Merge threshold (mm)</strong>: The maximum width of a wall section between openings. If the gap between the edges of two adjacent openings is less than this value, they will be merged into one. <em>Default: 100 mm.</em></li>
       <li><strong>Info Parameter</strong>: The name of the text parameter in the wall where the final list of all opening sizes will be written. <em>Default: Comments.</em></li>
@@ -427,6 +428,8 @@ The report contains lines for each action in the format: <code class="language-p
   
 </h2>
     
+
+<p>2026-09-23 Added circular openings for round pipes and ducts. Pipe sizing now uses the outside diameter. The minimum size threshold is now checked against the merged group instead of filtering out individual small elements before merging.</p>
 
 <p>2026-07-21 Transition to Families: Instead of native “wall openings”, the tool now places Face-Based families to preserve annotations and tags.</p>
 
