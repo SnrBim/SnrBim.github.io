@@ -7,3 +7,5 @@ _site/
 # There was an issue with commenting vendor out. Probably it should be commented to run ruby server locally, but uncommented for GH pages
 # vendor/
 /.history
+docs/create-hangers/Grouping*_th.jpg
+docs/create-hangers/Individual*_th.jpg

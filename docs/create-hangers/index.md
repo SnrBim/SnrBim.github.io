@@ -2,9 +2,8 @@
 parent: Common
 title: Create hangers
 layout: default
-wip: true
-description: 'This is the English content for the command documentation.'
-description_es: 'Este es el contenido en español para la documentación del comando.'
+description: 'The **Create hangers** command places hangers for pipes, ducts, and cable trays, and updates existing hangers.'
+description_es: 'El comando **Create hangers** coloca soportes para tuberías, conductos y bandejas portacables, y actualiza los soportes existentes.'
 ribbon_panel: MEP mechanical
 ribbon_order: 26
 ribbon_separator_before: 3

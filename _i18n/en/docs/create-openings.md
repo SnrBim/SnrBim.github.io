@@ -29,7 +29,7 @@ The command automates the process of creating and updating openings in walls for
 
 Before running the command, ensure that your 3D view is set up to show all the walls and MEP elements you want to process.
 
-> Download the opening family [OLS_Opening.rfa (Revit 2023)](OLS_Opening.rfa)  
+> Demo project containing the `OLS_Opening.rfa` family: [download Demo23.rvt](https://github.com/SnrBim/BimTools/releases/download/v26.20/Demo23.rvt).
 > To download the family, right-click the link and select "Save link as...".
 
 ### Usage

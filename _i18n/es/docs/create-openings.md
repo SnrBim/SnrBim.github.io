@@ -29,7 +29,7 @@ El comando automatiza el proceso de creación y actualización de vanos en muros
 
 Antes de ejecutar el comando, asegúrese de que su vista 3D esté configurada para mostrar todos los muros y elementos MEP que desea procesar.
 
-> Descargar la familia de vanos [OLS_Opening.rfa (Revit 2023)](OLS_Opening.rfa)  
+> Proyecto de demostración con la familia `OLS_Opening.rfa`: [descargar Demo23.rvt](https://github.com/SnrBim/BimTools/releases/download/v26.20/Demo23.rvt).
 > Para descargarla, haga clic con el botón derecho en el enlace y seleccione «Guardar enlace como…».
 
 ### Uso
