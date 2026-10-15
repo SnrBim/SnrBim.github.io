@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Create hangers" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The Create hangers command places hangers for pipes, ducts, and cable trays, and updates existing hangers." />
+<meta property="og:description" content="The Create hangers command places hangers for pipes, ducts, and cable trays, and updates existing hangers." />
 <link rel="canonical" href="https://snrbim.github.io/docs/create-hangers/" />
 <meta property="og:url" content="https://snrbim.github.io/docs/create-hangers/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,11 +71,12 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Create hangers" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Create hangers","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/create-hangers/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The Create hangers command places hangers for pipes, ducts, and cable trays, and updates existing hangers.","headline":"Create hangers","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/assets/images/logo.png"}},"url":"https://snrbim.github.io/docs/create-hangers/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   <link rel="stylesheet" href="/assets/css/commands.css">
+<link rel="stylesheet" href="/assets/css/image-compare.css">
 
 
 </head>
@@ -284,10 +285,10 @@ dampers</span>
     </div>
     <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
 </div>
-<h1 class="no_toc" id="english-command-title">
+<h1 class="no_toc" id="create-and-update-hangers">
   
   
-    <a href="#english-command-title" class="anchor-heading" aria-labelledby="english-command-title"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> English Command Title
+    <a href="#create-and-update-hangers" class="anchor-heading" aria-labelledby="create-and-update-hangers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create and Update Hangers
   
   
 </h1>
@@ -297,10 +298,249 @@ dampers</span>
   <summary class="text-delta">
     Table of contents
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#hanger-placement-examples" id="markdown-toc-hanger-placement-examples">Hanger placement examples</a></li>
+  <li><a href="#create-hangers" id="markdown-toc-create-hangers">Create hangers</a>    <ol>
+      <li><a href="#1-set-up-the-view-and-select-the-services" id="markdown-toc-1-set-up-the-view-and-select-the-services">1. Set up the view and select the services</a></li>
+      <li><a href="#2-configure-distribution-settings" id="markdown-toc-2-configure-distribution-settings">2. Configure distribution settings</a></li>
+      <li><a href="#3-set-the-upper-attachment" id="markdown-toc-3-set-the-upper-attachment">3. Set the upper attachment</a></li>
+      <li><a href="#4-configure-clash-analysis" id="markdown-toc-4-configure-clash-analysis">4. Configure clash analysis</a></li>
+      <li><a href="#5-choose-mounting-options" id="markdown-toc-5-choose-mounting-options">5. Choose mounting options</a></li>
+      <li><a href="#6-choose-hanger-grouping" id="markdown-toc-6-choose-hanger-grouping">6. Choose hanger grouping</a></li>
+      <li><a href="#7-create-the-hangers" id="markdown-toc-7-create-the-hangers">7. Create the hangers</a></li>
+    </ol>
+  </li>
+  <li><a href="#update-existing-hangers" id="markdown-toc-update-existing-hangers">Update existing hangers</a>    <ol>
+      <li><a href="#1-select-the-hangers" id="markdown-toc-1-select-the-hangers">1. Select the hangers</a></li>
+      <li><a href="#2-configure-attachments-and-clash-analysis" id="markdown-toc-2-configure-attachments-and-clash-analysis">2. Configure attachments and clash analysis</a></li>
+      <li><a href="#3-choose-what-to-update--create-vs-update" id="markdown-toc-3-choose-what-to-update--create-vs-update">3. Choose what to update — Create vs Update</a></li>
+      <li><a href="#4-run-the-update" id="markdown-toc-4-run-the-update">4. Run the update</a></li>
+    </ol>
+  </li>
+</ol>
 
 </details>
 
-<p>This is the English content for the command documentation.</p>
+<p>The <strong>Create hangers</strong> command places hangers for pipes, ducts, and cable trays, and updates existing hangers.</p>
+<h3 id="hanger-placement-examples">
+  
+  
+    <a href="#hanger-placement-examples" class="anchor-heading" aria-labelledby="hanger-placement-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hanger placement examples
+  
+  
+</h3>
+    
+
+<div class="image-compare-gallery">
+	<a class="image-compare" href="11.png" src="12.png"><img src="11.png" width="240" loading="lazy" alt="1. Round ducts of different sizes and quantities" /></a>
+	<a class="image-compare" href="21.png" src="22.png"><img src="21.png" width="240" loading="lazy" alt="2. Round ducts of different sizes and quantities (longest selected)" /></a>
+	<a class="image-compare" href="31.png" src="32.png"><img src="31.png" width="240" loading="lazy" alt="3. Rectangular ducts of different sizes" /></a>
+	<a class="image-compare" href="41.png" src="42.png"><img src="41.png" width="240" loading="lazy" alt="4. Different shapes grouped together" /></a>
+	<a class="image-compare" href="51.png" src="52.png"><img src="51.png" width="240" loading="lazy" alt="5. Pipe supports attached to walls" /></a>
+	<a class="image-compare" href="61.png" src="62.png"><img src="61.png" width="240" loading="lazy" alt="6. Automatic search for ceilings and beams" /></a>
+	<a class="image-compare" href="71.png" src="72.png"><img src="71.png" width="240" loading="lazy" alt="7. Clash detection" /></a>
+</div>
+
+<p><strong>Demo project with families:</strong> <a href="https://github.com/SnrBim/BimTools/releases/download/v26.20/Demo23.rvt">download Demo23.rvt</a>.</p>
+<h2 id="create-hangers">
+  
+  
+    <a href="#create-hangers" class="anchor-heading" aria-labelledby="create-hangers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create hangers
+  
+  
+</h2>
+    
+<h3 id="1-set-up-the-view-and-select-the-services">
+  
+  
+    <a href="#1-set-up-the-view-and-select-the-services" class="anchor-heading" aria-labelledby="1-set-up-the-view-and-select-the-services"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Set up the view and select the services
+  
+  
+</h3>
+    
+
+<p>Open a 3D view and select the services that need hangers. Then run <strong>Create hangers</strong>. You can select elements in the host model and individual elements from loaded Revit links.</p>
+
+<p>To limit hanger placement to a specific area, set up the <strong>Section Box</strong> before running the command. Hanger points are distributed along the part of each service inside the crop region.</p>
+<h3 id="2-configure-distribution-settings">
+  
+  
+    <a href="#2-configure-distribution-settings" class="anchor-heading" aria-labelledby="2-configure-distribution-settings"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Configure distribution settings
+  
+  
+</h3>
+    
+
+<p>Set the spacing and offsets in millimeters:</p>
+
+<ul>
+  <li><strong>Max distance between points</strong> — the maximum spacing between hanger points.</li>
+  <li><strong>Distribute evenly</strong> — places hangers at equal intervals without exceeding the maximum spacing. When this option is off, hangers are placed at the specified spacing and the remaining interval at one end is shorter.</li>
+  <li><strong>Offset from duct ends</strong> — the offset from the ends of the service.</li>
+</ul>
+<h3 id="3-set-the-upper-attachment">
+  
+  
+    <a href="#3-set-the-upper-attachment" class="anchor-heading" aria-labelledby="3-set-the-upper-attachment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Set the upper attachment
+  
+  
+</h3>
+    
+
+<p>The following <strong>Distribution settings</strong> determine the surface or elevation that the rods of a ceiling hanger reach.</p>
+
+<p><strong>Specified elevation.</strong> Enter <strong>Ceiling elevation</strong> in millimeters. Without <strong>From element</strong>, this is an absolute elevation in model coordinates. With <strong>From element</strong>, the value is an offset from the service’s reference elevation: positive values are upward and negative values are downward.</p>
+
+<p><strong>Search for structure.</strong> Enable <strong>Search for ceiling within</strong> and set a positive upward search distance in millimeters. The command searches for the nearest surface of a floor, roof, or beam in the host model and loaded links, including elements hidden in the view. The left and right rods are checked separately. If no surface is found, the <strong>Ceiling elevation</strong> value is used with <strong>From element</strong> applied, so set this value even when search is enabled.</p>
+
+<p><strong>Selected face.</strong> Click <strong>Select face</strong> and select a face on an element in the host model or a loaded link for the hanger rods to reach.</p>
+
+<p>A planar face is treated as an infinite plane, so the attachment can be calculated beyond its boundary. Vertical planar faces are not supported. For curved faces, the actual boundaries are taken into account.</p>
+<h3 id="4-configure-clash-analysis">
+  
+  
+    <a href="#4-configure-clash-analysis" class="anchor-heading" aria-labelledby="4-configure-clash-analysis"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Configure clash analysis
+  
+  
+</h3>
+    
+
+<p><strong>Analyze clashes</strong> checks hangers for intersections with services and assigns warning types to problematic hangers. The check includes the host model and loaded links, including hidden services and insulation.</p>
+
+<p>When an intersection is found, the command assigns a warning type to the hanger:</p>
+
+<ul>
+  <li><strong>warning red</strong> — the rod of a primary hanger or a separate round fastener intersects a service.</li>
+  <li><strong>warning orange</strong> — the upper horizontal profile of a multi-tier assembly intersects a service.</li>
+</ul>
+
+<p>When creating hangers, the lower profile and round fasteners inside a shared assembly are not checked. Therefore, the absence of a warning does not mean the entire assembly is clash-free. Rod checks do not account for rod thickness, and profile checks use the service’s vertical extents.</p>
+
+<p>The IDs of intersecting elements are added to the hanger’s comments. The ID of the link instance is written before the element IDs; <code class="language-plaintext highlighter-rouge">0</code> denotes the host model. Use these IDs to locate the problematic elements. The family must contain types with <strong>warning red</strong> and <strong>warning orange</strong> in their names for the corresponding warnings to be displayed.</p>
+<h3 id="5-choose-mounting-options">
+  
+  
+    <a href="#5-choose-mounting-options" class="anchor-heading" aria-labelledby="5-choose-mounting-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 5. Choose mounting options
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Ceiling</strong> — ceiling-mounted support.</li>
+  <li><strong>Wall</strong> — wall-mounted support for pipes and round ducts.</li>
+  <li><strong>Auto</strong> — automatically chooses wall or ceiling mounting based on service direction and nearby walls.</li>
+</ul>
+
+<blockquote>
+  <p>For services inclined at least 15° from horizontal, wall mounting is selected. If no wall is found, the support is still created using a fallback distance from the wall.<br />
+For horizontal or shallower services, wall mounting is selected only if a nearby wall is found that is parallel to the route in plan within 5°. The allowed distance from the service axis to the wall is 1000 mm plus half the larger outside dimension of its cross-section. If no suitable wall is found, ceiling mounting is selected.<br />
+The wall is checked near the midpoint of the visible service segment. When a <strong>Section Box</strong> is active, the midpoint of the segment inside the crop region is used; the selected mounting method applies to the entire element.</p>
+</blockquote>
+
+<p><strong>Limit wall search to the active 3D view</strong> restricts the wall search to the active view so hidden walls do not affect the choice of wall mounting. When this option is off, walls outside the active view are also considered. This setting does not affect the search for structure above a ceiling hanger.</p>
+<h3 id="6-choose-hanger-grouping">
+  
+  
+    <a href="#6-choose-hanger-grouping" class="anchor-heading" aria-labelledby="6-choose-hanger-grouping"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6. Choose hanger grouping
+  
+  
+</h3>
+    
+
+<p>Choose <strong>Individual hangers (no grouping)</strong> to create separate hangers for each selected element. Nearby services are not included in a shared support.</p>
+
+<p>Choose <strong>Group selected elements (nearby and parallel only)</strong> when shared hangers should support only the services you selected in advance. The selected elements must be parallel and close to each other (&lt; 3 m).</p>
+
+<p>In this mode, hangers are distributed along the shortest visible segment of the selected services. If one service ends before the others, it is no longer included in the shared support beyond its end. Unselected neighboring services are ignored.</p>
+
+<p>Choose <strong>Group by nearby search</strong> to automatically include nearby services in shared hangers. Hanger locations are determined from the selected elements, and neighboring services are searched for near each hanger point. If no suitable neighbors are found, a separate hanger is created. The services supported can vary from one hanger to another.</p>
+
+<p>For <strong>Group by nearby search</strong>, set the search area in millimeters:</p>
+
+<ul>
+  <li><strong>X (along)</strong> — along the service.</li>
+  <li><strong>Y</strong> — across the service.</li>
+  <li><strong>Z</strong> — vertically.</li>
+</ul>
+
+<p>The X/Y/Z fields are used only with <strong>Group by nearby search</strong>.</p>
+<h3 id="7-create-the-hangers">
+  
+  
+    <a href="#7-create-the-hangers" class="anchor-heading" aria-labelledby="7-create-the-hangers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 7. Create the hangers
+  
+  
+</h3>
+    
+
+<p>Click <strong>Create</strong>. Check the hanger locations and their attachment to the structure. For shared supports, check which services they include. If warning types appear, use the IDs in the hanger comments to find the intersecting elements.</p>
+
+<p><img src="ui.png" alt="alt text" /></p>
+<h2 id="update-existing-hangers">
+  
+  
+    <a href="#update-existing-hangers" class="anchor-heading" aria-labelledby="update-existing-hangers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Update existing hangers
+  
+  
+</h2>
+    
+<h3 id="1-select-the-hangers">
+  
+  
+    <a href="#1-select-the-hangers" class="anchor-heading" aria-labelledby="1-select-the-hangers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Select the hangers
+  
+  
+</h3>
+    
+
+<p>In a 3D view, select existing hangers in the <strong>Structural Connections</strong> category, then open <strong>Create hangers</strong>.</p>
+
+<p>When updating dimensions and position, the selection determines which services are used to recalculate the hangers:</p>
+
+<ul>
+  <li><strong>Hangers only:</strong> the nearest suitable service is found for each hanger within the search area.</li>
+  <li><strong>Hangers and services:</strong> dimensions and position are calculated from the selected group without searching for neighboring services. <strong>Hanger grouping</strong> options do not affect the group.</li>
+</ul>
+<h3 id="2-configure-attachments-and-clash-analysis">
+  
+  
+    <a href="#2-configure-attachments-and-clash-analysis" class="anchor-heading" aria-labelledby="2-configure-attachments-and-clash-analysis"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Configure attachments and clash analysis
+  
+  
+</h3>
+    
+
+<p>To change the upper attachment, set the elevation, structure search, or selected face in <strong>Distribution settings</strong>, as when creating hangers. When updating with <strong>From element</strong>, the offset is measured from the hanger’s position after its dimensions and position have been recalculated, if that update is enabled.</p>
+
+<p><strong>Analyze clashes</strong> checks the selected hangers again and updates their warnings. If there are no longer any clashes, the hanger is assigned its regular type. Other comment text is preserved. Turn off analysis if you want to change the geometry or attachment without rechecking existing warning types and clash records.</p>
+
+<p>Unlike hanger creation, updates check the horizontal profiles of all selected rectangular hangers, including the lower profiles. If both a rod and a profile intersect an element, <strong>warning red</strong> is assigned.</p>
+<h3 id="3-choose-what-to-update--create-vs-update">
+  
+  
+    <a href="#3-choose-what-to-update--create-vs-update" class="anchor-heading" aria-labelledby="3-choose-what-to-update--create-vs-update"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Choose what to update — Create vs Update
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Update dimensions and position</strong> — recalculate dimensions and position from the services.</li>
+  <li><strong>Update upper attachment</strong> — recalculate the upper attachment using the new elevation, structure search, or selected-face settings.</li>
+</ul>
+
+<p>Dimensions and the upper attachment can be updated independently or together.</p>
+<h3 id="4-run-the-update">
+  
+  
+    <a href="#4-run-the-update" class="anchor-heading" aria-labelledby="4-run-the-update"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Run the update
+  
+  
+</h3>
+    
+
+<p>Click <strong>Update</strong>. The selected hangers are modified without being recreated; additional supports for extra tiers are not added. Check the dimensions, position, and upper attachment, and review any remaining warnings if clash analysis is enabled.</p>
 
           
 
@@ -316,7 +556,8 @@ dampers</span>
       <p><a href="#top" id="back-to-top">Back to top</a></p>
     
 
-    <script>
+    <script src="/assets/js/image-compare.js" defer></script>
+<script>
 
   function initDocumentFilter() {
     const checkboxes = document.querySelectorAll('.filter-checkbox');

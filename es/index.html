@@ -56,7 +56,8 @@
 <!-- End Jekyll SEO tag -->
 
 
-  <link rel="stylesheet" href="/assets/css/commands.css">
+  <link rel="stylesheet" href="/es/assets/css/commands.css">
+<link rel="stylesheet" href="/es/assets/css/image-compare.css">
 
 
 </head>
@@ -589,21 +590,21 @@ devices</span>
               
             
           
-          <span class="ribbon-btn ribbon-btn--wip" data-slug="create-hangers" title="Página en desarrollo. Contacte al desarrollador para obtener documentación.">
+          <a class="ribbon-btn" href="/es/docs/create-hangers/" data-slug="create-hangers" title="Create hangers — The **Create hangers** command places hangers for pipes, ducts, and cable trays, and updates existing hangers.">
             
-              <img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Página en desarrollo. Contacte al desarrollador para obtener documentación." />
+              <img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Create hangers — The **Create hangers** command places hangers for pipes, ducts, and cable trays, and updates existing hangers." />
             
             <span class="ribbon-btn-label">Create
 hangers</span>
-          </span>
+          </a>
           
-          <span class="ribbon-btn ribbon-btn--wip" data-slug="create-hangers" title="Página en desarrollo. Contacte al desarrollador para obtener documentación.">
+          <a class="ribbon-btn" href="/es/docs/create-hangers/" data-slug="create-hangers" title="Create hangers — The **Create hangers** command places hangers for pipes, ducts, and cable trays, and updates existing hangers.">
             
-              <img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Página en desarrollo. Contacte al desarrollador para obtener documentación." />
+              <img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Create hangers — The **Create hangers** command places hangers for pipes, ducts, and cable trays, and updates existing hangers." />
             
             <span class="ribbon-btn-label">Adjust
 hangers</span>
-          </span>
+          </a>
           
           
         
@@ -1304,19 +1305,25 @@ to schematic</span>
   
 
   <li data-group="Common" data-slug="create-hangers">
-      
-
-        <div class="doc-item">
-          <div class="doc-title">
-            <span title="Página en desarrollo. Contacte al desarrollador para obtener documentación.">Create hangers</span>
-          </div>
-          
+      <details>
+          <summary class="doc-item" title="El comando Create hangers coloca soportes para tuberías, conductos y bandejas portacables, y actualiza los soportes existentes.">
+            <div class="doc-title">
+              <a href="/es/docs/create-hangers/">Create hangers</a>
+            </div>
             
               
-              <span>Común</span>
+                
+                <span>Común</span>
+              
             
-          
-        </div>
+          </summary>
+          <div class="doc-description">
+            
+            
+            <p>El comando <strong>Create hangers</strong> coloca soportes para tuberías, conductos y bandejas portacables, y actualiza los soportes existentes.</p>
+
+          </div>
+        </details>
 
       
     </li>
@@ -2003,6 +2010,17 @@ to schematic</span>
   
 </h2>
     
+<h2 id="2620--2026-10-15">
+  
+  
+    <a href="#2620--2026-10-15" class="anchor-heading" aria-labelledby="2620--2026-10-15"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> [26.20] — 2026-10-15
+  
+  
+</h2>
+    
+<p><em>Create Hangers</em>: Added ceiling detection, wall mounting, clash analysis, and multiple grouping and selection modes. The <strong>Update Hangers</strong> button was removed, and its functionality was integrated into the main window.<br />
+<em>Show in Explorer</em>: Added a slide-out panel to the <strong>General</strong> ribbon panel with a command to show project in File Explorer and copy its path to the clipboard.<br />
+<em>(All commands)</em>: Window titles now show the BIMTools version. The Alt+Space menu provides quick access to the command documentation, Settings.json, and the log file in Explorer.</p>
 <h2 id="2619--2026-09-23">
   
   
@@ -3795,7 +3813,8 @@ Added the Ignore feature (hides items in the report).</li>
       <p><a href="#top" id="back-to-top">Back to top</a></p>
     
 
-    <script>
+    <script src="/es/assets/js/image-compare.js" defer></script>
+<script>
 
   function initDocumentFilter() {
     const checkboxes = document.querySelectorAll('.filter-checkbox');

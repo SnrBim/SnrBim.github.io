@@ -62,8 +62,8 @@
 <meta name="generator" content="Jekyll v3.9.5" />
 <meta property="og:title" content="Create hangers" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="This is the English content for the command documentation." />
-<meta property="og:description" content="This is the English content for the command documentation." />
+<meta name="description" content="The Create hangers command places hangers for pipes, ducts, and cable trays, and updates existing hangers." />
+<meta property="og:description" content="The Create hangers command places hangers for pipes, ducts, and cable trays, and updates existing hangers." />
 <link rel="canonical" href="https://snrbim.github.io/es/docs/create-hangers/" />
 <meta property="og:url" content="https://snrbim.github.io/es/docs/create-hangers/" />
 <meta property="og:site_name" content="Sener BimTools Docs" />
@@ -71,11 +71,12 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Create hangers" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is the English content for the command documentation.","headline":"Create hangers","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/create-hangers/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"The Create hangers command places hangers for pipes, ducts, and cable trays, and updates existing hangers.","headline":"Create hangers","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://snrbim.github.io/es/assets/images/logo.png"}},"url":"https://snrbim.github.io/es/docs/create-hangers/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <link rel="stylesheet" href="/assets/css/commands.css">
+  <link rel="stylesheet" href="/es/assets/css/commands.css">
+<link rel="stylesheet" href="/es/assets/css/image-compare.css">
 
 
 </head>
@@ -284,10 +285,10 @@ dampers</span>
     </div>
     <span class="ribbon-btn--ellipsis" aria-hidden="true">…</span></div>
 </div>
-<h1 class="no_toc" id="título-del-comando-en-español">
+<h1 class="no_toc" id="crear-y-actualizar-soportes">
   
   
-    <a href="#título-del-comando-en-español" class="anchor-heading" aria-labelledby="título-del-comando-en-español"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Título del Comando en Español
+    <a href="#crear-y-actualizar-soportes" class="anchor-heading" aria-labelledby="crear-y-actualizar-soportes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Crear y actualizar soportes
   
   
 </h1>
@@ -297,10 +298,249 @@ dampers</span>
   <summary class="text-delta">
     Tabla de contenidos
   </summary>
+<ol id="markdown-toc">
+  <li><a href="#ejemplos-de-colocación-de-soportes" id="markdown-toc-ejemplos-de-colocación-de-soportes">Ejemplos de colocación de soportes</a></li>
+  <li><a href="#crear-soportes" id="markdown-toc-crear-soportes">Crear soportes</a>    <ol>
+      <li><a href="#1-prepare-la-vista-y-seleccione-las-instalaciones" id="markdown-toc-1-prepare-la-vista-y-seleccione-las-instalaciones">1. Prepare la vista y seleccione las instalaciones</a></li>
+      <li><a href="#2-configure-la-distribución" id="markdown-toc-2-configure-la-distribución">2. Configure la distribución</a></li>
+      <li><a href="#3-defina-la-fijación-superior" id="markdown-toc-3-defina-la-fijación-superior">3. Defina la fijación superior</a></li>
+      <li><a href="#4-configure-el-análisis-de-interferencias" id="markdown-toc-4-configure-el-análisis-de-interferencias">4. Configure el análisis de interferencias</a></li>
+      <li><a href="#5-elija-las-opciones-de-montaje" id="markdown-toc-5-elija-las-opciones-de-montaje">5. Elija las opciones de montaje</a></li>
+      <li><a href="#6-elija-la-agrupación-de-soportes" id="markdown-toc-6-elija-la-agrupación-de-soportes">6. Elija la agrupación de soportes</a></li>
+      <li><a href="#7-cree-los-soportes" id="markdown-toc-7-cree-los-soportes">7. Cree los soportes</a></li>
+    </ol>
+  </li>
+  <li><a href="#actualizar-los-soportes-existentes" id="markdown-toc-actualizar-los-soportes-existentes">Actualizar los soportes existentes</a>    <ol>
+      <li><a href="#1-seleccione-los-soportes" id="markdown-toc-1-seleccione-los-soportes">1. Seleccione los soportes</a></li>
+      <li><a href="#2-configure-las-fijaciones-y-el-análisis-de-interferencias" id="markdown-toc-2-configure-las-fijaciones-y-el-análisis-de-interferencias">2. Configure las fijaciones y el análisis de interferencias</a></li>
+      <li><a href="#3-elija-qué-actualizar--create-vs-update" id="markdown-toc-3-elija-qué-actualizar--create-vs-update">3. Elija qué actualizar — Create vs Update</a></li>
+      <li><a href="#4-ejecute-la-actualización" id="markdown-toc-4-ejecute-la-actualización">4. Ejecute la actualización</a></li>
+    </ol>
+  </li>
+</ol>
 
 </details>
 
-<p>Este es el contenido en español para la documentación del comando.</p>
+<p>El comando <strong>Create hangers</strong> coloca soportes para tuberías, conductos y bandejas portacables, y actualiza los soportes existentes.</p>
+<h3 id="ejemplos-de-colocación-de-soportes">
+  
+  
+    <a href="#ejemplos-de-colocación-de-soportes" class="anchor-heading" aria-labelledby="ejemplos-de-colocación-de-soportes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Ejemplos de colocación de soportes
+  
+  
+</h3>
+    
+
+<div class="image-compare-gallery">
+	<a class="image-compare" href="11.png" src="12.png"><img src="11.png" width="240" loading="lazy" alt="1. Conductos circulares de distintos tamaños y cantidades" /></a>
+	<a class="image-compare" href="21.png" src="22.png"><img src="21.png" width="240" loading="lazy" alt="2. Conductos circulares de distintos tamaños y cantidades (se selecciona el más largo)" /></a>
+	<a class="image-compare" href="31.png" src="32.png"><img src="31.png" width="240" loading="lazy" alt="3. Conductos rectangulares de distintos tamaños" /></a>
+	<a class="image-compare" href="41.png" src="42.png"><img src="41.png" width="240" loading="lazy" alt="4. Diferentes formas agrupadas" /></a>
+	<a class="image-compare" href="51.png" src="52.png"><img src="51.png" width="240" loading="lazy" alt="5. Soportes de tuberías fijados a paredes" /></a>
+	<a class="image-compare" href="61.png" src="62.png"><img src="61.png" width="240" loading="lazy" alt="6. Búsqueda automática de techos y vigas" /></a>
+	<a class="image-compare" href="71.png" src="72.png"><img src="71.png" width="240" loading="lazy" alt="7. Detección de interferencias" /></a>
+</div>
+
+<p><strong>Proyecto de demostración con familias:</strong> <a href="https://github.com/SnrBim/BimTools/releases/download/v26.20/Demo23.rvt">descargar Demo23.rvt</a>.</p>
+<h2 id="crear-soportes">
+  
+  
+    <a href="#crear-soportes" class="anchor-heading" aria-labelledby="crear-soportes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Crear soportes
+  
+  
+</h2>
+    
+<h3 id="1-prepare-la-vista-y-seleccione-las-instalaciones">
+  
+  
+    <a href="#1-prepare-la-vista-y-seleccione-las-instalaciones" class="anchor-heading" aria-labelledby="1-prepare-la-vista-y-seleccione-las-instalaciones"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Prepare la vista y seleccione las instalaciones
+  
+  
+</h3>
+    
+
+<p>Abra una vista 3D y seleccione las instalaciones que necesitan soportes. A continuación, ejecute <strong>Create hangers</strong>. Puede seleccionar elementos del modelo anfitrión y elementos individuales de vínculos de Revit cargados.</p>
+
+<p>Para limitar la colocación de soportes a una zona, configure la <strong>Section Box</strong> antes de ejecutar el comando. Los puntos de colocación se distribuyen a lo largo del tramo de cada instalación que queda dentro del recorte.</p>
+<h3 id="2-configure-la-distribución">
+  
+  
+    <a href="#2-configure-la-distribución" class="anchor-heading" aria-labelledby="2-configure-la-distribución"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Configure la distribución
+  
+  
+</h3>
+    
+
+<p>Defina la separación y los desplazamientos en milímetros:</p>
+
+<ul>
+  <li><strong>Max distance between points</strong> — separación máxima entre los puntos de colocación de los soportes.</li>
+  <li><strong>Distribute evenly</strong> — coloca los soportes a intervalos iguales sin superar la separación máxima. Si esta opción está desactivada, los soportes se colocan con la separación indicada y el intervalo restante en uno de los extremos es más corto.</li>
+  <li><strong>Offset from duct ends</strong> — distancia desde los extremos de la instalación.</li>
+</ul>
+<h3 id="3-defina-la-fijación-superior">
+  
+  
+    <a href="#3-defina-la-fijación-superior" class="anchor-heading" aria-labelledby="3-defina-la-fijación-superior"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Defina la fijación superior
+  
+  
+</h3>
+    
+
+<p>Los siguientes ajustes de <strong>Distribution settings</strong> determinan la superficie o la cota hasta la que llegan las varillas de un soporte de techo.</p>
+
+<p><strong>Cota especificada.</strong> Introduzca <strong>Ceiling elevation</strong> en milímetros. Sin <strong>From element</strong>, se utiliza una cota absoluta en las coordenadas del modelo. Con <strong>From element</strong>, el valor es un desplazamiento respecto a la cota de referencia de la instalación: los valores positivos van hacia arriba y los negativos, hacia abajo.</p>
+
+<p><strong>Búsqueda de estructura.</strong> Active <strong>Search for ceiling within</strong> e indique una distancia positiva de búsqueda hacia arriba, en milímetros. El comando busca la superficie más cercana de un forjado, cubierta o viga en el modelo anfitrión y en los vínculos cargados, incluidos los elementos ocultos en la vista. La búsqueda se realiza por separado para las varillas izquierda y derecha. Si no se encuentra ninguna superficie, se utiliza <strong>Ceiling elevation</strong> aplicando <strong>From element</strong>; por ello, indique esta cota también cuando la búsqueda esté activada.</p>
+
+<p><strong>Cara seleccionada.</strong> Pulse <strong>Select face</strong> y seleccione una cara de un elemento del modelo anfitrión o de un vínculo cargado hasta la que deban llegar las varillas.</p>
+
+<p>Una cara plana se trata como un plano infinito, por lo que la fijación puede calcularse más allá de sus límites. No se admiten caras planas verticales. Para las caras curvas se tienen en cuenta sus límites reales.</p>
+<h3 id="4-configure-el-análisis-de-interferencias">
+  
+  
+    <a href="#4-configure-el-análisis-de-interferencias" class="anchor-heading" aria-labelledby="4-configure-el-análisis-de-interferencias"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Configure el análisis de interferencias
+  
+  
+</h3>
+    
+
+<p><strong>Analyze clashes</strong> comprueba si los soportes intersectan las instalaciones y asigna tipos de advertencia a los soportes problemáticos. La comprobación incluye el modelo anfitrión y los vínculos cargados, así como las instalaciones y el aislamiento ocultos.</p>
+
+<p>Cuando se detecta una intersección, el comando asigna al soporte un tipo de advertencia:</p>
+
+<ul>
+  <li><strong>warning red</strong> — la varilla de un soporte principal o un elemento de fijación circular independiente intersecta una instalación.</li>
+  <li><strong>warning orange</strong> — el perfil horizontal superior de un conjunto multinivel intersecta una instalación.</li>
+</ul>
+
+<p>Al crear soportes, no se comprueban el perfil inferior ni los elementos de fijación circulares dentro de un conjunto compartido. Por tanto, la ausencia de advertencias no significa que todo el conjunto esté libre de interferencias. La comprobación de las varillas no tiene en cuenta su grosor y la de los perfiles se basa en la altura de las instalaciones.</p>
+
+<p>Los ID de los elementos que intersectan se añaden a los comentarios del soporte. Antes de los ID de los elementos se indica el ID de la instancia del vínculo; <code class="language-plaintext highlighter-rouge">0</code> identifica el modelo anfitrión. Utilice estos ID para localizar los elementos problemáticos. Para mostrar las advertencias correspondientes, la familia debe incluir tipos cuyo nombre contenga <strong>warning red</strong> y <strong>warning orange</strong>.</p>
+<h3 id="5-elija-las-opciones-de-montaje">
+  
+  
+    <a href="#5-elija-las-opciones-de-montaje" class="anchor-heading" aria-labelledby="5-elija-las-opciones-de-montaje"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 5. Elija las opciones de montaje
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Ceiling</strong> — soporte fijado al techo.</li>
+  <li><strong>Wall</strong> — soporte fijado a la pared para tuberías y conductos circulares.</li>
+  <li><strong>Auto</strong> — selecciona automáticamente el montaje en pared o techo según la dirección de la instalación y la posición de las paredes cercanas.</li>
+</ul>
+
+<blockquote>
+  <p>Para instalaciones inclinadas al menos 15° respecto a la horizontal, se selecciona el montaje en pared. Si no se encuentra una pared, el soporte se crea igualmente con una distancia de reserva respecto a ella.<br />
+Para instalaciones horizontales o con menor inclinación, solo se selecciona el montaje en pared si se encuentra cerca una pared paralela al trazado en planta, con una desviación máxima de 5°. La distancia permitida entre el eje de la instalación y la pared es de 1000 mm más la mitad de la dimensión exterior mayor de su sección. Si no se encuentra una pared adecuada, se selecciona el montaje en techo.<br />
+La pared se comprueba cerca del punto medio del tramo visible de la instalación. Si hay una <strong>Section Box</strong> activa, se utiliza el punto medio del tramo dentro del recorte; el método de montaje seleccionado se aplica a todo el elemento.</p>
+</blockquote>
+
+<p><strong>Limit wall search to the active 3D view</strong> limita la búsqueda de paredes a la vista activa para que las paredes ocultas no afecten a la selección del montaje en pared. Si esta opción está desactivada, también se tienen en cuenta las paredes que no están visibles en la vista activa. Este ajuste no afecta a la búsqueda de estructura situada sobre un soporte de techo.</p>
+<h3 id="6-elija-la-agrupación-de-soportes">
+  
+  
+    <a href="#6-elija-la-agrupación-de-soportes" class="anchor-heading" aria-labelledby="6-elija-la-agrupación-de-soportes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6. Elija la agrupación de soportes
+  
+  
+</h3>
+    
+
+<p>Seleccione <strong>Individual hangers (no grouping)</strong> para crear soportes separados para cada elemento seleccionado. Las instalaciones cercanas no se incluyen en un soporte compartido.</p>
+
+<p>Seleccione <strong>Group selected elements (nearby and parallel only)</strong> si los soportes compartidos deben sostener únicamente las instalaciones seleccionadas previamente. Los elementos seleccionados deben ser paralelos y estar próximos entre sí (&lt; 3 m).</p>
+
+<p>En este modo, los soportes se distribuyen a lo largo del tramo visible más corto de las instalaciones seleccionadas. Si una instalación termina antes que las demás, deja de incluirse en el soporte compartido después de su extremo. No se tienen en cuenta las instalaciones vecinas que no se hayan seleccionado.</p>
+
+<p>Seleccione <strong>Group by nearby search</strong> para incluir automáticamente instalaciones cercanas en los soportes compartidos. Las posiciones de los soportes se determinan a partir de los elementos seleccionados y se buscan instalaciones vecinas cerca de cada punto de colocación. Si no se encuentran instalaciones adecuadas, se crea un soporte independiente. Las instalaciones sostenidas pueden variar de un soporte a otro.</p>
+
+<p>Para <strong>Group by nearby search</strong>, defina la zona de búsqueda en milímetros:</p>
+
+<ul>
+  <li><strong>X (along)</strong> — a lo largo de la instalación.</li>
+  <li><strong>Y</strong> — en sentido transversal a la instalación.</li>
+  <li><strong>Z</strong> — en vertical.</li>
+</ul>
+
+<p>Los campos X/Y/Z solo se utilizan con <strong>Group by nearby search</strong>.</p>
+<h3 id="7-cree-los-soportes">
+  
+  
+    <a href="#7-cree-los-soportes" class="anchor-heading" aria-labelledby="7-cree-los-soportes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 7. Cree los soportes
+  
+  
+</h3>
+    
+
+<p>Pulse <strong>Create</strong>. Compruebe la posición de los soportes y su fijación a la estructura. En los soportes compartidos, compruebe qué instalaciones incluyen. Si aparecen tipos de advertencia, utilice los ID de los comentarios del soporte para localizar los elementos que intersectan.</p>
+
+<p><img src="ui.png" alt="alt text" /></p>
+<h2 id="actualizar-los-soportes-existentes">
+  
+  
+    <a href="#actualizar-los-soportes-existentes" class="anchor-heading" aria-labelledby="actualizar-los-soportes-existentes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Actualizar los soportes existentes
+  
+  
+</h2>
+    
+<h3 id="1-seleccione-los-soportes">
+  
+  
+    <a href="#1-seleccione-los-soportes" class="anchor-heading" aria-labelledby="1-seleccione-los-soportes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Seleccione los soportes
+  
+  
+</h3>
+    
+
+<p>En una vista 3D, seleccione los soportes existentes de la categoría <strong>Structural Connections</strong> y, a continuación, abra <strong>Create hangers</strong>.</p>
+
+<p>Al actualizar las dimensiones y la posición, la selección determina qué instalaciones se utilizan para recalcular los soportes:</p>
+
+<ul>
+  <li><strong>Solo soportes:</strong> se busca la instalación adecuada más cercana a cada soporte dentro de la zona de búsqueda.</li>
+  <li><strong>Soportes e instalaciones:</strong> las dimensiones y la posición se calculan a partir del grupo seleccionado, sin buscar instalaciones vecinas. Las opciones de <strong>Hanger grouping</strong> no afectan a la composición de este grupo.</li>
+</ul>
+<h3 id="2-configure-las-fijaciones-y-el-análisis-de-interferencias">
+  
+  
+    <a href="#2-configure-las-fijaciones-y-el-análisis-de-interferencias" class="anchor-heading" aria-labelledby="2-configure-las-fijaciones-y-el-análisis-de-interferencias"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Configure las fijaciones y el análisis de interferencias
+  
+  
+</h3>
+    
+
+<p>Para cambiar la fijación superior, defina la cota, la búsqueda de estructura o la cara seleccionada en <strong>Distribution settings</strong>, como al crear soportes. Al actualizar con <strong>From element</strong>, el desplazamiento se mide desde la posición del soporte después de recalcular sus dimensiones y posición, si se ha activado esa actualización.</p>
+
+<p><strong>Analyze clashes</strong> vuelve a comprobar los soportes seleccionados y actualiza sus advertencias. Si ya no hay interferencias, al soporte se le asigna su tipo normal. El resto del texto de los comentarios se conserva. Desactive el análisis si desea cambiar la geometría o la fijación sin volver a comprobar los tipos de advertencia ni los registros de interferencias existentes.</p>
+
+<p>A diferencia de la creación, durante la actualización se comprueban los perfiles horizontales de todos los soportes rectangulares seleccionados, incluidos los inferiores. Si se detecta una intersección tanto de una varilla como de un perfil, se asigna <strong>warning red</strong>.</p>
+<h3 id="3-elija-qué-actualizar--create-vs-update">
+  
+  
+    <a href="#3-elija-qué-actualizar--create-vs-update" class="anchor-heading" aria-labelledby="3-elija-qué-actualizar--create-vs-update"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Elija qué actualizar — Create vs Update
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>Update dimensions and position</strong> — recalcula las dimensiones y la posición a partir de las instalaciones.</li>
+  <li><strong>Update upper attachment</strong> — recalcula la fijación superior con los nuevos ajustes de cota, búsqueda de estructura o cara seleccionada.</li>
+</ul>
+
+<p>Las dimensiones y la fijación superior se pueden actualizar por separado o conjuntamente.</p>
+<h3 id="4-ejecute-la-actualización">
+  
+  
+    <a href="#4-ejecute-la-actualización" class="anchor-heading" aria-labelledby="4-ejecute-la-actualización"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Ejecute la actualización
+  
+  
+</h3>
+    
+
+<p>Pulse <strong>Update</strong>. Los soportes seleccionados se modifican sin volver a crearlos; no se añaden soportes nuevos para niveles adicionales. Compruebe las dimensiones, la posición y la fijación superior, y revise las advertencias restantes si el análisis de interferencias está activado.</p>
 
           
 
@@ -316,7 +556,8 @@ dampers</span>
       <p><a href="#top" id="back-to-top">Back to top</a></p>
     
 
-    <script>
+    <script src="/es/assets/js/image-compare.js" defer></script>
+<script>
 
   function initDocumentFilter() {
     const checkboxes = document.querySelectorAll('.filter-checkbox');

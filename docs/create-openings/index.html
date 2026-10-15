@@ -57,6 +57,7 @@
 
 
   <link rel="stylesheet" href="/assets/css/commands.css">
+<link rel="stylesheet" href="/assets/css/image-compare.css">
 
 
 </head>
@@ -248,11 +249,11 @@
       <div class="ribbon-panel-buttons">
         <a class="ribbon-btn" href="/docs/create-security-devices/" title="Create Security Devices"><img src="/docs/create-security-devices/logo.png" alt="Create Security Devices" title="Create Security Devices" /><span class="ribbon-btn-label">Security
 devices</span>
-                </a><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Create
+                </a><a class="ribbon-btn" href="/docs/create-hangers/" title="Create hangers"><img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Create hangers" /><span class="ribbon-btn-label">Create
 hangers</span>
-                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Adjust
+                </a><a class="ribbon-btn" href="/docs/create-hangers/" title="Create hangers"><img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Create hangers" /><span class="ribbon-btn-label">Adjust
 hangers</span>
-                </span><span class="ribbon-btn ribbon-btn--current" title="Create openings"><img src="/docs/create-openings/logo.png" alt="Create openings" /><span class="ribbon-btn-label">Create
+                </a><span class="ribbon-btn ribbon-btn--current" title="Create openings"><img src="/docs/create-openings/logo.png" alt="Create openings" /><span class="ribbon-btn-label">Create
 openings</span>
                 </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><div class="ribbon-btn-placeholder"></div><span class="ribbon-btn-label">Create
 dampers</span>
@@ -319,7 +320,7 @@ along path</span>
 <p>Before running the command, ensure that your 3D view is set up to show all the walls and MEP elements you want to process.</p>
 
 <blockquote>
-  <p>Download the opening family <a href="OLS_Opening.rfa">OLS_Opening.rfa (Revit 2023)</a><br />
+  <p>Demo project containing the <code class="language-plaintext highlighter-rouge">OLS_Opening.rfa</code> family: <a href="https://github.com/SnrBim/BimTools/releases/download/v26.20/Demo23.rvt">download Demo23.rvt</a>.
 To download the family, right-click the link and select “Save link as…”.</p>
 </blockquote>
 <h3 id="usage">
@@ -452,7 +453,8 @@ The report contains lines for each action in the format: <code class="language-p
       <p><a href="#top" id="back-to-top">Back to top</a></p>
     
 
-    <script>
+    <script src="/assets/js/image-compare.js" defer></script>
+<script>
 
   function initDocumentFilter() {
     const checkboxes = document.querySelectorAll('.filter-checkbox');

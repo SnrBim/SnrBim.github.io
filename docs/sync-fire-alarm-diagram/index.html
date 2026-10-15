@@ -76,6 +76,7 @@
 
 
   <link rel="stylesheet" href="/assets/css/commands.css">
+<link rel="stylesheet" href="/assets/css/image-compare.css">
 
 
 </head>
@@ -274,11 +275,11 @@ air flow</span>
 fire alarm</span>
                 </span><a class="ribbon-btn" href="/docs/create-security-devices/" title="Create Security Devices"><img src="/docs/create-security-devices/logo.png" alt="Create Security Devices" title="Create Security Devices" /><span class="ribbon-btn-label">Security
 devices</span>
-                </a><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Create
+                </a><a class="ribbon-btn" href="/docs/create-hangers/" title="Create hangers"><img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Create hangers" /><span class="ribbon-btn-label">Create
 hangers</span>
-                </span><span class="ribbon-btn ribbon-btn--wip" title="Page under development. Contact the developer for documentation."><img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Page under development. Contact the developer for documentation." /><span class="ribbon-btn-label">Adjust
+                </a><a class="ribbon-btn" href="/docs/create-hangers/" title="Create hangers"><img src="/docs/create-hangers/logo.png" alt="Create hangers" title="Create hangers" /><span class="ribbon-btn-label">Adjust
 hangers</span>
-                </span>
+                </a>
       </div>
       <div class="ribbon-panel-name">MEC</div>
     </div>
@@ -578,7 +579,8 @@ hangers</span>
       <p><a href="#top" id="back-to-top">Back to top</a></p>
     
 
-    <script>
+    <script src="/assets/js/image-compare.js" defer></script>
+<script>
 
   function initDocumentFilter() {
     const checkboxes = document.querySelectorAll('.filter-checkbox');
