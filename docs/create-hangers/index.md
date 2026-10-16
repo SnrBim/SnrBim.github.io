@@ -8,8 +8,6 @@ ribbon_panel: MEP mechanical
 ribbon_order: 26
 ribbon_separator_before: 3
 ribbon_button_text: "Create\nhangers"
-ribbon_order_2: 27
-ribbon_button_text_2: "Adjust\nhangers"
 icon: /docs/create-hangers/logo.png
 namespace: create-hangers
 permalink: /docs/create-hangers/

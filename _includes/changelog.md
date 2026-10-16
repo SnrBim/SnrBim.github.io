@@ -1,4 +1,7 @@
-﻿## [26.20] — 2026-10-15
+## [26.21] — 2026-10-15
+*Startup*: Fixed a startup failure in Revit 2025 caused by an invalid button label in the **General** ribbon slide-out panel.
+
+## [26.20] — 2026-10-15
 *Create Hangers*: Added ceiling detection, wall mounting, clash analysis, and multiple grouping and selection modes. The **Update Hangers** button was removed, and its functionality was integrated into the main window.  
 *Show in Explorer*: Added a slide-out panel to the **General** ribbon panel with a command to show project in File Explorer and copy its path to the clipboard.  
 *(All commands)*: Window titles now show the BIMTools version. The Alt+Space menu provides quick access to the command documentation, Settings.json, and the log file in Explorer.
