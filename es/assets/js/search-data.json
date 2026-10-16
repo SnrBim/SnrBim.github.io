@@ -365,7 +365,7 @@
   },"52": {
     "doc": "Create sockets",
     "title": "Create sockets",
-    "content": "… Sync power Align Elevations Create sockets Assign circuit to conduits Conduit to circuit sync ELE … ",
+    "content": "… Circuit description Sync power Create sockets Align Elevations Assign circuit to conduits ELE … ",
     "url": "/es/docs/create-sockets/",
     
     "relUrl": "/docs/create-sockets/"
@@ -540,7 +540,7 @@
   },"77": {
     "doc": "Create hangers",
     "title": "Create hangers",
-    "content": "… Sync fire alarm Security devices Create hangers Adjust hangers Create openings Create dampers MEC … ",
+    "content": "… Sync fire alarm Security devices Create hangers Create openings Create dampers MEC … ",
     "url": "/es/docs/create-hangers/",
     
     "relUrl": "/docs/create-hangers/"
@@ -610,7 +610,7 @@
   },"87": {
     "doc": "Create Security Devices",
     "title": "Create Security Devices",
-    "content": "… Sync air flow Sync fire alarm Security devices Create hangers Adjust hangers Create openings MEC … ",
+    "content": "… Sync air flow Sync fire alarm Security devices Create hangers Create openings MEC … ",
     "url": "/es/docs/create-security-devices/",
     
     "relUrl": "/docs/create-security-devices/"
@@ -624,7 +624,7 @@
   },"89": {
     "doc": "Sync power params",
     "title": "Sync power params",
-    "content": "… Count sockets Circuit description Sync power Align Elevations Create sockets ELE … ",
+    "content": "… Count sockets Circuit description Sync power Create sockets Align Elevations ELE … ",
     "url": "/es/docs/sync-power-params/",
     
     "relUrl": "/docs/sync-power-params/"
@@ -1072,7 +1072,7 @@
   },"153": {
     "doc": "Align Elevations",
     "title": "Align Elevations",
-    "content": "… Circuit description Sync power Align Elevations Create sockets Assign circuit to conduits ELE … ",
+    "content": "… Sync power Create sockets Align Elevations Assign circuit to conduits Conduit to circuit sync ELE … ",
     "url": "/es/docs/align-elevations/",
     
     "relUrl": "/docs/align-elevations/"
@@ -1156,7 +1156,7 @@
   },"165": {
     "doc": "Assign circuit to conduits",
     "title": "Assign circuit to conduits",
-    "content": "… Align Elevations Create sockets Assign circuit to conduits Conduit to circuit sync Line to wires ELE … ",
+    "content": "… Create sockets Align Elevations Assign circuit to conduits Conduit to circuit sync Line to wires ELE … ",
     "url": "/es/docs/assign-circuit-to-conduits/",
     
     "relUrl": "/docs/assign-circuit-to-conduits/"
@@ -1261,7 +1261,7 @@
   },"180": {
     "doc": "Create dampers",
     "title": "Create dampers",
-    "content": "… Create hangers Adjust hangers Create openings Create dampers Create along path Tag on views MEC … ",
+    "content": "… Create hangers Create openings Create dampers Create along path Tag on views MEC … ",
     "url": "/es/docs/create-dampers/",
     
     "relUrl": "/docs/create-dampers/"
@@ -1422,7 +1422,7 @@
   },"203": {
     "doc": "Circuit description",
     "title": "Circuit description",
-    "content": "… Track scheme MEC Count sockets Circuit description Sync power Align Elevations ELE … ",
+    "content": "… Track scheme MEC Count sockets Circuit description Sync power Create sockets ELE … ",
     "url": "/es/docs/circuit-description/",
     
     "relUrl": "/docs/circuit-description/"
@@ -1583,7 +1583,7 @@
   },"226": {
     "doc": "Conduit circuit sync",
     "title": "Conduit circuit sync",
-    "content": "… Create sockets Assign circuit to conduits Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E ELE … ",
+    "content": "… Align Elevations Assign circuit to conduits Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E ELE … ",
     "url": "/es/docs/conduit-circuit-sync/",
     
     "relUrl": "/docs/conduit-circuit-sync/"
@@ -1660,7 +1660,7 @@
   },"237": {
     "doc": "Sync fire alarm diagram",
     "title": "Sync fire alarm diagram",
-    "content": "… Assign spaces to equip Sync air flow Sync fire alarm Security devices Create hangers Adjust hangers MEC … ",
+    "content": "… Assign spaces to equip Sync air flow Sync fire alarm Security devices Create hangers MEC … ",
     "url": "/es/docs/sync-fire-alarm-diagram/",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/"
@@ -1681,7 +1681,7 @@
   },"240": {
     "doc": "Create openings",
     "title": "Create openings",
-    "content": "… Security devices Create hangers Adjust hangers Create openings Create dampers Create along path MEC … ",
+    "content": "… Security devices Create hangers Create openings Create dampers Create along path MEC … ",
     "url": "/es/docs/create-openings/",
     
     "relUrl": "/docs/create-openings/"
