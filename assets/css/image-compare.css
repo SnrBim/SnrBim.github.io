@@ -60,10 +60,18 @@
 }
 
 .image-compare-dialog__image {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.image-compare-dialog__image.is-active {
+  opacity: 1;
 }
 
 .image-compare-dialog__status {

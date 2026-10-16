@@ -11,7 +11,8 @@
     dialog.innerHTML = `
       <div class="image-compare-dialog__body">
         <div class="image-compare-dialog__frame">
-          <img class="image-compare-dialog__image" alt="">
+          <img class="image-compare-dialog__image" alt="" aria-hidden="true">
+          <img class="image-compare-dialog__image" alt="" aria-hidden="true">
           <p class="image-compare-dialog__status" role="status" aria-live="polite"></p>
         </div>
         <div class="image-compare-dialog__toolbar">
@@ -23,7 +24,7 @@
       </div>`;
     document.body.appendChild(dialog);
 
-    const image = dialog.querySelector('.image-compare-dialog__image');
+    const imageLayers = Array.from(dialog.querySelectorAll('.image-compare-dialog__image'));
     const caption = dialog.querySelector('.image-compare-dialog__caption');
     const status = dialog.querySelector('.image-compare-dialog__status');
     const counter = dialog.querySelector('[data-role="counter"]');
@@ -50,8 +51,11 @@
 
     function showFrame(nextFrame) {
       frame = nextFrame;
-      image.src = images[frame].src;
-      image.alt = images[frame].alt || `Comparison image ${frame + 1}`;
+      imageLayers.forEach((layer, index) => {
+        const isActive = index === frame;
+        layer.classList.toggle('is-active', isActive);
+        layer.setAttribute('aria-hidden', String(!isActive));
+      });
       updateControls();
     }
 
@@ -83,7 +87,11 @@
       paused = reducedMotion.matches;
       caption.textContent = preview ? preview.alt : '';
       status.textContent = 'Loading images...';
-      image.removeAttribute('src');
+      imageLayers.forEach(layer => {
+        layer.removeAttribute('src');
+        layer.classList.remove('is-active');
+        layer.setAttribute('aria-hidden', 'true');
+      });
       dialog.showModal();
 
       try {
@@ -92,6 +100,10 @@
           item.onerror = reject;
           item.src = sources[index];
         })));
+        imageLayers.forEach((layer, index) => {
+          layer.src = images[index].src;
+          layer.alt = images[index].alt || `Comparison image ${index + 1}`;
+        });
         status.textContent = '';
         showFrame(0);
         startTimer();
