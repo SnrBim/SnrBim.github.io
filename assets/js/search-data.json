@@ -1450,7 +1450,7 @@
   },"207": {
     "doc": "Upload to ACC",
     "title": "UploadToAcc - User Guide",
-    "content": ". | Description | How to Get the Required URLs from ACC . | 1. Account + Project URL | 2. Project + Folder URL | . | Upload Process | Important Notes | Troubleshooting | . ",
+    "content": ". | Description | How to Get the Required URLs from ACC . | 1. Account + Project URL | 2. Project + Folder URL | . | Upload Process | Important Notes | Troubleshooting | Work Log | . ",
     "url": "/docs/upload-to-acc/#uploadtoacc---user-guide",
     
     "relUrl": "/docs/upload-to-acc/#uploadtoacc---user-guide"
@@ -1491,187 +1491,194 @@
     "relUrl": "/docs/upload-to-acc/#troubleshooting"
   },"213": {
     "doc": "Upload to ACC",
+    "title": "Work Log",
+    "content": ". | 2026-10-20: Fixed ACC model names containing Revit’s _detached marker; uploads now use the selected RVT filename. | . ",
+    "url": "/docs/upload-to-acc/#work-log",
+    
+    "relUrl": "/docs/upload-to-acc/#work-log"
+  },"214": {
+    "doc": "Upload to ACC",
     "title": "Upload to ACC",
     "content": "… Read parameters Clone &amp;shift Upload to ACC Position check Convert to rebar General … ",
     "url": "/docs/upload-to-acc/",
     
     "relUrl": "/docs/upload-to-acc/"
-  },"214": {
+  },"215": {
     "doc": "Change level",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/change-level/#english-command-title",
     
     "relUrl": "/docs/change-level/#english-command-title"
-  },"215": {
+  },"216": {
     "doc": "Change level",
     "title": "Change level",
     "content": "Info Purge Change level Edit in Excel Model audit General … ",
     "url": "/docs/change-level/",
     
     "relUrl": "/docs/change-level/"
-  },"216": {
+  },"217": {
     "doc": "Conduit circuit sync",
     "title": "Sync Conduit Circuit",
     "content": ". | Required Data | Algorithm Description | Possible Errors | Notifications and Statistics | Usage Tips | Processing Options | Interface | Changelog | . This tool is designed to distribute electrical conduits into segments and record their paths in the electrical circuit parameters to complete the cable schedule. ",
     "url": "/docs/conduit-circuit-sync/#sync-conduit-circuit",
     
     "relUrl": "/docs/conduit-circuit-sync/#sync-conduit-circuit"
-  },"217": {
+  },"218": {
     "doc": "Conduit circuit sync",
     "title": "Required Data",
     "content": "Before running the command, ensure that at least one conduit in each segment has a circuit name in SRS_MEP_Circuit_Names and that a circuit with the same name exists. It is recommended to use the companion command AssignConduitToCircuit for this purpose. ",
     "url": "/docs/conduit-circuit-sync/#required-data",
     
     "relUrl": "/docs/conduit-circuit-sync/#required-data"
-  },"218": {
+  },"219": {
     "doc": "Conduit circuit sync",
     "title": "Algorithm Description",
     "content": ". | Parameter Unification: Prepares equipment names in the SRS_Schedule_Name parameter by concatenating SRS_Equipment_Type and SRS_Equipment_Number. Instance-level overrides are supported (they take priority over Type), and redundant hyphens in the resulting name are removed automatically. The SRS_Location parameter is used as is from the elements. | Search: Finds all conduits and circuits where the SRS_MEP_Circuit_Names parameter is defined. | Section Identification: Detects groups of interconnected conduits (chains) based on physical connection. The tool automatically recognizes parallel branches within a segment using the SRS_MEP_Parallel_Id parameter. | Grouping by Circuit: Associates conduit chains with their respective electrical circuits. It validates the uniqueness of circuit names across the entire project to prevent duplicates on mounting schemes. | Direction Determination: Sorts route components from load to panel, consistently handling parallel branches. | Segment Division: The route is divided into logical segments between distribution boxes. | Segment Naming: Each segment is assigned a name based on the panel and load locations. For parallel chains within a single segment, unique suffixes are generated for each branch (e.g., -PS01, -PS02). The rules for forming the load name are as follows: | . | Input Data | Resulting Load Name | Comment | . | 18D-DS-SF01 | 18D-DS-SF01 | A single name remains the same. | . | 18D-DS-SF01, 18D-DS-SF02, 18D-DS-SF03 | 18D-DS-SFxx | Names with the same base are grouped with xx at the end. | . | 18D-DS-SF01, 18D-DS-XY02 | 18D-DS-SF01, 18D-DS-XY02 | Heterogeneous names are listed separated by commas. | . | \"\" (ID: 12345), 18D-DS-SF01 | 12345, 18D-DS-SF01 | If there is no name, the element’s ID is used. | . | Data Recording: . | Updates SRS_MEP_Circuit_Names in all conduits of the segment. | Fills in SRS_MEP_Conduit_From, SRS_MEP_Conduit_To, and SRS_MEP_Conduit_Tag in the conduits. The panel and load locations are added to From and To, respectively. | Groups conduit and fitting lengths within each segment by the RGS, PVC, and FIBERGLASS codes in the type name. Each group is rounded up to the nearest meter, preserving the maximum-length rule for parallel branches, and written to SRS_MEP_Length for the elements in that group. Types without a recognized code form a separate group with their own total length. | The cable length is recorded in the SRS_MEP_Cable_Length parameter, which is calculated according to the following algorithm: . | Conduits and Fittings: the sum of lengths for all elements. For elbows, the distance between connectors multiplied by a coefficient (1.15 for angles &gt;45° and 1.05 for angles ≤45°) is used for family parameter independence. | Equipment Gaps: rectilinear distances from the panel’s virtual target point to the first conduit and from the last conduit to the nearest load’s virtual target point are added. The target point does not coincide with the equipment insertion point; it is located at the equipment’s opposite vertical edge relative to the conduit endpoint. | The equipment’s vertical boundaries are determined relative to the insertion point using Default Elevation (DE) and SRS_Height (H). | If DE &gt; 0, the lower boundary is DE - H and the upper boundary is DE. | If DE &lt;= 0, the lower boundary is 0 and the upper boundary is H. | Default Elevation is read from the equipment type. SRS_Height is read from the instance first and, if the parameter is absent, from the type. | If the conduit endpoint is above the equipment’s upper boundary, the lower boundary is used as the target. If the conduit endpoint is below the lower boundary, the upper boundary is used. | If the conduit endpoint is between the boundaries, the edge with the greater vertical distance from the conduit endpoint is selected. | . | Junction Boxes: gaps at box locations where the run is broken are accounted for. | Multi-device Circuits: if there are multiple loads (e.g., lighting), the shortest path passing through all points (“snake”) from the last box is calculated. | Reserve: a fixed safety reserve of +2 meters is added. | Rounding: the final value is rounded up to the nearest meter. | For parallel branches, the length of the longest branch is recorded for the circuit. | . | . | If the circuit contains more than one load element, SRS_Schedule_Name receives a grouped identifier: names with the same base and numeric suffixes are replaced with an xx pattern (for example, 18D-DS-SFxx), while different bases retain the full list in parentheses. The shortened element names (for example, SF01, SF02) are written to SRS_MEP_Comments. | Stores the first five segment names in the electrical circuit’s SRS_MEP_Conduit_Segment_1 to SRS_MEP_Conduit_Segment_5 parameters. Segment names beyond the fifth are written to SRS_MEP_Comments, separated by line breaks. | . | Notification: Confirms the operation and reports suspicious distances (&gt;1m) between segments to detect potential assignment errors. | Collision Check: Validates unique identifiers (BaseCode) assigned to different electrical circuits. If overlaps are found, a summary report is provided upon completion. | . ",
     "url": "/docs/conduit-circuit-sync/#algorithm-description",
     
     "relUrl": "/docs/conduit-circuit-sync/#algorithm-description"
-  },"219": {
+  },"220": {
     "doc": "Conduit circuit sync",
     "title": "Possible Errors",
     "content": ". | No conduits found: If there are no conduits with the SRS_MEP_Circuit_Names parameter defined, the command will fail. Check that at least one conduit per segment has this parameter assigned (use AssignConduitToCircuit). | No electrical circuits found: If no circuits with matching names in SRS_MEP_Circuit_Names exist, the command will fail. Ensure circuits exist and have correct names. | Missing parameters: If any required parameter (such as SRS_Schedule_Name on equipment) is missing or empty, it may cause errors. Changes are made in a transaction and can be undone with Ctrl+Z. | . ",
     "url": "/docs/conduit-circuit-sync/#possible-errors",
     
     "relUrl": "/docs/conduit-circuit-sync/#possible-errors"
-  },"220": {
+  },"221": {
     "doc": "Conduit circuit sync",
     "title": "Notifications and Statistics",
     "content": "After execution, a notification appears with: . | Number of circuits processed. | Number of unique physical conduit chains processed. | Minimum and maximum cable length (in meters). | Maximum gap between segments (in meters) and circuit ID. | . If the gap exceeds 1 m, review conduit assignments, as it may indicate incorrect connections. ",
     "url": "/docs/conduit-circuit-sync/#notifications-and-statistics",
     
     "relUrl": "/docs/conduit-circuit-sync/#notifications-and-statistics"
-  },"221": {
+  },"222": {
     "doc": "Conduit circuit sync",
     "title": "Usage Tips",
     "content": ". | Run the command in a floor plan view for best results. | If circuit names change, manually update SRS_MEP_Circuit_Names on the conduits. | The tool processes only conduits and circuits with the parameter defined; ignore other elements. | The SRS_Schedule_Name parameter on equipment is updated automatically during each synchronization (concatenating type and number), so it does not need to be filled manually. | . ",
     "url": "/docs/conduit-circuit-sync/#usage-tips",
     
     "relUrl": "/docs/conduit-circuit-sync/#usage-tips"
-  },"222": {
+  },"223": {
     "doc": "Conduit circuit sync",
     "title": "Processing Options",
     "content": ". | Only selected conduits: When enabled, the algorithm processes only those conduits you selected in Revit before launching. This is useful for precise synchronization of specific circuits. | Starting from the original selection, the processing scope expands in three directions: all physically connected conduits, parallel branches with the same SRS_MEP_Parallel_Id, and all conduits belonging to any circuit listed in SRS_MEP_Circuit_Names on the selected elements. | All three expansions use only the original selection and do not trigger a cascading search. | . | Show result in specialized 3D view: Creates or updates a special 3D view named Conduit Review &lt;user&gt; for a quick check of the result. | Isolation and Section Box: The tool automatically adjusts the Section Box to the boundaries of the selected area. | Optional Isolation: Use “Isolate elements in 3D view” to hide everything except the route, panel, and loads. If disabled, elements are shown within the building context (transparent or wireframe depending on view settings). | Clean View: Helper elements (center lines, linked files) are hidden. | Full System View: The view automatically includes the electrical panel and all loads of the circuit. | . | Create debug lines: Creates auxiliary lines for visual verification of calculated rectilinear distances. In a workshared document, the lines are placed in the SRS_Placeholders workset when it exists. The lines are automatically deleted before the next command run, when saving, and when synchronizing with the central file. | . ",
     "url": "/docs/conduit-circuit-sync/#processing-options",
     
     "relUrl": "/docs/conduit-circuit-sync/#processing-options"
-  },"223": {
+  },"224": {
     "doc": "Conduit circuit sync",
     "title": "Interface",
     "content": ". | Show this dialog (Shift/Ctrl to invert): Allows you to disable this window for instant tool launch with the last saved settings. | Inversion (XOR): If you want to bring up the window one time when the setting is off (or vice versa), hold Shift or Ctrl while clicking the button in Revit. | . ",
     "url": "/docs/conduit-circuit-sync/#interface",
     
     "relUrl": "/docs/conduit-circuit-sync/#interface"
-  },"224": {
+  },"225": {
     "doc": "Conduit circuit sync",
     "title": "Changelog",
     "content": "2026-09-08 . | Additional segments in comments: Removed the rigid requirement not to exceed five segments. The first five segments are written to the standard parameters, while the sixth and subsequent segments are written to SRS_MEP_Comments on separate lines. The legacy logic for writing shortened names of multiple circuit elements to the same parameter has been preserved. | Circuit naming: Removed the intermediate -C- marker from circuit names. | Selected-only processing fix: Fixed incomplete segment counts after running Sync following Assign for circuits with shared routes and branches. The scope is expanded once from the original selection by physical connectivity, SRS_MEP_Parallel_Id, and circuit names, without cascading search. | Processing statistics: Notifications now also show the number of unique physical conduit chains processed. | . 2026-09-03 . | Debug lines: Added auxiliary lines for distance verification. | . 2026-08-12 . | Locations in conduit parameters: Added the panel and load locations to SRS_MEP_Conduit_From and SRS_MEP_Conduit_To, respectively, so schedules display the complete equipment identifiers. | Material-specific length separation: Conduit and fitting lengths within each segment are separated by the RGS, PVC, and FIBERGLASS codes, rounded up separately to the nearest meter, and written to SRS_MEP_Length. Types without a code are handled as a separate group. | . 2026-08-06 . | Cable length calculation fix: Fixed an error that caused the ends of conduit chains to be determined in reverse order in some cases. This resulted in incorrect terminal distance calculations. | . 2026-08-03 . | Settings fix: The setting to run Sync after Assign no longer affects standalone Sync. The 3D view and selected conduits settings now work independently. | Terminal distance calculation to equipment boundaries: Added calculation to a virtual equipment edge instead of the insertion point. | Fixed cable reserve: According to the new standards, the automatic cable reserve is now a fixed +2 meters per route instead of a percentage-based value. | . 2026-07-30 . | Configurable 3D View Isolation: Added “Isolate elements in 3D view” option. | Enhanced Visualization: The review view now automatically includes the panel and all loads. | . 2026-07-29 . | Segment Length Recording in Conduits: Implemented recording of the segment length into the SRS_MEP_Length parameter for each route element. The value is rounded up to the nearest meter. | Reserve Logic Update: Cable length reserve calculation changed from percentage-based (5-10%) to a fixed value (+2 meters to the total route length). | . 2026-07-23 . | Parallel Circuit Support: Implemented the ability to link a single electrical circuit to multiple physically parallel conduit chains (using the SRS_MEP_Parallel_Id parameter). | Parallel Branch Numbering: Added unique numbering for each branch in a parallel group (e.g., -PS01, -PS02), ensuring tag uniqueness and mounting scheme accuracy. | Global Uniqueness Control: Introduced a system to check BaseCode uniqueness across the model. If the same tag is accidentally assigned to different circuits, the tool provides a warning. | Length Calculation for Parallel Systems: The algorithm now correctly determines cable length based on the longest parallel branch rather than summing them. | . 2026-07-17 . | Ducks and Fitting Chains Support: Redesigned the connection traversal algorithm. The tool now correctly processes fittings connected directly to each other (without straight conduit segments between them). | Crash Fixing: Resolved the Sequence contains no elements error that occurred when analyzing incomplete or empty routes. Added safety checks. | . 2026-07-15 . | Instance Parameter Priority: SRS_Equipment_Type and SRS_MEP_Tag_Type_Id are now sought in the element parameters first, only falling back to Type if empty. This allows instance-level overrides. | Name Cleaning: Improved SRS_Schedule_Name assembly, eliminating trailing/leading hyphens when parameters are partially missing. | . 2026-07-13 . | Diagnostic 3D View: Automatic view creation for review with path isolation, hiding of center lines, and automatic section box. | Selection Mode: Added support for processing only manually selected conduits. | Silent Launch: Instant tool launch implemented with Shift/Ctrl hotkey support to call settings. | . 2026-07-09 . | Segment naming refined: if panel and load locations differ, both are specified (Loc1-From/Loc2-To-Tag); if they match, only one prefix is used (Loc-From/To-Tag). | Removed “CC” abbreviation from conduit tags (SRS_MEP_Conduit_Tag). | Implemented upward rounding of calculated cable length (SRS_MEP_Cable_Length) to the nearest meter (Math.Ceiling), while maintaining decimal precision in user reports for gap monitoring. | Implemented automatic location prefix selection (e.g., 16D, 18D) based on the Functional_Breakdown_Code parameter. | . 2026-06-19 Fixed error when SRS_Schedule_Name was missing on equipment or SRS_Location was empty (now defaults to ‘18D’). Parameter names moved to %AppData%\\Sener\\BimTools\\Settings.json. ",
     "url": "/docs/conduit-circuit-sync/#changelog",
     
     "relUrl": "/docs/conduit-circuit-sync/#changelog"
-  },"225": {
+  },"226": {
     "doc": "Conduit circuit sync",
     "title": "Conduit circuit sync",
     "content": "… Align Elevations Assign circuit to conduits Conduit to circuit sync Line to wires Transfer Light Data N Transfer Light Data E ELE … ",
     "url": "/docs/conduit-circuit-sync/",
     
     "relUrl": "/docs/conduit-circuit-sync/"
-  },"226": {
+  },"227": {
     "doc": "Info",
     "title": "English Command Title",
     "content": "This is the English content for the command documentation. ",
     "url": "/docs/info/#english-command-title",
     
     "relUrl": "/docs/info/#english-command-title"
-  },"227": {
+  },"228": {
     "doc": "Info",
     "title": "Info",
     "content": "Info Purge Change level General … ",
     "url": "/docs/info/",
     
     "relUrl": "/docs/info/"
-  },"228": {
+  },"229": {
     "doc": "Sync fire alarm diagram",
     "title": "User Guide for the “Sync Fire Alarm Diagram” Command",
     "content": ". | 1. Purpose of the Command | 2. Preparation | 3. Step 1: Selecting Source Data . | 3.1. Layout and Mapping Configuration | 3.2. Additional Options | 3.3. Manual Placement and Room Locking | . | 4. Step 2: Synchronization Process | 5. Result and Color Indication | 6. Change Tracking (“Sync info” Parameter) | 7. Known Limitations | . ",
     "url": "/docs/sync-fire-alarm-diagram/#user-guide-for-the-sync-fire-alarm-diagram-command",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#user-guide-for-the-sync-fire-alarm-diagram-command"
-  },"229": {
+  },"230": {
     "doc": "Sync fire alarm diagram",
     "title": "1. Purpose of the Command",
     "content": "The command is designed for the automatic creation and subsequent synchronization of a 2D layout diagram of fire alarm devices based on a 3D model. It generates 2D elements on a drafting view corresponding to rooms and devices and tracks changes in the model to update the diagram. ",
     "url": "/docs/sync-fire-alarm-diagram/#1-purpose-of-the-command",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#1-purpose-of-the-command"
-  },"230": {
+  },"231": {
     "doc": "Sync fire alarm diagram",
     "title": "2. Preparation",
     "content": ". | Architectural Model: A linked model (Revit Link) with architectural rooms (Rooms) must be loaded into the project. | Active View: Before running the command, you must open a drafting view where the diagram will be placed. | . ",
     "url": "/docs/sync-fire-alarm-diagram/#2-preparation",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#2-preparation"
-  },"231": {
+  },"232": {
     "doc": "Sync fire alarm diagram",
     "title": "3. Step 1: Selecting Source Data",
     "content": "When the command is launched, a dialog box opens where you need to specify the source data for synchronization. | Architectural Link: . | The dropdown list shows all linked Revit files where rooms have been found. | The list is automatically sorted: priority is given to links with “AR” in their name, and then by the descending number of rooms. As a rule, the required link is already selected by default. | . | Levels for Synchronization: . | After selecting a link, the list below displays only those levels from that link where rooms containing fire alarm devices have been found. | For each level, the UI now displays a separate count for rooms with devices and empty rooms in the format Rooms: 7 + 10. It also indicates the total number of devices in rooms and homeless devices (not assigned to any room). | You can select one or more levels for processing by checking the boxes next to them. | . | . 3.1. Layout and Mapping Configuration . At the bottom of the window, there are two fields for fine-tuning the command’s behavior: . | Sensor Definitions (Sensors): . | This field determines which devices will be placed in the top row of the diagram (considered “sensors”). All other devices will be placed in the bottom row. | Each line corresponds to one rule. | Format: FamilyName: TypeName. The type name can be omitted, in which case all types of the specified family will be considered sensors. Matching is case-insensitive. | . | Family Mapping: . | This field defines the rules by which 3D device families and types are transformed into 2D symbols on the diagram. | Format: 3D_Family: 3D_Type: 2D_Family: 2D_Type. | Each line represents a single rule. For example, the line SRS_Smoke_Detector: Standard: Fire alarm 2d: Smoke detector means that all 3D devices with family SRS_Smoke_Detector and type Standard will be represented on the diagram by the 2D symbol Smoke detector from the family Fire alarm 2d. Matching of 3D family and type names is case-insensitive. | Automatic Pre-population: When the dialog opens, the command automatically scans the Revit model and identifies all unique (3D_Family, 3D_Type) combinations of fire alarm devices. | Any newly discovered (3D_Family, 3D_Type) combinations that are not yet in the user’s saved mapping settings are automatically appended to the list. For these new entries, the default values Fire alarm 2d and Generic are used for the 2D family and 2D type, respectively. | Existing user settings, including comments and order, are always preserved. | . | Editing Features: The field includes a built-in header demonstrating the string format and uses a monospaced font for convenience. | Comments: Lines starting with a ; character are ignored during parsing but are preserved and can be used for comments. | Alignment: Text in this field is automatically aligned for better readability. | . | . 3.2. Additional Options . | Create empty rooms: . | If this option is enabled (checked), the command will create 2D representations for all rooms on the selected levels, even if they do not contain any fire alarm devices. | By default, this option is disabled, and 2D rooms are only created for 3D rooms that contain at least one device. | . | . 3.3. Manual Placement and Room Locking . After the initial diagram creation, you may want to manually adjust the layout of devices within certain rooms and lock their positions to prevent them from being reset during subsequent synchronizations. This is achieved using the “Manual placement” instance parameter (a Yes/No type) on the 2D room family. | How it works: . | Select one or more 2D rooms on the diagram. | In the Properties palette, find the “Manual placement” parameter and check the box (set its value to “Yes”). | . | What happens on the next sync: . | Device Positions are Preserved: The command will no longer automatically arrange the existing 2D devices within this room. Their current positions will be locked. | Room Width is Preserved: The width of this 2D room will also be locked and will not automatically change based on the number of devices. | New Devices: If new devices are added to this room in the 3D model, their 2D symbols will appear in the center of the locked room. This allows you to easily find and manually place them where needed. | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#3-step-1-selecting-source-data",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#3-step-1-selecting-source-data"
-  },"232": {
+  },"233": {
     "doc": "Sync fire alarm diagram",
     "title": "4. Step 2: Synchronization Process",
     "content": "After clicking the “OK” button, the process of creating and updating the 2D diagram on the active drafting view begins. | Creating 2D Rooms: . | For each room from the selected levels that contains at least one device, a 2D room (family “Room”) is created on the diagram. | If a 2D room for such a room already exists on the diagram, a new one is not created, but the existing one is updated. | The width of the room is calculated automatically based on the maximum number of devices in one of the two rows to ensure they all fit. The minimum room width is 40 mm. | The Number, Name, and Level from the source 3D room are written into the parameters of the 2D room. | . | Creating 2D Devices: . | Inside each 2D room, 2D device symbols are placed according to their 3D prototypes. | 2D Symbol Selection: The type of 2D symbol is determined based on the rules defined in the “Family Mapping” field. If no suitable rule is found for a 3D device, a default symbol (“Generic”) is used, and the element is colored red. | Placement: Devices are placed in two rows based on the rules from the “Sensor Definitions” field. | The following are written into the parameters of the 2D device: . | Code: Copied from the Mark parameter of the 3D device. | Room: Room number and name. | RoomLevel: Name of the room’s level. | . | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#4-step-2-synchronization-process",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#4-step-2-synchronization-process"
-  },"233": {
+  },"234": {
     "doc": "Sync fire alarm diagram",
     "title": "5. Result and Color Indication",
     "content": "After synchronization, the elements on the diagram are colored differently depending on their status. This allows for a quick assessment of what changes have occurred in the model. | Black (standard color): . | A new 2D room and all devices in it, created for the first time. | . | Green: . | A new 2D device that was added to an existing 2D room on the diagram. | . | Orange: . | Data updated. An element is colored this way if: . | The room’s number or name has changed. | The type of the 3D device has been changed, resulting in a different 2D symbol according to the mapping rules. | . | . | Purple: . | Element moved. If a 3D device was moved from one room to another, its 2D symbol on the diagram is also moved to the corresponding room and colored purple. | . | Blue: . | Manually moved element. If a 2D device was manually dragged from one 2D room to another on the diagram by the user, its 2D symbol will be colored blue. This indicates a user-initiated change in the diagram layout that is preserved across synchronizations. | . | Red: . | “Orphaned” element or error. An element is colored red if: . | The original 3D element (room or device) was deleted from the model. | No mapping rule was found for the 3D device, and the default 2D symbol was used. | . | . | . ",
     "url": "/docs/sync-fire-alarm-diagram/#5-result-and-color-indication",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#5-result-and-color-indication"
-  },"234": {
+  },"235": {
     "doc": "Sync fire alarm diagram",
     "title": "6. Change Tracking (“Sync info” Parameter)",
     "content": "Each 2D element on the diagram (both room and device) has a text parameter “Sync info”. It automatically records the history of all changes that have occurred during synchronization, with the date and time. Example record: “Moved from ‘101 - Office’ to ‘102 - Corridor’ [2025-10-28 14:30:15]” . ",
     "url": "/docs/sync-fire-alarm-diagram/#6-change-tracking-sync-info-parameter",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#6-change-tracking-sync-info-parameter"
-  },"235": {
+  },"236": {
     "doc": "Sync fire alarm diagram",
     "title": "7. Known Limitations",
     "content": ". | Level assignment for “homeless” devices: Devices not belonging to any room (“homeless”) are assigned to the nearest level below from a list of “valid levels” (i.e., those that contain rooms with devices). This is done to ensure that only relevant levels are displayed in the level selection list. | Room Detection: Room detection is performed with an additional check 200 mm above and 1000 mm below. In rare cases, if devices in the 3D model are located very close to the floor and outside a room, the algorithm may incorrectly assign the device to a room on the floor below. | Automatic Room Width Adjustment: When the number of devices in a room changes, its width on the diagram will be automatically adjusted. This behavior can be disabled for a specific room by using the “Manual placement” parameter (see section 3.3). | No Automatic Shifting: The script does not shift adjacent rooms if one of them has expanded. This is done to preserve the manual layout of elements on the diagram. If one room starts to overlap another, you will need to manually select and move the adjacent elements. | . ",
     "url": "/docs/sync-fire-alarm-diagram/#7-known-limitations",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/#7-known-limitations"
-  },"236": {
+  },"237": {
     "doc": "Sync fire alarm diagram",
     "title": "Sync fire alarm diagram",
     "content": "… Assign spaces to equip Sync air flow Sync fire alarm Security devices Create hangers MEC … ",
     "url": "/docs/sync-fire-alarm-diagram/",
     
     "relUrl": "/docs/sync-fire-alarm-diagram/"
-  },"237": {
+  },"238": {
     "doc": "Create openings",
     "title": "Create Openings",
     "content": ". | What the Command Does | Preparation | Usage | Results | Work Log | . The command automates the process of creating and updating openings in walls for the passage of MEP elements. It analyzes intersections, considers existing openings, merges closely located new openings, and generates a detailed report on the actions performed. What the Command Does . | Finds intersections between walls and MEP elements (ducts, pipes, cable trays, etc.) in both the current project and linked models. | Manages existing openings: Instead of creating duplicates, the command can expand or merge openings that already exist in the wall. | Automatically merges closely located calculated openings into a single common one to avoid numerous small holes. | Writes the final dimensions of all openings into a specified wall parameter as a numbered list. | Is flexibly configured through a dialog box, allowing the user to control all key parameters. | Creates a detailed report of all actions performed (creation, modification, deletion) and displays it in an interactive window. | . Preparation . Before running the command, ensure that your 3D view is set up to show all the walls and MEP elements you want to process. Demo project containing the OLS_Opening.rfa family: download Demo23.rvt. To download the family, right-click the link and select “Save link as…”. Usage . When the command is launched, a settings dialog box opens. | Wall Selection: . | Process selected walls only: If this checkbox is marked, the command will only work with the walls you selected before launching. Otherwise, all walls in the project will be processed. | The OK button dynamically displays the number of walls that will be processed. | . | MEP Category Selection: . | Mark the checkboxes for the MEP system categories for which openings need to be created. | . | Opening Parameters: . | Create circular openings for round pipes and ducts: When checked, individual intersections with round pipes and round ducts create circular openings. When unchecked, they create rectangular openings. Merged openings are always rectangular. Air gap, insulation, and rounding are included in the circular opening size. | Air gap (mm): A buffer added to the dimensions of each MEP element. This increases the final size of the opening. Default: 30 mm. | Merge threshold (mm): The maximum width of a wall section between openings. If the gap between the edges of two adjacent openings is less than this value, they will be merged into one. Default: 100 mm. | Info Parameter: The name of the text parameter in the wall where the final list of all opening sizes will be written. Default: Comments. | . | Filtering and Rounding: . | Min MEP element size (mm): MEP elements whose largest dimension is smaller than the specified value will be ignored. Useful for filtering out small elements. Default: 0. | Rounding step (mm): Rounds the final width and height of the opening to a multiple of the specified number. Default: 10. | Up (checkbox enabled): Rounds up to the nearest greater multiple (e.g., 405 -&gt; 410). | Nearest (checkbox disabled): Mathematical rounding (e.g., 405 -&gt; 400). | . | Visualize Bounding Box for debugging: Creates geometry in the model showing the bounding boxes of MEP elements. Warning: This geometry is not automatically deleted. Use this option for debugging only and delete the created elements manually to avoid cluttering the project. | . | Ignore by Parameter: . | Allows setting rules to filter MEP elements. Elements that satisfy at least one rule will be ignored. Parameter names are case-sensitive, while values are not. | Format: Each rule on a new line: ParameterName: Value. | Wildcard: You can use the * symbol to match any sequence of characters. | Pseudo-parameters: Family (family name) and Type (type name) are supported. | Comments: Lines starting with ; are ignored. | Example: ; Ignore all elements on worksets containing \"placeholder\" Workset: *placeholder* ; Ignore elements with a specific comment Comment: *ignore* . | . | . Results . After performing the calculations, the command displays an interactive report with the results, creates/modifies/deletes openings in the Revit model, and writes the final information to the walls. Writing to Wall Parameter: A numbered list of the final sizes (WxH) of all openings in a given wall is written to the text parameter specified in the settings. Example: . 1. 630x480 2. 280x330 3. 70x70 . If there are no openings in the wall after processing, the parameter is cleared. When processing only selected walls, the parameters of unprocessed walls are not changed. This parameter is useful for creating view filters to display only those walls that have openings (by setting up a filter rule for “parameter is not empty”). Report Format: The report contains lines for each action in the format: Action | Wall ID | Opening ID | Description . The Description column has a 5-part structure: Old ID | New Size (WxH) | Old Size (WxH) | Source (MEP ID) | Merge Info . | CREATED: A new opening was created. | Example: CREATED | w777 | op888 | 500x300 | MEP_IDs: main:1,2 | . | MODIFIED: An existing opening was modified. | Example: MODIFIED | w778 | op999 | 123 | 600x400 | 500x300 | MEP_IDs: link:3 | Merged with: 456 | . | DELETED: An existing opening was deleted because it was merged with another. | Example: DELETED | w779 | op456 | | | Merged into: 999 | . | . ",
     "url": "/docs/create-openings/#create-openings",
     
     "relUrl": "/docs/create-openings/#create-openings"
-  },"238": {
+  },"239": {
     "doc": "Create openings",
     "title": "Work Log",
     "content": "2026-09-23 Added circular openings for round pipes and ducts. Pipe sizing now uses the outside diameter. The minimum size threshold is now checked against the merged group instead of filtering out individual small elements before merging. 2026-07-21 Transition to Families: Instead of native “wall openings”, the tool now places Face-Based families to preserve annotations and tags. ",
     "url": "/docs/create-openings/#work-log",
     
     "relUrl": "/docs/create-openings/#work-log"
-  },"239": {
+  },"240": {
     "doc": "Create openings",
     "title": "Create openings",
     "content": "… Security devices Create hangers Create openings Create dampers Create along path MEC … ",
