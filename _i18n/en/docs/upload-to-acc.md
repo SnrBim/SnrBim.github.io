@@ -96,3 +96,7 @@ If errors occur:
 4. Make sure you have permission to upload to the selected project folder
 5. Make sure the files are not links in currently open documents
 
+## Work Log
+
+- **2026-10-20:** Fixed ACC model names containing Revit's `_detached` marker; uploads now use the selected RVT filename.
+

@@ -96,3 +96,7 @@ Si se producen errores:
 4. Comprueba que tienes permisos para cargar archivos en la carpeta de proyecto seleccionada
 5. Comprueba que los archivos no sean vínculos en los documentos abiertos actualmente
 
+## Historial de cambios
+
+- **2026-10-20:** Corregidos los nombres de modelos en ACC que incluían el marcador `_detached` de Revit; ahora se utiliza el nombre del archivo RVT seleccionado.
+

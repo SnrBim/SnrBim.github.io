@@ -1,3 +1,6 @@
+﻿## [26.22] — 2026-10-20
+*Upload to ACC*: Fixed uploaded model names containing Revit's detached marker; cloud model names now use the selected RVT filename.
+
 ## [26.21] — 2026-10-15
 *Startup*: Fixed a startup failure in Revit 2025 caused by an invalid button label in the **General** ribbon slide-out panel.
 
