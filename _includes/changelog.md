@@ -1,4 +1,7 @@
-﻿## [26.22] — 2026-10-20
+﻿## [26.23] — 2026-10-22
+*Workset Manager*: Replaced the Excel-based workflow with a manager for worksets and associated 3D views. Added workset content and view visibility diagnostics, a visibility matrix, double-click view opening, and workset creation with optional isolated views and view deletion.
+
+## [26.22] — 2026-10-20
 *Upload to ACC*: Fixed uploaded model names containing Revit's detached marker; cloud model names now use the selected RVT filename.
 
 ## [26.21] — 2026-10-15
