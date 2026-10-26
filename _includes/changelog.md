@@ -1,4 +1,8 @@
-﻿## [26.23] — 2026-10-22
+﻿## [26.24] — 2026-10-23
+*Workset Manager*: Excluded non-string browser-organization parameters, added a visibility-fix button, and made existing values clickable to populate the corresponding parameter setting field.
+*Link manager*: Fixed loading errors for cloud link paths that cannot be used as local file paths. File size now falls back to the collaboration cache when available.
+
+## [26.23] — 2026-10-22
 *Workset Manager*: Replaced the Excel-based workflow with a manager for worksets and associated 3D views. Added workset content and view visibility diagnostics, a visibility matrix, double-click view opening, and workset creation with optional isolated views and view deletion.
 
 ## [26.22] — 2026-10-20

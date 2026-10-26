@@ -45,3 +45,7 @@ During the update, LinkMan automatically confirms selected standard Revit warnin
 
 Right-click a link row to delete it; multiple links can be selected. LinkMan asks for confirmation and shows the selected items. Deleting removes the link types and all their instances from the current project, but does not delete the source files from disk.
 
+## Work log
+
+2026-10-23 Fixed an error that prevented the link list from loading when a cloud link path could not be used as a local file path.
+

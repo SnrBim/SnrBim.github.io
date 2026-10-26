@@ -45,3 +45,7 @@ Durante la actualización, LinkMan confirma automáticamente determinadas advert
 
 Haga clic derecho en una fila para eliminar el vínculo; puede seleccionar varios vínculos. LinkMan solicita confirmación y muestra los elementos seleccionados. La eliminación quita los tipos de vínculo y todas sus instancias del proyecto actual, pero no elimina los archivos de origen del disco.
 
+## Work log
+
+2026-10-23 Se corrigió un error que impedía cargar la lista de vínculos cuando la ruta de un vínculo en la nube no se podía utilizar como ruta de archivo local.
+
