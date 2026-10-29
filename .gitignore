@@ -9,3 +9,4 @@ _site/
 /.history
 docs/create-hangers/Grouping*_th.jpg
 docs/create-hangers/Individual*_th.jpg
+.pi/remote-pi/config.json
