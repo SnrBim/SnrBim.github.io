@@ -97,10 +97,15 @@ function showGate() {
   gate.hidden = false;
 }
 
+emailInput.addEventListener('invalid', () => {
+  window.sendSiteStat?.('failed_login', emailInput.value);
+});
+
 gate.querySelector('form').addEventListener('submit', event => {
   event.preventDefault();
   const email = normalizedEmail(emailInput.value);
   if (!isAllowedEmail(email)) {
+    window.sendSiteStat?.('failed_login', email);
     message.textContent = messages.invalid;
     return;
   }
@@ -118,6 +123,8 @@ gate.querySelector('form').addEventListener('submit', event => {
     window.setTimeout(() => {
       try { localStorage.setItem(emailStorageKey, email); }
       catch { /* The site stays open until the page is reloaded. */ }
+      window.sendSiteStat?.('login', email);
+      window.sendSiteStat?.('page_view', email);
       progress.hidden = true;
       emailInput.disabled = false;
       submitButton.disabled = false;
@@ -126,9 +133,28 @@ gate.querySelector('form').addEventListener('submit', event => {
   }, 3000);
 });
 
+document.addEventListener('click', event => {
+  const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+  if (!link || link.textContent.trim().toLowerCase() !== 'downloads') return;
+
+  const destination = new URL(link.href);
+  if (destination.origin !== 'https://github.com' ||
+      destination.pathname.replace(/\/+$/, '') !== '/SnrBim/BimTools/releases') return;
+
+  let email = '';
+  try { email = normalizedEmail(localStorage.getItem(emailStorageKey) || ''); }
+  catch { return; }
+  if (isAllowedEmail(email)) {
+    window.sendSiteStat?.('download_click', email, link.href);
+  }
+});
+
 signOutButton.addEventListener('click', () => {
-  try { localStorage.removeItem(emailStorageKey); }
-  catch { /* Storage is optional. */ }
+  try {
+    const email = normalizedEmail(localStorage.getItem(emailStorageKey) || '');
+    if (isAllowedEmail(email)) window.sendSiteStat?.('sign_out', email);
+    localStorage.removeItem(emailStorageKey);
+  } catch { /* Storage is optional. */ }
   emailInput.value = '';
   message.textContent = '';
   showGate();
@@ -136,5 +162,8 @@ signOutButton.addEventListener('click', () => {
 
 try {
   const email = normalizedEmail(localStorage.getItem(emailStorageKey) || '');
-  if (isAllowedEmail(email)) showSite(email);
+  if (isAllowedEmail(email)) {
+    showSite(email);
+    window.sendSiteStat?.('page_view', email);
+  }
 } catch { /* Storage is optional. */ }
