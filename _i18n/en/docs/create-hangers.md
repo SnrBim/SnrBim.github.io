@@ -32,7 +32,7 @@ The **Create hangers** command places hangers for pipes, ducts, and cable trays,
 
 Open a 3D view and select the services that need hangers. Then run **Create hangers**. You can select elements in the host model and individual elements from loaded Revit links.
 
-To limit hanger placement to a specific area, set up the **Section Box** before running the command. Hanger points are distributed along the part of each service inside the crop region.
+To limit hanger placement to a specific area, set up the **Section Box** before running the command. Hanger points are first distributed along the service, then points outside the section box are discarded. If no regular points remain across the entire selection, the command creates hangers at the midpoints of the visible service segments.
 
 ### 2. Configure distribution settings
 
@@ -63,14 +63,14 @@ When an intersection is found, the command assigns a warning type to the hanger:
 - **warning red** — the rod of a primary hanger or a separate round fastener intersects a service.
 - **warning orange** — the upper horizontal profile of a multi-tier assembly intersects a service.
 
-When creating hangers, the lower profile and round fasteners inside a shared assembly are not checked. Therefore, the absence of a warning does not mean the entire assembly is clash-free. Rod checks do not account for rod thickness, and profile checks use the service's vertical extents.
+During creation, ceiling hangers are analyzed; wall-mounted supports are not checked. For ceiling hangers, the lower profile and round fasteners inside a shared assembly are also excluded. Therefore, the absence of a warning does not mean the entire assembly is clash-free. Rod checks do not account for rod thickness, and profile checks use the service's vertical extents.
 
 The IDs of intersecting elements are added to the hanger's comments. The ID of the link instance is written before the element IDs; `0` denotes the host model. Use these IDs to locate the problematic elements. The family must contain types with **warning red** and **warning orange** in their names for the corresponding warnings to be displayed.
 
 ### 5. Choose mounting options
 
 - **Ceiling** — ceiling-mounted support.
-- **Wall** — wall-mounted support for pipes and round ducts.
+- **Wall** — wall-mounted support for pipes, round and rectangular ducts, and cable trays.
 - **Auto** — automatically chooses wall or ceiling mounting based on service direction and nearby walls.
 
 >For services inclined at least 15° from horizontal, wall mounting is selected. If no wall is found, the support is still created using a fallback distance from the wall.  

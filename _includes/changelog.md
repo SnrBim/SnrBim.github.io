@@ -1,4 +1,8 @@
-﻿## [26.24] — 2026-10-23
+## [26.25] — 2026-11-04
+*Filter manager*: Added a new tool for the batch creation and modification of view filters using Excel.
+*Create Hangers*: Added wall-mounted supports for rectangular ducts and cable trays. Demo23.rvt now contains more families.
+
+## [26.24] — 2026-10-23
 *Workset Manager*: Excluded non-string browser-organization parameters, added a visibility-fix button, and made existing values clickable to populate the corresponding parameter setting field.
 *Link manager*: Fixed loading errors for cloud link paths that cannot be used as local file paths. File size now falls back to the collaboration cache when available.
 

@@ -32,7 +32,7 @@ El comando **Create hangers** coloca soportes para tuberías, conductos y bandej
 
 Abra una vista 3D y seleccione las instalaciones que necesitan soportes. A continuación, ejecute **Create hangers**. Puede seleccionar elementos del modelo anfitrión y elementos individuales de vínculos de Revit cargados.
 
-Para limitar la colocación de soportes a una zona, configure la **Section Box** antes de ejecutar el comando. Los puntos de colocación se distribuyen a lo largo del tramo de cada instalación que queda dentro del recorte.
+Para limitar la colocación de soportes a una zona, configure la **Section Box** antes de ejecutar el comando. Primero se distribuyen los puntos a lo largo de la instalación y después se descartan los que quedan fuera de la caja de sección. Si no queda ningún punto habitual en toda la selección, el comando crea soportes en los puntos medios de los tramos visibles de las instalaciones.
 
 ### 2. Configure la distribución
 
@@ -63,14 +63,14 @@ Cuando se detecta una intersección, el comando asigna al soporte un tipo de adv
 - **warning red** — la varilla de un soporte principal o un elemento de fijación circular independiente intersecta una instalación.
 - **warning orange** — el perfil horizontal superior de un conjunto multinivel intersecta una instalación.
 
-Al crear soportes, no se comprueban el perfil inferior ni los elementos de fijación circulares dentro de un conjunto compartido. Por tanto, la ausencia de advertencias no significa que todo el conjunto esté libre de interferencias. La comprobación de las varillas no tiene en cuenta su grosor y la de los perfiles se basa en la altura de las instalaciones.
+Durante la creación se analizan los soportes de techo; los soportes de pared no se comprueban. En los soportes de techo tampoco se comprueban el perfil inferior ni los elementos de fijación circulares dentro de un conjunto compartido. Por tanto, la ausencia de advertencias no significa que todo el conjunto esté libre de interferencias. La comprobación de las varillas no tiene en cuenta su grosor y la de los perfiles se basa en la altura de las instalaciones.
 
 Los ID de los elementos que intersectan se añaden a los comentarios del soporte. Antes de los ID de los elementos se indica el ID de la instancia del vínculo; `0` identifica el modelo anfitrión. Utilice estos ID para localizar los elementos problemáticos. Para mostrar las advertencias correspondientes, la familia debe incluir tipos cuyo nombre contenga **warning red** y **warning orange**.
 
 ### 5. Elija las opciones de montaje
 
 - **Ceiling** — soporte fijado al techo.
-- **Wall** — soporte fijado a la pared para tuberías y conductos circulares.
+- **Wall** — soporte fijado a la pared para tuberías, conductos circulares y rectangulares, y bandejas portacables.
 - **Auto** — selecciona automáticamente el montaje en pared o techo según la dirección de la instalación y la posición de las paredes cercanas.
 
 >Para instalaciones inclinadas al menos 15° respecto a la horizontal, se selecciona el montaje en pared. Si no se encuentra una pared, el soporte se crea igualmente con una distancia de reserva respecto a ella.  
