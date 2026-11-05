@@ -1,6 +1,6 @@
 ## [26.25] — 2026-11-04
 *Filter manager*: Added a new tool for the batch creation and modification of view filters using Excel.
-*Create Hangers*: Added wall-mounted supports for rectangular ducts and cable trays. Demo23.rvt now contains more families.
+*Create Hangers*: Added wall-mounted supports for rectangular ducts and cable trays. [Demo23.rvt](https://github.com/SnrBim/BimTools/releases/download/v26.25/Demo23.rvt) now contains more families.
 
 ## [26.24] — 2026-10-23
 *Workset Manager*: Excluded non-string browser-organization parameters, added a visibility-fix button, and made existing values clickable to populate the corresponding parameter setting field.

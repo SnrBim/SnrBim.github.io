@@ -24,7 +24,7 @@ El comando **Create hangers** coloca soportes para tuberías, conductos y bandej
 	<a class="image-compare" href="71.png" src="72.png"><img src="71.png" width="240" loading="lazy" alt="7. Detección de interferencias"></a>
 </div>
 
-**Proyecto de demostración con familias:** [descargar Demo23.rvt](https://github.com/SnrBim/BimTools/releases/download/v26.20/Demo23.rvt).
+**Proyecto de demostración con familias:** [descargar Demo23.rvt](https://github.com/SnrBim/BimTools/releases/download/v26.25/Demo23.rvt).
 
 ## Crear soportes
 

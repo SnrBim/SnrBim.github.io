@@ -24,7 +24,7 @@ The **Create hangers** command places hangers for pipes, ducts, and cable trays,
 	<a class="image-compare" href="71.png" src="72.png"><img src="71.png" width="240" loading="lazy" alt="7. Clash detection"></a>
 </div>
 
-**Demo project with families:** [download Demo23.rvt](https://github.com/SnrBim/BimTools/releases/download/v26.20/Demo23.rvt).
+**Demo project with families:** [download Demo23.rvt](https://github.com/SnrBim/BimTools/releases/download/v26.25/Demo23.rvt).
 
 ## Create hangers
 
